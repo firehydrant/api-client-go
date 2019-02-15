@@ -20,6 +20,9 @@ type PostV1Services struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// A hash of label keys and values
+	Labels map[string]string `json:"labels,omitempty"`
+
 	// name
 	// Required: true
 	Name *string `json:"name"`

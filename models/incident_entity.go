@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -27,6 +29,9 @@ type IncidentEntity struct {
 
 	// UUID of the Incident
 	ID string `json:"id,omitempty"`
+
+	// incident roles
+	IncidentRoles []*IncidentRoleEntity `json:"incident_roles"`
 
 	// Name of the incident
 	Name string `json:"name,omitempty"`
@@ -50,6 +55,10 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIncidentRoles(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -80,6 +89,31 @@ func (m *IncidentEntity) validateCreatedAt(formats strfmt.Registry) error {
 
 	if err := validate.FormatOf("created_at", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) validateIncidentRoles(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.IncidentRoles) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.IncidentRoles); i++ {
+		if swag.IsZero(m.IncidentRoles[i]) { // not required
+			continue
+		}
+
+		if m.IncidentRoles[i] != nil {
+			if err := m.IncidentRoles[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("incident_roles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

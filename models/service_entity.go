@@ -24,6 +24,9 @@ type ServiceEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
+	// A key/value of labels
+	Labels interface{} `json:"labels,omitempty"`
+
 	// name
 	Name string `json:"name,omitempty"`
 
