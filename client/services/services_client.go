@@ -25,7 +25,7 @@ type Client struct {
 }
 
 /*
-GetV1Services get v1 services API
+GetV1Services Retrieve all services
 */
 func (a *Client) GetV1Services(params *GetV1ServicesParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1ServicesOK, error) {
 	// TODO: Validate the params before sending
@@ -50,6 +50,35 @@ func (a *Client) GetV1Services(params *GetV1ServicesParams, authInfo runtime.Cli
 		return nil, err
 	}
 	return result.(*GetV1ServicesOK), nil
+
+}
+
+/*
+GetV1ServicesID Retrieve a single service
+*/
+func (a *Client) GetV1ServicesID(params *GetV1ServicesIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1ServicesIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1ServicesIDParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "getV1ServicesId",
+		Method:             "GET",
+		PathPattern:        "/v1/services/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &GetV1ServicesIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetV1ServicesIDOK), nil
 
 }
 

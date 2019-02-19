@@ -54,64 +54,6 @@ func (a *Client) DeleteV1PostMortemsReportsReportIDActionItemsActionItemID(param
 }
 
 /*
-DeleteV1PostMortemsReportsReportIDAffectedComponentsAffectedComponentID Remove an component from the report
-*/
-func (a *Client) DeleteV1PostMortemsReportsReportIDAffectedComponentsAffectedComponentID(params *DeleteV1PostMortemsReportsReportIDAffectedComponentsAffectedComponentIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteV1PostMortemsReportsReportIDAffectedComponentsAffectedComponentIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1PostMortemsReportsReportIDAffectedComponentsAffectedComponentIDParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteV1PostMortemsReportsReportIdAffectedComponentsAffectedComponentId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/affected_components/{affected_component_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &DeleteV1PostMortemsReportsReportIDAffectedComponentsAffectedComponentIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*DeleteV1PostMortemsReportsReportIDAffectedComponentsAffectedComponentIDNoContent), nil
-
-}
-
-/*
-DeleteV1PostMortemsReportsReportIDAffectedEnvironmentsAffectedEnvironmentID Remove an environment from the report
-*/
-func (a *Client) DeleteV1PostMortemsReportsReportIDAffectedEnvironmentsAffectedEnvironmentID(params *DeleteV1PostMortemsReportsReportIDAffectedEnvironmentsAffectedEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteV1PostMortemsReportsReportIDAffectedEnvironmentsAffectedEnvironmentIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1PostMortemsReportsReportIDAffectedEnvironmentsAffectedEnvironmentIDParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteV1PostMortemsReportsReportIdAffectedEnvironmentsAffectedEnvironmentId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/affected_environments/{affected_environment_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &DeleteV1PostMortemsReportsReportIDAffectedEnvironmentsAffectedEnvironmentIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*DeleteV1PostMortemsReportsReportIDAffectedEnvironmentsAffectedEnvironmentIDNoContent), nil
-
-}
-
-/*
 DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID Remove an event on the report timeline by an incident event ID
 */
 func (a *Client) DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID(params *DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDNoContent, error) {
@@ -369,64 +311,6 @@ func (a *Client) GetV1PostMortemsReportsReportIDActionItems(params *GetV1PostMor
 		return nil, err
 	}
 	return result.(*GetV1PostMortemsReportsReportIDActionItemsOK), nil
-
-}
-
-/*
-GetV1PostMortemsReportsReportIDAffectedComponents Retrieve all affected components for a post mortem report
-*/
-func (a *Client) GetV1PostMortemsReportsReportIDAffectedComponents(params *GetV1PostMortemsReportsReportIDAffectedComponentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsReportsReportIDAffectedComponentsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PostMortemsReportsReportIDAffectedComponentsParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getV1PostMortemsReportsReportIdAffectedComponents",
-		Method:             "GET",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/affected_components",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &GetV1PostMortemsReportsReportIDAffectedComponentsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetV1PostMortemsReportsReportIDAffectedComponentsOK), nil
-
-}
-
-/*
-GetV1PostMortemsReportsReportIDAffectedEnvironments Retrieve all affected environments for a post mortem report
-*/
-func (a *Client) GetV1PostMortemsReportsReportIDAffectedEnvironments(params *GetV1PostMortemsReportsReportIDAffectedEnvironmentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsReportsReportIDAffectedEnvironmentsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PostMortemsReportsReportIDAffectedEnvironmentsParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getV1PostMortemsReportsReportIdAffectedEnvironments",
-		Method:             "GET",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/affected_environments",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &GetV1PostMortemsReportsReportIDAffectedEnvironmentsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetV1PostMortemsReportsReportIDAffectedEnvironmentsOK), nil
 
 }
 
@@ -920,64 +804,6 @@ func (a *Client) PostV1PostMortemsReportsReportIDActionItems(params *PostV1PostM
 		return nil, err
 	}
 	return result.(*PostV1PostMortemsReportsReportIDActionItemsCreated), nil
-
-}
-
-/*
-PostV1PostMortemsReportsReportIDAffectedComponents Add an component to a post mortem report
-*/
-func (a *Client) PostV1PostMortemsReportsReportIDAffectedComponents(params *PostV1PostMortemsReportsReportIDAffectedComponentsParams, authInfo runtime.ClientAuthInfoWriter) (*PostV1PostMortemsReportsReportIDAffectedComponentsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1PostMortemsReportsReportIDAffectedComponentsParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "postV1PostMortemsReportsReportIdAffectedComponents",
-		Method:             "POST",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/affected_components",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &PostV1PostMortemsReportsReportIDAffectedComponentsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*PostV1PostMortemsReportsReportIDAffectedComponentsCreated), nil
-
-}
-
-/*
-PostV1PostMortemsReportsReportIDAffectedEnvironments Add an environment to a post mortem report
-*/
-func (a *Client) PostV1PostMortemsReportsReportIDAffectedEnvironments(params *PostV1PostMortemsReportsReportIDAffectedEnvironmentsParams, authInfo runtime.ClientAuthInfoWriter) (*PostV1PostMortemsReportsReportIDAffectedEnvironmentsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1PostMortemsReportsReportIDAffectedEnvironmentsParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "postV1PostMortemsReportsReportIdAffectedEnvironments",
-		Method:             "POST",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/affected_environments",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &PostV1PostMortemsReportsReportIDAffectedEnvironmentsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*PostV1PostMortemsReportsReportIDAffectedEnvironmentsCreated), nil
 
 }
 

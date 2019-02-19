@@ -21,7 +21,7 @@ type PostV1Components struct {
 	Description string `json:"description,omitempty"`
 
 	// A hash of label keys and values
-	Labels interface{} `json:"labels,omitempty"`
+	Labels map[string]string `json:"labels,omitempty"`
 
 	// name
 	// Required: true

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AffectedEnvironmentEntity Add an environment to a post mortem report
+// AffectedEnvironmentEntity affected environment entity
 // swagger:model AffectedEnvironmentEntity
 type AffectedEnvironmentEntity struct {
 

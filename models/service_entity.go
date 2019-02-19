@@ -11,7 +11,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ServiceEntity Create a service
+// ServiceEntity Retrieve a single service
 // swagger:model ServiceEntity
 type ServiceEntity struct {
 

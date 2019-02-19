@@ -20,6 +20,7 @@ import (
 	"github.com/firehydrant/api-client-go/client/ping"
 	"github.com/firehydrant/api-client-go/client/post_mortems"
 	"github.com/firehydrant/api-client-go/client/services"
+	"github.com/firehydrant/api-client-go/client/teams"
 	"github.com/firehydrant/api-client-go/client/users"
 )
 
@@ -83,6 +84,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.PostMortems = post_mortems.New(transport, formats)
 
 	cli.Services = services.New(transport, formats)
+
+	cli.Teams = teams.New(transport, formats)
 
 	cli.Users = users.New(transport, formats)
 
@@ -148,6 +151,8 @@ type FireHydrant struct {
 
 	Services *services.Client
 
+	Teams *teams.Client
+
 	Users *users.Client
 
 	Transport runtime.ClientTransport
@@ -174,6 +179,8 @@ func (c *FireHydrant) SetTransport(transport runtime.ClientTransport) {
 	c.PostMortems.SetTransport(transport)
 
 	c.Services.SetTransport(transport)
+
+	c.Teams.SetTransport(transport)
 
 	c.Users.SetTransport(transport)
 

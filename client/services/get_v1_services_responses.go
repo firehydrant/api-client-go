@@ -7,10 +7,13 @@ package services
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	models "github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1ServicesReader is a Reader for the GetV1Services structure.
@@ -41,16 +44,24 @@ func NewGetV1ServicesOK() *GetV1ServicesOK {
 
 /*GetV1ServicesOK handles this case with default header values.
 
-get Service(s)
+Retrieve all services
 */
 type GetV1ServicesOK struct {
+	Payload *models.ServiceEntityPaginated
 }
 
 func (o *GetV1ServicesOK) Error() string {
-	return fmt.Sprintf("[GET /v1/services][%d] getV1ServicesOK ", 200)
+	return fmt.Sprintf("[GET /v1/services][%d] getV1ServicesOK  %+v", 200, o.Payload)
 }
 
 func (o *GetV1ServicesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ServiceEntityPaginated)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

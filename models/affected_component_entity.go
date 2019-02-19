@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AffectedComponentEntity Add an component to a post mortem report
+// AffectedComponentEntity affected component entity
 // swagger:model AffectedComponentEntity
 type AffectedComponentEntity struct {
 
