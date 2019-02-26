@@ -13,7 +13,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -63,7 +62,7 @@ for the get v1 post mortems reports report Id events operation typically these a
 type GetV1PostMortemsReportsReportIDEventsParams struct {
 
 	/*ReportID*/
-	ReportID int32
+	ReportID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -104,13 +103,13 @@ func (o *GetV1PostMortemsReportsReportIDEventsParams) SetHTTPClient(client *http
 }
 
 // WithReportID adds the reportID to the get v1 post mortems reports report Id events params
-func (o *GetV1PostMortemsReportsReportIDEventsParams) WithReportID(reportID int32) *GetV1PostMortemsReportsReportIDEventsParams {
+func (o *GetV1PostMortemsReportsReportIDEventsParams) WithReportID(reportID string) *GetV1PostMortemsReportsReportIDEventsParams {
 	o.SetReportID(reportID)
 	return o
 }
 
 // SetReportID adds the reportId to the get v1 post mortems reports report Id events params
-func (o *GetV1PostMortemsReportsReportIDEventsParams) SetReportID(reportID int32) {
+func (o *GetV1PostMortemsReportsReportIDEventsParams) SetReportID(reportID string) {
 	o.ReportID = reportID
 }
 
@@ -123,7 +122,7 @@ func (o *GetV1PostMortemsReportsReportIDEventsParams) WriteToRequest(r runtime.C
 	var res []error
 
 	// path param report_id
-	if err := r.SetPathParam("report_id", swag.FormatInt32(o.ReportID)); err != nil {
+	if err := r.SetPathParam("report_id", o.ReportID); err != nil {
 		return err
 	}
 

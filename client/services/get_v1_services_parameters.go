@@ -20,7 +20,7 @@ import (
 // NewGetV1ServicesParams creates a new GetV1ServicesParams object
 // with the default values initialized.
 func NewGetV1ServicesParams() *GetV1ServicesParams {
-
+	var ()
 	return &GetV1ServicesParams{
 
 		timeout: cr.DefaultTimeout,
@@ -30,7 +30,7 @@ func NewGetV1ServicesParams() *GetV1ServicesParams {
 // NewGetV1ServicesParamsWithTimeout creates a new GetV1ServicesParams object
 // with the default values initialized, and the ability to set a timeout on a request
 func NewGetV1ServicesParamsWithTimeout(timeout time.Duration) *GetV1ServicesParams {
-
+	var ()
 	return &GetV1ServicesParams{
 
 		timeout: timeout,
@@ -40,7 +40,7 @@ func NewGetV1ServicesParamsWithTimeout(timeout time.Duration) *GetV1ServicesPara
 // NewGetV1ServicesParamsWithContext creates a new GetV1ServicesParams object
 // with the default values initialized, and the ability to set a context for a request
 func NewGetV1ServicesParamsWithContext(ctx context.Context) *GetV1ServicesParams {
-
+	var ()
 	return &GetV1ServicesParams{
 
 		Context: ctx,
@@ -50,7 +50,7 @@ func NewGetV1ServicesParamsWithContext(ctx context.Context) *GetV1ServicesParams
 // NewGetV1ServicesParamsWithHTTPClient creates a new GetV1ServicesParams object
 // with the default values initialized, and the ability to set a custom HTTPClient for a request
 func NewGetV1ServicesParamsWithHTTPClient(client *http.Client) *GetV1ServicesParams {
-
+	var ()
 	return &GetV1ServicesParams{
 		HTTPClient: client,
 	}
@@ -60,6 +60,13 @@ func NewGetV1ServicesParamsWithHTTPClient(client *http.Client) *GetV1ServicesPar
 for the get v1 services operation typically these are written to a http.Request
 */
 type GetV1ServicesParams struct {
+
+	/*Labels
+	  A comma separated list of label key / values in the format of "key=value,key2=value2". To filter change events that have a key (with no specific value), omit the value
+
+	*/
+	Labels *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -98,6 +105,17 @@ func (o *GetV1ServicesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithLabels adds the labels to the get v1 services params
+func (o *GetV1ServicesParams) WithLabels(labels *string) *GetV1ServicesParams {
+	o.SetLabels(labels)
+	return o
+}
+
+// SetLabels adds the labels to the get v1 services params
+func (o *GetV1ServicesParams) SetLabels(labels *string) {
+	o.Labels = labels
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1ServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -105,6 +123,22 @@ func (o *GetV1ServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return err
 	}
 	var res []error
+
+	if o.Labels != nil {
+
+		// query param labels
+		var qrLabels string
+		if o.Labels != nil {
+			qrLabels = *o.Labels
+		}
+		qLabels := qrLabels
+		if qLabels != "" {
+			if err := r.SetQueryParam("labels", qLabels); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
