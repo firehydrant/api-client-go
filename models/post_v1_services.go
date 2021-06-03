@@ -6,33 +6,73 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
+	"encoding/json"
+	"strconv"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
-// PostV1Services Create a service
+// PostV1Services Creates a service for the organization, you may also create or attach functionalities to the service on create.
+//
 // swagger:model postV1Services
 type PostV1Services struct {
 
 	// description
 	Description string `json:"description,omitempty"`
 
+	// An array of functionalities
+	Functionalities []*PostV1ServicesFunctionalitiesItems0 `json:"functionalities"`
+
 	// A hash of label keys and values
 	Labels map[string]string `json:"labels,omitempty"`
+
+	// An array of links to associate with this service
+	Links []*PostV1ServicesLinksItems0 `json:"links"`
 
 	// name
 	// Required: true
 	Name *string `json:"name"`
+
+	// owner
+	Owner *PostV1ServicesOwner `json:"owner,omitempty"`
+
+	// Integer representing service tier. Lower values represent higher criticality. If not specified the default value will be 5.
+	// Enum: [1 2 3 4 5]
+	ServiceTier int32 `json:"service_tier,omitempty"`
+
+	// An array of teams to attach to this service.
+	Teams []*PostV1ServicesTeamsItems0 `json:"teams"`
 }
 
 // Validate validates this post v1 services
 func (m *PostV1Services) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateFunctionalities(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLinks(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOwner(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServiceTier(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTeams(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -42,10 +82,226 @@ func (m *PostV1Services) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *PostV1Services) validateFunctionalities(formats strfmt.Registry) error {
+	if swag.IsZero(m.Functionalities) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Functionalities); i++ {
+		if swag.IsZero(m.Functionalities[i]) { // not required
+			continue
+		}
+
+		if m.Functionalities[i] != nil {
+			if err := m.Functionalities[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PostV1Services) validateLinks(formats strfmt.Registry) error {
+	if swag.IsZero(m.Links) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Links); i++ {
+		if swag.IsZero(m.Links[i]) { // not required
+			continue
+		}
+
+		if m.Links[i] != nil {
+			if err := m.Links[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *PostV1Services) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *PostV1Services) validateOwner(formats strfmt.Registry) error {
+	if swag.IsZero(m.Owner) { // not required
+		return nil
+	}
+
+	if m.Owner != nil {
+		if err := m.Owner.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+var postV1ServicesTypeServiceTierPropEnum []interface{}
+
+func init() {
+	var res []int32
+	if err := json.Unmarshal([]byte(`[1,2,3,4,5]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		postV1ServicesTypeServiceTierPropEnum = append(postV1ServicesTypeServiceTierPropEnum, v)
+	}
+}
+
+// prop value enum
+func (m *PostV1Services) validateServiceTierEnum(path, location string, value int32) error {
+	if err := validate.EnumCase(path, location, value, postV1ServicesTypeServiceTierPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PostV1Services) validateServiceTier(formats strfmt.Registry) error {
+	if swag.IsZero(m.ServiceTier) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateServiceTierEnum("service_tier", "body", m.ServiceTier); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PostV1Services) validateTeams(formats strfmt.Registry) error {
+	if swag.IsZero(m.Teams) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Teams); i++ {
+		if swag.IsZero(m.Teams[i]) { // not required
+			continue
+		}
+
+		if m.Teams[i] != nil {
+			if err := m.Teams[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post v1 services based on the context it is used
+func (m *PostV1Services) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateFunctionalities(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOwner(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTeams(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1Services) contextValidateFunctionalities(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Functionalities); i++ {
+
+		if m.Functionalities[i] != nil {
+			if err := m.Functionalities[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PostV1Services) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Links); i++ {
+
+		if m.Links[i] != nil {
+			if err := m.Links[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PostV1Services) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Owner != nil {
+		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PostV1Services) contextValidateTeams(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Teams); i++ {
+
+		if m.Teams[i] != nil {
+			if err := m.Teams[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -62,6 +318,234 @@ func (m *PostV1Services) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PostV1Services) UnmarshalBinary(b []byte) error {
 	var res PostV1Services
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1ServicesFunctionalitiesItems0 post v1 services functionalities items0
+//
+// swagger:model PostV1ServicesFunctionalitiesItems0
+type PostV1ServicesFunctionalitiesItems0 struct {
+
+	// If you are trying to reuse a functionality, you may set the ID to attach it to the service
+	ID string `json:"id,omitempty"`
+
+	// If you are trying to create a new functionality and attach it to this service, set the summary key
+	Summary string `json:"summary,omitempty"`
+}
+
+// Validate validates this post v1 services functionalities items0
+func (m *PostV1ServicesFunctionalitiesItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this post v1 services functionalities items0 based on context it is used
+func (m *PostV1ServicesFunctionalitiesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1ServicesFunctionalitiesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1ServicesFunctionalitiesItems0) UnmarshalBinary(b []byte) error {
+	var res PostV1ServicesFunctionalitiesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1ServicesLinksItems0 post v1 services links items0
+//
+// swagger:model PostV1ServicesLinksItems0
+type PostV1ServicesLinksItems0 struct {
+
+	// URL
+	// Required: true
+	HrefURL *string `json:"href_url"`
+
+	// An optional URL to an icon representing this link
+	IconURL string `json:"icon_url,omitempty"`
+
+	// Short name used to display and identify this link
+	// Required: true
+	Name *string `json:"name"`
+}
+
+// Validate validates this post v1 services links items0
+func (m *PostV1ServicesLinksItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateHrefURL(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1ServicesLinksItems0) validateHrefURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("href_url", "body", m.HrefURL); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PostV1ServicesLinksItems0) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this post v1 services links items0 based on context it is used
+func (m *PostV1ServicesLinksItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1ServicesLinksItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1ServicesLinksItems0) UnmarshalBinary(b []byte) error {
+	var res PostV1ServicesLinksItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1ServicesOwner An object representing a Team that owns the service
+//
+// swagger:model PostV1ServicesOwner
+type PostV1ServicesOwner struct {
+
+	// id
+	// Required: true
+	ID *string `json:"id"`
+}
+
+// Validate validates this post v1 services owner
+func (m *PostV1ServicesOwner) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1ServicesOwner) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("owner"+"."+"id", "body", m.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this post v1 services owner based on context it is used
+func (m *PostV1ServicesOwner) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1ServicesOwner) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1ServicesOwner) UnmarshalBinary(b []byte) error {
+	var res PostV1ServicesOwner
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1ServicesTeamsItems0 post v1 services teams items0
+//
+// swagger:model PostV1ServicesTeamsItems0
+type PostV1ServicesTeamsItems0 struct {
+
+	// id
+	// Required: true
+	ID *string `json:"id"`
+}
+
+// Validate validates this post v1 services teams items0
+func (m *PostV1ServicesTeamsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1ServicesTeamsItems0) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this post v1 services teams items0 based on context it is used
+func (m *PostV1ServicesTeamsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1ServicesTeamsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1ServicesTeamsItems0) UnmarshalBinary(b []byte) error {
+	var res PostV1ServicesTeamsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

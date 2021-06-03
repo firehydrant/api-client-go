@@ -9,8 +9,7 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
 // PutV1PostMortemsReportsReportIDReasonsOrderReader is a Reader for the PutV1PostMortemsReportsReportIDReasonsOrder structure.
@@ -21,16 +20,14 @@ type PutV1PostMortemsReportsReportIDReasonsOrderReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutV1PostMortemsReportsReportIDReasonsOrderReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPutV1PostMortemsReportsReportIDReasonsOrderOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -39,7 +36,7 @@ func NewPutV1PostMortemsReportsReportIDReasonsOrderOK() *PutV1PostMortemsReports
 	return &PutV1PostMortemsReportsReportIDReasonsOrderOK{}
 }
 
-/*PutV1PostMortemsReportsReportIDReasonsOrderOK handles this case with default header values.
+/* PutV1PostMortemsReportsReportIDReasonsOrderOK describes a response with status code 200, with default header values.
 
 Reorder a reason in the post mortem reasons list
 */

@@ -13,60 +13,73 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewGetV1PostMortemsReportsReportIDParams creates a new GetV1PostMortemsReportsReportIDParams object
-// with the default values initialized.
+// NewGetV1PostMortemsReportsReportIDParams creates a new GetV1PostMortemsReportsReportIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetV1PostMortemsReportsReportIDParams() *GetV1PostMortemsReportsReportIDParams {
-	var ()
 	return &GetV1PostMortemsReportsReportIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetV1PostMortemsReportsReportIDParamsWithTimeout creates a new GetV1PostMortemsReportsReportIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetV1PostMortemsReportsReportIDParamsWithTimeout(timeout time.Duration) *GetV1PostMortemsReportsReportIDParams {
-	var ()
 	return &GetV1PostMortemsReportsReportIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetV1PostMortemsReportsReportIDParamsWithContext creates a new GetV1PostMortemsReportsReportIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetV1PostMortemsReportsReportIDParamsWithContext(ctx context.Context) *GetV1PostMortemsReportsReportIDParams {
-	var ()
 	return &GetV1PostMortemsReportsReportIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetV1PostMortemsReportsReportIDParamsWithHTTPClient creates a new GetV1PostMortemsReportsReportIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetV1PostMortemsReportsReportIDParamsWithHTTPClient(client *http.Client) *GetV1PostMortemsReportsReportIDParams {
-	var ()
 	return &GetV1PostMortemsReportsReportIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetV1PostMortemsReportsReportIDParams contains all the parameters to send to the API endpoint
-for the get v1 post mortems reports report Id operation typically these are written to a http.Request
+/* GetV1PostMortemsReportsReportIDParams contains all the parameters to send to the API endpoint
+   for the get v1 post mortems reports report Id operation.
+
+   Typically these are written to a http.Request.
 */
 type GetV1PostMortemsReportsReportIDParams struct {
 
-	/*ReportID*/
+	// ReportID.
 	ReportID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get v1 post mortems reports report Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1PostMortemsReportsReportIDParams) WithDefaults() *GetV1PostMortemsReportsReportIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get v1 post mortems reports report Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1PostMortemsReportsReportIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get v1 post mortems reports report Id params

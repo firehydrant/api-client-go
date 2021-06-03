@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // IncidentImpactEntity Add a piece of infrastructure to an incident as impact
+//
 // swagger:model IncidentImpactEntity
 type IncidentImpactEntity struct {
 
@@ -27,6 +29,11 @@ type IncidentImpactEntity struct {
 
 // Validate validates this incident impact entity
 func (m *IncidentImpactEntity) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this incident impact entity based on context it is used
+func (m *IncidentImpactEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

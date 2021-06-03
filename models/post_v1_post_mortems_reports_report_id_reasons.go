@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // PostV1PostMortemsReportsReportIDReasons Add a post mortem reason to the report
+//
 // swagger:model postV1PostMortemsReportsReportIdReasons
 type PostV1PostMortemsReportsReportIDReasons struct {
 
@@ -42,6 +44,11 @@ func (m *PostV1PostMortemsReportsReportIDReasons) validateSummary(formats strfmt
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this post v1 post mortems reports report Id reasons based on context it is used
+func (m *PostV1PostMortemsReportsReportIDReasons) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -13,64 +13,78 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
-// NewPostV1IncidentsIncidentIDRoleAssignmentsParams creates a new PostV1IncidentsIncidentIDRoleAssignmentsParams object
-// with the default values initialized.
+// NewPostV1IncidentsIncidentIDRoleAssignmentsParams creates a new PostV1IncidentsIncidentIDRoleAssignmentsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostV1IncidentsIncidentIDRoleAssignmentsParams() *PostV1IncidentsIncidentIDRoleAssignmentsParams {
-	var ()
 	return &PostV1IncidentsIncidentIDRoleAssignmentsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostV1IncidentsIncidentIDRoleAssignmentsParamsWithTimeout creates a new PostV1IncidentsIncidentIDRoleAssignmentsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostV1IncidentsIncidentIDRoleAssignmentsParamsWithTimeout(timeout time.Duration) *PostV1IncidentsIncidentIDRoleAssignmentsParams {
-	var ()
 	return &PostV1IncidentsIncidentIDRoleAssignmentsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostV1IncidentsIncidentIDRoleAssignmentsParamsWithContext creates a new PostV1IncidentsIncidentIDRoleAssignmentsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostV1IncidentsIncidentIDRoleAssignmentsParamsWithContext(ctx context.Context) *PostV1IncidentsIncidentIDRoleAssignmentsParams {
-	var ()
 	return &PostV1IncidentsIncidentIDRoleAssignmentsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostV1IncidentsIncidentIDRoleAssignmentsParamsWithHTTPClient creates a new PostV1IncidentsIncidentIDRoleAssignmentsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostV1IncidentsIncidentIDRoleAssignmentsParamsWithHTTPClient(client *http.Client) *PostV1IncidentsIncidentIDRoleAssignmentsParams {
-	var ()
 	return &PostV1IncidentsIncidentIDRoleAssignmentsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostV1IncidentsIncidentIDRoleAssignmentsParams contains all the parameters to send to the API endpoint
-for the post v1 incidents incident Id role assignments operation typically these are written to a http.Request
+/* PostV1IncidentsIncidentIDRoleAssignmentsParams contains all the parameters to send to the API endpoint
+   for the post v1 incidents incident Id role assignments operation.
+
+   Typically these are written to a http.Request.
 */
 type PostV1IncidentsIncidentIDRoleAssignmentsParams struct {
 
-	/*V1IncidentsIncidentIDRoleAssignments*/
+	// V1IncidentsIncidentIDRoleAssignments.
 	V1IncidentsIncidentIDRoleAssignments *models.PostV1IncidentsIncidentIDRoleAssignments
-	/*IncidentID*/
+
+	// IncidentID.
 	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post v1 incidents incident Id role assignments params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1IncidentsIncidentIDRoleAssignmentsParams) WithDefaults() *PostV1IncidentsIncidentIDRoleAssignmentsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post v1 incidents incident Id role assignments params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1IncidentsIncidentIDRoleAssignmentsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post v1 incidents incident Id role assignments params
@@ -135,7 +149,6 @@ func (o *PostV1IncidentsIncidentIDRoleAssignmentsParams) WriteToRequest(r runtim
 		return err
 	}
 	var res []error
-
 	if o.V1IncidentsIncidentIDRoleAssignments != nil {
 		if err := r.SetBodyParam(o.V1IncidentsIncidentIDRoleAssignments); err != nil {
 			return err

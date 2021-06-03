@@ -13,65 +13,81 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
-// NewPatchV1ChangesEventsChangeEventIDParams creates a new PatchV1ChangesEventsChangeEventIDParams object
-// with the default values initialized.
+// NewPatchV1ChangesEventsChangeEventIDParams creates a new PatchV1ChangesEventsChangeEventIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPatchV1ChangesEventsChangeEventIDParams() *PatchV1ChangesEventsChangeEventIDParams {
-	var ()
 	return &PatchV1ChangesEventsChangeEventIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPatchV1ChangesEventsChangeEventIDParamsWithTimeout creates a new PatchV1ChangesEventsChangeEventIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPatchV1ChangesEventsChangeEventIDParamsWithTimeout(timeout time.Duration) *PatchV1ChangesEventsChangeEventIDParams {
-	var ()
 	return &PatchV1ChangesEventsChangeEventIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPatchV1ChangesEventsChangeEventIDParamsWithContext creates a new PatchV1ChangesEventsChangeEventIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPatchV1ChangesEventsChangeEventIDParamsWithContext(ctx context.Context) *PatchV1ChangesEventsChangeEventIDParams {
-	var ()
 	return &PatchV1ChangesEventsChangeEventIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPatchV1ChangesEventsChangeEventIDParamsWithHTTPClient creates a new PatchV1ChangesEventsChangeEventIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPatchV1ChangesEventsChangeEventIDParamsWithHTTPClient(client *http.Client) *PatchV1ChangesEventsChangeEventIDParams {
-	var ()
 	return &PatchV1ChangesEventsChangeEventIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*PatchV1ChangesEventsChangeEventIDParams contains all the parameters to send to the API endpoint
-for the patch v1 changes events change event Id operation typically these are written to a http.Request
+/* PatchV1ChangesEventsChangeEventIDParams contains all the parameters to send to the API endpoint
+   for the patch v1 changes events change event Id operation.
+
+   Typically these are written to a http.Request.
 */
 type PatchV1ChangesEventsChangeEventIDParams struct {
 
-	/*V1ChangesEvents*/
+	// V1ChangesEvents.
 	V1ChangesEvents *models.PatchV1ChangesEvents
-	/*ChangeEventID*/
+
+	// ChangeEventID.
+	//
+	// Format: int32
 	ChangeEventID int32
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the patch v1 changes events change event Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchV1ChangesEventsChangeEventIDParams) WithDefaults() *PatchV1ChangesEventsChangeEventIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the patch v1 changes events change event Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchV1ChangesEventsChangeEventIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the patch v1 changes events change event Id params
@@ -136,7 +152,6 @@ func (o *PatchV1ChangesEventsChangeEventIDParams) WriteToRequest(r runtime.Clien
 		return err
 	}
 	var res []error
-
 	if o.V1ChangesEvents != nil {
 		if err := r.SetBodyParam(o.V1ChangesEvents); err != nil {
 			return err

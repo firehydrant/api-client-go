@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // PatchV1PostMortemsReportsReportIDFields Update a field value on a post mortem report
+//
 // swagger:model patchV1PostMortemsReportsReportIdFields
 type PatchV1PostMortemsReportsReportIDFields struct {
 
@@ -42,6 +44,11 @@ func (m *PatchV1PostMortemsReportsReportIDFields) validateValue(formats strfmt.R
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this patch v1 post mortems reports report Id fields based on context it is used
+func (m *PatchV1PostMortemsReportsReportIDFields) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

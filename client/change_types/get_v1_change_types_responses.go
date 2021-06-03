@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1ChangeTypesReader is a Reader for the GetV1ChangeTypes structure.
@@ -24,16 +23,14 @@ type GetV1ChangeTypesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetV1ChangeTypesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetV1ChangeTypesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -42,7 +39,7 @@ func NewGetV1ChangeTypesOK() *GetV1ChangeTypesOK {
 	return &GetV1ChangeTypesOK{}
 }
 
-/*GetV1ChangeTypesOK handles this case with default header values.
+/* GetV1ChangeTypesOK describes a response with status code 200, with default header values.
 
 Lists all change types
 */
@@ -52,6 +49,9 @@ type GetV1ChangeTypesOK struct {
 
 func (o *GetV1ChangeTypesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/change_types][%d] getV1ChangeTypesOK  %+v", 200, o.Payload)
+}
+func (o *GetV1ChangeTypesOK) GetPayload() *models.ChangeTypeEntityPaginated {
+	return o.Payload
 }
 
 func (o *GetV1ChangeTypesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

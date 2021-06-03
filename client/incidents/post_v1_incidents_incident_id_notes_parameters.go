@@ -13,64 +13,78 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
-// NewPostV1IncidentsIncidentIDNotesParams creates a new PostV1IncidentsIncidentIDNotesParams object
-// with the default values initialized.
+// NewPostV1IncidentsIncidentIDNotesParams creates a new PostV1IncidentsIncidentIDNotesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostV1IncidentsIncidentIDNotesParams() *PostV1IncidentsIncidentIDNotesParams {
-	var ()
 	return &PostV1IncidentsIncidentIDNotesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostV1IncidentsIncidentIDNotesParamsWithTimeout creates a new PostV1IncidentsIncidentIDNotesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostV1IncidentsIncidentIDNotesParamsWithTimeout(timeout time.Duration) *PostV1IncidentsIncidentIDNotesParams {
-	var ()
 	return &PostV1IncidentsIncidentIDNotesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostV1IncidentsIncidentIDNotesParamsWithContext creates a new PostV1IncidentsIncidentIDNotesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostV1IncidentsIncidentIDNotesParamsWithContext(ctx context.Context) *PostV1IncidentsIncidentIDNotesParams {
-	var ()
 	return &PostV1IncidentsIncidentIDNotesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostV1IncidentsIncidentIDNotesParamsWithHTTPClient creates a new PostV1IncidentsIncidentIDNotesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostV1IncidentsIncidentIDNotesParamsWithHTTPClient(client *http.Client) *PostV1IncidentsIncidentIDNotesParams {
-	var ()
 	return &PostV1IncidentsIncidentIDNotesParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostV1IncidentsIncidentIDNotesParams contains all the parameters to send to the API endpoint
-for the post v1 incidents incident Id notes operation typically these are written to a http.Request
+/* PostV1IncidentsIncidentIDNotesParams contains all the parameters to send to the API endpoint
+   for the post v1 incidents incident Id notes operation.
+
+   Typically these are written to a http.Request.
 */
 type PostV1IncidentsIncidentIDNotesParams struct {
 
-	/*V1IncidentsIncidentIDNotes*/
+	// V1IncidentsIncidentIDNotes.
 	V1IncidentsIncidentIDNotes *models.PostV1IncidentsIncidentIDNotes
-	/*IncidentID*/
+
+	// IncidentID.
 	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post v1 incidents incident Id notes params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1IncidentsIncidentIDNotesParams) WithDefaults() *PostV1IncidentsIncidentIDNotesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post v1 incidents incident Id notes params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1IncidentsIncidentIDNotesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post v1 incidents incident Id notes params
@@ -135,7 +149,6 @@ func (o *PostV1IncidentsIncidentIDNotesParams) WriteToRequest(r runtime.ClientRe
 		return err
 	}
 	var res []error
-
 	if o.V1IncidentsIncidentIDNotes != nil {
 		if err := r.SetBodyParam(o.V1IncidentsIncidentIDNotes); err != nil {
 			return err

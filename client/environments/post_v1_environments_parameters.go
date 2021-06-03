@@ -13,62 +13,75 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
-// NewPostV1EnvironmentsParams creates a new PostV1EnvironmentsParams object
-// with the default values initialized.
+// NewPostV1EnvironmentsParams creates a new PostV1EnvironmentsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostV1EnvironmentsParams() *PostV1EnvironmentsParams {
-	var ()
 	return &PostV1EnvironmentsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostV1EnvironmentsParamsWithTimeout creates a new PostV1EnvironmentsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostV1EnvironmentsParamsWithTimeout(timeout time.Duration) *PostV1EnvironmentsParams {
-	var ()
 	return &PostV1EnvironmentsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostV1EnvironmentsParamsWithContext creates a new PostV1EnvironmentsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostV1EnvironmentsParamsWithContext(ctx context.Context) *PostV1EnvironmentsParams {
-	var ()
 	return &PostV1EnvironmentsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostV1EnvironmentsParamsWithHTTPClient creates a new PostV1EnvironmentsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostV1EnvironmentsParamsWithHTTPClient(client *http.Client) *PostV1EnvironmentsParams {
-	var ()
 	return &PostV1EnvironmentsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostV1EnvironmentsParams contains all the parameters to send to the API endpoint
-for the post v1 environments operation typically these are written to a http.Request
+/* PostV1EnvironmentsParams contains all the parameters to send to the API endpoint
+   for the post v1 environments operation.
+
+   Typically these are written to a http.Request.
 */
 type PostV1EnvironmentsParams struct {
 
-	/*V1Environments*/
+	// V1Environments.
 	V1Environments *models.PostV1Environments
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post v1 environments params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1EnvironmentsParams) WithDefaults() *PostV1EnvironmentsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post v1 environments params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1EnvironmentsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post v1 environments params
@@ -122,7 +135,6 @@ func (o *PostV1EnvironmentsParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-
 	if o.V1Environments != nil {
 		if err := r.SetBodyParam(o.V1Environments); err != nil {
 			return err

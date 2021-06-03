@@ -13,61 +13,76 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewDeleteV1ChangesEventsChangeEventIDParams creates a new DeleteV1ChangesEventsChangeEventIDParams object
-// with the default values initialized.
+// NewDeleteV1ChangesEventsChangeEventIDParams creates a new DeleteV1ChangesEventsChangeEventIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteV1ChangesEventsChangeEventIDParams() *DeleteV1ChangesEventsChangeEventIDParams {
-	var ()
 	return &DeleteV1ChangesEventsChangeEventIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteV1ChangesEventsChangeEventIDParamsWithTimeout creates a new DeleteV1ChangesEventsChangeEventIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteV1ChangesEventsChangeEventIDParamsWithTimeout(timeout time.Duration) *DeleteV1ChangesEventsChangeEventIDParams {
-	var ()
 	return &DeleteV1ChangesEventsChangeEventIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteV1ChangesEventsChangeEventIDParamsWithContext creates a new DeleteV1ChangesEventsChangeEventIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteV1ChangesEventsChangeEventIDParamsWithContext(ctx context.Context) *DeleteV1ChangesEventsChangeEventIDParams {
-	var ()
 	return &DeleteV1ChangesEventsChangeEventIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteV1ChangesEventsChangeEventIDParamsWithHTTPClient creates a new DeleteV1ChangesEventsChangeEventIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteV1ChangesEventsChangeEventIDParamsWithHTTPClient(client *http.Client) *DeleteV1ChangesEventsChangeEventIDParams {
-	var ()
 	return &DeleteV1ChangesEventsChangeEventIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteV1ChangesEventsChangeEventIDParams contains all the parameters to send to the API endpoint
-for the delete v1 changes events change event Id operation typically these are written to a http.Request
+/* DeleteV1ChangesEventsChangeEventIDParams contains all the parameters to send to the API endpoint
+   for the delete v1 changes events change event Id operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteV1ChangesEventsChangeEventIDParams struct {
 
-	/*ChangeEventID*/
+	// ChangeEventID.
+	//
+	// Format: int32
 	ChangeEventID int32
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete v1 changes events change event Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1ChangesEventsChangeEventIDParams) WithDefaults() *DeleteV1ChangesEventsChangeEventIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete v1 changes events change event Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1ChangesEventsChangeEventIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete v1 changes events change event Id params

@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1IncidentRolesReader is a Reader for the GetV1IncidentRoles structure.
@@ -24,16 +23,14 @@ type GetV1IncidentRolesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetV1IncidentRolesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetV1IncidentRolesOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -42,7 +39,7 @@ func NewGetV1IncidentRolesOK() *GetV1IncidentRolesOK {
 	return &GetV1IncidentRolesOK{}
 }
 
-/*GetV1IncidentRolesOK handles this case with default header values.
+/* GetV1IncidentRolesOK describes a response with status code 200, with default header values.
 
 List incident roles
 */
@@ -52,6 +49,9 @@ type GetV1IncidentRolesOK struct {
 
 func (o *GetV1IncidentRolesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incident_roles][%d] getV1IncidentRolesOK  %+v", 200, o.Payload)
+}
+func (o *GetV1IncidentRolesOK) GetPayload() *models.IncidentRoleEntityPaginated {
+	return o.Payload
 }
 
 func (o *GetV1IncidentRolesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

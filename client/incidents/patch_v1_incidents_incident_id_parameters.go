@@ -13,65 +13,78 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
-// NewPatchV1IncidentsIncidentIDParams creates a new PatchV1IncidentsIncidentIDParams object
-// with the default values initialized.
+// NewPatchV1IncidentsIncidentIDParams creates a new PatchV1IncidentsIncidentIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPatchV1IncidentsIncidentIDParams() *PatchV1IncidentsIncidentIDParams {
-	var ()
 	return &PatchV1IncidentsIncidentIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPatchV1IncidentsIncidentIDParamsWithTimeout creates a new PatchV1IncidentsIncidentIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPatchV1IncidentsIncidentIDParamsWithTimeout(timeout time.Duration) *PatchV1IncidentsIncidentIDParams {
-	var ()
 	return &PatchV1IncidentsIncidentIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPatchV1IncidentsIncidentIDParamsWithContext creates a new PatchV1IncidentsIncidentIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPatchV1IncidentsIncidentIDParamsWithContext(ctx context.Context) *PatchV1IncidentsIncidentIDParams {
-	var ()
 	return &PatchV1IncidentsIncidentIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPatchV1IncidentsIncidentIDParamsWithHTTPClient creates a new PatchV1IncidentsIncidentIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPatchV1IncidentsIncidentIDParamsWithHTTPClient(client *http.Client) *PatchV1IncidentsIncidentIDParams {
-	var ()
 	return &PatchV1IncidentsIncidentIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*PatchV1IncidentsIncidentIDParams contains all the parameters to send to the API endpoint
-for the patch v1 incidents incident Id operation typically these are written to a http.Request
+/* PatchV1IncidentsIncidentIDParams contains all the parameters to send to the API endpoint
+   for the patch v1 incidents incident Id operation.
+
+   Typically these are written to a http.Request.
 */
 type PatchV1IncidentsIncidentIDParams struct {
 
-	/*V1Incidents*/
+	// V1Incidents.
 	V1Incidents *models.PatchV1Incidents
-	/*IncidentID*/
-	IncidentID int32
+
+	// IncidentID.
+	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the patch v1 incidents incident Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchV1IncidentsIncidentIDParams) WithDefaults() *PatchV1IncidentsIncidentIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the patch v1 incidents incident Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchV1IncidentsIncidentIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the patch v1 incidents incident Id params
@@ -119,13 +132,13 @@ func (o *PatchV1IncidentsIncidentIDParams) SetV1Incidents(v1Incidents *models.Pa
 }
 
 // WithIncidentID adds the incidentID to the patch v1 incidents incident Id params
-func (o *PatchV1IncidentsIncidentIDParams) WithIncidentID(incidentID int32) *PatchV1IncidentsIncidentIDParams {
+func (o *PatchV1IncidentsIncidentIDParams) WithIncidentID(incidentID string) *PatchV1IncidentsIncidentIDParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the patch v1 incidents incident Id params
-func (o *PatchV1IncidentsIncidentIDParams) SetIncidentID(incidentID int32) {
+func (o *PatchV1IncidentsIncidentIDParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -136,7 +149,6 @@ func (o *PatchV1IncidentsIncidentIDParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-
 	if o.V1Incidents != nil {
 		if err := r.SetBodyParam(o.V1Incidents); err != nil {
 			return err
@@ -144,7 +156,7 @@ func (o *PatchV1IncidentsIncidentIDParams) WriteToRequest(r runtime.ClientReques
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

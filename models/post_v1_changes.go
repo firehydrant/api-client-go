@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // PostV1Changes Create a new change entry
+//
 // swagger:model postV1Changes
 type PostV1Changes struct {
 
@@ -27,6 +29,11 @@ type PostV1Changes struct {
 
 // Validate validates this post v1 changes
 func (m *PostV1Changes) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this post v1 changes based on context it is used
+func (m *PostV1Changes) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

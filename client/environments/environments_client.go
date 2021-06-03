@@ -6,13 +6,14 @@ package environments
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-openapi/runtime"
+	"fmt"
 
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new environments API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,149 +25,217 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-/*
-DeleteV1EnvironmentsID Archive an environment
-*/
-func (a *Client) DeleteV1EnvironmentsID(params *DeleteV1EnvironmentsIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteV1EnvironmentsIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1EnvironmentsIDParams()
-	}
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
 
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteV1EnvironmentsId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/environments/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &DeleteV1EnvironmentsIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*DeleteV1EnvironmentsIDNoContent), nil
+// ClientService is the interface for Client methods
+type ClientService interface {
+	DeleteV1EnvironmentsEnvironmentID(params *DeleteV1EnvironmentsEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1EnvironmentsEnvironmentIDNoContent, error)
 
+	GetV1Environments(params *GetV1EnvironmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1EnvironmentsOK, error)
+
+	GetV1EnvironmentsEnvironmentID(params *GetV1EnvironmentsEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1EnvironmentsEnvironmentIDOK, error)
+
+	PatchV1EnvironmentsEnvironmentID(params *PatchV1EnvironmentsEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1EnvironmentsEnvironmentIDOK, error)
+
+	PostV1Environments(params *PostV1EnvironmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1EnvironmentsCreated, error)
+
+	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GetV1Environments Retrieve all environments
+  DeleteV1EnvironmentsEnvironmentID Archive an environment
 */
-func (a *Client) GetV1Environments(params *GetV1EnvironmentsParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1EnvironmentsOK, error) {
+func (a *Client) DeleteV1EnvironmentsEnvironmentID(params *DeleteV1EnvironmentsEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1EnvironmentsEnvironmentIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1EnvironmentsEnvironmentIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1EnvironmentsEnvironmentId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/environments/{environment_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1EnvironmentsEnvironmentIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1EnvironmentsEnvironmentIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1EnvironmentsEnvironmentId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetV1Environments Retrieve all environments
+*/
+func (a *Client) GetV1Environments(params *GetV1EnvironmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1EnvironmentsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1EnvironmentsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1Environments",
 		Method:             "GET",
 		PathPattern:        "/v1/environments",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1EnvironmentsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1EnvironmentsOK), nil
-
+	success, ok := result.(*GetV1EnvironmentsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1Environments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1EnvironmentsID Retrieve a single environment
+  GetV1EnvironmentsEnvironmentID Retrieve a single environment
 */
-func (a *Client) GetV1EnvironmentsID(params *GetV1EnvironmentsIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1EnvironmentsIDOK, error) {
+func (a *Client) GetV1EnvironmentsEnvironmentID(params *GetV1EnvironmentsEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1EnvironmentsEnvironmentIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1EnvironmentsIDParams()
+		params = NewGetV1EnvironmentsEnvironmentIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getV1EnvironmentsId",
+	op := &runtime.ClientOperation{
+		ID:                 "getV1EnvironmentsEnvironmentId",
 		Method:             "GET",
-		PathPattern:        "/v1/environments/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &GetV1EnvironmentsIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetV1EnvironmentsIDOK), nil
-
-}
-
-/*
-PatchV1EnvironmentsID Update an environment
-*/
-func (a *Client) PatchV1EnvironmentsID(params *PatchV1EnvironmentsIDParams, authInfo runtime.ClientAuthInfoWriter) (*PatchV1EnvironmentsIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1EnvironmentsIDParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "patchV1EnvironmentsId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/environments/{id}",
+		PathPattern:        "/v1/environments/{environment_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchV1EnvironmentsIDReader{formats: a.formats},
+		Reader:             &GetV1EnvironmentsEnvironmentIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PatchV1EnvironmentsIDOK), nil
-
+	success, ok := result.(*GetV1EnvironmentsEnvironmentIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1EnvironmentsEnvironmentId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PostV1Environments Creates an environment
+  PatchV1EnvironmentsEnvironmentID Update an environment
 */
-func (a *Client) PostV1Environments(params *PostV1EnvironmentsParams, authInfo runtime.ClientAuthInfoWriter) (*PostV1EnvironmentsCreated, error) {
+func (a *Client) PatchV1EnvironmentsEnvironmentID(params *PatchV1EnvironmentsEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1EnvironmentsEnvironmentIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1EnvironmentsEnvironmentIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1EnvironmentsEnvironmentId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/environments/{environment_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1EnvironmentsEnvironmentIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1EnvironmentsEnvironmentIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1EnvironmentsEnvironmentId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PostV1Environments Creates an environment
+*/
+func (a *Client) PostV1Environments(params *PostV1EnvironmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1EnvironmentsCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostV1EnvironmentsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "postV1Environments",
 		Method:             "POST",
 		PathPattern:        "/v1/environments",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PostV1EnvironmentsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostV1EnvironmentsCreated), nil
-
+	success, ok := result.(*PostV1EnvironmentsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1Environments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

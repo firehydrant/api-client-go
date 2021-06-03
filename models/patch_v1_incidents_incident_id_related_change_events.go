@@ -6,16 +6,17 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // PatchV1IncidentsIncidentIDRelatedChangeEvents Update a change event
+//
 // swagger:model patchV1IncidentsIncidentIdRelatedChangeEvents
 type PatchV1IncidentsIncidentIDRelatedChangeEvents struct {
 
@@ -70,14 +71,13 @@ const (
 
 // prop value enum
 func (m *PatchV1IncidentsIncidentIDRelatedChangeEvents) validateTypeEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, patchV1IncidentsIncidentIdRelatedChangeEventsTypeTypePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, patchV1IncidentsIncidentIdRelatedChangeEventsTypeTypePropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *PatchV1IncidentsIncidentIDRelatedChangeEvents) validateType(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Type) { // not required
 		return nil
 	}
@@ -87,6 +87,11 @@ func (m *PatchV1IncidentsIncidentIDRelatedChangeEvents) validateType(formats str
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this patch v1 incidents incident Id related change events based on context it is used
+func (m *PatchV1IncidentsIncidentIDRelatedChangeEvents) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

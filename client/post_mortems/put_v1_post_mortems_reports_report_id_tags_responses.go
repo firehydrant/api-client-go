@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PutV1PostMortemsReportsReportIDTagsReader is a Reader for the PutV1PostMortemsReportsReportIDTags structure.
@@ -24,23 +23,20 @@ type PutV1PostMortemsReportsReportIDTagsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutV1PostMortemsReportsReportIDTagsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewPutV1PostMortemsReportsReportIDTagsNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewPutV1PostMortemsReportsReportIDTagsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -49,7 +45,7 @@ func NewPutV1PostMortemsReportsReportIDTagsNoContent() *PutV1PostMortemsReportsR
 	return &PutV1PostMortemsReportsReportIDTagsNoContent{}
 }
 
-/*PutV1PostMortemsReportsReportIDTagsNoContent handles this case with default header values.
+/* PutV1PostMortemsReportsReportIDTagsNoContent describes a response with status code 204, with default header values.
 
 the tags have been applied to the post mortem report
 */
@@ -70,7 +66,7 @@ func NewPutV1PostMortemsReportsReportIDTagsBadRequest() *PutV1PostMortemsReports
 	return &PutV1PostMortemsReportsReportIDTagsBadRequest{}
 }
 
-/*PutV1PostMortemsReportsReportIDTagsBadRequest handles this case with default header values.
+/* PutV1PostMortemsReportsReportIDTagsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -80,6 +76,9 @@ type PutV1PostMortemsReportsReportIDTagsBadRequest struct {
 
 func (o *PutV1PostMortemsReportsReportIDTagsBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /v1/post_mortems/reports/{report_id}/tags][%d] putV1PostMortemsReportsReportIdTagsBadRequest  %+v", 400, o.Payload)
+}
+func (o *PutV1PostMortemsReportsReportIDTagsBadRequest) GetPayload() *models.ErrorEntity {
+	return o.Payload
 }
 
 func (o *PutV1PostMortemsReportsReportIDTagsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

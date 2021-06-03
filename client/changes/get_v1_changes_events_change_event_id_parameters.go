@@ -13,60 +13,73 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewGetV1ChangesEventsChangeEventIDParams creates a new GetV1ChangesEventsChangeEventIDParams object
-// with the default values initialized.
+// NewGetV1ChangesEventsChangeEventIDParams creates a new GetV1ChangesEventsChangeEventIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetV1ChangesEventsChangeEventIDParams() *GetV1ChangesEventsChangeEventIDParams {
-	var ()
 	return &GetV1ChangesEventsChangeEventIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetV1ChangesEventsChangeEventIDParamsWithTimeout creates a new GetV1ChangesEventsChangeEventIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetV1ChangesEventsChangeEventIDParamsWithTimeout(timeout time.Duration) *GetV1ChangesEventsChangeEventIDParams {
-	var ()
 	return &GetV1ChangesEventsChangeEventIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetV1ChangesEventsChangeEventIDParamsWithContext creates a new GetV1ChangesEventsChangeEventIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetV1ChangesEventsChangeEventIDParamsWithContext(ctx context.Context) *GetV1ChangesEventsChangeEventIDParams {
-	var ()
 	return &GetV1ChangesEventsChangeEventIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetV1ChangesEventsChangeEventIDParamsWithHTTPClient creates a new GetV1ChangesEventsChangeEventIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetV1ChangesEventsChangeEventIDParamsWithHTTPClient(client *http.Client) *GetV1ChangesEventsChangeEventIDParams {
-	var ()
 	return &GetV1ChangesEventsChangeEventIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetV1ChangesEventsChangeEventIDParams contains all the parameters to send to the API endpoint
-for the get v1 changes events change event Id operation typically these are written to a http.Request
+/* GetV1ChangesEventsChangeEventIDParams contains all the parameters to send to the API endpoint
+   for the get v1 changes events change event Id operation.
+
+   Typically these are written to a http.Request.
 */
 type GetV1ChangesEventsChangeEventIDParams struct {
 
-	/*ChangeEventID*/
+	// ChangeEventID.
 	ChangeEventID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get v1 changes events change event Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1ChangesEventsChangeEventIDParams) WithDefaults() *GetV1ChangesEventsChangeEventIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get v1 changes events change event Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1ChangesEventsChangeEventIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get v1 changes events change event Id params

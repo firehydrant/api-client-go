@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
-// RoleAssignmentEntity Set an assignment to inactive for an assignment role
+// RoleAssignmentEntity Retrieve a user with current roles for an incident
+//
 // swagger:model RoleAssignmentEntity
 type RoleAssignmentEntity struct {
 
@@ -63,7 +64,6 @@ func (m *RoleAssignmentEntity) Validate(formats strfmt.Registry) error {
 }
 
 func (m *RoleAssignmentEntity) validateIncidentRole(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.IncidentRole) { // not required
 		return nil
 	}
@@ -81,7 +81,6 @@ func (m *RoleAssignmentEntity) validateIncidentRole(formats strfmt.Registry) err
 }
 
 func (m *RoleAssignmentEntity) validateTasks(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Tasks) { // not required
 		return nil
 	}
@@ -106,13 +105,80 @@ func (m *RoleAssignmentEntity) validateTasks(formats strfmt.Registry) error {
 }
 
 func (m *RoleAssignmentEntity) validateUser(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.User) { // not required
 		return nil
 	}
 
 	if m.User != nil {
 		if err := m.User.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("user")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this role assignment entity based on the context it is used
+func (m *RoleAssignmentEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateIncidentRole(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTasks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUser(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *RoleAssignmentEntity) contextValidateIncidentRole(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.IncidentRole != nil {
+		if err := m.IncidentRole.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("incident_role")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *RoleAssignmentEntity) contextValidateTasks(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Tasks); i++ {
+
+		if m.Tasks[i] != nil {
+			if err := m.Tasks[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("tasks" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *RoleAssignmentEntity) contextValidateUser(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.User != nil {
+		if err := m.User.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("user")
 			}

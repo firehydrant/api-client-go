@@ -13,62 +13,76 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams creates a new DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams object
-// with the default values initialized.
+// NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams creates a new DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams() *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams {
-	var ()
 	return &DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParamsWithTimeout creates a new DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParamsWithTimeout(timeout time.Duration) *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams {
-	var ()
 	return &DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParamsWithContext creates a new DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParamsWithContext(ctx context.Context) *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams {
-	var ()
 	return &DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParamsWithHTTPClient creates a new DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParamsWithHTTPClient(client *http.Client) *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams {
-	var ()
 	return &DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams contains all the parameters to send to the API endpoint
-for the delete v1 post mortems reports report Id participants participant Id operation typically these are written to a http.Request
+/* DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams contains all the parameters to send to the API endpoint
+   for the delete v1 post mortems reports report Id participants participant Id operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams struct {
 
-	/*ParticipantID*/
+	// ParticipantID.
 	ParticipantID string
-	/*ReportID*/
+
+	// ReportID.
 	ReportID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete v1 post mortems reports report Id participants participant Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams) WithDefaults() *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete v1 post mortems reports report Id participants participant Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete v1 post mortems reports report Id participants participant Id params

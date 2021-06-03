@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // DeleteV1IncidentsIncidentIDImpactTypeIDReader is a Reader for the DeleteV1IncidentsIncidentIDImpactTypeID structure.
@@ -24,23 +23,20 @@ type DeleteV1IncidentsIncidentIDImpactTypeIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteV1IncidentsIncidentIDImpactTypeIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDeleteV1IncidentsIncidentIDImpactTypeIDNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewDeleteV1IncidentsIncidentIDImpactTypeIDBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -49,7 +45,7 @@ func NewDeleteV1IncidentsIncidentIDImpactTypeIDNoContent() *DeleteV1IncidentsInc
 	return &DeleteV1IncidentsIncidentIDImpactTypeIDNoContent{}
 }
 
-/*DeleteV1IncidentsIncidentIDImpactTypeIDNoContent handles this case with default header values.
+/* DeleteV1IncidentsIncidentIDImpactTypeIDNoContent describes a response with status code 204, with default header values.
 
 Remove a piece of infrastructure from an incident as impact
 */
@@ -70,7 +66,7 @@ func NewDeleteV1IncidentsIncidentIDImpactTypeIDBadRequest() *DeleteV1IncidentsIn
 	return &DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest{}
 }
 
-/*DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest handles this case with default header values.
+/* DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -80,6 +76,9 @@ type DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest struct {
 
 func (o *DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/impact/{type}/{id}][%d] deleteV1IncidentsIncidentIdImpactTypeIdBadRequest  %+v", 400, o.Payload)
+}
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest) GetPayload() *models.ErrorEntity {
+	return o.Payload
 }
 
 func (o *DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // ReasonEntity Updates a reason for a report
+//
 // swagger:model ReasonEntity
 type ReasonEntity struct {
 
@@ -44,13 +46,40 @@ func (m *ReasonEntity) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ReasonEntity) validateCreatedBy(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedBy) { // not required
 		return nil
 	}
 
 	if m.CreatedBy != nil {
 		if err := m.CreatedBy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("created_by")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this reason entity based on the context it is used
+func (m *ReasonEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCreatedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ReasonEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CreatedBy != nil {
+		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
 			}

@@ -6,13 +6,14 @@ package teams
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-openapi/runtime"
+	"fmt"
 
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new teams API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,120 +25,217 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
+// ClientService is the interface for Client methods
+type ClientService interface {
+	DeleteV1TeamsTeamID(params *DeleteV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDNoContent, error)
+
+	GetV1Teams(params *GetV1TeamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsOK, error)
+
+	GetV1TeamsTeamID(params *GetV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDOK, error)
+
+	PatchV1TeamsTeamID(params *PatchV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TeamsTeamIDOK, error)
+
+	PostV1Teams(params *PostV1TeamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TeamsCreated, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-GetV1Teams Retrieve all teams
+  DeleteV1TeamsTeamID Archive a team
 */
-func (a *Client) GetV1Teams(params *GetV1TeamsParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1TeamsOK, error) {
+func (a *Client) DeleteV1TeamsTeamID(params *DeleteV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1TeamsTeamIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1TeamsTeamId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/teams/{team_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1TeamsTeamIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1TeamsTeamIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1TeamsTeamId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetV1Teams Retrieve all teams
+*/
+func (a *Client) GetV1Teams(params *GetV1TeamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1TeamsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1Teams",
 		Method:             "GET",
 		PathPattern:        "/v1/teams",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1TeamsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1TeamsOK), nil
-
+	success, ok := result.(*GetV1TeamsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1Teams: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1TeamsTeamID Retrieve a team
+  GetV1TeamsTeamID Retrieve a team
 */
-func (a *Client) GetV1TeamsTeamID(params *GetV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1TeamsTeamIDOK, error) {
+func (a *Client) GetV1TeamsTeamID(params *GetV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1TeamsTeamIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1TeamsTeamId",
 		Method:             "GET",
 		PathPattern:        "/v1/teams/{team_id}",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1TeamsTeamIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1TeamsTeamIDOK), nil
-
+	success, ok := result.(*GetV1TeamsTeamIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TeamsTeamId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PatchV1TeamsTeamID Update a team
+  PatchV1TeamsTeamID Update a team
 */
-func (a *Client) PatchV1TeamsTeamID(params *PatchV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter) (*PatchV1TeamsTeamIDOK, error) {
+func (a *Client) PatchV1TeamsTeamID(params *PatchV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TeamsTeamIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchV1TeamsTeamIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "patchV1TeamsTeamId",
 		Method:             "PATCH",
 		PathPattern:        "/v1/teams/{team_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PatchV1TeamsTeamIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PatchV1TeamsTeamIDOK), nil
-
+	success, ok := result.(*PatchV1TeamsTeamIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1TeamsTeamId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PostV1Teams Create a team
+  PostV1Teams Create a team
 */
-func (a *Client) PostV1Teams(params *PostV1TeamsParams, authInfo runtime.ClientAuthInfoWriter) (*PostV1TeamsCreated, error) {
+func (a *Client) PostV1Teams(params *PostV1TeamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TeamsCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostV1TeamsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "postV1Teams",
 		Method:             "POST",
 		PathPattern:        "/v1/teams",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PostV1TeamsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostV1TeamsCreated), nil
-
+	success, ok := result.(*PostV1TeamsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1Teams: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

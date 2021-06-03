@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PatchV1ChangesEventsChangeEventIDReader is a Reader for the PatchV1ChangesEventsChangeEventID structure.
@@ -24,16 +23,14 @@ type PatchV1ChangesEventsChangeEventIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PatchV1ChangesEventsChangeEventIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPatchV1ChangesEventsChangeEventIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -42,7 +39,7 @@ func NewPatchV1ChangesEventsChangeEventIDOK() *PatchV1ChangesEventsChangeEventID
 	return &PatchV1ChangesEventsChangeEventIDOK{}
 }
 
-/*PatchV1ChangesEventsChangeEventIDOK handles this case with default header values.
+/* PatchV1ChangesEventsChangeEventIDOK describes a response with status code 200, with default header values.
 
 Update a change event
 */
@@ -52,6 +49,9 @@ type PatchV1ChangesEventsChangeEventIDOK struct {
 
 func (o *PatchV1ChangesEventsChangeEventIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/changes/events/{change_event_id}][%d] patchV1ChangesEventsChangeEventIdOK  %+v", 200, o.Payload)
+}
+func (o *PatchV1ChangesEventsChangeEventIDOK) GetPayload() *models.ChangeEventEntity {
+	return o.Payload
 }
 
 func (o *PatchV1ChangesEventsChangeEventIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

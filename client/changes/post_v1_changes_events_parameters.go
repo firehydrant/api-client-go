@@ -13,62 +13,75 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
-// NewPostV1ChangesEventsParams creates a new PostV1ChangesEventsParams object
-// with the default values initialized.
+// NewPostV1ChangesEventsParams creates a new PostV1ChangesEventsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostV1ChangesEventsParams() *PostV1ChangesEventsParams {
-	var ()
 	return &PostV1ChangesEventsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostV1ChangesEventsParamsWithTimeout creates a new PostV1ChangesEventsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostV1ChangesEventsParamsWithTimeout(timeout time.Duration) *PostV1ChangesEventsParams {
-	var ()
 	return &PostV1ChangesEventsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostV1ChangesEventsParamsWithContext creates a new PostV1ChangesEventsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostV1ChangesEventsParamsWithContext(ctx context.Context) *PostV1ChangesEventsParams {
-	var ()
 	return &PostV1ChangesEventsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostV1ChangesEventsParamsWithHTTPClient creates a new PostV1ChangesEventsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostV1ChangesEventsParamsWithHTTPClient(client *http.Client) *PostV1ChangesEventsParams {
-	var ()
 	return &PostV1ChangesEventsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostV1ChangesEventsParams contains all the parameters to send to the API endpoint
-for the post v1 changes events operation typically these are written to a http.Request
+/* PostV1ChangesEventsParams contains all the parameters to send to the API endpoint
+   for the post v1 changes events operation.
+
+   Typically these are written to a http.Request.
 */
 type PostV1ChangesEventsParams struct {
 
-	/*V1ChangesEvents*/
+	// V1ChangesEvents.
 	V1ChangesEvents *models.PostV1ChangesEvents
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post v1 changes events params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1ChangesEventsParams) WithDefaults() *PostV1ChangesEventsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post v1 changes events params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1ChangesEventsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post v1 changes events params
@@ -122,7 +135,6 @@ func (o *PostV1ChangesEventsParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-
 	if o.V1ChangesEvents != nil {
 		if err := r.SetBodyParam(o.V1ChangesEvents); err != nil {
 			return err

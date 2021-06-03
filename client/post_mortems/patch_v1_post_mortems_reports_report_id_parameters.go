@@ -13,64 +13,78 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/firehydrant/api-client-go/models"
 )
 
-// NewPatchV1PostMortemsReportsReportIDParams creates a new PatchV1PostMortemsReportsReportIDParams object
-// with the default values initialized.
+// NewPatchV1PostMortemsReportsReportIDParams creates a new PatchV1PostMortemsReportsReportIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPatchV1PostMortemsReportsReportIDParams() *PatchV1PostMortemsReportsReportIDParams {
-	var ()
 	return &PatchV1PostMortemsReportsReportIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPatchV1PostMortemsReportsReportIDParamsWithTimeout creates a new PatchV1PostMortemsReportsReportIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPatchV1PostMortemsReportsReportIDParamsWithTimeout(timeout time.Duration) *PatchV1PostMortemsReportsReportIDParams {
-	var ()
 	return &PatchV1PostMortemsReportsReportIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPatchV1PostMortemsReportsReportIDParamsWithContext creates a new PatchV1PostMortemsReportsReportIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPatchV1PostMortemsReportsReportIDParamsWithContext(ctx context.Context) *PatchV1PostMortemsReportsReportIDParams {
-	var ()
 	return &PatchV1PostMortemsReportsReportIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPatchV1PostMortemsReportsReportIDParamsWithHTTPClient creates a new PatchV1PostMortemsReportsReportIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPatchV1PostMortemsReportsReportIDParamsWithHTTPClient(client *http.Client) *PatchV1PostMortemsReportsReportIDParams {
-	var ()
 	return &PatchV1PostMortemsReportsReportIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*PatchV1PostMortemsReportsReportIDParams contains all the parameters to send to the API endpoint
-for the patch v1 post mortems reports report Id operation typically these are written to a http.Request
+/* PatchV1PostMortemsReportsReportIDParams contains all the parameters to send to the API endpoint
+   for the patch v1 post mortems reports report Id operation.
+
+   Typically these are written to a http.Request.
 */
 type PatchV1PostMortemsReportsReportIDParams struct {
 
-	/*Name*/
-	Name *string
-	/*ReportID*/
+	// V1PostMortemsReports.
+	V1PostMortemsReports *models.PatchV1PostMortemsReports
+
+	// ReportID.
 	ReportID string
-	/*Summary*/
-	Summary *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the patch v1 post mortems reports report Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchV1PostMortemsReportsReportIDParams) WithDefaults() *PatchV1PostMortemsReportsReportIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the patch v1 post mortems reports report Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchV1PostMortemsReportsReportIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the patch v1 post mortems reports report Id params
@@ -106,15 +120,15 @@ func (o *PatchV1PostMortemsReportsReportIDParams) SetHTTPClient(client *http.Cli
 	o.HTTPClient = client
 }
 
-// WithName adds the name to the patch v1 post mortems reports report Id params
-func (o *PatchV1PostMortemsReportsReportIDParams) WithName(name *string) *PatchV1PostMortemsReportsReportIDParams {
-	o.SetName(name)
+// WithV1PostMortemsReports adds the v1PostMortemsReports to the patch v1 post mortems reports report Id params
+func (o *PatchV1PostMortemsReportsReportIDParams) WithV1PostMortemsReports(v1PostMortemsReports *models.PatchV1PostMortemsReports) *PatchV1PostMortemsReportsReportIDParams {
+	o.SetV1PostMortemsReports(v1PostMortemsReports)
 	return o
 }
 
-// SetName adds the name to the patch v1 post mortems reports report Id params
-func (o *PatchV1PostMortemsReportsReportIDParams) SetName(name *string) {
-	o.Name = name
+// SetV1PostMortemsReports adds the v1PostMortemsReports to the patch v1 post mortems reports report Id params
+func (o *PatchV1PostMortemsReportsReportIDParams) SetV1PostMortemsReports(v1PostMortemsReports *models.PatchV1PostMortemsReports) {
+	o.V1PostMortemsReports = v1PostMortemsReports
 }
 
 // WithReportID adds the reportID to the patch v1 post mortems reports report Id params
@@ -128,17 +142,6 @@ func (o *PatchV1PostMortemsReportsReportIDParams) SetReportID(reportID string) {
 	o.ReportID = reportID
 }
 
-// WithSummary adds the summary to the patch v1 post mortems reports report Id params
-func (o *PatchV1PostMortemsReportsReportIDParams) WithSummary(summary *string) *PatchV1PostMortemsReportsReportIDParams {
-	o.SetSummary(summary)
-	return o
-}
-
-// SetSummary adds the summary to the patch v1 post mortems reports report Id params
-func (o *PatchV1PostMortemsReportsReportIDParams) SetSummary(summary *string) {
-	o.Summary = summary
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1PostMortemsReportsReportIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -146,42 +149,15 @@ func (o *PatchV1PostMortemsReportsReportIDParams) WriteToRequest(r runtime.Clien
 		return err
 	}
 	var res []error
-
-	if o.Name != nil {
-
-		// form param name
-		var frName string
-		if o.Name != nil {
-			frName = *o.Name
+	if o.V1PostMortemsReports != nil {
+		if err := r.SetBodyParam(o.V1PostMortemsReports); err != nil {
+			return err
 		}
-		fName := frName
-		if fName != "" {
-			if err := r.SetFormParam("name", fName); err != nil {
-				return err
-			}
-		}
-
 	}
 
 	// path param report_id
 	if err := r.SetPathParam("report_id", o.ReportID); err != nil {
 		return err
-	}
-
-	if o.Summary != nil {
-
-		// form param summary
-		var frSummary string
-		if o.Summary != nil {
-			frSummary = *o.Summary
-		}
-		fSummary := frSummary
-		if fSummary != "" {
-			if err := r.SetFormParam("summary", fSummary); err != nil {
-				return err
-			}
-		}
-
 	}
 
 	if len(res) > 0 {

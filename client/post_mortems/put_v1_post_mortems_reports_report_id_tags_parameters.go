@@ -13,63 +13,77 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewPutV1PostMortemsReportsReportIDTagsParams creates a new PutV1PostMortemsReportsReportIDTagsParams object
-// with the default values initialized.
+// NewPutV1PostMortemsReportsReportIDTagsParams creates a new PutV1PostMortemsReportsReportIDTagsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPutV1PostMortemsReportsReportIDTagsParams() *PutV1PostMortemsReportsReportIDTagsParams {
-	var ()
 	return &PutV1PostMortemsReportsReportIDTagsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPutV1PostMortemsReportsReportIDTagsParamsWithTimeout creates a new PutV1PostMortemsReportsReportIDTagsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPutV1PostMortemsReportsReportIDTagsParamsWithTimeout(timeout time.Duration) *PutV1PostMortemsReportsReportIDTagsParams {
-	var ()
 	return &PutV1PostMortemsReportsReportIDTagsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPutV1PostMortemsReportsReportIDTagsParamsWithContext creates a new PutV1PostMortemsReportsReportIDTagsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPutV1PostMortemsReportsReportIDTagsParamsWithContext(ctx context.Context) *PutV1PostMortemsReportsReportIDTagsParams {
-	var ()
 	return &PutV1PostMortemsReportsReportIDTagsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPutV1PostMortemsReportsReportIDTagsParamsWithHTTPClient creates a new PutV1PostMortemsReportsReportIDTagsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPutV1PostMortemsReportsReportIDTagsParamsWithHTTPClient(client *http.Client) *PutV1PostMortemsReportsReportIDTagsParams {
-	var ()
 	return &PutV1PostMortemsReportsReportIDTagsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PutV1PostMortemsReportsReportIDTagsParams contains all the parameters to send to the API endpoint
-for the put v1 post mortems reports report Id tags operation typically these are written to a http.Request
+/* PutV1PostMortemsReportsReportIDTagsParams contains all the parameters to send to the API endpoint
+   for the put v1 post mortems reports report Id tags operation.
+
+   Typically these are written to a http.Request.
 */
 type PutV1PostMortemsReportsReportIDTagsParams struct {
 
-	/*ReportID*/
+	// ReportID.
 	ReportID string
-	/*Tags*/
+
+	// Tags.
 	Tags []string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the put v1 post mortems reports report Id tags params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutV1PostMortemsReportsReportIDTagsParams) WithDefaults() *PutV1PostMortemsReportsReportIDTagsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the put v1 post mortems reports report Id tags params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PutV1PostMortemsReportsReportIDTagsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the put v1 post mortems reports report Id tags params
@@ -140,16 +154,36 @@ func (o *PutV1PostMortemsReportsReportIDTagsParams) WriteToRequest(r runtime.Cli
 		return err
 	}
 
-	valuesTags := o.Tags
+	if o.Tags != nil {
 
-	joinedTags := swag.JoinByFormat(valuesTags, "")
-	// form array param tags
-	if err := r.SetFormParam("tags", joinedTags...); err != nil {
-		return err
+		// binding items for tags
+		joinedTags := o.bindParamTags(reg)
+
+		// form array param tags
+		if err := r.SetFormParam("tags", joinedTags...); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamPutV1PostMortemsReportsReportIDTags binds the parameter tags
+func (o *PutV1PostMortemsReportsReportIDTagsParams) bindParamTags(formats strfmt.Registry) []string {
+	tagsIR := o.Tags
+
+	var tagsIC []string
+	for _, tagsIIR := range tagsIR { // explode []string
+
+		tagsIIV := tagsIIR // string as string
+		tagsIC = append(tagsIC, tagsIIV)
+	}
+
+	// items.CollectionFormat: ""
+	tagsIS := swag.JoinByFormat(tagsIC, "")
+
+	return tagsIS
 }

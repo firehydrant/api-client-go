@@ -6,16 +6,17 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // TaskEntity Update a task
+//
 // swagger:model TaskEntity
 type TaskEntity struct {
 
@@ -77,7 +78,6 @@ func (m *TaskEntity) Validate(formats strfmt.Registry) error {
 }
 
 func (m *TaskEntity) validateAssignee(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Assignee) { // not required
 		return nil
 	}
@@ -95,7 +95,6 @@ func (m *TaskEntity) validateAssignee(formats strfmt.Registry) error {
 }
 
 func (m *TaskEntity) validateIncidentRole(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.IncidentRole) { // not required
 		return nil
 	}
@@ -141,14 +140,13 @@ const (
 
 // prop value enum
 func (m *TaskEntity) validateStateEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, taskEntityTypeStatePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, taskEntityTypeStatePropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (m *TaskEntity) validateState(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.State) { // not required
 		return nil
 	}
@@ -156,6 +154,52 @@ func (m *TaskEntity) validateState(formats strfmt.Registry) error {
 	// value enum
 	if err := m.validateStateEnum("state", "body", m.State); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this task entity based on the context it is used
+func (m *TaskEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAssignee(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIncidentRole(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *TaskEntity) contextValidateAssignee(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Assignee != nil {
+		if err := m.Assignee.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("assignee")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *TaskEntity) contextValidateIncidentRole(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.IncidentRole != nil {
+		if err := m.IncidentRole.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("incident_role")
+			}
+			return err
+		}
 	}
 
 	return nil

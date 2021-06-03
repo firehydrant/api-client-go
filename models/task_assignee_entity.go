@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // TaskAssigneeEntity task assignee entity
+//
 // swagger:model TaskAssigneeEntity
 type TaskAssigneeEntity struct {
 
@@ -30,6 +32,11 @@ type TaskAssigneeEntity struct {
 
 // Validate validates this task assignee entity
 func (m *TaskAssigneeEntity) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this task assignee entity based on context it is used
+func (m *TaskAssigneeEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

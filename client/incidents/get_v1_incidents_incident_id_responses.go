@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1IncidentsIncidentIDReader is a Reader for the GetV1IncidentsIncidentID structure.
@@ -24,16 +23,14 @@ type GetV1IncidentsIncidentIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetV1IncidentsIncidentIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetV1IncidentsIncidentIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -42,7 +39,7 @@ func NewGetV1IncidentsIncidentIDOK() *GetV1IncidentsIncidentIDOK {
 	return &GetV1IncidentsIncidentIDOK{}
 }
 
-/*GetV1IncidentsIncidentIDOK handles this case with default header values.
+/* GetV1IncidentsIncidentIDOK describes a response with status code 200, with default header values.
 
 Retrieve an incident
 */
@@ -52,6 +49,9 @@ type GetV1IncidentsIncidentIDOK struct {
 
 func (o *GetV1IncidentsIncidentIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}][%d] getV1IncidentsIncidentIdOK  %+v", 200, o.Payload)
+}
+func (o *GetV1IncidentsIncidentIDOK) GetPayload() *models.IncidentEntity {
+	return o.Payload
 }
 
 func (o *GetV1IncidentsIncidentIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

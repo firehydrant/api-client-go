@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PostV1PostMortemsReportsReportIDActionItemsReader is a Reader for the PostV1PostMortemsReportsReportIDActionItems structure.
@@ -24,16 +23,14 @@ type PostV1PostMortemsReportsReportIDActionItemsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostV1PostMortemsReportsReportIDActionItemsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewPostV1PostMortemsReportsReportIDActionItemsCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -42,7 +39,7 @@ func NewPostV1PostMortemsReportsReportIDActionItemsCreated() *PostV1PostMortemsR
 	return &PostV1PostMortemsReportsReportIDActionItemsCreated{}
 }
 
-/*PostV1PostMortemsReportsReportIDActionItemsCreated handles this case with default header values.
+/* PostV1PostMortemsReportsReportIDActionItemsCreated describes a response with status code 201, with default header values.
 
 Create an action item on a report
 */
@@ -52,6 +49,9 @@ type PostV1PostMortemsReportsReportIDActionItemsCreated struct {
 
 func (o *PostV1PostMortemsReportsReportIDActionItemsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/action_items][%d] postV1PostMortemsReportsReportIdActionItemsCreated  %+v", 201, o.Payload)
+}
+func (o *PostV1PostMortemsReportsReportIDActionItemsCreated) GetPayload() *models.ActionItemEntity {
+	return o.Payload
 }
 
 func (o *PostV1PostMortemsReportsReportIDActionItemsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

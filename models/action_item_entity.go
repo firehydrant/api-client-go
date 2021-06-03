@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // ActionItemEntity Update an action item
+//
 // swagger:model ActionItemEntity
 type ActionItemEntity struct {
 
@@ -27,6 +29,9 @@ type ActionItemEntity struct {
 
 	// id
 	ID string `json:"id,omitempty"`
+
+	// state
+	State string `json:"state,omitempty"`
 
 	// summary
 	Summary string `json:"summary,omitempty"`
@@ -50,13 +55,40 @@ func (m *ActionItemEntity) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ActionItemEntity) validateAuthor(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Author) { // not required
 		return nil
 	}
 
 	if m.Author != nil {
 		if err := m.Author.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("author")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this action item entity based on the context it is used
+func (m *ActionItemEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAuthor(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ActionItemEntity) contextValidateAuthor(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Author != nil {
+		if err := m.Author.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("author")
 			}

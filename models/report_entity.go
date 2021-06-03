@@ -6,62 +6,37 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
-// ReportEntity Create a post mortem
+// ReportEntity Marks an incident retrospective as published and emails all of the participants in the report the summary
+//
 // swagger:model ReportEntity
 type ReportEntity struct {
 
-	// affected components
-	AffectedComponents []*AffectedComponentEntity `json:"affected_components"`
+	// bucket period
+	BucketPeriod string `json:"bucket_period,omitempty"`
 
-	// affected environments
-	AffectedEnvironments []*AffectedEnvironmentEntity `json:"affected_environments"`
+	// data
+	Data []*BucketEntity `json:"data"`
 
-	// created at
-	CreatedAt string `json:"created_at,omitempty"`
+	// end date
+	EndDate string `json:"end_date,omitempty"`
 
-	// id
-	ID string `json:"id,omitempty"`
-
-	// incident
-	Incident *IncidentEntity `json:"incident,omitempty"`
-
-	// incident id
-	IncidentID string `json:"incident_id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// summary
-	Summary string `json:"summary,omitempty"`
-
-	// tag list
-	TagList string `json:"tag_list,omitempty"`
-
-	// updated at
-	UpdatedAt string `json:"updated_at,omitempty"`
+	// start date
+	StartDate string `json:"start_date,omitempty"`
 }
 
 // Validate validates this report entity
 func (m *ReportEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateAffectedComponents(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateAffectedEnvironments(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIncident(formats); err != nil {
+	if err := m.validateData(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -71,21 +46,20 @@ func (m *ReportEntity) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ReportEntity) validateAffectedComponents(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.AffectedComponents) { // not required
+func (m *ReportEntity) validateData(formats strfmt.Registry) error {
+	if swag.IsZero(m.Data) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.AffectedComponents); i++ {
-		if swag.IsZero(m.AffectedComponents[i]) { // not required
+	for i := 0; i < len(m.Data); i++ {
+		if swag.IsZero(m.Data[i]) { // not required
 			continue
 		}
 
-		if m.AffectedComponents[i] != nil {
-			if err := m.AffectedComponents[i].Validate(formats); err != nil {
+		if m.Data[i] != nil {
+			if err := m.Data[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("affected_components" + "." + strconv.Itoa(i))
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -96,44 +70,33 @@ func (m *ReportEntity) validateAffectedComponents(formats strfmt.Registry) error
 	return nil
 }
 
-func (m *ReportEntity) validateAffectedEnvironments(formats strfmt.Registry) error {
+// ContextValidate validate this report entity based on the context it is used
+func (m *ReportEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
 
-	if swag.IsZero(m.AffectedEnvironments) { // not required
-		return nil
+	if err := m.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
 	}
 
-	for i := 0; i < len(m.AffectedEnvironments); i++ {
-		if swag.IsZero(m.AffectedEnvironments[i]) { // not required
-			continue
-		}
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
 
-		if m.AffectedEnvironments[i] != nil {
-			if err := m.AffectedEnvironments[i].Validate(formats); err != nil {
+func (m *ReportEntity) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Data); i++ {
+
+		if m.Data[i] != nil {
+			if err := m.Data[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("affected_environments" + "." + strconv.Itoa(i))
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ReportEntity) validateIncident(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.Incident) { // not required
-		return nil
-	}
-
-	if m.Incident != nil {
-		if err := m.Incident.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("incident")
-			}
-			return err
-		}
 	}
 
 	return nil

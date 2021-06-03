@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1PostMortemsReportsReader is a Reader for the GetV1PostMortemsReports structure.
@@ -24,16 +23,14 @@ type GetV1PostMortemsReportsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetV1PostMortemsReportsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetV1PostMortemsReportsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -42,7 +39,7 @@ func NewGetV1PostMortemsReportsOK() *GetV1PostMortemsReportsOK {
 	return &GetV1PostMortemsReportsOK{}
 }
 
-/*GetV1PostMortemsReportsOK handles this case with default header values.
+/* GetV1PostMortemsReportsOK describes a response with status code 200, with default header values.
 
 Retrieve post mortem reports
 */
@@ -52,6 +49,9 @@ type GetV1PostMortemsReportsOK struct {
 
 func (o *GetV1PostMortemsReportsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/post_mortems/reports][%d] getV1PostMortemsReportsOK  %+v", 200, o.Payload)
+}
+func (o *GetV1PostMortemsReportsOK) GetPayload() *models.ReportEntityPaginated {
+	return o.Payload
 }
 
 func (o *GetV1PostMortemsReportsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

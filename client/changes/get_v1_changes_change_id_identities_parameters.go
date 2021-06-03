@@ -13,65 +13,86 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewGetV1ChangesChangeIDIdentitiesParams creates a new GetV1ChangesChangeIDIdentitiesParams object
-// with the default values initialized.
+// NewGetV1ChangesChangeIDIdentitiesParams creates a new GetV1ChangesChangeIDIdentitiesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetV1ChangesChangeIDIdentitiesParams() *GetV1ChangesChangeIDIdentitiesParams {
-	var ()
 	return &GetV1ChangesChangeIDIdentitiesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetV1ChangesChangeIDIdentitiesParamsWithTimeout creates a new GetV1ChangesChangeIDIdentitiesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetV1ChangesChangeIDIdentitiesParamsWithTimeout(timeout time.Duration) *GetV1ChangesChangeIDIdentitiesParams {
-	var ()
 	return &GetV1ChangesChangeIDIdentitiesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetV1ChangesChangeIDIdentitiesParamsWithContext creates a new GetV1ChangesChangeIDIdentitiesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetV1ChangesChangeIDIdentitiesParamsWithContext(ctx context.Context) *GetV1ChangesChangeIDIdentitiesParams {
-	var ()
 	return &GetV1ChangesChangeIDIdentitiesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetV1ChangesChangeIDIdentitiesParamsWithHTTPClient creates a new GetV1ChangesChangeIDIdentitiesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetV1ChangesChangeIDIdentitiesParamsWithHTTPClient(client *http.Client) *GetV1ChangesChangeIDIdentitiesParams {
-	var ()
 	return &GetV1ChangesChangeIDIdentitiesParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetV1ChangesChangeIDIdentitiesParams contains all the parameters to send to the API endpoint
-for the get v1 changes change Id identities operation typically these are written to a http.Request
+/* GetV1ChangesChangeIDIdentitiesParams contains all the parameters to send to the API endpoint
+   for the get v1 changes change Id identities operation.
+
+   Typically these are written to a http.Request.
 */
 type GetV1ChangesChangeIDIdentitiesParams struct {
 
-	/*ChangeID*/
+	// ChangeID.
+	//
+	// Format: int32
 	ChangeID int32
-	/*Page*/
+
+	// Page.
+	//
+	// Format: int32
 	Page *int32
-	/*PerPage*/
+
+	// PerPage.
+	//
+	// Format: int32
 	PerPage *int32
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get v1 changes change Id identities params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1ChangesChangeIDIdentitiesParams) WithDefaults() *GetV1ChangesChangeIDIdentitiesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get v1 changes change Id identities params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1ChangesChangeIDIdentitiesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get v1 changes change Id identities params
@@ -157,32 +178,34 @@ func (o *GetV1ChangesChangeIDIdentitiesParams) WriteToRequest(r runtime.ClientRe
 
 		// query param page
 		var qrPage int32
+
 		if o.Page != nil {
 			qrPage = *o.Page
 		}
 		qPage := swag.FormatInt32(qrPage)
 		if qPage != "" {
+
 			if err := r.SetQueryParam("page", qPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.PerPage != nil {
 
 		// query param per_page
 		var qrPerPage int32
+
 		if o.PerPage != nil {
 			qrPerPage = *o.PerPage
 		}
 		qPerPage := swag.FormatInt32(qrPerPage)
 		if qPerPage != "" {
+
 			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

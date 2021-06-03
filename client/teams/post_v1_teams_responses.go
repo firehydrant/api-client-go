@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PostV1TeamsReader is a Reader for the PostV1Teams structure.
@@ -24,16 +23,14 @@ type PostV1TeamsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostV1TeamsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewPostV1TeamsCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -42,7 +39,7 @@ func NewPostV1TeamsCreated() *PostV1TeamsCreated {
 	return &PostV1TeamsCreated{}
 }
 
-/*PostV1TeamsCreated handles this case with default header values.
+/* PostV1TeamsCreated describes a response with status code 201, with default header values.
 
 Create a team
 */
@@ -52,6 +49,9 @@ type PostV1TeamsCreated struct {
 
 func (o *PostV1TeamsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/teams][%d] postV1TeamsCreated  %+v", 201, o.Payload)
+}
+func (o *PostV1TeamsCreated) GetPayload() *models.TeamEntity {
+	return o.Payload
 }
 
 func (o *PostV1TeamsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -13,61 +13,76 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewDeleteV1IncidentRolesIncidentRoleIDParams creates a new DeleteV1IncidentRolesIncidentRoleIDParams object
-// with the default values initialized.
+// NewDeleteV1IncidentRolesIncidentRoleIDParams creates a new DeleteV1IncidentRolesIncidentRoleIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteV1IncidentRolesIncidentRoleIDParams() *DeleteV1IncidentRolesIncidentRoleIDParams {
-	var ()
 	return &DeleteV1IncidentRolesIncidentRoleIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteV1IncidentRolesIncidentRoleIDParamsWithTimeout creates a new DeleteV1IncidentRolesIncidentRoleIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteV1IncidentRolesIncidentRoleIDParamsWithTimeout(timeout time.Duration) *DeleteV1IncidentRolesIncidentRoleIDParams {
-	var ()
 	return &DeleteV1IncidentRolesIncidentRoleIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteV1IncidentRolesIncidentRoleIDParamsWithContext creates a new DeleteV1IncidentRolesIncidentRoleIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteV1IncidentRolesIncidentRoleIDParamsWithContext(ctx context.Context) *DeleteV1IncidentRolesIncidentRoleIDParams {
-	var ()
 	return &DeleteV1IncidentRolesIncidentRoleIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteV1IncidentRolesIncidentRoleIDParamsWithHTTPClient creates a new DeleteV1IncidentRolesIncidentRoleIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteV1IncidentRolesIncidentRoleIDParamsWithHTTPClient(client *http.Client) *DeleteV1IncidentRolesIncidentRoleIDParams {
-	var ()
 	return &DeleteV1IncidentRolesIncidentRoleIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteV1IncidentRolesIncidentRoleIDParams contains all the parameters to send to the API endpoint
-for the delete v1 incident roles incident role Id operation typically these are written to a http.Request
+/* DeleteV1IncidentRolesIncidentRoleIDParams contains all the parameters to send to the API endpoint
+   for the delete v1 incident roles incident role Id operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteV1IncidentRolesIncidentRoleIDParams struct {
 
-	/*IncidentRoleID*/
+	// IncidentRoleID.
+	//
+	// Format: int32
 	IncidentRoleID int32
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete v1 incident roles incident role Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1IncidentRolesIncidentRoleIDParams) WithDefaults() *DeleteV1IncidentRolesIncidentRoleIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete v1 incident roles incident role Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1IncidentRolesIncidentRoleIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete v1 incident roles incident role Id params
