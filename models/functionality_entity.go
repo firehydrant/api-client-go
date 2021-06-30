@@ -27,6 +27,9 @@ type FunctionalityEntity struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// Information about known linkages to representations of services outside of FireHydrant.
+	ExternalResources *ExternalResourceEntity `json:"external_resources,omitempty"`
+
 	// id
 	ID string `json:"id,omitempty"`
 
@@ -52,6 +55,10 @@ func (m *FunctionalityEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateExternalResources(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateServices(formats); err != nil {
 		res = append(res, err)
 	}
@@ -73,6 +80,23 @@ func (m *FunctionalityEntity) validateCreatedAt(formats strfmt.Registry) error {
 
 	if err := validate.FormatOf("created_at", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *FunctionalityEntity) validateExternalResources(formats strfmt.Registry) error {
+	if swag.IsZero(m.ExternalResources) { // not required
+		return nil
+	}
+
+	if m.ExternalResources != nil {
+		if err := m.ExternalResources.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("external_resources")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -118,6 +142,10 @@ func (m *FunctionalityEntity) validateUpdatedAt(formats strfmt.Registry) error {
 func (m *FunctionalityEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateExternalResources(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateServices(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -125,6 +153,20 @@ func (m *FunctionalityEntity) ContextValidate(ctx context.Context, formats strfm
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *FunctionalityEntity) contextValidateExternalResources(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ExternalResources != nil {
+		if err := m.ExternalResources.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("external_resources")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

@@ -29,6 +29,9 @@ type UserEntity struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// slack linked
+	SlackLinked string `json:"slack_linked?,omitempty"`
+
 	// updated at
 	UpdatedAt string `json:"updated_at,omitempty"`
 }

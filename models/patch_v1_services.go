@@ -23,6 +23,9 @@ import (
 // swagger:model patchV1Services
 type PatchV1Services struct {
 
+	// alert on add
+	AlertOnAdd bool `json:"alert_on_add,omitempty"`
+
 	// description
 	Description string `json:"description,omitempty"`
 

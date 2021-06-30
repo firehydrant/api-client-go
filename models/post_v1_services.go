@@ -21,6 +21,9 @@ import (
 // swagger:model postV1Services
 type PostV1Services struct {
 
+	// alert on add
+	AlertOnAdd bool `json:"alert_on_add,omitempty"`
+
 	// description
 	Description string `json:"description,omitempty"`
 

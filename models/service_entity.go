@@ -23,6 +23,9 @@ type ServiceEntity struct {
 	// List of active incident guids
 	ActiveIncidents []string `json:"active_incidents"`
 
+	// alert on add
+	AlertOnAdd string `json:"alert_on_add,omitempty"`
+
 	// created at
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
@@ -42,8 +45,14 @@ type ServiceEntity struct {
 	// A key/value of labels
 	Labels interface{} `json:"labels,omitempty"`
 
+	// last import
+	LastImport string `json:"last_import,omitempty"`
+
 	// List of links attached to this service.
 	Links []*LinksEntity `json:"links"`
+
+	// If set, this field indicates that the service is managed by an integration and thus cannot be set manually
+	ManagedBy string `json:"managed_by,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
