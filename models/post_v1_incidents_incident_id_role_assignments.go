@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
-// PostV1IncidentsIncidentIDRoleAssignments Assign a user to an incident role for the incident
+// PostV1IncidentsIncidentIDRoleAssignments Assign a role to a user for this incident. All tasks associated to the role will also automatically be attached
+//
 // swagger:model postV1IncidentsIncidentIdRoleAssignments
 type PostV1IncidentsIncidentIDRoleAssignments struct {
 
@@ -59,6 +61,11 @@ func (m *PostV1IncidentsIncidentIDRoleAssignments) validateUserID(formats strfmt
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this post v1 incidents incident Id role assignments based on context it is used
+func (m *PostV1IncidentsIncidentIDRoleAssignments) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

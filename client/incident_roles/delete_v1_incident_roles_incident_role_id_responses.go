@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // DeleteV1IncidentRolesIncidentRoleIDReader is a Reader for the DeleteV1IncidentRolesIncidentRoleID structure.
@@ -24,16 +23,14 @@ type DeleteV1IncidentRolesIncidentRoleIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteV1IncidentRolesIncidentRoleIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewDeleteV1IncidentRolesIncidentRoleIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -42,7 +39,7 @@ func NewDeleteV1IncidentRolesIncidentRoleIDOK() *DeleteV1IncidentRolesIncidentRo
 	return &DeleteV1IncidentRolesIncidentRoleIDOK{}
 }
 
-/*DeleteV1IncidentRolesIncidentRoleIDOK handles this case with default header values.
+/* DeleteV1IncidentRolesIncidentRoleIDOK describes a response with status code 200, with default header values.
 
 Archive an incident role
 */
@@ -52,6 +49,9 @@ type DeleteV1IncidentRolesIncidentRoleIDOK struct {
 
 func (o *DeleteV1IncidentRolesIncidentRoleIDOK) Error() string {
 	return fmt.Sprintf("[DELETE /v1/incident_roles/{incident_role_id}][%d] deleteV1IncidentRolesIncidentRoleIdOK  %+v", 200, o.Payload)
+}
+func (o *DeleteV1IncidentRolesIncidentRoleIDOK) GetPayload() *models.IncidentRoleEntity {
+	return o.Payload
 }
 
 func (o *DeleteV1IncidentRolesIncidentRoleIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

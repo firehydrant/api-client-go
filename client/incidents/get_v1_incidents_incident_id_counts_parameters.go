@@ -13,61 +13,76 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewGetV1IncidentsIncidentIDCountsParams creates a new GetV1IncidentsIncidentIDCountsParams object
-// with the default values initialized.
+// NewGetV1IncidentsIncidentIDCountsParams creates a new GetV1IncidentsIncidentIDCountsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetV1IncidentsIncidentIDCountsParams() *GetV1IncidentsIncidentIDCountsParams {
-	var ()
 	return &GetV1IncidentsIncidentIDCountsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetV1IncidentsIncidentIDCountsParamsWithTimeout creates a new GetV1IncidentsIncidentIDCountsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetV1IncidentsIncidentIDCountsParamsWithTimeout(timeout time.Duration) *GetV1IncidentsIncidentIDCountsParams {
-	var ()
 	return &GetV1IncidentsIncidentIDCountsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetV1IncidentsIncidentIDCountsParamsWithContext creates a new GetV1IncidentsIncidentIDCountsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetV1IncidentsIncidentIDCountsParamsWithContext(ctx context.Context) *GetV1IncidentsIncidentIDCountsParams {
-	var ()
 	return &GetV1IncidentsIncidentIDCountsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetV1IncidentsIncidentIDCountsParamsWithHTTPClient creates a new GetV1IncidentsIncidentIDCountsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetV1IncidentsIncidentIDCountsParamsWithHTTPClient(client *http.Client) *GetV1IncidentsIncidentIDCountsParams {
-	var ()
 	return &GetV1IncidentsIncidentIDCountsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetV1IncidentsIncidentIDCountsParams contains all the parameters to send to the API endpoint
-for the get v1 incidents incident Id counts operation typically these are written to a http.Request
+/* GetV1IncidentsIncidentIDCountsParams contains all the parameters to send to the API endpoint
+   for the get v1 incidents incident Id counts operation.
+
+   Typically these are written to a http.Request.
 */
 type GetV1IncidentsIncidentIDCountsParams struct {
 
-	/*IncidentID*/
+	// IncidentID.
+	//
+	// Format: int32
 	IncidentID int32
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get v1 incidents incident Id counts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1IncidentsIncidentIDCountsParams) WithDefaults() *GetV1IncidentsIncidentIDCountsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get v1 incidents incident Id counts params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1IncidentsIncidentIDCountsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get v1 incidents incident Id counts params

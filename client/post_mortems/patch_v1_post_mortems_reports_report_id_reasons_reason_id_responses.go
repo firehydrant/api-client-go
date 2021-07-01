@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PatchV1PostMortemsReportsReportIDReasonsReasonIDReader is a Reader for the PatchV1PostMortemsReportsReportIDReasonsReasonID structure.
@@ -24,23 +23,20 @@ type PatchV1PostMortemsReportsReportIDReasonsReasonIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPatchV1PostMortemsReportsReportIDReasonsReasonIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewPatchV1PostMortemsReportsReportIDReasonsReasonIDBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -49,7 +45,7 @@ func NewPatchV1PostMortemsReportsReportIDReasonsReasonIDOK() *PatchV1PostMortems
 	return &PatchV1PostMortemsReportsReportIDReasonsReasonIDOK{}
 }
 
-/*PatchV1PostMortemsReportsReportIDReasonsReasonIDOK handles this case with default header values.
+/* PatchV1PostMortemsReportsReportIDReasonsReasonIDOK describes a response with status code 200, with default header values.
 
 Updates a reason for a report
 */
@@ -59,6 +55,9 @@ type PatchV1PostMortemsReportsReportIDReasonsReasonIDOK struct {
 
 func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}/reasons/{reason_id}][%d] patchV1PostMortemsReportsReportIdReasonsReasonIdOK  %+v", 200, o.Payload)
+}
+func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDOK) GetPayload() *models.ReasonEntity {
+	return o.Payload
 }
 
 func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -78,7 +77,7 @@ func NewPatchV1PostMortemsReportsReportIDReasonsReasonIDBadRequest() *PatchV1Pos
 	return &PatchV1PostMortemsReportsReportIDReasonsReasonIDBadRequest{}
 }
 
-/*PatchV1PostMortemsReportsReportIDReasonsReasonIDBadRequest handles this case with default header values.
+/* PatchV1PostMortemsReportsReportIDReasonsReasonIDBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -88,6 +87,9 @@ type PatchV1PostMortemsReportsReportIDReasonsReasonIDBadRequest struct {
 
 func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}/reasons/{reason_id}][%d] patchV1PostMortemsReportsReportIdReasonsReasonIdBadRequest  %+v", 400, o.Payload)
+}
+func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDBadRequest) GetPayload() *models.ErrorEntity {
+	return o.Payload
 }
 
 func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

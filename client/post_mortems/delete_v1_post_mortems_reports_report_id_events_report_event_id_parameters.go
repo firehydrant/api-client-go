@@ -13,63 +13,79 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDParams creates a new DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams object
-// with the default values initialized.
+// NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDParams creates a new DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDParams() *DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams {
-	var ()
 	return &DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDParamsWithTimeout creates a new DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDParamsWithTimeout(timeout time.Duration) *DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams {
-	var ()
 	return &DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDParamsWithContext creates a new DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDParamsWithContext(ctx context.Context) *DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams {
-	var ()
 	return &DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDParamsWithHTTPClient creates a new DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDParamsWithHTTPClient(client *http.Client) *DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams {
-	var ()
 	return &DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams contains all the parameters to send to the API endpoint
-for the delete v1 post mortems reports report Id events report event Id operation typically these are written to a http.Request
+/* DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams contains all the parameters to send to the API endpoint
+   for the delete v1 post mortems reports report Id events report event Id operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams struct {
 
-	/*ReportEventID*/
+	// ReportEventID.
 	ReportEventID string
-	/*ReportID*/
+
+	// ReportID.
+	//
+	// Format: int32
 	ReportID int32
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete v1 post mortems reports report Id events report event Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams) WithDefaults() *DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete v1 post mortems reports report Id events report event Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete v1 post mortems reports report Id events report event Id params

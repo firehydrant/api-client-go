@@ -13,64 +13,79 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewPostV1IncidentsIncidentIDAttachmentsParams creates a new PostV1IncidentsIncidentIDAttachmentsParams object
-// with the default values initialized.
+// NewPostV1IncidentsIncidentIDAttachmentsParams creates a new PostV1IncidentsIncidentIDAttachmentsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostV1IncidentsIncidentIDAttachmentsParams() *PostV1IncidentsIncidentIDAttachmentsParams {
-	var ()
 	return &PostV1IncidentsIncidentIDAttachmentsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostV1IncidentsIncidentIDAttachmentsParamsWithTimeout creates a new PostV1IncidentsIncidentIDAttachmentsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostV1IncidentsIncidentIDAttachmentsParamsWithTimeout(timeout time.Duration) *PostV1IncidentsIncidentIDAttachmentsParams {
-	var ()
 	return &PostV1IncidentsIncidentIDAttachmentsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostV1IncidentsIncidentIDAttachmentsParamsWithContext creates a new PostV1IncidentsIncidentIDAttachmentsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostV1IncidentsIncidentIDAttachmentsParamsWithContext(ctx context.Context) *PostV1IncidentsIncidentIDAttachmentsParams {
-	var ()
 	return &PostV1IncidentsIncidentIDAttachmentsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostV1IncidentsIncidentIDAttachmentsParamsWithHTTPClient creates a new PostV1IncidentsIncidentIDAttachmentsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostV1IncidentsIncidentIDAttachmentsParamsWithHTTPClient(client *http.Client) *PostV1IncidentsIncidentIDAttachmentsParams {
-	var ()
 	return &PostV1IncidentsIncidentIDAttachmentsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostV1IncidentsIncidentIDAttachmentsParams contains all the parameters to send to the API endpoint
-for the post v1 incidents incident Id attachments operation typically these are written to a http.Request
+/* PostV1IncidentsIncidentIDAttachmentsParams contains all the parameters to send to the API endpoint
+   for the post v1 incidents incident Id attachments operation.
+
+   Typically these are written to a http.Request.
 */
 type PostV1IncidentsIncidentIDAttachmentsParams struct {
 
-	/*Description*/
+	// Description.
 	Description *string
-	/*File*/
+
+	// File.
 	File runtime.NamedReadCloser
-	/*IncidentID*/
+
+	// IncidentID.
 	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post v1 incidents incident Id attachments params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1IncidentsIncidentIDAttachmentsParams) WithDefaults() *PostV1IncidentsIncidentIDAttachmentsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post v1 incidents incident Id attachments params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1IncidentsIncidentIDAttachmentsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post v1 incidents incident Id attachments params
@@ -160,9 +175,7 @@ func (o *PostV1IncidentsIncidentIDAttachmentsParams) WriteToRequest(r runtime.Cl
 				return err
 			}
 		}
-
 	}
-
 	// form file param file
 	if err := r.SetFileParam("file", o.File); err != nil {
 		return err

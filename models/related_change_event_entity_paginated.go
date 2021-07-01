@@ -6,15 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // RelatedChangeEventEntityPaginated Retrieve all change events that have been associated to the incident
+//
 // swagger:model RelatedChangeEventEntityPaginated
 type RelatedChangeEventEntityPaginated struct {
 
@@ -44,7 +45,6 @@ func (m *RelatedChangeEventEntityPaginated) Validate(formats strfmt.Registry) er
 }
 
 func (m *RelatedChangeEventEntityPaginated) validateData(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Data) { // not required
 		return nil
 	}
@@ -69,13 +69,62 @@ func (m *RelatedChangeEventEntityPaginated) validateData(formats strfmt.Registry
 }
 
 func (m *RelatedChangeEventEntityPaginated) validatePagination(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Pagination) { // not required
 		return nil
 	}
 
 	if m.Pagination != nil {
 		if err := m.Pagination.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("pagination")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this related change event entity paginated based on the context it is used
+func (m *RelatedChangeEventEntityPaginated) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateData(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePagination(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *RelatedChangeEventEntityPaginated) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Data); i++ {
+
+		if m.Data[i] != nil {
+			if err := m.Data[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *RelatedChangeEventEntityPaginated) contextValidatePagination(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Pagination != nil {
+		if err := m.Pagination.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pagination")
 			}

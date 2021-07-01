@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PostV1IncidentsIncidentIDRelatedChangeEventsReader is a Reader for the PostV1IncidentsIncidentIDRelatedChangeEvents structure.
@@ -24,30 +23,26 @@ type PostV1IncidentsIncidentIDRelatedChangeEventsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewPostV1IncidentsIncidentIDRelatedChangeEventsCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewPostV1IncidentsIncidentIDRelatedChangeEventsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 409:
 		result := NewPostV1IncidentsIncidentIDRelatedChangeEventsConflict()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -56,7 +51,7 @@ func NewPostV1IncidentsIncidentIDRelatedChangeEventsCreated() *PostV1IncidentsIn
 	return &PostV1IncidentsIncidentIDRelatedChangeEventsCreated{}
 }
 
-/*PostV1IncidentsIncidentIDRelatedChangeEventsCreated handles this case with default header values.
+/* PostV1IncidentsIncidentIDRelatedChangeEventsCreated describes a response with status code 201, with default header values.
 
 Associate a change event to the incident
 */
@@ -66,6 +61,9 @@ type PostV1IncidentsIncidentIDRelatedChangeEventsCreated struct {
 
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/related_change_events][%d] postV1IncidentsIncidentIdRelatedChangeEventsCreated  %+v", 201, o.Payload)
+}
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) GetPayload() *models.RelatedChangeEventEntity {
+	return o.Payload
 }
 
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -85,7 +83,7 @@ func NewPostV1IncidentsIncidentIDRelatedChangeEventsBadRequest() *PostV1Incident
 	return &PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest{}
 }
 
-/*PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest handles this case with default header values.
+/* PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -95,6 +93,9 @@ type PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest struct {
 
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/related_change_events][%d] postV1IncidentsIncidentIdRelatedChangeEventsBadRequest  %+v", 400, o.Payload)
+}
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) GetPayload() *models.ErrorEntity {
+	return o.Payload
 }
 
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -114,7 +115,7 @@ func NewPostV1IncidentsIncidentIDRelatedChangeEventsConflict() *PostV1IncidentsI
 	return &PostV1IncidentsIncidentIDRelatedChangeEventsConflict{}
 }
 
-/*PostV1IncidentsIncidentIDRelatedChangeEventsConflict handles this case with default header values.
+/* PostV1IncidentsIncidentIDRelatedChangeEventsConflict describes a response with status code 409, with default header values.
 
 Already Added
 */
@@ -124,6 +125,9 @@ type PostV1IncidentsIncidentIDRelatedChangeEventsConflict struct {
 
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/related_change_events][%d] postV1IncidentsIncidentIdRelatedChangeEventsConflict  %+v", 409, o.Payload)
+}
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) GetPayload() *models.ErrorEntity {
+	return o.Payload
 }
 
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

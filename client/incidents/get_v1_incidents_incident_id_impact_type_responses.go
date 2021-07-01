@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1IncidentsIncidentIDImpactTypeReader is a Reader for the GetV1IncidentsIncidentIDImpactType structure.
@@ -24,16 +23,14 @@ type GetV1IncidentsIncidentIDImpactTypeReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetV1IncidentsIncidentIDImpactTypeReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetV1IncidentsIncidentIDImpactTypeOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -42,7 +39,7 @@ func NewGetV1IncidentsIncidentIDImpactTypeOK() *GetV1IncidentsIncidentIDImpactTy
 	return &GetV1IncidentsIncidentIDImpactTypeOK{}
 }
 
-/*GetV1IncidentsIncidentIDImpactTypeOK handles this case with default header values.
+/* GetV1IncidentsIncidentIDImpactTypeOK describes a response with status code 200, with default header values.
 
 Retrieve impacted infrastructure for the type on the incident
 */
@@ -52,6 +49,9 @@ type GetV1IncidentsIncidentIDImpactTypeOK struct {
 
 func (o *GetV1IncidentsIncidentIDImpactTypeOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/impact/{type}][%d] getV1IncidentsIncidentIdImpactTypeOK  %+v", 200, o.Payload)
+}
+func (o *GetV1IncidentsIncidentIDImpactTypeOK) GetPayload() *models.IncidentImpactEntityPaginated {
+	return o.Payload
 }
 
 func (o *GetV1IncidentsIncidentIDImpactTypeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

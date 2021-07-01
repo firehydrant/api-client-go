@@ -6,16 +6,17 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // PostV1Teams Create a team
+//
 // swagger:model postV1Teams
 type PostV1Teams struct {
 
@@ -49,7 +50,6 @@ func (m *PostV1Teams) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PostV1Teams) validateMemberships(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Memberships) { // not required
 		return nil
 	}
@@ -82,6 +82,38 @@ func (m *PostV1Teams) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
+// ContextValidate validate this post v1 teams based on the context it is used
+func (m *PostV1Teams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateMemberships(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1Teams) contextValidateMemberships(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Memberships); i++ {
+
+		if m.Memberships[i] != nil {
+			if err := m.Memberships[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("memberships" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // MarshalBinary interface implementation
 func (m *PostV1Teams) MarshalBinary() ([]byte, error) {
 	if m == nil {
@@ -101,37 +133,27 @@ func (m *PostV1Teams) UnmarshalBinary(b []byte) error {
 }
 
 // PostV1TeamsMembershipsItems0 post v1 teams memberships items0
+//
 // swagger:model PostV1TeamsMembershipsItems0
 type PostV1TeamsMembershipsItems0 struct {
 
 	// An incident role ID that this user will automatically assigned if this team is assigned to an incident
 	IncidentRoleID string `json:"incident_role_id,omitempty"`
 
+	// schedule id
+	ScheduleID string `json:"schedule_id,omitempty"`
+
 	// user id
-	// Required: true
-	UserID *string `json:"user_id"`
+	UserID string `json:"user_id,omitempty"`
 }
 
 // Validate validates this post v1 teams memberships items0
 func (m *PostV1TeamsMembershipsItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateUserID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
 	return nil
 }
 
-func (m *PostV1TeamsMembershipsItems0) validateUserID(formats strfmt.Registry) error {
-
-	if err := validate.Required("user_id", "body", m.UserID); err != nil {
-		return err
-	}
-
+// ContextValidate validates this post v1 teams memberships items0 based on context it is used
+func (m *PostV1TeamsMembershipsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

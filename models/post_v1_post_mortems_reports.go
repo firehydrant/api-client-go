@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // PostV1PostMortemsReports Create a post mortem
+//
 // swagger:model postV1PostMortemsReports
 type PostV1PostMortemsReports struct {
 
@@ -30,9 +32,6 @@ type PostV1PostMortemsReports struct {
 
 	// tag list
 	TagList []string `json:"tag_list"`
-
-	// template id
-	TemplateID string `json:"template_id,omitempty"`
 }
 
 // Validate validates this post v1 post mortems reports
@@ -68,6 +67,11 @@ func (m *PostV1PostMortemsReports) validateName(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this post v1 post mortems reports based on context it is used
+func (m *PostV1PostMortemsReports) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

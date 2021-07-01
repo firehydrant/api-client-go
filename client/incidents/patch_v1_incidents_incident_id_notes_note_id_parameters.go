@@ -13,66 +13,81 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
-// NewPatchV1IncidentsIncidentIDNotesNoteIDParams creates a new PatchV1IncidentsIncidentIDNotesNoteIDParams object
-// with the default values initialized.
+// NewPatchV1IncidentsIncidentIDNotesNoteIDParams creates a new PatchV1IncidentsIncidentIDNotesNoteIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPatchV1IncidentsIncidentIDNotesNoteIDParams() *PatchV1IncidentsIncidentIDNotesNoteIDParams {
-	var ()
 	return &PatchV1IncidentsIncidentIDNotesNoteIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPatchV1IncidentsIncidentIDNotesNoteIDParamsWithTimeout creates a new PatchV1IncidentsIncidentIDNotesNoteIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPatchV1IncidentsIncidentIDNotesNoteIDParamsWithTimeout(timeout time.Duration) *PatchV1IncidentsIncidentIDNotesNoteIDParams {
-	var ()
 	return &PatchV1IncidentsIncidentIDNotesNoteIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPatchV1IncidentsIncidentIDNotesNoteIDParamsWithContext creates a new PatchV1IncidentsIncidentIDNotesNoteIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPatchV1IncidentsIncidentIDNotesNoteIDParamsWithContext(ctx context.Context) *PatchV1IncidentsIncidentIDNotesNoteIDParams {
-	var ()
 	return &PatchV1IncidentsIncidentIDNotesNoteIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPatchV1IncidentsIncidentIDNotesNoteIDParamsWithHTTPClient creates a new PatchV1IncidentsIncidentIDNotesNoteIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPatchV1IncidentsIncidentIDNotesNoteIDParamsWithHTTPClient(client *http.Client) *PatchV1IncidentsIncidentIDNotesNoteIDParams {
-	var ()
 	return &PatchV1IncidentsIncidentIDNotesNoteIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*PatchV1IncidentsIncidentIDNotesNoteIDParams contains all the parameters to send to the API endpoint
-for the patch v1 incidents incident Id notes note Id operation typically these are written to a http.Request
+/* PatchV1IncidentsIncidentIDNotesNoteIDParams contains all the parameters to send to the API endpoint
+   for the patch v1 incidents incident Id notes note Id operation.
+
+   Typically these are written to a http.Request.
 */
 type PatchV1IncidentsIncidentIDNotesNoteIDParams struct {
 
-	/*V1IncidentsIncidentIDNotes*/
+	// V1IncidentsIncidentIDNotes.
 	V1IncidentsIncidentIDNotes *models.PatchV1IncidentsIncidentIDNotes
-	/*IncidentID*/
+
+	// IncidentID.
 	IncidentID string
-	/*NoteID*/
+
+	// NoteID.
 	NoteID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the patch v1 incidents incident Id notes note Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchV1IncidentsIncidentIDNotesNoteIDParams) WithDefaults() *PatchV1IncidentsIncidentIDNotesNoteIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the patch v1 incidents incident Id notes note Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchV1IncidentsIncidentIDNotesNoteIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the patch v1 incidents incident Id notes note Id params
@@ -148,7 +163,6 @@ func (o *PatchV1IncidentsIncidentIDNotesNoteIDParams) WriteToRequest(r runtime.C
 		return err
 	}
 	var res []error
-
 	if o.V1IncidentsIncidentIDNotes != nil {
 		if err := r.SetBodyParam(o.V1IncidentsIncidentIDNotes); err != nil {
 			return err

@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // UserEntity user entity
+//
 // swagger:model UserEntity
 type UserEntity struct {
 
@@ -27,12 +29,20 @@ type UserEntity struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// slack linked
+	SlackLinked string `json:"slack_linked?,omitempty"`
+
 	// updated at
 	UpdatedAt string `json:"updated_at,omitempty"`
 }
 
 // Validate validates this user entity
 func (m *UserEntity) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this user entity based on context it is used
+func (m *UserEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

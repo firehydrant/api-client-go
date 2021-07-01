@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // ChangeEntity Update a change entry
+//
 // swagger:model ChangeEntity
 type ChangeEntity struct {
 
@@ -57,7 +59,6 @@ func (m *ChangeEntity) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ChangeEntity) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -70,7 +71,6 @@ func (m *ChangeEntity) validateCreatedAt(formats strfmt.Registry) error {
 }
 
 func (m *ChangeEntity) validateUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
@@ -79,6 +79,11 @@ func (m *ChangeEntity) validateUpdatedAt(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this change entity based on context it is used
+func (m *ChangeEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // TagEntity tag entity
+//
 // swagger:model TagEntity
 type TagEntity struct {
 
@@ -21,6 +23,11 @@ type TagEntity struct {
 
 // Validate validates this tag entity
 func (m *TagEntity) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this tag entity based on context it is used
+func (m *TagEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

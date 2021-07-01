@@ -13,67 +13,85 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewPatchV1IncidentsIncidentIDTasksTaskIDParams creates a new PatchV1IncidentsIncidentIDTasksTaskIDParams object
-// with the default values initialized.
+// NewPatchV1IncidentsIncidentIDTasksTaskIDParams creates a new PatchV1IncidentsIncidentIDTasksTaskIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPatchV1IncidentsIncidentIDTasksTaskIDParams() *PatchV1IncidentsIncidentIDTasksTaskIDParams {
-	var ()
 	return &PatchV1IncidentsIncidentIDTasksTaskIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPatchV1IncidentsIncidentIDTasksTaskIDParamsWithTimeout creates a new PatchV1IncidentsIncidentIDTasksTaskIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPatchV1IncidentsIncidentIDTasksTaskIDParamsWithTimeout(timeout time.Duration) *PatchV1IncidentsIncidentIDTasksTaskIDParams {
-	var ()
 	return &PatchV1IncidentsIncidentIDTasksTaskIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPatchV1IncidentsIncidentIDTasksTaskIDParamsWithContext creates a new PatchV1IncidentsIncidentIDTasksTaskIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPatchV1IncidentsIncidentIDTasksTaskIDParamsWithContext(ctx context.Context) *PatchV1IncidentsIncidentIDTasksTaskIDParams {
-	var ()
 	return &PatchV1IncidentsIncidentIDTasksTaskIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPatchV1IncidentsIncidentIDTasksTaskIDParamsWithHTTPClient creates a new PatchV1IncidentsIncidentIDTasksTaskIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPatchV1IncidentsIncidentIDTasksTaskIDParamsWithHTTPClient(client *http.Client) *PatchV1IncidentsIncidentIDTasksTaskIDParams {
-	var ()
 	return &PatchV1IncidentsIncidentIDTasksTaskIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*PatchV1IncidentsIncidentIDTasksTaskIDParams contains all the parameters to send to the API endpoint
-for the patch v1 incidents incident Id tasks task Id operation typically these are written to a http.Request
+/* PatchV1IncidentsIncidentIDTasksTaskIDParams contains all the parameters to send to the API endpoint
+   for the patch v1 incidents incident Id tasks task Id operation.
+
+   Typically these are written to a http.Request.
 */
 type PatchV1IncidentsIncidentIDTasksTaskIDParams struct {
 
-	/*IncidentID*/
-	IncidentID int32
-	/*Position*/
+	// IncidentID.
+	IncidentID string
+
+	// Position.
+	//
+	// Format: int32
 	Position *int32
-	/*State*/
+
+	// State.
 	State *string
-	/*TaskID*/
+
+	// TaskID.
 	TaskID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the patch v1 incidents incident Id tasks task Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WithDefaults() *PatchV1IncidentsIncidentIDTasksTaskIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the patch v1 incidents incident Id tasks task Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the patch v1 incidents incident Id tasks task Id params
@@ -110,13 +128,13 @@ func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetHTTPClient(client *http
 }
 
 // WithIncidentID adds the incidentID to the patch v1 incidents incident Id tasks task Id params
-func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WithIncidentID(incidentID int32) *PatchV1IncidentsIncidentIDTasksTaskIDParams {
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WithIncidentID(incidentID string) *PatchV1IncidentsIncidentIDTasksTaskIDParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the patch v1 incidents incident Id tasks task Id params
-func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetIncidentID(incidentID int32) {
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -162,7 +180,7 @@ func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WriteToRequest(r runtime.C
 	var res []error
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 
@@ -179,7 +197,6 @@ func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WriteToRequest(r runtime.C
 				return err
 			}
 		}
-
 	}
 
 	if o.State != nil {
@@ -195,7 +212,6 @@ func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WriteToRequest(r runtime.C
 				return err
 			}
 		}
-
 	}
 
 	// path param task_id

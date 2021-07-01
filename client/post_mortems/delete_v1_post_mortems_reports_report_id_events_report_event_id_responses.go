@@ -7,10 +7,12 @@ package post_mortems
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // DeleteV1PostMortemsReportsReportIDEventsReportEventIDReader is a Reader for the DeleteV1PostMortemsReportsReportIDEventsReportEventID structure.
@@ -21,36 +23,45 @@ type DeleteV1PostMortemsReportsReportIDEventsReportEventIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
-	case 204:
-		result := NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDNoContent()
+	case 200:
+		result := NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
-// NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDNoContent creates a DeleteV1PostMortemsReportsReportIDEventsReportEventIDNoContent with default headers values
-func NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDNoContent() *DeleteV1PostMortemsReportsReportIDEventsReportEventIDNoContent {
-	return &DeleteV1PostMortemsReportsReportIDEventsReportEventIDNoContent{}
+// NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDOK creates a DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK with default headers values
+func NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDOK() *DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK {
+	return &DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK{}
 }
 
-/*DeleteV1PostMortemsReportsReportIDEventsReportEventIDNoContent handles this case with default header values.
+/* DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK describes a response with status code 200, with default header values.
 
-Remove an event on the report timeline by its ID
+Deletes an event by ID
 */
-type DeleteV1PostMortemsReportsReportIDEventsReportEventIDNoContent struct {
+type DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK struct {
+	Payload *models.EventEntity
 }
 
-func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/events/{report_event_id}][%d] deleteV1PostMortemsReportsReportIdEventsReportEventIdNoContent ", 204)
+func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK) Error() string {
+	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/events/{report_event_id}][%d] deleteV1PostMortemsReportsReportIdEventsReportEventIdOK  %+v", 200, o.Payload)
+}
+func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK) GetPayload() *models.EventEntity {
+	return o.Payload
 }
 
-func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.EventEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

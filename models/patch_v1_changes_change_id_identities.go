@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // PatchV1ChangesChangeIDIdentities Update an identity
+//
 // swagger:model patchV1ChangesChangeIdIdentities
 type PatchV1ChangesChangeIDIdentities struct {
 
@@ -59,6 +61,11 @@ func (m *PatchV1ChangesChangeIDIdentities) validateValue(formats strfmt.Registry
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this patch v1 changes change Id identities based on context it is used
+func (m *PatchV1ChangesChangeIDIdentities) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -13,61 +13,76 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewDeleteV1ChangesChangeIDParams creates a new DeleteV1ChangesChangeIDParams object
-// with the default values initialized.
+// NewDeleteV1ChangesChangeIDParams creates a new DeleteV1ChangesChangeIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteV1ChangesChangeIDParams() *DeleteV1ChangesChangeIDParams {
-	var ()
 	return &DeleteV1ChangesChangeIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteV1ChangesChangeIDParamsWithTimeout creates a new DeleteV1ChangesChangeIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteV1ChangesChangeIDParamsWithTimeout(timeout time.Duration) *DeleteV1ChangesChangeIDParams {
-	var ()
 	return &DeleteV1ChangesChangeIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteV1ChangesChangeIDParamsWithContext creates a new DeleteV1ChangesChangeIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteV1ChangesChangeIDParamsWithContext(ctx context.Context) *DeleteV1ChangesChangeIDParams {
-	var ()
 	return &DeleteV1ChangesChangeIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteV1ChangesChangeIDParamsWithHTTPClient creates a new DeleteV1ChangesChangeIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteV1ChangesChangeIDParamsWithHTTPClient(client *http.Client) *DeleteV1ChangesChangeIDParams {
-	var ()
 	return &DeleteV1ChangesChangeIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteV1ChangesChangeIDParams contains all the parameters to send to the API endpoint
-for the delete v1 changes change Id operation typically these are written to a http.Request
+/* DeleteV1ChangesChangeIDParams contains all the parameters to send to the API endpoint
+   for the delete v1 changes change Id operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteV1ChangesChangeIDParams struct {
 
-	/*ChangeID*/
+	// ChangeID.
+	//
+	// Format: int32
 	ChangeID int32
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete v1 changes change Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1ChangesChangeIDParams) WithDefaults() *DeleteV1ChangesChangeIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete v1 changes change Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1ChangesChangeIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete v1 changes change Id params

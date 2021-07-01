@@ -6,13 +6,15 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // ParticipantSearchEntity List possible participants based on name, includes users and teams
+//
 // swagger:model ParticipantSearchEntity
 type ParticipantSearchEntity struct {
 
@@ -42,7 +44,6 @@ func (m *ParticipantSearchEntity) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ParticipantSearchEntity) validateTeams(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Teams) { // not required
 		return nil
 	}
@@ -60,13 +61,58 @@ func (m *ParticipantSearchEntity) validateTeams(formats strfmt.Registry) error {
 }
 
 func (m *ParticipantSearchEntity) validateUsers(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Users) { // not required
 		return nil
 	}
 
 	if m.Users != nil {
 		if err := m.Users.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("users")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this participant search entity based on the context it is used
+func (m *ParticipantSearchEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTeams(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ParticipantSearchEntity) contextValidateTeams(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Teams != nil {
+		if err := m.Teams.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("teams")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ParticipantSearchEntity) contextValidateUsers(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Users != nil {
+		if err := m.Users.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("users")
 			}

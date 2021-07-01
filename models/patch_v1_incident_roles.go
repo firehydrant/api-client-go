@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // PatchV1IncidentRoles Update an incident role
+//
 // swagger:model patchV1IncidentRoles
 type PatchV1IncidentRoles struct {
 
@@ -27,6 +29,11 @@ type PatchV1IncidentRoles struct {
 
 // Validate validates this patch v1 incident roles
 func (m *PatchV1IncidentRoles) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this patch v1 incident roles based on context it is used
+func (m *PatchV1IncidentRoles) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
-// ErrorEntity Updates a reason for a report
+// ErrorEntity Marks an incident retrospective as published and emails all of the participants in the report the summary
+//
 // swagger:model ErrorEntity
 type ErrorEntity struct {
 
@@ -20,10 +22,18 @@ type ErrorEntity struct {
 
 	// messages
 	Messages []string `json:"messages"`
+
+	// meta
+	Meta interface{} `json:"meta,omitempty"`
 }
 
 // Validate validates this error entity
 func (m *ErrorEntity) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this error entity based on context it is used
+func (m *ErrorEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

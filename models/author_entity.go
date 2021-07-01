@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // AuthorEntity author entity
+//
 // swagger:model AuthorEntity
 type AuthorEntity struct {
 
@@ -30,6 +32,11 @@ type AuthorEntity struct {
 
 // Validate validates this author entity
 func (m *AuthorEntity) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this author entity based on context it is used
+func (m *AuthorEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

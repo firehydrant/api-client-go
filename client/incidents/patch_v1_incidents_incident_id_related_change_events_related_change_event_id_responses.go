@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDReader is a Reader for the PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID structure.
@@ -24,30 +23,26 @@ type PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDReader str
 // ReadResponse reads a server response into the received o.
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	case 409:
 		result := NewPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -56,7 +51,7 @@ func NewPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK() *P
 	return &PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK{}
 }
 
-/*PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK handles this case with default header values.
+/* PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK describes a response with status code 200, with default header values.
 
 Update a change event
 */
@@ -66,6 +61,9 @@ type PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK struct 
 
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/related_change_events/{related_change_event_id}][%d] patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventIdOK  %+v", 200, o.Payload)
+}
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) GetPayload() *models.RelatedChangeEventEntity {
+	return o.Payload
 }
 
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -85,7 +83,7 @@ func NewPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequ
 	return &PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest{}
 }
 
-/*PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest handles this case with default header values.
+/* PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -95,6 +93,9 @@ type PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest
 
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/related_change_events/{related_change_event_id}][%d] patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventIdBadRequest  %+v", 400, o.Payload)
+}
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) GetPayload() *models.ErrorEntity {
+	return o.Payload
 }
 
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -114,7 +115,7 @@ func NewPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflic
 	return &PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict{}
 }
 
-/*PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict handles this case with default header values.
+/* PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict describes a response with status code 409, with default header values.
 
 Already Added
 */
@@ -124,6 +125,9 @@ type PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict s
 
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) Error() string {
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/related_change_events/{related_change_event_id}][%d] patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventIdConflict  %+v", 409, o.Payload)
+}
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) GetPayload() *models.ErrorEntity {
+	return o.Payload
 }
 
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -13,65 +13,79 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 )
 
-// NewGetV1PostMortemsReportsReportIDParticipantsSearchParams creates a new GetV1PostMortemsReportsReportIDParticipantsSearchParams object
-// with the default values initialized.
+// NewGetV1PostMortemsReportsReportIDParticipantsSearchParams creates a new GetV1PostMortemsReportsReportIDParticipantsSearchParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetV1PostMortemsReportsReportIDParticipantsSearchParams() *GetV1PostMortemsReportsReportIDParticipantsSearchParams {
-	var ()
 	return &GetV1PostMortemsReportsReportIDParticipantsSearchParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetV1PostMortemsReportsReportIDParticipantsSearchParamsWithTimeout creates a new GetV1PostMortemsReportsReportIDParticipantsSearchParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetV1PostMortemsReportsReportIDParticipantsSearchParamsWithTimeout(timeout time.Duration) *GetV1PostMortemsReportsReportIDParticipantsSearchParams {
-	var ()
 	return &GetV1PostMortemsReportsReportIDParticipantsSearchParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetV1PostMortemsReportsReportIDParticipantsSearchParamsWithContext creates a new GetV1PostMortemsReportsReportIDParticipantsSearchParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetV1PostMortemsReportsReportIDParticipantsSearchParamsWithContext(ctx context.Context) *GetV1PostMortemsReportsReportIDParticipantsSearchParams {
-	var ()
 	return &GetV1PostMortemsReportsReportIDParticipantsSearchParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetV1PostMortemsReportsReportIDParticipantsSearchParamsWithHTTPClient creates a new GetV1PostMortemsReportsReportIDParticipantsSearchParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetV1PostMortemsReportsReportIDParticipantsSearchParamsWithHTTPClient(client *http.Client) *GetV1PostMortemsReportsReportIDParticipantsSearchParams {
-	var ()
 	return &GetV1PostMortemsReportsReportIDParticipantsSearchParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetV1PostMortemsReportsReportIDParticipantsSearchParams contains all the parameters to send to the API endpoint
-for the get v1 post mortems reports report Id participants search operation typically these are written to a http.Request
+/* GetV1PostMortemsReportsReportIDParticipantsSearchParams contains all the parameters to send to the API endpoint
+   for the get v1 post mortems reports report Id participants search operation.
+
+   Typically these are written to a http.Request.
 */
 type GetV1PostMortemsReportsReportIDParticipantsSearchParams struct {
 
-	/*NamePrefix
-	  The prefix of a search for members
+	/* Query.
 
+	   The prefix of a search for members
 	*/
-	NamePrefix string
-	/*ReportID*/
+	Query string
+
+	// ReportID.
 	ReportID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get v1 post mortems reports report Id participants search params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1PostMortemsReportsReportIDParticipantsSearchParams) WithDefaults() *GetV1PostMortemsReportsReportIDParticipantsSearchParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get v1 post mortems reports report Id participants search params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1PostMortemsReportsReportIDParticipantsSearchParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get v1 post mortems reports report Id participants search params
@@ -107,15 +121,15 @@ func (o *GetV1PostMortemsReportsReportIDParticipantsSearchParams) SetHTTPClient(
 	o.HTTPClient = client
 }
 
-// WithNamePrefix adds the namePrefix to the get v1 post mortems reports report Id participants search params
-func (o *GetV1PostMortemsReportsReportIDParticipantsSearchParams) WithNamePrefix(namePrefix string) *GetV1PostMortemsReportsReportIDParticipantsSearchParams {
-	o.SetNamePrefix(namePrefix)
+// WithQuery adds the query to the get v1 post mortems reports report Id participants search params
+func (o *GetV1PostMortemsReportsReportIDParticipantsSearchParams) WithQuery(query string) *GetV1PostMortemsReportsReportIDParticipantsSearchParams {
+	o.SetQuery(query)
 	return o
 }
 
-// SetNamePrefix adds the namePrefix to the get v1 post mortems reports report Id participants search params
-func (o *GetV1PostMortemsReportsReportIDParticipantsSearchParams) SetNamePrefix(namePrefix string) {
-	o.NamePrefix = namePrefix
+// SetQuery adds the query to the get v1 post mortems reports report Id participants search params
+func (o *GetV1PostMortemsReportsReportIDParticipantsSearchParams) SetQuery(query string) {
+	o.Query = query
 }
 
 // WithReportID adds the reportID to the get v1 post mortems reports report Id participants search params
@@ -137,11 +151,12 @@ func (o *GetV1PostMortemsReportsReportIDParticipantsSearchParams) WriteToRequest
 	}
 	var res []error
 
-	// query param name_prefix
-	qrNamePrefix := o.NamePrefix
-	qNamePrefix := qrNamePrefix
-	if qNamePrefix != "" {
-		if err := r.SetQueryParam("name_prefix", qNamePrefix); err != nil {
+	// query param query
+	qrQuery := o.Query
+	qQuery := qrQuery
+	if qQuery != "" {
+
+		if err := r.SetQueryParam("query", qQuery); err != nil {
 			return err
 		}
 	}

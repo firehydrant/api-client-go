@@ -13,63 +13,93 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewGetV1TeamsParams creates a new GetV1TeamsParams object
-// with the default values initialized.
+// NewGetV1TeamsParams creates a new GetV1TeamsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetV1TeamsParams() *GetV1TeamsParams {
-	var ()
 	return &GetV1TeamsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetV1TeamsParamsWithTimeout creates a new GetV1TeamsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetV1TeamsParamsWithTimeout(timeout time.Duration) *GetV1TeamsParams {
-	var ()
 	return &GetV1TeamsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetV1TeamsParamsWithContext creates a new GetV1TeamsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetV1TeamsParamsWithContext(ctx context.Context) *GetV1TeamsParams {
-	var ()
 	return &GetV1TeamsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetV1TeamsParamsWithHTTPClient creates a new GetV1TeamsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetV1TeamsParamsWithHTTPClient(client *http.Client) *GetV1TeamsParams {
-	var ()
 	return &GetV1TeamsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetV1TeamsParams contains all the parameters to send to the API endpoint
-for the get v1 teams operation typically these are written to a http.Request
+/* GetV1TeamsParams contains all the parameters to send to the API endpoint
+   for the get v1 teams operation.
+
+   Typically these are written to a http.Request.
 */
 type GetV1TeamsParams struct {
 
-	/*Page*/
+	// Page.
+	//
+	// Format: int32
 	Page *int32
-	/*PerPage*/
+
+	// PerPage.
+	//
+	// Format: int32
 	PerPage *int32
+
+	/* Query.
+
+	   Text string of a query to filter teams
+	*/
+	Query *string
+
+	/* Services.
+
+	   A comma separated list of service IDs
+	*/
+	Services *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get v1 teams params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1TeamsParams) WithDefaults() *GetV1TeamsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get v1 teams params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1TeamsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get v1 teams params
@@ -127,6 +157,28 @@ func (o *GetV1TeamsParams) SetPerPage(perPage *int32) {
 	o.PerPage = perPage
 }
 
+// WithQuery adds the query to the get v1 teams params
+func (o *GetV1TeamsParams) WithQuery(query *string) *GetV1TeamsParams {
+	o.SetQuery(query)
+	return o
+}
+
+// SetQuery adds the query to the get v1 teams params
+func (o *GetV1TeamsParams) SetQuery(query *string) {
+	o.Query = query
+}
+
+// WithServices adds the services to the get v1 teams params
+func (o *GetV1TeamsParams) WithServices(services *string) *GetV1TeamsParams {
+	o.SetServices(services)
+	return o
+}
+
+// SetServices adds the services to the get v1 teams params
+func (o *GetV1TeamsParams) SetServices(services *string) {
+	o.Services = services
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1TeamsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -139,32 +191,68 @@ func (o *GetV1TeamsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 
 		// query param page
 		var qrPage int32
+
 		if o.Page != nil {
 			qrPage = *o.Page
 		}
 		qPage := swag.FormatInt32(qrPage)
 		if qPage != "" {
+
 			if err := r.SetQueryParam("page", qPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.PerPage != nil {
 
 		// query param per_page
 		var qrPerPage int32
+
 		if o.PerPage != nil {
 			qrPerPage = *o.PerPage
 		}
 		qPerPage := swag.FormatInt32(qrPerPage)
 		if qPerPage != "" {
+
 			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
 				return err
 			}
 		}
+	}
 
+	if o.Query != nil {
+
+		// query param query
+		var qrQuery string
+
+		if o.Query != nil {
+			qrQuery = *o.Query
+		}
+		qQuery := qrQuery
+		if qQuery != "" {
+
+			if err := r.SetQueryParam("query", qQuery); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Services != nil {
+
+		// query param services
+		var qrServices string
+
+		if o.Services != nil {
+			qrServices = *o.Services
+		}
+		qServices := qrServices
+		if qServices != "" {
+
+			if err := r.SetQueryParam("services", qServices); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

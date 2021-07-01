@@ -13,70 +13,90 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewGetV1IncidentsIncidentIDRelatedChangeEventsParams creates a new GetV1IncidentsIncidentIDRelatedChangeEventsParams object
-// with the default values initialized.
+// NewGetV1IncidentsIncidentIDRelatedChangeEventsParams creates a new GetV1IncidentsIncidentIDRelatedChangeEventsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetV1IncidentsIncidentIDRelatedChangeEventsParams() *GetV1IncidentsIncidentIDRelatedChangeEventsParams {
-	var ()
 	return &GetV1IncidentsIncidentIDRelatedChangeEventsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetV1IncidentsIncidentIDRelatedChangeEventsParamsWithTimeout creates a new GetV1IncidentsIncidentIDRelatedChangeEventsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetV1IncidentsIncidentIDRelatedChangeEventsParamsWithTimeout(timeout time.Duration) *GetV1IncidentsIncidentIDRelatedChangeEventsParams {
-	var ()
 	return &GetV1IncidentsIncidentIDRelatedChangeEventsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetV1IncidentsIncidentIDRelatedChangeEventsParamsWithContext creates a new GetV1IncidentsIncidentIDRelatedChangeEventsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetV1IncidentsIncidentIDRelatedChangeEventsParamsWithContext(ctx context.Context) *GetV1IncidentsIncidentIDRelatedChangeEventsParams {
-	var ()
 	return &GetV1IncidentsIncidentIDRelatedChangeEventsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetV1IncidentsIncidentIDRelatedChangeEventsParamsWithHTTPClient creates a new GetV1IncidentsIncidentIDRelatedChangeEventsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetV1IncidentsIncidentIDRelatedChangeEventsParamsWithHTTPClient(client *http.Client) *GetV1IncidentsIncidentIDRelatedChangeEventsParams {
-	var ()
 	return &GetV1IncidentsIncidentIDRelatedChangeEventsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetV1IncidentsIncidentIDRelatedChangeEventsParams contains all the parameters to send to the API endpoint
-for the get v1 incidents incident Id related change events operation typically these are written to a http.Request
+/* GetV1IncidentsIncidentIDRelatedChangeEventsParams contains all the parameters to send to the API endpoint
+   for the get v1 incidents incident Id related change events operation.
+
+   Typically these are written to a http.Request.
 */
 type GetV1IncidentsIncidentIDRelatedChangeEventsParams struct {
 
-	/*IncidentID*/
+	// IncidentID.
 	IncidentID string
-	/*Page*/
-	Page *int32
-	/*PerPage*/
-	PerPage *int32
-	/*Type
-	  The type of the relation to the incident
 
+	// Page.
+	//
+	// Format: int32
+	Page *int32
+
+	// PerPage.
+	//
+	// Format: int32
+	PerPage *int32
+
+	/* Type.
+
+	   The type of the relation to the incident
 	*/
 	Type *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get v1 incidents incident Id related change events params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1IncidentsIncidentIDRelatedChangeEventsParams) WithDefaults() *GetV1IncidentsIncidentIDRelatedChangeEventsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get v1 incidents incident Id related change events params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1IncidentsIncidentIDRelatedChangeEventsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get v1 incidents incident Id related change events params
@@ -173,48 +193,51 @@ func (o *GetV1IncidentsIncidentIDRelatedChangeEventsParams) WriteToRequest(r run
 
 		// query param page
 		var qrPage int32
+
 		if o.Page != nil {
 			qrPage = *o.Page
 		}
 		qPage := swag.FormatInt32(qrPage)
 		if qPage != "" {
+
 			if err := r.SetQueryParam("page", qPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.PerPage != nil {
 
 		// query param per_page
 		var qrPerPage int32
+
 		if o.PerPage != nil {
 			qrPerPage = *o.PerPage
 		}
 		qPerPage := swag.FormatInt32(qrPerPage)
 		if qPerPage != "" {
+
 			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Type != nil {
 
 		// query param type
 		var qrType string
+
 		if o.Type != nil {
 			qrType = *o.Type
 		}
 		qType := qrType
 		if qType != "" {
+
 			if err := r.SetQueryParam("type", qType); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

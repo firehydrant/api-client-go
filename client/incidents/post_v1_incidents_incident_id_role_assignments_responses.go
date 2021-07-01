@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PostV1IncidentsIncidentIDRoleAssignmentsReader is a Reader for the PostV1IncidentsIncidentIDRoleAssignments structure.
@@ -24,16 +23,14 @@ type PostV1IncidentsIncidentIDRoleAssignmentsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostV1IncidentsIncidentIDRoleAssignmentsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewPostV1IncidentsIncidentIDRoleAssignmentsCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -42,9 +39,9 @@ func NewPostV1IncidentsIncidentIDRoleAssignmentsCreated() *PostV1IncidentsIncide
 	return &PostV1IncidentsIncidentIDRoleAssignmentsCreated{}
 }
 
-/*PostV1IncidentsIncidentIDRoleAssignmentsCreated handles this case with default header values.
+/* PostV1IncidentsIncidentIDRoleAssignmentsCreated describes a response with status code 201, with default header values.
 
-Assign a user to an incident role for the incident
+Assign a role to a user for this incident. All tasks associated to the role will also automatically be attached
 */
 type PostV1IncidentsIncidentIDRoleAssignmentsCreated struct {
 	Payload *models.RoleAssignmentEntity
@@ -52,6 +49,9 @@ type PostV1IncidentsIncidentIDRoleAssignmentsCreated struct {
 
 func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/role_assignments][%d] postV1IncidentsIncidentIdRoleAssignmentsCreated  %+v", 201, o.Payload)
+}
+func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) GetPayload() *models.RoleAssignmentEntity {
+	return o.Payload
 }
 
 func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

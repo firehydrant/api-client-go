@@ -6,16 +6,17 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"strconv"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // PatchV1ChangesEvents Update a change event
+//
 // swagger:model patchV1ChangesEvents
 type PatchV1ChangesEvents struct {
 
@@ -69,7 +70,6 @@ func (m *PatchV1ChangesEvents) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PatchV1ChangesEvents) validateAttachments(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Attachments) { // not required
 		return nil
 	}
@@ -94,7 +94,6 @@ func (m *PatchV1ChangesEvents) validateAttachments(formats strfmt.Registry) erro
 }
 
 func (m *PatchV1ChangesEvents) validateEndsAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.EndsAt) { // not required
 		return nil
 	}
@@ -107,13 +106,44 @@ func (m *PatchV1ChangesEvents) validateEndsAt(formats strfmt.Registry) error {
 }
 
 func (m *PatchV1ChangesEvents) validateStartsAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.StartsAt) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("starts_at", "body", "date-time", m.StartsAt.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this patch v1 changes events based on the context it is used
+func (m *PatchV1ChangesEvents) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAttachments(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PatchV1ChangesEvents) contextValidateAttachments(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Attachments); i++ {
+
+		if m.Attachments[i] != nil {
+			if err := m.Attachments[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("attachments" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -138,6 +168,7 @@ func (m *PatchV1ChangesEvents) UnmarshalBinary(b []byte) error {
 }
 
 // PatchV1ChangesEventsAttachmentsItems0 patch v1 changes events attachments items0
+//
 // swagger:model PatchV1ChangesEventsAttachmentsItems0
 type PatchV1ChangesEventsAttachmentsItems0 struct {
 
@@ -166,6 +197,11 @@ func (m *PatchV1ChangesEventsAttachmentsItems0) validateType(formats strfmt.Regi
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this patch v1 changes events attachments items0 based on context it is used
+func (m *PatchV1ChangesEventsAttachmentsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

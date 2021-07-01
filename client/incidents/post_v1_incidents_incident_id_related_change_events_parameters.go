@@ -13,64 +13,78 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
-// NewPostV1IncidentsIncidentIDRelatedChangeEventsParams creates a new PostV1IncidentsIncidentIDRelatedChangeEventsParams object
-// with the default values initialized.
+// NewPostV1IncidentsIncidentIDRelatedChangeEventsParams creates a new PostV1IncidentsIncidentIDRelatedChangeEventsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostV1IncidentsIncidentIDRelatedChangeEventsParams() *PostV1IncidentsIncidentIDRelatedChangeEventsParams {
-	var ()
 	return &PostV1IncidentsIncidentIDRelatedChangeEventsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostV1IncidentsIncidentIDRelatedChangeEventsParamsWithTimeout creates a new PostV1IncidentsIncidentIDRelatedChangeEventsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostV1IncidentsIncidentIDRelatedChangeEventsParamsWithTimeout(timeout time.Duration) *PostV1IncidentsIncidentIDRelatedChangeEventsParams {
-	var ()
 	return &PostV1IncidentsIncidentIDRelatedChangeEventsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostV1IncidentsIncidentIDRelatedChangeEventsParamsWithContext creates a new PostV1IncidentsIncidentIDRelatedChangeEventsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostV1IncidentsIncidentIDRelatedChangeEventsParamsWithContext(ctx context.Context) *PostV1IncidentsIncidentIDRelatedChangeEventsParams {
-	var ()
 	return &PostV1IncidentsIncidentIDRelatedChangeEventsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostV1IncidentsIncidentIDRelatedChangeEventsParamsWithHTTPClient creates a new PostV1IncidentsIncidentIDRelatedChangeEventsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostV1IncidentsIncidentIDRelatedChangeEventsParamsWithHTTPClient(client *http.Client) *PostV1IncidentsIncidentIDRelatedChangeEventsParams {
-	var ()
 	return &PostV1IncidentsIncidentIDRelatedChangeEventsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostV1IncidentsIncidentIDRelatedChangeEventsParams contains all the parameters to send to the API endpoint
-for the post v1 incidents incident Id related change events operation typically these are written to a http.Request
+/* PostV1IncidentsIncidentIDRelatedChangeEventsParams contains all the parameters to send to the API endpoint
+   for the post v1 incidents incident Id related change events operation.
+
+   Typically these are written to a http.Request.
 */
 type PostV1IncidentsIncidentIDRelatedChangeEventsParams struct {
 
-	/*V1IncidentsIncidentIDRelatedChangeEvents*/
+	// V1IncidentsIncidentIDRelatedChangeEvents.
 	V1IncidentsIncidentIDRelatedChangeEvents *models.PostV1IncidentsIncidentIDRelatedChangeEvents
-	/*IncidentID*/
+
+	// IncidentID.
 	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post v1 incidents incident Id related change events params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsParams) WithDefaults() *PostV1IncidentsIncidentIDRelatedChangeEventsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post v1 incidents incident Id related change events params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post v1 incidents incident Id related change events params
@@ -135,7 +149,6 @@ func (o *PostV1IncidentsIncidentIDRelatedChangeEventsParams) WriteToRequest(r ru
 		return err
 	}
 	var res []error
-
 	if o.V1IncidentsIncidentIDRelatedChangeEvents != nil {
 		if err := r.SetBodyParam(o.V1IncidentsIncidentIDRelatedChangeEvents); err != nil {
 			return err

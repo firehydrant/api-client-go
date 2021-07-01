@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PatchV1PostMortemsReportsReportIDActionItemsActionItemIDReader is a Reader for the PatchV1PostMortemsReportsReportIDActionItemsActionItemID structure.
@@ -24,16 +23,14 @@ type PatchV1PostMortemsReportsReportIDActionItemsActionItemIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PatchV1PostMortemsReportsReportIDActionItemsActionItemIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewPatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -42,7 +39,7 @@ func NewPatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK() *PatchV1Pos
 	return &PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK{}
 }
 
-/*PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK handles this case with default header values.
+/* PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK describes a response with status code 200, with default header values.
 
 Update an action item
 */
@@ -52,6 +49,9 @@ type PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK struct {
 
 func (o *PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}/action_items/{action_item_id}][%d] patchV1PostMortemsReportsReportIdActionItemsActionItemIdOK  %+v", 200, o.Payload)
+}
+func (o *PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK) GetPayload() *models.ActionItemEntity {
+	return o.Payload
 }
 
 func (o *PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

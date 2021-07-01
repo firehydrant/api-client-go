@@ -6,16 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"strconv"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // TeamEntity Retrieve a team
+//
 // swagger:model TeamEntity
 type TeamEntity struct {
 
@@ -29,14 +29,11 @@ type TeamEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
-	// memberships
-	Memberships []*MembershipEntity `json:"memberships"`
-
 	// name
 	Name string `json:"name,omitempty"`
 
-	// services
-	Services []*ServiceEntity `json:"services"`
+	// slug
+	Slug string `json:"slug,omitempty"`
 
 	// updated at
 	// Format: date-time
@@ -51,14 +48,6 @@ func (m *TeamEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateMemberships(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateServices(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateUpdatedAt(formats); err != nil {
 		res = append(res, err)
 	}
@@ -70,7 +59,6 @@ func (m *TeamEntity) Validate(formats strfmt.Registry) error {
 }
 
 func (m *TeamEntity) validateCreatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -82,58 +70,7 @@ func (m *TeamEntity) validateCreatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *TeamEntity) validateMemberships(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.Memberships) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.Memberships); i++ {
-		if swag.IsZero(m.Memberships[i]) { // not required
-			continue
-		}
-
-		if m.Memberships[i] != nil {
-			if err := m.Memberships[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("memberships" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *TeamEntity) validateServices(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.Services) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.Services); i++ {
-		if swag.IsZero(m.Services[i]) { // not required
-			continue
-		}
-
-		if m.Services[i] != nil {
-			if err := m.Services[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("services" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 func (m *TeamEntity) validateUpdatedAt(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
@@ -142,6 +79,11 @@ func (m *TeamEntity) validateUpdatedAt(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this team entity based on context it is used
+func (m *TeamEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

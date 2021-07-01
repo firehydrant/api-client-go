@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // PostV1ChangesChangeIDIdentities Create an identity for this change
+//
 // swagger:model postV1ChangesChangeIdIdentities
 type PostV1ChangesChangeIDIdentities struct {
 
@@ -59,6 +61,11 @@ func (m *PostV1ChangesChangeIDIdentities) validateValue(formats strfmt.Registry)
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this post v1 changes change Id identities based on context it is used
+func (m *PostV1ChangesChangeIDIdentities) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

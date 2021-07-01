@@ -6,14 +6,19 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // PatchV1Incidents Update an incident
+//
 // swagger:model patchV1Incidents
 type PatchV1Incidents struct {
+
+	// customer impact summary
+	CustomerImpactSummary string `json:"customer_impact_summary,omitempty"`
 
 	// description
 	Description string `json:"description,omitempty"`
@@ -24,12 +29,26 @@ type PatchV1Incidents struct {
 	// severity
 	Severity string `json:"severity,omitempty"`
 
+	// severity condition id
+	SeverityConditionID string `json:"severity_condition_id,omitempty"`
+
+	// severity impact id
+	SeverityImpactID string `json:"severity_impact_id,omitempty"`
+
 	// summary
 	Summary string `json:"summary,omitempty"`
+
+	// List of tags for the incident
+	TagList []string `json:"tag_list"`
 }
 
 // Validate validates this patch v1 incidents
 func (m *PatchV1Incidents) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this patch v1 incidents based on context it is used
+func (m *PatchV1Incidents) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

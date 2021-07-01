@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // DeleteV1ChangesChangeIDIdentitiesIdentityIDReader is a Reader for the DeleteV1ChangesChangeIDIdentitiesIdentityID structure.
@@ -24,23 +23,20 @@ type DeleteV1ChangesChangeIDIdentitiesIdentityIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewDeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -49,7 +45,7 @@ func NewDeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent() *DeleteV1ChangesC
 	return &DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent{}
 }
 
-/*DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent handles this case with default header values.
+/* DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent describes a response with status code 204, with default header values.
 
 Delete an identity
 */
@@ -70,7 +66,7 @@ func NewDeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest() *DeleteV1Changes
 	return &DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest{}
 }
 
-/*DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest handles this case with default header values.
+/* DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -80,6 +76,9 @@ type DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest struct {
 
 func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /v1/changes/{change_id}/identities/{identity_id}][%d] deleteV1ChangesChangeIdIdentitiesIdentityIdBadRequest  %+v", 400, o.Payload)
+}
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) GetPayload() *models.ErrorEntity {
+	return o.Payload
 }
 
 func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

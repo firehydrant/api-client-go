@@ -6,14 +6,16 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // PostV1Environments Creates an environment
+//
 // swagger:model postV1Environments
 type PostV1Environments struct {
 
@@ -45,6 +47,11 @@ func (m *PostV1Environments) validateName(formats strfmt.Registry) error {
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this post v1 environments based on context it is used
+func (m *PostV1Environments) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

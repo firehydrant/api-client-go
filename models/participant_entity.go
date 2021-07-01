@@ -6,12 +6,14 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // ParticipantEntity Add a participant to the post mortem report
+//
 // swagger:model ParticipantEntity
 type ParticipantEntity struct {
 
@@ -27,6 +29,11 @@ type ParticipantEntity struct {
 
 // Validate validates this participant entity
 func (m *ParticipantEntity) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this participant entity based on context it is used
+func (m *ParticipantEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

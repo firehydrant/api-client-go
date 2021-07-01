@@ -13,64 +13,78 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
-// NewPostV1PostMortemsReportsReportIDParticipantsParams creates a new PostV1PostMortemsReportsReportIDParticipantsParams object
-// with the default values initialized.
+// NewPostV1PostMortemsReportsReportIDParticipantsParams creates a new PostV1PostMortemsReportsReportIDParticipantsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostV1PostMortemsReportsReportIDParticipantsParams() *PostV1PostMortemsReportsReportIDParticipantsParams {
-	var ()
 	return &PostV1PostMortemsReportsReportIDParticipantsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostV1PostMortemsReportsReportIDParticipantsParamsWithTimeout creates a new PostV1PostMortemsReportsReportIDParticipantsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostV1PostMortemsReportsReportIDParticipantsParamsWithTimeout(timeout time.Duration) *PostV1PostMortemsReportsReportIDParticipantsParams {
-	var ()
 	return &PostV1PostMortemsReportsReportIDParticipantsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostV1PostMortemsReportsReportIDParticipantsParamsWithContext creates a new PostV1PostMortemsReportsReportIDParticipantsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostV1PostMortemsReportsReportIDParticipantsParamsWithContext(ctx context.Context) *PostV1PostMortemsReportsReportIDParticipantsParams {
-	var ()
 	return &PostV1PostMortemsReportsReportIDParticipantsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostV1PostMortemsReportsReportIDParticipantsParamsWithHTTPClient creates a new PostV1PostMortemsReportsReportIDParticipantsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostV1PostMortemsReportsReportIDParticipantsParamsWithHTTPClient(client *http.Client) *PostV1PostMortemsReportsReportIDParticipantsParams {
-	var ()
 	return &PostV1PostMortemsReportsReportIDParticipantsParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostV1PostMortemsReportsReportIDParticipantsParams contains all the parameters to send to the API endpoint
-for the post v1 post mortems reports report Id participants operation typically these are written to a http.Request
+/* PostV1PostMortemsReportsReportIDParticipantsParams contains all the parameters to send to the API endpoint
+   for the post v1 post mortems reports report Id participants operation.
+
+   Typically these are written to a http.Request.
 */
 type PostV1PostMortemsReportsReportIDParticipantsParams struct {
 
-	/*V1PostMortemsReportsReportIDParticipants*/
+	// V1PostMortemsReportsReportIDParticipants.
 	V1PostMortemsReportsReportIDParticipants *models.PostV1PostMortemsReportsReportIDParticipants
-	/*ReportID*/
+
+	// ReportID.
 	ReportID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post v1 post mortems reports report Id participants params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1PostMortemsReportsReportIDParticipantsParams) WithDefaults() *PostV1PostMortemsReportsReportIDParticipantsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post v1 post mortems reports report Id participants params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1PostMortemsReportsReportIDParticipantsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post v1 post mortems reports report Id participants params
@@ -135,7 +149,6 @@ func (o *PostV1PostMortemsReportsReportIDParticipantsParams) WriteToRequest(r ru
 		return err
 	}
 	var res []error
-
 	if o.V1PostMortemsReportsReportIDParticipants != nil {
 		if err := r.SetBodyParam(o.V1PostMortemsReportsReportIDParticipants); err != nil {
 			return err

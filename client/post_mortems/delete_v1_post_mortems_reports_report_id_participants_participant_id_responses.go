@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDReader is a Reader for the DeleteV1PostMortemsReportsReportIDParticipantsParticipantID structure.
@@ -24,23 +23,20 @@ type DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 204:
 		result := NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -49,7 +45,7 @@ func NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent() *
 	return &DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent{}
 }
 
-/*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent handles this case with default header values.
+/* DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent describes a response with status code 204, with default header values.
 
 Remove a participant from a post mortem report
 */
@@ -70,7 +66,7 @@ func NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDBadRequest() 
 	return &DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDBadRequest{}
 }
 
-/*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDBadRequest handles this case with default header values.
+/* DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -80,6 +76,9 @@ type DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDBadRequest struc
 
 func (o *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/participants/{participant_id}][%d] deleteV1PostMortemsReportsReportIdParticipantsParticipantIdBadRequest  %+v", 400, o.Payload)
+}
+func (o *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDBadRequest) GetPayload() *models.ErrorEntity {
+	return o.Payload
 }
 
 func (o *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

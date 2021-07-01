@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PostV1PostMortemsReportsReportIDReasonsReader is a Reader for the PostV1PostMortemsReportsReportIDReasons structure.
@@ -24,23 +23,20 @@ type PostV1PostMortemsReportsReportIDReasonsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostV1PostMortemsReportsReportIDReasonsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewPostV1PostMortemsReportsReportIDReasonsCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewPostV1PostMortemsReportsReportIDReasonsBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -49,7 +45,7 @@ func NewPostV1PostMortemsReportsReportIDReasonsCreated() *PostV1PostMortemsRepor
 	return &PostV1PostMortemsReportsReportIDReasonsCreated{}
 }
 
-/*PostV1PostMortemsReportsReportIDReasonsCreated handles this case with default header values.
+/* PostV1PostMortemsReportsReportIDReasonsCreated describes a response with status code 201, with default header values.
 
 Add a post mortem reason to the report
 */
@@ -59,6 +55,9 @@ type PostV1PostMortemsReportsReportIDReasonsCreated struct {
 
 func (o *PostV1PostMortemsReportsReportIDReasonsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/reasons][%d] postV1PostMortemsReportsReportIdReasonsCreated  %+v", 201, o.Payload)
+}
+func (o *PostV1PostMortemsReportsReportIDReasonsCreated) GetPayload() *models.ReasonEntity {
+	return o.Payload
 }
 
 func (o *PostV1PostMortemsReportsReportIDReasonsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -78,7 +77,7 @@ func NewPostV1PostMortemsReportsReportIDReasonsBadRequest() *PostV1PostMortemsRe
 	return &PostV1PostMortemsReportsReportIDReasonsBadRequest{}
 }
 
-/*PostV1PostMortemsReportsReportIDReasonsBadRequest handles this case with default header values.
+/* PostV1PostMortemsReportsReportIDReasonsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -88,6 +87,9 @@ type PostV1PostMortemsReportsReportIDReasonsBadRequest struct {
 
 func (o *PostV1PostMortemsReportsReportIDReasonsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/reasons][%d] postV1PostMortemsReportsReportIdReasonsBadRequest  %+v", 400, o.Payload)
+}
+func (o *PostV1PostMortemsReportsReportIDReasonsBadRequest) GetPayload() *models.ErrorEntity {
+	return o.Payload
 }
 
 func (o *PostV1PostMortemsReportsReportIDReasonsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

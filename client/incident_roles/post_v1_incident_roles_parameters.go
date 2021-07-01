@@ -13,62 +13,75 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
-// NewPostV1IncidentRolesParams creates a new PostV1IncidentRolesParams object
-// with the default values initialized.
+// NewPostV1IncidentRolesParams creates a new PostV1IncidentRolesParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPostV1IncidentRolesParams() *PostV1IncidentRolesParams {
-	var ()
 	return &PostV1IncidentRolesParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPostV1IncidentRolesParamsWithTimeout creates a new PostV1IncidentRolesParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPostV1IncidentRolesParamsWithTimeout(timeout time.Duration) *PostV1IncidentRolesParams {
-	var ()
 	return &PostV1IncidentRolesParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPostV1IncidentRolesParamsWithContext creates a new PostV1IncidentRolesParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPostV1IncidentRolesParamsWithContext(ctx context.Context) *PostV1IncidentRolesParams {
-	var ()
 	return &PostV1IncidentRolesParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPostV1IncidentRolesParamsWithHTTPClient creates a new PostV1IncidentRolesParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPostV1IncidentRolesParamsWithHTTPClient(client *http.Client) *PostV1IncidentRolesParams {
-	var ()
 	return &PostV1IncidentRolesParams{
 		HTTPClient: client,
 	}
 }
 
-/*PostV1IncidentRolesParams contains all the parameters to send to the API endpoint
-for the post v1 incident roles operation typically these are written to a http.Request
+/* PostV1IncidentRolesParams contains all the parameters to send to the API endpoint
+   for the post v1 incident roles operation.
+
+   Typically these are written to a http.Request.
 */
 type PostV1IncidentRolesParams struct {
 
-	/*V1IncidentRoles*/
+	// V1IncidentRoles.
 	V1IncidentRoles *models.PostV1IncidentRoles
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the post v1 incident roles params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1IncidentRolesParams) WithDefaults() *PostV1IncidentRolesParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the post v1 incident roles params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PostV1IncidentRolesParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the post v1 incident roles params
@@ -122,7 +135,6 @@ func (o *PostV1IncidentRolesParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-
 	if o.V1IncidentRoles != nil {
 		if err := r.SetBodyParam(o.V1IncidentRoles); err != nil {
 			return err

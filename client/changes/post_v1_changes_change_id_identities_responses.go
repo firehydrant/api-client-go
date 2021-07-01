@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PostV1ChangesChangeIDIdentitiesReader is a Reader for the PostV1ChangesChangeIDIdentities structure.
@@ -24,23 +23,20 @@ type PostV1ChangesChangeIDIdentitiesReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PostV1ChangesChangeIDIdentitiesReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 201:
 		result := NewPostV1ChangesChangeIDIdentitiesCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	case 400:
 		result := NewPostV1ChangesChangeIDIdentitiesBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return nil, result
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -49,7 +45,7 @@ func NewPostV1ChangesChangeIDIdentitiesCreated() *PostV1ChangesChangeIDIdentitie
 	return &PostV1ChangesChangeIDIdentitiesCreated{}
 }
 
-/*PostV1ChangesChangeIDIdentitiesCreated handles this case with default header values.
+/* PostV1ChangesChangeIDIdentitiesCreated describes a response with status code 201, with default header values.
 
 Create an identity for this change
 */
@@ -59,6 +55,9 @@ type PostV1ChangesChangeIDIdentitiesCreated struct {
 
 func (o *PostV1ChangesChangeIDIdentitiesCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/changes/{change_id}/identities][%d] postV1ChangesChangeIdIdentitiesCreated  %+v", 201, o.Payload)
+}
+func (o *PostV1ChangesChangeIDIdentitiesCreated) GetPayload() *models.ChangeIdentityEntity {
+	return o.Payload
 }
 
 func (o *PostV1ChangesChangeIDIdentitiesCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -78,7 +77,7 @@ func NewPostV1ChangesChangeIDIdentitiesBadRequest() *PostV1ChangesChangeIDIdenti
 	return &PostV1ChangesChangeIDIdentitiesBadRequest{}
 }
 
-/*PostV1ChangesChangeIDIdentitiesBadRequest handles this case with default header values.
+/* PostV1ChangesChangeIDIdentitiesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -88,6 +87,9 @@ type PostV1ChangesChangeIDIdentitiesBadRequest struct {
 
 func (o *PostV1ChangesChangeIDIdentitiesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/changes/{change_id}/identities][%d] postV1ChangesChangeIdIdentitiesBadRequest  %+v", 400, o.Payload)
+}
+func (o *PostV1ChangesChangeIDIdentitiesBadRequest) GetPayload() *models.ErrorEntity {
+	return o.Payload
 }
 
 func (o *PostV1ChangesChangeIDIdentitiesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

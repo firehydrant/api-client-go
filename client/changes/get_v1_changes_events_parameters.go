@@ -13,93 +13,125 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewGetV1ChangesEventsParams creates a new GetV1ChangesEventsParams object
-// with the default values initialized.
+// NewGetV1ChangesEventsParams creates a new GetV1ChangesEventsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewGetV1ChangesEventsParams() *GetV1ChangesEventsParams {
-	var ()
 	return &GetV1ChangesEventsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewGetV1ChangesEventsParamsWithTimeout creates a new GetV1ChangesEventsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewGetV1ChangesEventsParamsWithTimeout(timeout time.Duration) *GetV1ChangesEventsParams {
-	var ()
 	return &GetV1ChangesEventsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewGetV1ChangesEventsParamsWithContext creates a new GetV1ChangesEventsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewGetV1ChangesEventsParamsWithContext(ctx context.Context) *GetV1ChangesEventsParams {
-	var ()
 	return &GetV1ChangesEventsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewGetV1ChangesEventsParamsWithHTTPClient creates a new GetV1ChangesEventsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewGetV1ChangesEventsParamsWithHTTPClient(client *http.Client) *GetV1ChangesEventsParams {
-	var ()
 	return &GetV1ChangesEventsParams{
 		HTTPClient: client,
 	}
 }
 
-/*GetV1ChangesEventsParams contains all the parameters to send to the API endpoint
-for the get v1 changes events operation typically these are written to a http.Request
+/* GetV1ChangesEventsParams contains all the parameters to send to the API endpoint
+   for the get v1 changes events operation.
+
+   Typically these are written to a http.Request.
 */
 type GetV1ChangesEventsParams struct {
 
-	/*EndsAt
-	  The end time to return change events up to
+	/* EndsAt.
 
+	   The end time to return change events up to
+
+	   Format: date-time
 	*/
 	EndsAt *strfmt.DateTime
-	/*Environments
-	  A comma separated list of environment IDs
 
+	/* Environments.
+
+	   A comma separated list of environment IDs
 	*/
 	Environments *string
-	/*Labels
-	  A comma separated list of label key / values in the format of "key=value,key2=value2". To filter change events that have a key (with no specific value), omit the value
 
+	/* Labels.
+
+	   A comma separated list of label key / values in the format of "key=value,key2=value2". To filter change events that have a key (with no specific value), omit the value
 	*/
 	Labels *string
-	/*Page*/
-	Page *int32
-	/*PerPage*/
-	PerPage *int32
-	/*Query
-	  A text query for change events
 
+	// Page.
+	//
+	// Format: int32
+	Page *int32
+
+	// PerPage.
+	//
+	// Format: int32
+	PerPage *int32
+
+	/* Query.
+
+	   A text query for change events
 	*/
 	Query *string
-	/*Services
-	  A comma separated list of service IDs
 
+	/* SavedSearchID.
+
+	   The id of a previously saved search.
+	*/
+	SavedSearchID *string
+
+	/* Services.
+
+	   A comma separated list of service IDs
 	*/
 	Services *string
-	/*StartsAt
-	  The start time to start returning change events from
 
+	/* StartsAt.
+
+	   The start time to start returning change events from
 	*/
-	StartsAt *strfmt.DateTime
+	StartsAt *string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the get v1 changes events params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1ChangesEventsParams) WithDefaults() *GetV1ChangesEventsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the get v1 changes events params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *GetV1ChangesEventsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the get v1 changes events params
@@ -201,6 +233,17 @@ func (o *GetV1ChangesEventsParams) SetQuery(query *string) {
 	o.Query = query
 }
 
+// WithSavedSearchID adds the savedSearchID to the get v1 changes events params
+func (o *GetV1ChangesEventsParams) WithSavedSearchID(savedSearchID *string) *GetV1ChangesEventsParams {
+	o.SetSavedSearchID(savedSearchID)
+	return o
+}
+
+// SetSavedSearchID adds the savedSearchId to the get v1 changes events params
+func (o *GetV1ChangesEventsParams) SetSavedSearchID(savedSearchID *string) {
+	o.SavedSearchID = savedSearchID
+}
+
 // WithServices adds the services to the get v1 changes events params
 func (o *GetV1ChangesEventsParams) WithServices(services *string) *GetV1ChangesEventsParams {
 	o.SetServices(services)
@@ -213,13 +256,13 @@ func (o *GetV1ChangesEventsParams) SetServices(services *string) {
 }
 
 // WithStartsAt adds the startsAt to the get v1 changes events params
-func (o *GetV1ChangesEventsParams) WithStartsAt(startsAt *strfmt.DateTime) *GetV1ChangesEventsParams {
+func (o *GetV1ChangesEventsParams) WithStartsAt(startsAt *string) *GetV1ChangesEventsParams {
 	o.SetStartsAt(startsAt)
 	return o
 }
 
 // SetStartsAt adds the startsAt to the get v1 changes events params
-func (o *GetV1ChangesEventsParams) SetStartsAt(startsAt *strfmt.DateTime) {
+func (o *GetV1ChangesEventsParams) SetStartsAt(startsAt *string) {
 	o.StartsAt = startsAt
 }
 
@@ -235,128 +278,153 @@ func (o *GetV1ChangesEventsParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 		// query param ends_at
 		var qrEndsAt strfmt.DateTime
+
 		if o.EndsAt != nil {
 			qrEndsAt = *o.EndsAt
 		}
 		qEndsAt := qrEndsAt.String()
 		if qEndsAt != "" {
+
 			if err := r.SetQueryParam("ends_at", qEndsAt); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Environments != nil {
 
 		// query param environments
 		var qrEnvironments string
+
 		if o.Environments != nil {
 			qrEnvironments = *o.Environments
 		}
 		qEnvironments := qrEnvironments
 		if qEnvironments != "" {
+
 			if err := r.SetQueryParam("environments", qEnvironments); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Labels != nil {
 
 		// query param labels
 		var qrLabels string
+
 		if o.Labels != nil {
 			qrLabels = *o.Labels
 		}
 		qLabels := qrLabels
 		if qLabels != "" {
+
 			if err := r.SetQueryParam("labels", qLabels); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Page != nil {
 
 		// query param page
 		var qrPage int32
+
 		if o.Page != nil {
 			qrPage = *o.Page
 		}
 		qPage := swag.FormatInt32(qrPage)
 		if qPage != "" {
+
 			if err := r.SetQueryParam("page", qPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.PerPage != nil {
 
 		// query param per_page
 		var qrPerPage int32
+
 		if o.PerPage != nil {
 			qrPerPage = *o.PerPage
 		}
 		qPerPage := swag.FormatInt32(qrPerPage)
 		if qPerPage != "" {
+
 			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.Query != nil {
 
 		// query param query
 		var qrQuery string
+
 		if o.Query != nil {
 			qrQuery = *o.Query
 		}
 		qQuery := qrQuery
 		if qQuery != "" {
+
 			if err := r.SetQueryParam("query", qQuery); err != nil {
 				return err
 			}
 		}
+	}
 
+	if o.SavedSearchID != nil {
+
+		// query param saved_search_id
+		var qrSavedSearchID string
+
+		if o.SavedSearchID != nil {
+			qrSavedSearchID = *o.SavedSearchID
+		}
+		qSavedSearchID := qrSavedSearchID
+		if qSavedSearchID != "" {
+
+			if err := r.SetQueryParam("saved_search_id", qSavedSearchID); err != nil {
+				return err
+			}
+		}
 	}
 
 	if o.Services != nil {
 
 		// query param services
 		var qrServices string
+
 		if o.Services != nil {
 			qrServices = *o.Services
 		}
 		qServices := qrServices
 		if qServices != "" {
+
 			if err := r.SetQueryParam("services", qServices); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if o.StartsAt != nil {
 
 		// query param starts_at
-		var qrStartsAt strfmt.DateTime
+		var qrStartsAt string
+
 		if o.StartsAt != nil {
 			qrStartsAt = *o.StartsAt
 		}
-		qStartsAt := qrStartsAt.String()
+		qStartsAt := qrStartsAt
 		if qStartsAt != "" {
+
 			if err := r.SetQueryParam("starts_at", qStartsAt); err != nil {
 				return err
 			}
 		}
-
 	}
 
 	if len(res) > 0 {

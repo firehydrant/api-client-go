@@ -6,13 +6,14 @@ package post_mortems
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-openapi/runtime"
+	"fmt"
 
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new post mortems API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,990 +25,1344 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
+// ClientService is the interface for Client methods
+type ClientService interface {
+	DeleteV1PostMortemsReportsReportIDActionItemsActionItemID(params *DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDNoContent, error)
+
+	DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID(params *DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDOK, error)
+
+	DeleteV1PostMortemsReportsReportIDEventsReportEventID(params *DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK, error)
+
+	DeleteV1PostMortemsReportsReportIDParticipantsParticipantID(params *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent, error)
+
+	DeleteV1PostMortemsReportsReportIDReasonsReasonID(params *DeleteV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent, error)
+
+	DeleteV1PostMortemsReportsReportIDTags(params *DeleteV1PostMortemsReportsReportIDTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDTagsNoContent, error)
+
+	GetV1PostMortemsQuestions(params *GetV1PostMortemsQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsQuestionsOK, error)
+
+	GetV1PostMortemsReports(params *GetV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsOK, error)
+
+	GetV1PostMortemsReportsReportID(params *GetV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDOK, error)
+
+	GetV1PostMortemsReportsReportIDActionItems(params *GetV1PostMortemsReportsReportIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDActionItemsOK, error)
+
+	GetV1PostMortemsReportsReportIDEvents(params *GetV1PostMortemsReportsReportIDEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDEventsOK, error)
+
+	GetV1PostMortemsReportsReportIDIncidentEvents(params *GetV1PostMortemsReportsReportIDIncidentEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDIncidentEventsOK, error)
+
+	GetV1PostMortemsReportsReportIDParticipants(params *GetV1PostMortemsReportsReportIDParticipantsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDParticipantsOK, error)
+
+	GetV1PostMortemsReportsReportIDParticipantsSearch(params *GetV1PostMortemsReportsReportIDParticipantsSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDParticipantsSearchOK, error)
+
+	GetV1PostMortemsReportsReportIDReasons(params *GetV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDReasonsOK, error)
+
+	GetV1PostMortemsTags(params *GetV1PostMortemsTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsTagsOK, error)
+
+	PatchV1PostMortemsReportsReportID(params *PatchV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDOK, error)
+
+	PatchV1PostMortemsReportsReportIDActionItemsActionItemID(params *PatchV1PostMortemsReportsReportIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK, error)
+
+	PatchV1PostMortemsReportsReportIDEventsNotesNoteID(params *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK, error)
+
+	PatchV1PostMortemsReportsReportIDEventsReportEventID(params *PatchV1PostMortemsReportsReportIDEventsReportEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDEventsReportEventIDOK, error)
+
+	PatchV1PostMortemsReportsReportIDFieldsFieldID(params *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDFieldsFieldIDOK, error)
+
+	PatchV1PostMortemsReportsReportIDReasonsReasonID(params *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDReasonsReasonIDOK, error)
+
+	PostV1PostMortemsReports(params *PostV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsCreated, error)
+
+	PostV1PostMortemsReportsReportIDActionItems(params *PostV1PostMortemsReportsReportIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDActionItemsCreated, error)
+
+	PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID(params *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated, error)
+
+	PostV1PostMortemsReportsReportIDEventsNotes(params *PostV1PostMortemsReportsReportIDEventsNotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDEventsNotesCreated, error)
+
+	PostV1PostMortemsReportsReportIDParticipants(params *PostV1PostMortemsReportsReportIDParticipantsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDParticipantsCreated, error)
+
+	PostV1PostMortemsReportsReportIDPublish(params *PostV1PostMortemsReportsReportIDPublishParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDPublishCreated, error)
+
+	PostV1PostMortemsReportsReportIDReasons(params *PostV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDReasonsCreated, error)
+
+	PutV1PostMortemsQuestions(params *PutV1PostMortemsQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsQuestionsOK, error)
+
+	PutV1PostMortemsReportsReportIDReasonsOrder(params *PutV1PostMortemsReportsReportIDReasonsOrderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsReportsReportIDReasonsOrderOK, error)
+
+	PutV1PostMortemsReportsReportIDTags(params *PutV1PostMortemsReportsReportIDTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsReportsReportIDTagsNoContent, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-DeleteV1PostMortemsReportsReportIDActionItemsActionItemID Delete an action item
+  DeleteV1PostMortemsReportsReportIDActionItemsActionItemID Delete an action item
 */
-func (a *Client) DeleteV1PostMortemsReportsReportIDActionItemsActionItemID(params *DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDNoContent, error) {
+func (a *Client) DeleteV1PostMortemsReportsReportIDActionItemsActionItemID(params *DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteV1PostMortemsReportsReportIDActionItemsActionItemIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteV1PostMortemsReportsReportIdActionItemsActionItemId",
 		Method:             "DELETE",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/action_items/{action_item_id}",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDNoContent), nil
-
+	success, ok := result.(*DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1PostMortemsReportsReportIdActionItemsActionItemId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID Remove an event on the report timeline by an incident event ID
+  DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID deletes a report event
+
+  Delete a report event by its incident ID
 */
-func (a *Client) DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID(params *DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDNoContent, error) {
+func (a *Client) DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID(params *DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteV1PostMortemsReportsReportIdEventsFromIncidentIncidentEventId",
 		Method:             "DELETE",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/events/from_incident/{incident_event_id}",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDNoContent), nil
-
+	success, ok := result.(*DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1PostMortemsReportsReportIdEventsFromIncidentIncidentEventId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-DeleteV1PostMortemsReportsReportIDEventsReportEventID Remove an event on the report timeline by its ID
+  DeleteV1PostMortemsReportsReportIDEventsReportEventID deletes a report event
+
+  Deletes an event by ID
 */
-func (a *Client) DeleteV1PostMortemsReportsReportIDEventsReportEventID(params *DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteV1PostMortemsReportsReportIDEventsReportEventIDNoContent, error) {
+func (a *Client) DeleteV1PostMortemsReportsReportIDEventsReportEventID(params *DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteV1PostMortemsReportsReportIdEventsReportEventId",
 		Method:             "DELETE",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/events/{report_event_id}",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &DeleteV1PostMortemsReportsReportIDEventsReportEventIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteV1PostMortemsReportsReportIDEventsReportEventIDNoContent), nil
-
+	success, ok := result.(*DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1PostMortemsReportsReportIdEventsReportEventId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-DeleteV1PostMortemsReportsReportIDParticipantsParticipantID Remove a participant from a post mortem report
+  DeleteV1PostMortemsReportsReportIDParticipantsParticipantID Remove a participant from a post mortem report
 */
-func (a *Client) DeleteV1PostMortemsReportsReportIDParticipantsParticipantID(params *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent, error) {
+func (a *Client) DeleteV1PostMortemsReportsReportIDParticipantsParticipantID(params *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteV1PostMortemsReportsReportIdParticipantsParticipantId",
 		Method:             "DELETE",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/participants/{participant_id}",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent), nil
-
+	success, ok := result.(*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1PostMortemsReportsReportIdParticipantsParticipantId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-DeleteV1PostMortemsReportsReportIDReasonsReasonID Deletes a reason from a report
+  DeleteV1PostMortemsReportsReportIDReasonsReasonID Deletes a reason from a report
 */
-func (a *Client) DeleteV1PostMortemsReportsReportIDReasonsReasonID(params *DeleteV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent, error) {
+func (a *Client) DeleteV1PostMortemsReportsReportIDReasonsReasonID(params *DeleteV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteV1PostMortemsReportsReportIDReasonsReasonIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteV1PostMortemsReportsReportIdReasonsReasonId",
 		Method:             "DELETE",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons/{reason_id}",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &DeleteV1PostMortemsReportsReportIDReasonsReasonIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent), nil
-
+	success, ok := result.(*DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1PostMortemsReportsReportIdReasonsReasonId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-DeleteV1PostMortemsReportsReportIDRelatedChangesRelatedChangeID Delete a related change from the post mortem report
+  DeleteV1PostMortemsReportsReportIDTags Remove tags from a report
 */
-func (a *Client) DeleteV1PostMortemsReportsReportIDRelatedChangesRelatedChangeID(params *DeleteV1PostMortemsReportsReportIDRelatedChangesRelatedChangeIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteV1PostMortemsReportsReportIDRelatedChangesRelatedChangeIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1PostMortemsReportsReportIDRelatedChangesRelatedChangeIDParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "deleteV1PostMortemsReportsReportIdRelatedChangesRelatedChangeId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/related_changes/{related_change_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &DeleteV1PostMortemsReportsReportIDRelatedChangesRelatedChangeIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*DeleteV1PostMortemsReportsReportIDRelatedChangesRelatedChangeIDNoContent), nil
-
-}
-
-/*
-DeleteV1PostMortemsReportsReportIDTags Remove tags from a report
-*/
-func (a *Client) DeleteV1PostMortemsReportsReportIDTags(params *DeleteV1PostMortemsReportsReportIDTagsParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteV1PostMortemsReportsReportIDTagsNoContent, error) {
+func (a *Client) DeleteV1PostMortemsReportsReportIDTags(params *DeleteV1PostMortemsReportsReportIDTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDTagsNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteV1PostMortemsReportsReportIDTagsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteV1PostMortemsReportsReportIdTags",
 		Method:             "DELETE",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/tags",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &DeleteV1PostMortemsReportsReportIDTagsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteV1PostMortemsReportsReportIDTagsNoContent), nil
-
+	success, ok := result.(*DeleteV1PostMortemsReportsReportIDTagsNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1PostMortemsReportsReportIdTags: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1PostMortemsReports Retrieve post mortem reports
+  GetV1PostMortemsQuestions lists incident retrospective questions
+
+  List the questions configured to be provided and filled out on each retrospective report.
 */
-func (a *Client) GetV1PostMortemsReports(params *GetV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsReportsOK, error) {
+func (a *Client) GetV1PostMortemsQuestions(params *GetV1PostMortemsQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsQuestionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1PostMortemsQuestionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1PostMortemsQuestions",
+		Method:             "GET",
+		PathPattern:        "/v1/post_mortems/questions",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1PostMortemsQuestionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1PostMortemsQuestionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsQuestions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetV1PostMortemsReports Retrieve post mortem reports
+*/
+func (a *Client) GetV1PostMortemsReports(params *GetV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1PostMortemsReportsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1PostMortemsReports",
 		Method:             "GET",
 		PathPattern:        "/v1/post_mortems/reports",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1PostMortemsReportsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1PostMortemsReportsOK), nil
-
+	success, ok := result.(*GetV1PostMortemsReportsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsReports: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1PostMortemsReportsReportID Retrieve a single post mortem report
+  GetV1PostMortemsReportsReportID Retrieve a single post mortem report
 */
-func (a *Client) GetV1PostMortemsReportsReportID(params *GetV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsReportsReportIDOK, error) {
+func (a *Client) GetV1PostMortemsReportsReportID(params *GetV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1PostMortemsReportsReportIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1PostMortemsReportsReportId",
 		Method:             "GET",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1PostMortemsReportsReportIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1PostMortemsReportsReportIDOK), nil
-
+	success, ok := result.(*GetV1PostMortemsReportsReportIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsReportsReportId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1PostMortemsReportsReportIDActionItems List action items for a repo
+  GetV1PostMortemsReportsReportIDActionItems List action items for a repo
 */
-func (a *Client) GetV1PostMortemsReportsReportIDActionItems(params *GetV1PostMortemsReportsReportIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsReportsReportIDActionItemsOK, error) {
+func (a *Client) GetV1PostMortemsReportsReportIDActionItems(params *GetV1PostMortemsReportsReportIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDActionItemsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1PostMortemsReportsReportIDActionItemsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1PostMortemsReportsReportIdActionItems",
 		Method:             "GET",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/action_items",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1PostMortemsReportsReportIDActionItemsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1PostMortemsReportsReportIDActionItemsOK), nil
-
+	success, ok := result.(*GetV1PostMortemsReportsReportIDActionItemsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsReportsReportIdActionItems: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1PostMortemsReportsReportIDEvents Retrieve report events
+  GetV1PostMortemsReportsReportIDEvents lists report events
+
+  Get all report events
 */
-func (a *Client) GetV1PostMortemsReportsReportIDEvents(params *GetV1PostMortemsReportsReportIDEventsParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsReportsReportIDEventsOK, error) {
+func (a *Client) GetV1PostMortemsReportsReportIDEvents(params *GetV1PostMortemsReportsReportIDEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDEventsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1PostMortemsReportsReportIDEventsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1PostMortemsReportsReportIdEvents",
 		Method:             "GET",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/events",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1PostMortemsReportsReportIDEventsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1PostMortemsReportsReportIDEventsOK), nil
-
+	success, ok := result.(*GetV1PostMortemsReportsReportIDEventsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsReportsReportIdEvents: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1PostMortemsReportsReportIDIncidentEvents get v1 post mortems reports report Id incident events API
+  GetV1PostMortemsReportsReportIDIncidentEvents get v1 post mortems reports report Id incident events API
 */
-func (a *Client) GetV1PostMortemsReportsReportIDIncidentEvents(params *GetV1PostMortemsReportsReportIDIncidentEventsParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsReportsReportIDIncidentEventsOK, error) {
+func (a *Client) GetV1PostMortemsReportsReportIDIncidentEvents(params *GetV1PostMortemsReportsReportIDIncidentEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDIncidentEventsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1PostMortemsReportsReportIDIncidentEventsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1PostMortemsReportsReportIdIncidentEvents",
 		Method:             "GET",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/incident_events",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1PostMortemsReportsReportIDIncidentEventsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1PostMortemsReportsReportIDIncidentEventsOK), nil
-
+	success, ok := result.(*GetV1PostMortemsReportsReportIDIncidentEventsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsReportsReportIdIncidentEvents: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1PostMortemsReportsReportIDParticipants List participants for a post mortem report
+  GetV1PostMortemsReportsReportIDParticipants List participants for a post mortem report
 */
-func (a *Client) GetV1PostMortemsReportsReportIDParticipants(params *GetV1PostMortemsReportsReportIDParticipantsParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsReportsReportIDParticipantsOK, error) {
+func (a *Client) GetV1PostMortemsReportsReportIDParticipants(params *GetV1PostMortemsReportsReportIDParticipantsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDParticipantsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1PostMortemsReportsReportIDParticipantsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1PostMortemsReportsReportIdParticipants",
 		Method:             "GET",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/participants",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1PostMortemsReportsReportIDParticipantsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1PostMortemsReportsReportIDParticipantsOK), nil
-
+	success, ok := result.(*GetV1PostMortemsReportsReportIDParticipantsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsReportsReportIdParticipants: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1PostMortemsReportsReportIDParticipantsSearch List possible participants based on name, includes users and teams
+  GetV1PostMortemsReportsReportIDParticipantsSearch List possible participants based on name, includes users and teams
 */
-func (a *Client) GetV1PostMortemsReportsReportIDParticipantsSearch(params *GetV1PostMortemsReportsReportIDParticipantsSearchParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsReportsReportIDParticipantsSearchOK, error) {
+func (a *Client) GetV1PostMortemsReportsReportIDParticipantsSearch(params *GetV1PostMortemsReportsReportIDParticipantsSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDParticipantsSearchOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1PostMortemsReportsReportIDParticipantsSearchParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1PostMortemsReportsReportIdParticipantsSearch",
 		Method:             "GET",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/participants/search",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1PostMortemsReportsReportIDParticipantsSearchReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1PostMortemsReportsReportIDParticipantsSearchOK), nil
-
+	success, ok := result.(*GetV1PostMortemsReportsReportIDParticipantsSearchOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsReportsReportIdParticipantsSearch: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1PostMortemsReportsReportIDReasons Retrieve post mortem report reasons
+  GetV1PostMortemsReportsReportIDReasons Retrieve post mortem report reasons
 */
-func (a *Client) GetV1PostMortemsReportsReportIDReasons(params *GetV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsReportsReportIDReasonsOK, error) {
+func (a *Client) GetV1PostMortemsReportsReportIDReasons(params *GetV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDReasonsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1PostMortemsReportsReportIDReasonsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1PostMortemsReportsReportIdReasons",
 		Method:             "GET",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1PostMortemsReportsReportIDReasonsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1PostMortemsReportsReportIDReasonsOK), nil
-
+	success, ok := result.(*GetV1PostMortemsReportsReportIDReasonsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsReportsReportIdReasons: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1PostMortemsReportsReportIDRelatedChanges Retrieve all related changes for the report
+  GetV1PostMortemsTags List tags for post mortems
 */
-func (a *Client) GetV1PostMortemsReportsReportIDRelatedChanges(params *GetV1PostMortemsReportsReportIDRelatedChangesParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsReportsReportIDRelatedChangesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PostMortemsReportsReportIDRelatedChangesParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getV1PostMortemsReportsReportIdRelatedChanges",
-		Method:             "GET",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/related_changes",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &GetV1PostMortemsReportsReportIDRelatedChangesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetV1PostMortemsReportsReportIDRelatedChangesOK), nil
-
-}
-
-/*
-GetV1PostMortemsReportsReportIDSectionsReportStep Retrieve sections for a post mortem report
-*/
-func (a *Client) GetV1PostMortemsReportsReportIDSectionsReportStep(params *GetV1PostMortemsReportsReportIDSectionsReportStepParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsReportsReportIDSectionsReportStepOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PostMortemsReportsReportIDSectionsReportStepParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getV1PostMortemsReportsReportIdSectionsReportStep",
-		Method:             "GET",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/sections/{report_step}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &GetV1PostMortemsReportsReportIDSectionsReportStepReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetV1PostMortemsReportsReportIDSectionsReportStepOK), nil
-
-}
-
-/*
-GetV1PostMortemsTags List tags for post mortems
-*/
-func (a *Client) GetV1PostMortemsTags(params *GetV1PostMortemsTagsParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsTagsOK, error) {
+func (a *Client) GetV1PostMortemsTags(params *GetV1PostMortemsTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsTagsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1PostMortemsTagsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1PostMortemsTags",
 		Method:             "GET",
 		PathPattern:        "/v1/post_mortems/tags",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1PostMortemsTagsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1PostMortemsTagsOK), nil
-
+	success, ok := result.(*GetV1PostMortemsTagsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsTags: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1PostMortemsTemplates Retrieve post mortem templates
+  PatchV1PostMortemsReportsReportID Update a post mortem report
 */
-func (a *Client) GetV1PostMortemsTemplates(params *GetV1PostMortemsTemplatesParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1PostMortemsTemplatesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PostMortemsTemplatesParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "getV1PostMortemsTemplates",
-		Method:             "GET",
-		PathPattern:        "/v1/post_mortems/templates",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &GetV1PostMortemsTemplatesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetV1PostMortemsTemplatesOK), nil
-
-}
-
-/*
-PatchV1PostMortemsReportsReportID Update a post mortem report
-*/
-func (a *Client) PatchV1PostMortemsReportsReportID(params *PatchV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter) (*PatchV1PostMortemsReportsReportIDOK, error) {
+func (a *Client) PatchV1PostMortemsReportsReportID(params *PatchV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchV1PostMortemsReportsReportIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "patchV1PostMortemsReportsReportId",
 		Method:             "PATCH",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PatchV1PostMortemsReportsReportIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PatchV1PostMortemsReportsReportIDOK), nil
-
+	success, ok := result.(*PatchV1PostMortemsReportsReportIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1PostMortemsReportsReportId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PatchV1PostMortemsReportsReportIDActionItemsActionItemID Update an action item
+  PatchV1PostMortemsReportsReportIDActionItemsActionItemID Update an action item
 */
-func (a *Client) PatchV1PostMortemsReportsReportIDActionItemsActionItemID(params *PatchV1PostMortemsReportsReportIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter) (*PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK, error) {
+func (a *Client) PatchV1PostMortemsReportsReportIDActionItemsActionItemID(params *PatchV1PostMortemsReportsReportIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchV1PostMortemsReportsReportIDActionItemsActionItemIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "patchV1PostMortemsReportsReportIdActionItemsActionItemId",
 		Method:             "PATCH",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/action_items/{action_item_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PatchV1PostMortemsReportsReportIDActionItemsActionItemIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK), nil
-
+	success, ok := result.(*PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1PostMortemsReportsReportIdActionItemsActionItemId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PatchV1PostMortemsReportsReportIDEventsNotesNoteID Update a post mortem note
+  PatchV1PostMortemsReportsReportIDEventsNotesNoteID updates a report note
+
+  Updates the note body and time by ID
 */
-func (a *Client) PatchV1PostMortemsReportsReportIDEventsNotesNoteID(params *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDParams, authInfo runtime.ClientAuthInfoWriter) (*PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK, error) {
+func (a *Client) PatchV1PostMortemsReportsReportIDEventsNotesNoteID(params *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchV1PostMortemsReportsReportIDEventsNotesNoteIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "patchV1PostMortemsReportsReportIdEventsNotesNoteId",
 		Method:             "PATCH",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/events/notes/{note_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PatchV1PostMortemsReportsReportIDEventsNotesNoteIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK), nil
-
+	success, ok := result.(*PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1PostMortemsReportsReportIdEventsNotesNoteId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PatchV1PostMortemsReportsReportIDFieldsFieldID Update a field value on a post mortem report
+  PatchV1PostMortemsReportsReportIDEventsReportEventID updates a report event
+
+  Updates a report event to change its description
 */
-func (a *Client) PatchV1PostMortemsReportsReportIDFieldsFieldID(params *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter) (*PatchV1PostMortemsReportsReportIDFieldsFieldIDOK, error) {
+func (a *Client) PatchV1PostMortemsReportsReportIDEventsReportEventID(params *PatchV1PostMortemsReportsReportIDEventsReportEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDEventsReportEventIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1PostMortemsReportsReportIDEventsReportEventIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1PostMortemsReportsReportIdEventsReportEventId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/post_mortems/reports/{report_id}/events/{report_event_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1PostMortemsReportsReportIDEventsReportEventIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1PostMortemsReportsReportIDEventsReportEventIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1PostMortemsReportsReportIdEventsReportEventId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PatchV1PostMortemsReportsReportIDFieldsFieldID Update a field value on a post mortem report
+*/
+func (a *Client) PatchV1PostMortemsReportsReportIDFieldsFieldID(params *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDFieldsFieldIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchV1PostMortemsReportsReportIDFieldsFieldIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "patchV1PostMortemsReportsReportIdFieldsFieldId",
 		Method:             "PATCH",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/fields/{field_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PatchV1PostMortemsReportsReportIDFieldsFieldIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PatchV1PostMortemsReportsReportIDFieldsFieldIDOK), nil
-
+	success, ok := result.(*PatchV1PostMortemsReportsReportIDFieldsFieldIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1PostMortemsReportsReportIdFieldsFieldId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PatchV1PostMortemsReportsReportIDReasonsReasonID Updates a reason for a report
+  PatchV1PostMortemsReportsReportIDReasonsReasonID Updates a reason for a report
 */
-func (a *Client) PatchV1PostMortemsReportsReportIDReasonsReasonID(params *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter) (*PatchV1PostMortemsReportsReportIDReasonsReasonIDOK, error) {
+func (a *Client) PatchV1PostMortemsReportsReportIDReasonsReasonID(params *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDReasonsReasonIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchV1PostMortemsReportsReportIDReasonsReasonIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "patchV1PostMortemsReportsReportIdReasonsReasonId",
 		Method:             "PATCH",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons/{reason_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PatchV1PostMortemsReportsReportIDReasonsReasonIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PatchV1PostMortemsReportsReportIDReasonsReasonIDOK), nil
-
+	success, ok := result.(*PatchV1PostMortemsReportsReportIDReasonsReasonIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1PostMortemsReportsReportIdReasonsReasonId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PatchV1PostMortemsReportsReportIDRelatedChangesRelatedChangeID Update a related change object
+  PostV1PostMortemsReports Create a post mortem
 */
-func (a *Client) PatchV1PostMortemsReportsReportIDRelatedChangesRelatedChangeID(params *PatchV1PostMortemsReportsReportIDRelatedChangesRelatedChangeIDParams, authInfo runtime.ClientAuthInfoWriter) (*PatchV1PostMortemsReportsReportIDRelatedChangesRelatedChangeIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1PostMortemsReportsReportIDRelatedChangesRelatedChangeIDParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "patchV1PostMortemsReportsReportIdRelatedChangesRelatedChangeId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/related_changes/{related_change_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &PatchV1PostMortemsReportsReportIDRelatedChangesRelatedChangeIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*PatchV1PostMortemsReportsReportIDRelatedChangesRelatedChangeIDOK), nil
-
-}
-
-/*
-PostV1PostMortemsReports Create a post mortem
-*/
-func (a *Client) PostV1PostMortemsReports(params *PostV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter) (*PostV1PostMortemsReportsCreated, error) {
+func (a *Client) PostV1PostMortemsReports(params *PostV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostV1PostMortemsReportsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "postV1PostMortemsReports",
 		Method:             "POST",
 		PathPattern:        "/v1/post_mortems/reports",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PostV1PostMortemsReportsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostV1PostMortemsReportsCreated), nil
-
+	success, ok := result.(*PostV1PostMortemsReportsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1PostMortemsReports: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PostV1PostMortemsReportsReportIDActionItems Create an action item on a report
+  PostV1PostMortemsReportsReportIDActionItems Create an action item on a report
 */
-func (a *Client) PostV1PostMortemsReportsReportIDActionItems(params *PostV1PostMortemsReportsReportIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter) (*PostV1PostMortemsReportsReportIDActionItemsCreated, error) {
+func (a *Client) PostV1PostMortemsReportsReportIDActionItems(params *PostV1PostMortemsReportsReportIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDActionItemsCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostV1PostMortemsReportsReportIDActionItemsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "postV1PostMortemsReportsReportIdActionItems",
 		Method:             "POST",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/action_items",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PostV1PostMortemsReportsReportIDActionItemsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostV1PostMortemsReportsReportIDActionItemsCreated), nil
-
+	success, ok := result.(*PostV1PostMortemsReportsReportIDActionItemsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1PostMortemsReportsReportIdActionItems: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID Add an event to the report timeline
+  PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID creates a report event
+
+  Creates an event on a report from an incident event
 */
-func (a *Client) PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID(params *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams, authInfo runtime.ClientAuthInfoWriter) (*PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated, error) {
+func (a *Client) PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID(params *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "postV1PostMortemsReportsReportIdEventsFromIncidentIncidentEventId",
 		Method:             "POST",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/events/from_incident/{incident_event_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated), nil
-
+	success, ok := result.(*PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1PostMortemsReportsReportIdEventsFromIncidentIncidentEventId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PostV1PostMortemsReportsReportIDEventsNotes Create a post mortem note
+  PostV1PostMortemsReportsReportIDEventsNotes creates a note as a report event
+
+  Creates a note with body and time available to modify
 */
-func (a *Client) PostV1PostMortemsReportsReportIDEventsNotes(params *PostV1PostMortemsReportsReportIDEventsNotesParams, authInfo runtime.ClientAuthInfoWriter) (*PostV1PostMortemsReportsReportIDEventsNotesCreated, error) {
+func (a *Client) PostV1PostMortemsReportsReportIDEventsNotes(params *PostV1PostMortemsReportsReportIDEventsNotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDEventsNotesCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostV1PostMortemsReportsReportIDEventsNotesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "postV1PostMortemsReportsReportIdEventsNotes",
 		Method:             "POST",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/events/notes",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PostV1PostMortemsReportsReportIDEventsNotesReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostV1PostMortemsReportsReportIDEventsNotesCreated), nil
-
+	success, ok := result.(*PostV1PostMortemsReportsReportIDEventsNotesCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1PostMortemsReportsReportIdEventsNotes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PostV1PostMortemsReportsReportIDParticipants Add a participant to the post mortem report
+  PostV1PostMortemsReportsReportIDParticipants Add a participant to the post mortem report
 */
-func (a *Client) PostV1PostMortemsReportsReportIDParticipants(params *PostV1PostMortemsReportsReportIDParticipantsParams, authInfo runtime.ClientAuthInfoWriter) (*PostV1PostMortemsReportsReportIDParticipantsCreated, error) {
+func (a *Client) PostV1PostMortemsReportsReportIDParticipants(params *PostV1PostMortemsReportsReportIDParticipantsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDParticipantsCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostV1PostMortemsReportsReportIDParticipantsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "postV1PostMortemsReportsReportIdParticipants",
 		Method:             "POST",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/participants",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PostV1PostMortemsReportsReportIDParticipantsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostV1PostMortemsReportsReportIDParticipantsCreated), nil
-
+	success, ok := result.(*PostV1PostMortemsReportsReportIDParticipantsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1PostMortemsReportsReportIdParticipants: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PostV1PostMortemsReportsReportIDReasons Add a post mortem reason to the report
+  PostV1PostMortemsReportsReportIDPublish publishes a retrospective report
+
+  Marks an incident retrospective as published and emails all of the participants in the report the summary
 */
-func (a *Client) PostV1PostMortemsReportsReportIDReasons(params *PostV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter) (*PostV1PostMortemsReportsReportIDReasonsCreated, error) {
+func (a *Client) PostV1PostMortemsReportsReportIDPublish(params *PostV1PostMortemsReportsReportIDPublishParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDPublishCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1PostMortemsReportsReportIDPublishParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1PostMortemsReportsReportIdPublish",
+		Method:             "POST",
+		PathPattern:        "/v1/post_mortems/reports/{report_id}/publish",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1PostMortemsReportsReportIDPublishReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1PostMortemsReportsReportIDPublishCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1PostMortemsReportsReportIdPublish: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PostV1PostMortemsReportsReportIDReasons Add a post mortem reason to the report
+*/
+func (a *Client) PostV1PostMortemsReportsReportIDReasons(params *PostV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDReasonsCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostV1PostMortemsReportsReportIDReasonsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "postV1PostMortemsReportsReportIdReasons",
 		Method:             "POST",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PostV1PostMortemsReportsReportIDReasonsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostV1PostMortemsReportsReportIDReasonsCreated), nil
-
+	success, ok := result.(*PostV1PostMortemsReportsReportIDReasonsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1PostMortemsReportsReportIdReasons: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PostV1PostMortemsReportsReportIDRelatedChanges Add a related change to the post mortem report
+  PutV1PostMortemsQuestions updates incident retrospective questions
+
+  Update the questions configured to be provided and filled out on future retrospective reports.
 */
-func (a *Client) PostV1PostMortemsReportsReportIDRelatedChanges(params *PostV1PostMortemsReportsReportIDRelatedChangesParams, authInfo runtime.ClientAuthInfoWriter) (*PostV1PostMortemsReportsReportIDRelatedChangesCreated, error) {
+func (a *Client) PutV1PostMortemsQuestions(params *PutV1PostMortemsQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsQuestionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1PostMortemsReportsReportIDRelatedChangesParams()
+		params = NewPutV1PostMortemsQuestionsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "postV1PostMortemsReportsReportIdRelatedChanges",
-		Method:             "POST",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/related_changes",
+	op := &runtime.ClientOperation{
+		ID:                 "putV1PostMortemsQuestions",
+		Method:             "PUT",
+		PathPattern:        "/v1/post_mortems/questions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1PostMortemsReportsReportIDRelatedChangesReader{formats: a.formats},
+		Reader:             &PutV1PostMortemsQuestionsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostV1PostMortemsReportsReportIDRelatedChangesCreated), nil
-
+	success, ok := result.(*PutV1PostMortemsQuestionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for putV1PostMortemsQuestions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PutV1PostMortemsReportsReportIDReasonsOrder Reorder a reason in the post mortem reasons list
+  PutV1PostMortemsReportsReportIDReasonsOrder Reorder a reason in the post mortem reasons list
 */
-func (a *Client) PutV1PostMortemsReportsReportIDReasonsOrder(params *PutV1PostMortemsReportsReportIDReasonsOrderParams, authInfo runtime.ClientAuthInfoWriter) (*PutV1PostMortemsReportsReportIDReasonsOrderOK, error) {
+func (a *Client) PutV1PostMortemsReportsReportIDReasonsOrder(params *PutV1PostMortemsReportsReportIDReasonsOrderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsReportsReportIDReasonsOrderOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutV1PostMortemsReportsReportIDReasonsOrderParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "putV1PostMortemsReportsReportIdReasonsOrder",
 		Method:             "PUT",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons/order",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PutV1PostMortemsReportsReportIDReasonsOrderReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PutV1PostMortemsReportsReportIDReasonsOrderOK), nil
-
+	success, ok := result.(*PutV1PostMortemsReportsReportIDReasonsOrderOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for putV1PostMortemsReportsReportIdReasonsOrder: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PutV1PostMortemsReportsReportIDTags Add tags to a report
+  PutV1PostMortemsReportsReportIDTags Add tags to a report
 */
-func (a *Client) PutV1PostMortemsReportsReportIDTags(params *PutV1PostMortemsReportsReportIDTagsParams, authInfo runtime.ClientAuthInfoWriter) (*PutV1PostMortemsReportsReportIDTagsNoContent, error) {
+func (a *Client) PutV1PostMortemsReportsReportIDTags(params *PutV1PostMortemsReportsReportIDTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsReportsReportIDTagsNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutV1PostMortemsReportsReportIDTagsParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "putV1PostMortemsReportsReportIdTags",
 		Method:             "PUT",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/tags",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PutV1PostMortemsReportsReportIDTagsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PutV1PostMortemsReportsReportIDTagsNoContent), nil
-
+	success, ok := result.(*PutV1PostMortemsReportsReportIDTagsNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for putV1PostMortemsReportsReportIdTags: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

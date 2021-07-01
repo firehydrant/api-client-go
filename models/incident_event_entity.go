@@ -6,18 +6,23 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // IncidentEventEntity Get an individual incident event
+//
 // swagger:model IncidentEventEntity
 type IncidentEventEntity struct {
 
 	// author
 	Author *AuthorEntity `json:"author,omitempty"`
+
+	// context
+	Context string `json:"context,omitempty"`
 
 	// data
 	Data string `json:"data,omitempty"`
@@ -31,11 +36,14 @@ type IncidentEventEntity struct {
 	// occurred at
 	OccurredAt string `json:"occurred_at,omitempty"`
 
-	// total stars
-	TotalStars string `json:"total_stars,omitempty"`
-
 	// type
 	Type string `json:"type,omitempty"`
+
+	// visibility
+	Visibility string `json:"visibility,omitempty"`
+
+	// votes
+	Votes *VotesEntity `json:"votes,omitempty"`
 }
 
 // Validate validates this incident event entity
@@ -46,6 +54,10 @@ func (m *IncidentEventEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateVotes(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -53,7 +65,6 @@ func (m *IncidentEventEntity) Validate(formats strfmt.Registry) error {
 }
 
 func (m *IncidentEventEntity) validateAuthor(formats strfmt.Registry) error {
-
 	if swag.IsZero(m.Author) { // not required
 		return nil
 	}
@@ -62,6 +73,69 @@ func (m *IncidentEventEntity) validateAuthor(formats strfmt.Registry) error {
 		if err := m.Author.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("author")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IncidentEventEntity) validateVotes(formats strfmt.Registry) error {
+	if swag.IsZero(m.Votes) { // not required
+		return nil
+	}
+
+	if m.Votes != nil {
+		if err := m.Votes.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("votes")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this incident event entity based on the context it is used
+func (m *IncidentEventEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAuthor(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVotes(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *IncidentEventEntity) contextValidateAuthor(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Author != nil {
+		if err := m.Author.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("author")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IncidentEventEntity) contextValidateVotes(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Votes != nil {
+		if err := m.Votes.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("votes")
 			}
 			return err
 		}

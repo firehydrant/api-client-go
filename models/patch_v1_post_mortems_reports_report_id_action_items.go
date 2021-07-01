@@ -6,17 +6,22 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	strfmt "github.com/go-openapi/strfmt"
+	"context"
 
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
 // PatchV1PostMortemsReportsReportIDActionItems Update an action item
+//
 // swagger:model patchV1PostMortemsReportsReportIdActionItems
 type PatchV1PostMortemsReportsReportIDActionItems struct {
 
 	// description
 	Description string `json:"description,omitempty"`
+
+	// state
+	State string `json:"state,omitempty"`
 
 	// summary
 	Summary string `json:"summary,omitempty"`
@@ -24,6 +29,11 @@ type PatchV1PostMortemsReportsReportIDActionItems struct {
 
 // Validate validates this patch v1 post mortems reports report Id action items
 func (m *PatchV1PostMortemsReportsReportIDActionItems) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this patch v1 post mortems reports report Id action items based on context it is used
+func (m *PatchV1PostMortemsReportsReportIDActionItems) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

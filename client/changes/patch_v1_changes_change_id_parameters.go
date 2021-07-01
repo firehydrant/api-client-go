@@ -13,64 +13,78 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
-// NewPatchV1ChangesChangeIDParams creates a new PatchV1ChangesChangeIDParams object
-// with the default values initialized.
+// NewPatchV1ChangesChangeIDParams creates a new PatchV1ChangesChangeIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPatchV1ChangesChangeIDParams() *PatchV1ChangesChangeIDParams {
-	var ()
 	return &PatchV1ChangesChangeIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewPatchV1ChangesChangeIDParamsWithTimeout creates a new PatchV1ChangesChangeIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewPatchV1ChangesChangeIDParamsWithTimeout(timeout time.Duration) *PatchV1ChangesChangeIDParams {
-	var ()
 	return &PatchV1ChangesChangeIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewPatchV1ChangesChangeIDParamsWithContext creates a new PatchV1ChangesChangeIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewPatchV1ChangesChangeIDParamsWithContext(ctx context.Context) *PatchV1ChangesChangeIDParams {
-	var ()
 	return &PatchV1ChangesChangeIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewPatchV1ChangesChangeIDParamsWithHTTPClient creates a new PatchV1ChangesChangeIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewPatchV1ChangesChangeIDParamsWithHTTPClient(client *http.Client) *PatchV1ChangesChangeIDParams {
-	var ()
 	return &PatchV1ChangesChangeIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*PatchV1ChangesChangeIDParams contains all the parameters to send to the API endpoint
-for the patch v1 changes change Id operation typically these are written to a http.Request
+/* PatchV1ChangesChangeIDParams contains all the parameters to send to the API endpoint
+   for the patch v1 changes change Id operation.
+
+   Typically these are written to a http.Request.
 */
 type PatchV1ChangesChangeIDParams struct {
 
-	/*V1Changes*/
+	// V1Changes.
 	V1Changes *models.PatchV1Changes
-	/*ChangeID*/
+
+	// ChangeID.
 	ChangeID string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the patch v1 changes change Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchV1ChangesChangeIDParams) WithDefaults() *PatchV1ChangesChangeIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the patch v1 changes change Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *PatchV1ChangesChangeIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the patch v1 changes change Id params
@@ -135,7 +149,6 @@ func (o *PatchV1ChangesChangeIDParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-
 	if o.V1Changes != nil {
 		if err := r.SetBodyParam(o.V1Changes); err != nil {
 			return err

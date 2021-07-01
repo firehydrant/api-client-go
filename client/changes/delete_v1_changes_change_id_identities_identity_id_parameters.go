@@ -13,63 +13,81 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewDeleteV1ChangesChangeIDIdentitiesIdentityIDParams creates a new DeleteV1ChangesChangeIDIdentitiesIdentityIDParams object
-// with the default values initialized.
+// NewDeleteV1ChangesChangeIDIdentitiesIdentityIDParams creates a new DeleteV1ChangesChangeIDIdentitiesIdentityIDParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteV1ChangesChangeIDIdentitiesIdentityIDParams() *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams {
-	var ()
 	return &DeleteV1ChangesChangeIDIdentitiesIdentityIDParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteV1ChangesChangeIDIdentitiesIdentityIDParamsWithTimeout creates a new DeleteV1ChangesChangeIDIdentitiesIdentityIDParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteV1ChangesChangeIDIdentitiesIdentityIDParamsWithTimeout(timeout time.Duration) *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams {
-	var ()
 	return &DeleteV1ChangesChangeIDIdentitiesIdentityIDParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteV1ChangesChangeIDIdentitiesIdentityIDParamsWithContext creates a new DeleteV1ChangesChangeIDIdentitiesIdentityIDParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteV1ChangesChangeIDIdentitiesIdentityIDParamsWithContext(ctx context.Context) *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams {
-	var ()
 	return &DeleteV1ChangesChangeIDIdentitiesIdentityIDParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteV1ChangesChangeIDIdentitiesIdentityIDParamsWithHTTPClient creates a new DeleteV1ChangesChangeIDIdentitiesIdentityIDParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteV1ChangesChangeIDIdentitiesIdentityIDParamsWithHTTPClient(client *http.Client) *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams {
-	var ()
 	return &DeleteV1ChangesChangeIDIdentitiesIdentityIDParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteV1ChangesChangeIDIdentitiesIdentityIDParams contains all the parameters to send to the API endpoint
-for the delete v1 changes change Id identities identity Id operation typically these are written to a http.Request
+/* DeleteV1ChangesChangeIDIdentitiesIdentityIDParams contains all the parameters to send to the API endpoint
+   for the delete v1 changes change Id identities identity Id operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteV1ChangesChangeIDIdentitiesIdentityIDParams struct {
 
-	/*ChangeID*/
+	// ChangeID.
+	//
+	// Format: int32
 	ChangeID int32
-	/*IdentityID*/
+
+	// IdentityID.
+	//
+	// Format: int32
 	IdentityID int32
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete v1 changes change Id identities identity Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams) WithDefaults() *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete v1 changes change Id identities identity Id params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete v1 changes change Id identities identity Id params

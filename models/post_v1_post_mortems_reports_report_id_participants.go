@@ -6,16 +6,17 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"encoding/json"
 
-	strfmt "github.com/go-openapi/strfmt"
-
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // PostV1PostMortemsReportsReportIDParticipants Add a participant to the post mortem report
+//
 // swagger:model postV1PostMortemsReportsReportIdParticipants
 type PostV1PostMortemsReportsReportIDParticipants struct {
 
@@ -70,7 +71,7 @@ const (
 
 // prop value enum
 func (m *PostV1PostMortemsReportsReportIDParticipants) validateSourceEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, postV1PostMortemsReportsReportIdParticipantsTypeSourcePropEnum); err != nil {
+	if err := validate.EnumCase(path, location, value, postV1PostMortemsReportsReportIdParticipantsTypeSourcePropEnum, true); err != nil {
 		return err
 	}
 	return nil
@@ -96,6 +97,11 @@ func (m *PostV1PostMortemsReportsReportIDParticipants) validateSourceID(formats 
 		return err
 	}
 
+	return nil
+}
+
+// ContextValidate validates this post v1 post mortems reports report Id participants based on context it is used
+func (m *PostV1PostMortemsReportsReportIDParticipants) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 

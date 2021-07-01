@@ -13,63 +13,77 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-
-	strfmt "github.com/go-openapi/strfmt"
 )
 
-// NewDeleteV1PostMortemsReportsReportIDTagsParams creates a new DeleteV1PostMortemsReportsReportIDTagsParams object
-// with the default values initialized.
+// NewDeleteV1PostMortemsReportsReportIDTagsParams creates a new DeleteV1PostMortemsReportsReportIDTagsParams object,
+// with the default timeout for this client.
+//
+// Default values are not hydrated, since defaults are normally applied by the API server side.
+//
+// To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewDeleteV1PostMortemsReportsReportIDTagsParams() *DeleteV1PostMortemsReportsReportIDTagsParams {
-	var ()
 	return &DeleteV1PostMortemsReportsReportIDTagsParams{
-
 		timeout: cr.DefaultTimeout,
 	}
 }
 
 // NewDeleteV1PostMortemsReportsReportIDTagsParamsWithTimeout creates a new DeleteV1PostMortemsReportsReportIDTagsParams object
-// with the default values initialized, and the ability to set a timeout on a request
+// with the ability to set a timeout on a request.
 func NewDeleteV1PostMortemsReportsReportIDTagsParamsWithTimeout(timeout time.Duration) *DeleteV1PostMortemsReportsReportIDTagsParams {
-	var ()
 	return &DeleteV1PostMortemsReportsReportIDTagsParams{
-
 		timeout: timeout,
 	}
 }
 
 // NewDeleteV1PostMortemsReportsReportIDTagsParamsWithContext creates a new DeleteV1PostMortemsReportsReportIDTagsParams object
-// with the default values initialized, and the ability to set a context for a request
+// with the ability to set a context for a request.
 func NewDeleteV1PostMortemsReportsReportIDTagsParamsWithContext(ctx context.Context) *DeleteV1PostMortemsReportsReportIDTagsParams {
-	var ()
 	return &DeleteV1PostMortemsReportsReportIDTagsParams{
-
 		Context: ctx,
 	}
 }
 
 // NewDeleteV1PostMortemsReportsReportIDTagsParamsWithHTTPClient creates a new DeleteV1PostMortemsReportsReportIDTagsParams object
-// with the default values initialized, and the ability to set a custom HTTPClient for a request
+// with the ability to set a custom HTTPClient for a request.
 func NewDeleteV1PostMortemsReportsReportIDTagsParamsWithHTTPClient(client *http.Client) *DeleteV1PostMortemsReportsReportIDTagsParams {
-	var ()
 	return &DeleteV1PostMortemsReportsReportIDTagsParams{
 		HTTPClient: client,
 	}
 }
 
-/*DeleteV1PostMortemsReportsReportIDTagsParams contains all the parameters to send to the API endpoint
-for the delete v1 post mortems reports report Id tags operation typically these are written to a http.Request
+/* DeleteV1PostMortemsReportsReportIDTagsParams contains all the parameters to send to the API endpoint
+   for the delete v1 post mortems reports report Id tags operation.
+
+   Typically these are written to a http.Request.
 */
 type DeleteV1PostMortemsReportsReportIDTagsParams struct {
 
-	/*ReportID*/
+	// ReportID.
 	ReportID string
-	/*Tags*/
+
+	// Tags.
 	Tags []string
 
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
+}
+
+// WithDefaults hydrates default values in the delete v1 post mortems reports report Id tags params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1PostMortemsReportsReportIDTagsParams) WithDefaults() *DeleteV1PostMortemsReportsReportIDTagsParams {
+	o.SetDefaults()
+	return o
+}
+
+// SetDefaults hydrates default values in the delete v1 post mortems reports report Id tags params (not the query body).
+//
+// All values with no default are reset to their zero value.
+func (o *DeleteV1PostMortemsReportsReportIDTagsParams) SetDefaults() {
+	// no default values defined for this parameter
 }
 
 // WithTimeout adds the timeout to the delete v1 post mortems reports report Id tags params
@@ -140,16 +154,36 @@ func (o *DeleteV1PostMortemsReportsReportIDTagsParams) WriteToRequest(r runtime.
 		return err
 	}
 
-	valuesTags := o.Tags
+	if o.Tags != nil {
 
-	joinedTags := swag.JoinByFormat(valuesTags, "")
-	// form array param tags
-	if err := r.SetFormParam("tags", joinedTags...); err != nil {
-		return err
+		// binding items for tags
+		joinedTags := o.bindParamTags(reg)
+
+		// form array param tags
+		if err := r.SetFormParam("tags", joinedTags...); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamDeleteV1PostMortemsReportsReportIDTags binds the parameter tags
+func (o *DeleteV1PostMortemsReportsReportIDTagsParams) bindParamTags(formats strfmt.Registry) []string {
+	tagsIR := o.Tags
+
+	var tagsIC []string
+	for _, tagsIIR := range tagsIR { // explode []string
+
+		tagsIIV := tagsIIR // string as string
+		tagsIC = append(tagsIC, tagsIIV)
+	}
+
+	// items.CollectionFormat: ""
+	tagsIS := swag.JoinByFormat(tagsIC, "")
+
+	return tagsIS
 }

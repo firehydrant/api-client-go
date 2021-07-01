@@ -6,13 +6,14 @@ package incident_roles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"github.com/go-openapi/runtime"
+	"fmt"
 
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new incident roles API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Client {
+func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
@@ -24,149 +25,217 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
+// ClientOption is the option for Client methods
+type ClientOption func(*runtime.ClientOperation)
+
+// ClientService is the interface for Client methods
+type ClientService interface {
+	DeleteV1IncidentRolesIncidentRoleID(params *DeleteV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentRolesIncidentRoleIDOK, error)
+
+	GetV1IncidentRoles(params *GetV1IncidentRolesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentRolesOK, error)
+
+	GetV1IncidentRolesIncidentRoleID(params *GetV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentRolesIncidentRoleIDOK, error)
+
+	PatchV1IncidentRolesIncidentRoleID(params *PatchV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentRolesIncidentRoleIDOK, error)
+
+	PostV1IncidentRoles(params *PostV1IncidentRolesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentRolesCreated, error)
+
+	SetTransport(transport runtime.ClientTransport)
+}
+
 /*
-DeleteV1IncidentRolesIncidentRoleID Archive an incident role
+  DeleteV1IncidentRolesIncidentRoleID Archive an incident role
 */
-func (a *Client) DeleteV1IncidentRolesIncidentRoleID(params *DeleteV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteV1IncidentRolesIncidentRoleIDOK, error) {
+func (a *Client) DeleteV1IncidentRolesIncidentRoleID(params *DeleteV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentRolesIncidentRoleIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteV1IncidentRolesIncidentRoleIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "deleteV1IncidentRolesIncidentRoleId",
 		Method:             "DELETE",
 		PathPattern:        "/v1/incident_roles/{incident_role_id}",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &DeleteV1IncidentRolesIncidentRoleIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*DeleteV1IncidentRolesIncidentRoleIDOK), nil
-
+	success, ok := result.(*DeleteV1IncidentRolesIncidentRoleIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentRolesIncidentRoleId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1IncidentRoles List incident roles
+  GetV1IncidentRoles List incident roles
 */
-func (a *Client) GetV1IncidentRoles(params *GetV1IncidentRolesParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1IncidentRolesOK, error) {
+func (a *Client) GetV1IncidentRoles(params *GetV1IncidentRolesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentRolesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1IncidentRolesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1IncidentRoles",
 		Method:             "GET",
 		PathPattern:        "/v1/incident_roles",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1IncidentRolesReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1IncidentRolesOK), nil
-
+	success, ok := result.(*GetV1IncidentRolesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentRoles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-GetV1IncidentRolesIncidentRoleID Retrieve an incident role
+  GetV1IncidentRolesIncidentRoleID Retrieve an incident role
 */
-func (a *Client) GetV1IncidentRolesIncidentRoleID(params *GetV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetV1IncidentRolesIncidentRoleIDOK, error) {
+func (a *Client) GetV1IncidentRolesIncidentRoleID(params *GetV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentRolesIncidentRoleIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetV1IncidentRolesIncidentRoleIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "getV1IncidentRolesIncidentRoleId",
 		Method:             "GET",
 		PathPattern:        "/v1/incident_roles/{incident_role_id}",
 		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"http"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &GetV1IncidentRolesIncidentRoleIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*GetV1IncidentRolesIncidentRoleIDOK), nil
-
+	success, ok := result.(*GetV1IncidentRolesIncidentRoleIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentRolesIncidentRoleId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PatchV1IncidentRolesIncidentRoleID Update an incident role
+  PatchV1IncidentRolesIncidentRoleID Update an incident role
 */
-func (a *Client) PatchV1IncidentRolesIncidentRoleID(params *PatchV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter) (*PatchV1IncidentRolesIncidentRoleIDOK, error) {
+func (a *Client) PatchV1IncidentRolesIncidentRoleID(params *PatchV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentRolesIncidentRoleIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchV1IncidentRolesIncidentRoleIDParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "patchV1IncidentRolesIncidentRoleId",
 		Method:             "PATCH",
 		PathPattern:        "/v1/incident_roles/{incident_role_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PatchV1IncidentRolesIncidentRoleIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PatchV1IncidentRolesIncidentRoleIDOK), nil
-
+	success, ok := result.(*PatchV1IncidentRolesIncidentRoleIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IncidentRolesIncidentRoleId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
-PostV1IncidentRoles Create an incident role
+  PostV1IncidentRoles Create an incident role
 */
-func (a *Client) PostV1IncidentRoles(params *PostV1IncidentRolesParams, authInfo runtime.ClientAuthInfoWriter) (*PostV1IncidentRolesCreated, error) {
+func (a *Client) PostV1IncidentRoles(params *PostV1IncidentRolesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentRolesCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostV1IncidentRolesParams()
 	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
+	op := &runtime.ClientOperation{
 		ID:                 "postV1IncidentRoles",
 		Method:             "POST",
 		PathPattern:        "/v1/incident_roles",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
+		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &PostV1IncidentRolesReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
-	})
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PostV1IncidentRolesCreated), nil
-
+	success, ok := result.(*PostV1IncidentRolesCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1IncidentRoles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 // SetTransport changes the transport on the client

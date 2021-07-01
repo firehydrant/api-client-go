@@ -10,10 +10,9 @@ import (
 	"io"
 
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/strfmt"
 
-	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/firehydrant/api-client-go/models"
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1ChangesEventsReader is a Reader for the GetV1ChangesEvents structure.
@@ -24,16 +23,14 @@ type GetV1ChangesEventsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *GetV1ChangesEventsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-
 	case 200:
 		result := NewGetV1ChangesEventsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-
 	default:
-		return nil, runtime.NewAPIError("unknown error", response, response.Code())
+		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
@@ -42,21 +39,24 @@ func NewGetV1ChangesEventsOK() *GetV1ChangesEventsOK {
 	return &GetV1ChangesEventsOK{}
 }
 
-/*GetV1ChangesEventsOK handles this case with default header values.
+/* GetV1ChangesEventsOK describes a response with status code 200, with default header values.
 
-Retrieve change events
+List change events for the organization. Note: Not all information is included on a change event like attachments and related changes. You must fetch a change event separately to retrieve all of the information about it
 */
 type GetV1ChangesEventsOK struct {
-	Payload *models.ChangeEventEntityPaginated
+	Payload *models.ChangeEventSlimEntityPaginated
 }
 
 func (o *GetV1ChangesEventsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/changes/events][%d] getV1ChangesEventsOK  %+v", 200, o.Payload)
 }
+func (o *GetV1ChangesEventsOK) GetPayload() *models.ChangeEventSlimEntityPaginated {
+	return o.Payload
+}
 
 func (o *GetV1ChangesEventsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ChangeEventEntityPaginated)
+	o.Payload = new(models.ChangeEventSlimEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
