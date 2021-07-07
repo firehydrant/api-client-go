@@ -28,7 +28,7 @@ type FunctionalityEntity struct {
 	Description string `json:"description,omitempty"`
 
 	// Information about known linkages to representations of services outside of FireHydrant.
-	ExternalResources *ExternalResourceEntity `json:"external_resources,omitempty"`
+	ExternalResources []*ExternalResourceEntity `json:"external_resources,omitempty"`
 
 	// id
 	ID string `json:"id,omitempty"`
@@ -90,12 +90,18 @@ func (m *FunctionalityEntity) validateExternalResources(formats strfmt.Registry)
 		return nil
 	}
 
-	if m.ExternalResources != nil {
-		if err := m.ExternalResources.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("external_resources")
+	for i := 0; i < len(m.ExternalResources); i++ {
+		if swag.IsZero(m.ExternalResources[i]) { // not required
+			continue
+		}
+
+		if m.ExternalResources[i] != nil {
+			if err := m.ExternalResources[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
 	}
 
@@ -158,13 +164,17 @@ func (m *FunctionalityEntity) ContextValidate(ctx context.Context, formats strfm
 
 func (m *FunctionalityEntity) contextValidateExternalResources(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.ExternalResources != nil {
-		if err := m.ExternalResources.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("external_resources")
+	for i := 0; i < len(m.ExternalResources); i++ {
+
+		if m.ExternalResources[i] != nil {
+			if err := m.ExternalResources[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil
