@@ -36,7 +36,7 @@ type BaseServiceEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// service tier
-	ServiceTier string `json:"service_tier,omitempty"`
+	ServiceTier int32 `json:"service_tier,omitempty"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`

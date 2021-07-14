@@ -16,7 +16,7 @@ type Config struct {
 
 type ApiClient struct {
 	transport *transport.Runtime
-	Client    *client.FireHydrant
+	Client    *client.FireHydrantAPI
 	Auth      runtime.ClientAuthInfoWriter
 }
 
