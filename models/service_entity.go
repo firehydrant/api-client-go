@@ -24,7 +24,7 @@ type ServiceEntity struct {
 	ActiveIncidents []string `json:"active_incidents"`
 
 	// alert on add
-	AlertOnAdd string `json:"alert_on_add,omitempty"`
+	AlertOnAdd bool `json:"alert_on_add,omitempty"`
 
 	// created at
 	// Format: date-time
@@ -34,7 +34,7 @@ type ServiceEntity struct {
 	Description string `json:"description,omitempty"`
 
 	// Information about known linkages to representations of services outside of FireHydrant.
-	ExternalResources *ExternalResourceEntity `json:"external_resources,omitempty"`
+	ExternalResources []*ExternalResourceEntity `json:"external_resources"`
 
 	// List of functionalities attached to the service
 	Functionalities []*FunctionalityEntity `json:"functionalities"`
@@ -61,7 +61,7 @@ type ServiceEntity struct {
 	Owner *TeamEntity `json:"owner,omitempty"`
 
 	// service tier
-	ServiceTier string `json:"service_tier,omitempty"`
+	ServiceTier int32 `json:"service_tier,omitempty"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`
@@ -129,13 +129,20 @@ func (m *ServiceEntity) validateExternalResources(formats strfmt.Registry) error
 		return nil
 	}
 
-	if m.ExternalResources != nil {
-		if err := m.ExternalResources.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("external_resources")
-			}
-			return err
+	for i := 0; i < len(m.ExternalResources); i++ {
+		if swag.IsZero(m.ExternalResources[i]) { // not required
+			continue
 		}
+
+		if m.ExternalResources[i] != nil {
+			if err := m.ExternalResources[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -274,13 +281,17 @@ func (m *ServiceEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 
 func (m *ServiceEntity) contextValidateExternalResources(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.ExternalResources != nil {
-		if err := m.ExternalResources.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("external_resources")
+	for i := 0; i < len(m.ExternalResources); i++ {
+
+		if m.ExternalResources[i] != nil {
+			if err := m.ExternalResources[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil

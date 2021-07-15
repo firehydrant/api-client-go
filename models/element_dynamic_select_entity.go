@@ -32,6 +32,9 @@ type ElementDynamicSelectEntity struct {
 	// label
 	Label string `json:"label,omitempty"`
 
+	// options
+	Options interface{} `json:"options,omitempty"`
+
 	// placeholder
 	Placeholder string `json:"placeholder,omitempty"`
 
