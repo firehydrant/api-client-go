@@ -70,6 +70,8 @@ func (m *TicketEntity) validateAssignees(formats strfmt.Registry) error {
 		if err := m.Assignees.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("assignees")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("assignees")
 			}
 			return err
 		}
@@ -87,6 +89,8 @@ func (m *TicketEntity) validateCreatedBy(formats strfmt.Registry) error {
 		if err := m.CreatedBy.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}
@@ -119,6 +123,8 @@ func (m *TicketEntity) contextValidateAssignees(ctx context.Context, formats str
 		if err := m.Assignees.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("assignees")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("assignees")
 			}
 			return err
 		}
@@ -133,6 +139,8 @@ func (m *TicketEntity) contextValidateCreatedBy(ctx context.Context, formats str
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}

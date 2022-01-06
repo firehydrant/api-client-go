@@ -30,19 +30,72 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error)
+
 	DeleteV1TicketingTicketsTicketID(params *DeleteV1TicketingTicketsTicketIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TicketingTicketsTicketIDNoContent, error)
 
 	GetV1TicketingProjects(params *GetV1TicketingProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsOK, error)
+
+	GetV1TicketingProjectsTicketingProjectIDConfigurationOptions(params *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK, error)
+
+	GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldID(params *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDOK, error)
+
+	GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error)
 
 	GetV1TicketingTickets(params *GetV1TicketingTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingTicketsOK, error)
 
 	GetV1TicketingTicketsTicketID(params *GetV1TicketingTicketsTicketIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingTicketsTicketIDOK, error)
 
+	PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error)
+
 	PatchV1TicketingTicketsTicketID(params *PatchV1TicketingTicketsTicketIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TicketingTicketsTicketIDOK, error)
+
+	PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations(params *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated, error)
 
 	PostV1TicketingTickets(params *PostV1TicketingTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TicketingTicketsCreated, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID archives configuration for a ticketing project
+
+  Archive configuration for a ticketing project
+*/
+func (a *Client) DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1TicketingProjectsTicketingProjectIdProviderProjectConfigurationsConfigId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/provider_project_configurations/{config_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1TicketingProjectsTicketingProjectIdProviderProjectConfigurationsConfigId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -122,6 +175,125 @@ func (a *Client) GetV1TicketingProjects(params *GetV1TicketingProjectsParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1TicketingProjects: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetV1TicketingProjectsTicketingProjectIDConfigurationOptions get v1 ticketing projects ticketing project Id configuration options API
+*/
+func (a *Client) GetV1TicketingProjectsTicketingProjectIDConfigurationOptions(params *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TicketingProjectsTicketingProjectIDConfigurationOptionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TicketingProjectsTicketingProjectIdConfigurationOptions",
+		Method:             "GET",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/configuration_options",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TicketingProjectsTicketingProjectIdConfigurationOptions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldID get v1 ticketing projects ticketing project Id configuration options options for field Id API
+*/
+func (a *Client) GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldID(params *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TicketingProjectsTicketingProjectIdConfigurationOptionsOptionsForFieldId",
+		Method:             "GET",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/configuration_options/options_for/{field_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TicketingProjectsTicketingProjectIdConfigurationOptionsOptionsForFieldId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID retrieves configuration for a ticketing project
+
+  Retrieve configuration for a ticketing project
+*/
+func (a *Client) GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TicketingProjectsTicketingProjectIdProviderProjectConfigurationsConfigId",
+		Method:             "GET",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/provider_project_configurations/{config_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TicketingProjectsTicketingProjectIdProviderProjectConfigurationsConfigId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -208,6 +380,47 @@ func (a *Client) GetV1TicketingTicketsTicketID(params *GetV1TicketingTicketsTick
 }
 
 /*
+  PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID updates configuration for a ticketing project
+
+  Update configuration for a ticketing project
+*/
+func (a *Client) PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1TicketingProjectsTicketingProjectIdProviderProjectConfigurationsConfigId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/provider_project_configurations/{config_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1TicketingProjectsTicketingProjectIdProviderProjectConfigurationsConfigId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   PatchV1TicketingTicketsTicketID updates a ticket
 
   Update a ticket's attributes
@@ -245,6 +458,47 @@ func (a *Client) PatchV1TicketingTicketsTicketID(params *PatchV1TicketingTickets
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for patchV1TicketingTicketsTicketId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations creates configuration for a ticketing project
+
+  Creates configuration for a ticketing project
+*/
+func (a *Client) PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations(params *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1TicketingProjectsTicketingProjectIdProviderProjectConfigurations",
+		Method:             "POST",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/provider_project_configurations",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1TicketingProjectsTicketingProjectIdProviderProjectConfigurations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewPostV1IncidentsIncidentIDAttachmentsParams creates a new PostV1IncidentsIncidentIDAttachmentsParams object,
@@ -66,7 +67,9 @@ type PostV1IncidentsIncidentIDAttachmentsParams struct {
 	File runtime.NamedReadCloser
 
 	// IncidentID.
-	IncidentID string
+	//
+	// Format: int32
+	IncidentID int32
 
 	timeout    time.Duration
 	Context    context.Context
@@ -144,13 +147,13 @@ func (o *PostV1IncidentsIncidentIDAttachmentsParams) SetFile(file runtime.NamedR
 }
 
 // WithIncidentID adds the incidentID to the post v1 incidents incident Id attachments params
-func (o *PostV1IncidentsIncidentIDAttachmentsParams) WithIncidentID(incidentID string) *PostV1IncidentsIncidentIDAttachmentsParams {
+func (o *PostV1IncidentsIncidentIDAttachmentsParams) WithIncidentID(incidentID int32) *PostV1IncidentsIncidentIDAttachmentsParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the post v1 incidents incident Id attachments params
-func (o *PostV1IncidentsIncidentIDAttachmentsParams) SetIncidentID(incidentID string) {
+func (o *PostV1IncidentsIncidentIDAttachmentsParams) SetIncidentID(incidentID int32) {
 	o.IncidentID = incidentID
 }
 
@@ -182,7 +185,7 @@ func (o *PostV1IncidentsIncidentIDAttachmentsParams) WriteToRequest(r runtime.Cl
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
+	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
 		return err
 	}
 

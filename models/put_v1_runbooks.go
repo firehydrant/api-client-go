@@ -93,6 +93,8 @@ func (m *PutV1Runbooks) validateAttachmentRule(formats strfmt.Registry) error {
 		if err := m.AttachmentRule.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("attachment_rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("attachment_rule")
 			}
 			return err
 		}
@@ -115,6 +117,8 @@ func (m *PutV1Runbooks) validateEnvironments(formats strfmt.Registry) error {
 			if err := m.Environments[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -139,6 +143,8 @@ func (m *PutV1Runbooks) validateIncidentRoles(formats strfmt.Registry) error {
 			if err := m.IncidentRoles[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("incident_roles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("incident_roles" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -163,6 +169,8 @@ func (m *PutV1Runbooks) validateServices(formats strfmt.Registry) error {
 			if err := m.Services[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -187,6 +195,8 @@ func (m *PutV1Runbooks) validateSeverities(formats strfmt.Registry) error {
 			if err := m.Severities[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("severities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("severities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -211,6 +221,8 @@ func (m *PutV1Runbooks) validateSteps(formats strfmt.Registry) error {
 			if err := m.Steps[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("steps" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("steps" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -261,6 +273,8 @@ func (m *PutV1Runbooks) contextValidateAttachmentRule(ctx context.Context, forma
 		if err := m.AttachmentRule.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("attachment_rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("attachment_rule")
 			}
 			return err
 		}
@@ -277,6 +291,8 @@ func (m *PutV1Runbooks) contextValidateEnvironments(ctx context.Context, formats
 			if err := m.Environments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -295,6 +311,8 @@ func (m *PutV1Runbooks) contextValidateIncidentRoles(ctx context.Context, format
 			if err := m.IncidentRoles[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("incident_roles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("incident_roles" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -313,6 +331,8 @@ func (m *PutV1Runbooks) contextValidateServices(ctx context.Context, formats str
 			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -331,6 +351,8 @@ func (m *PutV1Runbooks) contextValidateSeverities(ctx context.Context, formats s
 			if err := m.Severities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("severities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("severities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -349,6 +371,8 @@ func (m *PutV1Runbooks) contextValidateSteps(ctx context.Context, formats strfmt
 			if err := m.Steps[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("steps" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("steps" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -658,6 +682,8 @@ func (m *PutV1RunbooksStepsItems0) validateRule(formats strfmt.Registry) error {
 			if err := m.Rule[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("rule" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("rule" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -690,6 +716,8 @@ func (m *PutV1RunbooksStepsItems0) contextValidateRule(ctx context.Context, form
 			if err := m.Rule[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("rule" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("rule" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

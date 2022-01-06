@@ -235,6 +235,8 @@ func (m *IncidentEntity) validateConferenceBridges(formats strfmt.Registry) erro
 		if err := m.ConferenceBridges.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("conference_bridges")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("conference_bridges")
 			}
 			return err
 		}
@@ -264,6 +266,8 @@ func (m *IncidentEntity) validateCreatedBy(formats strfmt.Registry) error {
 		if err := m.CreatedBy.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}
@@ -286,6 +290,8 @@ func (m *IncidentEntity) validateEnvironments(formats strfmt.Registry) error {
 			if err := m.Environments[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -310,6 +316,8 @@ func (m *IncidentEntity) validateFunctionalities(formats strfmt.Registry) error 
 			if err := m.Functionalities[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("functionalities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -329,6 +337,8 @@ func (m *IncidentEntity) validateImpacts(formats strfmt.Registry) error {
 		if err := m.Impacts.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("impacts")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("impacts")
 			}
 			return err
 		}
@@ -351,6 +361,8 @@ func (m *IncidentEntity) validateIncidentRoles(formats strfmt.Registry) error {
 			if err := m.IncidentRoles[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("incident_roles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("incident_roles" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -370,6 +382,8 @@ func (m *IncidentEntity) validateIncidentTickets(formats strfmt.Registry) error 
 		if err := m.IncidentTickets.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("incident_tickets")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("incident_tickets")
 			}
 			return err
 		}
@@ -392,6 +406,8 @@ func (m *IncidentEntity) validateMilestones(formats strfmt.Registry) error {
 			if err := m.Milestones[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("milestones" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("milestones" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -411,6 +427,8 @@ func (m *IncidentEntity) validateOrganization(formats strfmt.Registry) error {
 		if err := m.Organization.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("organization")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("organization")
 			}
 			return err
 		}
@@ -428,6 +446,8 @@ func (m *IncidentEntity) validateRoleAssignments(formats strfmt.Registry) error 
 		if err := m.RoleAssignments.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("role_assignments")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("role_assignments")
 			}
 			return err
 		}
@@ -450,6 +470,8 @@ func (m *IncidentEntity) validateServices(formats strfmt.Registry) error {
 			if err := m.Services[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -469,6 +491,8 @@ func (m *IncidentEntity) validateSeverityConditionObject(formats strfmt.Registry
 		if err := m.SeverityConditionObject.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("severity_condition_object")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("severity_condition_object")
 			}
 			return err
 		}
@@ -486,6 +510,8 @@ func (m *IncidentEntity) validateSeverityImpactObject(formats strfmt.Registry) e
 		if err := m.SeverityImpactObject.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("severity_impact_object")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("severity_impact_object")
 			}
 			return err
 		}
@@ -515,6 +541,8 @@ func (m *IncidentEntity) validateStatusPages(formats strfmt.Registry) error {
 		if err := m.StatusPages.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("status_pages")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("status_pages")
 			}
 			return err
 		}
@@ -595,6 +623,8 @@ func (m *IncidentEntity) contextValidateConferenceBridges(ctx context.Context, f
 		if err := m.ConferenceBridges.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("conference_bridges")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("conference_bridges")
 			}
 			return err
 		}
@@ -609,6 +639,8 @@ func (m *IncidentEntity) contextValidateCreatedBy(ctx context.Context, formats s
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}
@@ -625,6 +657,8 @@ func (m *IncidentEntity) contextValidateEnvironments(ctx context.Context, format
 			if err := m.Environments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -643,6 +677,8 @@ func (m *IncidentEntity) contextValidateFunctionalities(ctx context.Context, for
 			if err := m.Functionalities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("functionalities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -659,6 +695,8 @@ func (m *IncidentEntity) contextValidateImpacts(ctx context.Context, formats str
 		if err := m.Impacts.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("impacts")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("impacts")
 			}
 			return err
 		}
@@ -675,6 +713,8 @@ func (m *IncidentEntity) contextValidateIncidentRoles(ctx context.Context, forma
 			if err := m.IncidentRoles[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("incident_roles" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("incident_roles" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -691,6 +731,8 @@ func (m *IncidentEntity) contextValidateIncidentTickets(ctx context.Context, for
 		if err := m.IncidentTickets.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("incident_tickets")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("incident_tickets")
 			}
 			return err
 		}
@@ -707,6 +749,8 @@ func (m *IncidentEntity) contextValidateMilestones(ctx context.Context, formats 
 			if err := m.Milestones[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("milestones" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("milestones" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -723,6 +767,8 @@ func (m *IncidentEntity) contextValidateOrganization(ctx context.Context, format
 		if err := m.Organization.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("organization")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("organization")
 			}
 			return err
 		}
@@ -737,6 +783,8 @@ func (m *IncidentEntity) contextValidateRoleAssignments(ctx context.Context, for
 		if err := m.RoleAssignments.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("role_assignments")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("role_assignments")
 			}
 			return err
 		}
@@ -753,6 +801,8 @@ func (m *IncidentEntity) contextValidateServices(ctx context.Context, formats st
 			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -769,6 +819,8 @@ func (m *IncidentEntity) contextValidateSeverityConditionObject(ctx context.Cont
 		if err := m.SeverityConditionObject.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("severity_condition_object")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("severity_condition_object")
 			}
 			return err
 		}
@@ -783,6 +835,8 @@ func (m *IncidentEntity) contextValidateSeverityImpactObject(ctx context.Context
 		if err := m.SeverityImpactObject.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("severity_impact_object")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("severity_impact_object")
 			}
 			return err
 		}
@@ -797,6 +851,8 @@ func (m *IncidentEntity) contextValidateStatusPages(ctx context.Context, formats
 		if err := m.StatusPages.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("status_pages")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("status_pages")
 			}
 			return err
 		}

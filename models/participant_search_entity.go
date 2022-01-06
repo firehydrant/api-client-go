@@ -52,6 +52,8 @@ func (m *ParticipantSearchEntity) validateTeams(formats strfmt.Registry) error {
 		if err := m.Teams.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("teams")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("teams")
 			}
 			return err
 		}
@@ -69,6 +71,8 @@ func (m *ParticipantSearchEntity) validateUsers(formats strfmt.Registry) error {
 		if err := m.Users.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("users")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("users")
 			}
 			return err
 		}
@@ -101,6 +105,8 @@ func (m *ParticipantSearchEntity) contextValidateTeams(ctx context.Context, form
 		if err := m.Teams.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("teams")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("teams")
 			}
 			return err
 		}
@@ -115,6 +121,8 @@ func (m *ParticipantSearchEntity) contextValidateUsers(ctx context.Context, form
 		if err := m.Users.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("users")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("users")
 			}
 			return err
 		}

@@ -60,6 +60,8 @@ func (m *PatchV1PostMortemsReports) validateQuestions(formats strfmt.Registry) e
 			if err := m.Questions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("questions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("questions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -92,6 +94,8 @@ func (m *PatchV1PostMortemsReports) contextValidateQuestions(ctx context.Context
 			if err := m.Questions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("questions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("questions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

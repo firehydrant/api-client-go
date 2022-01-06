@@ -126,6 +126,8 @@ func (m *ChangeEventEntity) validateAuthors(formats strfmt.Registry) error {
 			if err := m.Authors[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("authors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("authors" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -162,6 +164,8 @@ func (m *ChangeEventEntity) validateEnvironments(formats strfmt.Registry) error 
 			if err := m.Environments[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -186,6 +190,8 @@ func (m *ChangeEventEntity) validateIdentities(formats strfmt.Registry) error {
 			if err := m.Identities[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("identities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("identities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -210,6 +216,8 @@ func (m *ChangeEventEntity) validateRelatedChanges(formats strfmt.Registry) erro
 			if err := m.RelatedChanges[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("related_changes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("related_changes" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -234,6 +242,8 @@ func (m *ChangeEventEntity) validateServices(formats strfmt.Registry) error {
 			if err := m.Services[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -294,6 +304,8 @@ func (m *ChangeEventEntity) contextValidateAuthors(ctx context.Context, formats 
 			if err := m.Authors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("authors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("authors" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -312,6 +324,8 @@ func (m *ChangeEventEntity) contextValidateEnvironments(ctx context.Context, for
 			if err := m.Environments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -330,6 +344,8 @@ func (m *ChangeEventEntity) contextValidateIdentities(ctx context.Context, forma
 			if err := m.Identities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("identities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("identities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -348,6 +364,8 @@ func (m *ChangeEventEntity) contextValidateRelatedChanges(ctx context.Context, f
 			if err := m.RelatedChanges[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("related_changes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("related_changes" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -366,6 +384,8 @@ func (m *ChangeEventEntity) contextValidateServices(ctx context.Context, formats
 			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -102,6 +102,8 @@ func (m *PutV1IncidentsIncidentIDMilestonesBulkUpdate) validateMilestones(format
 			if err := m.Milestones[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("milestones" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("milestones" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -134,6 +136,8 @@ func (m *PutV1IncidentsIncidentIDMilestonesBulkUpdate) contextValidateMilestones
 			if err := m.Milestones[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("milestones" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("milestones" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -60,6 +60,18 @@ func NewGetV1TeamsParamsWithHTTPClient(client *http.Client) *GetV1TeamsParams {
 */
 type GetV1TeamsParams struct {
 
+	/* Lite.
+
+	   Boolean to determine whether to return a slimified version of the teams object
+	*/
+	Lite *bool
+
+	/* Name.
+
+	   A query to search teams by their name
+	*/
+	Name *string
+
 	// Page.
 	//
 	// Format: int32
@@ -72,7 +84,7 @@ type GetV1TeamsParams struct {
 
 	/* Query.
 
-	   Text string of a query to filter teams
+	   A query to search teams by their name or description
 	*/
 	Query *string
 
@@ -135,6 +147,28 @@ func (o *GetV1TeamsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithLite adds the lite to the get v1 teams params
+func (o *GetV1TeamsParams) WithLite(lite *bool) *GetV1TeamsParams {
+	o.SetLite(lite)
+	return o
+}
+
+// SetLite adds the lite to the get v1 teams params
+func (o *GetV1TeamsParams) SetLite(lite *bool) {
+	o.Lite = lite
+}
+
+// WithName adds the name to the get v1 teams params
+func (o *GetV1TeamsParams) WithName(name *string) *GetV1TeamsParams {
+	o.SetName(name)
+	return o
+}
+
+// SetName adds the name to the get v1 teams params
+func (o *GetV1TeamsParams) SetName(name *string) {
+	o.Name = name
+}
+
 // WithPage adds the page to the get v1 teams params
 func (o *GetV1TeamsParams) WithPage(page *int32) *GetV1TeamsParams {
 	o.SetPage(page)
@@ -186,6 +220,40 @@ func (o *GetV1TeamsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 		return err
 	}
 	var res []error
+
+	if o.Lite != nil {
+
+		// query param lite
+		var qrLite bool
+
+		if o.Lite != nil {
+			qrLite = *o.Lite
+		}
+		qLite := swag.FormatBool(qrLite)
+		if qLite != "" {
+
+			if err := r.SetQueryParam("lite", qLite); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Name != nil {
+
+		// query param name
+		var qrName string
+
+		if o.Name != nil {
+			qrName = *o.Name
+		}
+		qName := qrName
+		if qName != "" {
+
+			if err := r.SetQueryParam("name", qName); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Page != nil {
 

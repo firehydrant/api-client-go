@@ -48,6 +48,8 @@ func (m *ActionConfigEntity) validateElements(formats strfmt.Registry) error {
 		if err := m.Elements.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("elements")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elements")
 			}
 			return err
 		}
@@ -76,6 +78,8 @@ func (m *ActionConfigEntity) contextValidateElements(ctx context.Context, format
 		if err := m.Elements.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("elements")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("elements")
 			}
 			return err
 		}

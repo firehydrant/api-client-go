@@ -107,6 +107,8 @@ func (m *PostV1ScheduledMaintenances) validateImpacts(formats strfmt.Registry) e
 			if err := m.Impacts[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("impacts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -153,6 +155,8 @@ func (m *PostV1ScheduledMaintenances) validateStatusPages(formats strfmt.Registr
 			if err := m.StatusPages[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("status_pages" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -189,6 +193,8 @@ func (m *PostV1ScheduledMaintenances) contextValidateImpacts(ctx context.Context
 			if err := m.Impacts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("impacts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -207,6 +213,8 @@ func (m *PostV1ScheduledMaintenances) contextValidateStatusPages(ctx context.Con
 			if err := m.StatusPages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("status_pages" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

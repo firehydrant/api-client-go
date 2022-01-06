@@ -986,7 +986,9 @@ func (a *Client) GetV1IncidentsIncidentIDUsersUserID(params *GetV1IncidentsIncid
 }
 
 /*
-  PatchV1IncidentsIncidentID Update an incident
+  PatchV1IncidentsIncidentID updates an incident
+
+  Updates an incident with provided parameters
 */
 func (a *Client) PatchV1IncidentsIncidentID(params *PatchV1IncidentsIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDOK, error) {
 	// TODO: Validate the params before sending

@@ -109,6 +109,8 @@ func (m *ChangeEventSlimEntity) validateAuthors(formats strfmt.Registry) error {
 			if err := m.Authors[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("authors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("authors" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -145,6 +147,8 @@ func (m *ChangeEventSlimEntity) validateEnvironments(formats strfmt.Registry) er
 			if err := m.Environments[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -169,6 +173,8 @@ func (m *ChangeEventSlimEntity) validateServices(formats strfmt.Registry) error 
 			if err := m.Services[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -221,6 +227,8 @@ func (m *ChangeEventSlimEntity) contextValidateAuthors(ctx context.Context, form
 			if err := m.Authors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("authors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("authors" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -239,6 +247,8 @@ func (m *ChangeEventSlimEntity) contextValidateEnvironments(ctx context.Context,
 			if err := m.Environments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -257,6 +267,8 @@ func (m *ChangeEventSlimEntity) contextValidateServices(ctx context.Context, for
 			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

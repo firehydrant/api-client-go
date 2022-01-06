@@ -108,6 +108,8 @@ func (m *PostV1ChangesEvents) validateAttachments(formats strfmt.Registry) error
 			if err := m.Attachments[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("attachments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("attachments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -132,6 +134,8 @@ func (m *PostV1ChangesEvents) validateAuthors(formats strfmt.Registry) error {
 			if err := m.Authors[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("authors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("authors" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -156,6 +160,8 @@ func (m *PostV1ChangesEvents) validateChangeIdentities(formats strfmt.Registry) 
 			if err := m.ChangeIdentities[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("change_identities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("change_identities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -229,6 +235,8 @@ func (m *PostV1ChangesEvents) contextValidateAttachments(ctx context.Context, fo
 			if err := m.Attachments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("attachments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("attachments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -247,6 +255,8 @@ func (m *PostV1ChangesEvents) contextValidateAuthors(ctx context.Context, format
 			if err := m.Authors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("authors" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("authors" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -265,6 +275,8 @@ func (m *PostV1ChangesEvents) contextValidateChangeIdentities(ctx context.Contex
 			if err := m.ChangeIdentities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("change_identities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("change_identities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

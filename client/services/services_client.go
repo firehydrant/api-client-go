@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	DeleteV1ServicesServiceID(params *DeleteV1ServicesServiceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ServicesServiceIDOK, error)
 
+	DeleteV1ServicesServiceIDServiceLinksRemoteID(params *DeleteV1ServicesServiceIDServiceLinksRemoteIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ServicesServiceIDServiceLinksRemoteIDNoContent, error)
+
 	GetV1Services(params *GetV1ServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesOK, error)
 
 	GetV1ServicesServiceID(params *GetV1ServicesServiceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesServiceIDOK, error)
@@ -39,6 +41,8 @@ type ClientService interface {
 	PatchV1ServicesServiceID(params *PatchV1ServicesServiceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ServicesServiceIDOK, error)
 
 	PostV1Services(params *PostV1ServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesCreated, error)
+
+	PostV1ServicesServiceLinks(params *PostV1ServicesServiceLinksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesServiceLinksCreated, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -81,6 +85,47 @@ func (a *Client) DeleteV1ServicesServiceID(params *DeleteV1ServicesServiceIDPara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for deleteV1ServicesServiceId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  DeleteV1ServicesServiceIDServiceLinksRemoteID deletes a service link
+
+  Deletes a service link from FireHydrant.
+*/
+func (a *Client) DeleteV1ServicesServiceIDServiceLinksRemoteID(params *DeleteV1ServicesServiceIDServiceLinksRemoteIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ServicesServiceIDServiceLinksRemoteIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1ServicesServiceIDServiceLinksRemoteIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1ServicesServiceIdServiceLinksRemoteId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/services/{service_id}/service_links/{remote_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1ServicesServiceIDServiceLinksRemoteIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1ServicesServiceIDServiceLinksRemoteIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1ServicesServiceIdServiceLinksRemoteId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -247,6 +292,47 @@ func (a *Client) PostV1Services(params *PostV1ServicesParams, authInfo runtime.C
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for postV1Services: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PostV1ServicesServiceLinks bulks create services and service links
+
+  Creates a service with the appropriate integration for each external service ID passed
+*/
+func (a *Client) PostV1ServicesServiceLinks(params *PostV1ServicesServiceLinksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesServiceLinksCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1ServicesServiceLinksParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1ServicesServiceLinks",
+		Method:             "POST",
+		PathPattern:        "/v1/services/service_links",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1ServicesServiceLinksReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1ServicesServiceLinksCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1ServicesServiceLinks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
