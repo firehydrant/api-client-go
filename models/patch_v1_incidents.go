@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PatchV1Incidents Update an incident
+// PatchV1Incidents Updates an incident with provided parameters
 //
 // swagger:model patchV1Incidents
 type PatchV1Incidents struct {

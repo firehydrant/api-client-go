@@ -44,7 +44,11 @@ type ClientService interface {
 
 	GetV1IntegrationsAwsConnectionsID(params *GetV1IntegrationsAwsConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsConnectionsIDOK, error)
 
+	GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch(params *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK, error)
+
 	GetV1IntegrationsConnections(params *GetV1IntegrationsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConnectionsOK, error)
+
+	GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegrationIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsIntegrationIDOK, error)
 
 	GetV1IntegrationsStatusesSlug(params *GetV1IntegrationsStatusesSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatusesSlugOK, error)
 
@@ -58,7 +62,13 @@ type ClientService interface {
 
 	PatchV1IntegrationsAwsConnectionsID(params *PatchV1IntegrationsAwsConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAwsConnectionsIDOK, error)
 
+	PatchV1IntegrationsConnectionsPagerDutyIDRefresh(params *PatchV1IntegrationsConnectionsPagerDutyIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsPagerDutyIDRefreshOK, error)
+
+	PatchV1IntegrationsConnectionsSlugConnectionID(params *PatchV1IntegrationsConnectionsSlugConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDOK, error)
+
 	PatchV1IntegrationsStatuspageConnectionsID(params *PatchV1IntegrationsStatuspageConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsStatuspageConnectionsIDOK, error)
+
+	PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsConnectionsSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsConnectionsSlugCreated, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -347,6 +357,47 @@ func (a *Client) GetV1IntegrationsAwsConnectionsID(params *GetV1IntegrationsAwsC
 }
 
 /*
+  GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch lists available space keys
+
+  Lists available space keys for the Confluence integration connection.
+*/
+func (a *Client) GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch(params *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IntegrationsConfluenceCloudConnectionsIdSpaceSearch",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/confluence_cloud/connections/{id}/space/search",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsConfluenceCloudConnectionsIdSpaceSearch: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   GetV1IntegrationsConnections get v1 integrations connections API
 */
 func (a *Client) GetV1IntegrationsConnections(params *GetV1IntegrationsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConnectionsOK, error) {
@@ -382,6 +433,45 @@ func (a *Client) GetV1IntegrationsConnections(params *GetV1IntegrationsConnectio
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsConnections: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetV1IntegrationsIntegrationID Retrieve a single integration
+*/
+func (a *Client) GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegrationIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsIntegrationIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IntegrationsIntegrationIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IntegrationsIntegrationId",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/{integration_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IntegrationsIntegrationIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IntegrationsIntegrationIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsIntegrationId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -628,6 +718,84 @@ func (a *Client) PatchV1IntegrationsAwsConnectionsID(params *PatchV1Integrations
 }
 
 /*
+  PatchV1IntegrationsConnectionsPagerDutyIDRefresh patch v1 integrations connections pager duty Id refresh API
+*/
+func (a *Client) PatchV1IntegrationsConnectionsPagerDutyIDRefresh(params *PatchV1IntegrationsConnectionsPagerDutyIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsPagerDutyIDRefreshOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1IntegrationsConnectionsPagerDutyIDRefreshParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1IntegrationsConnectionsPagerDutyIdRefresh",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/connections/pager_duty/{id}/refresh",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1IntegrationsConnectionsPagerDutyIDRefreshReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1IntegrationsConnectionsPagerDutyIDRefreshOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsConnectionsPagerDutyIdRefresh: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PatchV1IntegrationsConnectionsSlugConnectionID patch v1 integrations connections slug connection Id API
+*/
+func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionID(params *PatchV1IntegrationsConnectionsSlugConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1IntegrationsConnectionsSlugConnectionIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1IntegrationsConnectionsSlugConnectionId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/connections/{slug}/{connection_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1IntegrationsConnectionsSlugConnectionIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1IntegrationsConnectionsSlugConnectionIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsConnectionsSlugConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   PatchV1IntegrationsStatuspageConnectionsID updates a statuspage connection
 
   Update the given Statuspage integration connection.
@@ -665,6 +833,45 @@ func (a *Client) PatchV1IntegrationsStatuspageConnectionsID(params *PatchV1Integ
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsStatuspageConnectionsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PostV1IntegrationsConnectionsSlug post v1 integrations connections slug API
+*/
+func (a *Client) PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsConnectionsSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsConnectionsSlugCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1IntegrationsConnectionsSlugParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1IntegrationsConnectionsSlug",
+		Method:             "POST",
+		PathPattern:        "/v1/integrations/connections/{slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1IntegrationsConnectionsSlugReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1IntegrationsConnectionsSlugCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1IntegrationsConnectionsSlug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -60,6 +60,12 @@ func NewGetV1FunctionalitiesParamsWithHTTPClient(client *http.Client) *GetV1Func
 */
 type GetV1FunctionalitiesParams struct {
 
+	/* Name.
+
+	   A query to search functionalities by their name
+	*/
+	Name *string
+
 	// Page.
 	//
 	// Format: int32
@@ -72,7 +78,7 @@ type GetV1FunctionalitiesParams struct {
 
 	/* Query.
 
-	   A query to search functionalities by their name
+	   A query to search functionalities by their name or description
 	*/
 	Query *string
 
@@ -129,6 +135,17 @@ func (o *GetV1FunctionalitiesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithName adds the name to the get v1 functionalities params
+func (o *GetV1FunctionalitiesParams) WithName(name *string) *GetV1FunctionalitiesParams {
+	o.SetName(name)
+	return o
+}
+
+// SetName adds the name to the get v1 functionalities params
+func (o *GetV1FunctionalitiesParams) SetName(name *string) {
+	o.Name = name
+}
+
 // WithPage adds the page to the get v1 functionalities params
 func (o *GetV1FunctionalitiesParams) WithPage(page *int32) *GetV1FunctionalitiesParams {
 	o.SetPage(page)
@@ -169,6 +186,23 @@ func (o *GetV1FunctionalitiesParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
+
+	if o.Name != nil {
+
+		// query param name
+		var qrName string
+
+		if o.Name != nil {
+			qrName = *o.Name
+		}
+		qName := qrName
+		if qName != "" {
+
+			if err := r.SetQueryParam("name", qName); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Page != nil {
 

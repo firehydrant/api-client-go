@@ -23,6 +23,9 @@ type WebhookEntity struct {
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
+	// created by
+	CreatedBy string `json:"created_by,omitempty"`
+
 	// id
 	ID string `json:"id,omitempty"`
 

@@ -73,6 +73,8 @@ func (m *IncidentEventEntity) validateAuthor(formats strfmt.Registry) error {
 		if err := m.Author.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("author")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("author")
 			}
 			return err
 		}
@@ -90,6 +92,8 @@ func (m *IncidentEventEntity) validateVotes(formats strfmt.Registry) error {
 		if err := m.Votes.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("votes")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("votes")
 			}
 			return err
 		}
@@ -122,6 +126,8 @@ func (m *IncidentEventEntity) contextValidateAuthor(ctx context.Context, formats
 		if err := m.Author.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("author")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("author")
 			}
 			return err
 		}
@@ -136,6 +142,8 @@ func (m *IncidentEventEntity) contextValidateVotes(ctx context.Context, formats 
 		if err := m.Votes.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("votes")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("votes")
 			}
 			return err
 		}

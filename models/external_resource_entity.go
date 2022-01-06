@@ -32,6 +32,9 @@ type ExternalResourceEntity struct {
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
+	// name
+	Name string `json:"name,omitempty"`
+
 	// remote id
 	RemoteID string `json:"remote_id,omitempty"`
 

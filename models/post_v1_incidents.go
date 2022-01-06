@@ -39,6 +39,9 @@ type PostV1Incidents struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// restricted
+	Restricted bool `json:"restricted,omitempty"`
+
 	// List of ids of Runbooks to attach to this incident. Foregoes any conditions these Runbooks may have guarding automatic attachment.
 	RunbookIds []string `json:"runbook_ids"`
 
@@ -85,6 +88,8 @@ func (m *PostV1Incidents) validateContextObject(formats strfmt.Registry) error {
 		if err := m.ContextObject.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("context_object")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("context_object")
 			}
 			return err
 		}
@@ -122,6 +127,8 @@ func (m *PostV1Incidents) contextValidateContextObject(ctx context.Context, form
 		if err := m.ContextObject.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("context_object")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("context_object")
 			}
 			return err
 		}

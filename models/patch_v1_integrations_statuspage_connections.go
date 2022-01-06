@@ -62,6 +62,8 @@ func (m *PatchV1IntegrationsStatuspageConnections) validateConditions(formats st
 			if err := m.Conditions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("conditions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conditions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -86,6 +88,8 @@ func (m *PatchV1IntegrationsStatuspageConnections) validateSeverities(formats st
 			if err := m.Severities[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("severities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("severities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -122,6 +126,8 @@ func (m *PatchV1IntegrationsStatuspageConnections) contextValidateConditions(ctx
 			if err := m.Conditions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("conditions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conditions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -140,6 +146,8 @@ func (m *PatchV1IntegrationsStatuspageConnections) contextValidateSeverities(ctx
 			if err := m.Severities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("severities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("severities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

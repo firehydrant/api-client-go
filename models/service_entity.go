@@ -54,6 +54,9 @@ type ServiceEntity struct {
 	// If set, this field indicates that the service is managed by an integration and thus cannot be set manually
 	ManagedBy string `json:"managed_by,omitempty"`
 
+	// Indicates the settings of the catalog that manages this service
+	ManagedBySettings string `json:"managed_by_settings,omitempty"`
+
 	// name
 	Name string `json:"name,omitempty"`
 
@@ -138,6 +141,8 @@ func (m *ServiceEntity) validateExternalResources(formats strfmt.Registry) error
 			if err := m.ExternalResources[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("external_resources" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -162,6 +167,8 @@ func (m *ServiceEntity) validateFunctionalities(formats strfmt.Registry) error {
 			if err := m.Functionalities[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("functionalities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -186,6 +193,8 @@ func (m *ServiceEntity) validateLinks(formats strfmt.Registry) error {
 			if err := m.Links[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -205,6 +214,8 @@ func (m *ServiceEntity) validateOwner(formats strfmt.Registry) error {
 		if err := m.Owner.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
 			}
 			return err
 		}
@@ -227,6 +238,8 @@ func (m *ServiceEntity) validateTeams(formats strfmt.Registry) error {
 			if err := m.Teams[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("teams" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -287,6 +300,8 @@ func (m *ServiceEntity) contextValidateExternalResources(ctx context.Context, fo
 			if err := m.ExternalResources[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("external_resources" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -305,6 +320,8 @@ func (m *ServiceEntity) contextValidateFunctionalities(ctx context.Context, form
 			if err := m.Functionalities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("functionalities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -323,6 +340,8 @@ func (m *ServiceEntity) contextValidateLinks(ctx context.Context, formats strfmt
 			if err := m.Links[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -339,6 +358,8 @@ func (m *ServiceEntity) contextValidateOwner(ctx context.Context, formats strfmt
 		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
 			}
 			return err
 		}
@@ -355,6 +376,8 @@ func (m *ServiceEntity) contextValidateTeams(ctx context.Context, formats strfmt
 			if err := m.Teams[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("teams" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

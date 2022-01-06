@@ -86,6 +86,8 @@ func (m *TaskEntity) validateAssignee(formats strfmt.Registry) error {
 		if err := m.Assignee.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("assignee")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("assignee")
 			}
 			return err
 		}
@@ -103,6 +105,8 @@ func (m *TaskEntity) validateIncidentRole(formats strfmt.Registry) error {
 		if err := m.IncidentRole.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("incident_role")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("incident_role")
 			}
 			return err
 		}
@@ -183,6 +187,8 @@ func (m *TaskEntity) contextValidateAssignee(ctx context.Context, formats strfmt
 		if err := m.Assignee.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("assignee")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("assignee")
 			}
 			return err
 		}
@@ -197,6 +203,8 @@ func (m *TaskEntity) contextValidateIncidentRole(ctx context.Context, formats st
 		if err := m.IncidentRole.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("incident_role")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("incident_role")
 			}
 			return err
 		}

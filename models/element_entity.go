@@ -79,6 +79,8 @@ func (m *ElementEntity) validateDynamicSelect(formats strfmt.Registry) error {
 		if err := m.DynamicSelect.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("dynamic_select")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("dynamic_select")
 			}
 			return err
 		}
@@ -96,6 +98,8 @@ func (m *ElementEntity) validateInput(formats strfmt.Registry) error {
 		if err := m.Input.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("input")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("input")
 			}
 			return err
 		}
@@ -113,6 +117,8 @@ func (m *ElementEntity) validateMarkdown(formats strfmt.Registry) error {
 		if err := m.Markdown.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("markdown")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("markdown")
 			}
 			return err
 		}
@@ -130,6 +136,8 @@ func (m *ElementEntity) validatePlainText(formats strfmt.Registry) error {
 		if err := m.PlainText.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("plain_text")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("plain_text")
 			}
 			return err
 		}
@@ -147,6 +155,8 @@ func (m *ElementEntity) validateTextarea(formats strfmt.Registry) error {
 		if err := m.Textarea.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("textarea")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("textarea")
 			}
 			return err
 		}
@@ -191,6 +201,8 @@ func (m *ElementEntity) contextValidateDynamicSelect(ctx context.Context, format
 		if err := m.DynamicSelect.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("dynamic_select")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("dynamic_select")
 			}
 			return err
 		}
@@ -205,6 +217,8 @@ func (m *ElementEntity) contextValidateInput(ctx context.Context, formats strfmt
 		if err := m.Input.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("input")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("input")
 			}
 			return err
 		}
@@ -219,6 +233,8 @@ func (m *ElementEntity) contextValidateMarkdown(ctx context.Context, formats str
 		if err := m.Markdown.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("markdown")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("markdown")
 			}
 			return err
 		}
@@ -233,6 +249,8 @@ func (m *ElementEntity) contextValidatePlainText(ctx context.Context, formats st
 		if err := m.PlainText.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("plain_text")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("plain_text")
 			}
 			return err
 		}
@@ -247,6 +265,8 @@ func (m *ElementEntity) contextValidateTextarea(ctx context.Context, formats str
 		if err := m.Textarea.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("textarea")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("textarea")
 			}
 			return err
 		}

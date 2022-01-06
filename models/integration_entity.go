@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// IntegrationEntity integration entity
+// IntegrationEntity Retrieve a single integration
 //
 // swagger:model IntegrationEntity
 type IntegrationEntity struct {

@@ -59,17 +59,41 @@ func NewGetV1ServicesParamsWithHTTPClient(client *http.Client) *GetV1ServicesPar
 */
 type GetV1ServicesParams struct {
 
+	/* Impacted.
+
+	   A query to search services by if they are impacted with active incidents
+	*/
+	Impacted *string
+
 	/* Labels.
 
 	   A comma separated list of label key / values in the format of "key=value,key2=value2". To filter change events that have a key (with no specific value), omit the value
 	*/
 	Labels *string
 
-	/* Query.
+	/* Name.
 
 	   A query to search services by their name
 	*/
+	Name *string
+
+	/* Owner.
+
+	   A query to search services by their owner
+	*/
+	Owner *string
+
+	/* Query.
+
+	   A query to search services by their name or description
+	*/
 	Query *string
+
+	/* Tiers.
+
+	   A query to search services by their tier
+	*/
+	Tiers *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -124,6 +148,17 @@ func (o *GetV1ServicesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithImpacted adds the impacted to the get v1 services params
+func (o *GetV1ServicesParams) WithImpacted(impacted *string) *GetV1ServicesParams {
+	o.SetImpacted(impacted)
+	return o
+}
+
+// SetImpacted adds the impacted to the get v1 services params
+func (o *GetV1ServicesParams) SetImpacted(impacted *string) {
+	o.Impacted = impacted
+}
+
 // WithLabels adds the labels to the get v1 services params
 func (o *GetV1ServicesParams) WithLabels(labels *string) *GetV1ServicesParams {
 	o.SetLabels(labels)
@@ -133,6 +168,28 @@ func (o *GetV1ServicesParams) WithLabels(labels *string) *GetV1ServicesParams {
 // SetLabels adds the labels to the get v1 services params
 func (o *GetV1ServicesParams) SetLabels(labels *string) {
 	o.Labels = labels
+}
+
+// WithName adds the name to the get v1 services params
+func (o *GetV1ServicesParams) WithName(name *string) *GetV1ServicesParams {
+	o.SetName(name)
+	return o
+}
+
+// SetName adds the name to the get v1 services params
+func (o *GetV1ServicesParams) SetName(name *string) {
+	o.Name = name
+}
+
+// WithOwner adds the owner to the get v1 services params
+func (o *GetV1ServicesParams) WithOwner(owner *string) *GetV1ServicesParams {
+	o.SetOwner(owner)
+	return o
+}
+
+// SetOwner adds the owner to the get v1 services params
+func (o *GetV1ServicesParams) SetOwner(owner *string) {
+	o.Owner = owner
 }
 
 // WithQuery adds the query to the get v1 services params
@@ -146,6 +203,17 @@ func (o *GetV1ServicesParams) SetQuery(query *string) {
 	o.Query = query
 }
 
+// WithTiers adds the tiers to the get v1 services params
+func (o *GetV1ServicesParams) WithTiers(tiers *string) *GetV1ServicesParams {
+	o.SetTiers(tiers)
+	return o
+}
+
+// SetTiers adds the tiers to the get v1 services params
+func (o *GetV1ServicesParams) SetTiers(tiers *string) {
+	o.Tiers = tiers
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1ServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -153,6 +221,23 @@ func (o *GetV1ServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return err
 	}
 	var res []error
+
+	if o.Impacted != nil {
+
+		// query param impacted
+		var qrImpacted string
+
+		if o.Impacted != nil {
+			qrImpacted = *o.Impacted
+		}
+		qImpacted := qrImpacted
+		if qImpacted != "" {
+
+			if err := r.SetQueryParam("impacted", qImpacted); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Labels != nil {
 
@@ -171,6 +256,40 @@ func (o *GetV1ServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		}
 	}
 
+	if o.Name != nil {
+
+		// query param name
+		var qrName string
+
+		if o.Name != nil {
+			qrName = *o.Name
+		}
+		qName := qrName
+		if qName != "" {
+
+			if err := r.SetQueryParam("name", qName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Owner != nil {
+
+		// query param owner
+		var qrOwner string
+
+		if o.Owner != nil {
+			qrOwner = *o.Owner
+		}
+		qOwner := qrOwner
+		if qOwner != "" {
+
+			if err := r.SetQueryParam("owner", qOwner); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.Query != nil {
 
 		// query param query
@@ -183,6 +302,23 @@ func (o *GetV1ServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		if qQuery != "" {
 
 			if err := r.SetQueryParam("query", qQuery); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Tiers != nil {
+
+		// query param tiers
+		var qrTiers string
+
+		if o.Tiers != nil {
+			qrTiers = *o.Tiers
+		}
+		qTiers := qrTiers
+		if qTiers != "" {
+
+			if err := r.SetQueryParam("tiers", qTiers); err != nil {
 				return err
 			}
 		}

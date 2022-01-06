@@ -58,6 +58,8 @@ func (m *IncidentEventEntityPaginated) validateData(formats strfmt.Registry) err
 			if err := m.Data[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -77,6 +79,8 @@ func (m *IncidentEventEntityPaginated) validatePagination(formats strfmt.Registr
 		if err := m.Pagination.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pagination")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pagination")
 			}
 			return err
 		}
@@ -111,6 +115,8 @@ func (m *IncidentEventEntityPaginated) contextValidateData(ctx context.Context, 
 			if err := m.Data[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -127,6 +133,8 @@ func (m *IncidentEventEntityPaginated) contextValidatePagination(ctx context.Con
 		if err := m.Pagination.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pagination")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pagination")
 			}
 			return err
 		}

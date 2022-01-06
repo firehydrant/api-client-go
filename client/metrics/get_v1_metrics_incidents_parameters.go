@@ -71,7 +71,7 @@ type GetV1MetricsIncidentsParams struct {
 
 	/* EndDate.
 
-	   The end date to return metics from
+	   The end date to return metrics from
 
 	   Format: date
 	*/
@@ -90,7 +90,7 @@ type GetV1MetricsIncidentsParams struct {
 
 	/* StartDate.
 
-	   The start date to return metics from
+	   The start date to return metrics from
 
 	   Format: date
 	*/

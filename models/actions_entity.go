@@ -85,6 +85,8 @@ func (m *ActionsEntity) validateConfig(formats strfmt.Registry) error {
 		if err := m.Config.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("config")
 			}
 			return err
 		}
@@ -102,6 +104,8 @@ func (m *ActionsEntity) validateIntegration(formats strfmt.Registry) error {
 		if err := m.Integration.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("integration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("integration")
 			}
 			return err
 		}
@@ -134,6 +138,8 @@ func (m *ActionsEntity) contextValidateConfig(ctx context.Context, formats strfm
 		if err := m.Config.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("config")
 			}
 			return err
 		}
@@ -148,6 +154,8 @@ func (m *ActionsEntity) contextValidateIntegration(ctx context.Context, formats 
 		if err := m.Integration.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("integration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("integration")
 			}
 			return err
 		}

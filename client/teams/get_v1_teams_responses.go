@@ -44,19 +44,19 @@ func NewGetV1TeamsOK() *GetV1TeamsOK {
 Retrieve all teams
 */
 type GetV1TeamsOK struct {
-	Payload *models.TeamEntityPaginated
+	Payload *models.TeamEntity
 }
 
 func (o *GetV1TeamsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/teams][%d] getV1TeamsOK  %+v", 200, o.Payload)
 }
-func (o *GetV1TeamsOK) GetPayload() *models.TeamEntityPaginated {
+func (o *GetV1TeamsOK) GetPayload() *models.TeamEntity {
 	return o.Payload
 }
 
 func (o *GetV1TeamsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.TeamEntityPaginated)
+	o.Payload = new(models.TeamEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

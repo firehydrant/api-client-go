@@ -54,6 +54,8 @@ func (m *BucketEntity) validatePoints(formats strfmt.Registry) error {
 			if err := m.Points[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("points" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("points" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -86,6 +88,8 @@ func (m *BucketEntity) contextValidatePoints(ctx context.Context, formats strfmt
 			if err := m.Points[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("points" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("points" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

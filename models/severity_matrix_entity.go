@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -19,13 +20,13 @@ import (
 type SeverityMatrixEntity struct {
 
 	// conditions
-	Conditions *ConditionEntity `json:"conditions,omitempty"`
+	Conditions []*ConditionEntity `json:"conditions"`
 
 	// impacts
-	Impacts *ImpactEntity `json:"impacts,omitempty"`
+	Impacts []*ImpactEntity `json:"impacts"`
 
 	// matrix
-	Matrix *ItemEntity `json:"matrix,omitempty"`
+	Matrix []*ItemEntity `json:"matrix"`
 }
 
 // Validate validates this severity matrix entity
@@ -55,13 +56,22 @@ func (m *SeverityMatrixEntity) validateConditions(formats strfmt.Registry) error
 		return nil
 	}
 
-	if m.Conditions != nil {
-		if err := m.Conditions.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("conditions")
-			}
-			return err
+	for i := 0; i < len(m.Conditions); i++ {
+		if swag.IsZero(m.Conditions[i]) { // not required
+			continue
 		}
+
+		if m.Conditions[i] != nil {
+			if err := m.Conditions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conditions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conditions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -72,13 +82,22 @@ func (m *SeverityMatrixEntity) validateImpacts(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if m.Impacts != nil {
-		if err := m.Impacts.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("impacts")
-			}
-			return err
+	for i := 0; i < len(m.Impacts); i++ {
+		if swag.IsZero(m.Impacts[i]) { // not required
+			continue
 		}
+
+		if m.Impacts[i] != nil {
+			if err := m.Impacts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("impacts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -89,13 +108,22 @@ func (m *SeverityMatrixEntity) validateMatrix(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if m.Matrix != nil {
-		if err := m.Matrix.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("matrix")
-			}
-			return err
+	for i := 0; i < len(m.Matrix); i++ {
+		if swag.IsZero(m.Matrix[i]) { // not required
+			continue
 		}
+
+		if m.Matrix[i] != nil {
+			if err := m.Matrix[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("matrix" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("matrix" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -125,13 +153,19 @@ func (m *SeverityMatrixEntity) ContextValidate(ctx context.Context, formats strf
 
 func (m *SeverityMatrixEntity) contextValidateConditions(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Conditions != nil {
-		if err := m.Conditions.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("conditions")
+	for i := 0; i < len(m.Conditions); i++ {
+
+		if m.Conditions[i] != nil {
+			if err := m.Conditions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conditions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conditions" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil
@@ -139,13 +173,19 @@ func (m *SeverityMatrixEntity) contextValidateConditions(ctx context.Context, fo
 
 func (m *SeverityMatrixEntity) contextValidateImpacts(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Impacts != nil {
-		if err := m.Impacts.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("impacts")
+	for i := 0; i < len(m.Impacts); i++ {
+
+		if m.Impacts[i] != nil {
+			if err := m.Impacts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("impacts" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil
@@ -153,13 +193,19 @@ func (m *SeverityMatrixEntity) contextValidateImpacts(ctx context.Context, forma
 
 func (m *SeverityMatrixEntity) contextValidateMatrix(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Matrix != nil {
-		if err := m.Matrix.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("matrix")
+	for i := 0; i < len(m.Matrix); i++ {
+
+		if m.Matrix[i] != nil {
+			if err := m.Matrix[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("matrix" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("matrix" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil
