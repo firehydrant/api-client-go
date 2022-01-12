@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetV1TeamsTeamIDParams creates a new GetV1TeamsTeamIDParams object,
@@ -58,6 +59,12 @@ func NewGetV1TeamsTeamIDParamsWithHTTPClient(client *http.Client) *GetV1TeamsTea
    Typically these are written to a http.Request.
 */
 type GetV1TeamsTeamIDParams struct {
+
+	/* Lite.
+
+	   Boolean to determine whether to return a slimified version of the teams object
+	*/
+	Lite *bool
 
 	// TeamID.
 	TeamID string
@@ -115,6 +122,17 @@ func (o *GetV1TeamsTeamIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithLite adds the lite to the get v1 teams team Id params
+func (o *GetV1TeamsTeamIDParams) WithLite(lite *bool) *GetV1TeamsTeamIDParams {
+	o.SetLite(lite)
+	return o
+}
+
+// SetLite adds the lite to the get v1 teams team Id params
+func (o *GetV1TeamsTeamIDParams) SetLite(lite *bool) {
+	o.Lite = lite
+}
+
 // WithTeamID adds the teamID to the get v1 teams team Id params
 func (o *GetV1TeamsTeamIDParams) WithTeamID(teamID string) *GetV1TeamsTeamIDParams {
 	o.SetTeamID(teamID)
@@ -133,6 +151,23 @@ func (o *GetV1TeamsTeamIDParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
+
+	if o.Lite != nil {
+
+		// query param lite
+		var qrLite bool
+
+		if o.Lite != nil {
+			qrLite = *o.Lite
+		}
+		qLite := swag.FormatBool(qrLite)
+		if qLite != "" {
+
+			if err := r.SetQueryParam("lite", qLite); err != nil {
+				return err
+			}
+		}
+	}
 
 	// path param team_id
 	if err := r.SetPathParam("team_id", o.TeamID); err != nil {

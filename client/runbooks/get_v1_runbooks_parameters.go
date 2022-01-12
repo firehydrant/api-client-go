@@ -60,6 +60,12 @@ func NewGetV1RunbooksParamsWithHTTPClient(client *http.Client) *GetV1RunbooksPar
 */
 type GetV1RunbooksParams struct {
 
+	/* Name.
+
+	   A query to search runbooks by their name
+	*/
+	Name *string
+
 	// Page.
 	//
 	// Format: int32
@@ -123,6 +129,17 @@ func (o *GetV1RunbooksParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithName adds the name to the get v1 runbooks params
+func (o *GetV1RunbooksParams) WithName(name *string) *GetV1RunbooksParams {
+	o.SetName(name)
+	return o
+}
+
+// SetName adds the name to the get v1 runbooks params
+func (o *GetV1RunbooksParams) SetName(name *string) {
+	o.Name = name
+}
+
 // WithPage adds the page to the get v1 runbooks params
 func (o *GetV1RunbooksParams) WithPage(page *int32) *GetV1RunbooksParams {
 	o.SetPage(page)
@@ -152,6 +169,23 @@ func (o *GetV1RunbooksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return err
 	}
 	var res []error
+
+	if o.Name != nil {
+
+		// query param name
+		var qrName string
+
+		if o.Name != nil {
+			qrName = *o.Name
+		}
+		qName := qrName
+		if qName != "" {
+
+			if err := r.SetQueryParam("name", qName); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Page != nil {
 

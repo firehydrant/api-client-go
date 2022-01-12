@@ -23,6 +23,9 @@ type ExecutionEntity struct {
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
+	// created by
+	CreatedBy string `json:"created_by,omitempty"`
+
 	// executed for
 	ExecutedFor string `json:"executed_for,omitempty"`
 
@@ -87,6 +90,8 @@ func (m *ExecutionEntity) validateRunbook(formats strfmt.Registry) error {
 		if err := m.Runbook.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("runbook")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("runbook")
 			}
 			return err
 		}
@@ -104,6 +109,8 @@ func (m *ExecutionEntity) validateSteps(formats strfmt.Registry) error {
 		if err := m.Steps.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("steps")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("steps")
 			}
 			return err
 		}
@@ -148,6 +155,8 @@ func (m *ExecutionEntity) contextValidateRunbook(ctx context.Context, formats st
 		if err := m.Runbook.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("runbook")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("runbook")
 			}
 			return err
 		}
@@ -162,6 +171,8 @@ func (m *ExecutionEntity) contextValidateSteps(ctx context.Context, formats strf
 		if err := m.Steps.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("steps")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("steps")
 			}
 			return err
 		}

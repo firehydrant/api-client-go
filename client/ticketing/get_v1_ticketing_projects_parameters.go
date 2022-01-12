@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetV1TicketingProjectsParams creates a new GetV1TicketingProjectsParams object,
@@ -58,6 +59,19 @@ func NewGetV1TicketingProjectsParamsWithHTTPClient(client *http.Client) *GetV1Ti
    Typically these are written to a http.Request.
 */
 type GetV1TicketingProjectsParams struct {
+
+	// ConfiguredProjects.
+	ConfiguredProjects *bool
+
+	// ConnectionIds.
+	ConnectionIds *string
+
+	// Providers.
+	Providers *string
+
+	// SupportsTicketTypes.
+	SupportsTicketTypes *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -111,6 +125,50 @@ func (o *GetV1TicketingProjectsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithConfiguredProjects adds the configuredProjects to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) WithConfiguredProjects(configuredProjects *bool) *GetV1TicketingProjectsParams {
+	o.SetConfiguredProjects(configuredProjects)
+	return o
+}
+
+// SetConfiguredProjects adds the configuredProjects to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) SetConfiguredProjects(configuredProjects *bool) {
+	o.ConfiguredProjects = configuredProjects
+}
+
+// WithConnectionIds adds the connectionIds to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) WithConnectionIds(connectionIds *string) *GetV1TicketingProjectsParams {
+	o.SetConnectionIds(connectionIds)
+	return o
+}
+
+// SetConnectionIds adds the connectionIds to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) SetConnectionIds(connectionIds *string) {
+	o.ConnectionIds = connectionIds
+}
+
+// WithProviders adds the providers to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) WithProviders(providers *string) *GetV1TicketingProjectsParams {
+	o.SetProviders(providers)
+	return o
+}
+
+// SetProviders adds the providers to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) SetProviders(providers *string) {
+	o.Providers = providers
+}
+
+// WithSupportsTicketTypes adds the supportsTicketTypes to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) WithSupportsTicketTypes(supportsTicketTypes *string) *GetV1TicketingProjectsParams {
+	o.SetSupportsTicketTypes(supportsTicketTypes)
+	return o
+}
+
+// SetSupportsTicketTypes adds the supportsTicketTypes to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) SetSupportsTicketTypes(supportsTicketTypes *string) {
+	o.SupportsTicketTypes = supportsTicketTypes
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1TicketingProjectsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -118,6 +176,74 @@ func (o *GetV1TicketingProjectsParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
+
+	if o.ConfiguredProjects != nil {
+
+		// query param configured_projects
+		var qrConfiguredProjects bool
+
+		if o.ConfiguredProjects != nil {
+			qrConfiguredProjects = *o.ConfiguredProjects
+		}
+		qConfiguredProjects := swag.FormatBool(qrConfiguredProjects)
+		if qConfiguredProjects != "" {
+
+			if err := r.SetQueryParam("configured_projects", qConfiguredProjects); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ConnectionIds != nil {
+
+		// query param connection_ids
+		var qrConnectionIds string
+
+		if o.ConnectionIds != nil {
+			qrConnectionIds = *o.ConnectionIds
+		}
+		qConnectionIds := qrConnectionIds
+		if qConnectionIds != "" {
+
+			if err := r.SetQueryParam("connection_ids", qConnectionIds); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Providers != nil {
+
+		// query param providers
+		var qrProviders string
+
+		if o.Providers != nil {
+			qrProviders = *o.Providers
+		}
+		qProviders := qrProviders
+		if qProviders != "" {
+
+			if err := r.SetQueryParam("providers", qProviders); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SupportsTicketTypes != nil {
+
+		// query param supports_ticket_types
+		var qrSupportsTicketTypes string
+
+		if o.SupportsTicketTypes != nil {
+			qrSupportsTicketTypes = *o.SupportsTicketTypes
+		}
+		qSupportsTicketTypes := qrSupportsTicketTypes
+		if qSupportsTicketTypes != "" {
+
+			if err := r.SetQueryParam("supports_ticket_types", qSupportsTicketTypes); err != nil {
+				return err
+			}
+		}
+	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)

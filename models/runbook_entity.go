@@ -20,7 +20,7 @@ import (
 type RunbookEntity struct {
 
 	// attachment rule
-	AttachmentRule *RuleEntity `json:"attachment_rule,omitempty"`
+	AttachmentRule string `json:"attachment_rule,omitempty"`
 
 	// created at
 	// Format: date-time
@@ -57,6 +57,9 @@ type RunbookEntity struct {
 	// Format: date-time
 	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
 
+	// updated by
+	UpdatedBy *AuthorEntity `json:"updated_by,omitempty"`
+
 	// votes
 	Votes *VotesEntity `json:"votes,omitempty"`
 }
@@ -64,10 +67,6 @@ type RunbookEntity struct {
 // Validate validates this runbook entity
 func (m *RunbookEntity) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateAttachmentRule(formats); err != nil {
-		res = append(res, err)
-	}
 
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
@@ -85,6 +84,10 @@ func (m *RunbookEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateUpdatedBy(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVotes(formats); err != nil {
 		res = append(res, err)
 	}
@@ -92,23 +95,6 @@ func (m *RunbookEntity) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *RunbookEntity) validateAttachmentRule(formats strfmt.Registry) error {
-	if swag.IsZero(m.AttachmentRule) { // not required
-		return nil
-	}
-
-	if m.AttachmentRule != nil {
-		if err := m.AttachmentRule.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("attachment_rule")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -133,6 +119,8 @@ func (m *RunbookEntity) validateCreatedBy(formats strfmt.Registry) error {
 		if err := m.CreatedBy.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}
@@ -150,6 +138,8 @@ func (m *RunbookEntity) validateSteps(formats strfmt.Registry) error {
 		if err := m.Steps.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("steps")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("steps")
 			}
 			return err
 		}
@@ -170,6 +160,25 @@ func (m *RunbookEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *RunbookEntity) validateUpdatedBy(formats strfmt.Registry) error {
+	if swag.IsZero(m.UpdatedBy) { // not required
+		return nil
+	}
+
+	if m.UpdatedBy != nil {
+		if err := m.UpdatedBy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("updated_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("updated_by")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *RunbookEntity) validateVotes(formats strfmt.Registry) error {
 	if swag.IsZero(m.Votes) { // not required
 		return nil
@@ -179,6 +188,8 @@ func (m *RunbookEntity) validateVotes(formats strfmt.Registry) error {
 		if err := m.Votes.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("votes")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("votes")
 			}
 			return err
 		}
@@ -191,15 +202,15 @@ func (m *RunbookEntity) validateVotes(formats strfmt.Registry) error {
 func (m *RunbookEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateAttachmentRule(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateCreatedBy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.contextValidateSteps(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpdatedBy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -213,26 +224,14 @@ func (m *RunbookEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 	return nil
 }
 
-func (m *RunbookEntity) contextValidateAttachmentRule(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.AttachmentRule != nil {
-		if err := m.AttachmentRule.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("attachment_rule")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *RunbookEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CreatedBy != nil {
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}
@@ -247,6 +246,24 @@ func (m *RunbookEntity) contextValidateSteps(ctx context.Context, formats strfmt
 		if err := m.Steps.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("steps")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("steps")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *RunbookEntity) contextValidateUpdatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.UpdatedBy != nil {
+		if err := m.UpdatedBy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("updated_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("updated_by")
 			}
 			return err
 		}
@@ -261,6 +278,8 @@ func (m *RunbookEntity) contextValidateVotes(ctx context.Context, formats strfmt
 		if err := m.Votes.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("votes")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("votes")
 			}
 			return err
 		}

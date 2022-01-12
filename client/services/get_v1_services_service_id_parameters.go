@@ -61,7 +61,7 @@ type GetV1ServicesServiceIDParams struct {
 
 	/* ServiceID.
 
-	   Service UUID or slug
+	   Service UUID
 	*/
 	ServiceID string
 

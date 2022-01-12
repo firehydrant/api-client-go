@@ -83,6 +83,12 @@ type GetV1IncidentsParams struct {
 	*/
 	Environments *string
 
+	/* Name.
+
+	   A query to search incidents by their name
+	*/
+	Name *string
+
 	// Page.
 	//
 	// Format: int32
@@ -250,6 +256,17 @@ func (o *GetV1IncidentsParams) WithEnvironments(environments *string) *GetV1Inci
 // SetEnvironments adds the environments to the get v1 incidents params
 func (o *GetV1IncidentsParams) SetEnvironments(environments *string) {
 	o.Environments = environments
+}
+
+// WithName adds the name to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithName(name *string) *GetV1IncidentsParams {
+	o.SetName(name)
+	return o
+}
+
+// SetName adds the name to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetName(name *string) {
+	o.Name = name
 }
 
 // WithPage adds the page to the get v1 incidents params
@@ -455,6 +472,23 @@ func (o *GetV1IncidentsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		if qEnvironments != "" {
 
 			if err := r.SetQueryParam("environments", qEnvironments); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Name != nil {
+
+		// query param name
+		var qrName string
+
+		if o.Name != nil {
+			qrName = *o.Name
+		}
+		qName := qrName
+		if qName != "" {
+
+			if err := r.SetQueryParam("name", qName); err != nil {
 				return err
 			}
 		}

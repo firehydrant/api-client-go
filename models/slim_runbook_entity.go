@@ -19,6 +19,9 @@ import (
 // swagger:model SlimRunbookEntity
 type SlimRunbookEntity struct {
 
+	// attachment rule
+	AttachmentRule string `json:"attachment_rule,omitempty"`
+
 	// created at
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`

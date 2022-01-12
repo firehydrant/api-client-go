@@ -60,6 +60,8 @@ func (m *PatchV1Teams) validateMemberships(formats strfmt.Registry) error {
 			if err := m.Memberships[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("memberships" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("memberships" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -92,6 +94,8 @@ func (m *PatchV1Teams) contextValidateMemberships(ctx context.Context, formats s
 			if err := m.Memberships[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("memberships" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("memberships" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

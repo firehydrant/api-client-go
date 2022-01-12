@@ -72,6 +72,8 @@ func (m *PostV1IncidentsIncidentIDNotes) validateStatusPages(formats strfmt.Regi
 			if err := m.StatusPages[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("status_pages" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -104,6 +106,8 @@ func (m *PostV1IncidentsIncidentIDNotes) contextValidateStatusPages(ctx context.
 			if err := m.StatusPages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("status_pages" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

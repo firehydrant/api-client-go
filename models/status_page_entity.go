@@ -57,6 +57,8 @@ func (m *StatusPageEntity) validateIntegration(formats strfmt.Registry) error {
 		if err := m.Integration.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("integration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("integration")
 			}
 			return err
 		}
@@ -85,6 +87,8 @@ func (m *StatusPageEntity) contextValidateIntegration(ctx context.Context, forma
 		if err := m.Integration.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("integration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("integration")
 			}
 			return err
 		}

@@ -46,7 +46,7 @@ type RunbookStepEntity struct {
 	RepeatsDuration string `json:"repeats_duration,omitempty"`
 
 	// rule
-	Rule *RuleEntity `json:"rule,omitempty"`
+	Rule string `json:"rule,omitempty"`
 
 	// step elements
 	StepElements string `json:"step_elements,omitempty"`
@@ -63,10 +63,6 @@ func (m *RunbookStepEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAction(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateRule(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -89,23 +85,8 @@ func (m *RunbookStepEntity) validateAction(formats strfmt.Registry) error {
 		if err := m.Action.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("action")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *RunbookStepEntity) validateRule(formats strfmt.Registry) error {
-	if swag.IsZero(m.Rule) { // not required
-		return nil
-	}
-
-	if m.Rule != nil {
-		if err := m.Rule.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("action")
 			}
 			return err
 		}
@@ -123,6 +104,8 @@ func (m *RunbookStepEntity) validateVotes(formats strfmt.Registry) error {
 		if err := m.Votes.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("votes")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("votes")
 			}
 			return err
 		}
@@ -136,10 +119,6 @@ func (m *RunbookStepEntity) ContextValidate(ctx context.Context, formats strfmt.
 	var res []error
 
 	if err := m.contextValidateAction(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateRule(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -159,20 +138,8 @@ func (m *RunbookStepEntity) contextValidateAction(ctx context.Context, formats s
 		if err := m.Action.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("action")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *RunbookStepEntity) contextValidateRule(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Rule != nil {
-		if err := m.Rule.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("action")
 			}
 			return err
 		}
@@ -187,6 +154,8 @@ func (m *RunbookStepEntity) contextValidateVotes(ctx context.Context, formats st
 		if err := m.Votes.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("votes")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("votes")
 			}
 			return err
 		}
