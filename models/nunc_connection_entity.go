@@ -86,6 +86,8 @@ func (m *NuncConnectionEntity) validateComponents(formats strfmt.Registry) error
 		if err := m.Components.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("components")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("components")
 			}
 			return err
 		}
@@ -103,6 +105,8 @@ func (m *NuncConnectionEntity) validateConditions(formats strfmt.Registry) error
 		if err := m.Conditions.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("conditions")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("conditions")
 			}
 			return err
 		}
@@ -120,6 +124,8 @@ func (m *NuncConnectionEntity) validateLogo(formats strfmt.Registry) error {
 		if err := m.Logo.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("logo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("logo")
 			}
 			return err
 		}
@@ -156,6 +162,8 @@ func (m *NuncConnectionEntity) contextValidateComponents(ctx context.Context, fo
 		if err := m.Components.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("components")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("components")
 			}
 			return err
 		}
@@ -170,6 +178,8 @@ func (m *NuncConnectionEntity) contextValidateConditions(ctx context.Context, fo
 		if err := m.Conditions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("conditions")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("conditions")
 			}
 			return err
 		}
@@ -184,6 +194,8 @@ func (m *NuncConnectionEntity) contextValidateLogo(ctx context.Context, formats 
 		if err := m.Logo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("logo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("logo")
 			}
 			return err
 		}

@@ -51,6 +51,8 @@ func (m *AlertEntity) validateAlert(formats strfmt.Registry) error {
 		if err := m.Alert.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("alert")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("alert")
 			}
 			return err
 		}
@@ -79,6 +81,8 @@ func (m *AlertEntity) contextValidateAlert(ctx context.Context, formats strfmt.R
 		if err := m.Alert.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("alert")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("alert")
 			}
 			return err
 		}

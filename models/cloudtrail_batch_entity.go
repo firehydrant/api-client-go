@@ -63,6 +63,8 @@ func (m *CloudtrailBatchEntity) validateConnection(formats strfmt.Registry) erro
 		if err := m.Connection.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("connection")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("connection")
 			}
 			return err
 		}
@@ -91,6 +93,8 @@ func (m *CloudtrailBatchEntity) contextValidateConnection(ctx context.Context, f
 		if err := m.Connection.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("connection")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("connection")
 			}
 			return err
 		}

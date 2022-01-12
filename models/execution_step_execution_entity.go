@@ -60,6 +60,8 @@ func (m *ExecutionStepExecutionEntity) validatePerformedBy(formats strfmt.Regist
 		if err := m.PerformedBy.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("performed_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("performed_by")
 			}
 			return err
 		}
@@ -88,6 +90,8 @@ func (m *ExecutionStepExecutionEntity) contextValidatePerformedBy(ctx context.Co
 		if err := m.PerformedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("performed_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("performed_by")
 			}
 			return err
 		}

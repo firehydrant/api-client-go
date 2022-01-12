@@ -87,6 +87,8 @@ func (m *RelatedChangeEventEntity) validateChangeEvent(formats strfmt.Registry) 
 		if err := m.ChangeEvent.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("change_event")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("change_event")
 			}
 			return err
 		}
@@ -116,6 +118,8 @@ func (m *RelatedChangeEventEntity) validateCreatedBy(formats strfmt.Registry) er
 		if err := m.CreatedBy.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}
@@ -208,6 +212,8 @@ func (m *RelatedChangeEventEntity) contextValidateChangeEvent(ctx context.Contex
 		if err := m.ChangeEvent.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("change_event")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("change_event")
 			}
 			return err
 		}
@@ -222,6 +228,8 @@ func (m *RelatedChangeEventEntity) contextValidateCreatedBy(ctx context.Context,
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}

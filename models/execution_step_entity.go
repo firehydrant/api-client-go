@@ -18,6 +18,15 @@ import (
 // swagger:model ExecutionStepEntity
 type ExecutionStepEntity struct {
 
+	// action slug
+	ActionSlug string `json:"action_slug,omitempty"`
+
+	// action type
+	ActionType string `json:"action_type,omitempty"`
+
+	// automatic
+	Automatic string `json:"automatic,omitempty"`
+
 	// config
 	Config string `json:"config,omitempty"`
 
@@ -69,6 +78,8 @@ func (m *ExecutionStepEntity) validateExecution(formats strfmt.Registry) error {
 		if err := m.Execution.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("execution")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("execution")
 			}
 			return err
 		}
@@ -97,6 +108,8 @@ func (m *ExecutionStepEntity) contextValidateExecution(ctx context.Context, form
 		if err := m.Execution.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("execution")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("execution")
 			}
 			return err
 		}

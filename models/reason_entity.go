@@ -54,6 +54,8 @@ func (m *ReasonEntity) validateCreatedBy(formats strfmt.Registry) error {
 		if err := m.CreatedBy.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}
@@ -82,6 +84,8 @@ func (m *ReasonEntity) contextValidateCreatedBy(ctx context.Context, formats str
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}
