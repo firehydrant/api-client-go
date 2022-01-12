@@ -29,6 +29,9 @@ type PatchV1Services struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// An array of external resources to attach to this service.
+	ExternalResources []*PatchV1ServicesExternalResourcesItems0 `json:"external_resources"`
+
 	// An array of functionalities
 	Functionalities []*PatchV1ServicesFunctionalitiesItems0 `json:"functionalities"`
 
@@ -39,11 +42,13 @@ type PatchV1Services struct {
 	Links []*PatchV1ServicesLinksItems0 `json:"links"`
 
 	// name
-	// Required: true
-	Name *string `json:"name"`
+	Name string `json:"name,omitempty"`
 
 	// owner
 	Owner *PatchV1ServicesOwner `json:"owner,omitempty"`
+
+	// If set to true, any external resource objects tagged on the service that are not included in the given external resources array will be removed. Set this if you want to do a replacement operation for the external resources
+	RemoveRemainingExternalResources bool `json:"remove_remaining_external_resources,omitempty"`
 
 	// If set to true, any functionality objects tagged on the service that are not included in the given array will be removed. Set this if you want to do a replacement operation for the functionalities
 	RemoveRemainingFunctionalities bool `json:"remove_remaining_functionalities,omitempty"`
@@ -63,15 +68,15 @@ type PatchV1Services struct {
 func (m *PatchV1Services) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateExternalResources(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateFunctionalities(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateLinks(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -93,6 +98,32 @@ func (m *PatchV1Services) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *PatchV1Services) validateExternalResources(formats strfmt.Registry) error {
+	if swag.IsZero(m.ExternalResources) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ExternalResources); i++ {
+		if swag.IsZero(m.ExternalResources[i]) { // not required
+			continue
+		}
+
+		if m.ExternalResources[i] != nil {
+			if err := m.ExternalResources[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *PatchV1Services) validateFunctionalities(formats strfmt.Registry) error {
 	if swag.IsZero(m.Functionalities) { // not required
 		return nil
@@ -107,6 +138,8 @@ func (m *PatchV1Services) validateFunctionalities(formats strfmt.Registry) error
 			if err := m.Functionalities[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("functionalities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -131,20 +164,13 @@ func (m *PatchV1Services) validateLinks(formats strfmt.Registry) error {
 			if err := m.Links[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *PatchV1Services) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("name", "body", m.Name); err != nil {
-		return err
 	}
 
 	return nil
@@ -159,6 +185,8 @@ func (m *PatchV1Services) validateOwner(formats strfmt.Registry) error {
 		if err := m.Owner.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
 			}
 			return err
 		}
@@ -214,6 +242,8 @@ func (m *PatchV1Services) validateTeams(formats strfmt.Registry) error {
 			if err := m.Teams[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("teams" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -227,6 +257,10 @@ func (m *PatchV1Services) validateTeams(formats strfmt.Registry) error {
 // ContextValidate validate this patch v1 services based on the context it is used
 func (m *PatchV1Services) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.contextValidateExternalResources(ctx, formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.contextValidateFunctionalities(ctx, formats); err != nil {
 		res = append(res, err)
@@ -250,6 +284,26 @@ func (m *PatchV1Services) ContextValidate(ctx context.Context, formats strfmt.Re
 	return nil
 }
 
+func (m *PatchV1Services) contextValidateExternalResources(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ExternalResources); i++ {
+
+		if m.ExternalResources[i] != nil {
+			if err := m.ExternalResources[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *PatchV1Services) contextValidateFunctionalities(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Functionalities); i++ {
@@ -258,6 +312,8 @@ func (m *PatchV1Services) contextValidateFunctionalities(ctx context.Context, fo
 			if err := m.Functionalities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("functionalities" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -276,6 +332,8 @@ func (m *PatchV1Services) contextValidateLinks(ctx context.Context, formats strf
 			if err := m.Links[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -292,6 +350,8 @@ func (m *PatchV1Services) contextValidateOwner(ctx context.Context, formats strf
 		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
 			}
 			return err
 		}
@@ -308,6 +368,8 @@ func (m *PatchV1Services) contextValidateTeams(ctx context.Context, formats strf
 			if err := m.Teams[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("teams" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -336,6 +398,65 @@ func (m *PatchV1Services) UnmarshalBinary(b []byte) error {
 	return nil
 }
 
+// PatchV1ServicesExternalResourcesItems0 patch v1 services external resources items0
+//
+// swagger:model PatchV1ServicesExternalResourcesItems0
+type PatchV1ServicesExternalResourcesItems0 struct {
+
+	// remote id
+	// Required: true
+	RemoteID *string `json:"remote_id"`
+
+	// If you are trying to remove an external resource from a service, set this to 'true'.
+	Remove bool `json:"remove,omitempty"`
+}
+
+// Validate validates this patch v1 services external resources items0
+func (m *PatchV1ServicesExternalResourcesItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateRemoteID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PatchV1ServicesExternalResourcesItems0) validateRemoteID(formats strfmt.Registry) error {
+
+	if err := validate.Required("remote_id", "body", m.RemoteID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this patch v1 services external resources items0 based on context it is used
+func (m *PatchV1ServicesExternalResourcesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PatchV1ServicesExternalResourcesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PatchV1ServicesExternalResourcesItems0) UnmarshalBinary(b []byte) error {
+	var res PatchV1ServicesExternalResourcesItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
 // PatchV1ServicesFunctionalitiesItems0 patch v1 services functionalities items0
 //
 // swagger:model PatchV1ServicesFunctionalitiesItems0
@@ -344,7 +465,7 @@ type PatchV1ServicesFunctionalitiesItems0 struct {
 	// If you are trying to reuse a functionality, you may set the ID to attach it to the service
 	ID string `json:"id,omitempty"`
 
-	// If you are trying to remove a functionality from a service, set this to "true"
+	// If you are trying to remove a functionality from a service, set this to 'true'
 	Remove bool `json:"remove,omitempty"`
 
 	// If you are trying to create a new functionality and attach it to this service, set the summary key
@@ -523,7 +644,7 @@ type PatchV1ServicesTeamsItems0 struct {
 	// Required: true
 	ID *string `json:"id"`
 
-	// If you are trying to remove a team from a service, set this to "true"
+	// If you are trying to remove a team from a service, set this to 'true'
 	Remove bool `json:"remove,omitempty"`
 }
 

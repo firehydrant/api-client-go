@@ -68,7 +68,7 @@ type GetV1MetricsUserInvolvementsParams struct {
 
 	/* EndDate.
 
-	   The end date to return metics from
+	   The end date to return metrics from
 
 	   Format: date
 	*/
@@ -87,7 +87,7 @@ type GetV1MetricsUserInvolvementsParams struct {
 
 	/* StartDate.
 
-	   The start date to return metics from
+	   The start date to return metrics from
 
 	   Format: date
 	*/

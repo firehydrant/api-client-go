@@ -34,6 +34,8 @@ type ClientService interface {
 
 	GetV1NuncConnectionsNuncConnectionID(params *GetV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsNuncConnectionIDOK, error)
 
+	GetV1NuncConnectionsNuncConnectionIDSubscribers(params *GetV1NuncConnectionsNuncConnectionIDSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsNuncConnectionIDSubscribersOK, error)
+
 	PostV1NuncConnections(params *PostV1NuncConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncConnectionsCreated, error)
 
 	PutV1NuncConnectionsNuncConnectionID(params *PutV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1NuncConnectionsNuncConnectionIDOK, error)
@@ -120,6 +122,47 @@ func (a *Client) GetV1NuncConnectionsNuncConnectionID(params *GetV1NuncConnectio
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1NuncConnectionsNuncConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  GetV1NuncConnectionsNuncConnectionIDSubscribers retrieves the list of subscribers for a status page
+
+  Retrieves the list of subscribers for a status page.
+*/
+func (a *Client) GetV1NuncConnectionsNuncConnectionIDSubscribers(params *GetV1NuncConnectionsNuncConnectionIDSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsNuncConnectionIDSubscribersOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1NuncConnectionsNuncConnectionIDSubscribersParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1NuncConnectionsNuncConnectionIdSubscribers",
+		Method:             "GET",
+		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/subscribers",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1NuncConnectionsNuncConnectionIDSubscribersReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1NuncConnectionsNuncConnectionIDSubscribersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1NuncConnectionsNuncConnectionIdSubscribers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

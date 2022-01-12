@@ -60,6 +60,12 @@ func NewGetV1EnvironmentsParamsWithHTTPClient(client *http.Client) *GetV1Environ
 */
 type GetV1EnvironmentsParams struct {
 
+	/* Name.
+
+	   A query to search environments by their name
+	*/
+	Name *string
+
 	// Page.
 	//
 	// Format: int32
@@ -72,7 +78,7 @@ type GetV1EnvironmentsParams struct {
 
 	/* Query.
 
-	   Filter environments with a query on their name or description
+	   A query to search environments by their name or description
 	*/
 	Query *string
 
@@ -129,6 +135,17 @@ func (o *GetV1EnvironmentsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithName adds the name to the get v1 environments params
+func (o *GetV1EnvironmentsParams) WithName(name *string) *GetV1EnvironmentsParams {
+	o.SetName(name)
+	return o
+}
+
+// SetName adds the name to the get v1 environments params
+func (o *GetV1EnvironmentsParams) SetName(name *string) {
+	o.Name = name
+}
+
 // WithPage adds the page to the get v1 environments params
 func (o *GetV1EnvironmentsParams) WithPage(page *int32) *GetV1EnvironmentsParams {
 	o.SetPage(page)
@@ -169,6 +186,23 @@ func (o *GetV1EnvironmentsParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
+
+	if o.Name != nil {
+
+		// query param name
+		var qrName string
+
+		if o.Name != nil {
+			qrName = *o.Name
+		}
+		qName := qrName
+		if qName != "" {
+
+			if err := r.SetQueryParam("name", qName); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Page != nil {
 

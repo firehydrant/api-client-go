@@ -11,11 +11,10 @@ import (
 	"github.com/go-openapi/strfmt"
 
 	"github.com/firehydrant/api-client-go/client/alerts"
-	"github.com/firehydrant/api-client-go/client/attachments"
+	"github.com/firehydrant/api-client-go/client/catalogs"
 	"github.com/firehydrant/api-client-go/client/change_types"
 	"github.com/firehydrant/api-client-go/client/changes"
 	"github.com/firehydrant/api-client-go/client/environments"
-	"github.com/firehydrant/api-client-go/client/events"
 	"github.com/firehydrant/api-client-go/client/functionalities"
 	"github.com/firehydrant/api-client-go/client/incident_roles"
 	"github.com/firehydrant/api-client-go/client/incident_tags"
@@ -25,11 +24,9 @@ import (
 	"github.com/firehydrant/api-client-go/client/integrations"
 	"github.com/firehydrant/api-client-go/client/metrics"
 	"github.com/firehydrant/api-client-go/client/noauth"
-	"github.com/firehydrant/api-client-go/client/notes"
 	"github.com/firehydrant/api-client-go/client/nunc"
 	"github.com/firehydrant/api-client-go/client/nunc_connections"
 	"github.com/firehydrant/api-client-go/client/onboarding"
-	"github.com/firehydrant/api-client-go/client/organizations"
 	"github.com/firehydrant/api-client-go/client/ping"
 	"github.com/firehydrant/api-client-go/client/post_mortems"
 	"github.com/firehydrant/api-client-go/client/release_notes"
@@ -91,11 +88,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli := new(FireHydrantAPI)
 	cli.Transport = transport
 	cli.Alerts = alerts.New(transport, formats)
-	cli.Attachments = attachments.New(transport, formats)
+	cli.Catalogs = catalogs.New(transport, formats)
 	cli.ChangeTypes = change_types.New(transport, formats)
 	cli.Changes = changes.New(transport, formats)
 	cli.Environments = environments.New(transport, formats)
-	cli.Events = events.New(transport, formats)
 	cli.Functionalities = functionalities.New(transport, formats)
 	cli.IncidentRoles = incident_roles.New(transport, formats)
 	cli.IncidentTags = incident_tags.New(transport, formats)
@@ -105,11 +101,9 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Integrations = integrations.New(transport, formats)
 	cli.Metrics = metrics.New(transport, formats)
 	cli.Noauth = noauth.New(transport, formats)
-	cli.Notes = notes.New(transport, formats)
 	cli.Nunc = nunc.New(transport, formats)
 	cli.NuncConnections = nunc_connections.New(transport, formats)
 	cli.Onboarding = onboarding.New(transport, formats)
-	cli.Organizations = organizations.New(transport, formats)
 	cli.Ping = ping.New(transport, formats)
 	cli.PostMortems = post_mortems.New(transport, formats)
 	cli.ReleaseNotes = release_notes.New(transport, formats)
@@ -172,15 +166,13 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 type FireHydrantAPI struct {
 	Alerts alerts.ClientService
 
-	Attachments attachments.ClientService
+	Catalogs catalogs.ClientService
 
 	ChangeTypes change_types.ClientService
 
 	Changes changes.ClientService
 
 	Environments environments.ClientService
-
-	Events events.ClientService
 
 	Functionalities functionalities.ClientService
 
@@ -200,15 +192,11 @@ type FireHydrantAPI struct {
 
 	Noauth noauth.ClientService
 
-	Notes notes.ClientService
-
 	Nunc nunc.ClientService
 
 	NuncConnections nunc_connections.ClientService
 
 	Onboarding onboarding.ClientService
-
-	Organizations organizations.ClientService
 
 	Ping ping.ClientService
 
@@ -249,11 +237,10 @@ type FireHydrantAPI struct {
 func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.Alerts.SetTransport(transport)
-	c.Attachments.SetTransport(transport)
+	c.Catalogs.SetTransport(transport)
 	c.ChangeTypes.SetTransport(transport)
 	c.Changes.SetTransport(transport)
 	c.Environments.SetTransport(transport)
-	c.Events.SetTransport(transport)
 	c.Functionalities.SetTransport(transport)
 	c.IncidentRoles.SetTransport(transport)
 	c.IncidentTags.SetTransport(transport)
@@ -263,11 +250,9 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Integrations.SetTransport(transport)
 	c.Metrics.SetTransport(transport)
 	c.Noauth.SetTransport(transport)
-	c.Notes.SetTransport(transport)
 	c.Nunc.SetTransport(transport)
 	c.NuncConnections.SetTransport(transport)
 	c.Onboarding.SetTransport(transport)
-	c.Organizations.SetTransport(transport)
 	c.Ping.SetTransport(transport)
 	c.PostMortems.SetTransport(transport)
 	c.ReleaseNotes.SetTransport(transport)

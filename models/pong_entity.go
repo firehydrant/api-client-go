@@ -21,6 +21,9 @@ type PongEntity struct {
 	// actor
 	Actor *ActorEntity `json:"actor,omitempty"`
 
+	// organization
+	Organization *OrganizationEntity `json:"organization,omitempty"`
+
 	// response
 	Response string `json:"response,omitempty"`
 }
@@ -30,6 +33,10 @@ func (m *PongEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateActor(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOrganization(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -48,6 +55,27 @@ func (m *PongEntity) validateActor(formats strfmt.Registry) error {
 		if err := m.Actor.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("actor")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("actor")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PongEntity) validateOrganization(formats strfmt.Registry) error {
+	if swag.IsZero(m.Organization) { // not required
+		return nil
+	}
+
+	if m.Organization != nil {
+		if err := m.Organization.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("organization")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("organization")
 			}
 			return err
 		}
@@ -64,6 +92,10 @@ func (m *PongEntity) ContextValidate(ctx context.Context, formats strfmt.Registr
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateOrganization(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -76,6 +108,24 @@ func (m *PongEntity) contextValidateActor(ctx context.Context, formats strfmt.Re
 		if err := m.Actor.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("actor")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("actor")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PongEntity) contextValidateOrganization(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Organization != nil {
+		if err := m.Organization.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("organization")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("organization")
 			}
 			return err
 		}

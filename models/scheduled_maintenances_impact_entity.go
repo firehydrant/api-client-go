@@ -58,6 +58,8 @@ func (m *ScheduledMaintenancesImpactEntity) validateCondition(formats strfmt.Reg
 		if err := m.Condition.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("condition")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("condition")
 			}
 			return err
 		}
@@ -75,6 +77,8 @@ func (m *ScheduledMaintenancesImpactEntity) validateImpact(formats strfmt.Regist
 		if err := m.Impact.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("impact")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("impact")
 			}
 			return err
 		}
@@ -107,6 +111,8 @@ func (m *ScheduledMaintenancesImpactEntity) contextValidateCondition(ctx context
 		if err := m.Condition.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("condition")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("condition")
 			}
 			return err
 		}
@@ -121,6 +127,8 @@ func (m *ScheduledMaintenancesImpactEntity) contextValidateImpact(ctx context.Co
 		if err := m.Impact.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("impact")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("impact")
 			}
 			return err
 		}
