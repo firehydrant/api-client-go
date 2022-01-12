@@ -67,7 +67,7 @@ type GetV1ServicesParams struct {
 
 	/* Labels.
 
-	   A comma separated list of label key / values in the format of "key=value,key2=value2". To filter change events that have a key (with no specific value), omit the value
+	   A comma separated list of label key / values in the format of 'key=value,key2=value2'. To filter change events that have a key (with no specific value), omit the value
 	*/
 	Labels *string
 

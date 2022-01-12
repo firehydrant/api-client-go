@@ -465,7 +465,7 @@ type PatchV1ServicesFunctionalitiesItems0 struct {
 	// If you are trying to reuse a functionality, you may set the ID to attach it to the service
 	ID string `json:"id,omitempty"`
 
-	// If you are trying to remove a functionality from a service, set this to "true"
+	// If you are trying to remove a functionality from a service, set this to 'true'
 	Remove bool `json:"remove,omitempty"`
 
 	// If you are trying to create a new functionality and attach it to this service, set the summary key
@@ -644,7 +644,7 @@ type PatchV1ServicesTeamsItems0 struct {
 	// Required: true
 	ID *string `json:"id"`
 
-	// If you are trying to remove a team from a service, set this to "true"
+	// If you are trying to remove a team from a service, set this to 'true'
 	Remove bool `json:"remove,omitempty"`
 }
 

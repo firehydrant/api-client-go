@@ -99,8 +99,8 @@ type IncidentEntity struct {
 	// Name of the incident
 	Name string `json:"name,omitempty"`
 
-	// number
-	Number string `json:"number,omitempty"`
+	// Incident number
+	Number int32 `json:"number,omitempty"`
 
 	// organization
 	Organization *OrganizationEntity `json:"organization,omitempty"`
