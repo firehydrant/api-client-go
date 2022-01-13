@@ -21,7 +21,7 @@ import (
 type IncidentEntity struct {
 
 	// active
-	Active string `json:"active,omitempty"`
+	Active bool `json:"active,omitempty"`
 
 	// channel id
 	ChannelID string `json:"channel_id,omitempty"`

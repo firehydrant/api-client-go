@@ -14,6 +14,7 @@ import (
 	"github.com/firehydrant/api-client-go/client/catalogs"
 	"github.com/firehydrant/api-client-go/client/change_types"
 	"github.com/firehydrant/api-client-go/client/changes"
+	"github.com/firehydrant/api-client-go/client/entitlements"
 	"github.com/firehydrant/api-client-go/client/environments"
 	"github.com/firehydrant/api-client-go/client/functionalities"
 	"github.com/firehydrant/api-client-go/client/incident_roles"
@@ -91,6 +92,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Catalogs = catalogs.New(transport, formats)
 	cli.ChangeTypes = change_types.New(transport, formats)
 	cli.Changes = changes.New(transport, formats)
+	cli.Entitlements = entitlements.New(transport, formats)
 	cli.Environments = environments.New(transport, formats)
 	cli.Functionalities = functionalities.New(transport, formats)
 	cli.IncidentRoles = incident_roles.New(transport, formats)
@@ -172,6 +174,8 @@ type FireHydrantAPI struct {
 
 	Changes changes.ClientService
 
+	Entitlements entitlements.ClientService
+
 	Environments environments.ClientService
 
 	Functionalities functionalities.ClientService
@@ -240,6 +244,7 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Catalogs.SetTransport(transport)
 	c.ChangeTypes.SetTransport(transport)
 	c.Changes.SetTransport(transport)
+	c.Entitlements.SetTransport(transport)
 	c.Environments.SetTransport(transport)
 	c.Functionalities.SetTransport(transport)
 	c.IncidentRoles.SetTransport(transport)
