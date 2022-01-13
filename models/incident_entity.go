@@ -149,7 +149,7 @@ type IncidentEntity struct {
 	Summary string `json:"summary,omitempty"`
 
 	// tag list
-	TagList string `json:"tag_list,omitempty"`
+	TagList []string `json:"tag_list"`
 }
 
 // Validate validates this incident entity
