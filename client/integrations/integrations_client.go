@@ -62,11 +62,9 @@ type ClientService interface {
 
 	PatchV1IntegrationsAwsConnectionsID(params *PatchV1IntegrationsAwsConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAwsConnectionsIDOK, error)
 
-	PatchV1IntegrationsConnectionsOpsgenieIDRefresh(params *PatchV1IntegrationsConnectionsOpsgenieIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsOpsgenieIDRefreshOK, error)
-
-	PatchV1IntegrationsConnectionsPagerDutyIDRefresh(params *PatchV1IntegrationsConnectionsPagerDutyIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsPagerDutyIDRefreshOK, error)
-
 	PatchV1IntegrationsConnectionsSlugConnectionID(params *PatchV1IntegrationsConnectionsSlugConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDOK, error)
+
+	PatchV1IntegrationsConnectionsSlugConnectionIDRefresh(params *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK, error)
 
 	PatchV1IntegrationsStatuspageConnectionsID(params *PatchV1IntegrationsStatuspageConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsStatuspageConnectionsIDOK, error)
 
@@ -720,84 +718,6 @@ func (a *Client) PatchV1IntegrationsAwsConnectionsID(params *PatchV1Integrations
 }
 
 /*
-  PatchV1IntegrationsConnectionsOpsgenieIDRefresh patch v1 integrations connections opsgenie Id refresh API
-*/
-func (a *Client) PatchV1IntegrationsConnectionsOpsgenieIDRefresh(params *PatchV1IntegrationsConnectionsOpsgenieIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsOpsgenieIDRefreshOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IntegrationsConnectionsOpsgenieIDRefreshParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IntegrationsConnectionsOpsgenieIdRefresh",
-		Method:             "PATCH",
-		PathPattern:        "/v1/integrations/connections/opsgenie/{id}/refresh",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IntegrationsConnectionsOpsgenieIDRefreshReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IntegrationsConnectionsOpsgenieIDRefreshOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsConnectionsOpsgenieIdRefresh: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  PatchV1IntegrationsConnectionsPagerDutyIDRefresh patch v1 integrations connections pager duty Id refresh API
-*/
-func (a *Client) PatchV1IntegrationsConnectionsPagerDutyIDRefresh(params *PatchV1IntegrationsConnectionsPagerDutyIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsPagerDutyIDRefreshOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IntegrationsConnectionsPagerDutyIDRefreshParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IntegrationsConnectionsPagerDutyIdRefresh",
-		Method:             "PATCH",
-		PathPattern:        "/v1/integrations/connections/pager_duty/{id}/refresh",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IntegrationsConnectionsPagerDutyIDRefreshReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IntegrationsConnectionsPagerDutyIDRefreshOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsConnectionsPagerDutyIdRefresh: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
   PatchV1IntegrationsConnectionsSlugConnectionID patch v1 integrations connections slug connection Id API
 */
 func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionID(params *PatchV1IntegrationsConnectionsSlugConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDOK, error) {
@@ -833,6 +753,45 @@ func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionID(params *PatchV1I
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsConnectionsSlugConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PatchV1IntegrationsConnectionsSlugConnectionIDRefresh patch v1 integrations connections slug connection Id refresh API
+*/
+func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionIDRefresh(params *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1IntegrationsConnectionsSlugConnectionIDRefreshParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1IntegrationsConnectionsSlugConnectionIdRefresh",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/connections/{slug}/{connection_id}/refresh",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1IntegrationsConnectionsSlugConnectionIDRefreshReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsConnectionsSlugConnectionIdRefresh: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
