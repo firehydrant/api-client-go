@@ -14,5 +14,5 @@ require (
 	github.com/go-swagger/go-swagger v0.27.0 // indirect
 	github.com/mitchellh/mapstructure v1.4.3 // indirect
 	go.mongodb.org/mongo-driver v1.8.2 // indirect
-	golang.org/x/net v0.0.0-20220111093109-d55c255bac03 // indirect
+	golang.org/x/net v0.0.0-20220114011407-0dd24b26b47d // indirect
 )

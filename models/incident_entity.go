@@ -32,11 +32,11 @@ type IncidentEntity struct {
 	// channel reference
 	ChannelReference string `json:"channel_reference,omitempty"`
 
-	// channel status
-	ChannelStatus string `json:"channel_status,omitempty"`
+	// inoperative: 0, operational: 1, archived: 2
+	ChannelStatus int32 `json:"channel_status,omitempty"`
 
 	// conference bridges
-	ConferenceBridges *ConferenceBridgeEntity `json:"conference_bridges,omitempty"`
+	ConferenceBridges []*ConferenceBridgeEntity `json:"conference_bridges"`
 
 	// context object
 	ContextObject string `json:"context_object,omitempty"`
@@ -55,7 +55,7 @@ type IncidentEntity struct {
 	CustomerImpactSummary string `json:"customer_impact_summary,omitempty"`
 
 	// customers impacted
-	CustomersImpacted string `json:"customers_impacted,omitempty"`
+	CustomersImpacted int32 `json:"customers_impacted,omitempty"`
 
 	// description
 	Description string `json:"description,omitempty"`
@@ -70,13 +70,13 @@ type IncidentEntity struct {
 	ID string `json:"id,omitempty"`
 
 	// impacts
-	Impacts *ImpactEntity `json:"impacts,omitempty"`
+	Impacts []*ImpactEntity `json:"impacts"`
 
 	// incident roles
 	IncidentRoles []*IncidentRoleEntity `json:"incident_roles"`
 
 	// incident tickets
-	IncidentTickets *TicketEntity `json:"incident_tickets,omitempty"`
+	IncidentTickets []*TicketEntity `json:"incident_tickets"`
 
 	// incident url
 	IncidentURL string `json:"incident_url,omitempty"`
@@ -91,10 +91,10 @@ type IncidentEntity struct {
 	Milestones []*MilestoneEntity `json:"milestones"`
 
 	// monetary impact
-	MonetaryImpact string `json:"monetary_impact,omitempty"`
+	MonetaryImpact int32 `json:"monetary_impact,omitempty"`
 
 	// monetary impact cents
-	MonetaryImpactCents string `json:"monetary_impact_cents,omitempty"`
+	MonetaryImpactCents int32 `json:"monetary_impact_cents,omitempty"`
 
 	// Name of the incident
 	Name string `json:"name,omitempty"`
@@ -117,8 +117,11 @@ type IncidentEntity struct {
 	// report id
 	ReportID string `json:"report_id,omitempty"`
 
+	// retro exports
+	RetroExports []string `json:"retro_exports"`
+
 	// role assignments
-	RoleAssignments *RoleAssignmentEntity `json:"role_assignments,omitempty"`
+	RoleAssignments []*RoleAssignmentEntity `json:"role_assignments"`
 
 	// services
 	Services []*SuccinctEntity `json:"services"`
@@ -143,7 +146,7 @@ type IncidentEntity struct {
 	StartedAt strfmt.DateTime `json:"started_at,omitempty"`
 
 	// status pages
-	StatusPages *StatusPageEntity `json:"status_pages,omitempty"`
+	StatusPages []*StatusPageEntity `json:"status_pages"`
 
 	// summary
 	Summary string `json:"summary,omitempty"`
@@ -231,15 +234,22 @@ func (m *IncidentEntity) validateConferenceBridges(formats strfmt.Registry) erro
 		return nil
 	}
 
-	if m.ConferenceBridges != nil {
-		if err := m.ConferenceBridges.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("conference_bridges")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("conference_bridges")
-			}
-			return err
+	for i := 0; i < len(m.ConferenceBridges); i++ {
+		if swag.IsZero(m.ConferenceBridges[i]) { // not required
+			continue
 		}
+
+		if m.ConferenceBridges[i] != nil {
+			if err := m.ConferenceBridges[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conference_bridges" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conference_bridges" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -333,15 +343,22 @@ func (m *IncidentEntity) validateImpacts(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if m.Impacts != nil {
-		if err := m.Impacts.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("impacts")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("impacts")
-			}
-			return err
+	for i := 0; i < len(m.Impacts); i++ {
+		if swag.IsZero(m.Impacts[i]) { // not required
+			continue
 		}
+
+		if m.Impacts[i] != nil {
+			if err := m.Impacts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("impacts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -378,15 +395,22 @@ func (m *IncidentEntity) validateIncidentTickets(formats strfmt.Registry) error 
 		return nil
 	}
 
-	if m.IncidentTickets != nil {
-		if err := m.IncidentTickets.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("incident_tickets")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("incident_tickets")
-			}
-			return err
+	for i := 0; i < len(m.IncidentTickets); i++ {
+		if swag.IsZero(m.IncidentTickets[i]) { // not required
+			continue
 		}
+
+		if m.IncidentTickets[i] != nil {
+			if err := m.IncidentTickets[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("incident_tickets" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("incident_tickets" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -442,15 +466,22 @@ func (m *IncidentEntity) validateRoleAssignments(formats strfmt.Registry) error 
 		return nil
 	}
 
-	if m.RoleAssignments != nil {
-		if err := m.RoleAssignments.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("role_assignments")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("role_assignments")
-			}
-			return err
+	for i := 0; i < len(m.RoleAssignments); i++ {
+		if swag.IsZero(m.RoleAssignments[i]) { // not required
+			continue
 		}
+
+		if m.RoleAssignments[i] != nil {
+			if err := m.RoleAssignments[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("role_assignments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("role_assignments" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -537,15 +568,22 @@ func (m *IncidentEntity) validateStatusPages(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if m.StatusPages != nil {
-		if err := m.StatusPages.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("status_pages")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("status_pages")
-			}
-			return err
+	for i := 0; i < len(m.StatusPages); i++ {
+		if swag.IsZero(m.StatusPages[i]) { // not required
+			continue
 		}
+
+		if m.StatusPages[i] != nil {
+			if err := m.StatusPages[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("status_pages" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -619,15 +657,19 @@ func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 
 func (m *IncidentEntity) contextValidateConferenceBridges(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.ConferenceBridges != nil {
-		if err := m.ConferenceBridges.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("conference_bridges")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("conference_bridges")
+	for i := 0; i < len(m.ConferenceBridges); i++ {
+
+		if m.ConferenceBridges[i] != nil {
+			if err := m.ConferenceBridges[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conference_bridges" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conference_bridges" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil
@@ -691,15 +733,19 @@ func (m *IncidentEntity) contextValidateFunctionalities(ctx context.Context, for
 
 func (m *IncidentEntity) contextValidateImpacts(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Impacts != nil {
-		if err := m.Impacts.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("impacts")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("impacts")
+	for i := 0; i < len(m.Impacts); i++ {
+
+		if m.Impacts[i] != nil {
+			if err := m.Impacts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("impacts" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil
@@ -727,15 +773,19 @@ func (m *IncidentEntity) contextValidateIncidentRoles(ctx context.Context, forma
 
 func (m *IncidentEntity) contextValidateIncidentTickets(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.IncidentTickets != nil {
-		if err := m.IncidentTickets.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("incident_tickets")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("incident_tickets")
+	for i := 0; i < len(m.IncidentTickets); i++ {
+
+		if m.IncidentTickets[i] != nil {
+			if err := m.IncidentTickets[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("incident_tickets" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("incident_tickets" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil
@@ -779,15 +829,19 @@ func (m *IncidentEntity) contextValidateOrganization(ctx context.Context, format
 
 func (m *IncidentEntity) contextValidateRoleAssignments(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.RoleAssignments != nil {
-		if err := m.RoleAssignments.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("role_assignments")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("role_assignments")
+	for i := 0; i < len(m.RoleAssignments); i++ {
+
+		if m.RoleAssignments[i] != nil {
+			if err := m.RoleAssignments[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("role_assignments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("role_assignments" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil
@@ -847,15 +901,19 @@ func (m *IncidentEntity) contextValidateSeverityImpactObject(ctx context.Context
 
 func (m *IncidentEntity) contextValidateStatusPages(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.StatusPages != nil {
-		if err := m.StatusPages.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("status_pages")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("status_pages")
+	for i := 0; i < len(m.StatusPages); i++ {
+
+		if m.StatusPages[i] != nil {
+			if err := m.StatusPages[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("status_pages" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil
