@@ -26,6 +26,9 @@ type PatchV1Services struct {
 	// alert on add
 	AlertOnAdd bool `json:"alert_on_add,omitempty"`
 
+	// Array of checklist IDs to attach to the service
+	Checklists []*PatchV1ServicesChecklistsItems0 `json:"checklists"`
+
 	// description
 	Description string `json:"description,omitempty"`
 
@@ -47,13 +50,19 @@ type PatchV1Services struct {
 	// owner
 	Owner *PatchV1ServicesOwner `json:"owner,omitempty"`
 
-	// If set to true, any external resource objects tagged on the service that are not included in the given external resources array will be removed. Set this if you want to do a replacement operation for the external resources
+	// If you are trying to remove a team as an owner from a service, set this to 'true'
+	RemoveOwner bool `json:"remove_owner,omitempty"`
+
+	// If set to true, any checklists tagged on the service that are not included in the given array will be removed. Set this to true if you want to do a replacement operation for the checklists
+	RemoveRemainingChecklists bool `json:"remove_remaining_checklists,omitempty"`
+
+	// If set to true, any external_resources tagged on the service that are not included in the given array will be removed. Set this to true if you want to do a replacement operation for the external_resources
 	RemoveRemainingExternalResources bool `json:"remove_remaining_external_resources,omitempty"`
 
-	// If set to true, any functionality objects tagged on the service that are not included in the given array will be removed. Set this if you want to do a replacement operation for the functionalities
+	// If set to true, any functionalities tagged on the service that are not included in the given array will be removed. Set this to true if you want to do a replacement operation for the functionalities
 	RemoveRemainingFunctionalities bool `json:"remove_remaining_functionalities,omitempty"`
 
-	// If set to true, any team objects tagged on the service that are not included in the given teams array will be removed. Set this if you want to do a replacement operation for the teams
+	// If set to true, any teams tagged on the service that are not included in the given array will be removed. Set this to true if you want to do a replacement operation for the teams
 	RemoveRemainingTeams bool `json:"remove_remaining_teams,omitempty"`
 
 	// Integer representing service tier
@@ -67,6 +76,10 @@ type PatchV1Services struct {
 // Validate validates this patch v1 services
 func (m *PatchV1Services) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateChecklists(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateExternalResources(formats); err != nil {
 		res = append(res, err)
@@ -95,6 +108,32 @@ func (m *PatchV1Services) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PatchV1Services) validateChecklists(formats strfmt.Registry) error {
+	if swag.IsZero(m.Checklists) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Checklists); i++ {
+		if swag.IsZero(m.Checklists[i]) { // not required
+			continue
+		}
+
+		if m.Checklists[i] != nil {
+			if err := m.Checklists[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("checklists" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("checklists" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -258,6 +297,10 @@ func (m *PatchV1Services) validateTeams(formats strfmt.Registry) error {
 func (m *PatchV1Services) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateChecklists(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateExternalResources(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -281,6 +324,26 @@ func (m *PatchV1Services) ContextValidate(ctx context.Context, formats strfmt.Re
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PatchV1Services) contextValidateChecklists(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Checklists); i++ {
+
+		if m.Checklists[i] != nil {
+			if err := m.Checklists[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("checklists" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("checklists" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -391,6 +454,65 @@ func (m *PatchV1Services) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PatchV1Services) UnmarshalBinary(b []byte) error {
 	var res PatchV1Services
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PatchV1ServicesChecklistsItems0 patch v1 services checklists items0
+//
+// swagger:model PatchV1ServicesChecklistsItems0
+type PatchV1ServicesChecklistsItems0 struct {
+
+	// id
+	// Required: true
+	ID *string `json:"id"`
+
+	// Set to `true` to remove checklist from service
+	Remove bool `json:"remove,omitempty"`
+}
+
+// Validate validates this patch v1 services checklists items0
+func (m *PatchV1ServicesChecklistsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PatchV1ServicesChecklistsItems0) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this patch v1 services checklists items0 based on context it is used
+func (m *PatchV1ServicesChecklistsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PatchV1ServicesChecklistsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PatchV1ServicesChecklistsItems0) UnmarshalBinary(b []byte) error {
+	var res PatchV1ServicesChecklistsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

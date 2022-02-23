@@ -42,6 +42,8 @@ type ClientService interface {
 
 	PostV1Services(params *PostV1ServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesCreated, error)
 
+	PostV1ServicesServiceIDChecklistResponseChecklistID(params *PostV1ServicesServiceIDChecklistResponseChecklistIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesServiceIDChecklistResponseChecklistIDCreated, error)
+
 	PostV1ServicesServiceLinks(params *PostV1ServicesServiceLinksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesServiceLinksCreated, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -292,6 +294,45 @@ func (a *Client) PostV1Services(params *PostV1ServicesParams, authInfo runtime.C
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for postV1Services: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PostV1ServicesServiceIDChecklistResponseChecklistID post v1 services service Id checklist response checklist Id API
+*/
+func (a *Client) PostV1ServicesServiceIDChecklistResponseChecklistID(params *PostV1ServicesServiceIDChecklistResponseChecklistIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesServiceIDChecklistResponseChecklistIDCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1ServicesServiceIDChecklistResponseChecklistIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1ServicesServiceIdChecklistResponseChecklistId",
+		Method:             "POST",
+		PathPattern:        "/v1/services/{service_id}/checklist_response/{checklist_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1ServicesServiceIDChecklistResponseChecklistIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1ServicesServiceIDChecklistResponseChecklistIDCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1ServicesServiceIdChecklistResponseChecklistId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

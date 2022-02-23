@@ -39,6 +39,9 @@ type PostV1Incidents struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// priority
+	Priority string `json:"priority,omitempty"`
+
 	// restricted
 	Restricted bool `json:"restricted,omitempty"`
 

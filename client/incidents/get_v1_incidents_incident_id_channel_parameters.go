@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1IncidentsIncidentIDChannelParams creates a new GetV1IncidentsIncidentIDChannelParams object,
@@ -61,9 +60,7 @@ func NewGetV1IncidentsIncidentIDChannelParamsWithHTTPClient(client *http.Client)
 type GetV1IncidentsIncidentIDChannelParams struct {
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,13 +116,13 @@ func (o *GetV1IncidentsIncidentIDChannelParams) SetHTTPClient(client *http.Clien
 }
 
 // WithIncidentID adds the incidentID to the get v1 incidents incident Id channel params
-func (o *GetV1IncidentsIncidentIDChannelParams) WithIncidentID(incidentID int32) *GetV1IncidentsIncidentIDChannelParams {
+func (o *GetV1IncidentsIncidentIDChannelParams) WithIncidentID(incidentID string) *GetV1IncidentsIncidentIDChannelParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the get v1 incidents incident Id channel params
-func (o *GetV1IncidentsIncidentIDChannelParams) SetIncidentID(incidentID int32) {
+func (o *GetV1IncidentsIncidentIDChannelParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -138,7 +135,7 @@ func (o *GetV1IncidentsIncidentIDChannelParams) WriteToRequest(r runtime.ClientR
 	var res []error
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

@@ -34,6 +34,9 @@ type EntitlementEntity struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// tier
+	Tier string `json:"tier,omitempty"`
 }
 
 // Validate validates this entitlement entity
