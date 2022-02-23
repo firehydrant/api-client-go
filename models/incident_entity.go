@@ -72,6 +72,9 @@ type IncidentEntity struct {
 	// impacts
 	Impacts []*ImpactEntity `json:"impacts"`
 
+	// incident channels
+	IncidentChannels []*ChannelEntity `json:"incident_channels"`
+
 	// incident roles
 	IncidentRoles []*IncidentRoleEntity `json:"incident_roles"`
 
@@ -83,6 +86,9 @@ type IncidentEntity struct {
 
 	// A key/value of labels
 	Labels interface{} `json:"labels,omitempty"`
+
+	// last note
+	LastNote string `json:"last_note,omitempty"`
 
 	// last update
 	LastUpdate string `json:"last_update,omitempty"`
@@ -107,6 +113,9 @@ type IncidentEntity struct {
 
 	// organization id
 	OrganizationID string `json:"organization_id,omitempty"`
+
+	// priority
+	Priority string `json:"priority,omitempty"`
 
 	// private id
 	PrivateID string `json:"private_id,omitempty"`
@@ -180,6 +189,10 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateImpacts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIncidentChannels(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -354,6 +367,32 @@ func (m *IncidentEntity) validateImpacts(formats strfmt.Registry) error {
 					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("impacts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) validateIncidentChannels(formats strfmt.Registry) error {
+	if swag.IsZero(m.IncidentChannels) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.IncidentChannels); i++ {
+		if swag.IsZero(m.IncidentChannels[i]) { // not required
+			continue
+		}
+
+		if m.IncidentChannels[i] != nil {
+			if err := m.IncidentChannels[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("incident_channels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("incident_channels" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -613,6 +652,10 @@ func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateIncidentChannels(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateIncidentRoles(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -741,6 +784,26 @@ func (m *IncidentEntity) contextValidateImpacts(ctx context.Context, formats str
 					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("impacts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) contextValidateIncidentChannels(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.IncidentChannels); i++ {
+
+		if m.IncidentChannels[i] != nil {
+			if err := m.IncidentChannels[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("incident_channels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("incident_channels" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

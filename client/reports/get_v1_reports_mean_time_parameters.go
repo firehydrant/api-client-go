@@ -80,6 +80,18 @@ type GetV1ReportsMeanTimeParams struct {
 	*/
 	Environments *string
 
+	/* Priorities.
+
+	   A comma separated list of priorities
+	*/
+	Priorities *string
+
+	/* PriorityNotSet.
+
+	   Flag for including incidents where priority has not been set
+	*/
+	PriorityNotSet *bool
+
 	/* Query.
 
 	   A text query for an incident that searches on name, summary, and desciption
@@ -214,6 +226,28 @@ func (o *GetV1ReportsMeanTimeParams) WithEnvironments(environments *string) *Get
 // SetEnvironments adds the environments to the get v1 reports mean time params
 func (o *GetV1ReportsMeanTimeParams) SetEnvironments(environments *string) {
 	o.Environments = environments
+}
+
+// WithPriorities adds the priorities to the get v1 reports mean time params
+func (o *GetV1ReportsMeanTimeParams) WithPriorities(priorities *string) *GetV1ReportsMeanTimeParams {
+	o.SetPriorities(priorities)
+	return o
+}
+
+// SetPriorities adds the priorities to the get v1 reports mean time params
+func (o *GetV1ReportsMeanTimeParams) SetPriorities(priorities *string) {
+	o.Priorities = priorities
+}
+
+// WithPriorityNotSet adds the priorityNotSet to the get v1 reports mean time params
+func (o *GetV1ReportsMeanTimeParams) WithPriorityNotSet(priorityNotSet *bool) *GetV1ReportsMeanTimeParams {
+	o.SetPriorityNotSet(priorityNotSet)
+	return o
+}
+
+// SetPriorityNotSet adds the priorityNotSet to the get v1 reports mean time params
+func (o *GetV1ReportsMeanTimeParams) SetPriorityNotSet(priorityNotSet *bool) {
+	o.PriorityNotSet = priorityNotSet
 }
 
 // WithQuery adds the query to the get v1 reports mean time params
@@ -358,6 +392,40 @@ func (o *GetV1ReportsMeanTimeParams) WriteToRequest(r runtime.ClientRequest, reg
 		if qEnvironments != "" {
 
 			if err := r.SetQueryParam("environments", qEnvironments); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Priorities != nil {
+
+		// query param priorities
+		var qrPriorities string
+
+		if o.Priorities != nil {
+			qrPriorities = *o.Priorities
+		}
+		qPriorities := qrPriorities
+		if qPriorities != "" {
+
+			if err := r.SetQueryParam("priorities", qPriorities); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.PriorityNotSet != nil {
+
+		// query param priority_not_set
+		var qrPriorityNotSet bool
+
+		if o.PriorityNotSet != nil {
+			qrPriorityNotSet = *o.PriorityNotSet
+		}
+		qPriorityNotSet := swag.FormatBool(qrPriorityNotSet)
+		if qPriorityNotSet != "" {
+
+			if err := r.SetQueryParam("priority_not_set", qPriorityNotSet); err != nil {
 				return err
 			}
 		}

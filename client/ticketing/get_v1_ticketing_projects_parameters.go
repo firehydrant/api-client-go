@@ -69,6 +69,9 @@ type GetV1TicketingProjectsParams struct {
 	// Providers.
 	Providers *string
 
+	// Query.
+	Query *string
+
 	// SupportsTicketTypes.
 	SupportsTicketTypes *string
 
@@ -158,6 +161,17 @@ func (o *GetV1TicketingProjectsParams) SetProviders(providers *string) {
 	o.Providers = providers
 }
 
+// WithQuery adds the query to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) WithQuery(query *string) *GetV1TicketingProjectsParams {
+	o.SetQuery(query)
+	return o
+}
+
+// SetQuery adds the query to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) SetQuery(query *string) {
+	o.Query = query
+}
+
 // WithSupportsTicketTypes adds the supportsTicketTypes to the get v1 ticketing projects params
 func (o *GetV1TicketingProjectsParams) WithSupportsTicketTypes(supportsTicketTypes *string) *GetV1TicketingProjectsParams {
 	o.SetSupportsTicketTypes(supportsTicketTypes)
@@ -223,6 +237,23 @@ func (o *GetV1TicketingProjectsParams) WriteToRequest(r runtime.ClientRequest, r
 		if qProviders != "" {
 
 			if err := r.SetQueryParam("providers", qProviders); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Query != nil {
+
+		// query param query
+		var qrQuery string
+
+		if o.Query != nil {
+			qrQuery = *o.Query
+		}
+		qQuery := qrQuery
+		if qQuery != "" {
+
+			if err := r.SetQueryParam("query", qQuery); err != nil {
 				return err
 			}
 		}

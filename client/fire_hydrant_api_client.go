@@ -28,8 +28,10 @@ import (
 	"github.com/firehydrant/api-client-go/client/nunc"
 	"github.com/firehydrant/api-client-go/client/nunc_connections"
 	"github.com/firehydrant/api-client-go/client/onboarding"
+	"github.com/firehydrant/api-client-go/client/organization_users"
 	"github.com/firehydrant/api-client-go/client/ping"
 	"github.com/firehydrant/api-client-go/client/post_mortems"
+	"github.com/firehydrant/api-client-go/client/priorities"
 	"github.com/firehydrant/api-client-go/client/release_notes"
 	"github.com/firehydrant/api-client-go/client/reports"
 	"github.com/firehydrant/api-client-go/client/runbook_templates"
@@ -106,8 +108,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Nunc = nunc.New(transport, formats)
 	cli.NuncConnections = nunc_connections.New(transport, formats)
 	cli.Onboarding = onboarding.New(transport, formats)
+	cli.OrganizationUsers = organization_users.New(transport, formats)
 	cli.Ping = ping.New(transport, formats)
 	cli.PostMortems = post_mortems.New(transport, formats)
+	cli.Priorities = priorities.New(transport, formats)
 	cli.ReleaseNotes = release_notes.New(transport, formats)
 	cli.Reports = reports.New(transport, formats)
 	cli.RunbookTemplates = runbook_templates.New(transport, formats)
@@ -202,9 +206,13 @@ type FireHydrantAPI struct {
 
 	Onboarding onboarding.ClientService
 
+	OrganizationUsers organization_users.ClientService
+
 	Ping ping.ClientService
 
 	PostMortems post_mortems.ClientService
+
+	Priorities priorities.ClientService
 
 	ReleaseNotes release_notes.ClientService
 
@@ -258,8 +266,10 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Nunc.SetTransport(transport)
 	c.NuncConnections.SetTransport(transport)
 	c.Onboarding.SetTransport(transport)
+	c.OrganizationUsers.SetTransport(transport)
 	c.Ping.SetTransport(transport)
 	c.PostMortems.SetTransport(transport)
+	c.Priorities.SetTransport(transport)
 	c.ReleaseNotes.SetTransport(transport)
 	c.Reports.SetTransport(transport)
 	c.RunbookTemplates.SetTransport(transport)

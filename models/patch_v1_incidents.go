@@ -26,6 +26,9 @@ type PatchV1Incidents struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// priority
+	Priority string `json:"priority,omitempty"`
+
 	// severity
 	Severity string `json:"severity,omitempty"`
 

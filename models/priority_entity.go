@@ -14,10 +14,10 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// SeverityEntity Retrieve a specific severity
+// PriorityEntity Retrieve a specific priority
 //
-// swagger:model SeverityEntity
-type SeverityEntity struct {
+// swagger:model PriorityEntity
+type PriorityEntity struct {
 
 	// created at
 	// Format: date-time
@@ -32,19 +32,13 @@ type SeverityEntity struct {
 	// slug
 	Slug string `json:"slug,omitempty"`
 
-	// system record
-	SystemRecord string `json:"system_record,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-
 	// updated at
 	// Format: date-time
 	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
 }
 
-// Validate validates this severity entity
-func (m *SeverityEntity) Validate(formats strfmt.Registry) error {
+// Validate validates this priority entity
+func (m *PriorityEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCreatedAt(formats); err != nil {
@@ -61,7 +55,7 @@ func (m *SeverityEntity) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *SeverityEntity) validateCreatedAt(formats strfmt.Registry) error {
+func (m *PriorityEntity) validateCreatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -73,7 +67,7 @@ func (m *SeverityEntity) validateCreatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *SeverityEntity) validateUpdatedAt(formats strfmt.Registry) error {
+func (m *PriorityEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
@@ -85,13 +79,13 @@ func (m *SeverityEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this severity entity based on context it is used
-func (m *SeverityEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this priority entity based on context it is used
+func (m *PriorityEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *SeverityEntity) MarshalBinary() ([]byte, error) {
+func (m *PriorityEntity) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -99,8 +93,8 @@ func (m *SeverityEntity) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *SeverityEntity) UnmarshalBinary(b []byte) error {
-	var res SeverityEntity
+func (m *PriorityEntity) UnmarshalBinary(b []byte) error {
+	var res PriorityEntity
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

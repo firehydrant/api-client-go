@@ -26,6 +26,9 @@ type ServiceEntity struct {
 	// alert on add
 	AlertOnAdd bool `json:"alert_on_add,omitempty"`
 
+	// List of checklists associated with a service
+	Checklists []*ChecklistTemplateEntity `json:"checklists"`
+
 	// created at
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
@@ -75,11 +78,18 @@ type ServiceEntity struct {
 	// updated at
 	// Format: date-time
 	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
+
+	// The most recent user to update the current service
+	UpdatedBy *AuthorEntity `json:"updated_by,omitempty"`
 }
 
 // Validate validates this service entity
 func (m *ServiceEntity) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateChecklists(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
@@ -109,9 +119,39 @@ func (m *ServiceEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateUpdatedBy(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ServiceEntity) validateChecklists(formats strfmt.Registry) error {
+	if swag.IsZero(m.Checklists) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Checklists); i++ {
+		if swag.IsZero(m.Checklists[i]) { // not required
+			continue
+		}
+
+		if m.Checklists[i] != nil {
+			if err := m.Checklists[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("checklists" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("checklists" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -262,9 +302,32 @@ func (m *ServiceEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *ServiceEntity) validateUpdatedBy(formats strfmt.Registry) error {
+	if swag.IsZero(m.UpdatedBy) { // not required
+		return nil
+	}
+
+	if m.UpdatedBy != nil {
+		if err := m.UpdatedBy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("updated_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("updated_by")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this service entity based on the context it is used
 func (m *ServiceEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.contextValidateChecklists(ctx, formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.contextValidateExternalResources(ctx, formats); err != nil {
 		res = append(res, err)
@@ -286,9 +349,33 @@ func (m *ServiceEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateUpdatedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ServiceEntity) contextValidateChecklists(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Checklists); i++ {
+
+		if m.Checklists[i] != nil {
+			if err := m.Checklists[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("checklists" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("checklists" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -383,6 +470,22 @@ func (m *ServiceEntity) contextValidateTeams(ctx context.Context, formats strfmt
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ServiceEntity) contextValidateUpdatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.UpdatedBy != nil {
+		if err := m.UpdatedBy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("updated_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("updated_by")
+			}
+			return err
+		}
 	}
 
 	return nil
