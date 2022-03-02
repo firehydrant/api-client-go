@@ -39,7 +39,7 @@ type ChecklistConnectedServiceEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// owner
-	Owner *SlimTeamEntity `json:"owner,omitempty"`
+	Owner *TeamEntity `json:"owner,omitempty"`
 
 	// service checklist updated at
 	// Format: date-time

@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1IncidentsIncidentIDImpactTypeParams creates a new GetV1IncidentsIncidentIDImpactTypeParams object,
@@ -61,9 +60,7 @@ func NewGetV1IncidentsIncidentIDImpactTypeParamsWithHTTPClient(client *http.Clie
 type GetV1IncidentsIncidentIDImpactTypeParams struct {
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	// Type.
 	Type string
@@ -122,13 +119,13 @@ func (o *GetV1IncidentsIncidentIDImpactTypeParams) SetHTTPClient(client *http.Cl
 }
 
 // WithIncidentID adds the incidentID to the get v1 incidents incident Id impact type params
-func (o *GetV1IncidentsIncidentIDImpactTypeParams) WithIncidentID(incidentID int32) *GetV1IncidentsIncidentIDImpactTypeParams {
+func (o *GetV1IncidentsIncidentIDImpactTypeParams) WithIncidentID(incidentID string) *GetV1IncidentsIncidentIDImpactTypeParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the get v1 incidents incident Id impact type params
-func (o *GetV1IncidentsIncidentIDImpactTypeParams) SetIncidentID(incidentID int32) {
+func (o *GetV1IncidentsIncidentIDImpactTypeParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -152,7 +149,7 @@ func (o *GetV1IncidentsIncidentIDImpactTypeParams) WriteToRequest(r runtime.Clie
 	var res []error
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

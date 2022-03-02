@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1IncidentsIncidentIDImpactTypeIDParams creates a new DeleteV1IncidentsIncidentIDImpactTypeIDParams object,
@@ -67,9 +66,7 @@ type DeleteV1IncidentsIncidentIDImpactTypeIDParams struct {
 	ID string
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	// Type.
 	Type string
@@ -139,13 +136,13 @@ func (o *DeleteV1IncidentsIncidentIDImpactTypeIDParams) SetID(id string) {
 }
 
 // WithIncidentID adds the incidentID to the delete v1 incidents incident Id impact type Id params
-func (o *DeleteV1IncidentsIncidentIDImpactTypeIDParams) WithIncidentID(incidentID int32) *DeleteV1IncidentsIncidentIDImpactTypeIDParams {
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDParams) WithIncidentID(incidentID string) *DeleteV1IncidentsIncidentIDImpactTypeIDParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the delete v1 incidents incident Id impact type Id params
-func (o *DeleteV1IncidentsIncidentIDImpactTypeIDParams) SetIncidentID(incidentID int32) {
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -174,7 +171,7 @@ func (o *DeleteV1IncidentsIncidentIDImpactTypeIDParams) WriteToRequest(r runtime
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

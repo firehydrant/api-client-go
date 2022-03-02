@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -66,9 +65,7 @@ type PutV1IncidentsIncidentIDImpactParams struct {
 	V1IncidentsIncidentIDImpact *models.PutV1IncidentsIncidentIDImpact
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -135,13 +132,13 @@ func (o *PutV1IncidentsIncidentIDImpactParams) SetV1IncidentsIncidentIDImpact(v1
 }
 
 // WithIncidentID adds the incidentID to the put v1 incidents incident Id impact params
-func (o *PutV1IncidentsIncidentIDImpactParams) WithIncidentID(incidentID int32) *PutV1IncidentsIncidentIDImpactParams {
+func (o *PutV1IncidentsIncidentIDImpactParams) WithIncidentID(incidentID string) *PutV1IncidentsIncidentIDImpactParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the put v1 incidents incident Id impact params
-func (o *PutV1IncidentsIncidentIDImpactParams) SetIncidentID(incidentID int32) {
+func (o *PutV1IncidentsIncidentIDImpactParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -159,7 +156,7 @@ func (o *PutV1IncidentsIncidentIDImpactParams) WriteToRequest(r runtime.ClientRe
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

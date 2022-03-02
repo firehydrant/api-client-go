@@ -61,9 +61,7 @@ func NewGetV1IncidentsIncidentIDEventsParamsWithHTTPClient(client *http.Client) 
 type GetV1IncidentsIncidentIDEventsParams struct {
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	// Page.
 	//
@@ -129,13 +127,13 @@ func (o *GetV1IncidentsIncidentIDEventsParams) SetHTTPClient(client *http.Client
 }
 
 // WithIncidentID adds the incidentID to the get v1 incidents incident Id events params
-func (o *GetV1IncidentsIncidentIDEventsParams) WithIncidentID(incidentID int32) *GetV1IncidentsIncidentIDEventsParams {
+func (o *GetV1IncidentsIncidentIDEventsParams) WithIncidentID(incidentID string) *GetV1IncidentsIncidentIDEventsParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the get v1 incidents incident Id events params
-func (o *GetV1IncidentsIncidentIDEventsParams) SetIncidentID(incidentID int32) {
+func (o *GetV1IncidentsIncidentIDEventsParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -170,7 +168,7 @@ func (o *GetV1IncidentsIncidentIDEventsParams) WriteToRequest(r runtime.ClientRe
 	var res []error
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

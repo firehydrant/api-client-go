@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -66,9 +65,7 @@ type PostV1IncidentsIncidentIDRoleAssignmentsParams struct {
 	V1IncidentsIncidentIDRoleAssignments *models.PostV1IncidentsIncidentIDRoleAssignments
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -135,13 +132,13 @@ func (o *PostV1IncidentsIncidentIDRoleAssignmentsParams) SetV1IncidentsIncidentI
 }
 
 // WithIncidentID adds the incidentID to the post v1 incidents incident Id role assignments params
-func (o *PostV1IncidentsIncidentIDRoleAssignmentsParams) WithIncidentID(incidentID int32) *PostV1IncidentsIncidentIDRoleAssignmentsParams {
+func (o *PostV1IncidentsIncidentIDRoleAssignmentsParams) WithIncidentID(incidentID string) *PostV1IncidentsIncidentIDRoleAssignmentsParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the post v1 incidents incident Id role assignments params
-func (o *PostV1IncidentsIncidentIDRoleAssignmentsParams) SetIncidentID(incidentID int32) {
+func (o *PostV1IncidentsIncidentIDRoleAssignmentsParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -159,7 +156,7 @@ func (o *PostV1IncidentsIncidentIDRoleAssignmentsParams) WriteToRequest(r runtim
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

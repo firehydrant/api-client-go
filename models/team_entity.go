@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -29,8 +30,23 @@ type TeamEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
+	// memberships
+	Memberships []*MembershipEntity `json:"memberships"`
+
 	// name
 	Name string `json:"name,omitempty"`
+
+	// owned checklist templates
+	OwnedChecklistTemplates []*ChecklistTemplateEntity `json:"owned_checklist_templates"`
+
+	// owned services
+	OwnedServices []*BaseServiceEntity `json:"owned_services"`
+
+	// responding services
+	RespondingServices []*BaseServiceEntity `json:"responding_services"`
+
+	// services
+	Services []*ServiceEntity `json:"services"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`
@@ -45,6 +61,26 @@ func (m *TeamEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMemberships(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOwnedChecklistTemplates(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOwnedServices(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRespondingServices(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServices(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -70,6 +106,136 @@ func (m *TeamEntity) validateCreatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *TeamEntity) validateMemberships(formats strfmt.Registry) error {
+	if swag.IsZero(m.Memberships) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Memberships); i++ {
+		if swag.IsZero(m.Memberships[i]) { // not required
+			continue
+		}
+
+		if m.Memberships[i] != nil {
+			if err := m.Memberships[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("memberships" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("memberships" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) validateOwnedChecklistTemplates(formats strfmt.Registry) error {
+	if swag.IsZero(m.OwnedChecklistTemplates) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.OwnedChecklistTemplates); i++ {
+		if swag.IsZero(m.OwnedChecklistTemplates[i]) { // not required
+			continue
+		}
+
+		if m.OwnedChecklistTemplates[i] != nil {
+			if err := m.OwnedChecklistTemplates[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("owned_checklist_templates" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("owned_checklist_templates" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) validateOwnedServices(formats strfmt.Registry) error {
+	if swag.IsZero(m.OwnedServices) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.OwnedServices); i++ {
+		if swag.IsZero(m.OwnedServices[i]) { // not required
+			continue
+		}
+
+		if m.OwnedServices[i] != nil {
+			if err := m.OwnedServices[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("owned_services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("owned_services" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) validateRespondingServices(formats strfmt.Registry) error {
+	if swag.IsZero(m.RespondingServices) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.RespondingServices); i++ {
+		if swag.IsZero(m.RespondingServices[i]) { // not required
+			continue
+		}
+
+		if m.RespondingServices[i] != nil {
+			if err := m.RespondingServices[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("responding_services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("responding_services" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) validateServices(formats strfmt.Registry) error {
+	if swag.IsZero(m.Services) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Services); i++ {
+		if swag.IsZero(m.Services[i]) { // not required
+			continue
+		}
+
+		if m.Services[i] != nil {
+			if err := m.Services[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *TeamEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
@@ -82,8 +248,133 @@ func (m *TeamEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this team entity based on context it is used
+// ContextValidate validate this team entity based on the context it is used
 func (m *TeamEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateMemberships(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOwnedChecklistTemplates(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOwnedServices(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRespondingServices(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateServices(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *TeamEntity) contextValidateMemberships(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Memberships); i++ {
+
+		if m.Memberships[i] != nil {
+			if err := m.Memberships[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("memberships" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("memberships" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) contextValidateOwnedChecklistTemplates(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.OwnedChecklistTemplates); i++ {
+
+		if m.OwnedChecklistTemplates[i] != nil {
+			if err := m.OwnedChecklistTemplates[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("owned_checklist_templates" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("owned_checklist_templates" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) contextValidateOwnedServices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.OwnedServices); i++ {
+
+		if m.OwnedServices[i] != nil {
+			if err := m.OwnedServices[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("owned_services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("owned_services" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) contextValidateRespondingServices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.RespondingServices); i++ {
+
+		if m.RespondingServices[i] != nil {
+			if err := m.RespondingServices[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("responding_services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("responding_services" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) contextValidateServices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Services); i++ {
+
+		if m.Services[i] != nil {
+			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

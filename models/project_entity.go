@@ -21,6 +21,9 @@ type ProjectEntity struct {
 	// config
 	Config *ProjectConfigEntity `json:"config,omitempty"`
 
+	// field map
+	FieldMap *ProjectFieldMapEntity `json:"field_map,omitempty"`
+
 	// id
 	ID string `json:"id,omitempty"`
 
@@ -33,6 +36,10 @@ func (m *ProjectEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateConfig(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFieldMap(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -61,11 +68,34 @@ func (m *ProjectEntity) validateConfig(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *ProjectEntity) validateFieldMap(formats strfmt.Registry) error {
+	if swag.IsZero(m.FieldMap) { // not required
+		return nil
+	}
+
+	if m.FieldMap != nil {
+		if err := m.FieldMap.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("field_map")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("field_map")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this project entity based on the context it is used
 func (m *ProjectEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFieldMap(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -83,6 +113,22 @@ func (m *ProjectEntity) contextValidateConfig(ctx context.Context, formats strfm
 				return ve.ValidateName("config")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("config")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ProjectEntity) contextValidateFieldMap(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.FieldMap != nil {
+		if err := m.FieldMap.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("field_map")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("field_map")
 			}
 			return err
 		}

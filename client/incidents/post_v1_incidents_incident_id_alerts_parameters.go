@@ -67,9 +67,7 @@ type PostV1IncidentsIncidentIDAlertsParams struct {
 	AlertIds []string
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -136,13 +134,13 @@ func (o *PostV1IncidentsIncidentIDAlertsParams) SetAlertIds(alertIds []string) {
 }
 
 // WithIncidentID adds the incidentID to the post v1 incidents incident Id alerts params
-func (o *PostV1IncidentsIncidentIDAlertsParams) WithIncidentID(incidentID int32) *PostV1IncidentsIncidentIDAlertsParams {
+func (o *PostV1IncidentsIncidentIDAlertsParams) WithIncidentID(incidentID string) *PostV1IncidentsIncidentIDAlertsParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the post v1 incidents incident Id alerts params
-func (o *PostV1IncidentsIncidentIDAlertsParams) SetIncidentID(incidentID int32) {
+func (o *PostV1IncidentsIncidentIDAlertsParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -166,7 +164,7 @@ func (o *PostV1IncidentsIncidentIDAlertsParams) WriteToRequest(r runtime.ClientR
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

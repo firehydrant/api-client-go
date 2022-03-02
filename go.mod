@@ -12,4 +12,6 @@ require (
 	github.com/go-stack/stack v1.8.1 // indirect
 	github.com/go-swagger/go-swagger v0.27.0 // indirect
 	github.com/mitchellh/mapstructure v1.4.3 // indirect
+	go.mongodb.org/mongo-driver v1.8.4 // indirect
+	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
 )
