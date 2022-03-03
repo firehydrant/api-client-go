@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1IncidentsIncidentIDRoleAssignmentsParams creates a new GetV1IncidentsIncidentIDRoleAssignmentsParams object,
@@ -61,9 +60,7 @@ func NewGetV1IncidentsIncidentIDRoleAssignmentsParamsWithHTTPClient(client *http
 type GetV1IncidentsIncidentIDRoleAssignmentsParams struct {
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	/* Status.
 
@@ -125,13 +122,13 @@ func (o *GetV1IncidentsIncidentIDRoleAssignmentsParams) SetHTTPClient(client *ht
 }
 
 // WithIncidentID adds the incidentID to the get v1 incidents incident Id role assignments params
-func (o *GetV1IncidentsIncidentIDRoleAssignmentsParams) WithIncidentID(incidentID int32) *GetV1IncidentsIncidentIDRoleAssignmentsParams {
+func (o *GetV1IncidentsIncidentIDRoleAssignmentsParams) WithIncidentID(incidentID string) *GetV1IncidentsIncidentIDRoleAssignmentsParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the get v1 incidents incident Id role assignments params
-func (o *GetV1IncidentsIncidentIDRoleAssignmentsParams) SetIncidentID(incidentID int32) {
+func (o *GetV1IncidentsIncidentIDRoleAssignmentsParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -155,7 +152,7 @@ func (o *GetV1IncidentsIncidentIDRoleAssignmentsParams) WriteToRequest(r runtime
 	var res []error
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPatchV1PrioritiesPrioritySlugParams creates a new PatchV1PrioritiesPrioritySlugParams object,
@@ -59,14 +61,11 @@ func NewPatchV1PrioritiesPrioritySlugParamsWithHTTPClient(client *http.Client) *
 */
 type PatchV1PrioritiesPrioritySlugParams struct {
 
-	// Description.
-	Description *string
+	// V1Priorities.
+	V1Priorities *models.PatchV1Priorities
 
 	// PrioritySlug.
 	PrioritySlug string
-
-	// Slug.
-	Slug *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,15 +120,15 @@ func (o *PatchV1PrioritiesPrioritySlugParams) SetHTTPClient(client *http.Client)
 	o.HTTPClient = client
 }
 
-// WithDescription adds the description to the patch v1 priorities priority slug params
-func (o *PatchV1PrioritiesPrioritySlugParams) WithDescription(description *string) *PatchV1PrioritiesPrioritySlugParams {
-	o.SetDescription(description)
+// WithV1Priorities adds the v1Priorities to the patch v1 priorities priority slug params
+func (o *PatchV1PrioritiesPrioritySlugParams) WithV1Priorities(v1Priorities *models.PatchV1Priorities) *PatchV1PrioritiesPrioritySlugParams {
+	o.SetV1Priorities(v1Priorities)
 	return o
 }
 
-// SetDescription adds the description to the patch v1 priorities priority slug params
-func (o *PatchV1PrioritiesPrioritySlugParams) SetDescription(description *string) {
-	o.Description = description
+// SetV1Priorities adds the v1Priorities to the patch v1 priorities priority slug params
+func (o *PatchV1PrioritiesPrioritySlugParams) SetV1Priorities(v1Priorities *models.PatchV1Priorities) {
+	o.V1Priorities = v1Priorities
 }
 
 // WithPrioritySlug adds the prioritySlug to the patch v1 priorities priority slug params
@@ -143,17 +142,6 @@ func (o *PatchV1PrioritiesPrioritySlugParams) SetPrioritySlug(prioritySlug strin
 	o.PrioritySlug = prioritySlug
 }
 
-// WithSlug adds the slug to the patch v1 priorities priority slug params
-func (o *PatchV1PrioritiesPrioritySlugParams) WithSlug(slug *string) *PatchV1PrioritiesPrioritySlugParams {
-	o.SetSlug(slug)
-	return o
-}
-
-// SetSlug adds the slug to the patch v1 priorities priority slug params
-func (o *PatchV1PrioritiesPrioritySlugParams) SetSlug(slug *string) {
-	o.Slug = slug
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1PrioritiesPrioritySlugParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -161,40 +149,15 @@ func (o *PatchV1PrioritiesPrioritySlugParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
-
-	if o.Description != nil {
-
-		// form param description
-		var frDescription string
-		if o.Description != nil {
-			frDescription = *o.Description
-		}
-		fDescription := frDescription
-		if fDescription != "" {
-			if err := r.SetFormParam("description", fDescription); err != nil {
-				return err
-			}
+	if o.V1Priorities != nil {
+		if err := r.SetBodyParam(o.V1Priorities); err != nil {
+			return err
 		}
 	}
 
 	// path param priority_slug
 	if err := r.SetPathParam("priority_slug", o.PrioritySlug); err != nil {
 		return err
-	}
-
-	if o.Slug != nil {
-
-		// form param slug
-		var frSlug string
-		if o.Slug != nil {
-			frSlug = *o.Slug
-		}
-		fSlug := frSlug
-		if fSlug != "" {
-			if err := r.SetFormParam("slug", fSlug); err != nil {
-				return err
-			}
-		}
 	}
 
 	if len(res) > 0 {

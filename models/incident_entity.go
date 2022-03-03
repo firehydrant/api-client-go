@@ -88,7 +88,7 @@ type IncidentEntity struct {
 	Labels interface{} `json:"labels,omitempty"`
 
 	// last note
-	LastNote string `json:"last_note,omitempty"`
+	LastNote *NoteEntity `json:"last_note,omitempty"`
 
 	// last update
 	LastUpdate string `json:"last_update,omitempty"`
@@ -201,6 +201,10 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateIncidentTickets(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLastNote(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -455,6 +459,25 @@ func (m *IncidentEntity) validateIncidentTickets(formats strfmt.Registry) error 
 	return nil
 }
 
+func (m *IncidentEntity) validateLastNote(formats strfmt.Registry) error {
+	if swag.IsZero(m.LastNote) { // not required
+		return nil
+	}
+
+	if m.LastNote != nil {
+		if err := m.LastNote.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("last_note")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("last_note")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *IncidentEntity) validateMilestones(formats strfmt.Registry) error {
 	if swag.IsZero(m.Milestones) { // not required
 		return nil
@@ -664,6 +687,10 @@ func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateLastNote(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateMilestones(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -849,6 +876,22 @@ func (m *IncidentEntity) contextValidateIncidentTickets(ctx context.Context, for
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) contextValidateLastNote(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.LastNote != nil {
+		if err := m.LastNote.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("last_note")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("last_note")
+			}
+			return err
+		}
 	}
 
 	return nil

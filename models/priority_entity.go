@@ -23,6 +23,9 @@ type PriorityEntity struct {
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
+	// default
+	Default bool `json:"default,omitempty"`
+
 	// description
 	Description string `json:"description,omitempty"`
 

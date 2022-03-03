@@ -19,6 +19,9 @@ import (
 // swagger:model postV1Priorities
 type PostV1Priorities struct {
 
+	// default
+	Default bool `json:"default,omitempty"`
+
 	// description
 	Description string `json:"description,omitempty"`
 

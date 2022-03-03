@@ -66,9 +66,7 @@ type DeleteV1IncidentsIncidentIDActionItemsActionItemIDParams struct {
 	ActionItemID int32
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -135,13 +133,13 @@ func (o *DeleteV1IncidentsIncidentIDActionItemsActionItemIDParams) SetActionItem
 }
 
 // WithIncidentID adds the incidentID to the delete v1 incidents incident Id action items action item Id params
-func (o *DeleteV1IncidentsIncidentIDActionItemsActionItemIDParams) WithIncidentID(incidentID int32) *DeleteV1IncidentsIncidentIDActionItemsActionItemIDParams {
+func (o *DeleteV1IncidentsIncidentIDActionItemsActionItemIDParams) WithIncidentID(incidentID string) *DeleteV1IncidentsIncidentIDActionItemsActionItemIDParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the delete v1 incidents incident Id action items action item Id params
-func (o *DeleteV1IncidentsIncidentIDActionItemsActionItemIDParams) SetIncidentID(incidentID int32) {
+func (o *DeleteV1IncidentsIncidentIDActionItemsActionItemIDParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -159,7 +157,7 @@ func (o *DeleteV1IncidentsIncidentIDActionItemsActionItemIDParams) WriteToReques
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

@@ -66,9 +66,7 @@ type PatchV1IncidentsIncidentIDEventsEventIDParams struct {
 	EventID int32
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -135,13 +133,13 @@ func (o *PatchV1IncidentsIncidentIDEventsEventIDParams) SetEventID(eventID int32
 }
 
 // WithIncidentID adds the incidentID to the patch v1 incidents incident Id events event Id params
-func (o *PatchV1IncidentsIncidentIDEventsEventIDParams) WithIncidentID(incidentID int32) *PatchV1IncidentsIncidentIDEventsEventIDParams {
+func (o *PatchV1IncidentsIncidentIDEventsEventIDParams) WithIncidentID(incidentID string) *PatchV1IncidentsIncidentIDEventsEventIDParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the patch v1 incidents incident Id events event Id params
-func (o *PatchV1IncidentsIncidentIDEventsEventIDParams) SetIncidentID(incidentID int32) {
+func (o *PatchV1IncidentsIncidentIDEventsEventIDParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -159,7 +157,7 @@ func (o *PatchV1IncidentsIncidentIDEventsEventIDParams) WriteToRequest(r runtime
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

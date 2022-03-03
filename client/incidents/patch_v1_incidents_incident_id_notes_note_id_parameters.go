@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -66,9 +65,7 @@ type PatchV1IncidentsIncidentIDNotesNoteIDParams struct {
 	V1IncidentsIncidentIDNotes *models.PatchV1IncidentsIncidentIDNotes
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	// NoteID.
 	NoteID string
@@ -138,13 +135,13 @@ func (o *PatchV1IncidentsIncidentIDNotesNoteIDParams) SetV1IncidentsIncidentIDNo
 }
 
 // WithIncidentID adds the incidentID to the patch v1 incidents incident Id notes note Id params
-func (o *PatchV1IncidentsIncidentIDNotesNoteIDParams) WithIncidentID(incidentID int32) *PatchV1IncidentsIncidentIDNotesNoteIDParams {
+func (o *PatchV1IncidentsIncidentIDNotesNoteIDParams) WithIncidentID(incidentID string) *PatchV1IncidentsIncidentIDNotesNoteIDParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the patch v1 incidents incident Id notes note Id params
-func (o *PatchV1IncidentsIncidentIDNotesNoteIDParams) SetIncidentID(incidentID int32) {
+func (o *PatchV1IncidentsIncidentIDNotesNoteIDParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -173,7 +170,7 @@ func (o *PatchV1IncidentsIncidentIDNotesNoteIDParams) WriteToRequest(r runtime.C
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

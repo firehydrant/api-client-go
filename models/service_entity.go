@@ -64,7 +64,7 @@ type ServiceEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// Team that owns the service
-	Owner *TeamEntity `json:"owner,omitempty"`
+	Owner string `json:"owner,omitempty"`
 
 	// service tier
 	ServiceTier int32 `json:"service_tier,omitempty"`
@@ -73,7 +73,7 @@ type ServiceEntity struct {
 	Slug string `json:"slug,omitempty"`
 
 	// List of teams attached to the service
-	Teams []*TeamEntity `json:"teams"`
+	Teams []string `json:"teams"`
 
 	// updated at
 	// Format: date-time
@@ -104,14 +104,6 @@ func (m *ServiceEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLinks(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateOwner(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateTeams(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -245,51 +237,6 @@ func (m *ServiceEntity) validateLinks(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ServiceEntity) validateOwner(formats strfmt.Registry) error {
-	if swag.IsZero(m.Owner) { // not required
-		return nil
-	}
-
-	if m.Owner != nil {
-		if err := m.Owner.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("owner")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("owner")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ServiceEntity) validateTeams(formats strfmt.Registry) error {
-	if swag.IsZero(m.Teams) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.Teams); i++ {
-		if swag.IsZero(m.Teams[i]) { // not required
-			continue
-		}
-
-		if m.Teams[i] != nil {
-			if err := m.Teams[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("teams" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 func (m *ServiceEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
@@ -338,14 +285,6 @@ func (m *ServiceEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 	}
 
 	if err := m.contextValidateLinks(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateOwner(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateTeams(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -429,42 +368,6 @@ func (m *ServiceEntity) contextValidateLinks(ctx context.Context, formats strfmt
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("links" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *ServiceEntity) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Owner != nil {
-		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("owner")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("owner")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ServiceEntity) contextValidateTeams(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Teams); i++ {
-
-		if m.Teams[i] != nil {
-			if err := m.Teams[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("teams" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -19,7 +19,7 @@ import (
 type ParticipantSearchEntity struct {
 
 	// teams
-	Teams *SuccinctTeamEntity `json:"teams,omitempty"`
+	Teams *SuccinctEntity `json:"teams,omitempty"`
 
 	// users
 	Users *SuccinctUserEntity `json:"users,omitempty"`
