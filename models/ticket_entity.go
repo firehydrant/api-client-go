@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -19,7 +20,7 @@ import (
 type TicketEntity struct {
 
 	// assignees
-	Assignees *AuthorEntity `json:"assignees,omitempty"`
+	Assignees []*AuthorEntity `json:"assignees"`
 
 	// attachments
 	Attachments []interface{} `json:"attachments"`
@@ -72,15 +73,22 @@ func (m *TicketEntity) validateAssignees(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if m.Assignees != nil {
-		if err := m.Assignees.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("assignees")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("assignees")
-			}
-			return err
+	for i := 0; i < len(m.Assignees); i++ {
+		if swag.IsZero(m.Assignees[i]) { // not required
+			continue
 		}
+
+		if m.Assignees[i] != nil {
+			if err := m.Assignees[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("assignees" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("assignees" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -125,15 +133,19 @@ func (m *TicketEntity) ContextValidate(ctx context.Context, formats strfmt.Regis
 
 func (m *TicketEntity) contextValidateAssignees(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Assignees != nil {
-		if err := m.Assignees.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("assignees")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("assignees")
+	for i := 0; i < len(m.Assignees); i++ {
+
+		if m.Assignees[i] != nil {
+			if err := m.Assignees[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("assignees" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("assignees" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil
