@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// EnvironmentEntityPaginated Retrieve all environments
+// EnvironmentEntityPaginated List all of the environments that have been added to the organiation
 //
 // swagger:model EnvironmentEntityPaginated
 type EnvironmentEntityPaginated struct {

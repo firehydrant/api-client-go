@@ -41,7 +41,7 @@ func NewGetV1IncidentsIncidentIDEventsOK() *GetV1IncidentsIncidentIDEventsOK {
 
 /* GetV1IncidentsIncidentIDEventsOK describes a response with status code 200, with default header values.
 
-Retrieve the timeline for an incident
+List all events for an incident. An event is a timeline entry. This can be filtered with params to retrieve events of a certain type.
 */
 type GetV1IncidentsIncidentIDEventsOK struct {
 	Payload *models.IncidentEventEntityPaginated

@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1Incidents Create an incident
+// PostV1Incidents Create a new incident
 //
 // swagger:model postV1Incidents
 type PostV1Incidents struct {

@@ -41,7 +41,7 @@ func NewPatchV1IncidentsIncidentIDNotesNoteIDOK() *PatchV1IncidentsIncidentIDNot
 
 /* PatchV1IncidentsIncidentIDNotesNoteIDOK describes a response with status code 200, with default header values.
 
-Update a note
+Updates the body of a note
 */
 type PatchV1IncidentsIncidentIDNotesNoteIDOK struct {
 	Payload *models.NoteEntity

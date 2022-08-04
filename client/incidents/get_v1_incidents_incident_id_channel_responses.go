@@ -7,9 +7,12 @@ package incidents
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1IncidentsIncidentIDChannelReader is a Reader for the GetV1IncidentsIncidentIDChannel structure.
@@ -38,16 +41,27 @@ func NewGetV1IncidentsIncidentIDChannelOK() *GetV1IncidentsIncidentIDChannelOK {
 
 /* GetV1IncidentsIncidentIDChannelOK describes a response with status code 200, with default header values.
 
-get Channel(s)
+Gives chat channel information for the specified incident
 */
 type GetV1IncidentsIncidentIDChannelOK struct {
+	Payload *models.ChannelEntity
 }
 
 func (o *GetV1IncidentsIncidentIDChannelOK) Error() string {
-	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/channel][%d] getV1IncidentsIncidentIdChannelOK ", 200)
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/channel][%d] getV1IncidentsIncidentIdChannelOK  %+v", 200, o.Payload)
+}
+func (o *GetV1IncidentsIncidentIDChannelOK) GetPayload() *models.ChannelEntity {
+	return o.Payload
 }
 
 func (o *GetV1IncidentsIncidentIDChannelOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ChannelEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

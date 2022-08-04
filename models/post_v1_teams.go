@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1Teams Create a team
+// PostV1Teams Create a new team
 //
 // swagger:model postV1Teams
 type PostV1Teams struct {

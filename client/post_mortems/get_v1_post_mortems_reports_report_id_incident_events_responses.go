@@ -38,7 +38,7 @@ func NewGetV1PostMortemsReportsReportIDIncidentEventsOK() *GetV1PostMortemsRepor
 
 /* GetV1PostMortemsReportsReportIDIncidentEventsOK describes a response with status code 200, with default header values.
 
-get IncidentEvent(s)
+Get a list of incident events for the report
 */
 type GetV1PostMortemsReportsReportIDIncidentEventsOK struct {
 }

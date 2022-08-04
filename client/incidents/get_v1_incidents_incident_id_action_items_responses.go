@@ -7,9 +7,12 @@ package incidents
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1IncidentsIncidentIDActionItemsReader is a Reader for the GetV1IncidentsIncidentIDActionItems structure.
@@ -38,16 +41,27 @@ func NewGetV1IncidentsIncidentIDActionItemsOK() *GetV1IncidentsIncidentIDActionI
 
 /* GetV1IncidentsIncidentIDActionItemsOK describes a response with status code 200, with default header values.
 
-get ActionItem(s)
+Retrieve a list of all tasks and follow ups for a specific incident
 */
 type GetV1IncidentsIncidentIDActionItemsOK struct {
+	Payload *models.ActionItemEntity
 }
 
 func (o *GetV1IncidentsIncidentIDActionItemsOK) Error() string {
-	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/action_items][%d] getV1IncidentsIncidentIdActionItemsOK ", 200)
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/action_items][%d] getV1IncidentsIncidentIdActionItemsOK  %+v", 200, o.Payload)
+}
+func (o *GetV1IncidentsIncidentIDActionItemsOK) GetPayload() *models.ActionItemEntity {
+	return o.Payload
 }
 
 func (o *GetV1IncidentsIncidentIDActionItemsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ActionItemEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

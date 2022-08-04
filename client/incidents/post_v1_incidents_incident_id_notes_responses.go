@@ -7,9 +7,12 @@ package incidents
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PostV1IncidentsIncidentIDNotesReader is a Reader for the PostV1IncidentsIncidentIDNotes structure.
@@ -38,16 +41,27 @@ func NewPostV1IncidentsIncidentIDNotesCreated() *PostV1IncidentsIncidentIDNotesC
 
 /* PostV1IncidentsIncidentIDNotesCreated describes a response with status code 201, with default header values.
 
-Add a note to an incident
+Create a new note on for an incident. The visibility field on a note determines where it gets posted.
 */
 type PostV1IncidentsIncidentIDNotesCreated struct {
+	Payload *models.NoteEntity
 }
 
 func (o *PostV1IncidentsIncidentIDNotesCreated) Error() string {
-	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/notes][%d] postV1IncidentsIncidentIdNotesCreated ", 201)
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/notes][%d] postV1IncidentsIncidentIdNotesCreated  %+v", 201, o.Payload)
+}
+func (o *PostV1IncidentsIncidentIDNotesCreated) GetPayload() *models.NoteEntity {
+	return o.Payload
 }
 
 func (o *PostV1IncidentsIncidentIDNotesCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NoteEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

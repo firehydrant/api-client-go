@@ -41,7 +41,7 @@ func NewPostV1IncidentsIncidentIDRoleAssignmentsCreated() *PostV1IncidentsIncide
 
 /* PostV1IncidentsIncidentIDRoleAssignmentsCreated describes a response with status code 201, with default header values.
 
-Assign a role to a user for this incident. All tasks associated to the role will also automatically be attached
+Assign a role to a user for this incident
 */
 type PostV1IncidentsIncidentIDRoleAssignmentsCreated struct {
 	Payload *models.RoleAssignmentEntity

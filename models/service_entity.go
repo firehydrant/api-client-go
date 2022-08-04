@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ServiceEntity Retrieves a single service by ID or Slug
+// ServiceEntity Retrieves all services that are available to be upstream dependencies
 //
 // swagger:model ServiceEntity
 type ServiceEntity struct {
@@ -28,6 +28,9 @@ type ServiceEntity struct {
 
 	// List of checklists associated with a service
 	Checklists []*ChecklistTemplateEntity `json:"checklists"`
+
+	// completed checks
+	CompletedChecks int32 `json:"completed_checks,omitempty"`
 
 	// created at
 	// Format: date-time
@@ -45,7 +48,7 @@ type ServiceEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
-	// A key/value of labels
+	// An object of label key and values
 	Labels interface{} `json:"labels,omitempty"`
 
 	// last import
@@ -65,6 +68,10 @@ type ServiceEntity struct {
 
 	// Team that owns the service
 	Owner string `json:"owner,omitempty"`
+
+	// service checklist updated at
+	// Format: date-time
+	ServiceChecklistUpdatedAt strfmt.DateTime `json:"service_checklist_updated_at,omitempty"`
 
 	// service tier
 	ServiceTier int32 `json:"service_tier,omitempty"`
@@ -104,6 +111,10 @@ func (m *ServiceEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLinks(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServiceChecklistUpdatedAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -232,6 +243,18 @@ func (m *ServiceEntity) validateLinks(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ServiceEntity) validateServiceChecklistUpdatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.ServiceChecklistUpdatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("service_checklist_updated_at", "body", "date-time", m.ServiceChecklistUpdatedAt.String(), formats); err != nil {
+		return err
 	}
 
 	return nil

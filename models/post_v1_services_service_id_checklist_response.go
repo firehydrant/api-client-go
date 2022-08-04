@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1ServicesServiceIDChecklistResponse post v1 services service Id checklist response
+// PostV1ServicesServiceIDChecklistResponse Creates a response for a checklist item
 //
 // swagger:model postV1ServicesServiceIdChecklistResponse
 type PostV1ServicesServiceIDChecklistResponse struct {

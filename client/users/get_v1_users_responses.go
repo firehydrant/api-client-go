@@ -41,7 +41,7 @@ func NewGetV1UsersOK() *GetV1UsersOK {
 
 /* GetV1UsersOK describes a response with status code 200, with default header values.
 
-Retrieve a list of users for the organization
+Retrieve a list of all users in an organization
 */
 type GetV1UsersOK struct {
 	Payload *models.UserEntityPaginated

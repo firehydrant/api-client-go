@@ -7,9 +7,12 @@ package runbooks
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesReader is a Reader for the PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes structure.
@@ -38,16 +41,27 @@ func NewPatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK() *PatchV1Runbook
 
 /* PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK describes a response with status code 200, with default header values.
 
-patched Vote
+Allows for upvoting or downvoting an event
 */
 type PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK struct {
+	Payload *models.VotesEntity
 }
 
 func (o *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/runbooks/executions/{execution_id}/steps/{step_id}/votes][%d] patchV1RunbooksExecutionsExecutionIdStepsStepIdVotesOK ", 200)
+	return fmt.Sprintf("[PATCH /v1/runbooks/executions/{execution_id}/steps/{step_id}/votes][%d] patchV1RunbooksExecutionsExecutionIdStepsStepIdVotesOK  %+v", 200, o.Payload)
+}
+func (o *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK) GetPayload() *models.VotesEntity {
+	return o.Payload
 }
 
 func (o *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.VotesEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

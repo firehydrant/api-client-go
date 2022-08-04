@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ActionItemEntityPaginated List action items for a repo
+// ActionItemEntityPaginated List all action items associated to a retrospective
 //
 // swagger:model ActionItemEntityPaginated
 type ActionItemEntityPaginated struct {

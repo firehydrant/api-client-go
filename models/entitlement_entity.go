@@ -35,6 +35,9 @@ type EntitlementEntity struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// slug
+	Slug string `json:"slug,omitempty"`
+
 	// tier
 	Tier string `json:"tier,omitempty"`
 }

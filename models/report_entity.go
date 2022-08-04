@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ReportEntity Marks an incident retrospective as published and emails all of the participants in the report the summary
+// ReportEntity Returns a report with time bucketed analytics data
 //
 // swagger:model ReportEntity
 type ReportEntity struct {

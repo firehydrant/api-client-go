@@ -41,7 +41,7 @@ func NewPatchV1IncidentsIncidentIDEventsEventIDOK() *PatchV1IncidentsIncidentIDE
 
 /* PatchV1IncidentsIncidentIDEventsEventIDOK describes a response with status code 200, with default header values.
 
-Update an incident event
+Update a single event for an incident
 */
 type PatchV1IncidentsIncidentIDEventsEventIDOK struct {
 	Payload *models.IncidentEventEntity

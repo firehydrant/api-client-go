@@ -41,7 +41,7 @@ func NewPostV1IncidentsCreated() *PostV1IncidentsCreated {
 
 /* PostV1IncidentsCreated describes a response with status code 201, with default header values.
 
-Create an incident
+Create a new incident
 */
 type PostV1IncidentsCreated struct {
 	Payload *models.IncidentEntity

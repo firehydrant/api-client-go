@@ -25,6 +25,9 @@ type ElementInputEntity struct {
 
 	// placeholder
 	Placeholder string `json:"placeholder,omitempty"`
+
+	// required
+	Required bool `json:"required,omitempty"`
 }
 
 // Validate validates this element input entity

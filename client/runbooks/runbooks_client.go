@@ -355,9 +355,9 @@ func (a *Client) GetV1RunbooksExecutionsExecutionIDStepsStepIDScript(params *Get
 }
 
 /*
-  GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus returns the status of the votes
+  GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus returns the current vote counts for an object
 
-  Returns the status of the votes
+  Returns the current vote counts for an object
 */
 func (a *Client) GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -396,9 +396,9 @@ func (a *Client) GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus(params
 }
 
 /*
-  GetV1RunbooksExecutionsExecutionIDVotesStatus returns the status of the votes
+  GetV1RunbooksExecutionsExecutionIDVotesStatus returns the current vote counts for an object
 
-  Returns the status of the votes
+  Returns the current vote counts for an object
 */
 func (a *Client) GetV1RunbooksExecutionsExecutionIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDVotesStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -517,7 +517,9 @@ func (a *Client) GetV1RunbooksSelectOptionsIntegrationSlugActionSlugField(params
 }
 
 /*
-  PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes patch v1 runbooks executions execution Id steps step Id votes API
+  PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes updates the votes on an object
+
+  Allows for upvoting or downvoting an event
 */
 func (a *Client) PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(params *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK, error) {
 	// TODO: Validate the params before sending
@@ -556,7 +558,9 @@ func (a *Client) PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(params *Pa
 }
 
 /*
-  PatchV1RunbooksExecutionsExecutionIDVotes patch v1 runbooks executions execution Id votes API
+  PatchV1RunbooksExecutionsExecutionIDVotes updates the votes on an object
+
+  Allows for upvoting or downvoting an event
 */
 func (a *Client) PatchV1RunbooksExecutionsExecutionIDVotes(params *PatchV1RunbooksExecutionsExecutionIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDVotesOK, error) {
 	// TODO: Validate the params before sending

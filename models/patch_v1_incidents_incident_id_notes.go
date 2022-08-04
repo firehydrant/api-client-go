@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PatchV1IncidentsIncidentIDNotes Update a note
+// PatchV1IncidentsIncidentIDNotes Updates the body of a note
 //
 // swagger:model patchV1IncidentsIncidentIdNotes
 type PatchV1IncidentsIncidentIDNotes struct {

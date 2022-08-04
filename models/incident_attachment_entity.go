@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// IncidentAttachmentEntity Upload a file to the incident
+// IncidentAttachmentEntity Allows adding image attachments to an incident
 //
 // swagger:model IncidentAttachmentEntity
 type IncidentAttachmentEntity struct {

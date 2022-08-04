@@ -7,9 +7,12 @@ package incidents
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PutV1IncidentsIncidentIDImpactReader is a Reader for the PutV1IncidentsIncidentIDImpact structure.
@@ -38,16 +41,27 @@ func NewPutV1IncidentsIncidentIDImpactOK() *PutV1IncidentsIncidentIDImpactOK {
 
 /* PutV1IncidentsIncidentIDImpactOK describes a response with status code 200, with default header values.
 
-updated Impact
+Updates an incident with new impact, milestone, and accompanying note. You can publish these events to a status page or multiple status pages. This can also be used to change the impact currently on an incident.
 */
 type PutV1IncidentsIncidentIDImpactOK struct {
+	Payload *models.IncidentImpactEntity
 }
 
 func (o *PutV1IncidentsIncidentIDImpactOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/incidents/{incident_id}/impact][%d] putV1IncidentsIncidentIdImpactOK ", 200)
+	return fmt.Sprintf("[PUT /v1/incidents/{incident_id}/impact][%d] putV1IncidentsIncidentIdImpactOK  %+v", 200, o.Payload)
+}
+func (o *PutV1IncidentsIncidentIDImpactOK) GetPayload() *models.IncidentImpactEntity {
+	return o.Payload
 }
 
 func (o *PutV1IncidentsIncidentIDImpactOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.IncidentImpactEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

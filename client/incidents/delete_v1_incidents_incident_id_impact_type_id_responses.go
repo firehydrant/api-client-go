@@ -47,7 +47,7 @@ func NewDeleteV1IncidentsIncidentIDImpactTypeIDNoContent() *DeleteV1IncidentsInc
 
 /* DeleteV1IncidentsIncidentIDImpactTypeIDNoContent describes a response with status code 204, with default header values.
 
-Remove a piece of infrastructure from an incident as impact
+Remove impacted infrastructure on an incident
 */
 type DeleteV1IncidentsIncidentIDImpactTypeIDNoContent struct {
 }

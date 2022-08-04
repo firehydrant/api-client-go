@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PutV1IncidentsIncidentIDImpact put v1 incidents incident Id impact
+// PutV1IncidentsIncidentIDImpact Updates an incident with new impact, milestone, and accompanying note. You can publish these events to a status page or multiple status pages. This can also be used to change the impact currently on an incident.
 //
 // swagger:model putV1IncidentsIncidentIdImpact
 type PutV1IncidentsIncidentIDImpact struct {

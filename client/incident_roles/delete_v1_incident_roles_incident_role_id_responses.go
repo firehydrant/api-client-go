@@ -41,7 +41,7 @@ func NewDeleteV1IncidentRolesIncidentRoleIDOK() *DeleteV1IncidentRolesIncidentRo
 
 /* DeleteV1IncidentRolesIncidentRoleIDOK describes a response with status code 200, with default header values.
 
-Archive an incident role
+Archives an incident role which will hide it from lists and metrics
 */
 type DeleteV1IncidentRolesIncidentRoleIDOK struct {
 	Payload *models.IncidentRoleEntity

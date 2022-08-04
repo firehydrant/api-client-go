@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetV1ServicesParams creates a new GetV1ServicesParams object,
@@ -59,17 +60,41 @@ func NewGetV1ServicesParamsWithHTTPClient(client *http.Client) *GetV1ServicesPar
 */
 type GetV1ServicesParams struct {
 
+	/* AvailableDownstreamDependenciesForID.
+
+	   A query to find services that are available to be downstream dependencies for the passed service ID
+	*/
+	AvailableDownstreamDependenciesForID *string
+
+	/* AvailableUpstreamDependenciesForID.
+
+	   A query to find services that are available to be upstream dependencies for the passed service ID
+	*/
+	AvailableUpstreamDependenciesForID *string
+
 	/* Impacted.
 
 	   A query to search services by if they are impacted with active incidents
 	*/
 	Impacted *string
 
+	/* Include.
+
+	   Use in conjunction with lite param to specify additional attributes to include
+	*/
+	Include []string
+
 	/* Labels.
 
 	   A comma separated list of label key / values in the format of 'key=value,key2=value2'. To filter change events that have a key (with no specific value), omit the value
 	*/
 	Labels *string
+
+	/* Lite.
+
+	   Boolean to determine whether to return a slimified version of the services object
+	*/
+	Lite *bool
 
 	/* Name.
 
@@ -148,6 +173,28 @@ func (o *GetV1ServicesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAvailableDownstreamDependenciesForID adds the availableDownstreamDependenciesForID to the get v1 services params
+func (o *GetV1ServicesParams) WithAvailableDownstreamDependenciesForID(availableDownstreamDependenciesForID *string) *GetV1ServicesParams {
+	o.SetAvailableDownstreamDependenciesForID(availableDownstreamDependenciesForID)
+	return o
+}
+
+// SetAvailableDownstreamDependenciesForID adds the availableDownstreamDependenciesForId to the get v1 services params
+func (o *GetV1ServicesParams) SetAvailableDownstreamDependenciesForID(availableDownstreamDependenciesForID *string) {
+	o.AvailableDownstreamDependenciesForID = availableDownstreamDependenciesForID
+}
+
+// WithAvailableUpstreamDependenciesForID adds the availableUpstreamDependenciesForID to the get v1 services params
+func (o *GetV1ServicesParams) WithAvailableUpstreamDependenciesForID(availableUpstreamDependenciesForID *string) *GetV1ServicesParams {
+	o.SetAvailableUpstreamDependenciesForID(availableUpstreamDependenciesForID)
+	return o
+}
+
+// SetAvailableUpstreamDependenciesForID adds the availableUpstreamDependenciesForId to the get v1 services params
+func (o *GetV1ServicesParams) SetAvailableUpstreamDependenciesForID(availableUpstreamDependenciesForID *string) {
+	o.AvailableUpstreamDependenciesForID = availableUpstreamDependenciesForID
+}
+
 // WithImpacted adds the impacted to the get v1 services params
 func (o *GetV1ServicesParams) WithImpacted(impacted *string) *GetV1ServicesParams {
 	o.SetImpacted(impacted)
@@ -159,6 +206,17 @@ func (o *GetV1ServicesParams) SetImpacted(impacted *string) {
 	o.Impacted = impacted
 }
 
+// WithInclude adds the include to the get v1 services params
+func (o *GetV1ServicesParams) WithInclude(include []string) *GetV1ServicesParams {
+	o.SetInclude(include)
+	return o
+}
+
+// SetInclude adds the include to the get v1 services params
+func (o *GetV1ServicesParams) SetInclude(include []string) {
+	o.Include = include
+}
+
 // WithLabels adds the labels to the get v1 services params
 func (o *GetV1ServicesParams) WithLabels(labels *string) *GetV1ServicesParams {
 	o.SetLabels(labels)
@@ -168,6 +226,17 @@ func (o *GetV1ServicesParams) WithLabels(labels *string) *GetV1ServicesParams {
 // SetLabels adds the labels to the get v1 services params
 func (o *GetV1ServicesParams) SetLabels(labels *string) {
 	o.Labels = labels
+}
+
+// WithLite adds the lite to the get v1 services params
+func (o *GetV1ServicesParams) WithLite(lite *bool) *GetV1ServicesParams {
+	o.SetLite(lite)
+	return o
+}
+
+// SetLite adds the lite to the get v1 services params
+func (o *GetV1ServicesParams) SetLite(lite *bool) {
+	o.Lite = lite
 }
 
 // WithName adds the name to the get v1 services params
@@ -222,6 +291,40 @@ func (o *GetV1ServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 	}
 	var res []error
 
+	if o.AvailableDownstreamDependenciesForID != nil {
+
+		// query param available_downstream_dependencies_for_id
+		var qrAvailableDownstreamDependenciesForID string
+
+		if o.AvailableDownstreamDependenciesForID != nil {
+			qrAvailableDownstreamDependenciesForID = *o.AvailableDownstreamDependenciesForID
+		}
+		qAvailableDownstreamDependenciesForID := qrAvailableDownstreamDependenciesForID
+		if qAvailableDownstreamDependenciesForID != "" {
+
+			if err := r.SetQueryParam("available_downstream_dependencies_for_id", qAvailableDownstreamDependenciesForID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.AvailableUpstreamDependenciesForID != nil {
+
+		// query param available_upstream_dependencies_for_id
+		var qrAvailableUpstreamDependenciesForID string
+
+		if o.AvailableUpstreamDependenciesForID != nil {
+			qrAvailableUpstreamDependenciesForID = *o.AvailableUpstreamDependenciesForID
+		}
+		qAvailableUpstreamDependenciesForID := qrAvailableUpstreamDependenciesForID
+		if qAvailableUpstreamDependenciesForID != "" {
+
+			if err := r.SetQueryParam("available_upstream_dependencies_for_id", qAvailableUpstreamDependenciesForID); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.Impacted != nil {
 
 		// query param impacted
@@ -239,6 +342,17 @@ func (o *GetV1ServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		}
 	}
 
+	if o.Include != nil {
+
+		// binding items for include
+		joinedInclude := o.bindParamInclude(reg)
+
+		// form array param include
+		if err := r.SetFormParam("include", joinedInclude...); err != nil {
+			return err
+		}
+	}
+
 	if o.Labels != nil {
 
 		// query param labels
@@ -251,6 +365,23 @@ func (o *GetV1ServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		if qLabels != "" {
 
 			if err := r.SetQueryParam("labels", qLabels); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Lite != nil {
+
+		// query param lite
+		var qrLite bool
+
+		if o.Lite != nil {
+			qrLite = *o.Lite
+		}
+		qLite := swag.FormatBool(qrLite)
+		if qLite != "" {
+
+			if err := r.SetQueryParam("lite", qLite); err != nil {
 				return err
 			}
 		}
@@ -328,4 +459,21 @@ func (o *GetV1ServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetV1Services binds the parameter include
+func (o *GetV1ServicesParams) bindParamInclude(formats strfmt.Registry) []string {
+	includeIR := o.Include
+
+	var includeIC []string
+	for _, includeIIR := range includeIR { // explode []string
+
+		includeIIV := includeIIR // string as string
+		includeIC = append(includeIC, includeIIV)
+	}
+
+	// items.CollectionFormat: ""
+	includeIS := swag.JoinByFormat(includeIC, "")
+
+	return includeIS
 }

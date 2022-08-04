@@ -41,7 +41,7 @@ func NewPostV1IncidentsIncidentIDStatusPagesCreated() *PostV1IncidentsIncidentID
 
 /* PostV1IncidentsIncidentIDStatusPagesCreated describes a response with status code 201, with default header values.
 
-Create a status page for the incident
+Add a status page to an incident.
 */
 type PostV1IncidentsIncidentIDStatusPagesCreated struct {
 	Payload *models.StatusPageEntity

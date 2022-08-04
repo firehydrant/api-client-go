@@ -38,7 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetV1Users Retrieve a list of users for the organization
+  GetV1Users lists users
+
+  Retrieve a list of all users in an organization
 */
 func (a *Client) GetV1Users(params *GetV1UsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1UsersOK, error) {
 	// TODO: Validate the params before sending

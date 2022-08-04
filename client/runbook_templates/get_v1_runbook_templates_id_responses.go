@@ -38,7 +38,7 @@ func NewGetV1RunbookTemplatesIDOK() *GetV1RunbookTemplatesIDOK {
 
 /* GetV1RunbookTemplatesIDOK describes a response with status code 200, with default header values.
 
-get RunbookTemplate(s)
+Retrieve a single runbook template
 */
 type GetV1RunbookTemplatesIDOK struct {
 }

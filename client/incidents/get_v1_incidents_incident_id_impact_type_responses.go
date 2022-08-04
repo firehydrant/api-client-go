@@ -41,7 +41,7 @@ func NewGetV1IncidentsIncidentIDImpactTypeOK() *GetV1IncidentsIncidentIDImpactTy
 
 /* GetV1IncidentsIncidentIDImpactTypeOK describes a response with status code 200, with default header values.
 
-Retrieve impacted infrastructure for the type on the incident
+List impacted infrastructure on an incident by specifying type
 */
 type GetV1IncidentsIncidentIDImpactTypeOK struct {
 	Payload *models.IncidentImpactEntityPaginated

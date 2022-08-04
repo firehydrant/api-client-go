@@ -41,7 +41,7 @@ func NewGetV1PostMortemsReportsReportIDParticipantsOK() *GetV1PostMortemsReports
 
 /* GetV1PostMortemsReportsReportIDParticipantsOK describes a response with status code 200, with default header values.
 
-List participants for a post mortem report
+List participants for a retrospective report
 */
 type GetV1PostMortemsReportsReportIDParticipantsOK struct {
 	Payload *models.ParticipantEntityPaginated

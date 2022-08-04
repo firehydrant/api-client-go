@@ -41,7 +41,7 @@ func NewGetV1IncidentsIncidentIDEventsEventIDVotesStatusOK() *GetV1IncidentsInci
 
 /* GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK describes a response with status code 200, with default header values.
 
-Returns the status of the votes
+Returns the current vote counts for an object
 */
 type GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK struct {
 	Payload *models.VotesEntity

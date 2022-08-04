@@ -41,7 +41,7 @@ func NewGetV1EnvironmentsOK() *GetV1EnvironmentsOK {
 
 /* GetV1EnvironmentsOK describes a response with status code 200, with default header values.
 
-Retrieve all environments
+List all of the environments that have been added to the organiation
 */
 type GetV1EnvironmentsOK struct {
 	Payload *models.EnvironmentEntityPaginated

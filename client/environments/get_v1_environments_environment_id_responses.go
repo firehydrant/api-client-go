@@ -41,7 +41,7 @@ func NewGetV1EnvironmentsEnvironmentIDOK() *GetV1EnvironmentsEnvironmentIDOK {
 
 /* GetV1EnvironmentsEnvironmentIDOK describes a response with status code 200, with default header values.
 
-Retrieve a single environment
+Retrieves a single environment by ID
 */
 type GetV1EnvironmentsEnvironmentIDOK struct {
 	Payload *models.EnvironmentEntity

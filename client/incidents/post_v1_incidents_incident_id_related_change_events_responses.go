@@ -53,7 +53,7 @@ func NewPostV1IncidentsIncidentIDRelatedChangeEventsCreated() *PostV1IncidentsIn
 
 /* PostV1IncidentsIncidentIDRelatedChangeEventsCreated describes a response with status code 201, with default header values.
 
-Associate a change event to the incident
+Add a related change to an incident. Changes added to an incident can be causes, fixes, or suspects. To remove a change from an incident, the type field should be set to dismissed.
 */
 type PostV1IncidentsIncidentIDRelatedChangeEventsCreated struct {
 	Payload *models.RelatedChangeEventEntity

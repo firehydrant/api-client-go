@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PatchV1PostMortemsReports Update a post mortem report
+// PatchV1PostMortemsReports Update a report
 //
 // swagger:model patchV1PostMortemsReports
 type PatchV1PostMortemsReports struct {

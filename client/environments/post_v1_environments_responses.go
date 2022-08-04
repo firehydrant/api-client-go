@@ -41,7 +41,7 @@ func NewPostV1EnvironmentsCreated() *PostV1EnvironmentsCreated {
 
 /* PostV1EnvironmentsCreated describes a response with status code 201, with default header values.
 
-Creates an environment
+Creates an environment for the organization
 */
 type PostV1EnvironmentsCreated struct {
 	Payload *models.EnvironmentEntity

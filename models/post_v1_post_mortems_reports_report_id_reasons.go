@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1PostMortemsReportsReportIDReasons Add a post mortem reason to the report
+// PostV1PostMortemsReportsReportIDReasons Add a new contributing factor to an incident
 //
 // swagger:model postV1PostMortemsReportsReportIdReasons
 type PostV1PostMortemsReportsReportIDReasons struct {

@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// IncidentImpactEntityPaginated Retrieve impacted infrastructure for the type on the incident
+// IncidentImpactEntityPaginated List impacted infrastructure on an incident by specifying type
 //
 // swagger:model IncidentImpactEntityPaginated
 type IncidentImpactEntityPaginated struct {

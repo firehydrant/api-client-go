@@ -7,12 +7,9 @@ package post_mortems
 
 import (
 	"fmt"
-	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/firehydrant/api-client-go/models"
 )
 
 // DeleteV1PostMortemsReportsReportIDTagsReader is a Reader for the DeleteV1PostMortemsReportsReportIDTags structure.
@@ -29,12 +26,6 @@ func (o *DeleteV1PostMortemsReportsReportIDTagsReader) ReadResponse(response run
 			return nil, err
 		}
 		return result, nil
-	case 400:
-		result := NewDeleteV1PostMortemsReportsReportIDTagsBadRequest()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -47,7 +38,7 @@ func NewDeleteV1PostMortemsReportsReportIDTagsNoContent() *DeleteV1PostMortemsRe
 
 /* DeleteV1PostMortemsReportsReportIDTagsNoContent describes a response with status code 204, with default header values.
 
-the tags have been removed from the post mortem report
+Remove tags to a retrospective
 */
 type DeleteV1PostMortemsReportsReportIDTagsNoContent struct {
 }
@@ -57,38 +48,6 @@ func (o *DeleteV1PostMortemsReportsReportIDTagsNoContent) Error() string {
 }
 
 func (o *DeleteV1PostMortemsReportsReportIDTagsNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteV1PostMortemsReportsReportIDTagsBadRequest creates a DeleteV1PostMortemsReportsReportIDTagsBadRequest with default headers values
-func NewDeleteV1PostMortemsReportsReportIDTagsBadRequest() *DeleteV1PostMortemsReportsReportIDTagsBadRequest {
-	return &DeleteV1PostMortemsReportsReportIDTagsBadRequest{}
-}
-
-/* DeleteV1PostMortemsReportsReportIDTagsBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
-type DeleteV1PostMortemsReportsReportIDTagsBadRequest struct {
-	Payload *models.ErrorEntity
-}
-
-func (o *DeleteV1PostMortemsReportsReportIDTagsBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/tags][%d] deleteV1PostMortemsReportsReportIdTagsBadRequest  %+v", 400, o.Payload)
-}
-func (o *DeleteV1PostMortemsReportsReportIDTagsBadRequest) GetPayload() *models.ErrorEntity {
-	return o.Payload
-}
-
-func (o *DeleteV1PostMortemsReportsReportIDTagsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ErrorEntity)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

@@ -41,7 +41,7 @@ func NewGetV1IncidentsIncidentIDAlertsOK() *GetV1IncidentsIncidentIDAlertsOK {
 
 /* GetV1IncidentsIncidentIDAlertsOK describes a response with status code 200, with default header values.
 
-Retrieve alerts that are linked to the incident
+List alerts that have been attached to an incident
 */
 type GetV1IncidentsIncidentIDAlertsOK struct {
 	Payload *models.AlertEntityPaginated

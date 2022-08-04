@@ -38,7 +38,7 @@ func NewPostV1IncidentsIncidentIDAlertsNoContent() *PostV1IncidentsIncidentIDAle
 
 /* PostV1IncidentsIncidentIDAlertsNoContent describes a response with status code 204, with default header values.
 
-Assign alerts to an incident
+Add an alert to an incident. FireHydrant needs to have ingested the alert from a third party system in order to attach it to the incident.
 */
 type PostV1IncidentsIncidentIDAlertsNoContent struct {
 }

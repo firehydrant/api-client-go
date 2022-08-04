@@ -41,7 +41,7 @@ func NewGetV1IncidentTagsOK() *GetV1IncidentTagsOK {
 
 /* GetV1IncidentTagsOK describes a response with status code 200, with default header values.
 
-List tags that are used on incidents
+List all of the incident tags in the organization
 */
 type GetV1IncidentTagsOK struct {
 	Payload *models.TagEntityPaginated

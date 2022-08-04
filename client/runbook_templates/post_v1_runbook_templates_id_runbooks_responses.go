@@ -38,7 +38,7 @@ func NewPostV1RunbookTemplatesIDRunbooksCreated() *PostV1RunbookTemplatesIDRunbo
 
 /* PostV1RunbookTemplatesIDRunbooksCreated describes a response with status code 201, with default header values.
 
-created Runbook
+Create a new runbook from an existing template
 */
 type PostV1RunbookTemplatesIDRunbooksCreated struct {
 }

@@ -66,6 +66,12 @@ type GetV1RunbooksParams struct {
 	*/
 	Name *string
 
+	/* Owners.
+
+	   A query to search runbooks by their owners
+	*/
+	Owners []string
+
 	// Page.
 	//
 	// Format: int32
@@ -140,6 +146,17 @@ func (o *GetV1RunbooksParams) SetName(name *string) {
 	o.Name = name
 }
 
+// WithOwners adds the owners to the get v1 runbooks params
+func (o *GetV1RunbooksParams) WithOwners(owners []string) *GetV1RunbooksParams {
+	o.SetOwners(owners)
+	return o
+}
+
+// SetOwners adds the owners to the get v1 runbooks params
+func (o *GetV1RunbooksParams) SetOwners(owners []string) {
+	o.Owners = owners
+}
+
 // WithPage adds the page to the get v1 runbooks params
 func (o *GetV1RunbooksParams) WithPage(page *int32) *GetV1RunbooksParams {
 	o.SetPage(page)
@@ -187,6 +204,17 @@ func (o *GetV1RunbooksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		}
 	}
 
+	if o.Owners != nil {
+
+		// binding items for owners
+		joinedOwners := o.bindParamOwners(reg)
+
+		// form array param owners
+		if err := r.SetFormParam("owners", joinedOwners...); err != nil {
+			return err
+		}
+	}
+
 	if o.Page != nil {
 
 		// query param page
@@ -225,4 +253,21 @@ func (o *GetV1RunbooksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetV1Runbooks binds the parameter owners
+func (o *GetV1RunbooksParams) bindParamOwners(formats strfmt.Registry) []string {
+	ownersIR := o.Owners
+
+	var ownersIC []string
+	for _, ownersIIR := range ownersIR { // explode []string
+
+		ownersIIV := ownersIIR // string as string
+		ownersIC = append(ownersIC, ownersIIV)
+	}
+
+	// items.CollectionFormat: ""
+	ownersIS := swag.JoinByFormat(ownersIC, "")
+
+	return ownersIS
 }

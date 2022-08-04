@@ -38,7 +38,7 @@ func NewDeleteV1IncidentsIncidentIDAlertsIncidentAlertIDNoContent() *DeleteV1Inc
 
 /* DeleteV1IncidentsIncidentIDAlertsIncidentAlertIDNoContent describes a response with status code 204, with default header values.
 
-Remove an alert from the incident
+Remove an alert from an incident
 */
 type DeleteV1IncidentsIncidentIDAlertsIncidentAlertIDNoContent struct {
 }

@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AlertEntityPaginated Retrieve all alerts
+// AlertEntityPaginated Retrieve all alerts from third parties
 //
 // swagger:model AlertEntityPaginated
 type AlertEntityPaginated struct {

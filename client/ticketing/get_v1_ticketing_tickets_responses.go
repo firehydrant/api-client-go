@@ -41,7 +41,7 @@ func NewGetV1TicketingTicketsOK() *GetV1TicketingTicketsOK {
 
 /* GetV1TicketingTicketsOK describes a response with status code 200, with default header values.
 
-List all of the functionalities that have been added to the organiation
+List all of the tickets that have been added to the organiation
 */
 type GetV1TicketingTicketsOK struct {
 	Payload *models.TicketEntity

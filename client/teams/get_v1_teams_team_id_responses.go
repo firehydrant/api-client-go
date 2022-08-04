@@ -41,7 +41,7 @@ func NewGetV1TeamsTeamIDOK() *GetV1TeamsTeamIDOK {
 
 /* GetV1TeamsTeamIDOK describes a response with status code 200, with default header values.
 
-Retrieve a team
+Retrieve a single team from its ID
 */
 type GetV1TeamsTeamIDOK struct {
 	Payload *models.TeamEntity

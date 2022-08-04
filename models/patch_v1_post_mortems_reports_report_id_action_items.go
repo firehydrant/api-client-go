@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PatchV1PostMortemsReportsReportIDActionItems Update an action item
+// PatchV1PostMortemsReportsReportIDActionItems Update a single action item from its ID
 //
 // swagger:model patchV1PostMortemsReportsReportIdActionItems
 type PatchV1PostMortemsReportsReportIDActionItems struct {

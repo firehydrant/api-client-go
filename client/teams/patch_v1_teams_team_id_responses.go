@@ -41,7 +41,7 @@ func NewPatchV1TeamsTeamIDOK() *PatchV1TeamsTeamIDOK {
 
 /* PatchV1TeamsTeamIDOK describes a response with status code 200, with default header values.
 
-Update a team
+Update a single team from its ID
 */
 type PatchV1TeamsTeamIDOK struct {
 	Payload *models.TeamEntity

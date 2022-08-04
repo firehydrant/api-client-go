@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ParticipantEntityPaginated List participants for a post mortem report
+// ParticipantEntityPaginated List participants for a retrospective report
 //
 // swagger:model ParticipantEntityPaginated
 type ParticipantEntityPaginated struct {

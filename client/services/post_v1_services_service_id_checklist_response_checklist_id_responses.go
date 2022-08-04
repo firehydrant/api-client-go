@@ -38,7 +38,7 @@ func NewPostV1ServicesServiceIDChecklistResponseChecklistIDCreated() *PostV1Serv
 
 /* PostV1ServicesServiceIDChecklistResponseChecklistIDCreated describes a response with status code 201, with default header values.
 
-created ChecklistResponse
+Creates a response for a checklist item
 */
 type PostV1ServicesServiceIDChecklistResponseChecklistIDCreated struct {
 }

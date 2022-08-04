@@ -13,22 +13,25 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ActionItemEntity Update an action item
+// ActionItemEntity Update a single action item from its ID
 //
 // swagger:model ActionItemEntity
 type ActionItemEntity struct {
 
-	// author
-	Author *AuthorEntity `json:"author,omitempty"`
-
 	// created at
 	CreatedAt string `json:"created_at,omitempty"`
+
+	// created by
+	CreatedBy *AuthorEntity `json:"created_by,omitempty"`
 
 	// description
 	Description string `json:"description,omitempty"`
 
 	// id
 	ID string `json:"id,omitempty"`
+
+	// incident id
+	IncidentID string `json:"incident_id,omitempty"`
 
 	// state
 	State string `json:"state,omitempty"`
@@ -44,7 +47,7 @@ type ActionItemEntity struct {
 func (m *ActionItemEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateAuthor(formats); err != nil {
+	if err := m.validateCreatedBy(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -54,17 +57,17 @@ func (m *ActionItemEntity) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ActionItemEntity) validateAuthor(formats strfmt.Registry) error {
-	if swag.IsZero(m.Author) { // not required
+func (m *ActionItemEntity) validateCreatedBy(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreatedBy) { // not required
 		return nil
 	}
 
-	if m.Author != nil {
-		if err := m.Author.Validate(formats); err != nil {
+	if m.CreatedBy != nil {
+		if err := m.CreatedBy.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("author")
+				return ve.ValidateName("created_by")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("author")
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}
@@ -77,7 +80,7 @@ func (m *ActionItemEntity) validateAuthor(formats strfmt.Registry) error {
 func (m *ActionItemEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateAuthor(ctx, formats); err != nil {
+	if err := m.contextValidateCreatedBy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -87,14 +90,14 @@ func (m *ActionItemEntity) ContextValidate(ctx context.Context, formats strfmt.R
 	return nil
 }
 
-func (m *ActionItemEntity) contextValidateAuthor(ctx context.Context, formats strfmt.Registry) error {
+func (m *ActionItemEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Author != nil {
-		if err := m.Author.ContextValidate(ctx, formats); err != nil {
+	if m.CreatedBy != nil {
+		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("author")
+				return ve.ValidateName("created_by")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("author")
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}

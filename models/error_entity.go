@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ErrorEntity Marks an incident retrospective as published and emails all of the participants in the report the summary
+// ErrorEntity Creates a checklist template for the organization
 //
 // swagger:model ErrorEntity
 type ErrorEntity struct {

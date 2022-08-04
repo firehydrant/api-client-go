@@ -13,7 +13,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// IncidentEventEntity Get an individual incident event
+// IncidentEventEntity Retrieve a single event for an incident
 //
 // swagger:model IncidentEventEntity
 type IncidentEventEntity struct {

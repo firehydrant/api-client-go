@@ -41,7 +41,7 @@ func NewPatchV1FunctionalitiesFunctionalityIDOK() *PatchV1FunctionalitiesFunctio
 
 /* PatchV1FunctionalitiesFunctionalityIDOK describes a response with status code 200, with default header values.
 
-Update a functionalitys attributes
+Update a functionalities attributes
 */
 type PatchV1FunctionalitiesFunctionalityIDOK struct {
 	Payload *models.FunctionalityEntity

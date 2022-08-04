@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PatchV1IncidentTypes Update an incident type
+// PatchV1IncidentTypes Update a single incident type from its ID
 //
 // swagger:model patchV1IncidentTypes
 type PatchV1IncidentTypes struct {

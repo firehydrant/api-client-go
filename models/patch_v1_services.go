@@ -640,6 +640,9 @@ type PatchV1ServicesLinksItems0 struct {
 	// Short name used to display and identify this link
 	// Required: true
 	Name *string `json:"name"`
+
+	// If you are trying to remove a link, set this to 'true'
+	Remove bool `json:"remove,omitempty"`
 }
 
 // Validate validates this patch v1 services links items0

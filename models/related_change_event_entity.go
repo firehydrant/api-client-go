@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// RelatedChangeEventEntity Update a change event
+// RelatedChangeEventEntity Update a change attached to an incident
 //
 // swagger:model RelatedChangeEventEntity
 type RelatedChangeEventEntity struct {

@@ -41,7 +41,7 @@ func NewGetV1IncidentsIncidentIDRelatedChangeEventsOK() *GetV1IncidentsIncidentI
 
 /* GetV1IncidentsIncidentIDRelatedChangeEventsOK describes a response with status code 200, with default header values.
 
-Retrieve all change events that have been associated to the incident
+List related changes that have been attached to an incident
 */
 type GetV1IncidentsIncidentIDRelatedChangeEventsOK struct {
 	Payload *models.RelatedChangeEventEntityPaginated

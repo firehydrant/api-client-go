@@ -29,12 +29,6 @@ func (o *PostV1PostMortemsReportsReportIDReasonsReader) ReadResponse(response ru
 			return nil, err
 		}
 		return result, nil
-	case 400:
-		result := NewPostV1PostMortemsReportsReportIDReasonsBadRequest()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -47,7 +41,7 @@ func NewPostV1PostMortemsReportsReportIDReasonsCreated() *PostV1PostMortemsRepor
 
 /* PostV1PostMortemsReportsReportIDReasonsCreated describes a response with status code 201, with default header values.
 
-Add a post mortem reason to the report
+Add a new contributing factor to an incident
 */
 type PostV1PostMortemsReportsReportIDReasonsCreated struct {
 	Payload *models.ReasonEntity
@@ -63,38 +57,6 @@ func (o *PostV1PostMortemsReportsReportIDReasonsCreated) GetPayload() *models.Re
 func (o *PostV1PostMortemsReportsReportIDReasonsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ReasonEntity)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPostV1PostMortemsReportsReportIDReasonsBadRequest creates a PostV1PostMortemsReportsReportIDReasonsBadRequest with default headers values
-func NewPostV1PostMortemsReportsReportIDReasonsBadRequest() *PostV1PostMortemsReportsReportIDReasonsBadRequest {
-	return &PostV1PostMortemsReportsReportIDReasonsBadRequest{}
-}
-
-/* PostV1PostMortemsReportsReportIDReasonsBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
-type PostV1PostMortemsReportsReportIDReasonsBadRequest struct {
-	Payload *models.ErrorEntity
-}
-
-func (o *PostV1PostMortemsReportsReportIDReasonsBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/reasons][%d] postV1PostMortemsReportsReportIdReasonsBadRequest  %+v", 400, o.Payload)
-}
-func (o *PostV1PostMortemsReportsReportIDReasonsBadRequest) GetPayload() *models.ErrorEntity {
-	return o.Payload
-}
-
-func (o *PostV1PostMortemsReportsReportIDReasonsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ErrorEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

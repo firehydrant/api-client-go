@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// IncidentTypeEntityPaginated List incident types
+// IncidentTypeEntityPaginated List all of the incident types in the organization
 //
 // swagger:model IncidentTypeEntityPaginated
 type IncidentTypeEntityPaginated struct {

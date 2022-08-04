@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// SingleMetricsEntity Return metrics for a specific service
+// SingleMetricsEntity Return metrics for a specific infrastructure record
 //
 // swagger:model SingleMetricsEntity
 type SingleMetricsEntity struct {

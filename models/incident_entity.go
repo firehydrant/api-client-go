@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// IncidentEntity Retrieve an incident
+// IncidentEntity Retrieve a single incident from its ID
 //
 // swagger:model IncidentEntity
 type IncidentEntity struct {
@@ -74,9 +74,6 @@ type IncidentEntity struct {
 
 	// incident channels
 	IncidentChannels []*ChannelEntity `json:"incident_channels"`
-
-	// incident roles
-	IncidentRoles []*IncidentRoleEntity `json:"incident_roles"`
 
 	// incident tickets
 	IncidentTickets []*TicketEntity `json:"incident_tickets"`
@@ -193,10 +190,6 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateIncidentChannels(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIncidentRoles(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -397,32 +390,6 @@ func (m *IncidentEntity) validateIncidentChannels(formats strfmt.Registry) error
 					return ve.ValidateName("incident_channels" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("incident_channels" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *IncidentEntity) validateIncidentRoles(formats strfmt.Registry) error {
-	if swag.IsZero(m.IncidentRoles) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.IncidentRoles); i++ {
-		if swag.IsZero(m.IncidentRoles[i]) { // not required
-			continue
-		}
-
-		if m.IncidentRoles[i] != nil {
-			if err := m.IncidentRoles[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("incident_roles" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("incident_roles" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -679,10 +646,6 @@ func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateIncidentRoles(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateIncidentTickets(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -831,26 +794,6 @@ func (m *IncidentEntity) contextValidateIncidentChannels(ctx context.Context, fo
 					return ve.ValidateName("incident_channels" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("incident_channels" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *IncidentEntity) contextValidateIncidentRoles(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.IncidentRoles); i++ {
-
-		if m.IncidentRoles[i] != nil {
-			if err := m.IncidentRoles[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("incident_roles" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("incident_roles" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// EnvironmentEntity Retrieve a single environment
+// EnvironmentEntity Retrieves a single environment by ID
 //
 // swagger:model EnvironmentEntity
 type EnvironmentEntity struct {

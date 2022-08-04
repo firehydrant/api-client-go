@@ -44,19 +44,19 @@ func NewGetV1TicketingProjectsOK() *GetV1TicketingProjectsOK {
 List all ticketing projects available to the organization
 */
 type GetV1TicketingProjectsOK struct {
-	Payload *models.ProjectEntity
+	Payload *models.ProjectListItemEntity
 }
 
 func (o *GetV1TicketingProjectsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/ticketing/projects][%d] getV1TicketingProjectsOK  %+v", 200, o.Payload)
 }
-func (o *GetV1TicketingProjectsOK) GetPayload() *models.ProjectEntity {
+func (o *GetV1TicketingProjectsOK) GetPayload() *models.ProjectListItemEntity {
 	return o.Payload
 }
 
 func (o *GetV1TicketingProjectsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectEntity)
+	o.Payload = new(models.ProjectListItemEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

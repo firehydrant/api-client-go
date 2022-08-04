@@ -41,7 +41,7 @@ func NewGetV1ServicesOK() *GetV1ServicesOK {
 
 /* GetV1ServicesOK describes a response with status code 200, with default header values.
 
-List all of the services that have been added to the organiation.
+List all of the services that have been added to the organization.
 */
 type GetV1ServicesOK struct {
 	Payload *models.ServiceEntityPaginated

@@ -41,7 +41,7 @@ func NewGetV1IncidentsIncidentIDMilestonesOK() *GetV1IncidentsIncidentIDMileston
 
 /* GetV1IncidentsIncidentIDMilestonesOK describes a response with status code 200, with default header values.
 
-Retrieve all milestones for an incident
+List times and durations for each milestone on an incident
 */
 type GetV1IncidentsIncidentIDMilestonesOK struct {
 	Payload *models.MilestoneEntityPaginated

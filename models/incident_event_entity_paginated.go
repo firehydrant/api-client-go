@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// IncidentEventEntityPaginated Retrieve the timeline for an incident
+// IncidentEventEntityPaginated List all events for an incident. An event is a timeline entry. This can be filtered with params to retrieve events of a certain type.
 //
 // swagger:model IncidentEventEntityPaginated
 type IncidentEventEntityPaginated struct {

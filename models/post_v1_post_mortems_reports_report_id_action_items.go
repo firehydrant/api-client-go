@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1PostMortemsReportsReportIDActionItems Create an action item on a report
+// PostV1PostMortemsReportsReportIDActionItems Create a new action item
 //
 // swagger:model postV1PostMortemsReportsReportIdActionItems
 type PostV1PostMortemsReportsReportIDActionItems struct {

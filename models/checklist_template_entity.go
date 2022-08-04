@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ChecklistTemplateEntity checklist template entity
+// ChecklistTemplateEntity Retrieves a single checklist template by ID
 //
 // swagger:model ChecklistTemplateEntity
 type ChecklistTemplateEntity struct {
@@ -24,7 +24,7 @@ type ChecklistTemplateEntity struct {
 	Checks []*ChecklistCheckEntity `json:"checks"`
 
 	// List of services that use this checklist
-	ConnectedServices []*ChecklistConnectedServiceEntity `json:"connected_services"`
+	ConnectedServices []*ServiceEntity `json:"connected_services"`
 
 	// created at
 	CreatedAt string `json:"created_at,omitempty"`

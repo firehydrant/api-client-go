@@ -47,7 +47,7 @@ func NewPostV1IncidentsIncidentIDImpactTypeCreated() *PostV1IncidentsIncidentIDI
 
 /* PostV1IncidentsIncidentIDImpactTypeCreated describes a response with status code 201, with default header values.
 
-Add a piece of infrastructure to an incident as impact
+Add impacted infrastructure to an incident
 */
 type PostV1IncidentsIncidentIDImpactTypeCreated struct {
 	Payload *models.IncidentImpactEntity

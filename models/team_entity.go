@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// TeamEntity Retrieve a team
+// TeamEntity Retrieve a single team from its ID
 //
 // swagger:model TeamEntity
 type TeamEntity struct {
@@ -39,11 +39,17 @@ type TeamEntity struct {
 	// owned checklist templates
 	OwnedChecklistTemplates []*ChecklistTemplateEntity `json:"owned_checklist_templates"`
 
+	// owned functionalities
+	OwnedFunctionalities []*FunctionalityEntity `json:"owned_functionalities"`
+
+	// owned runbooks
+	OwnedRunbooks []*SlimRunbookEntity `json:"owned_runbooks"`
+
 	// owned services
-	OwnedServices []*BaseServiceEntity `json:"owned_services"`
+	OwnedServices []*ServiceEntity `json:"owned_services"`
 
 	// responding services
-	RespondingServices []*BaseServiceEntity `json:"responding_services"`
+	RespondingServices []*ServiceEntity `json:"responding_services"`
 
 	// services
 	Services []*ServiceEntity `json:"services"`
@@ -69,6 +75,14 @@ func (m *TeamEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOwnedChecklistTemplates(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOwnedFunctionalities(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOwnedRunbooks(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -148,6 +162,58 @@ func (m *TeamEntity) validateOwnedChecklistTemplates(formats strfmt.Registry) er
 					return ve.ValidateName("owned_checklist_templates" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("owned_checklist_templates" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) validateOwnedFunctionalities(formats strfmt.Registry) error {
+	if swag.IsZero(m.OwnedFunctionalities) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.OwnedFunctionalities); i++ {
+		if swag.IsZero(m.OwnedFunctionalities[i]) { // not required
+			continue
+		}
+
+		if m.OwnedFunctionalities[i] != nil {
+			if err := m.OwnedFunctionalities[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("owned_functionalities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("owned_functionalities" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) validateOwnedRunbooks(formats strfmt.Registry) error {
+	if swag.IsZero(m.OwnedRunbooks) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.OwnedRunbooks); i++ {
+		if swag.IsZero(m.OwnedRunbooks[i]) { // not required
+			continue
+		}
+
+		if m.OwnedRunbooks[i] != nil {
+			if err := m.OwnedRunbooks[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("owned_runbooks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("owned_runbooks" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -260,6 +326,14 @@ func (m *TeamEntity) ContextValidate(ctx context.Context, formats strfmt.Registr
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateOwnedFunctionalities(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOwnedRunbooks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateOwnedServices(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -308,6 +382,46 @@ func (m *TeamEntity) contextValidateOwnedChecklistTemplates(ctx context.Context,
 					return ve.ValidateName("owned_checklist_templates" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("owned_checklist_templates" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) contextValidateOwnedFunctionalities(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.OwnedFunctionalities); i++ {
+
+		if m.OwnedFunctionalities[i] != nil {
+			if err := m.OwnedFunctionalities[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("owned_functionalities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("owned_functionalities" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) contextValidateOwnedRunbooks(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.OwnedRunbooks); i++ {
+
+		if m.OwnedRunbooks[i] != nil {
+			if err := m.OwnedRunbooks[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("owned_runbooks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("owned_runbooks" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

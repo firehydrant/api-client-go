@@ -7,9 +7,12 @@ package incidents
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PatchV1IncidentsIncidentIDActionItemsActionItemIDReader is a Reader for the PatchV1IncidentsIncidentIDActionItemsActionItemID structure.
@@ -38,16 +41,27 @@ func NewPatchV1IncidentsIncidentIDActionItemsActionItemIDOK() *PatchV1IncidentsI
 
 /* PatchV1IncidentsIncidentIDActionItemsActionItemIDOK describes a response with status code 200, with default header values.
 
-patched ActionItem
+Update a task or follow up. This can be used to update the status of a task or assign a new user.
 */
 type PatchV1IncidentsIncidentIDActionItemsActionItemIDOK struct {
+	Payload *models.ActionItemEntity
 }
 
 func (o *PatchV1IncidentsIncidentIDActionItemsActionItemIDOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/action_items/{action_item_id}][%d] patchV1IncidentsIncidentIdActionItemsActionItemIdOK ", 200)
+	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/action_items/{action_item_id}][%d] patchV1IncidentsIncidentIdActionItemsActionItemIdOK  %+v", 200, o.Payload)
+}
+func (o *PatchV1IncidentsIncidentIDActionItemsActionItemIDOK) GetPayload() *models.ActionItemEntity {
+	return o.Payload
 }
 
 func (o *PatchV1IncidentsIncidentIDActionItemsActionItemIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ActionItemEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -41,22 +41,22 @@ func NewGetV1TeamsOK() *GetV1TeamsOK {
 
 /* GetV1TeamsOK describes a response with status code 200, with default header values.
 
-Retrieve all teams
+List all of the teams in the organization
 */
 type GetV1TeamsOK struct {
-	Payload *models.TeamEntity
+	Payload *models.TeamEntityPaginated
 }
 
 func (o *GetV1TeamsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/teams][%d] getV1TeamsOK  %+v", 200, o.Payload)
 }
-func (o *GetV1TeamsOK) GetPayload() *models.TeamEntity {
+func (o *GetV1TeamsOK) GetPayload() *models.TeamEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1TeamsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.TeamEntity)
+	o.Payload = new(models.TeamEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

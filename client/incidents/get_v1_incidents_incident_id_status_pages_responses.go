@@ -41,7 +41,7 @@ func NewGetV1IncidentsIncidentIDStatusPagesOK() *GetV1IncidentsIncidentIDStatusP
 
 /* GetV1IncidentsIncidentIDStatusPagesOK describes a response with status code 200, with default header values.
 
-Retrieve status pages for the incident
+List status pages that are attached to an incident
 */
 type GetV1IncidentsIncidentIDStatusPagesOK struct {
 	Payload *models.StatusPageEntityPaginated

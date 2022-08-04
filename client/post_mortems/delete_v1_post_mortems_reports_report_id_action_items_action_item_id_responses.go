@@ -38,7 +38,7 @@ func NewDeleteV1PostMortemsReportsReportIDActionItemsActionItemIDNoContent() *De
 
 /* DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDNoContent describes a response with status code 204, with default header values.
 
-Delete an action item
+Archives an action item
 */
 type DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDNoContent struct {
 }

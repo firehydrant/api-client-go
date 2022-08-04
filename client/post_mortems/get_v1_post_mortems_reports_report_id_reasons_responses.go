@@ -41,7 +41,7 @@ func NewGetV1PostMortemsReportsReportIDReasonsOK() *GetV1PostMortemsReportsRepor
 
 /* GetV1PostMortemsReportsReportIDReasonsOK describes a response with status code 200, with default header values.
 
-Retrieve post mortem report reasons
+List all contributing factors to an incident
 */
 type GetV1PostMortemsReportsReportIDReasonsOK struct {
 	Payload *models.ReasonEntityPaginated

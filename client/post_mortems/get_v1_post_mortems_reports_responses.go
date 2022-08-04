@@ -41,22 +41,22 @@ func NewGetV1PostMortemsReportsOK() *GetV1PostMortemsReportsOK {
 
 /* GetV1PostMortemsReportsOK describes a response with status code 200, with default header values.
 
-Retrieve post mortem reports
+List all reports
 */
 type GetV1PostMortemsReportsOK struct {
-	Payload *models.ReportEntityPaginated
+	Payload *models.PostMortemReportEntityPaginated
 }
 
 func (o *GetV1PostMortemsReportsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/post_mortems/reports][%d] getV1PostMortemsReportsOK  %+v", 200, o.Payload)
 }
-func (o *GetV1PostMortemsReportsOK) GetPayload() *models.ReportEntityPaginated {
+func (o *GetV1PostMortemsReportsOK) GetPayload() *models.PostMortemReportEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1PostMortemsReportsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ReportEntityPaginated)
+	o.Payload = new(models.PostMortemReportEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1IncidentRoles Create an incident role
+// PostV1IncidentRoles Create a new incident role
 //
 // swagger:model postV1IncidentRoles
 type PostV1IncidentRoles struct {

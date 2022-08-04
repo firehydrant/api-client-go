@@ -7,9 +7,12 @@ package incident_types
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // DeleteV1IncidentTypesIDReader is a Reader for the DeleteV1IncidentTypesID structure.
@@ -20,8 +23,8 @@ type DeleteV1IncidentTypesIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteV1IncidentTypesIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 204:
-		result := NewDeleteV1IncidentTypesIDNoContent()
+	case 200:
+		result := NewDeleteV1IncidentTypesIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -31,23 +34,34 @@ func (o *DeleteV1IncidentTypesIDReader) ReadResponse(response runtime.ClientResp
 	}
 }
 
-// NewDeleteV1IncidentTypesIDNoContent creates a DeleteV1IncidentTypesIDNoContent with default headers values
-func NewDeleteV1IncidentTypesIDNoContent() *DeleteV1IncidentTypesIDNoContent {
-	return &DeleteV1IncidentTypesIDNoContent{}
+// NewDeleteV1IncidentTypesIDOK creates a DeleteV1IncidentTypesIDOK with default headers values
+func NewDeleteV1IncidentTypesIDOK() *DeleteV1IncidentTypesIDOK {
+	return &DeleteV1IncidentTypesIDOK{}
 }
 
-/* DeleteV1IncidentTypesIDNoContent describes a response with status code 204, with default header values.
+/* DeleteV1IncidentTypesIDOK describes a response with status code 200, with default header values.
 
-Archive an incident type
+Archives an incident type which will hide it from lists and metrics
 */
-type DeleteV1IncidentTypesIDNoContent struct {
+type DeleteV1IncidentTypesIDOK struct {
+	Payload *models.IncidentTypeEntity
 }
 
-func (o *DeleteV1IncidentTypesIDNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /v1/incident_types/{id}][%d] deleteV1IncidentTypesIdNoContent ", 204)
+func (o *DeleteV1IncidentTypesIDOK) Error() string {
+	return fmt.Sprintf("[DELETE /v1/incident_types/{id}][%d] deleteV1IncidentTypesIdOK  %+v", 200, o.Payload)
+}
+func (o *DeleteV1IncidentTypesIDOK) GetPayload() *models.IncidentTypeEntity {
+	return o.Payload
 }
 
-func (o *DeleteV1IncidentTypesIDNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteV1IncidentTypesIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.IncidentTypeEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

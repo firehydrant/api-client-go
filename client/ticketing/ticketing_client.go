@@ -42,6 +42,8 @@ type ClientService interface {
 
 	GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldID(params *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDOK, error)
 
+	GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFields(params *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK, error)
+
 	GetV1TicketingProjectsTicketingProjectIDFieldMapsMapID(params *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK, error)
 
 	GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error)
@@ -306,6 +308,47 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOpt
 }
 
 /*
+  GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFields gets the fields that can be mapped for this project
+
+  Returns metadata for the fields that are available for field mapping.
+*/
+func (a *Client) GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFields(params *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TicketingProjectsTicketingProjectIdFieldMapsAvailableFields",
+		Method:             "GET",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/field_maps/available_fields",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TicketingProjectsTicketingProjectIdFieldMapsAvailableFields: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   GetV1TicketingProjectsTicketingProjectIDFieldMapsMapID retrieves field map for a ticketing project
 
   Retrieve field map for a ticketing project
@@ -388,9 +431,9 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigur
 }
 
 /*
-  GetV1TicketingTickets lists all functionalities
+  GetV1TicketingTickets lists all tickets
 
-  List all of the functionalities that have been added to the organiation
+  List all of the tickets that have been added to the organiation
 */
 func (a *Client) GetV1TicketingTickets(params *GetV1TicketingTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingTicketsOK, error) {
 	// TODO: Validate the params before sending

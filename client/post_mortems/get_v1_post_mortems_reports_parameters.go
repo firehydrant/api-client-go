@@ -76,6 +76,14 @@ type GetV1PostMortemsReportsParams struct {
 	// Format: int32
 	PerPage *int32
 
+	/* UpdatedSince.
+
+	   Filter for reports updated after the given ISO8601 timestamp
+
+	   Format: date-time
+	*/
+	UpdatedSince *strfmt.DateTime
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -162,6 +170,17 @@ func (o *GetV1PostMortemsReportsParams) SetPerPage(perPage *int32) {
 	o.PerPage = perPage
 }
 
+// WithUpdatedSince adds the updatedSince to the get v1 post mortems reports params
+func (o *GetV1PostMortemsReportsParams) WithUpdatedSince(updatedSince *strfmt.DateTime) *GetV1PostMortemsReportsParams {
+	o.SetUpdatedSince(updatedSince)
+	return o
+}
+
+// SetUpdatedSince adds the updatedSince to the get v1 post mortems reports params
+func (o *GetV1PostMortemsReportsParams) SetUpdatedSince(updatedSince *strfmt.DateTime) {
+	o.UpdatedSince = updatedSince
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1PostMortemsReportsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -216,6 +235,23 @@ func (o *GetV1PostMortemsReportsParams) WriteToRequest(r runtime.ClientRequest, 
 		if qPerPage != "" {
 
 			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.UpdatedSince != nil {
+
+		// query param updated_since
+		var qrUpdatedSince strfmt.DateTime
+
+		if o.UpdatedSince != nil {
+			qrUpdatedSince = *o.UpdatedSince
+		}
+		qUpdatedSince := qrUpdatedSince.String()
+		if qUpdatedSince != "" {
+
+			if err := r.SetQueryParam("updated_since", qUpdatedSince); err != nil {
 				return err
 			}
 		}

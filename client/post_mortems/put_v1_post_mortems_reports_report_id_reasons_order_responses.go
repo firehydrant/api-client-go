@@ -7,9 +7,12 @@ package post_mortems
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PutV1PostMortemsReportsReportIDReasonsOrderReader is a Reader for the PutV1PostMortemsReportsReportIDReasonsOrder structure.
@@ -38,16 +41,27 @@ func NewPutV1PostMortemsReportsReportIDReasonsOrderOK() *PutV1PostMortemsReports
 
 /* PutV1PostMortemsReportsReportIDReasonsOrderOK describes a response with status code 200, with default header values.
 
-Reorder a reason in the post mortem reasons list
+Reorder a contributing factor
 */
 type PutV1PostMortemsReportsReportIDReasonsOrderOK struct {
+	Payload *models.ReasonEntity
 }
 
 func (o *PutV1PostMortemsReportsReportIDReasonsOrderOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/post_mortems/reports/{report_id}/reasons/order][%d] putV1PostMortemsReportsReportIdReasonsOrderOK ", 200)
+	return fmt.Sprintf("[PUT /v1/post_mortems/reports/{report_id}/reasons/order][%d] putV1PostMortemsReportsReportIdReasonsOrderOK  %+v", 200, o.Payload)
+}
+func (o *PutV1PostMortemsReportsReportIDReasonsOrderOK) GetPayload() *models.ReasonEntity {
+	return o.Payload
 }
 
 func (o *PutV1PostMortemsReportsReportIDReasonsOrderOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ReasonEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

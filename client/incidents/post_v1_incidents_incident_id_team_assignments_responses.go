@@ -41,7 +41,7 @@ func NewPostV1IncidentsIncidentIDTeamAssignmentsCreated() *PostV1IncidentsIncide
 
 /* PostV1IncidentsIncidentIDTeamAssignmentsCreated describes a response with status code 201, with default header values.
 
-Assign a team to an incident for the incident
+Assign a team for this incident
 */
 type PostV1IncidentsIncidentIDTeamAssignmentsCreated struct {
 	Payload *models.IncidentTeamAssignmentsEntity

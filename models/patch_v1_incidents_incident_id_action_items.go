@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PatchV1IncidentsIncidentIDActionItems patch v1 incidents incident Id action items
+// PatchV1IncidentsIncidentIDActionItems Update a task or follow up. This can be used to update the status of a task or assign a new user.
 //
 // swagger:model patchV1IncidentsIncidentIdActionItems
 type PatchV1IncidentsIncidentIDActionItems struct {

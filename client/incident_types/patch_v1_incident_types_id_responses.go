@@ -29,12 +29,6 @@ func (o *PatchV1IncidentTypesIDReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return result, nil
-	case 400:
-		result := NewPatchV1IncidentTypesIDBadRequest()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -47,7 +41,7 @@ func NewPatchV1IncidentTypesIDOK() *PatchV1IncidentTypesIDOK {
 
 /* PatchV1IncidentTypesIDOK describes a response with status code 200, with default header values.
 
-Update an incident type
+Update a single incident type from its ID
 */
 type PatchV1IncidentTypesIDOK struct {
 	Payload *models.IncidentTypeEntity
@@ -63,38 +57,6 @@ func (o *PatchV1IncidentTypesIDOK) GetPayload() *models.IncidentTypeEntity {
 func (o *PatchV1IncidentTypesIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.IncidentTypeEntity)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPatchV1IncidentTypesIDBadRequest creates a PatchV1IncidentTypesIDBadRequest with default headers values
-func NewPatchV1IncidentTypesIDBadRequest() *PatchV1IncidentTypesIDBadRequest {
-	return &PatchV1IncidentTypesIDBadRequest{}
-}
-
-/* PatchV1IncidentTypesIDBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
-type PatchV1IncidentTypesIDBadRequest struct {
-	Payload *models.ErrorEntity
-}
-
-func (o *PatchV1IncidentTypesIDBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /v1/incident_types/{id}][%d] patchV1IncidentTypesIdBadRequest  %+v", 400, o.Payload)
-}
-func (o *PatchV1IncidentTypesIDBadRequest) GetPayload() *models.ErrorEntity {
-	return o.Payload
-}
-
-func (o *PatchV1IncidentTypesIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ErrorEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

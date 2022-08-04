@@ -41,7 +41,7 @@ func NewPostV1TeamsCreated() *PostV1TeamsCreated {
 
 /* PostV1TeamsCreated describes a response with status code 201, with default header values.
 
-Create a team
+Create a new team
 */
 type PostV1TeamsCreated struct {
 	Payload *models.TeamEntity

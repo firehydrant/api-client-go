@@ -41,7 +41,7 @@ func NewPatchV1IncidentRolesIncidentRoleIDOK() *PatchV1IncidentRolesIncidentRole
 
 /* PatchV1IncidentRolesIncidentRoleIDOK describes a response with status code 200, with default header values.
 
-Update an incident role
+Update a single incident role from its ID
 */
 type PatchV1IncidentRolesIncidentRoleIDOK struct {
 	Payload *models.IncidentRoleEntity

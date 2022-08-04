@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1IncidentsIncidentIDActionItems post v1 incidents incident Id action items
+// PostV1IncidentsIncidentIDActionItems Create a new task or followup for an incident
 //
 // swagger:model postV1IncidentsIncidentIdActionItems
 type PostV1IncidentsIncidentIDActionItems struct {

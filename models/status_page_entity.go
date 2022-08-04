@@ -13,7 +13,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// StatusPageEntity Create a status page for the incident
+// StatusPageEntity Add a status page to an incident.
 //
 // swagger:model StatusPageEntity
 type StatusPageEntity struct {

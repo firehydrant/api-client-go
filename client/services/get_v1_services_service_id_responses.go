@@ -41,7 +41,7 @@ func NewGetV1ServicesServiceIDOK() *GetV1ServicesServiceIDOK {
 
 /* GetV1ServicesServiceIDOK describes a response with status code 200, with default header values.
 
-Retrieves a single service by ID or Slug
+Retrieves a single service by ID
 */
 type GetV1ServicesServiceIDOK struct {
 	Payload *models.ServiceEntity

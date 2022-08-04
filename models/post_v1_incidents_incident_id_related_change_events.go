@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1IncidentsIncidentIDRelatedChangeEvents Associate a change event to the incident
+// PostV1IncidentsIncidentIDRelatedChangeEvents Add a related change to an incident. Changes added to an incident can be causes, fixes, or suspects. To remove a change from an incident, the type field should be set to dismissed.
 //
 // swagger:model postV1IncidentsIncidentIdRelatedChangeEvents
 type PostV1IncidentsIncidentIDRelatedChangeEvents struct {

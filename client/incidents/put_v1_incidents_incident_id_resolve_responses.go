@@ -41,7 +41,7 @@ func NewPutV1IncidentsIncidentIDResolveOK() *PutV1IncidentsIncidentIDResolveOK {
 
 /* PutV1IncidentsIncidentIDResolveOK describes a response with status code 200, with default header values.
 
-Resolve an active incident
+Resolves a currently active incident
 */
 type PutV1IncidentsIncidentIDResolveOK struct {
 	Payload *models.IncidentEntity

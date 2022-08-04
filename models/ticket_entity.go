@@ -24,6 +24,9 @@ type TicketEntity struct {
 	// attachments
 	Attachments []interface{} `json:"attachments"`
 
+	// created at
+	CreatedAt string `json:"created_at,omitempty"`
+
 	// created by
 	CreatedBy *AuthorEntity `json:"created_by,omitempty"`
 
@@ -41,6 +44,9 @@ type TicketEntity struct {
 
 	// type
 	Type string `json:"type,omitempty"`
+
+	// updated at
+	UpdatedAt string `json:"updated_at,omitempty"`
 }
 
 // Validate validates this ticket entity

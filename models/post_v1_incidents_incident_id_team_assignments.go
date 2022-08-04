@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1IncidentsIncidentIDTeamAssignments Assign a team to an incident for the incident
+// PostV1IncidentsIncidentIDTeamAssignments Assign a team for this incident
 //
 // swagger:model postV1IncidentsIncidentIdTeamAssignments
 type PostV1IncidentsIncidentIDTeamAssignments struct {

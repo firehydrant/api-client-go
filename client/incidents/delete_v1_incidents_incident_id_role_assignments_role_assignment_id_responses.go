@@ -41,7 +41,7 @@ func NewDeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK() *DeleteV1
 
 /* DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK describes a response with status code 200, with default header values.
 
-Unassign a role from a user. Any tasks that were created on the incident will remain in whatever state they are in
+Unassign a role from a user
 */
 type DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK struct {
 	Payload *models.RoleAssignmentEntity

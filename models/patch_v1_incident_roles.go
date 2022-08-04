@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PatchV1IncidentRoles Update an incident role
+// PatchV1IncidentRoles Update a single incident role from its ID
 //
 // swagger:model patchV1IncidentRoles
 type PatchV1IncidentRoles struct {

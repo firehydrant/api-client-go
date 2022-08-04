@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ParticipantEntity Add a participant to the post mortem report
+// ParticipantEntity participant entity
 //
 // swagger:model ParticipantEntity
 type ParticipantEntity struct {

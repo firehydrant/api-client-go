@@ -41,7 +41,7 @@ func NewPostV1PostMortemsReportsReportIDActionItemsCreated() *PostV1PostMortemsR
 
 /* PostV1PostMortemsReportsReportIDActionItemsCreated describes a response with status code 201, with default header values.
 
-Create an action item on a report
+Create a new action item
 */
 type PostV1PostMortemsReportsReportIDActionItemsCreated struct {
 	Payload *models.ActionItemEntity

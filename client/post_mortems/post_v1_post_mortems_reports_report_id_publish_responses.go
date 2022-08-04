@@ -50,19 +50,19 @@ func NewPostV1PostMortemsReportsReportIDPublishCreated() *PostV1PostMortemsRepor
 Marks an incident retrospective as published and emails all of the participants in the report the summary
 */
 type PostV1PostMortemsReportsReportIDPublishCreated struct {
-	Payload *models.ReportEntity
+	Payload *models.PostMortemReportEntity
 }
 
 func (o *PostV1PostMortemsReportsReportIDPublishCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/publish][%d] postV1PostMortemsReportsReportIdPublishCreated  %+v", 201, o.Payload)
 }
-func (o *PostV1PostMortemsReportsReportIDPublishCreated) GetPayload() *models.ReportEntity {
+func (o *PostV1PostMortemsReportsReportIDPublishCreated) GetPayload() *models.PostMortemReportEntity {
 	return o.Payload
 }
 
 func (o *PostV1PostMortemsReportsReportIDPublishCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ReportEntity)
+	o.Payload = new(models.PostMortemReportEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

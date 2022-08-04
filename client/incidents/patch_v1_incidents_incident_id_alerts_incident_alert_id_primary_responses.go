@@ -41,7 +41,7 @@ func NewPatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK() *PatchV1Incid
 
 /* PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK describes a response with status code 200, with default header values.
 
-Assign an alert a primary status
+Setting an alert as primary will overwrite milestone times in the FireHydrant incident with times included in the primary alert. Services attached to the primary alert will also be automatically added to the incident.
 */
 type PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK struct {
 	Payload *models.AlertEntity

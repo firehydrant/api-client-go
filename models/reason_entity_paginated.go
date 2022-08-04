@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ReasonEntityPaginated Retrieve post mortem report reasons
+// ReasonEntityPaginated List all contributing factors to an incident
 //
 // swagger:model ReasonEntityPaginated
 type ReasonEntityPaginated struct {

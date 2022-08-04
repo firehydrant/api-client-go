@@ -41,7 +41,7 @@ func NewGetV1AlertsOK() *GetV1AlertsOK {
 
 /* GetV1AlertsOK describes a response with status code 200, with default header values.
 
-Retrieve all alerts
+Retrieve all alerts from third parties
 */
 type GetV1AlertsOK struct {
 	Payload *models.AlertEntityPaginated

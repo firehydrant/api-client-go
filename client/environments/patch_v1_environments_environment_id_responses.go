@@ -41,7 +41,7 @@ func NewPatchV1EnvironmentsEnvironmentIDOK() *PatchV1EnvironmentsEnvironmentIDOK
 
 /* PatchV1EnvironmentsEnvironmentIDOK describes a response with status code 200, with default header values.
 
-Update an environment
+Update a environments attributes
 */
 type PatchV1EnvironmentsEnvironmentIDOK struct {
 	Payload *models.EnvironmentEntity

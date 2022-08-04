@@ -41,7 +41,7 @@ func NewGetV1PostMortemsReportsReportIDActionItemsOK() *GetV1PostMortemsReportsR
 
 /* GetV1PostMortemsReportsReportIDActionItemsOK describes a response with status code 200, with default header values.
 
-List action items for a repo
+List all action items associated to a retrospective
 */
 type GetV1PostMortemsReportsReportIDActionItemsOK struct {
 	Payload *models.ActionItemEntityPaginated

@@ -41,7 +41,7 @@ func NewGetV1IncidentTypesOK() *GetV1IncidentTypesOK {
 
 /* GetV1IncidentTypesOK describes a response with status code 200, with default header values.
 
-List incident types
+List all of the incident types in the organization
 */
 type GetV1IncidentTypesOK struct {
 	Payload *models.IncidentTypeEntityPaginated

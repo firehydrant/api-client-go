@@ -41,7 +41,7 @@ func NewPatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK() *PatchV1Pos
 
 /* PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK describes a response with status code 200, with default header values.
 
-Update an action item
+Update a single action item from its ID
 */
 type PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK struct {
 	Payload *models.ActionItemEntity

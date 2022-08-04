@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ChannelEntity channel entity
+// ChannelEntity Gives chat channel information for the specified incident
 //
 // swagger:model ChannelEntity
 type ChannelEntity struct {

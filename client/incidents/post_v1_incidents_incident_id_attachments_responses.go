@@ -41,7 +41,7 @@ func NewPostV1IncidentsIncidentIDAttachmentsCreated() *PostV1IncidentsIncidentID
 
 /* PostV1IncidentsIncidentIDAttachmentsCreated describes a response with status code 201, with default header values.
 
-Upload a file to the incident
+Allows adding image attachments to an incident
 */
 type PostV1IncidentsIncidentIDAttachmentsCreated struct {
 	Payload *models.IncidentAttachmentEntity

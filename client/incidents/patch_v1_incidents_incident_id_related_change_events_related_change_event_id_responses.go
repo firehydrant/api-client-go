@@ -53,7 +53,7 @@ func NewPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK() *P
 
 /* PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK describes a response with status code 200, with default header values.
 
-Update a change event
+Update a change attached to an incident
 */
 type PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK struct {
 	Payload *models.RelatedChangeEventEntity

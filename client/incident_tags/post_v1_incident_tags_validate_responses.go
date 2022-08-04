@@ -7,9 +7,12 @@ package incident_tags
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PostV1IncidentTagsValidateReader is a Reader for the PostV1IncidentTagsValidate structure.
@@ -41,13 +44,24 @@ func NewPostV1IncidentTagsValidateCreated() *PostV1IncidentTagsValidateCreated {
 Validate the format of a list of tags
 */
 type PostV1IncidentTagsValidateCreated struct {
+	Payload *models.TagEntity
 }
 
 func (o *PostV1IncidentTagsValidateCreated) Error() string {
-	return fmt.Sprintf("[POST /v1/incident_tags/validate][%d] postV1IncidentTagsValidateCreated ", 201)
+	return fmt.Sprintf("[POST /v1/incident_tags/validate][%d] postV1IncidentTagsValidateCreated  %+v", 201, o.Payload)
+}
+func (o *PostV1IncidentTagsValidateCreated) GetPayload() *models.TagEntity {
+	return o.Payload
 }
 
 func (o *PostV1IncidentTagsValidateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.TagEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

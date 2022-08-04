@@ -1,3 +1,5 @@
+API_HOSTNAME := api.firehydrant.io
+
 generate:
 	@echo ""
 	@echo "###################################################################################"
@@ -7,7 +9,7 @@ generate:
 	@echo ""
 	@rm -rf ./client
 	@rm -rf ./models
-	@curl -o swagger_doc.json https://api.firehydrant.io/v1/swagger_doc
+	@curl -o swagger_doc.json https://$(API_HOSTNAME)/v1/swagger_doc
 	@docker run -v $(shell pwd):/go/src/github.com/firehydrant/api-client-go quay.io/goswagger/swagger generate client -f /go/src/github.com/firehydrant/api-client-go/swagger_doc.json -t /go/src/github.com/firehydrant/api-client-go
 	@rm swagger_doc.json
 	@echo ""
@@ -21,3 +23,6 @@ gen-dependencies:
 	@echo "###################################################################################"
 	@echo ""
 	go get -u $(shell pwd)/...
+
+generate_local: API_HOSTNAME = api.local.firehydrant.io
+generate_local: generate
