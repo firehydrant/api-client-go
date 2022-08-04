@@ -44,19 +44,19 @@ func NewGetV1SeveritiesOK() *GetV1SeveritiesOK {
 Lists severities
 */
 type GetV1SeveritiesOK struct {
-	Payload *models.SeverityEntity
+	Payload *models.SeverityEntityPaginated
 }
 
 func (o *GetV1SeveritiesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/severities][%d] getV1SeveritiesOK  %+v", 200, o.Payload)
 }
-func (o *GetV1SeveritiesOK) GetPayload() *models.SeverityEntity {
+func (o *GetV1SeveritiesOK) GetPayload() *models.SeverityEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1SeveritiesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.SeverityEntity)
+	o.Payload = new(models.SeverityEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
