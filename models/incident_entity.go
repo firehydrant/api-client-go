@@ -33,7 +33,7 @@ type IncidentEntity struct {
 	ChannelReference string `json:"channel_reference,omitempty"`
 
 	// inoperative: 0, operational: 1, archived: 2
-	ChannelStatus int32 `json:"channel_status,omitempty"`
+	ChannelStatus string `json:"channel_status,omitempty"`
 
 	// conference bridges
 	ConferenceBridges []*ConferenceBridgeEntity `json:"conference_bridges"`
