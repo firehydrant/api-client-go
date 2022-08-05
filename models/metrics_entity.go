@@ -30,7 +30,7 @@ type MetricsEntity struct {
 	DisplayInformation string `json:"display_information,omitempty"`
 
 	// keys
-	Keys string `json:"keys,omitempty"`
+	Keys []string `json:"keys"`
 
 	// sort
 	Sort string `json:"sort,omitempty"`
