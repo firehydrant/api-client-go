@@ -39,17 +39,48 @@ func NewPatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK() *PatchV1Incid
 	return &PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK{}
 }
 
-/* PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK describes a response with status code 200, with default header values.
+/*
+PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK describes a response with status code 200, with default header values.
 
-Assign an alert a primary status
+Setting an alert as primary will overwrite milestone times in the FireHydrant incident with times included in the primary alert. Services attached to the primary alert will also be automatically added to the incident.
 */
 type PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK struct {
 	Payload *models.AlertEntity
 }
 
+// IsSuccess returns true when this patch v1 incidents incident Id alerts incident alert Id primary o k response has a 2xx status code
+func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 incidents incident Id alerts incident alert Id primary o k response has a 3xx status code
+func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 incidents incident Id alerts incident alert Id primary o k response has a 4xx status code
+func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 incidents incident Id alerts incident alert Id primary o k response has a 5xx status code
+func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 incidents incident Id alerts incident alert Id primary o k response a status code equal to that given
+func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/alerts/{incident_alert_id}/primary][%d] patchV1IncidentsIncidentIdAlertsIncidentAlertIdPrimaryOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/alerts/{incident_alert_id}/primary][%d] patchV1IncidentsIncidentIdAlertsIncidentAlertIdPrimaryOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK) GetPayload() *models.AlertEntity {
 	return o.Payload
 }

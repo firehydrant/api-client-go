@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1WebhooksWebhookID deletes a specific webhook
+DeleteV1WebhooksWebhookID deletes a specific webhook
 
-  Delete a specific webhook
+Delete a specific webhook
 */
 func (a *Client) DeleteV1WebhooksWebhookID(params *DeleteV1WebhooksWebhookIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1WebhooksWebhookIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -85,9 +85,9 @@ func (a *Client) DeleteV1WebhooksWebhookID(params *DeleteV1WebhooksWebhookIDPara
 }
 
 /*
-  GetV1Webhooks lists webhooks
+GetV1Webhooks lists webhooks
 
-  Lists webhooks
+Lists webhooks
 */
 func (a *Client) GetV1Webhooks(params *GetV1WebhooksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1WebhooksOK, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) GetV1Webhooks(params *GetV1WebhooksParams, authInfo runtime.Cli
 }
 
 /*
-  GetV1WebhooksWebhookID retrieves a specific webhook
+GetV1WebhooksWebhookID retrieves a specific webhook
 
-  Retrieve a specific webhook
+Retrieve a specific webhook
 */
 func (a *Client) GetV1WebhooksWebhookID(params *GetV1WebhooksWebhookIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1WebhooksWebhookIDOK, error) {
 	// TODO: Validate the params before sending
@@ -167,9 +167,9 @@ func (a *Client) GetV1WebhooksWebhookID(params *GetV1WebhooksWebhookIDParams, au
 }
 
 /*
-  PatchV1WebhooksWebhookID updates a specific webhook
+PatchV1WebhooksWebhookID updates a specific webhook
 
-  Update a specific webhook
+Update a specific webhook
 */
 func (a *Client) PatchV1WebhooksWebhookID(params *PatchV1WebhooksWebhookIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1WebhooksWebhookIDOK, error) {
 	// TODO: Validate the params before sending
@@ -208,9 +208,9 @@ func (a *Client) PatchV1WebhooksWebhookID(params *PatchV1WebhooksWebhookIDParams
 }
 
 /*
-  PostV1Webhooks creates webhook
+PostV1Webhooks creates webhook
 
-  Create a new webhook
+Create a new webhook
 */
 func (a *Client) PostV1Webhooks(params *PostV1WebhooksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1WebhooksCreated, error) {
 	// TODO: Validate the params before sending

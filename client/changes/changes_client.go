@@ -60,7 +60,7 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1ChangesChangeID Archive a change entry
+DeleteV1ChangesChangeID Archive a change entry
 */
 func (a *Client) DeleteV1ChangesChangeID(params *DeleteV1ChangesChangeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChangesChangeIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -99,7 +99,7 @@ func (a *Client) DeleteV1ChangesChangeID(params *DeleteV1ChangesChangeIDParams, 
 }
 
 /*
-  DeleteV1ChangesChangeIDIdentitiesIdentityID Delete an identity
+DeleteV1ChangesChangeIDIdentitiesIdentityID Delete an identity
 */
 func (a *Client) DeleteV1ChangesChangeIDIdentitiesIdentityID(params *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -138,9 +138,9 @@ func (a *Client) DeleteV1ChangesChangeIDIdentitiesIdentityID(params *DeleteV1Cha
 }
 
 /*
-  DeleteV1ChangesEventsChangeEventID deletes a change event
+DeleteV1ChangesEventsChangeEventID deletes a change event
 
-  Delete a change event
+Delete a change event
 */
 func (a *Client) DeleteV1ChangesEventsChangeEventID(params *DeleteV1ChangesEventsChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChangesEventsChangeEventIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -179,7 +179,7 @@ func (a *Client) DeleteV1ChangesEventsChangeEventID(params *DeleteV1ChangesEvent
 }
 
 /*
-  GetV1Changes Lists all changes
+GetV1Changes Lists all changes
 */
 func (a *Client) GetV1Changes(params *GetV1ChangesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesOK, error) {
 	// TODO: Validate the params before sending
@@ -218,7 +218,7 @@ func (a *Client) GetV1Changes(params *GetV1ChangesParams, authInfo runtime.Clien
 }
 
 /*
-  GetV1ChangesChangeIDIdentities Retrieve all identities for the change
+GetV1ChangesChangeIDIdentities Retrieve all identities for the change
 */
 func (a *Client) GetV1ChangesChangeIDIdentities(params *GetV1ChangesChangeIDIdentitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesChangeIDIdentitiesOK, error) {
 	// TODO: Validate the params before sending
@@ -257,9 +257,9 @@ func (a *Client) GetV1ChangesChangeIDIdentities(params *GetV1ChangesChangeIDIden
 }
 
 /*
-  GetV1ChangesEvents lists change events
+GetV1ChangesEvents lists change events
 
-  List change events for the organization. Note: Not all information is included on a change event like attachments and related changes. You must fetch a change event separately to retrieve all of the information about it
+List change events for the organization. Note: Not all information is included on a change event like attachments and related changes. You must fetch a change event separately to retrieve all of the information about it
 */
 func (a *Client) GetV1ChangesEvents(params *GetV1ChangesEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesEventsOK, error) {
 	// TODO: Validate the params before sending
@@ -298,9 +298,9 @@ func (a *Client) GetV1ChangesEvents(params *GetV1ChangesEventsParams, authInfo r
 }
 
 /*
-  GetV1ChangesEventsChangeEventID retrieves a change event
+GetV1ChangesEventsChangeEventID retrieves a change event
 
-  Retrieve a change event
+Retrieve a change event
 */
 func (a *Client) GetV1ChangesEventsChangeEventID(params *GetV1ChangesEventsChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesEventsChangeEventIDOK, error) {
 	// TODO: Validate the params before sending
@@ -339,7 +339,7 @@ func (a *Client) GetV1ChangesEventsChangeEventID(params *GetV1ChangesEventsChang
 }
 
 /*
-  PatchV1ChangesChangeID Update a change entry
+PatchV1ChangesChangeID Update a change entry
 */
 func (a *Client) PatchV1ChangesChangeID(params *PatchV1ChangesChangeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChangesChangeIDOK, error) {
 	// TODO: Validate the params before sending
@@ -378,7 +378,7 @@ func (a *Client) PatchV1ChangesChangeID(params *PatchV1ChangesChangeIDParams, au
 }
 
 /*
-  PatchV1ChangesChangeIDIdentitiesIdentityID Update an identity
+PatchV1ChangesChangeIDIdentitiesIdentityID Update an identity
 */
 func (a *Client) PatchV1ChangesChangeIDIdentitiesIdentityID(params *PatchV1ChangesChangeIDIdentitiesIdentityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChangesChangeIDIdentitiesIdentityIDOK, error) {
 	// TODO: Validate the params before sending
@@ -417,9 +417,9 @@ func (a *Client) PatchV1ChangesChangeIDIdentitiesIdentityID(params *PatchV1Chang
 }
 
 /*
-  PatchV1ChangesEventsChangeEventID updates a change event
+PatchV1ChangesEventsChangeEventID updates a change event
 
-  Update a change event
+Update a change event
 */
 func (a *Client) PatchV1ChangesEventsChangeEventID(params *PatchV1ChangesEventsChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChangesEventsChangeEventIDOK, error) {
 	// TODO: Validate the params before sending
@@ -458,7 +458,7 @@ func (a *Client) PatchV1ChangesEventsChangeEventID(params *PatchV1ChangesEventsC
 }
 
 /*
-  PostV1Changes Create a new change entry
+PostV1Changes Create a new change entry
 */
 func (a *Client) PostV1Changes(params *PostV1ChangesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChangesCreated, error) {
 	// TODO: Validate the params before sending
@@ -497,7 +497,7 @@ func (a *Client) PostV1Changes(params *PostV1ChangesParams, authInfo runtime.Cli
 }
 
 /*
-  PostV1ChangesChangeIDIdentities Create an identity for this change
+PostV1ChangesChangeIDIdentities Create an identity for this change
 */
 func (a *Client) PostV1ChangesChangeIDIdentities(params *PostV1ChangesChangeIDIdentitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChangesChangeIDIdentitiesCreated, error) {
 	// TODO: Validate the params before sending
@@ -536,9 +536,9 @@ func (a *Client) PostV1ChangesChangeIDIdentities(params *PostV1ChangesChangeIDId
 }
 
 /*
-  PostV1ChangesEvents creates a change event
+PostV1ChangesEvents creates a change event
 
-  Create a change event
+Create a change event
 */
 func (a *Client) PostV1ChangesEvents(params *PostV1ChangesEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChangesEventsCreated, error) {
 	// TODO: Validate the params before sending

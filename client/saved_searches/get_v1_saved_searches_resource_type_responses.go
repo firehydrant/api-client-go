@@ -39,7 +39,8 @@ func NewGetV1SavedSearchesResourceTypeOK() *GetV1SavedSearchesResourceTypeOK {
 	return &GetV1SavedSearchesResourceTypeOK{}
 }
 
-/* GetV1SavedSearchesResourceTypeOK describes a response with status code 200, with default header values.
+/*
+GetV1SavedSearchesResourceTypeOK describes a response with status code 200, with default header values.
 
 Lists save searches
 */
@@ -47,9 +48,39 @@ type GetV1SavedSearchesResourceTypeOK struct {
 	Payload *models.SavedSearchEntity
 }
 
+// IsSuccess returns true when this get v1 saved searches resource type o k response has a 2xx status code
+func (o *GetV1SavedSearchesResourceTypeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 saved searches resource type o k response has a 3xx status code
+func (o *GetV1SavedSearchesResourceTypeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 saved searches resource type o k response has a 4xx status code
+func (o *GetV1SavedSearchesResourceTypeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 saved searches resource type o k response has a 5xx status code
+func (o *GetV1SavedSearchesResourceTypeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 saved searches resource type o k response a status code equal to that given
+func (o *GetV1SavedSearchesResourceTypeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1SavedSearchesResourceTypeOK) Error() string {
 	return fmt.Sprintf("[GET /v1/saved_searches/{resource_type}][%d] getV1SavedSearchesResourceTypeOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1SavedSearchesResourceTypeOK) String() string {
+	return fmt.Sprintf("[GET /v1/saved_searches/{resource_type}][%d] getV1SavedSearchesResourceTypeOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1SavedSearchesResourceTypeOK) GetPayload() *models.SavedSearchEntity {
 	return o.Payload
 }

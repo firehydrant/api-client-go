@@ -39,7 +39,8 @@ func NewPatchV1SeverityMatrixOK() *PatchV1SeverityMatrixOK {
 	return &PatchV1SeverityMatrixOK{}
 }
 
-/* PatchV1SeverityMatrixOK describes a response with status code 200, with default header values.
+/*
+PatchV1SeverityMatrixOK describes a response with status code 200, with default header values.
 
 Update available severities and impacts in your organization's severity matrix.
 */
@@ -47,9 +48,39 @@ type PatchV1SeverityMatrixOK struct {
 	Payload *models.SeverityMatrixEntity
 }
 
+// IsSuccess returns true when this patch v1 severity matrix o k response has a 2xx status code
+func (o *PatchV1SeverityMatrixOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 severity matrix o k response has a 3xx status code
+func (o *PatchV1SeverityMatrixOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 severity matrix o k response has a 4xx status code
+func (o *PatchV1SeverityMatrixOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 severity matrix o k response has a 5xx status code
+func (o *PatchV1SeverityMatrixOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 severity matrix o k response a status code equal to that given
+func (o *PatchV1SeverityMatrixOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1SeverityMatrixOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/severity_matrix][%d] patchV1SeverityMatrixOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1SeverityMatrixOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/severity_matrix][%d] patchV1SeverityMatrixOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1SeverityMatrixOK) GetPayload() *models.SeverityMatrixEntity {
 	return o.Payload
 }

@@ -39,7 +39,8 @@ func NewGetV1ChangesEventsOK() *GetV1ChangesEventsOK {
 	return &GetV1ChangesEventsOK{}
 }
 
-/* GetV1ChangesEventsOK describes a response with status code 200, with default header values.
+/*
+GetV1ChangesEventsOK describes a response with status code 200, with default header values.
 
 List change events for the organization. Note: Not all information is included on a change event like attachments and related changes. You must fetch a change event separately to retrieve all of the information about it
 */
@@ -47,9 +48,39 @@ type GetV1ChangesEventsOK struct {
 	Payload *models.ChangeEventSlimEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 changes events o k response has a 2xx status code
+func (o *GetV1ChangesEventsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 changes events o k response has a 3xx status code
+func (o *GetV1ChangesEventsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 changes events o k response has a 4xx status code
+func (o *GetV1ChangesEventsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 changes events o k response has a 5xx status code
+func (o *GetV1ChangesEventsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 changes events o k response a status code equal to that given
+func (o *GetV1ChangesEventsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1ChangesEventsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/changes/events][%d] getV1ChangesEventsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1ChangesEventsOK) String() string {
+	return fmt.Sprintf("[GET /v1/changes/events][%d] getV1ChangesEventsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1ChangesEventsOK) GetPayload() *models.ChangeEventSlimEntityPaginated {
 	return o.Payload
 }

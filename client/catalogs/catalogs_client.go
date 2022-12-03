@@ -38,9 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetV1CatalogsCatalogIDRefresh refreshes a catalog
+GetV1CatalogsCatalogIDRefresh refreshes a catalog
 
-  Schedules an async task to re-import catalog info and update catalog data accordingly.
+Schedules an async task to re-import catalog info and update catalog data accordingly.
 */
 func (a *Client) GetV1CatalogsCatalogIDRefresh(params *GetV1CatalogsCatalogIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1CatalogsCatalogIDRefreshOK, error) {
 	// TODO: Validate the params before sending
@@ -79,9 +79,9 @@ func (a *Client) GetV1CatalogsCatalogIDRefresh(params *GetV1CatalogsCatalogIDRef
 }
 
 /*
-  PostV1CatalogsCatalogIDIngest accepts catalog data in the configured format
+PostV1CatalogsCatalogIDIngest accepts catalog data in the configured format
 
-  Accepts catalog data in the configured format and asyncronously processes the data to incorporate changes into service catalog.
+Accepts catalog data in the configured format and asyncronously processes the data to incorporate changes into service catalog.
 */
 func (a *Client) PostV1CatalogsCatalogIDIngest(params *PostV1CatalogsCatalogIDIngestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1CatalogsCatalogIDIngestCreated, error) {
 	// TODO: Validate the params before sending

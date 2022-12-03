@@ -31,6 +31,9 @@ type ProjectConfigEntity struct {
 
 	// ticketing project id
 	TicketingProjectID string `json:"ticketing_project_id,omitempty"`
+
+	// ticketing project name
+	TicketingProjectName string `json:"ticketing_project_name,omitempty"`
 }
 
 // Validate validates this project config entity

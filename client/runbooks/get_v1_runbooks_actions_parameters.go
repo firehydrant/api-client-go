@@ -53,10 +53,12 @@ func NewGetV1RunbooksActionsParamsWithHTTPClient(client *http.Client) *GetV1Runb
 	}
 }
 
-/* GetV1RunbooksActionsParams contains all the parameters to send to the API endpoint
-   for the get v1 runbooks actions operation.
+/*
+GetV1RunbooksActionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 runbooks actions operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1RunbooksActionsParams struct {
 

@@ -23,6 +23,12 @@ type ConnectionEntity struct {
 	// connection status
 	ConnectionStatus string `json:"connection_status,omitempty"`
 
+	// environment id
+	EnvironmentID string `json:"environment_id,omitempty"`
+
+	// environment name
+	EnvironmentName string `json:"environment_name,omitempty"`
+
 	// external id
 	ExternalID string `json:"external_id,omitempty"`
 

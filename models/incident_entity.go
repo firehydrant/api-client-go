@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// IncidentEntity Retrieve an incident
+// IncidentEntity Retrieve a single incident from its ID
 //
 // swagger:model IncidentEntity
 type IncidentEntity struct {
@@ -33,13 +33,13 @@ type IncidentEntity struct {
 	ChannelReference string `json:"channel_reference,omitempty"`
 
 	// inoperative: 0, operational: 1, archived: 2
-	ChannelStatus int32 `json:"channel_status,omitempty"`
+	ChannelStatus string `json:"channel_status,omitempty"`
 
 	// conference bridges
 	ConferenceBridges []*ConferenceBridgeEntity `json:"conference_bridges"`
 
 	// context object
-	ContextObject string `json:"context_object,omitempty"`
+	ContextObject *ContextObjectEntity `json:"context_object,omitempty"`
 
 	// The time the incident was opened
 	// Format: date-time
@@ -74,9 +74,6 @@ type IncidentEntity struct {
 
 	// incident channels
 	IncidentChannels []*ChannelEntity `json:"incident_channels"`
-
-	// incident roles
-	IncidentRoles []*IncidentRoleEntity `json:"incident_roles"`
 
 	// incident tickets
 	IncidentTickets []*TicketEntity `json:"incident_tickets"`
@@ -162,6 +159,9 @@ type IncidentEntity struct {
 
 	// tag list
 	TagList []string `json:"tag_list"`
+
+	// ticket
+	Ticket *TicketEntity `json:"ticket,omitempty"`
 }
 
 // Validate validates this incident entity
@@ -169,6 +169,10 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateConferenceBridges(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateContextObject(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -193,10 +197,6 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateIncidentChannels(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateIncidentRoles(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -240,6 +240,10 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateTicket(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -267,6 +271,25 @@ func (m *IncidentEntity) validateConferenceBridges(formats strfmt.Registry) erro
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) validateContextObject(formats strfmt.Registry) error {
+	if swag.IsZero(m.ContextObject) { // not required
+		return nil
+	}
+
+	if m.ContextObject != nil {
+		if err := m.ContextObject.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("context_object")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("context_object")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -397,32 +420,6 @@ func (m *IncidentEntity) validateIncidentChannels(formats strfmt.Registry) error
 					return ve.ValidateName("incident_channels" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("incident_channels" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *IncidentEntity) validateIncidentRoles(formats strfmt.Registry) error {
-	if swag.IsZero(m.IncidentRoles) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.IncidentRoles); i++ {
-		if swag.IsZero(m.IncidentRoles[i]) { // not required
-			continue
-		}
-
-		if m.IncidentRoles[i] != nil {
-			if err := m.IncidentRoles[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("incident_roles" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("incident_roles" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -651,11 +648,34 @@ func (m *IncidentEntity) validateStatusPages(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IncidentEntity) validateTicket(formats strfmt.Registry) error {
+	if swag.IsZero(m.Ticket) { // not required
+		return nil
+	}
+
+	if m.Ticket != nil {
+		if err := m.Ticket.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ticket")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ticket")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this incident entity based on the context it is used
 func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateConferenceBridges(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateContextObject(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -676,10 +696,6 @@ func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 	}
 
 	if err := m.contextValidateIncidentChannels(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateIncidentRoles(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -719,6 +735,10 @@ func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateTicket(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -740,6 +760,22 @@ func (m *IncidentEntity) contextValidateConferenceBridges(ctx context.Context, f
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) contextValidateContextObject(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ContextObject != nil {
+		if err := m.ContextObject.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("context_object")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("context_object")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -831,26 +867,6 @@ func (m *IncidentEntity) contextValidateIncidentChannels(ctx context.Context, fo
 					return ve.ValidateName("incident_channels" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("incident_channels" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *IncidentEntity) contextValidateIncidentRoles(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.IncidentRoles); i++ {
-
-		if m.IncidentRoles[i] != nil {
-			if err := m.IncidentRoles[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("incident_roles" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("incident_roles" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -1020,6 +1036,22 @@ func (m *IncidentEntity) contextValidateStatusPages(ctx context.Context, formats
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) contextValidateTicket(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Ticket != nil {
+		if err := m.Ticket.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ticket")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ticket")
+			}
+			return err
+		}
 	}
 
 	return nil

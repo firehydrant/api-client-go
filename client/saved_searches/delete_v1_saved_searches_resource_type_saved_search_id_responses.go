@@ -36,14 +36,44 @@ func NewDeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent() *DeleteV1Saved
 	return &DeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent{}
 }
 
-/* DeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent describes a response with status code 204, with default header values.
+/*
+DeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent describes a response with status code 204, with default header values.
 
 Delete a specific saved search
 */
 type DeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent struct {
 }
 
+// IsSuccess returns true when this delete v1 saved searches resource type saved search Id no content response has a 2xx status code
+func (o *DeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 saved searches resource type saved search Id no content response has a 3xx status code
+func (o *DeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 saved searches resource type saved search Id no content response has a 4xx status code
+func (o *DeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 saved searches resource type saved search Id no content response has a 5xx status code
+func (o *DeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 saved searches resource type saved search Id no content response a status code equal to that given
+func (o *DeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /v1/saved_searches/{resource_type}/{saved_search_id}][%d] deleteV1SavedSearchesResourceTypeSavedSearchIdNoContent ", 204)
+}
+
+func (o *DeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent) String() string {
 	return fmt.Sprintf("[DELETE /v1/saved_searches/{resource_type}/{saved_search_id}][%d] deleteV1SavedSearchesResourceTypeSavedSearchIdNoContent ", 204)
 }
 

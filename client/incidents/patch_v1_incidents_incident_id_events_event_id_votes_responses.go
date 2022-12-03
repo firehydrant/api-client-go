@@ -7,9 +7,12 @@ package incidents
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PatchV1IncidentsIncidentIDEventsEventIDVotesReader is a Reader for the PatchV1IncidentsIncidentIDEventsEventIDVotes structure.
@@ -36,18 +39,60 @@ func NewPatchV1IncidentsIncidentIDEventsEventIDVotesOK() *PatchV1IncidentsIncide
 	return &PatchV1IncidentsIncidentIDEventsEventIDVotesOK{}
 }
 
-/* PatchV1IncidentsIncidentIDEventsEventIDVotesOK describes a response with status code 200, with default header values.
+/*
+PatchV1IncidentsIncidentIDEventsEventIDVotesOK describes a response with status code 200, with default header values.
 
-patched Vote
+Allows for upvoting or downvoting an event
 */
 type PatchV1IncidentsIncidentIDEventsEventIDVotesOK struct {
+	Payload *models.VotesEntity
+}
+
+// IsSuccess returns true when this patch v1 incidents incident Id events event Id votes o k response has a 2xx status code
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 incidents incident Id events event Id votes o k response has a 3xx status code
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 incidents incident Id events event Id votes o k response has a 4xx status code
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 incidents incident Id events event Id votes o k response has a 5xx status code
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 incidents incident Id events event Id votes o k response a status code equal to that given
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesOK) IsCode(code int) bool {
+	return code == 200
 }
 
 func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/events/{event_id}/votes][%d] patchV1IncidentsIncidentIdEventsEventIdVotesOK ", 200)
+	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/events/{event_id}/votes][%d] patchV1IncidentsIncidentIdEventsEventIdVotesOK  %+v", 200, o.Payload)
+}
+
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/events/{event_id}/votes][%d] patchV1IncidentsIncidentIdEventsEventIdVotesOK  %+v", 200, o.Payload)
+}
+
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesOK) GetPayload() *models.VotesEntity {
+	return o.Payload
 }
 
 func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.VotesEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

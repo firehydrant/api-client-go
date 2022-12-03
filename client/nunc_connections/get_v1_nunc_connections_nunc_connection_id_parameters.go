@@ -52,10 +52,12 @@ func NewGetV1NuncConnectionsNuncConnectionIDParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* GetV1NuncConnectionsNuncConnectionIDParams contains all the parameters to send to the API endpoint
-   for the get v1 nunc connections nunc connection Id operation.
+/*
+GetV1NuncConnectionsNuncConnectionIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 nunc connections nunc connection Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1NuncConnectionsNuncConnectionIDParams struct {
 

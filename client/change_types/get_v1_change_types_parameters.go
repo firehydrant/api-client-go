@@ -53,10 +53,12 @@ func NewGetV1ChangeTypesParamsWithHTTPClient(client *http.Client) *GetV1ChangeTy
 	}
 }
 
-/* GetV1ChangeTypesParams contains all the parameters to send to the API endpoint
-   for the get v1 change types operation.
+/*
+GetV1ChangeTypesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 change types operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1ChangeTypesParams struct {
 

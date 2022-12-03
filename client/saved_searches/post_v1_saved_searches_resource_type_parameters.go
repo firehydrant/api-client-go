@@ -54,10 +54,12 @@ func NewPostV1SavedSearchesResourceTypeParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* PostV1SavedSearchesResourceTypeParams contains all the parameters to send to the API endpoint
-   for the post v1 saved searches resource type operation.
+/*
+PostV1SavedSearchesResourceTypeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 saved searches resource type operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1SavedSearchesResourceTypeParams struct {
 

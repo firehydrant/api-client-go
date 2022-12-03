@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetV1Entitlements Retrieve all entitlements
+GetV1Entitlements Retrieve all entitlements
 */
 func (a *Client) GetV1Entitlements(params *GetV1EntitlementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1EntitlementsOK, error) {
 	// TODO: Validate the params before sending

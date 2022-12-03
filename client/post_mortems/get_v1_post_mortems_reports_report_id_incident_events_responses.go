@@ -36,14 +36,44 @@ func NewGetV1PostMortemsReportsReportIDIncidentEventsOK() *GetV1PostMortemsRepor
 	return &GetV1PostMortemsReportsReportIDIncidentEventsOK{}
 }
 
-/* GetV1PostMortemsReportsReportIDIncidentEventsOK describes a response with status code 200, with default header values.
+/*
+GetV1PostMortemsReportsReportIDIncidentEventsOK describes a response with status code 200, with default header values.
 
-get IncidentEvent(s)
+Get a list of incident events for the report
 */
 type GetV1PostMortemsReportsReportIDIncidentEventsOK struct {
 }
 
+// IsSuccess returns true when this get v1 post mortems reports report Id incident events o k response has a 2xx status code
+func (o *GetV1PostMortemsReportsReportIDIncidentEventsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 post mortems reports report Id incident events o k response has a 3xx status code
+func (o *GetV1PostMortemsReportsReportIDIncidentEventsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 post mortems reports report Id incident events o k response has a 4xx status code
+func (o *GetV1PostMortemsReportsReportIDIncidentEventsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 post mortems reports report Id incident events o k response has a 5xx status code
+func (o *GetV1PostMortemsReportsReportIDIncidentEventsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 post mortems reports report Id incident events o k response a status code equal to that given
+func (o *GetV1PostMortemsReportsReportIDIncidentEventsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1PostMortemsReportsReportIDIncidentEventsOK) Error() string {
+	return fmt.Sprintf("[GET /v1/post_mortems/reports/{report_id}/incident_events][%d] getV1PostMortemsReportsReportIdIncidentEventsOK ", 200)
+}
+
+func (o *GetV1PostMortemsReportsReportIDIncidentEventsOK) String() string {
 	return fmt.Sprintf("[GET /v1/post_mortems/reports/{report_id}/incident_events][%d] getV1PostMortemsReportsReportIdIncidentEventsOK ", 200)
 }
 

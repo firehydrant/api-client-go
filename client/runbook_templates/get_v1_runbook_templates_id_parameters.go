@@ -52,10 +52,12 @@ func NewGetV1RunbookTemplatesIDParamsWithHTTPClient(client *http.Client) *GetV1R
 	}
 }
 
-/* GetV1RunbookTemplatesIDParams contains all the parameters to send to the API endpoint
-   for the get v1 runbook templates Id operation.
+/*
+GetV1RunbookTemplatesIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 runbook templates Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1RunbookTemplatesIDParams struct {
 

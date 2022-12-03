@@ -39,7 +39,8 @@ func NewPatchV1WebhooksWebhookIDOK() *PatchV1WebhooksWebhookIDOK {
 	return &PatchV1WebhooksWebhookIDOK{}
 }
 
-/* PatchV1WebhooksWebhookIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1WebhooksWebhookIDOK describes a response with status code 200, with default header values.
 
 Update a specific webhook
 */
@@ -47,9 +48,39 @@ type PatchV1WebhooksWebhookIDOK struct {
 	Payload *models.WebhookEntity
 }
 
+// IsSuccess returns true when this patch v1 webhooks webhook Id o k response has a 2xx status code
+func (o *PatchV1WebhooksWebhookIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 webhooks webhook Id o k response has a 3xx status code
+func (o *PatchV1WebhooksWebhookIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 webhooks webhook Id o k response has a 4xx status code
+func (o *PatchV1WebhooksWebhookIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 webhooks webhook Id o k response has a 5xx status code
+func (o *PatchV1WebhooksWebhookIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 webhooks webhook Id o k response a status code equal to that given
+func (o *PatchV1WebhooksWebhookIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1WebhooksWebhookIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/webhooks/{webhook_id}][%d] patchV1WebhooksWebhookIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1WebhooksWebhookIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/webhooks/{webhook_id}][%d] patchV1WebhooksWebhookIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1WebhooksWebhookIDOK) GetPayload() *models.WebhookEntity {
 	return o.Payload
 }

@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PatchV1Environments Update an environment
+// PatchV1Environments Update a environments attributes
 //
 // swagger:model patchV1Environments
 type PatchV1Environments struct {

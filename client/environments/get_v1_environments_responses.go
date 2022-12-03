@@ -39,17 +39,48 @@ func NewGetV1EnvironmentsOK() *GetV1EnvironmentsOK {
 	return &GetV1EnvironmentsOK{}
 }
 
-/* GetV1EnvironmentsOK describes a response with status code 200, with default header values.
+/*
+GetV1EnvironmentsOK describes a response with status code 200, with default header values.
 
-Retrieve all environments
+List all of the environments that have been added to the organiation
 */
 type GetV1EnvironmentsOK struct {
 	Payload *models.EnvironmentEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 environments o k response has a 2xx status code
+func (o *GetV1EnvironmentsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 environments o k response has a 3xx status code
+func (o *GetV1EnvironmentsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 environments o k response has a 4xx status code
+func (o *GetV1EnvironmentsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 environments o k response has a 5xx status code
+func (o *GetV1EnvironmentsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 environments o k response a status code equal to that given
+func (o *GetV1EnvironmentsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1EnvironmentsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/environments][%d] getV1EnvironmentsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1EnvironmentsOK) String() string {
+	return fmt.Sprintf("[GET /v1/environments][%d] getV1EnvironmentsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1EnvironmentsOK) GetPayload() *models.EnvironmentEntityPaginated {
 	return o.Payload
 }

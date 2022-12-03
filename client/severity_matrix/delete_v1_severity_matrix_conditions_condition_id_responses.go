@@ -39,7 +39,8 @@ func NewDeleteV1SeverityMatrixConditionsConditionIDOK() *DeleteV1SeverityMatrixC
 	return &DeleteV1SeverityMatrixConditionsConditionIDOK{}
 }
 
-/* DeleteV1SeverityMatrixConditionsConditionIDOK describes a response with status code 200, with default header values.
+/*
+DeleteV1SeverityMatrixConditionsConditionIDOK describes a response with status code 200, with default header values.
 
 Delete a specific condition
 */
@@ -47,9 +48,39 @@ type DeleteV1SeverityMatrixConditionsConditionIDOK struct {
 	Payload *models.ConditionEntity
 }
 
+// IsSuccess returns true when this delete v1 severity matrix conditions condition Id o k response has a 2xx status code
+func (o *DeleteV1SeverityMatrixConditionsConditionIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 severity matrix conditions condition Id o k response has a 3xx status code
+func (o *DeleteV1SeverityMatrixConditionsConditionIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 severity matrix conditions condition Id o k response has a 4xx status code
+func (o *DeleteV1SeverityMatrixConditionsConditionIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 severity matrix conditions condition Id o k response has a 5xx status code
+func (o *DeleteV1SeverityMatrixConditionsConditionIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 severity matrix conditions condition Id o k response a status code equal to that given
+func (o *DeleteV1SeverityMatrixConditionsConditionIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteV1SeverityMatrixConditionsConditionIDOK) Error() string {
 	return fmt.Sprintf("[DELETE /v1/severity_matrix/conditions/{condition_id}][%d] deleteV1SeverityMatrixConditionsConditionIdOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteV1SeverityMatrixConditionsConditionIDOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/severity_matrix/conditions/{condition_id}][%d] deleteV1SeverityMatrixConditionsConditionIdOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteV1SeverityMatrixConditionsConditionIDOK) GetPayload() *models.ConditionEntity {
 	return o.Payload
 }

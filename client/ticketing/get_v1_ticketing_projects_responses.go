@@ -39,24 +39,55 @@ func NewGetV1TicketingProjectsOK() *GetV1TicketingProjectsOK {
 	return &GetV1TicketingProjectsOK{}
 }
 
-/* GetV1TicketingProjectsOK describes a response with status code 200, with default header values.
+/*
+GetV1TicketingProjectsOK describes a response with status code 200, with default header values.
 
 List all ticketing projects available to the organization
 */
 type GetV1TicketingProjectsOK struct {
-	Payload *models.ProjectEntity
+	Payload *models.ProjectListItemEntity
+}
+
+// IsSuccess returns true when this get v1 ticketing projects o k response has a 2xx status code
+func (o *GetV1TicketingProjectsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 ticketing projects o k response has a 3xx status code
+func (o *GetV1TicketingProjectsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 ticketing projects o k response has a 4xx status code
+func (o *GetV1TicketingProjectsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 ticketing projects o k response has a 5xx status code
+func (o *GetV1TicketingProjectsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 ticketing projects o k response a status code equal to that given
+func (o *GetV1TicketingProjectsOK) IsCode(code int) bool {
+	return code == 200
 }
 
 func (o *GetV1TicketingProjectsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/ticketing/projects][%d] getV1TicketingProjectsOK  %+v", 200, o.Payload)
 }
-func (o *GetV1TicketingProjectsOK) GetPayload() *models.ProjectEntity {
+
+func (o *GetV1TicketingProjectsOK) String() string {
+	return fmt.Sprintf("[GET /v1/ticketing/projects][%d] getV1TicketingProjectsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1TicketingProjectsOK) GetPayload() *models.ProjectListItemEntity {
 	return o.Payload
 }
 
 func (o *GetV1TicketingProjectsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectEntity)
+	o.Payload = new(models.ProjectListItemEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -52,10 +52,12 @@ func NewGetV1IntegrationsIntegrationIDParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetV1IntegrationsIntegrationIDParams contains all the parameters to send to the API endpoint
-   for the get v1 integrations integration Id operation.
+/*
+GetV1IntegrationsIntegrationIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 integrations integration Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IntegrationsIntegrationIDParams struct {
 

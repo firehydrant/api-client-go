@@ -39,7 +39,8 @@ func NewPostV1SeverityMatrixImpactsCreated() *PostV1SeverityMatrixImpactsCreated
 	return &PostV1SeverityMatrixImpactsCreated{}
 }
 
-/* PostV1SeverityMatrixImpactsCreated describes a response with status code 201, with default header values.
+/*
+PostV1SeverityMatrixImpactsCreated describes a response with status code 201, with default header values.
 
 Create a new impact
 */
@@ -47,9 +48,39 @@ type PostV1SeverityMatrixImpactsCreated struct {
 	Payload *models.ImpactEntity
 }
 
+// IsSuccess returns true when this post v1 severity matrix impacts created response has a 2xx status code
+func (o *PostV1SeverityMatrixImpactsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 severity matrix impacts created response has a 3xx status code
+func (o *PostV1SeverityMatrixImpactsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 severity matrix impacts created response has a 4xx status code
+func (o *PostV1SeverityMatrixImpactsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 severity matrix impacts created response has a 5xx status code
+func (o *PostV1SeverityMatrixImpactsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 severity matrix impacts created response a status code equal to that given
+func (o *PostV1SeverityMatrixImpactsCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1SeverityMatrixImpactsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/severity_matrix/impacts][%d] postV1SeverityMatrixImpactsCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1SeverityMatrixImpactsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/severity_matrix/impacts][%d] postV1SeverityMatrixImpactsCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1SeverityMatrixImpactsCreated) GetPayload() *models.ImpactEntity {
 	return o.Payload
 }

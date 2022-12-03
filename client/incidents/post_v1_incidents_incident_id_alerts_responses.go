@@ -36,14 +36,44 @@ func NewPostV1IncidentsIncidentIDAlertsNoContent() *PostV1IncidentsIncidentIDAle
 	return &PostV1IncidentsIncidentIDAlertsNoContent{}
 }
 
-/* PostV1IncidentsIncidentIDAlertsNoContent describes a response with status code 204, with default header values.
+/*
+PostV1IncidentsIncidentIDAlertsNoContent describes a response with status code 204, with default header values.
 
-Assign alerts to an incident
+Add an alert to an incident. FireHydrant needs to have ingested the alert from a third party system in order to attach it to the incident.
 */
 type PostV1IncidentsIncidentIDAlertsNoContent struct {
 }
 
+// IsSuccess returns true when this post v1 incidents incident Id alerts no content response has a 2xx status code
+func (o *PostV1IncidentsIncidentIDAlertsNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 incidents incident Id alerts no content response has a 3xx status code
+func (o *PostV1IncidentsIncidentIDAlertsNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 incidents incident Id alerts no content response has a 4xx status code
+func (o *PostV1IncidentsIncidentIDAlertsNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 incidents incident Id alerts no content response has a 5xx status code
+func (o *PostV1IncidentsIncidentIDAlertsNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 incidents incident Id alerts no content response a status code equal to that given
+func (o *PostV1IncidentsIncidentIDAlertsNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *PostV1IncidentsIncidentIDAlertsNoContent) Error() string {
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/alerts][%d] postV1IncidentsIncidentIdAlertsNoContent ", 204)
+}
+
+func (o *PostV1IncidentsIncidentIDAlertsNoContent) String() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/alerts][%d] postV1IncidentsIncidentIdAlertsNoContent ", 204)
 }
 

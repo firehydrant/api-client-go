@@ -53,10 +53,12 @@ func NewDeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations
 	}
 }
 
-/* DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 ticketing projects ticketing project Id provider project configurations config Id operation.
+/*
+DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 ticketing projects ticketing project Id provider project configurations config Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams struct {
 

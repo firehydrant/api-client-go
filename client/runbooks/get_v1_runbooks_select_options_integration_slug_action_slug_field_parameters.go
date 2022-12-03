@@ -53,10 +53,12 @@ func NewGetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParamsWithHTTPCl
 	}
 }
 
-/* GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams contains all the parameters to send to the API endpoint
-   for the get v1 runbooks select options integration slug action slug field operation.
+/*
+GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 runbooks select options integration slug action slug field operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams struct {
 

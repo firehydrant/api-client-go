@@ -54,10 +54,12 @@ func NewPostV1IncidentsIncidentIDTeamAssignmentsParamsWithHTTPClient(client *htt
 	}
 }
 
-/* PostV1IncidentsIncidentIDTeamAssignmentsParams contains all the parameters to send to the API endpoint
-   for the post v1 incidents incident Id team assignments operation.
+/*
+PostV1IncidentsIncidentIDTeamAssignmentsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 incidents incident Id team assignments operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1IncidentsIncidentIDTeamAssignmentsParams struct {
 

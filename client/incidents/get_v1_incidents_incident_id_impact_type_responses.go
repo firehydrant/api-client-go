@@ -39,17 +39,48 @@ func NewGetV1IncidentsIncidentIDImpactTypeOK() *GetV1IncidentsIncidentIDImpactTy
 	return &GetV1IncidentsIncidentIDImpactTypeOK{}
 }
 
-/* GetV1IncidentsIncidentIDImpactTypeOK describes a response with status code 200, with default header values.
+/*
+GetV1IncidentsIncidentIDImpactTypeOK describes a response with status code 200, with default header values.
 
-Retrieve impacted infrastructure for the type on the incident
+List impacted infrastructure on an incident by specifying type
 */
 type GetV1IncidentsIncidentIDImpactTypeOK struct {
 	Payload *models.IncidentImpactEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 incidents incident Id impact type o k response has a 2xx status code
+func (o *GetV1IncidentsIncidentIDImpactTypeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 incidents incident Id impact type o k response has a 3xx status code
+func (o *GetV1IncidentsIncidentIDImpactTypeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 incidents incident Id impact type o k response has a 4xx status code
+func (o *GetV1IncidentsIncidentIDImpactTypeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 incidents incident Id impact type o k response has a 5xx status code
+func (o *GetV1IncidentsIncidentIDImpactTypeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 incidents incident Id impact type o k response a status code equal to that given
+func (o *GetV1IncidentsIncidentIDImpactTypeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IncidentsIncidentIDImpactTypeOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/impact/{type}][%d] getV1IncidentsIncidentIdImpactTypeOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IncidentsIncidentIDImpactTypeOK) String() string {
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/impact/{type}][%d] getV1IncidentsIncidentIdImpactTypeOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IncidentsIncidentIDImpactTypeOK) GetPayload() *models.IncidentImpactEntityPaginated {
 	return o.Payload
 }

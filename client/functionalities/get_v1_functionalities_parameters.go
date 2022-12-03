@@ -53,18 +53,44 @@ func NewGetV1FunctionalitiesParamsWithHTTPClient(client *http.Client) *GetV1Func
 	}
 }
 
-/* GetV1FunctionalitiesParams contains all the parameters to send to the API endpoint
-   for the get v1 functionalities operation.
+/*
+GetV1FunctionalitiesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 functionalities operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1FunctionalitiesParams struct {
+
+	/* Impacted.
+
+	   A query to search services by if they are impacted with active incidents
+	*/
+	Impacted *string
+
+	/* Labels.
+
+	   A comma separated list of label key / values in the format of 'key=value,key2=value2'. To filter change events that have a key (with no specific value), omit the value
+	*/
+	Labels *string
+
+	/* Lite.
+
+	   Boolean to determine whether to return a slimified version of the functionalities object
+	*/
+	Lite *bool
 
 	/* Name.
 
 	   A query to search functionalities by their name
 	*/
 	Name *string
+
+	/* Owner.
+
+	   A query to search functionalities by their owning team ID
+	*/
+	Owner *string
 
 	// Page.
 	//
@@ -135,6 +161,39 @@ func (o *GetV1FunctionalitiesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithImpacted adds the impacted to the get v1 functionalities params
+func (o *GetV1FunctionalitiesParams) WithImpacted(impacted *string) *GetV1FunctionalitiesParams {
+	o.SetImpacted(impacted)
+	return o
+}
+
+// SetImpacted adds the impacted to the get v1 functionalities params
+func (o *GetV1FunctionalitiesParams) SetImpacted(impacted *string) {
+	o.Impacted = impacted
+}
+
+// WithLabels adds the labels to the get v1 functionalities params
+func (o *GetV1FunctionalitiesParams) WithLabels(labels *string) *GetV1FunctionalitiesParams {
+	o.SetLabels(labels)
+	return o
+}
+
+// SetLabels adds the labels to the get v1 functionalities params
+func (o *GetV1FunctionalitiesParams) SetLabels(labels *string) {
+	o.Labels = labels
+}
+
+// WithLite adds the lite to the get v1 functionalities params
+func (o *GetV1FunctionalitiesParams) WithLite(lite *bool) *GetV1FunctionalitiesParams {
+	o.SetLite(lite)
+	return o
+}
+
+// SetLite adds the lite to the get v1 functionalities params
+func (o *GetV1FunctionalitiesParams) SetLite(lite *bool) {
+	o.Lite = lite
+}
+
 // WithName adds the name to the get v1 functionalities params
 func (o *GetV1FunctionalitiesParams) WithName(name *string) *GetV1FunctionalitiesParams {
 	o.SetName(name)
@@ -144,6 +203,17 @@ func (o *GetV1FunctionalitiesParams) WithName(name *string) *GetV1Functionalitie
 // SetName adds the name to the get v1 functionalities params
 func (o *GetV1FunctionalitiesParams) SetName(name *string) {
 	o.Name = name
+}
+
+// WithOwner adds the owner to the get v1 functionalities params
+func (o *GetV1FunctionalitiesParams) WithOwner(owner *string) *GetV1FunctionalitiesParams {
+	o.SetOwner(owner)
+	return o
+}
+
+// SetOwner adds the owner to the get v1 functionalities params
+func (o *GetV1FunctionalitiesParams) SetOwner(owner *string) {
+	o.Owner = owner
 }
 
 // WithPage adds the page to the get v1 functionalities params
@@ -187,6 +257,57 @@ func (o *GetV1FunctionalitiesParams) WriteToRequest(r runtime.ClientRequest, reg
 	}
 	var res []error
 
+	if o.Impacted != nil {
+
+		// query param impacted
+		var qrImpacted string
+
+		if o.Impacted != nil {
+			qrImpacted = *o.Impacted
+		}
+		qImpacted := qrImpacted
+		if qImpacted != "" {
+
+			if err := r.SetQueryParam("impacted", qImpacted); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Labels != nil {
+
+		// query param labels
+		var qrLabels string
+
+		if o.Labels != nil {
+			qrLabels = *o.Labels
+		}
+		qLabels := qrLabels
+		if qLabels != "" {
+
+			if err := r.SetQueryParam("labels", qLabels); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Lite != nil {
+
+		// query param lite
+		var qrLite bool
+
+		if o.Lite != nil {
+			qrLite = *o.Lite
+		}
+		qLite := swag.FormatBool(qrLite)
+		if qLite != "" {
+
+			if err := r.SetQueryParam("lite", qLite); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.Name != nil {
 
 		// query param name
@@ -199,6 +320,23 @@ func (o *GetV1FunctionalitiesParams) WriteToRequest(r runtime.ClientRequest, reg
 		if qName != "" {
 
 			if err := r.SetQueryParam("name", qName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Owner != nil {
+
+		// query param owner
+		var qrOwner string
+
+		if o.Owner != nil {
+			qrOwner = *o.Owner
+		}
+		qOwner := qrOwner
+		if qOwner != "" {
+
+			if err := r.SetQueryParam("owner", qOwner); err != nil {
 				return err
 			}
 		}

@@ -52,10 +52,12 @@ func NewDeleteV1PrioritiesPrioritySlugParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* DeleteV1PrioritiesPrioritySlugParams contains all the parameters to send to the API endpoint
-   for the delete v1 priorities priority slug operation.
+/*
+DeleteV1PrioritiesPrioritySlugParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 priorities priority slug operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1PrioritiesPrioritySlugParams struct {
 

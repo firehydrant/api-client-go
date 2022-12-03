@@ -39,7 +39,8 @@ func NewPostV1ChangesEventsCreated() *PostV1ChangesEventsCreated {
 	return &PostV1ChangesEventsCreated{}
 }
 
-/* PostV1ChangesEventsCreated describes a response with status code 201, with default header values.
+/*
+PostV1ChangesEventsCreated describes a response with status code 201, with default header values.
 
 Create a change event
 */
@@ -47,9 +48,39 @@ type PostV1ChangesEventsCreated struct {
 	Payload *models.ChangeEventEntity
 }
 
+// IsSuccess returns true when this post v1 changes events created response has a 2xx status code
+func (o *PostV1ChangesEventsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 changes events created response has a 3xx status code
+func (o *PostV1ChangesEventsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 changes events created response has a 4xx status code
+func (o *PostV1ChangesEventsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 changes events created response has a 5xx status code
+func (o *PostV1ChangesEventsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 changes events created response a status code equal to that given
+func (o *PostV1ChangesEventsCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1ChangesEventsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/changes/events][%d] postV1ChangesEventsCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1ChangesEventsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/changes/events][%d] postV1ChangesEventsCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1ChangesEventsCreated) GetPayload() *models.ChangeEventEntity {
 	return o.Payload
 }

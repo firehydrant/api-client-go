@@ -45,7 +45,8 @@ func NewPostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated
 	return &PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated{}
 }
 
-/* PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated describes a response with status code 201, with default header values.
+/*
+PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated describes a response with status code 201, with default header values.
 
 Creates an event on a report from an incident event
 */
@@ -53,9 +54,39 @@ type PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated st
 	Payload *models.EventEntity
 }
 
+// IsSuccess returns true when this post v1 post mortems reports report Id events from incident incident event Id created response has a 2xx status code
+func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 post mortems reports report Id events from incident incident event Id created response has a 3xx status code
+func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 post mortems reports report Id events from incident incident event Id created response has a 4xx status code
+func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 post mortems reports report Id events from incident incident event Id created response has a 5xx status code
+func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 post mortems reports report Id events from incident incident event Id created response a status code equal to that given
+func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/events/from_incident/{incident_event_id}][%d] postV1PostMortemsReportsReportIdEventsFromIncidentIncidentEventIdCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated) String() string {
+	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/events/from_incident/{incident_event_id}][%d] postV1PostMortemsReportsReportIdEventsFromIncidentIncidentEventIdCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated) GetPayload() *models.EventEntity {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewPostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequ
 	return &PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequest{}
 }
 
-/* PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequest describes a response with status code 400, with default header values.
+/*
+PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -85,9 +117,39 @@ type PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequest
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this post v1 post mortems reports report Id events from incident incident event Id bad request response has a 2xx status code
+func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post v1 post mortems reports report Id events from incident incident event Id bad request response has a 3xx status code
+func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 post mortems reports report Id events from incident incident event Id bad request response has a 4xx status code
+func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post v1 post mortems reports report Id events from incident incident event Id bad request response has a 5xx status code
+func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 post mortems reports report Id events from incident incident event Id bad request response a status code equal to that given
+func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/events/from_incident/{incident_event_id}][%d] postV1PostMortemsReportsReportIdEventsFromIncidentIncidentEventIdBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequest) String() string {
+	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/events/from_incident/{incident_event_id}][%d] postV1PostMortemsReportsReportIdEventsFromIncidentIncidentEventIdBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDBadRequest) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }

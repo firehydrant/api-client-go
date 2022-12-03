@@ -39,7 +39,8 @@ func NewGetV1PostMortemsReportsReportIDEventsOK() *GetV1PostMortemsReportsReport
 	return &GetV1PostMortemsReportsReportIDEventsOK{}
 }
 
-/* GetV1PostMortemsReportsReportIDEventsOK describes a response with status code 200, with default header values.
+/*
+GetV1PostMortemsReportsReportIDEventsOK describes a response with status code 200, with default header values.
 
 Get all report events
 */
@@ -47,9 +48,39 @@ type GetV1PostMortemsReportsReportIDEventsOK struct {
 	Payload *models.EventEntity
 }
 
+// IsSuccess returns true when this get v1 post mortems reports report Id events o k response has a 2xx status code
+func (o *GetV1PostMortemsReportsReportIDEventsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 post mortems reports report Id events o k response has a 3xx status code
+func (o *GetV1PostMortemsReportsReportIDEventsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 post mortems reports report Id events o k response has a 4xx status code
+func (o *GetV1PostMortemsReportsReportIDEventsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 post mortems reports report Id events o k response has a 5xx status code
+func (o *GetV1PostMortemsReportsReportIDEventsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 post mortems reports report Id events o k response a status code equal to that given
+func (o *GetV1PostMortemsReportsReportIDEventsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1PostMortemsReportsReportIDEventsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/post_mortems/reports/{report_id}/events][%d] getV1PostMortemsReportsReportIdEventsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1PostMortemsReportsReportIDEventsOK) String() string {
+	return fmt.Sprintf("[GET /v1/post_mortems/reports/{report_id}/events][%d] getV1PostMortemsReportsReportIdEventsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1PostMortemsReportsReportIDEventsOK) GetPayload() *models.EventEntity {
 	return o.Payload
 }

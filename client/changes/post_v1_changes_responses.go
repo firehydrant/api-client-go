@@ -45,7 +45,8 @@ func NewPostV1ChangesCreated() *PostV1ChangesCreated {
 	return &PostV1ChangesCreated{}
 }
 
-/* PostV1ChangesCreated describes a response with status code 201, with default header values.
+/*
+PostV1ChangesCreated describes a response with status code 201, with default header values.
 
 Create a new change entry
 */
@@ -53,9 +54,39 @@ type PostV1ChangesCreated struct {
 	Payload *models.ChangeEntity
 }
 
+// IsSuccess returns true when this post v1 changes created response has a 2xx status code
+func (o *PostV1ChangesCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 changes created response has a 3xx status code
+func (o *PostV1ChangesCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 changes created response has a 4xx status code
+func (o *PostV1ChangesCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 changes created response has a 5xx status code
+func (o *PostV1ChangesCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 changes created response a status code equal to that given
+func (o *PostV1ChangesCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1ChangesCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/changes][%d] postV1ChangesCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1ChangesCreated) String() string {
+	return fmt.Sprintf("[POST /v1/changes][%d] postV1ChangesCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1ChangesCreated) GetPayload() *models.ChangeEntity {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewPostV1ChangesBadRequest() *PostV1ChangesBadRequest {
 	return &PostV1ChangesBadRequest{}
 }
 
-/* PostV1ChangesBadRequest describes a response with status code 400, with default header values.
+/*
+PostV1ChangesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -85,9 +117,39 @@ type PostV1ChangesBadRequest struct {
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this post v1 changes bad request response has a 2xx status code
+func (o *PostV1ChangesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post v1 changes bad request response has a 3xx status code
+func (o *PostV1ChangesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 changes bad request response has a 4xx status code
+func (o *PostV1ChangesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post v1 changes bad request response has a 5xx status code
+func (o *PostV1ChangesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 changes bad request response a status code equal to that given
+func (o *PostV1ChangesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PostV1ChangesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/changes][%d] postV1ChangesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PostV1ChangesBadRequest) String() string {
+	return fmt.Sprintf("[POST /v1/changes][%d] postV1ChangesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PostV1ChangesBadRequest) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }

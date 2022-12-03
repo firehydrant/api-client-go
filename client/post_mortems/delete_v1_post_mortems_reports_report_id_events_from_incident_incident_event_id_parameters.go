@@ -53,10 +53,12 @@ func NewDeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParam
 	}
 }
 
-/* DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 post mortems reports report Id events from incident incident event Id operation.
+/*
+DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 post mortems reports report Id events from incident incident event Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams struct {
 

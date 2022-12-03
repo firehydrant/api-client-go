@@ -53,10 +53,12 @@ func NewGetV1CatalogsCatalogIDRefreshParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetV1CatalogsCatalogIDRefreshParams contains all the parameters to send to the API endpoint
-   for the get v1 catalogs catalog Id refresh operation.
+/*
+GetV1CatalogsCatalogIDRefreshParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 catalogs catalog Id refresh operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1CatalogsCatalogIDRefreshParams struct {
 

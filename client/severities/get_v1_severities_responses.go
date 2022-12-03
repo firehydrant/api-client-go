@@ -39,24 +39,55 @@ func NewGetV1SeveritiesOK() *GetV1SeveritiesOK {
 	return &GetV1SeveritiesOK{}
 }
 
-/* GetV1SeveritiesOK describes a response with status code 200, with default header values.
+/*
+GetV1SeveritiesOK describes a response with status code 200, with default header values.
 
 Lists severities
 */
 type GetV1SeveritiesOK struct {
-	Payload *models.SeverityEntity
+	Payload *models.SeverityEntityPaginated
+}
+
+// IsSuccess returns true when this get v1 severities o k response has a 2xx status code
+func (o *GetV1SeveritiesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 severities o k response has a 3xx status code
+func (o *GetV1SeveritiesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 severities o k response has a 4xx status code
+func (o *GetV1SeveritiesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 severities o k response has a 5xx status code
+func (o *GetV1SeveritiesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 severities o k response a status code equal to that given
+func (o *GetV1SeveritiesOK) IsCode(code int) bool {
+	return code == 200
 }
 
 func (o *GetV1SeveritiesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/severities][%d] getV1SeveritiesOK  %+v", 200, o.Payload)
 }
-func (o *GetV1SeveritiesOK) GetPayload() *models.SeverityEntity {
+
+func (o *GetV1SeveritiesOK) String() string {
+	return fmt.Sprintf("[GET /v1/severities][%d] getV1SeveritiesOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1SeveritiesOK) GetPayload() *models.SeverityEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1SeveritiesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.SeverityEntity)
+	o.Payload = new(models.SeverityEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1Environments Creates an environment
+// PostV1Environments Creates an environment for the organization
 //
 // swagger:model postV1Environments
 type PostV1Environments struct {

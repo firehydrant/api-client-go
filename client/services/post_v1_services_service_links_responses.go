@@ -39,7 +39,8 @@ func NewPostV1ServicesServiceLinksCreated() *PostV1ServicesServiceLinksCreated {
 	return &PostV1ServicesServiceLinksCreated{}
 }
 
-/* PostV1ServicesServiceLinksCreated describes a response with status code 201, with default header values.
+/*
+PostV1ServicesServiceLinksCreated describes a response with status code 201, with default header values.
 
 Creates a service with the appropriate integration for each external service ID passed
 */
@@ -47,9 +48,39 @@ type PostV1ServicesServiceLinksCreated struct {
 	Payload []*models.ServiceLinkEntity
 }
 
+// IsSuccess returns true when this post v1 services service links created response has a 2xx status code
+func (o *PostV1ServicesServiceLinksCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 services service links created response has a 3xx status code
+func (o *PostV1ServicesServiceLinksCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 services service links created response has a 4xx status code
+func (o *PostV1ServicesServiceLinksCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 services service links created response has a 5xx status code
+func (o *PostV1ServicesServiceLinksCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 services service links created response a status code equal to that given
+func (o *PostV1ServicesServiceLinksCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1ServicesServiceLinksCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/services/service_links][%d] postV1ServicesServiceLinksCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1ServicesServiceLinksCreated) String() string {
+	return fmt.Sprintf("[POST /v1/services/service_links][%d] postV1ServicesServiceLinksCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1ServicesServiceLinksCreated) GetPayload() []*models.ServiceLinkEntity {
 	return o.Payload
 }

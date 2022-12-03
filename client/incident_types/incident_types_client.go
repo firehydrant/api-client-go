@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1IncidentTypesID(params *DeleteV1IncidentTypesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentTypesIDNoContent, error)
+	DeleteV1IncidentTypesID(params *DeleteV1IncidentTypesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentTypesIDOK, error)
 
 	GetV1IncidentTypes(params *GetV1IncidentTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentTypesOK, error)
 
@@ -44,9 +44,11 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1IncidentTypesID Archive an incident type
+DeleteV1IncidentTypesID archives an incident type
+
+Archives an incident type which will hide it from lists and metrics
 */
-func (a *Client) DeleteV1IncidentTypesID(params *DeleteV1IncidentTypesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentTypesIDNoContent, error) {
+func (a *Client) DeleteV1IncidentTypesID(params *DeleteV1IncidentTypesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentTypesIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteV1IncidentTypesIDParams()
@@ -72,7 +74,7 @@ func (a *Client) DeleteV1IncidentTypesID(params *DeleteV1IncidentTypesIDParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1IncidentTypesIDNoContent)
+	success, ok := result.(*DeleteV1IncidentTypesIDOK)
 	if ok {
 		return success, nil
 	}
@@ -83,7 +85,9 @@ func (a *Client) DeleteV1IncidentTypesID(params *DeleteV1IncidentTypesIDParams, 
 }
 
 /*
-  GetV1IncidentTypes List incident types
+GetV1IncidentTypes lists all incident types
+
+List all of the incident types in the organization
 */
 func (a *Client) GetV1IncidentTypes(params *GetV1IncidentTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentTypesOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +126,9 @@ func (a *Client) GetV1IncidentTypes(params *GetV1IncidentTypesParams, authInfo r
 }
 
 /*
-  GetV1IncidentTypesID Get an incident type
+GetV1IncidentTypesID retrieves an incident type
+
+Retrieve a single incident type from its ID
 */
 func (a *Client) GetV1IncidentTypesID(params *GetV1IncidentTypesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentTypesIDOK, error) {
 	// TODO: Validate the params before sending
@@ -161,7 +167,9 @@ func (a *Client) GetV1IncidentTypesID(params *GetV1IncidentTypesIDParams, authIn
 }
 
 /*
-  PatchV1IncidentTypesID Update an incident type
+PatchV1IncidentTypesID updates an incident type
+
+Update a single incident type from its ID
 */
 func (a *Client) PatchV1IncidentTypesID(params *PatchV1IncidentTypesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentTypesIDOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +208,9 @@ func (a *Client) PatchV1IncidentTypesID(params *PatchV1IncidentTypesIDParams, au
 }
 
 /*
-  PostV1IncidentTypes Create an incident type
+PostV1IncidentTypes creates an incident type
+
+Create a new incident type
 */
 func (a *Client) PostV1IncidentTypes(params *PostV1IncidentTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentTypesCreated, error) {
 	// TODO: Validate the params before sending

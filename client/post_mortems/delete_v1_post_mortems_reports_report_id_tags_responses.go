@@ -7,12 +7,9 @@ package post_mortems
 
 import (
 	"fmt"
-	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/firehydrant/api-client-go/models"
 )
 
 // DeleteV1PostMortemsReportsReportIDTagsReader is a Reader for the DeleteV1PostMortemsReportsReportIDTags structure.
@@ -29,12 +26,6 @@ func (o *DeleteV1PostMortemsReportsReportIDTagsReader) ReadResponse(response run
 			return nil, err
 		}
 		return result, nil
-	case 400:
-		result := NewDeleteV1PostMortemsReportsReportIDTagsBadRequest()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -45,50 +36,48 @@ func NewDeleteV1PostMortemsReportsReportIDTagsNoContent() *DeleteV1PostMortemsRe
 	return &DeleteV1PostMortemsReportsReportIDTagsNoContent{}
 }
 
-/* DeleteV1PostMortemsReportsReportIDTagsNoContent describes a response with status code 204, with default header values.
+/*
+DeleteV1PostMortemsReportsReportIDTagsNoContent describes a response with status code 204, with default header values.
 
-the tags have been removed from the post mortem report
+Remove tags to a retrospective
 */
 type DeleteV1PostMortemsReportsReportIDTagsNoContent struct {
+}
+
+// IsSuccess returns true when this delete v1 post mortems reports report Id tags no content response has a 2xx status code
+func (o *DeleteV1PostMortemsReportsReportIDTagsNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 post mortems reports report Id tags no content response has a 3xx status code
+func (o *DeleteV1PostMortemsReportsReportIDTagsNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 post mortems reports report Id tags no content response has a 4xx status code
+func (o *DeleteV1PostMortemsReportsReportIDTagsNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 post mortems reports report Id tags no content response has a 5xx status code
+func (o *DeleteV1PostMortemsReportsReportIDTagsNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 post mortems reports report Id tags no content response a status code equal to that given
+func (o *DeleteV1PostMortemsReportsReportIDTagsNoContent) IsCode(code int) bool {
+	return code == 204
 }
 
 func (o *DeleteV1PostMortemsReportsReportIDTagsNoContent) Error() string {
 	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/tags][%d] deleteV1PostMortemsReportsReportIdTagsNoContent ", 204)
 }
 
+func (o *DeleteV1PostMortemsReportsReportIDTagsNoContent) String() string {
+	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/tags][%d] deleteV1PostMortemsReportsReportIdTagsNoContent ", 204)
+}
+
 func (o *DeleteV1PostMortemsReportsReportIDTagsNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// NewDeleteV1PostMortemsReportsReportIDTagsBadRequest creates a DeleteV1PostMortemsReportsReportIDTagsBadRequest with default headers values
-func NewDeleteV1PostMortemsReportsReportIDTagsBadRequest() *DeleteV1PostMortemsReportsReportIDTagsBadRequest {
-	return &DeleteV1PostMortemsReportsReportIDTagsBadRequest{}
-}
-
-/* DeleteV1PostMortemsReportsReportIDTagsBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
-type DeleteV1PostMortemsReportsReportIDTagsBadRequest struct {
-	Payload *models.ErrorEntity
-}
-
-func (o *DeleteV1PostMortemsReportsReportIDTagsBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/tags][%d] deleteV1PostMortemsReportsReportIdTagsBadRequest  %+v", 400, o.Payload)
-}
-func (o *DeleteV1PostMortemsReportsReportIDTagsBadRequest) GetPayload() *models.ErrorEntity {
-	return o.Payload
-}
-
-func (o *DeleteV1PostMortemsReportsReportIDTagsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ErrorEntity)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

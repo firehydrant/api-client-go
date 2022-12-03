@@ -39,7 +39,8 @@ func NewPostV1TicketingTicketsCreated() *PostV1TicketingTicketsCreated {
 	return &PostV1TicketingTicketsCreated{}
 }
 
-/* PostV1TicketingTicketsCreated describes a response with status code 201, with default header values.
+/*
+PostV1TicketingTicketsCreated describes a response with status code 201, with default header values.
 
 Creates a ticket for a project
 */
@@ -47,9 +48,39 @@ type PostV1TicketingTicketsCreated struct {
 	Payload *models.TicketEntity
 }
 
+// IsSuccess returns true when this post v1 ticketing tickets created response has a 2xx status code
+func (o *PostV1TicketingTicketsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 ticketing tickets created response has a 3xx status code
+func (o *PostV1TicketingTicketsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 ticketing tickets created response has a 4xx status code
+func (o *PostV1TicketingTicketsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 ticketing tickets created response has a 5xx status code
+func (o *PostV1TicketingTicketsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 ticketing tickets created response a status code equal to that given
+func (o *PostV1TicketingTicketsCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1TicketingTicketsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/ticketing/tickets][%d] postV1TicketingTicketsCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1TicketingTicketsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/ticketing/tickets][%d] postV1TicketingTicketsCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1TicketingTicketsCreated) GetPayload() *models.TicketEntity {
 	return o.Payload
 }

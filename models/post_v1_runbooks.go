@@ -31,6 +31,9 @@ type PostV1Runbooks struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// owner
+	Owner *PostV1RunbooksOwner `json:"owner,omitempty"`
+
 	// steps
 	Steps []*PostV1RunbooksStepsItems0 `json:"steps"`
 
@@ -51,6 +54,10 @@ func (m *PostV1Runbooks) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOwner(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -91,6 +98,25 @@ func (m *PostV1Runbooks) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *PostV1Runbooks) validateOwner(formats strfmt.Registry) error {
+	if swag.IsZero(m.Owner) { // not required
+		return nil
+	}
+
+	if m.Owner != nil {
+		if err := m.Owner.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -178,6 +204,10 @@ func (m *PostV1Runbooks) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateOwner(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateSteps(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -196,6 +226,22 @@ func (m *PostV1Runbooks) contextValidateAttachmentRule(ctx context.Context, form
 				return ve.ValidateName("attachment_rule")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("attachment_rule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PostV1Runbooks) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Owner != nil {
+		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
 			}
 			return err
 		}
@@ -294,6 +340,62 @@ func (m *PostV1RunbooksAttachmentRule) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PostV1RunbooksAttachmentRule) UnmarshalBinary(b []byte) error {
 	var res PostV1RunbooksAttachmentRule
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1RunbooksOwner An object representing a Team that owns the runbook
+//
+// swagger:model PostV1RunbooksOwner
+type PostV1RunbooksOwner struct {
+
+	// id
+	// Required: true
+	ID *string `json:"id"`
+}
+
+// Validate validates this post v1 runbooks owner
+func (m *PostV1RunbooksOwner) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1RunbooksOwner) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("owner"+"."+"id", "body", m.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this post v1 runbooks owner based on context it is used
+func (m *PostV1RunbooksOwner) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1RunbooksOwner) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1RunbooksOwner) UnmarshalBinary(b []byte) error {
+	var res PostV1RunbooksOwner
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

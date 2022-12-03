@@ -39,7 +39,8 @@ func NewDeleteV1SeverityMatrixImpactsImpactIDOK() *DeleteV1SeverityMatrixImpacts
 	return &DeleteV1SeverityMatrixImpactsImpactIDOK{}
 }
 
-/* DeleteV1SeverityMatrixImpactsImpactIDOK describes a response with status code 200, with default header values.
+/*
+DeleteV1SeverityMatrixImpactsImpactIDOK describes a response with status code 200, with default header values.
 
 Delete a specific impact
 */
@@ -47,9 +48,39 @@ type DeleteV1SeverityMatrixImpactsImpactIDOK struct {
 	Payload *models.ImpactEntity
 }
 
+// IsSuccess returns true when this delete v1 severity matrix impacts impact Id o k response has a 2xx status code
+func (o *DeleteV1SeverityMatrixImpactsImpactIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 severity matrix impacts impact Id o k response has a 3xx status code
+func (o *DeleteV1SeverityMatrixImpactsImpactIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 severity matrix impacts impact Id o k response has a 4xx status code
+func (o *DeleteV1SeverityMatrixImpactsImpactIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 severity matrix impacts impact Id o k response has a 5xx status code
+func (o *DeleteV1SeverityMatrixImpactsImpactIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 severity matrix impacts impact Id o k response a status code equal to that given
+func (o *DeleteV1SeverityMatrixImpactsImpactIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteV1SeverityMatrixImpactsImpactIDOK) Error() string {
 	return fmt.Sprintf("[DELETE /v1/severity_matrix/impacts/{impact_id}][%d] deleteV1SeverityMatrixImpactsImpactIdOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteV1SeverityMatrixImpactsImpactIDOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/severity_matrix/impacts/{impact_id}][%d] deleteV1SeverityMatrixImpactsImpactIdOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteV1SeverityMatrixImpactsImpactIDOK) GetPayload() *models.ImpactEntity {
 	return o.Payload
 }

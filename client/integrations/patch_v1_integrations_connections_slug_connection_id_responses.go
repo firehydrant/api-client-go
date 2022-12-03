@@ -36,14 +36,44 @@ func NewPatchV1IntegrationsConnectionsSlugConnectionIDOK() *PatchV1IntegrationsC
 	return &PatchV1IntegrationsConnectionsSlugConnectionIDOK{}
 }
 
-/* PatchV1IntegrationsConnectionsSlugConnectionIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1IntegrationsConnectionsSlugConnectionIDOK describes a response with status code 200, with default header values.
 
 patched Connection
 */
 type PatchV1IntegrationsConnectionsSlugConnectionIDOK struct {
 }
 
+// IsSuccess returns true when this patch v1 integrations connections slug connection Id o k response has a 2xx status code
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 integrations connections slug connection Id o k response has a 3xx status code
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 integrations connections slug connection Id o k response has a 4xx status code
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 integrations connections slug connection Id o k response has a 5xx status code
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 integrations connections slug connection Id o k response a status code equal to that given
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1IntegrationsConnectionsSlugConnectionIDOK) Error() string {
+	return fmt.Sprintf("[PATCH /v1/integrations/connections/{slug}/{connection_id}][%d] patchV1IntegrationsConnectionsSlugConnectionIdOK ", 200)
+}
+
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDOK) String() string {
 	return fmt.Sprintf("[PATCH /v1/integrations/connections/{slug}/{connection_id}][%d] patchV1IntegrationsConnectionsSlugConnectionIdOK ", 200)
 }
 

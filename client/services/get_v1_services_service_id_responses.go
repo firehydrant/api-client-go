@@ -39,17 +39,48 @@ func NewGetV1ServicesServiceIDOK() *GetV1ServicesServiceIDOK {
 	return &GetV1ServicesServiceIDOK{}
 }
 
-/* GetV1ServicesServiceIDOK describes a response with status code 200, with default header values.
+/*
+GetV1ServicesServiceIDOK describes a response with status code 200, with default header values.
 
-Retrieves a single service by ID or Slug
+Retrieves a single service by ID
 */
 type GetV1ServicesServiceIDOK struct {
 	Payload *models.ServiceEntity
 }
 
+// IsSuccess returns true when this get v1 services service Id o k response has a 2xx status code
+func (o *GetV1ServicesServiceIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 services service Id o k response has a 3xx status code
+func (o *GetV1ServicesServiceIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 services service Id o k response has a 4xx status code
+func (o *GetV1ServicesServiceIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 services service Id o k response has a 5xx status code
+func (o *GetV1ServicesServiceIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 services service Id o k response a status code equal to that given
+func (o *GetV1ServicesServiceIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1ServicesServiceIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/services/{service_id}][%d] getV1ServicesServiceIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1ServicesServiceIDOK) String() string {
+	return fmt.Sprintf("[GET /v1/services/{service_id}][%d] getV1ServicesServiceIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1ServicesServiceIDOK) GetPayload() *models.ServiceEntity {
 	return o.Payload
 }

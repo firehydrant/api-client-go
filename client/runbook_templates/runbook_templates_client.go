@@ -40,7 +40,9 @@ type ClientService interface {
 }
 
 /*
-  GetV1RunbookTemplates Runbook templates
+GetV1RunbookTemplates lists runbook templates
+
+List all available runbook templates
 */
 func (a *Client) GetV1RunbookTemplates(params *GetV1RunbookTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbookTemplatesOK, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +81,9 @@ func (a *Client) GetV1RunbookTemplates(params *GetV1RunbookTemplatesParams, auth
 }
 
 /*
-  GetV1RunbookTemplatesID get v1 runbook templates Id API
+GetV1RunbookTemplatesID retrieves a runbook templete
+
+Retrieve a single runbook template
 */
 func (a *Client) GetV1RunbookTemplatesID(params *GetV1RunbookTemplatesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbookTemplatesIDOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +122,9 @@ func (a *Client) GetV1RunbookTemplatesID(params *GetV1RunbookTemplatesIDParams, 
 }
 
 /*
-  PostV1RunbookTemplatesIDRunbooks post v1 runbook templates Id runbooks API
+PostV1RunbookTemplatesIDRunbooks creates runbook from template
+
+Create a new runbook from an existing template
 */
 func (a *Client) PostV1RunbookTemplatesIDRunbooks(params *PostV1RunbookTemplatesIDRunbooksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1RunbookTemplatesIDRunbooksCreated, error) {
 	// TODO: Validate the params before sending

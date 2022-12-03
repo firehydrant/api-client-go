@@ -18,6 +18,12 @@ import (
 // swagger:model NuncConnectionEntity
 type NuncConnectionEntity struct {
 
+	// button background color
+	ButtonBackgroundColor string `json:"button_background_color,omitempty"`
+
+	// button text color
+	ButtonTextColor string `json:"button_text_color,omitempty"`
+
 	// cname
 	Cname string `json:"cname,omitempty"`
 
@@ -36,8 +42,14 @@ type NuncConnectionEntity struct {
 	// conditions
 	Conditions *NuncConditionEntity `json:"conditions,omitempty"`
 
+	// cover image
+	CoverImage *NuncImageEntity `json:"cover_image,omitempty"`
+
 	// domain
 	Domain string `json:"domain,omitempty"`
+
+	// favicon
+	Favicon *NuncImageEntity `json:"favicon,omitempty"`
 
 	// greeting body
 	GreetingBody string `json:"greeting_body,omitempty"`
@@ -48,11 +60,23 @@ type NuncConnectionEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
+	// link color
+	LinkColor string `json:"link_color,omitempty"`
+
 	// logo
-	Logo *NuncLogoEntity `json:"logo,omitempty"`
+	Logo *NuncImageEntity `json:"logo,omitempty"`
+
+	// open graph image
+	OpenGraphImage *NuncImageEntity `json:"open_graph_image,omitempty"`
 
 	// operational message
 	OperationalMessage string `json:"operational_message,omitempty"`
+
+	// primary color
+	PrimaryColor string `json:"primary_color,omitempty"`
+
+	// secondary color
+	SecondaryColor string `json:"secondary_color,omitempty"`
 }
 
 // Validate validates this nunc connection entity
@@ -67,7 +91,19 @@ func (m *NuncConnectionEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateCoverImage(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFavicon(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLogo(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpenGraphImage(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -115,6 +151,44 @@ func (m *NuncConnectionEntity) validateConditions(formats strfmt.Registry) error
 	return nil
 }
 
+func (m *NuncConnectionEntity) validateCoverImage(formats strfmt.Registry) error {
+	if swag.IsZero(m.CoverImage) { // not required
+		return nil
+	}
+
+	if m.CoverImage != nil {
+		if err := m.CoverImage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("cover_image")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("cover_image")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NuncConnectionEntity) validateFavicon(formats strfmt.Registry) error {
+	if swag.IsZero(m.Favicon) { // not required
+		return nil
+	}
+
+	if m.Favicon != nil {
+		if err := m.Favicon.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("favicon")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("favicon")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *NuncConnectionEntity) validateLogo(formats strfmt.Registry) error {
 	if swag.IsZero(m.Logo) { // not required
 		return nil
@@ -126,6 +200,25 @@ func (m *NuncConnectionEntity) validateLogo(formats strfmt.Registry) error {
 				return ve.ValidateName("logo")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("logo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NuncConnectionEntity) validateOpenGraphImage(formats strfmt.Registry) error {
+	if swag.IsZero(m.OpenGraphImage) { // not required
+		return nil
+	}
+
+	if m.OpenGraphImage != nil {
+		if err := m.OpenGraphImage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("open_graph_image")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("open_graph_image")
 			}
 			return err
 		}
@@ -146,7 +239,19 @@ func (m *NuncConnectionEntity) ContextValidate(ctx context.Context, formats strf
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateCoverImage(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateFavicon(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateLogo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOpenGraphImage(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -188,6 +293,38 @@ func (m *NuncConnectionEntity) contextValidateConditions(ctx context.Context, fo
 	return nil
 }
 
+func (m *NuncConnectionEntity) contextValidateCoverImage(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CoverImage != nil {
+		if err := m.CoverImage.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("cover_image")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("cover_image")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NuncConnectionEntity) contextValidateFavicon(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Favicon != nil {
+		if err := m.Favicon.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("favicon")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("favicon")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *NuncConnectionEntity) contextValidateLogo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Logo != nil {
@@ -196,6 +333,22 @@ func (m *NuncConnectionEntity) contextValidateLogo(ctx context.Context, formats 
 				return ve.ValidateName("logo")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("logo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *NuncConnectionEntity) contextValidateOpenGraphImage(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.OpenGraphImage != nil {
+		if err := m.OpenGraphImage.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("open_graph_image")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("open_graph_image")
 			}
 			return err
 		}

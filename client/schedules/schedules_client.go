@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetV1Schedules lists all schedules
+GetV1Schedules lists all schedules
 
-  List all known schedules in FireHydrant as pulled from external sources
+List all known schedules in FireHydrant as pulled from external sources
 */
 func (a *Client) GetV1Schedules(params *GetV1SchedulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SchedulesOK, error) {
 	// TODO: Validate the params before sending

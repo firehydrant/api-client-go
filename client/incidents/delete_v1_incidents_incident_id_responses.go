@@ -39,7 +39,8 @@ func NewDeleteV1IncidentsIncidentIDOK() *DeleteV1IncidentsIncidentIDOK {
 	return &DeleteV1IncidentsIncidentIDOK{}
 }
 
-/* DeleteV1IncidentsIncidentIDOK describes a response with status code 200, with default header values.
+/*
+DeleteV1IncidentsIncidentIDOK describes a response with status code 200, with default header values.
 
 Archives an incident which will hide it from lists and metrics
 */
@@ -47,9 +48,39 @@ type DeleteV1IncidentsIncidentIDOK struct {
 	Payload *models.IncidentEntity
 }
 
+// IsSuccess returns true when this delete v1 incidents incident Id o k response has a 2xx status code
+func (o *DeleteV1IncidentsIncidentIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 incidents incident Id o k response has a 3xx status code
+func (o *DeleteV1IncidentsIncidentIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 incidents incident Id o k response has a 4xx status code
+func (o *DeleteV1IncidentsIncidentIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 incidents incident Id o k response has a 5xx status code
+func (o *DeleteV1IncidentsIncidentIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 incidents incident Id o k response a status code equal to that given
+func (o *DeleteV1IncidentsIncidentIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteV1IncidentsIncidentIDOK) Error() string {
 	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}][%d] deleteV1IncidentsIncidentIdOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteV1IncidentsIncidentIDOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}][%d] deleteV1IncidentsIncidentIdOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteV1IncidentsIncidentIDOK) GetPayload() *models.IncidentEntity {
 	return o.Payload
 }

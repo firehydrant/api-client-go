@@ -39,7 +39,8 @@ func NewGetV1ScheduledMaintenancesOK() *GetV1ScheduledMaintenancesOK {
 	return &GetV1ScheduledMaintenancesOK{}
 }
 
-/* GetV1ScheduledMaintenancesOK describes a response with status code 200, with default header values.
+/*
+GetV1ScheduledMaintenancesOK describes a response with status code 200, with default header values.
 
 Lists all scheduled maintenance events
 */
@@ -47,9 +48,39 @@ type GetV1ScheduledMaintenancesOK struct {
 	Payload *models.ScheduledMaintenanceEntity
 }
 
+// IsSuccess returns true when this get v1 scheduled maintenances o k response has a 2xx status code
+func (o *GetV1ScheduledMaintenancesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 scheduled maintenances o k response has a 3xx status code
+func (o *GetV1ScheduledMaintenancesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 scheduled maintenances o k response has a 4xx status code
+func (o *GetV1ScheduledMaintenancesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 scheduled maintenances o k response has a 5xx status code
+func (o *GetV1ScheduledMaintenancesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 scheduled maintenances o k response a status code equal to that given
+func (o *GetV1ScheduledMaintenancesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1ScheduledMaintenancesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/scheduled_maintenances][%d] getV1ScheduledMaintenancesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1ScheduledMaintenancesOK) String() string {
+	return fmt.Sprintf("[GET /v1/scheduled_maintenances][%d] getV1ScheduledMaintenancesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1ScheduledMaintenancesOK) GetPayload() *models.ScheduledMaintenanceEntity {
 	return o.Payload
 }

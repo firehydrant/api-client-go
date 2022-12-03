@@ -52,10 +52,12 @@ func NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParamsWithHTT
 	}
 }
 
-/* DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 post mortems reports report Id participants participant Id operation.
+/*
+DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 post mortems reports report Id participants participant Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams struct {
 

@@ -53,12 +53,20 @@ func NewGetV1IncidentsParamsWithHTTPClient(client *http.Client) *GetV1IncidentsP
 	}
 }
 
-/* GetV1IncidentsParams contains all the parameters to send to the API endpoint
-   for the get v1 incidents operation.
+/*
+GetV1IncidentsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 incidents operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IncidentsParams struct {
+
+	/* AssignedTeams.
+
+	   A comma separated list of IDs for assigned teams
+	*/
+	AssignedTeams *string
 
 	// Conditions.
 	Conditions *string
@@ -82,6 +90,18 @@ type GetV1IncidentsParams struct {
 	   A comma separated list of environment IDs
 	*/
 	Environments *string
+
+	/* ExcludedInfrastructureIds.
+
+	   A comma separated list of infrastucture IDs. Returns incidents that do not have the following infrastructure ids associated with them.
+	*/
+	ExcludedInfrastructureIds *string
+
+	/* Functionalities.
+
+	   A comma separated list of functionality IDs
+	*/
+	Functionalities *string
 
 	/* Name.
 
@@ -226,6 +246,17 @@ func (o *GetV1IncidentsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAssignedTeams adds the assignedTeams to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithAssignedTeams(assignedTeams *string) *GetV1IncidentsParams {
+	o.SetAssignedTeams(assignedTeams)
+	return o
+}
+
+// SetAssignedTeams adds the assignedTeams to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetAssignedTeams(assignedTeams *string) {
+	o.AssignedTeams = assignedTeams
+}
+
 // WithConditions adds the conditions to the get v1 incidents params
 func (o *GetV1IncidentsParams) WithConditions(conditions *string) *GetV1IncidentsParams {
 	o.SetConditions(conditions)
@@ -268,6 +299,28 @@ func (o *GetV1IncidentsParams) WithEnvironments(environments *string) *GetV1Inci
 // SetEnvironments adds the environments to the get v1 incidents params
 func (o *GetV1IncidentsParams) SetEnvironments(environments *string) {
 	o.Environments = environments
+}
+
+// WithExcludedInfrastructureIds adds the excludedInfrastructureIds to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithExcludedInfrastructureIds(excludedInfrastructureIds *string) *GetV1IncidentsParams {
+	o.SetExcludedInfrastructureIds(excludedInfrastructureIds)
+	return o
+}
+
+// SetExcludedInfrastructureIds adds the excludedInfrastructureIds to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetExcludedInfrastructureIds(excludedInfrastructureIds *string) {
+	o.ExcludedInfrastructureIds = excludedInfrastructureIds
+}
+
+// WithFunctionalities adds the functionalities to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithFunctionalities(functionalities *string) *GetV1IncidentsParams {
+	o.SetFunctionalities(functionalities)
+	return o
+}
+
+// SetFunctionalities adds the functionalities to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetFunctionalities(functionalities *string) {
+	o.Functionalities = functionalities
 }
 
 // WithName adds the name to the get v1 incidents params
@@ -443,6 +496,23 @@ func (o *GetV1IncidentsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 	}
 	var res []error
 
+	if o.AssignedTeams != nil {
+
+		// query param assigned_teams
+		var qrAssignedTeams string
+
+		if o.AssignedTeams != nil {
+			qrAssignedTeams = *o.AssignedTeams
+		}
+		qAssignedTeams := qrAssignedTeams
+		if qAssignedTeams != "" {
+
+			if err := r.SetQueryParam("assigned_teams", qAssignedTeams); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.Conditions != nil {
 
 		// query param conditions
@@ -506,6 +576,40 @@ func (o *GetV1IncidentsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		if qEnvironments != "" {
 
 			if err := r.SetQueryParam("environments", qEnvironments); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ExcludedInfrastructureIds != nil {
+
+		// query param excluded_infrastructure_ids
+		var qrExcludedInfrastructureIds string
+
+		if o.ExcludedInfrastructureIds != nil {
+			qrExcludedInfrastructureIds = *o.ExcludedInfrastructureIds
+		}
+		qExcludedInfrastructureIds := qrExcludedInfrastructureIds
+		if qExcludedInfrastructureIds != "" {
+
+			if err := r.SetQueryParam("excluded_infrastructure_ids", qExcludedInfrastructureIds); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Functionalities != nil {
+
+		// query param functionalities
+		var qrFunctionalities string
+
+		if o.Functionalities != nil {
+			qrFunctionalities = *o.Functionalities
+		}
+		qFunctionalities := qrFunctionalities
+		if qFunctionalities != "" {
+
+			if err := r.SetQueryParam("functionalities", qFunctionalities); err != nil {
 				return err
 			}
 		}

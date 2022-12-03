@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PatchV1IncidentsIncidentIDRelatedChangeEvents Update a change event
+// PatchV1IncidentsIncidentIDRelatedChangeEvents Update a change attached to an incident
 //
 // swagger:model patchV1IncidentsIncidentIdRelatedChangeEvents
 type PatchV1IncidentsIncidentIDRelatedChangeEvents struct {

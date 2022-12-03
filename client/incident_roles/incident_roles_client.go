@@ -44,7 +44,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1IncidentRolesIncidentRoleID Archive an incident role
+DeleteV1IncidentRolesIncidentRoleID archives an incident role
+
+Archives an incident role which will hide it from lists and metrics
 */
 func (a *Client) DeleteV1IncidentRolesIncidentRoleID(params *DeleteV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentRolesIncidentRoleIDOK, error) {
 	// TODO: Validate the params before sending
@@ -83,7 +85,9 @@ func (a *Client) DeleteV1IncidentRolesIncidentRoleID(params *DeleteV1IncidentRol
 }
 
 /*
-  GetV1IncidentRoles List incident roles
+GetV1IncidentRoles lists all incident roles
+
+List all of the incident roles in the organization
 */
 func (a *Client) GetV1IncidentRoles(params *GetV1IncidentRolesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentRolesOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +126,9 @@ func (a *Client) GetV1IncidentRoles(params *GetV1IncidentRolesParams, authInfo r
 }
 
 /*
-  GetV1IncidentRolesIncidentRoleID Retrieve an incident role
+GetV1IncidentRolesIncidentRoleID retrieves an incident role
+
+Retrieve a single incident role from its ID
 */
 func (a *Client) GetV1IncidentRolesIncidentRoleID(params *GetV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentRolesIncidentRoleIDOK, error) {
 	// TODO: Validate the params before sending
@@ -161,7 +167,9 @@ func (a *Client) GetV1IncidentRolesIncidentRoleID(params *GetV1IncidentRolesInci
 }
 
 /*
-  PatchV1IncidentRolesIncidentRoleID Update an incident role
+PatchV1IncidentRolesIncidentRoleID updates an incident role
+
+Update a single incident role from its ID
 */
 func (a *Client) PatchV1IncidentRolesIncidentRoleID(params *PatchV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentRolesIncidentRoleIDOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +208,9 @@ func (a *Client) PatchV1IncidentRolesIncidentRoleID(params *PatchV1IncidentRoles
 }
 
 /*
-  PostV1IncidentRoles Create an incident role
+PostV1IncidentRoles creates an incident role
+
+Create a new incident role
 */
 func (a *Client) PostV1IncidentRoles(params *PostV1IncidentRolesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentRolesCreated, error) {
 	// TODO: Validate the params before sending

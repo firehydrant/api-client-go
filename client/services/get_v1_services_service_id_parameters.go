@@ -52,10 +52,12 @@ func NewGetV1ServicesServiceIDParamsWithHTTPClient(client *http.Client) *GetV1Se
 	}
 }
 
-/* GetV1ServicesServiceIDParams contains all the parameters to send to the API endpoint
-   for the get v1 services service Id operation.
+/*
+GetV1ServicesServiceIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 services service Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1ServicesServiceIDParams struct {
 

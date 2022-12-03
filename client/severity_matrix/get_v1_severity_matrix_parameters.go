@@ -52,10 +52,12 @@ func NewGetV1SeverityMatrixParamsWithHTTPClient(client *http.Client) *GetV1Sever
 	}
 }
 
-/* GetV1SeverityMatrixParams contains all the parameters to send to the API endpoint
-   for the get v1 severity matrix operation.
+/*
+GetV1SeverityMatrixParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 severity matrix operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1SeverityMatrixParams struct {
 	timeout    time.Duration

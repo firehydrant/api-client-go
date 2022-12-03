@@ -54,10 +54,12 @@ func NewPostV1EnvironmentsParamsWithHTTPClient(client *http.Client) *PostV1Envir
 	}
 }
 
-/* PostV1EnvironmentsParams contains all the parameters to send to the API endpoint
-   for the post v1 environments operation.
+/*
+PostV1EnvironmentsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 environments operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1EnvironmentsParams struct {
 

@@ -53,10 +53,12 @@ func NewPostV1IntegrationsConnectionsSlugParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* PostV1IntegrationsConnectionsSlugParams contains all the parameters to send to the API endpoint
-   for the post v1 integrations connections slug operation.
+/*
+PostV1IntegrationsConnectionsSlugParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 integrations connections slug operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1IntegrationsConnectionsSlugParams struct {
 

@@ -39,7 +39,8 @@ func NewPostV1NuncSubscriptionsCreated() *PostV1NuncSubscriptionsCreated {
 	return &PostV1NuncSubscriptionsCreated{}
 }
 
-/* PostV1NuncSubscriptionsCreated describes a response with status code 201, with default header values.
+/*
+PostV1NuncSubscriptionsCreated describes a response with status code 201, with default header values.
 
 Subscribe to status page updates
 */
@@ -47,9 +48,39 @@ type PostV1NuncSubscriptionsCreated struct {
 	Payload *models.NuncSubscription
 }
 
+// IsSuccess returns true when this post v1 nunc subscriptions created response has a 2xx status code
+func (o *PostV1NuncSubscriptionsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 nunc subscriptions created response has a 3xx status code
+func (o *PostV1NuncSubscriptionsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 nunc subscriptions created response has a 4xx status code
+func (o *PostV1NuncSubscriptionsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 nunc subscriptions created response has a 5xx status code
+func (o *PostV1NuncSubscriptionsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 nunc subscriptions created response a status code equal to that given
+func (o *PostV1NuncSubscriptionsCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1NuncSubscriptionsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/nunc/subscriptions][%d] postV1NuncSubscriptionsCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1NuncSubscriptionsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/nunc/subscriptions][%d] postV1NuncSubscriptionsCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1NuncSubscriptionsCreated) GetPayload() *models.NuncSubscription {
 	return o.Payload
 }

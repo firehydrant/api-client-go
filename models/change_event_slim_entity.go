@@ -52,7 +52,7 @@ type ChangeEventSlimEntity struct {
 	Labels interface{} `json:"labels,omitempty"`
 
 	// services
-	Services []*BaseServiceEntity `json:"services"`
+	Services []string `json:"services"`
 
 	// starts at
 	// Format: date-time
@@ -78,10 +78,6 @@ func (m *ChangeEventSlimEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateEnvironments(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateServices(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -159,32 +155,6 @@ func (m *ChangeEventSlimEntity) validateEnvironments(formats strfmt.Registry) er
 	return nil
 }
 
-func (m *ChangeEventSlimEntity) validateServices(formats strfmt.Registry) error {
-	if swag.IsZero(m.Services) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.Services); i++ {
-		if swag.IsZero(m.Services[i]) { // not required
-			continue
-		}
-
-		if m.Services[i] != nil {
-			if err := m.Services[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("services" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("services" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 func (m *ChangeEventSlimEntity) validateStartsAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.StartsAt) { // not required
 		return nil
@@ -206,10 +176,6 @@ func (m *ChangeEventSlimEntity) ContextValidate(ctx context.Context, formats str
 	}
 
 	if err := m.contextValidateEnvironments(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateServices(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -249,26 +215,6 @@ func (m *ChangeEventSlimEntity) contextValidateEnvironments(ctx context.Context,
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *ChangeEventSlimEntity) contextValidateServices(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Services); i++ {
-
-		if m.Services[i] != nil {
-			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("services" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("services" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

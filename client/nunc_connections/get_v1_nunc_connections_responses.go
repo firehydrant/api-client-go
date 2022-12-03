@@ -39,7 +39,8 @@ func NewGetV1NuncConnectionsOK() *GetV1NuncConnectionsOK {
 	return &GetV1NuncConnectionsOK{}
 }
 
-/* GetV1NuncConnectionsOK describes a response with status code 200, with default header values.
+/*
+GetV1NuncConnectionsOK describes a response with status code 200, with default header values.
 
 Lists the information displayed as part of your FireHydrant hosted status pages.
 */
@@ -47,9 +48,39 @@ type GetV1NuncConnectionsOK struct {
 	Payload *models.NuncConnectionEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 nunc connections o k response has a 2xx status code
+func (o *GetV1NuncConnectionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 nunc connections o k response has a 3xx status code
+func (o *GetV1NuncConnectionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 nunc connections o k response has a 4xx status code
+func (o *GetV1NuncConnectionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 nunc connections o k response has a 5xx status code
+func (o *GetV1NuncConnectionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 nunc connections o k response a status code equal to that given
+func (o *GetV1NuncConnectionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1NuncConnectionsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/nunc_connections][%d] getV1NuncConnectionsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1NuncConnectionsOK) String() string {
+	return fmt.Sprintf("[GET /v1/nunc_connections][%d] getV1NuncConnectionsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1NuncConnectionsOK) GetPayload() *models.NuncConnectionEntityPaginated {
 	return o.Payload
 }

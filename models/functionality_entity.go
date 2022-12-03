@@ -20,6 +20,15 @@ import (
 // swagger:model FunctionalityEntity
 type FunctionalityEntity struct {
 
+	// List of active incident guids
+	ActiveIncidents []string `json:"active_incidents"`
+
+	// alert on add
+	AlertOnAdd bool `json:"alert_on_add,omitempty"`
+
+	// auto add responding team
+	AutoAddRespondingTeam bool `json:"auto_add_responding_team,omitempty"`
+
 	// created at
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
@@ -33,18 +42,36 @@ type FunctionalityEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
+	// An object of label key and values
+	Labels interface{} `json:"labels,omitempty"`
+
+	// List of links attached to this functionality.
+	Links []*LinksEntity `json:"links"`
+
 	// name
 	Name string `json:"name,omitempty"`
 
+	// Team that owns the functionality
+	Owner interface{} `json:"owner,omitempty"`
+
 	// Services this functionality provides
-	Services []*BaseServiceEntity `json:"services"`
+	Services []interface{} `json:"services"`
+
+	// slug
+	Slug string `json:"slug,omitempty"`
 
 	// summary
 	Summary string `json:"summary,omitempty"`
 
+	// List of teams attached to the functionality
+	Teams []interface{} `json:"teams"`
+
 	// updated at
 	// Format: date-time
 	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
+
+	// The most recent user to update the current functionality
+	UpdatedBy *AuthorEntity `json:"updated_by,omitempty"`
 }
 
 // Validate validates this functionality entity
@@ -59,11 +86,15 @@ func (m *FunctionalityEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateServices(formats); err != nil {
+	if err := m.validateLinks(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateUpdatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdatedBy(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -111,22 +142,22 @@ func (m *FunctionalityEntity) validateExternalResources(formats strfmt.Registry)
 	return nil
 }
 
-func (m *FunctionalityEntity) validateServices(formats strfmt.Registry) error {
-	if swag.IsZero(m.Services) { // not required
+func (m *FunctionalityEntity) validateLinks(formats strfmt.Registry) error {
+	if swag.IsZero(m.Links) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.Services); i++ {
-		if swag.IsZero(m.Services[i]) { // not required
+	for i := 0; i < len(m.Links); i++ {
+		if swag.IsZero(m.Links[i]) { // not required
 			continue
 		}
 
-		if m.Services[i] != nil {
-			if err := m.Services[i].Validate(formats); err != nil {
+		if m.Links[i] != nil {
+			if err := m.Links[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+					return ve.ValidateName("links" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("services" + "." + strconv.Itoa(i))
+					return ce.ValidateName("links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -149,6 +180,25 @@ func (m *FunctionalityEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *FunctionalityEntity) validateUpdatedBy(formats strfmt.Registry) error {
+	if swag.IsZero(m.UpdatedBy) { // not required
+		return nil
+	}
+
+	if m.UpdatedBy != nil {
+		if err := m.UpdatedBy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("updated_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("updated_by")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this functionality entity based on the context it is used
 func (m *FunctionalityEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -157,7 +207,11 @@ func (m *FunctionalityEntity) ContextValidate(ctx context.Context, formats strfm
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateServices(ctx, formats); err != nil {
+	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpdatedBy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -187,21 +241,37 @@ func (m *FunctionalityEntity) contextValidateExternalResources(ctx context.Conte
 	return nil
 }
 
-func (m *FunctionalityEntity) contextValidateServices(ctx context.Context, formats strfmt.Registry) error {
+func (m *FunctionalityEntity) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.Services); i++ {
+	for i := 0; i < len(m.Links); i++ {
 
-		if m.Services[i] != nil {
-			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
+		if m.Links[i] != nil {
+			if err := m.Links[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+					return ve.ValidateName("links" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("services" + "." + strconv.Itoa(i))
+					return ce.ValidateName("links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *FunctionalityEntity) contextValidateUpdatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.UpdatedBy != nil {
+		if err := m.UpdatedBy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("updated_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("updated_by")
+			}
+			return err
+		}
 	}
 
 	return nil

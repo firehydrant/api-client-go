@@ -7,9 +7,12 @@ package environments
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // DeleteV1EnvironmentsEnvironmentIDReader is a Reader for the DeleteV1EnvironmentsEnvironmentID structure.
@@ -20,8 +23,8 @@ type DeleteV1EnvironmentsEnvironmentIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteV1EnvironmentsEnvironmentIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 204:
-		result := NewDeleteV1EnvironmentsEnvironmentIDNoContent()
+	case 200:
+		result := NewDeleteV1EnvironmentsEnvironmentIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -31,23 +34,65 @@ func (o *DeleteV1EnvironmentsEnvironmentIDReader) ReadResponse(response runtime.
 	}
 }
 
-// NewDeleteV1EnvironmentsEnvironmentIDNoContent creates a DeleteV1EnvironmentsEnvironmentIDNoContent with default headers values
-func NewDeleteV1EnvironmentsEnvironmentIDNoContent() *DeleteV1EnvironmentsEnvironmentIDNoContent {
-	return &DeleteV1EnvironmentsEnvironmentIDNoContent{}
+// NewDeleteV1EnvironmentsEnvironmentIDOK creates a DeleteV1EnvironmentsEnvironmentIDOK with default headers values
+func NewDeleteV1EnvironmentsEnvironmentIDOK() *DeleteV1EnvironmentsEnvironmentIDOK {
+	return &DeleteV1EnvironmentsEnvironmentIDOK{}
 }
 
-/* DeleteV1EnvironmentsEnvironmentIDNoContent describes a response with status code 204, with default header values.
+/*
+DeleteV1EnvironmentsEnvironmentIDOK describes a response with status code 200, with default header values.
 
 Archive an environment
 */
-type DeleteV1EnvironmentsEnvironmentIDNoContent struct {
+type DeleteV1EnvironmentsEnvironmentIDOK struct {
+	Payload *models.EnvironmentEntity
 }
 
-func (o *DeleteV1EnvironmentsEnvironmentIDNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /v1/environments/{environment_id}][%d] deleteV1EnvironmentsEnvironmentIdNoContent ", 204)
+// IsSuccess returns true when this delete v1 environments environment Id o k response has a 2xx status code
+func (o *DeleteV1EnvironmentsEnvironmentIDOK) IsSuccess() bool {
+	return true
 }
 
-func (o *DeleteV1EnvironmentsEnvironmentIDNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+// IsRedirect returns true when this delete v1 environments environment Id o k response has a 3xx status code
+func (o *DeleteV1EnvironmentsEnvironmentIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 environments environment Id o k response has a 4xx status code
+func (o *DeleteV1EnvironmentsEnvironmentIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 environments environment Id o k response has a 5xx status code
+func (o *DeleteV1EnvironmentsEnvironmentIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 environments environment Id o k response a status code equal to that given
+func (o *DeleteV1EnvironmentsEnvironmentIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
+func (o *DeleteV1EnvironmentsEnvironmentIDOK) Error() string {
+	return fmt.Sprintf("[DELETE /v1/environments/{environment_id}][%d] deleteV1EnvironmentsEnvironmentIdOK  %+v", 200, o.Payload)
+}
+
+func (o *DeleteV1EnvironmentsEnvironmentIDOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/environments/{environment_id}][%d] deleteV1EnvironmentsEnvironmentIdOK  %+v", 200, o.Payload)
+}
+
+func (o *DeleteV1EnvironmentsEnvironmentIDOK) GetPayload() *models.EnvironmentEntity {
+	return o.Payload
+}
+
+func (o *DeleteV1EnvironmentsEnvironmentIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.EnvironmentEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

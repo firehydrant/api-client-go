@@ -38,6 +38,12 @@ type ClientService interface {
 
 	GetV1ServicesServiceID(params *GetV1ServicesServiceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesServiceIDOK, error)
 
+	GetV1ServicesServiceIDAvailableDownstreamDependencies(params *GetV1ServicesServiceIDAvailableDownstreamDependenciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesServiceIDAvailableDownstreamDependenciesOK, error)
+
+	GetV1ServicesServiceIDAvailableUpstreamDependencies(params *GetV1ServicesServiceIDAvailableUpstreamDependenciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesServiceIDAvailableUpstreamDependenciesOK, error)
+
+	GetV1ServicesServiceIDDependencies(params *GetV1ServicesServiceIDDependenciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesServiceIDDependenciesOK, error)
+
 	PatchV1ServicesServiceID(params *PatchV1ServicesServiceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ServicesServiceIDOK, error)
 
 	PostV1Services(params *PostV1ServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesCreated, error)
@@ -50,9 +56,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1ServicesServiceID deletes a service
+DeleteV1ServicesServiceID deletes a service
 
-  Deletes the service from FireHydrant.
+Deletes the service from FireHydrant.
 */
 func (a *Client) DeleteV1ServicesServiceID(params *DeleteV1ServicesServiceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ServicesServiceIDOK, error) {
 	// TODO: Validate the params before sending
@@ -91,9 +97,9 @@ func (a *Client) DeleteV1ServicesServiceID(params *DeleteV1ServicesServiceIDPara
 }
 
 /*
-  DeleteV1ServicesServiceIDServiceLinksRemoteID deletes a service link
+DeleteV1ServicesServiceIDServiceLinksRemoteID deletes a service link
 
-  Deletes a service link from FireHydrant.
+Deletes a service link from FireHydrant.
 */
 func (a *Client) DeleteV1ServicesServiceIDServiceLinksRemoteID(params *DeleteV1ServicesServiceIDServiceLinksRemoteIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ServicesServiceIDServiceLinksRemoteIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -132,9 +138,9 @@ func (a *Client) DeleteV1ServicesServiceIDServiceLinksRemoteID(params *DeleteV1S
 }
 
 /*
-  GetV1Services lists all services
+GetV1Services lists all services
 
-  List all of the services that have been added to the organiation.
+List all of the services that have been added to the organization.
 */
 func (a *Client) GetV1Services(params *GetV1ServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesOK, error) {
 	// TODO: Validate the params before sending
@@ -173,9 +179,9 @@ func (a *Client) GetV1Services(params *GetV1ServicesParams, authInfo runtime.Cli
 }
 
 /*
-  GetV1ServicesServiceID retrieves a single service
+GetV1ServicesServiceID retrieves a single service
 
-  Retrieves a single service by ID or Slug
+Retrieves a single service by ID
 */
 func (a *Client) GetV1ServicesServiceID(params *GetV1ServicesServiceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesServiceIDOK, error) {
 	// TODO: Validate the params before sending
@@ -214,11 +220,134 @@ func (a *Client) GetV1ServicesServiceID(params *GetV1ServicesServiceIDParams, au
 }
 
 /*
-  PatchV1ServicesServiceID updates a service
+GetV1ServicesServiceIDAvailableDownstreamDependencies retrieves all available downstream dependencies
 
-  Update a services attributes, you may also add or remove functionalities from the service as well.
+Retrieves all services that are available to be downstream dependencies
+*/
+func (a *Client) GetV1ServicesServiceIDAvailableDownstreamDependencies(params *GetV1ServicesServiceIDAvailableDownstreamDependenciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesServiceIDAvailableDownstreamDependenciesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1ServicesServiceIDAvailableDownstreamDependenciesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1ServicesServiceIdAvailableDownstreamDependencies",
+		Method:             "GET",
+		PathPattern:        "/v1/services/{service_id}/available_downstream_dependencies",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1ServicesServiceIDAvailableDownstreamDependenciesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1ServicesServiceIDAvailableDownstreamDependenciesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1ServicesServiceIdAvailableDownstreamDependencies: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1ServicesServiceIDAvailableUpstreamDependencies retrieves all available upstream dependencies
+
+Retrieves all services that are available to be upstream dependencies
+*/
+func (a *Client) GetV1ServicesServiceIDAvailableUpstreamDependencies(params *GetV1ServicesServiceIDAvailableUpstreamDependenciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesServiceIDAvailableUpstreamDependenciesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1ServicesServiceIDAvailableUpstreamDependenciesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1ServicesServiceIdAvailableUpstreamDependencies",
+		Method:             "GET",
+		PathPattern:        "/v1/services/{service_id}/available_upstream_dependencies",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1ServicesServiceIDAvailableUpstreamDependenciesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1ServicesServiceIDAvailableUpstreamDependenciesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1ServicesServiceIdAvailableUpstreamDependencies: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1ServicesServiceIDDependencies retrieves a service s dependencies
+
+Retrieves a service's dependencies
+*/
+func (a *Client) GetV1ServicesServiceIDDependencies(params *GetV1ServicesServiceIDDependenciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesServiceIDDependenciesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1ServicesServiceIDDependenciesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1ServicesServiceIdDependencies",
+		Method:             "GET",
+		PathPattern:        "/v1/services/{service_id}/dependencies",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1ServicesServiceIDDependenciesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1ServicesServiceIDDependenciesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1ServicesServiceIdDependencies: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+	PatchV1ServicesServiceID updates a service
+
+	Update a services attributes, you may also add or remove functionalities from the service as well.
+
 Note: You may not remove or add individual label key/value pairs. You must include the entire object to override label values.
-
 */
 func (a *Client) PatchV1ServicesServiceID(params *PatchV1ServicesServiceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ServicesServiceIDOK, error) {
 	// TODO: Validate the params before sending
@@ -257,9 +386,9 @@ func (a *Client) PatchV1ServicesServiceID(params *PatchV1ServicesServiceIDParams
 }
 
 /*
-  PostV1Services creates a service
+PostV1Services creates a service
 
-  Creates a service for the organization, you may also create or attach functionalities to the service on create.
+Creates a service for the organization, you may also create or attach functionalities to the service on create.
 */
 func (a *Client) PostV1Services(params *PostV1ServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesCreated, error) {
 	// TODO: Validate the params before sending
@@ -298,7 +427,9 @@ func (a *Client) PostV1Services(params *PostV1ServicesParams, authInfo runtime.C
 }
 
 /*
-  PostV1ServicesServiceIDChecklistResponseChecklistID post v1 services service Id checklist response checklist Id API
+PostV1ServicesServiceIDChecklistResponseChecklistID records a response for a checklist item
+
+Creates a response for a checklist item
 */
 func (a *Client) PostV1ServicesServiceIDChecklistResponseChecklistID(params *PostV1ServicesServiceIDChecklistResponseChecklistIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesServiceIDChecklistResponseChecklistIDCreated, error) {
 	// TODO: Validate the params before sending
@@ -337,9 +468,9 @@ func (a *Client) PostV1ServicesServiceIDChecklistResponseChecklistID(params *Pos
 }
 
 /*
-  PostV1ServicesServiceLinks bulks create services and service links
+PostV1ServicesServiceLinks bulks create services and service links
 
-  Creates a service with the appropriate integration for each external service ID passed
+Creates a service with the appropriate integration for each external service ID passed
 */
 func (a *Client) PostV1ServicesServiceLinks(params *PostV1ServicesServiceLinksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesServiceLinksCreated, error) {
 	// TODO: Validate the params before sending

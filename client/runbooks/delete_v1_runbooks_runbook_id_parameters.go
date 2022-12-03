@@ -53,10 +53,12 @@ func NewDeleteV1RunbooksRunbookIDParamsWithHTTPClient(client *http.Client) *Dele
 	}
 }
 
-/* DeleteV1RunbooksRunbookIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 runbooks runbook Id operation.
+/*
+DeleteV1RunbooksRunbookIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 runbooks runbook Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1RunbooksRunbookIDParams struct {
 

@@ -39,7 +39,8 @@ func NewGetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK() *GetV1Integ
 	return &GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK{}
 }
 
-/* GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK describes a response with status code 200, with default header values.
+/*
+GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK describes a response with status code 200, with default header values.
 
 Lists available space keys for the Confluence integration connection.
 */
@@ -47,9 +48,39 @@ type GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK struct {
 	Payload *models.SpaceKeyEntity
 }
 
+// IsSuccess returns true when this get v1 integrations confluence cloud connections Id space search o k response has a 2xx status code
+func (o *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 integrations confluence cloud connections Id space search o k response has a 3xx status code
+func (o *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 integrations confluence cloud connections Id space search o k response has a 4xx status code
+func (o *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 integrations confluence cloud connections Id space search o k response has a 5xx status code
+func (o *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 integrations confluence cloud connections Id space search o k response a status code equal to that given
+func (o *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK) Error() string {
 	return fmt.Sprintf("[GET /v1/integrations/confluence_cloud/connections/{id}/space/search][%d] getV1IntegrationsConfluenceCloudConnectionsIdSpaceSearchOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK) String() string {
+	return fmt.Sprintf("[GET /v1/integrations/confluence_cloud/connections/{id}/space/search][%d] getV1IntegrationsConfluenceCloudConnectionsIdSpaceSearchOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK) GetPayload() *models.SpaceKeyEntity {
 	return o.Payload
 }

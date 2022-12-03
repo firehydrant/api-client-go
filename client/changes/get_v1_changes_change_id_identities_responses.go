@@ -39,7 +39,8 @@ func NewGetV1ChangesChangeIDIdentitiesOK() *GetV1ChangesChangeIDIdentitiesOK {
 	return &GetV1ChangesChangeIDIdentitiesOK{}
 }
 
-/* GetV1ChangesChangeIDIdentitiesOK describes a response with status code 200, with default header values.
+/*
+GetV1ChangesChangeIDIdentitiesOK describes a response with status code 200, with default header values.
 
 Retrieve all identities for the change
 */
@@ -47,9 +48,39 @@ type GetV1ChangesChangeIDIdentitiesOK struct {
 	Payload *models.ChangeIdentityEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 changes change Id identities o k response has a 2xx status code
+func (o *GetV1ChangesChangeIDIdentitiesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 changes change Id identities o k response has a 3xx status code
+func (o *GetV1ChangesChangeIDIdentitiesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 changes change Id identities o k response has a 4xx status code
+func (o *GetV1ChangesChangeIDIdentitiesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 changes change Id identities o k response has a 5xx status code
+func (o *GetV1ChangesChangeIDIdentitiesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 changes change Id identities o k response a status code equal to that given
+func (o *GetV1ChangesChangeIDIdentitiesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1ChangesChangeIDIdentitiesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/changes/{change_id}/identities][%d] getV1ChangesChangeIdIdentitiesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1ChangesChangeIDIdentitiesOK) String() string {
+	return fmt.Sprintf("[GET /v1/changes/{change_id}/identities][%d] getV1ChangesChangeIdIdentitiesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1ChangesChangeIDIdentitiesOK) GetPayload() *models.ChangeIdentityEntityPaginated {
 	return o.Payload
 }

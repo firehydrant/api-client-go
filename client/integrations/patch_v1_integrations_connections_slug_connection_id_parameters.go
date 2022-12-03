@@ -53,10 +53,12 @@ func NewPatchV1IntegrationsConnectionsSlugConnectionIDParamsWithHTTPClient(clien
 	}
 }
 
-/* PatchV1IntegrationsConnectionsSlugConnectionIDParams contains all the parameters to send to the API endpoint
-   for the patch v1 integrations connections slug connection Id operation.
+/*
+PatchV1IntegrationsConnectionsSlugConnectionIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch v1 integrations connections slug connection Id operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchV1IntegrationsConnectionsSlugConnectionIDParams struct {
 

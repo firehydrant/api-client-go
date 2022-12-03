@@ -53,10 +53,12 @@ func NewGetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFi
 	}
 }
 
-/* GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDParams contains all the parameters to send to the API endpoint
-   for the get v1 ticketing projects ticketing project Id configuration options options for field Id operation.
+/*
+GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 ticketing projects ticketing project Id configuration options options for field Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDParams struct {
 

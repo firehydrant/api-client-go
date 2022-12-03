@@ -39,7 +39,8 @@ func NewGetV1ReleaseNotesReleaseNoteIDOK() *GetV1ReleaseNotesReleaseNoteIDOK {
 	return &GetV1ReleaseNotesReleaseNoteIDOK{}
 }
 
-/* GetV1ReleaseNotesReleaseNoteIDOK describes a response with status code 200, with default header values.
+/*
+GetV1ReleaseNotesReleaseNoteIDOK describes a response with status code 200, with default header values.
 
 Retrieve a single release note set
 */
@@ -47,9 +48,39 @@ type GetV1ReleaseNotesReleaseNoteIDOK struct {
 	Payload *models.ReleaseNoteEntity
 }
 
+// IsSuccess returns true when this get v1 release notes release note Id o k response has a 2xx status code
+func (o *GetV1ReleaseNotesReleaseNoteIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 release notes release note Id o k response has a 3xx status code
+func (o *GetV1ReleaseNotesReleaseNoteIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 release notes release note Id o k response has a 4xx status code
+func (o *GetV1ReleaseNotesReleaseNoteIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 release notes release note Id o k response has a 5xx status code
+func (o *GetV1ReleaseNotesReleaseNoteIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 release notes release note Id o k response a status code equal to that given
+func (o *GetV1ReleaseNotesReleaseNoteIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1ReleaseNotesReleaseNoteIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/release_notes/{release_note_id}][%d] getV1ReleaseNotesReleaseNoteIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1ReleaseNotesReleaseNoteIDOK) String() string {
+	return fmt.Sprintf("[GET /v1/release_notes/{release_note_id}][%d] getV1ReleaseNotesReleaseNoteIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1ReleaseNotesReleaseNoteIDOK) GetPayload() *models.ReleaseNoteEntity {
 	return o.Payload
 }

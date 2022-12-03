@@ -39,17 +39,48 @@ func NewGetV1IncidentsIncidentIDEventsOK() *GetV1IncidentsIncidentIDEventsOK {
 	return &GetV1IncidentsIncidentIDEventsOK{}
 }
 
-/* GetV1IncidentsIncidentIDEventsOK describes a response with status code 200, with default header values.
+/*
+GetV1IncidentsIncidentIDEventsOK describes a response with status code 200, with default header values.
 
-Retrieve the timeline for an incident
+List all events for an incident. An event is a timeline entry. This can be filtered with params to retrieve events of a certain type.
 */
 type GetV1IncidentsIncidentIDEventsOK struct {
 	Payload *models.IncidentEventEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 incidents incident Id events o k response has a 2xx status code
+func (o *GetV1IncidentsIncidentIDEventsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 incidents incident Id events o k response has a 3xx status code
+func (o *GetV1IncidentsIncidentIDEventsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 incidents incident Id events o k response has a 4xx status code
+func (o *GetV1IncidentsIncidentIDEventsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 incidents incident Id events o k response has a 5xx status code
+func (o *GetV1IncidentsIncidentIDEventsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 incidents incident Id events o k response a status code equal to that given
+func (o *GetV1IncidentsIncidentIDEventsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IncidentsIncidentIDEventsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/events][%d] getV1IncidentsIncidentIdEventsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IncidentsIncidentIDEventsOK) String() string {
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/events][%d] getV1IncidentsIncidentIdEventsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IncidentsIncidentIDEventsOK) GetPayload() *models.IncidentEventEntityPaginated {
 	return o.Payload
 }

@@ -39,7 +39,8 @@ func NewDeleteV1SeveritiesSeveritySlugOK() *DeleteV1SeveritiesSeveritySlugOK {
 	return &DeleteV1SeveritiesSeveritySlugOK{}
 }
 
-/* DeleteV1SeveritiesSeveritySlugOK describes a response with status code 200, with default header values.
+/*
+DeleteV1SeveritiesSeveritySlugOK describes a response with status code 200, with default header values.
 
 Delete a specific severity
 */
@@ -47,9 +48,39 @@ type DeleteV1SeveritiesSeveritySlugOK struct {
 	Payload *models.SeverityEntity
 }
 
+// IsSuccess returns true when this delete v1 severities severity slug o k response has a 2xx status code
+func (o *DeleteV1SeveritiesSeveritySlugOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 severities severity slug o k response has a 3xx status code
+func (o *DeleteV1SeveritiesSeveritySlugOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 severities severity slug o k response has a 4xx status code
+func (o *DeleteV1SeveritiesSeveritySlugOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 severities severity slug o k response has a 5xx status code
+func (o *DeleteV1SeveritiesSeveritySlugOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 severities severity slug o k response a status code equal to that given
+func (o *DeleteV1SeveritiesSeveritySlugOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteV1SeveritiesSeveritySlugOK) Error() string {
 	return fmt.Sprintf("[DELETE /v1/severities/{severity_slug}][%d] deleteV1SeveritiesSeveritySlugOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteV1SeveritiesSeveritySlugOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/severities/{severity_slug}][%d] deleteV1SeveritiesSeveritySlugOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteV1SeveritiesSeveritySlugOK) GetPayload() *models.SeverityEntity {
 	return o.Payload
 }

@@ -39,7 +39,8 @@ func NewPostV1RunbooksCreated() *PostV1RunbooksCreated {
 	return &PostV1RunbooksCreated{}
 }
 
-/* PostV1RunbooksCreated describes a response with status code 201, with default header values.
+/*
+PostV1RunbooksCreated describes a response with status code 201, with default header values.
 
 Create a new runbook for use with incidents.
 */
@@ -47,9 +48,39 @@ type PostV1RunbooksCreated struct {
 	Payload *models.RunbookEntity
 }
 
+// IsSuccess returns true when this post v1 runbooks created response has a 2xx status code
+func (o *PostV1RunbooksCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 runbooks created response has a 3xx status code
+func (o *PostV1RunbooksCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 runbooks created response has a 4xx status code
+func (o *PostV1RunbooksCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 runbooks created response has a 5xx status code
+func (o *PostV1RunbooksCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 runbooks created response a status code equal to that given
+func (o *PostV1RunbooksCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1RunbooksCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/runbooks][%d] postV1RunbooksCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1RunbooksCreated) String() string {
+	return fmt.Sprintf("[POST /v1/runbooks][%d] postV1RunbooksCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1RunbooksCreated) GetPayload() *models.RunbookEntity {
 	return o.Payload
 }

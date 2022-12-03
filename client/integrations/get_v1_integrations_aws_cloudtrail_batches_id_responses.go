@@ -39,7 +39,8 @@ func NewGetV1IntegrationsAwsCloudtrailBatchesIDOK() *GetV1IntegrationsAwsCloudtr
 	return &GetV1IntegrationsAwsCloudtrailBatchesIDOK{}
 }
 
-/* GetV1IntegrationsAwsCloudtrailBatchesIDOK describes a response with status code 200, with default header values.
+/*
+GetV1IntegrationsAwsCloudtrailBatchesIDOK describes a response with status code 200, with default header values.
 
 Retrieve a single CloudTrail batch.
 */
@@ -47,9 +48,39 @@ type GetV1IntegrationsAwsCloudtrailBatchesIDOK struct {
 	Payload *models.CloudtrailBatchEntity
 }
 
+// IsSuccess returns true when this get v1 integrations aws cloudtrail batches Id o k response has a 2xx status code
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 integrations aws cloudtrail batches Id o k response has a 3xx status code
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 integrations aws cloudtrail batches Id o k response has a 4xx status code
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 integrations aws cloudtrail batches Id o k response has a 5xx status code
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 integrations aws cloudtrail batches Id o k response a status code equal to that given
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IntegrationsAwsCloudtrailBatchesIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/integrations/aws/cloudtrail_batches/{id}][%d] getV1IntegrationsAwsCloudtrailBatchesIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDOK) String() string {
+	return fmt.Sprintf("[GET /v1/integrations/aws/cloudtrail_batches/{id}][%d] getV1IntegrationsAwsCloudtrailBatchesIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IntegrationsAwsCloudtrailBatchesIDOK) GetPayload() *models.CloudtrailBatchEntity {
 	return o.Payload
 }

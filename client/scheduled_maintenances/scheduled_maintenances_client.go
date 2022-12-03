@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1ScheduledMaintenancesScheduledMaintenanceID deletes a scheduled maintenance event
+DeleteV1ScheduledMaintenancesScheduledMaintenanceID deletes a scheduled maintenance event
 
-  Delete a scheduled maintenance event, preventing it from taking place.
+Delete a scheduled maintenance event, preventing it from taking place.
 */
 func (a *Client) DeleteV1ScheduledMaintenancesScheduledMaintenanceID(params *DeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ScheduledMaintenancesScheduledMaintenanceIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -85,9 +85,9 @@ func (a *Client) DeleteV1ScheduledMaintenancesScheduledMaintenanceID(params *Del
 }
 
 /*
-  GetV1ScheduledMaintenances lists scheduled maintenance events
+GetV1ScheduledMaintenances lists scheduled maintenance events
 
-  Lists all scheduled maintenance events
+Lists all scheduled maintenance events
 */
 func (a *Client) GetV1ScheduledMaintenances(params *GetV1ScheduledMaintenancesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ScheduledMaintenancesOK, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) GetV1ScheduledMaintenances(params *GetV1ScheduledMaintenancesPa
 }
 
 /*
-  GetV1ScheduledMaintenancesScheduledMaintenanceID retrieves a scheduled maintenance event
+GetV1ScheduledMaintenancesScheduledMaintenanceID retrieves a scheduled maintenance event
 
-  Fetch the details of a scheduled maintenance event.
+Fetch the details of a scheduled maintenance event.
 */
 func (a *Client) GetV1ScheduledMaintenancesScheduledMaintenanceID(params *GetV1ScheduledMaintenancesScheduledMaintenanceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ScheduledMaintenancesScheduledMaintenanceIDOK, error) {
 	// TODO: Validate the params before sending
@@ -167,9 +167,9 @@ func (a *Client) GetV1ScheduledMaintenancesScheduledMaintenanceID(params *GetV1S
 }
 
 /*
-  PatchV1ScheduledMaintenancesScheduledMaintenanceID updates a scheduled maintenance event
+PatchV1ScheduledMaintenancesScheduledMaintenanceID updates a scheduled maintenance event
 
-  Change the conditions of a scheduled maintenance event, including updating any status page announcements of changes.
+Change the conditions of a scheduled maintenance event, including updating any status page announcements of changes.
 */
 func (a *Client) PatchV1ScheduledMaintenancesScheduledMaintenanceID(params *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK, error) {
 	// TODO: Validate the params before sending
@@ -208,9 +208,9 @@ func (a *Client) PatchV1ScheduledMaintenancesScheduledMaintenanceID(params *Patc
 }
 
 /*
-  PostV1ScheduledMaintenances creates a scheduled maintenance event
+PostV1ScheduledMaintenances creates a scheduled maintenance event
 
-  Create a new scheduled maintenance event
+Create a new scheduled maintenance event
 */
 func (a *Client) PostV1ScheduledMaintenances(params *PostV1ScheduledMaintenancesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ScheduledMaintenancesCreated, error) {
 	// TODO: Validate the params before sending

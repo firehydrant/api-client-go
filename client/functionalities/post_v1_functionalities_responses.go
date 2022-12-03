@@ -39,7 +39,8 @@ func NewPostV1FunctionalitiesCreated() *PostV1FunctionalitiesCreated {
 	return &PostV1FunctionalitiesCreated{}
 }
 
-/* PostV1FunctionalitiesCreated describes a response with status code 201, with default header values.
+/*
+PostV1FunctionalitiesCreated describes a response with status code 201, with default header values.
 
 Creates a functionality for the organization
 */
@@ -47,9 +48,39 @@ type PostV1FunctionalitiesCreated struct {
 	Payload *models.FunctionalityEntity
 }
 
+// IsSuccess returns true when this post v1 functionalities created response has a 2xx status code
+func (o *PostV1FunctionalitiesCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 functionalities created response has a 3xx status code
+func (o *PostV1FunctionalitiesCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 functionalities created response has a 4xx status code
+func (o *PostV1FunctionalitiesCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 functionalities created response has a 5xx status code
+func (o *PostV1FunctionalitiesCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 functionalities created response a status code equal to that given
+func (o *PostV1FunctionalitiesCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1FunctionalitiesCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/functionalities][%d] postV1FunctionalitiesCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1FunctionalitiesCreated) String() string {
+	return fmt.Sprintf("[POST /v1/functionalities][%d] postV1FunctionalitiesCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1FunctionalitiesCreated) GetPayload() *models.FunctionalityEntity {
 	return o.Payload
 }

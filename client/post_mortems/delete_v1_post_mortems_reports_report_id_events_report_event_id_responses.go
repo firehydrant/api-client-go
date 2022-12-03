@@ -39,7 +39,8 @@ func NewDeleteV1PostMortemsReportsReportIDEventsReportEventIDOK() *DeleteV1PostM
 	return &DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK{}
 }
 
-/* DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK describes a response with status code 200, with default header values.
+/*
+DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK describes a response with status code 200, with default header values.
 
 Deletes an event by ID
 */
@@ -47,9 +48,39 @@ type DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK struct {
 	Payload *models.EventEntity
 }
 
+// IsSuccess returns true when this delete v1 post mortems reports report Id events report event Id o k response has a 2xx status code
+func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 post mortems reports report Id events report event Id o k response has a 3xx status code
+func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 post mortems reports report Id events report event Id o k response has a 4xx status code
+func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 post mortems reports report Id events report event Id o k response has a 5xx status code
+func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 post mortems reports report Id events report event Id o k response a status code equal to that given
+func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK) Error() string {
 	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/events/{report_event_id}][%d] deleteV1PostMortemsReportsReportIdEventsReportEventIdOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/events/{report_event_id}][%d] deleteV1PostMortemsReportsReportIdEventsReportEventIdOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK) GetPayload() *models.EventEntity {
 	return o.Payload
 }

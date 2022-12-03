@@ -52,10 +52,12 @@ func NewGetV1IntegrationsAwsCloudtrailBatchesIDParamsWithHTTPClient(client *http
 	}
 }
 
-/* GetV1IntegrationsAwsCloudtrailBatchesIDParams contains all the parameters to send to the API endpoint
-   for the get v1 integrations aws cloudtrail batches Id operation.
+/*
+GetV1IntegrationsAwsCloudtrailBatchesIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 integrations aws cloudtrail batches Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IntegrationsAwsCloudtrailBatchesIDParams struct {
 

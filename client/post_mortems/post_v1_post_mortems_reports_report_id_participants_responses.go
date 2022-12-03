@@ -29,12 +29,6 @@ func (o *PostV1PostMortemsReportsReportIDParticipantsReader) ReadResponse(respon
 			return nil, err
 		}
 		return result, nil
-	case 400:
-		result := NewPostV1PostMortemsReportsReportIDParticipantsBadRequest()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -45,56 +39,55 @@ func NewPostV1PostMortemsReportsReportIDParticipantsCreated() *PostV1PostMortems
 	return &PostV1PostMortemsReportsReportIDParticipantsCreated{}
 }
 
-/* PostV1PostMortemsReportsReportIDParticipantsCreated describes a response with status code 201, with default header values.
+/*
+PostV1PostMortemsReportsReportIDParticipantsCreated describes a response with status code 201, with default header values.
 
-Add a participant to the post mortem report
+Add a participant to the retrospective report
 */
 type PostV1PostMortemsReportsReportIDParticipantsCreated struct {
-	Payload *models.ParticipantEntity
+	Payload *models.ParticipantEntityPaginated
+}
+
+// IsSuccess returns true when this post v1 post mortems reports report Id participants created response has a 2xx status code
+func (o *PostV1PostMortemsReportsReportIDParticipantsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 post mortems reports report Id participants created response has a 3xx status code
+func (o *PostV1PostMortemsReportsReportIDParticipantsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 post mortems reports report Id participants created response has a 4xx status code
+func (o *PostV1PostMortemsReportsReportIDParticipantsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 post mortems reports report Id participants created response has a 5xx status code
+func (o *PostV1PostMortemsReportsReportIDParticipantsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 post mortems reports report Id participants created response a status code equal to that given
+func (o *PostV1PostMortemsReportsReportIDParticipantsCreated) IsCode(code int) bool {
+	return code == 201
 }
 
 func (o *PostV1PostMortemsReportsReportIDParticipantsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/participants][%d] postV1PostMortemsReportsReportIdParticipantsCreated  %+v", 201, o.Payload)
 }
-func (o *PostV1PostMortemsReportsReportIDParticipantsCreated) GetPayload() *models.ParticipantEntity {
+
+func (o *PostV1PostMortemsReportsReportIDParticipantsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/participants][%d] postV1PostMortemsReportsReportIdParticipantsCreated  %+v", 201, o.Payload)
+}
+
+func (o *PostV1PostMortemsReportsReportIDParticipantsCreated) GetPayload() *models.ParticipantEntityPaginated {
 	return o.Payload
 }
 
 func (o *PostV1PostMortemsReportsReportIDParticipantsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ParticipantEntity)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPostV1PostMortemsReportsReportIDParticipantsBadRequest creates a PostV1PostMortemsReportsReportIDParticipantsBadRequest with default headers values
-func NewPostV1PostMortemsReportsReportIDParticipantsBadRequest() *PostV1PostMortemsReportsReportIDParticipantsBadRequest {
-	return &PostV1PostMortemsReportsReportIDParticipantsBadRequest{}
-}
-
-/* PostV1PostMortemsReportsReportIDParticipantsBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
-type PostV1PostMortemsReportsReportIDParticipantsBadRequest struct {
-	Payload *models.ErrorEntity
-}
-
-func (o *PostV1PostMortemsReportsReportIDParticipantsBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/participants][%d] postV1PostMortemsReportsReportIdParticipantsBadRequest  %+v", 400, o.Payload)
-}
-func (o *PostV1PostMortemsReportsReportIDParticipantsBadRequest) GetPayload() *models.ErrorEntity {
-	return o.Payload
-}
-
-func (o *PostV1PostMortemsReportsReportIDParticipantsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ErrorEntity)
+	o.Payload = new(models.ParticipantEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

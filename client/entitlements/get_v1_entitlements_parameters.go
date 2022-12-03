@@ -52,10 +52,12 @@ func NewGetV1EntitlementsParamsWithHTTPClient(client *http.Client) *GetV1Entitle
 	}
 }
 
-/* GetV1EntitlementsParams contains all the parameters to send to the API endpoint
-   for the get v1 entitlements operation.
+/*
+GetV1EntitlementsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 entitlements operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1EntitlementsParams struct {
 

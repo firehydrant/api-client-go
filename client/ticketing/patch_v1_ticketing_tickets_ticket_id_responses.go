@@ -39,7 +39,8 @@ func NewPatchV1TicketingTicketsTicketIDOK() *PatchV1TicketingTicketsTicketIDOK {
 	return &PatchV1TicketingTicketsTicketIDOK{}
 }
 
-/* PatchV1TicketingTicketsTicketIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1TicketingTicketsTicketIDOK describes a response with status code 200, with default header values.
 
 Update a ticket's attributes
 */
@@ -47,9 +48,39 @@ type PatchV1TicketingTicketsTicketIDOK struct {
 	Payload *models.TicketEntity
 }
 
+// IsSuccess returns true when this patch v1 ticketing tickets ticket Id o k response has a 2xx status code
+func (o *PatchV1TicketingTicketsTicketIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 ticketing tickets ticket Id o k response has a 3xx status code
+func (o *PatchV1TicketingTicketsTicketIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 ticketing tickets ticket Id o k response has a 4xx status code
+func (o *PatchV1TicketingTicketsTicketIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 ticketing tickets ticket Id o k response has a 5xx status code
+func (o *PatchV1TicketingTicketsTicketIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 ticketing tickets ticket Id o k response a status code equal to that given
+func (o *PatchV1TicketingTicketsTicketIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1TicketingTicketsTicketIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/ticketing/tickets/{ticket_id}][%d] patchV1TicketingTicketsTicketIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1TicketingTicketsTicketIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/ticketing/tickets/{ticket_id}][%d] patchV1TicketingTicketsTicketIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1TicketingTicketsTicketIDOK) GetPayload() *models.TicketEntity {
 	return o.Payload
 }

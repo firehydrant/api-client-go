@@ -32,9 +32,9 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetV1MetricsIncidents(params *GetV1MetricsIncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsIncidentsOK, error)
 
-	GetV1MetricsRetrospectives(params *GetV1MetricsRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsRetrospectivesOK, error)
+	GetV1MetricsInfraTypeInfraID(params *GetV1MetricsInfraTypeInfraIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsInfraTypeInfraIDOK, error)
 
-	GetV1MetricsServicesServiceID(params *GetV1MetricsServicesServiceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsServicesServiceIDOK, error)
+	GetV1MetricsRetrospectives(params *GetV1MetricsRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsRetrospectivesOK, error)
 
 	GetV1MetricsUserInvolvements(params *GetV1MetricsUserInvolvementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsUserInvolvementsOK, error)
 
@@ -42,7 +42,9 @@ type ClientService interface {
 }
 
 /*
-  GetV1MetricsIncidents Returns a report with time bucketed analytics data
+GetV1MetricsIncidents lists incident metrics
+
+Returns a report with time bucketed analytics data
 */
 func (a *Client) GetV1MetricsIncidents(params *GetV1MetricsIncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsIncidentsOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +83,50 @@ func (a *Client) GetV1MetricsIncidents(params *GetV1MetricsIncidentsParams, auth
 }
 
 /*
-  GetV1MetricsRetrospectives Returns a report with retrospective analytics data
+GetV1MetricsInfraTypeInfraID lists infrastructure metrics
+
+Return metrics for a specific infrastructure record
+*/
+func (a *Client) GetV1MetricsInfraTypeInfraID(params *GetV1MetricsInfraTypeInfraIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsInfraTypeInfraIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1MetricsInfraTypeInfraIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1MetricsInfraTypeInfraId",
+		Method:             "GET",
+		PathPattern:        "/v1/metrics/{infra_type}/{infra_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1MetricsInfraTypeInfraIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1MetricsInfraTypeInfraIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1MetricsInfraTypeInfraId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1MetricsRetrospectives lists retrospective metrics
+
+Returns a report with retrospective analytics data
 */
 func (a *Client) GetV1MetricsRetrospectives(params *GetV1MetricsRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsRetrospectivesOK, error) {
 	// TODO: Validate the params before sending
@@ -120,46 +165,9 @@ func (a *Client) GetV1MetricsRetrospectives(params *GetV1MetricsRetrospectivesPa
 }
 
 /*
-  GetV1MetricsServicesServiceID Return metrics for a specific service
-*/
-func (a *Client) GetV1MetricsServicesServiceID(params *GetV1MetricsServicesServiceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsServicesServiceIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1MetricsServicesServiceIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1MetricsServicesServiceId",
-		Method:             "GET",
-		PathPattern:        "/v1/metrics/services/{service_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1MetricsServicesServiceIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
+GetV1MetricsUserInvolvements lists user metrics
 
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1MetricsServicesServiceIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1MetricsServicesServiceId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetV1MetricsUserInvolvements Returns a report with time bucketed analytics data
+Returns a report with time bucketed analytics data
 */
 func (a *Client) GetV1MetricsUserInvolvements(params *GetV1MetricsUserInvolvementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsUserInvolvementsOK, error) {
 	// TODO: Validate the params before sending

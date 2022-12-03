@@ -53,10 +53,12 @@ func NewGetV1TicketingTicketsParamsWithHTTPClient(client *http.Client) *GetV1Tic
 	}
 }
 
-/* GetV1TicketingTicketsParams contains all the parameters to send to the API endpoint
-   for the get v1 ticketing tickets operation.
+/*
+GetV1TicketingTicketsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 ticketing tickets operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1TicketingTicketsParams struct {
 
@@ -69,6 +71,18 @@ type GetV1TicketingTicketsParams struct {
 	//
 	// Format: int32
 	PerPage *int32
+
+	/* TagMatchStrategy.
+
+	   A matching strategy for the tags provided
+	*/
+	TagMatchStrategy *string
+
+	/* Tags.
+
+	   A comma separated list of tags
+	*/
+	Tags *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -145,6 +159,28 @@ func (o *GetV1TicketingTicketsParams) SetPerPage(perPage *int32) {
 	o.PerPage = perPage
 }
 
+// WithTagMatchStrategy adds the tagMatchStrategy to the get v1 ticketing tickets params
+func (o *GetV1TicketingTicketsParams) WithTagMatchStrategy(tagMatchStrategy *string) *GetV1TicketingTicketsParams {
+	o.SetTagMatchStrategy(tagMatchStrategy)
+	return o
+}
+
+// SetTagMatchStrategy adds the tagMatchStrategy to the get v1 ticketing tickets params
+func (o *GetV1TicketingTicketsParams) SetTagMatchStrategy(tagMatchStrategy *string) {
+	o.TagMatchStrategy = tagMatchStrategy
+}
+
+// WithTags adds the tags to the get v1 ticketing tickets params
+func (o *GetV1TicketingTicketsParams) WithTags(tags *string) *GetV1TicketingTicketsParams {
+	o.SetTags(tags)
+	return o
+}
+
+// SetTags adds the tags to the get v1 ticketing tickets params
+func (o *GetV1TicketingTicketsParams) SetTags(tags *string) {
+	o.Tags = tags
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1TicketingTicketsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -182,6 +218,40 @@ func (o *GetV1TicketingTicketsParams) WriteToRequest(r runtime.ClientRequest, re
 		if qPerPage != "" {
 
 			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.TagMatchStrategy != nil {
+
+		// query param tag_match_strategy
+		var qrTagMatchStrategy string
+
+		if o.TagMatchStrategy != nil {
+			qrTagMatchStrategy = *o.TagMatchStrategy
+		}
+		qTagMatchStrategy := qrTagMatchStrategy
+		if qTagMatchStrategy != "" {
+
+			if err := r.SetQueryParam("tag_match_strategy", qTagMatchStrategy); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Tags != nil {
+
+		// query param tags
+		var qrTags string
+
+		if o.Tags != nil {
+			qrTags = *o.Tags
+		}
+		qTags := qrTags
+		if qTags != "" {
+
+			if err := r.SetQueryParam("tags", qTags); err != nil {
 				return err
 			}
 		}

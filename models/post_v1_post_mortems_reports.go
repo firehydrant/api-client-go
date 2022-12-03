@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1PostMortemsReports Create a post mortem
+// PostV1PostMortemsReports Create a report
 //
 // swagger:model postV1PostMortemsReports
 type PostV1PostMortemsReports struct {

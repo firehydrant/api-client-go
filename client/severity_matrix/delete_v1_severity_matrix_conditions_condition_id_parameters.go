@@ -52,10 +52,12 @@ func NewDeleteV1SeverityMatrixConditionsConditionIDParamsWithHTTPClient(client *
 	}
 }
 
-/* DeleteV1SeverityMatrixConditionsConditionIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 severity matrix conditions condition Id operation.
+/*
+DeleteV1SeverityMatrixConditionsConditionIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 severity matrix conditions condition Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1SeverityMatrixConditionsConditionIDParams struct {
 

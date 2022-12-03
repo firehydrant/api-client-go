@@ -36,14 +36,44 @@ func NewPostV1ServicesServiceIDChecklistResponseChecklistIDCreated() *PostV1Serv
 	return &PostV1ServicesServiceIDChecklistResponseChecklistIDCreated{}
 }
 
-/* PostV1ServicesServiceIDChecklistResponseChecklistIDCreated describes a response with status code 201, with default header values.
+/*
+PostV1ServicesServiceIDChecklistResponseChecklistIDCreated describes a response with status code 201, with default header values.
 
-created ChecklistResponse
+Creates a response for a checklist item
 */
 type PostV1ServicesServiceIDChecklistResponseChecklistIDCreated struct {
 }
 
+// IsSuccess returns true when this post v1 services service Id checklist response checklist Id created response has a 2xx status code
+func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 services service Id checklist response checklist Id created response has a 3xx status code
+func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 services service Id checklist response checklist Id created response has a 4xx status code
+func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 services service Id checklist response checklist Id created response has a 5xx status code
+func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 services service Id checklist response checklist Id created response a status code equal to that given
+func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDCreated) Error() string {
+	return fmt.Sprintf("[POST /v1/services/{service_id}/checklist_response/{checklist_id}][%d] postV1ServicesServiceIdChecklistResponseChecklistIdCreated ", 201)
+}
+
+func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDCreated) String() string {
 	return fmt.Sprintf("[POST /v1/services/{service_id}/checklist_response/{checklist_id}][%d] postV1ServicesServiceIdChecklistResponseChecklistIdCreated ", 201)
 }
 

@@ -39,17 +39,48 @@ func NewGetV1PostMortemsReportsReportIDParticipantsOK() *GetV1PostMortemsReports
 	return &GetV1PostMortemsReportsReportIDParticipantsOK{}
 }
 
-/* GetV1PostMortemsReportsReportIDParticipantsOK describes a response with status code 200, with default header values.
+/*
+GetV1PostMortemsReportsReportIDParticipantsOK describes a response with status code 200, with default header values.
 
-List participants for a post mortem report
+List participants for a retrospective report
 */
 type GetV1PostMortemsReportsReportIDParticipantsOK struct {
 	Payload *models.ParticipantEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 post mortems reports report Id participants o k response has a 2xx status code
+func (o *GetV1PostMortemsReportsReportIDParticipantsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 post mortems reports report Id participants o k response has a 3xx status code
+func (o *GetV1PostMortemsReportsReportIDParticipantsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 post mortems reports report Id participants o k response has a 4xx status code
+func (o *GetV1PostMortemsReportsReportIDParticipantsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 post mortems reports report Id participants o k response has a 5xx status code
+func (o *GetV1PostMortemsReportsReportIDParticipantsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 post mortems reports report Id participants o k response a status code equal to that given
+func (o *GetV1PostMortemsReportsReportIDParticipantsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1PostMortemsReportsReportIDParticipantsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/post_mortems/reports/{report_id}/participants][%d] getV1PostMortemsReportsReportIdParticipantsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1PostMortemsReportsReportIDParticipantsOK) String() string {
+	return fmt.Sprintf("[GET /v1/post_mortems/reports/{report_id}/participants][%d] getV1PostMortemsReportsReportIdParticipantsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1PostMortemsReportsReportIDParticipantsOK) GetPayload() *models.ParticipantEntityPaginated {
 	return o.Payload
 }

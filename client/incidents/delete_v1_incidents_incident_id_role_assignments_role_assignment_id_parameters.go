@@ -52,10 +52,12 @@ func NewDeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDParamsWithHTTP
 	}
 }
 
-/* DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 incidents incident Id role assignments role assignment Id operation.
+/*
+DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 incidents incident Id role assignments role assignment Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDParams struct {
 

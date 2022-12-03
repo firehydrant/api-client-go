@@ -39,7 +39,8 @@ func NewGetV1WebhooksOK() *GetV1WebhooksOK {
 	return &GetV1WebhooksOK{}
 }
 
-/* GetV1WebhooksOK describes a response with status code 200, with default header values.
+/*
+GetV1WebhooksOK describes a response with status code 200, with default header values.
 
 Lists webhooks
 */
@@ -47,9 +48,39 @@ type GetV1WebhooksOK struct {
 	Payload *models.WebhookEntity
 }
 
+// IsSuccess returns true when this get v1 webhooks o k response has a 2xx status code
+func (o *GetV1WebhooksOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 webhooks o k response has a 3xx status code
+func (o *GetV1WebhooksOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 webhooks o k response has a 4xx status code
+func (o *GetV1WebhooksOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 webhooks o k response has a 5xx status code
+func (o *GetV1WebhooksOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 webhooks o k response a status code equal to that given
+func (o *GetV1WebhooksOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1WebhooksOK) Error() string {
 	return fmt.Sprintf("[GET /v1/webhooks][%d] getV1WebhooksOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1WebhooksOK) String() string {
+	return fmt.Sprintf("[GET /v1/webhooks][%d] getV1WebhooksOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1WebhooksOK) GetPayload() *models.WebhookEntity {
 	return o.Payload
 }

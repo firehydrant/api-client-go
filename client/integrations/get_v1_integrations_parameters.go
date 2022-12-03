@@ -52,10 +52,12 @@ func NewGetV1IntegrationsParamsWithHTTPClient(client *http.Client) *GetV1Integra
 	}
 }
 
-/* GetV1IntegrationsParams contains all the parameters to send to the API endpoint
-   for the get v1 integrations operation.
+/*
+GetV1IntegrationsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 integrations operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IntegrationsParams struct {
 	timeout    time.Duration

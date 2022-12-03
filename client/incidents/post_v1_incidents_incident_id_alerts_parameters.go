@@ -53,10 +53,12 @@ func NewPostV1IncidentsIncidentIDAlertsParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* PostV1IncidentsIncidentIDAlertsParams contains all the parameters to send to the API endpoint
-   for the post v1 incidents incident Id alerts operation.
+/*
+PostV1IncidentsIncidentIDAlertsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 incidents incident Id alerts operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1IncidentsIncidentIDAlertsParams struct {
 

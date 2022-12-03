@@ -54,10 +54,12 @@ func NewPatchV1PrioritiesPrioritySlugParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* PatchV1PrioritiesPrioritySlugParams contains all the parameters to send to the API endpoint
-   for the patch v1 priorities priority slug operation.
+/*
+PatchV1PrioritiesPrioritySlugParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch v1 priorities priority slug operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchV1PrioritiesPrioritySlugParams struct {
 

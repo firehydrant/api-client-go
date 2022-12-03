@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// TaskEntityPaginated Retrieve tasks for the incident
+// TaskEntityPaginated Retrieve a list of all tasks for a specific incident
 //
 // swagger:model TaskEntityPaginated
 type TaskEntityPaginated struct {

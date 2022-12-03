@@ -36,7 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetV1NoauthPing Simple endpoint to verify your API connection is working
+GetV1NoauthPing pings
+
+Simple endpoint to verify your API connection is working
 */
 func (a *Client) GetV1NoauthPing(params *GetV1NoauthPingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NoauthPingOK, error) {
 	// TODO: Validate the params before sending

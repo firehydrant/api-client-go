@@ -39,24 +39,55 @@ func NewGetV1FunctionalitiesOK() *GetV1FunctionalitiesOK {
 	return &GetV1FunctionalitiesOK{}
 }
 
-/* GetV1FunctionalitiesOK describes a response with status code 200, with default header values.
+/*
+GetV1FunctionalitiesOK describes a response with status code 200, with default header values.
 
 List all of the functionalities that have been added to the organiation
 */
 type GetV1FunctionalitiesOK struct {
-	Payload *models.FunctionalityEntity
+	Payload *models.FunctionalityEntityPaginated
+}
+
+// IsSuccess returns true when this get v1 functionalities o k response has a 2xx status code
+func (o *GetV1FunctionalitiesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 functionalities o k response has a 3xx status code
+func (o *GetV1FunctionalitiesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 functionalities o k response has a 4xx status code
+func (o *GetV1FunctionalitiesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 functionalities o k response has a 5xx status code
+func (o *GetV1FunctionalitiesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 functionalities o k response a status code equal to that given
+func (o *GetV1FunctionalitiesOK) IsCode(code int) bool {
+	return code == 200
 }
 
 func (o *GetV1FunctionalitiesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/functionalities][%d] getV1FunctionalitiesOK  %+v", 200, o.Payload)
 }
-func (o *GetV1FunctionalitiesOK) GetPayload() *models.FunctionalityEntity {
+
+func (o *GetV1FunctionalitiesOK) String() string {
+	return fmt.Sprintf("[GET /v1/functionalities][%d] getV1FunctionalitiesOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1FunctionalitiesOK) GetPayload() *models.FunctionalityEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1FunctionalitiesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.FunctionalityEntity)
+	o.Payload = new(models.FunctionalityEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

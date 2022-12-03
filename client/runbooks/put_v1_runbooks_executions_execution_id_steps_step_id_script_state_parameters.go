@@ -53,10 +53,12 @@ func NewPutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParamsWithHTTPCl
 	}
 }
 
-/* PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams contains all the parameters to send to the API endpoint
-   for the put v1 runbooks executions execution Id steps step Id script state operation.
+/*
+PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put v1 runbooks executions execution Id steps step Id script state operation.
+
+	Typically these are written to a http.Request.
 */
 type PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams struct {
 

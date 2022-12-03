@@ -54,10 +54,12 @@ func NewPostV1FunctionalitiesParamsWithHTTPClient(client *http.Client) *PostV1Fu
 	}
 }
 
-/* PostV1FunctionalitiesParams contains all the parameters to send to the API endpoint
-   for the post v1 functionalities operation.
+/*
+PostV1FunctionalitiesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 functionalities operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1FunctionalitiesParams struct {
 

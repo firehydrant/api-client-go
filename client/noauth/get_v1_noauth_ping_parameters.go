@@ -52,10 +52,12 @@ func NewGetV1NoauthPingParamsWithHTTPClient(client *http.Client) *GetV1NoauthPin
 	}
 }
 
-/* GetV1NoauthPingParams contains all the parameters to send to the API endpoint
-   for the get v1 noauth ping operation.
+/*
+GetV1NoauthPingParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 noauth ping operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1NoauthPingParams struct {
 	timeout    time.Duration

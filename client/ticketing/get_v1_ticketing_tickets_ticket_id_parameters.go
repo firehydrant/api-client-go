@@ -52,10 +52,12 @@ func NewGetV1TicketingTicketsTicketIDParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GetV1TicketingTicketsTicketIDParams contains all the parameters to send to the API endpoint
-   for the get v1 ticketing tickets ticket Id operation.
+/*
+GetV1TicketingTicketsTicketIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 ticketing tickets ticket Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1TicketingTicketsTicketIDParams struct {
 

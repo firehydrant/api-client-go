@@ -53,10 +53,12 @@ func NewPostV1IncidentTagsValidateParamsWithHTTPClient(client *http.Client) *Pos
 	}
 }
 
-/* PostV1IncidentTagsValidateParams contains all the parameters to send to the API endpoint
-   for the post v1 incident tags validate operation.
+/*
+PostV1IncidentTagsValidateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 incident tags validate operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1IncidentTagsValidateParams struct {
 

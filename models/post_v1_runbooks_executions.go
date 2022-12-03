@@ -14,16 +14,16 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1RunbooksExecutions post v1 runbooks executions
+// PostV1RunbooksExecutions Attaches a runbook to an incident and executes it
 //
 // swagger:model postV1RunbooksExecutions
 type PostV1RunbooksExecutions struct {
 
-	// execute for
+	// The incident to attach the runbook to. Format must be: `incident/${incidentId}`
 	// Required: true
 	ExecuteFor *string `json:"execute_for"`
 
-	// runbook id
+	// ID of runbook to attach
 	// Required: true
 	RunbookID *string `json:"runbook_id"`
 }

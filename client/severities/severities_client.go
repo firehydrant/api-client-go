@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1SeveritiesSeveritySlug deletes a specific severity
+DeleteV1SeveritiesSeveritySlug deletes a specific severity
 
-  Delete a specific severity
+Delete a specific severity
 */
 func (a *Client) DeleteV1SeveritiesSeveritySlug(params *DeleteV1SeveritiesSeveritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SeveritiesSeveritySlugOK, error) {
 	// TODO: Validate the params before sending
@@ -85,9 +85,9 @@ func (a *Client) DeleteV1SeveritiesSeveritySlug(params *DeleteV1SeveritiesSeveri
 }
 
 /*
-  GetV1Severities lists severities
+GetV1Severities lists severities
 
-  Lists severities
+Lists severities
 */
 func (a *Client) GetV1Severities(params *GetV1SeveritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeveritiesOK, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) GetV1Severities(params *GetV1SeveritiesParams, authInfo runtime
 }
 
 /*
-  GetV1SeveritiesSeveritySlug retrieves a specific severity
+GetV1SeveritiesSeveritySlug retrieves a specific severity
 
-  Retrieve a specific severity
+Retrieve a specific severity
 */
 func (a *Client) GetV1SeveritiesSeveritySlug(params *GetV1SeveritiesSeveritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeveritiesSeveritySlugOK, error) {
 	// TODO: Validate the params before sending
@@ -167,9 +167,9 @@ func (a *Client) GetV1SeveritiesSeveritySlug(params *GetV1SeveritiesSeveritySlug
 }
 
 /*
-  PatchV1SeveritiesSeveritySlug updates a specific severity
+PatchV1SeveritiesSeveritySlug updates a specific severity
 
-  Update a specific severity
+Update a specific severity
 */
 func (a *Client) PatchV1SeveritiesSeveritySlug(params *PatchV1SeveritiesSeveritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeveritiesSeveritySlugOK, error) {
 	// TODO: Validate the params before sending
@@ -208,9 +208,9 @@ func (a *Client) PatchV1SeveritiesSeveritySlug(params *PatchV1SeveritiesSeverity
 }
 
 /*
-  PostV1Severities creates severity
+PostV1Severities creates severity
 
-  Create a new severity
+Create a new severity
 */
 func (a *Client) PostV1Severities(params *PostV1SeveritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SeveritiesCreated, error) {
 	// TODO: Validate the params before sending

@@ -53,10 +53,12 @@ func NewGetV1ChangesChangeIDIdentitiesParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetV1ChangesChangeIDIdentitiesParams contains all the parameters to send to the API endpoint
-   for the get v1 changes change Id identities operation.
+/*
+GetV1ChangesChangeIDIdentitiesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 changes change Id identities operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1ChangesChangeIDIdentitiesParams struct {
 

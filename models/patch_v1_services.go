@@ -19,12 +19,14 @@ import (
 // PatchV1Services Update a services attributes, you may also add or remove functionalities from the service as well.
 // Note: You may not remove or add individual label key/value pairs. You must include the entire object to override label values.
 //
-//
 // swagger:model patchV1Services
 type PatchV1Services struct {
 
 	// alert on add
 	AlertOnAdd bool `json:"alert_on_add,omitempty"`
+
+	// auto add responding team
+	AutoAddRespondingTeam bool `json:"auto_add_responding_team,omitempty"`
 
 	// Array of checklist IDs to attach to the service
 	Checklists []*PatchV1ServicesChecklistsItems0 `json:"checklists"`
@@ -640,6 +642,9 @@ type PatchV1ServicesLinksItems0 struct {
 	// Short name used to display and identify this link
 	// Required: true
 	Name *string `json:"name"`
+
+	// If you are trying to remove a link, set this to 'true'
+	Remove bool `json:"remove,omitempty"`
 }
 
 // Validate validates this patch v1 services links items0

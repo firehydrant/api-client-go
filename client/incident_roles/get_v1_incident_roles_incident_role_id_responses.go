@@ -39,17 +39,48 @@ func NewGetV1IncidentRolesIncidentRoleIDOK() *GetV1IncidentRolesIncidentRoleIDOK
 	return &GetV1IncidentRolesIncidentRoleIDOK{}
 }
 
-/* GetV1IncidentRolesIncidentRoleIDOK describes a response with status code 200, with default header values.
+/*
+GetV1IncidentRolesIncidentRoleIDOK describes a response with status code 200, with default header values.
 
-Retrieve an incident role
+Retrieve a single incident role from its ID
 */
 type GetV1IncidentRolesIncidentRoleIDOK struct {
 	Payload *models.IncidentRoleEntity
 }
 
+// IsSuccess returns true when this get v1 incident roles incident role Id o k response has a 2xx status code
+func (o *GetV1IncidentRolesIncidentRoleIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 incident roles incident role Id o k response has a 3xx status code
+func (o *GetV1IncidentRolesIncidentRoleIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 incident roles incident role Id o k response has a 4xx status code
+func (o *GetV1IncidentRolesIncidentRoleIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 incident roles incident role Id o k response has a 5xx status code
+func (o *GetV1IncidentRolesIncidentRoleIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 incident roles incident role Id o k response a status code equal to that given
+func (o *GetV1IncidentRolesIncidentRoleIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IncidentRolesIncidentRoleIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incident_roles/{incident_role_id}][%d] getV1IncidentRolesIncidentRoleIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IncidentRolesIncidentRoleIDOK) String() string {
+	return fmt.Sprintf("[GET /v1/incident_roles/{incident_role_id}][%d] getV1IncidentRolesIncidentRoleIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IncidentRolesIncidentRoleIDOK) GetPayload() *models.IncidentRoleEntity {
 	return o.Payload
 }

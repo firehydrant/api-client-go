@@ -14,7 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPatchV1IncidentsIncidentIDTasksTaskIDParams creates a new PatchV1IncidentsIncidentIDTasksTaskIDParams object,
@@ -53,23 +54,20 @@ func NewPatchV1IncidentsIncidentIDTasksTaskIDParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* PatchV1IncidentsIncidentIDTasksTaskIDParams contains all the parameters to send to the API endpoint
-   for the patch v1 incidents incident Id tasks task Id operation.
+/*
+PatchV1IncidentsIncidentIDTasksTaskIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch v1 incidents incident Id tasks task Id operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchV1IncidentsIncidentIDTasksTaskIDParams struct {
 
+	// V1IncidentsIncidentIDTasks.
+	V1IncidentsIncidentIDTasks *models.PatchV1IncidentsIncidentIDTasks
+
 	// IncidentID.
 	IncidentID string
-
-	// Position.
-	//
-	// Format: int32
-	Position *int32
-
-	// State.
-	State *string
 
 	// TaskID.
 	TaskID string
@@ -127,6 +125,17 @@ func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetHTTPClient(client *http
 	o.HTTPClient = client
 }
 
+// WithV1IncidentsIncidentIDTasks adds the v1IncidentsIncidentIDTasks to the patch v1 incidents incident Id tasks task Id params
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WithV1IncidentsIncidentIDTasks(v1IncidentsIncidentIDTasks *models.PatchV1IncidentsIncidentIDTasks) *PatchV1IncidentsIncidentIDTasksTaskIDParams {
+	o.SetV1IncidentsIncidentIDTasks(v1IncidentsIncidentIDTasks)
+	return o
+}
+
+// SetV1IncidentsIncidentIDTasks adds the v1IncidentsIncidentIdTasks to the patch v1 incidents incident Id tasks task Id params
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetV1IncidentsIncidentIDTasks(v1IncidentsIncidentIDTasks *models.PatchV1IncidentsIncidentIDTasks) {
+	o.V1IncidentsIncidentIDTasks = v1IncidentsIncidentIDTasks
+}
+
 // WithIncidentID adds the incidentID to the patch v1 incidents incident Id tasks task Id params
 func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WithIncidentID(incidentID string) *PatchV1IncidentsIncidentIDTasksTaskIDParams {
 	o.SetIncidentID(incidentID)
@@ -136,28 +145,6 @@ func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WithIncidentID(incidentID 
 // SetIncidentID adds the incidentId to the patch v1 incidents incident Id tasks task Id params
 func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
-}
-
-// WithPosition adds the position to the patch v1 incidents incident Id tasks task Id params
-func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WithPosition(position *int32) *PatchV1IncidentsIncidentIDTasksTaskIDParams {
-	o.SetPosition(position)
-	return o
-}
-
-// SetPosition adds the position to the patch v1 incidents incident Id tasks task Id params
-func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetPosition(position *int32) {
-	o.Position = position
-}
-
-// WithState adds the state to the patch v1 incidents incident Id tasks task Id params
-func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WithState(state *string) *PatchV1IncidentsIncidentIDTasksTaskIDParams {
-	o.SetState(state)
-	return o
-}
-
-// SetState adds the state to the patch v1 incidents incident Id tasks task Id params
-func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetState(state *string) {
-	o.State = state
 }
 
 // WithTaskID adds the taskID to the patch v1 incidents incident Id tasks task Id params
@@ -178,40 +165,15 @@ func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WriteToRequest(r runtime.C
 		return err
 	}
 	var res []error
+	if o.V1IncidentsIncidentIDTasks != nil {
+		if err := r.SetBodyParam(o.V1IncidentsIncidentIDTasks); err != nil {
+			return err
+		}
+	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
-	}
-
-	if o.Position != nil {
-
-		// form param position
-		var frPosition int32
-		if o.Position != nil {
-			frPosition = *o.Position
-		}
-		fPosition := swag.FormatInt32(frPosition)
-		if fPosition != "" {
-			if err := r.SetFormParam("position", fPosition); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.State != nil {
-
-		// form param state
-		var frState string
-		if o.State != nil {
-			frState = *o.State
-		}
-		fState := frState
-		if fState != "" {
-			if err := r.SetFormParam("state", fState); err != nil {
-				return err
-			}
-		}
 	}
 
 	// path param task_id

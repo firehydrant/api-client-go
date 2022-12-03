@@ -39,7 +39,8 @@ func NewPostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCr
 	return &PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated{}
 }
 
-/* PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated describes a response with status code 201, with default header values.
+/*
+PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated describes a response with status code 201, with default header values.
 
 Creates configuration for a ticketing project
 */
@@ -47,9 +48,39 @@ type PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreat
 	Payload *models.ProjectConfigEntity
 }
 
+// IsSuccess returns true when this post v1 ticketing projects ticketing project Id provider project configurations created response has a 2xx status code
+func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 ticketing projects ticketing project Id provider project configurations created response has a 3xx status code
+func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 ticketing projects ticketing project Id provider project configurations created response has a 4xx status code
+func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 ticketing projects ticketing project Id provider project configurations created response has a 5xx status code
+func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 ticketing projects ticketing project Id provider project configurations created response a status code equal to that given
+func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/ticketing/projects/{ticketing_project_id}/provider_project_configurations][%d] postV1TicketingProjectsTicketingProjectIdProviderProjectConfigurationsCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/ticketing/projects/{ticketing_project_id}/provider_project_configurations][%d] postV1TicketingProjectsTicketingProjectIdProviderProjectConfigurationsCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated) GetPayload() *models.ProjectConfigEntity {
 	return o.Payload
 }

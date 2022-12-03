@@ -39,7 +39,8 @@ func NewPutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK() *PutV1Runbo
 	return &PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK{}
 }
 
-/* PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK describes a response with status code 200, with default header values.
+/*
+PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK describes a response with status code 200, with default header values.
 
 Updates the execution's step.
 */
@@ -47,9 +48,39 @@ type PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK struct {
 	Payload *models.ExecutionEntity
 }
 
+// IsSuccess returns true when this put v1 runbooks executions execution Id steps step Id script state o k response has a 2xx status code
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put v1 runbooks executions execution Id steps step Id script state o k response has a 3xx status code
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put v1 runbooks executions execution Id steps step Id script state o k response has a 4xx status code
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put v1 runbooks executions execution Id steps step Id script state o k response has a 5xx status code
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put v1 runbooks executions execution Id steps step Id script state o k response a status code equal to that given
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK) Error() string {
 	return fmt.Sprintf("[PUT /v1/runbooks/executions/{execution_id}/steps/{step_id}/script/{state}][%d] putV1RunbooksExecutionsExecutionIdStepsStepIdScriptStateOK  %+v", 200, o.Payload)
 }
+
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK) String() string {
+	return fmt.Sprintf("[PUT /v1/runbooks/executions/{execution_id}/steps/{step_id}/script/{state}][%d] putV1RunbooksExecutionsExecutionIdStepsStepIdScriptStateOK  %+v", 200, o.Payload)
+}
+
 func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK) GetPayload() *models.ExecutionEntity {
 	return o.Payload
 }

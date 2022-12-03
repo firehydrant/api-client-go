@@ -39,7 +39,8 @@ func NewPatchV1ChangesEventsChangeEventIDOK() *PatchV1ChangesEventsChangeEventID
 	return &PatchV1ChangesEventsChangeEventIDOK{}
 }
 
-/* PatchV1ChangesEventsChangeEventIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1ChangesEventsChangeEventIDOK describes a response with status code 200, with default header values.
 
 Update a change event
 */
@@ -47,9 +48,39 @@ type PatchV1ChangesEventsChangeEventIDOK struct {
 	Payload *models.ChangeEventEntity
 }
 
+// IsSuccess returns true when this patch v1 changes events change event Id o k response has a 2xx status code
+func (o *PatchV1ChangesEventsChangeEventIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 changes events change event Id o k response has a 3xx status code
+func (o *PatchV1ChangesEventsChangeEventIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 changes events change event Id o k response has a 4xx status code
+func (o *PatchV1ChangesEventsChangeEventIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 changes events change event Id o k response has a 5xx status code
+func (o *PatchV1ChangesEventsChangeEventIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 changes events change event Id o k response a status code equal to that given
+func (o *PatchV1ChangesEventsChangeEventIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1ChangesEventsChangeEventIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/changes/events/{change_event_id}][%d] patchV1ChangesEventsChangeEventIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1ChangesEventsChangeEventIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/changes/events/{change_event_id}][%d] patchV1ChangesEventsChangeEventIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1ChangesEventsChangeEventIDOK) GetPayload() *models.ChangeEventEntity {
 	return o.Payload
 }

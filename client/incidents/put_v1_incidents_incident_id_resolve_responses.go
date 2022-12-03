@@ -39,17 +39,48 @@ func NewPutV1IncidentsIncidentIDResolveOK() *PutV1IncidentsIncidentIDResolveOK {
 	return &PutV1IncidentsIncidentIDResolveOK{}
 }
 
-/* PutV1IncidentsIncidentIDResolveOK describes a response with status code 200, with default header values.
+/*
+PutV1IncidentsIncidentIDResolveOK describes a response with status code 200, with default header values.
 
-Resolve an active incident
+Resolves a currently active incident
 */
 type PutV1IncidentsIncidentIDResolveOK struct {
 	Payload *models.IncidentEntity
 }
 
+// IsSuccess returns true when this put v1 incidents incident Id resolve o k response has a 2xx status code
+func (o *PutV1IncidentsIncidentIDResolveOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put v1 incidents incident Id resolve o k response has a 3xx status code
+func (o *PutV1IncidentsIncidentIDResolveOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put v1 incidents incident Id resolve o k response has a 4xx status code
+func (o *PutV1IncidentsIncidentIDResolveOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put v1 incidents incident Id resolve o k response has a 5xx status code
+func (o *PutV1IncidentsIncidentIDResolveOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put v1 incidents incident Id resolve o k response a status code equal to that given
+func (o *PutV1IncidentsIncidentIDResolveOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutV1IncidentsIncidentIDResolveOK) Error() string {
 	return fmt.Sprintf("[PUT /v1/incidents/{incident_id}/resolve][%d] putV1IncidentsIncidentIdResolveOK  %+v", 200, o.Payload)
 }
+
+func (o *PutV1IncidentsIncidentIDResolveOK) String() string {
+	return fmt.Sprintf("[PUT /v1/incidents/{incident_id}/resolve][%d] putV1IncidentsIncidentIdResolveOK  %+v", 200, o.Payload)
+}
+
 func (o *PutV1IncidentsIncidentIDResolveOK) GetPayload() *models.IncidentEntity {
 	return o.Payload
 }

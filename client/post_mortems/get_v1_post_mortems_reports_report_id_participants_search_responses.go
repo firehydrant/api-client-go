@@ -39,7 +39,8 @@ func NewGetV1PostMortemsReportsReportIDParticipantsSearchOK() *GetV1PostMortemsR
 	return &GetV1PostMortemsReportsReportIDParticipantsSearchOK{}
 }
 
-/* GetV1PostMortemsReportsReportIDParticipantsSearchOK describes a response with status code 200, with default header values.
+/*
+GetV1PostMortemsReportsReportIDParticipantsSearchOK describes a response with status code 200, with default header values.
 
 List possible participants based on name, includes users and teams
 */
@@ -47,9 +48,39 @@ type GetV1PostMortemsReportsReportIDParticipantsSearchOK struct {
 	Payload *models.ParticipantSearchEntity
 }
 
+// IsSuccess returns true when this get v1 post mortems reports report Id participants search o k response has a 2xx status code
+func (o *GetV1PostMortemsReportsReportIDParticipantsSearchOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 post mortems reports report Id participants search o k response has a 3xx status code
+func (o *GetV1PostMortemsReportsReportIDParticipantsSearchOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 post mortems reports report Id participants search o k response has a 4xx status code
+func (o *GetV1PostMortemsReportsReportIDParticipantsSearchOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 post mortems reports report Id participants search o k response has a 5xx status code
+func (o *GetV1PostMortemsReportsReportIDParticipantsSearchOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 post mortems reports report Id participants search o k response a status code equal to that given
+func (o *GetV1PostMortemsReportsReportIDParticipantsSearchOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1PostMortemsReportsReportIDParticipantsSearchOK) Error() string {
 	return fmt.Sprintf("[GET /v1/post_mortems/reports/{report_id}/participants/search][%d] getV1PostMortemsReportsReportIdParticipantsSearchOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1PostMortemsReportsReportIDParticipantsSearchOK) String() string {
+	return fmt.Sprintf("[GET /v1/post_mortems/reports/{report_id}/participants/search][%d] getV1PostMortemsReportsReportIdParticipantsSearchOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1PostMortemsReportsReportIDParticipantsSearchOK) GetPayload() *models.ParticipantSearchEntity {
 	return o.Payload
 }

@@ -38,7 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetV1IncidentTags List tags that are used on incidents
+GetV1IncidentTags lists all incident tags
+
+List all of the incident tags in the organization
 */
 func (a *Client) GetV1IncidentTags(params *GetV1IncidentTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentTagsOK, error) {
 	// TODO: Validate the params before sending
@@ -77,7 +79,9 @@ func (a *Client) GetV1IncidentTags(params *GetV1IncidentTagsParams, authInfo run
 }
 
 /*
-  PostV1IncidentTagsValidate Validate the format of a list of tags
+PostV1IncidentTagsValidate validates a list of tags
+
+Validate the format of a list of tags
 */
 func (a *Client) PostV1IncidentTagsValidate(params *PostV1IncidentTagsValidateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentTagsValidateCreated, error) {
 	// TODO: Validate the params before sending

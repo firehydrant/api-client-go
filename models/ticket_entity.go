@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -19,10 +20,13 @@ import (
 type TicketEntity struct {
 
 	// assignees
-	Assignees *AuthorEntity `json:"assignees,omitempty"`
+	Assignees []*AuthorEntity `json:"assignees"`
 
 	// attachments
 	Attachments []interface{} `json:"attachments"`
+
+	// created at
+	CreatedAt string `json:"created_at,omitempty"`
 
 	// created by
 	CreatedBy *AuthorEntity `json:"created_by,omitempty"`
@@ -33,14 +37,23 @@ type TicketEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
+	// link
+	Link *LinkEntity `json:"link,omitempty"`
+
 	// state
 	State string `json:"state,omitempty"`
 
 	// summary
 	Summary string `json:"summary,omitempty"`
 
+	// tag list
+	TagList []string `json:"tag_list"`
+
 	// type
 	Type string `json:"type,omitempty"`
+
+	// updated at
+	UpdatedAt string `json:"updated_at,omitempty"`
 }
 
 // Validate validates this ticket entity
@@ -55,6 +68,10 @@ func (m *TicketEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateLink(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -66,15 +83,22 @@ func (m *TicketEntity) validateAssignees(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if m.Assignees != nil {
-		if err := m.Assignees.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("assignees")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("assignees")
-			}
-			return err
+	for i := 0; i < len(m.Assignees); i++ {
+		if swag.IsZero(m.Assignees[i]) { // not required
+			continue
 		}
+
+		if m.Assignees[i] != nil {
+			if err := m.Assignees[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("assignees" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("assignees" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -99,6 +123,25 @@ func (m *TicketEntity) validateCreatedBy(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *TicketEntity) validateLink(formats strfmt.Registry) error {
+	if swag.IsZero(m.Link) { // not required
+		return nil
+	}
+
+	if m.Link != nil {
+		if err := m.Link.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("link")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("link")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this ticket entity based on the context it is used
 func (m *TicketEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -111,6 +154,10 @@ func (m *TicketEntity) ContextValidate(ctx context.Context, formats strfmt.Regis
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateLink(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -119,15 +166,19 @@ func (m *TicketEntity) ContextValidate(ctx context.Context, formats strfmt.Regis
 
 func (m *TicketEntity) contextValidateAssignees(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Assignees != nil {
-		if err := m.Assignees.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("assignees")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("assignees")
+	for i := 0; i < len(m.Assignees); i++ {
+
+		if m.Assignees[i] != nil {
+			if err := m.Assignees[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("assignees" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("assignees" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil
@@ -141,6 +192,22 @@ func (m *TicketEntity) contextValidateCreatedBy(ctx context.Context, formats str
 				return ve.ValidateName("created_by")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("created_by")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *TicketEntity) contextValidateLink(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Link != nil {
+		if err := m.Link.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("link")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("link")
 			}
 			return err
 		}

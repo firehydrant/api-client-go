@@ -39,7 +39,8 @@ func NewPostV1PrioritiesCreated() *PostV1PrioritiesCreated {
 	return &PostV1PrioritiesCreated{}
 }
 
-/* PostV1PrioritiesCreated describes a response with status code 201, with default header values.
+/*
+PostV1PrioritiesCreated describes a response with status code 201, with default header values.
 
 Create a new priority
 */
@@ -47,9 +48,39 @@ type PostV1PrioritiesCreated struct {
 	Payload *models.PriorityEntity
 }
 
+// IsSuccess returns true when this post v1 priorities created response has a 2xx status code
+func (o *PostV1PrioritiesCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 priorities created response has a 3xx status code
+func (o *PostV1PrioritiesCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 priorities created response has a 4xx status code
+func (o *PostV1PrioritiesCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 priorities created response has a 5xx status code
+func (o *PostV1PrioritiesCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 priorities created response a status code equal to that given
+func (o *PostV1PrioritiesCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1PrioritiesCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/priorities][%d] postV1PrioritiesCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1PrioritiesCreated) String() string {
+	return fmt.Sprintf("[POST /v1/priorities][%d] postV1PrioritiesCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1PrioritiesCreated) GetPayload() *models.PriorityEntity {
 	return o.Payload
 }

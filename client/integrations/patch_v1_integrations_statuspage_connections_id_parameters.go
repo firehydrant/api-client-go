@@ -54,10 +54,12 @@ func NewPatchV1IntegrationsStatuspageConnectionsIDParamsWithHTTPClient(client *h
 	}
 }
 
-/* PatchV1IntegrationsStatuspageConnectionsIDParams contains all the parameters to send to the API endpoint
-   for the patch v1 integrations statuspage connections Id operation.
+/*
+PatchV1IntegrationsStatuspageConnectionsIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch v1 integrations statuspage connections Id operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchV1IntegrationsStatuspageConnectionsIDParams struct {
 

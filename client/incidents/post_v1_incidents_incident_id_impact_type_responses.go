@@ -45,17 +45,48 @@ func NewPostV1IncidentsIncidentIDImpactTypeCreated() *PostV1IncidentsIncidentIDI
 	return &PostV1IncidentsIncidentIDImpactTypeCreated{}
 }
 
-/* PostV1IncidentsIncidentIDImpactTypeCreated describes a response with status code 201, with default header values.
+/*
+PostV1IncidentsIncidentIDImpactTypeCreated describes a response with status code 201, with default header values.
 
-Add a piece of infrastructure to an incident as impact
+Add impacted infrastructure to an incident
 */
 type PostV1IncidentsIncidentIDImpactTypeCreated struct {
 	Payload *models.IncidentImpactEntity
 }
 
+// IsSuccess returns true when this post v1 incidents incident Id impact type created response has a 2xx status code
+func (o *PostV1IncidentsIncidentIDImpactTypeCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 incidents incident Id impact type created response has a 3xx status code
+func (o *PostV1IncidentsIncidentIDImpactTypeCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 incidents incident Id impact type created response has a 4xx status code
+func (o *PostV1IncidentsIncidentIDImpactTypeCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 incidents incident Id impact type created response has a 5xx status code
+func (o *PostV1IncidentsIncidentIDImpactTypeCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 incidents incident Id impact type created response a status code equal to that given
+func (o *PostV1IncidentsIncidentIDImpactTypeCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1IncidentsIncidentIDImpactTypeCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/impact/{type}][%d] postV1IncidentsIncidentIdImpactTypeCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1IncidentsIncidentIDImpactTypeCreated) String() string {
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/impact/{type}][%d] postV1IncidentsIncidentIdImpactTypeCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1IncidentsIncidentIDImpactTypeCreated) GetPayload() *models.IncidentImpactEntity {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewPostV1IncidentsIncidentIDImpactTypeBadRequest() *PostV1IncidentsIncident
 	return &PostV1IncidentsIncidentIDImpactTypeBadRequest{}
 }
 
-/* PostV1IncidentsIncidentIDImpactTypeBadRequest describes a response with status code 400, with default header values.
+/*
+PostV1IncidentsIncidentIDImpactTypeBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -85,9 +117,39 @@ type PostV1IncidentsIncidentIDImpactTypeBadRequest struct {
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this post v1 incidents incident Id impact type bad request response has a 2xx status code
+func (o *PostV1IncidentsIncidentIDImpactTypeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post v1 incidents incident Id impact type bad request response has a 3xx status code
+func (o *PostV1IncidentsIncidentIDImpactTypeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 incidents incident Id impact type bad request response has a 4xx status code
+func (o *PostV1IncidentsIncidentIDImpactTypeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post v1 incidents incident Id impact type bad request response has a 5xx status code
+func (o *PostV1IncidentsIncidentIDImpactTypeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 incidents incident Id impact type bad request response a status code equal to that given
+func (o *PostV1IncidentsIncidentIDImpactTypeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PostV1IncidentsIncidentIDImpactTypeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/impact/{type}][%d] postV1IncidentsIncidentIdImpactTypeBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PostV1IncidentsIncidentIDImpactTypeBadRequest) String() string {
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/impact/{type}][%d] postV1IncidentsIncidentIdImpactTypeBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PostV1IncidentsIncidentIDImpactTypeBadRequest) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }

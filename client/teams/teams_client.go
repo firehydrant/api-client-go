@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1TeamsTeamID(params *DeleteV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDNoContent, error)
+	DeleteV1TeamsTeamID(params *DeleteV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDOK, error)
 
 	GetV1Teams(params *GetV1TeamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsOK, error)
 
@@ -44,9 +44,11 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1TeamsTeamID Archive a team
+DeleteV1TeamsTeamID archives a team
+
+Archives an team which will hide it from lists and metrics
 */
-func (a *Client) DeleteV1TeamsTeamID(params *DeleteV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDNoContent, error) {
+func (a *Client) DeleteV1TeamsTeamID(params *DeleteV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteV1TeamsTeamIDParams()
@@ -72,7 +74,7 @@ func (a *Client) DeleteV1TeamsTeamID(params *DeleteV1TeamsTeamIDParams, authInfo
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1TeamsTeamIDNoContent)
+	success, ok := result.(*DeleteV1TeamsTeamIDOK)
 	if ok {
 		return success, nil
 	}
@@ -83,7 +85,9 @@ func (a *Client) DeleteV1TeamsTeamID(params *DeleteV1TeamsTeamIDParams, authInfo
 }
 
 /*
-  GetV1Teams Retrieve all teams
+GetV1Teams lists all teams
+
+List all of the teams in the organization
 */
 func (a *Client) GetV1Teams(params *GetV1TeamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +126,9 @@ func (a *Client) GetV1Teams(params *GetV1TeamsParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetV1TeamsTeamID Retrieve a team
+GetV1TeamsTeamID retrieves a team
+
+Retrieve a single team from its ID
 */
 func (a *Client) GetV1TeamsTeamID(params *GetV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDOK, error) {
 	// TODO: Validate the params before sending
@@ -161,7 +167,9 @@ func (a *Client) GetV1TeamsTeamID(params *GetV1TeamsTeamIDParams, authInfo runti
 }
 
 /*
-  PatchV1TeamsTeamID Update a team
+PatchV1TeamsTeamID updates a team
+
+Update a single team from its ID
 */
 func (a *Client) PatchV1TeamsTeamID(params *PatchV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TeamsTeamIDOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +208,9 @@ func (a *Client) PatchV1TeamsTeamID(params *PatchV1TeamsTeamIDParams, authInfo r
 }
 
 /*
-  PostV1Teams Create a team
+PostV1Teams creates a team
+
+Create a new team
 */
 func (a *Client) PostV1Teams(params *PostV1TeamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TeamsCreated, error) {
 	// TODO: Validate the params before sending

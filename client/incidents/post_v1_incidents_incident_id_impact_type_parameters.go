@@ -54,10 +54,12 @@ func NewPostV1IncidentsIncidentIDImpactTypeParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* PostV1IncidentsIncidentIDImpactTypeParams contains all the parameters to send to the API endpoint
-   for the post v1 incidents incident Id impact type operation.
+/*
+PostV1IncidentsIncidentIDImpactTypeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 incidents incident Id impact type operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1IncidentsIncidentIDImpactTypeParams struct {
 

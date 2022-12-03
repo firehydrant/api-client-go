@@ -52,10 +52,12 @@ func NewGetV1ReleaseNotesReleaseNoteIDParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* GetV1ReleaseNotesReleaseNoteIDParams contains all the parameters to send to the API endpoint
-   for the get v1 release notes release note Id operation.
+/*
+GetV1ReleaseNotesReleaseNoteIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 release notes release note Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1ReleaseNotesReleaseNoteIDParams struct {
 

@@ -39,19 +39,50 @@ func NewPatchV1ServicesServiceIDOK() *PatchV1ServicesServiceIDOK {
 	return &PatchV1ServicesServiceIDOK{}
 }
 
-/* PatchV1ServicesServiceIDOK describes a response with status code 200, with default header values.
+/*
+	PatchV1ServicesServiceIDOK describes a response with status code 200, with default header values.
 
- Update a services attributes, you may also add or remove functionalities from the service as well.
+	Update a services attributes, you may also add or remove functionalities from the service as well.
+
 Note: You may not remove or add individual label key/value pairs. You must include the entire object to override label values.
-
 */
 type PatchV1ServicesServiceIDOK struct {
 	Payload *models.ServiceEntity
 }
 
+// IsSuccess returns true when this patch v1 services service Id o k response has a 2xx status code
+func (o *PatchV1ServicesServiceIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 services service Id o k response has a 3xx status code
+func (o *PatchV1ServicesServiceIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 services service Id o k response has a 4xx status code
+func (o *PatchV1ServicesServiceIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 services service Id o k response has a 5xx status code
+func (o *PatchV1ServicesServiceIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 services service Id o k response a status code equal to that given
+func (o *PatchV1ServicesServiceIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1ServicesServiceIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/services/{service_id}][%d] patchV1ServicesServiceIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1ServicesServiceIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/services/{service_id}][%d] patchV1ServicesServiceIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1ServicesServiceIDOK) GetPayload() *models.ServiceEntity {
 	return o.Payload
 }

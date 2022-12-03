@@ -36,14 +36,44 @@ func NewGetV1IntegrationsStatusesSlugOK() *GetV1IntegrationsStatusesSlugOK {
 	return &GetV1IntegrationsStatusesSlugOK{}
 }
 
-/* GetV1IntegrationsStatusesSlugOK describes a response with status code 200, with default header values.
+/*
+GetV1IntegrationsStatusesSlugOK describes a response with status code 200, with default header values.
 
 get Status(s)
 */
 type GetV1IntegrationsStatusesSlugOK struct {
 }
 
+// IsSuccess returns true when this get v1 integrations statuses slug o k response has a 2xx status code
+func (o *GetV1IntegrationsStatusesSlugOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 integrations statuses slug o k response has a 3xx status code
+func (o *GetV1IntegrationsStatusesSlugOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 integrations statuses slug o k response has a 4xx status code
+func (o *GetV1IntegrationsStatusesSlugOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 integrations statuses slug o k response has a 5xx status code
+func (o *GetV1IntegrationsStatusesSlugOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 integrations statuses slug o k response a status code equal to that given
+func (o *GetV1IntegrationsStatusesSlugOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IntegrationsStatusesSlugOK) Error() string {
+	return fmt.Sprintf("[GET /v1/integrations/statuses/{slug}][%d] getV1IntegrationsStatusesSlugOK ", 200)
+}
+
+func (o *GetV1IntegrationsStatusesSlugOK) String() string {
 	return fmt.Sprintf("[GET /v1/integrations/statuses/{slug}][%d] getV1IntegrationsStatusesSlugOK ", 200)
 }
 

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// IncidentImpactEntity Add a piece of infrastructure to an incident as impact
+// IncidentImpactEntity Add impacted infrastructure to an incident
 //
 // swagger:model IncidentImpactEntity
 type IncidentImpactEntity struct {

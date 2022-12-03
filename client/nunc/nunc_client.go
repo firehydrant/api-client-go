@@ -38,7 +38,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1NuncSubscriptionsUnsubscribeToken Unsubscribe from status page updates
+DeleteV1NuncSubscriptionsUnsubscribeToken unsubscribes from status page updates
+
+Unsubscribe from status page updates
 */
 func (a *Client) DeleteV1NuncSubscriptionsUnsubscribeToken(params *DeleteV1NuncSubscriptionsUnsubscribeTokenParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncSubscriptionsUnsubscribeTokenOK, error) {
 	// TODO: Validate the params before sending
@@ -77,7 +79,9 @@ func (a *Client) DeleteV1NuncSubscriptionsUnsubscribeToken(params *DeleteV1NuncS
 }
 
 /*
-  PostV1NuncSubscriptions Subscribe to status page updates
+PostV1NuncSubscriptions subscribes to status page updates
+
+Subscribe to status page updates
 */
 func (a *Client) PostV1NuncSubscriptions(params *PostV1NuncSubscriptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncSubscriptionsCreated, error) {
 	// TODO: Validate the params before sending

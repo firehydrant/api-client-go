@@ -39,17 +39,48 @@ func NewGetV1IncidentsIncidentIDOK() *GetV1IncidentsIncidentIDOK {
 	return &GetV1IncidentsIncidentIDOK{}
 }
 
-/* GetV1IncidentsIncidentIDOK describes a response with status code 200, with default header values.
+/*
+GetV1IncidentsIncidentIDOK describes a response with status code 200, with default header values.
 
-Retrieve an incident
+Retrieve a single incident from its ID
 */
 type GetV1IncidentsIncidentIDOK struct {
 	Payload *models.IncidentEntity
 }
 
+// IsSuccess returns true when this get v1 incidents incident Id o k response has a 2xx status code
+func (o *GetV1IncidentsIncidentIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 incidents incident Id o k response has a 3xx status code
+func (o *GetV1IncidentsIncidentIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 incidents incident Id o k response has a 4xx status code
+func (o *GetV1IncidentsIncidentIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 incidents incident Id o k response has a 5xx status code
+func (o *GetV1IncidentsIncidentIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 incidents incident Id o k response a status code equal to that given
+func (o *GetV1IncidentsIncidentIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IncidentsIncidentIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}][%d] getV1IncidentsIncidentIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IncidentsIncidentIDOK) String() string {
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}][%d] getV1IncidentsIncidentIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IncidentsIncidentIDOK) GetPayload() *models.IncidentEntity {
 	return o.Payload
 }

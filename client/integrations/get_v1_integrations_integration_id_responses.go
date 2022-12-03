@@ -39,7 +39,8 @@ func NewGetV1IntegrationsIntegrationIDOK() *GetV1IntegrationsIntegrationIDOK {
 	return &GetV1IntegrationsIntegrationIDOK{}
 }
 
-/* GetV1IntegrationsIntegrationIDOK describes a response with status code 200, with default header values.
+/*
+GetV1IntegrationsIntegrationIDOK describes a response with status code 200, with default header values.
 
 Retrieve a single integration
 */
@@ -47,9 +48,39 @@ type GetV1IntegrationsIntegrationIDOK struct {
 	Payload *models.IntegrationEntity
 }
 
+// IsSuccess returns true when this get v1 integrations integration Id o k response has a 2xx status code
+func (o *GetV1IntegrationsIntegrationIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 integrations integration Id o k response has a 3xx status code
+func (o *GetV1IntegrationsIntegrationIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 integrations integration Id o k response has a 4xx status code
+func (o *GetV1IntegrationsIntegrationIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 integrations integration Id o k response has a 5xx status code
+func (o *GetV1IntegrationsIntegrationIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 integrations integration Id o k response a status code equal to that given
+func (o *GetV1IntegrationsIntegrationIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IntegrationsIntegrationIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/integrations/{integration_id}][%d] getV1IntegrationsIntegrationIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IntegrationsIntegrationIDOK) String() string {
+	return fmt.Sprintf("[GET /v1/integrations/{integration_id}][%d] getV1IntegrationsIntegrationIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IntegrationsIntegrationIDOK) GetPayload() *models.IntegrationEntity {
 	return o.Payload
 }

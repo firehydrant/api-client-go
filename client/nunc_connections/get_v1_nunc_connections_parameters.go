@@ -52,10 +52,12 @@ func NewGetV1NuncConnectionsParamsWithHTTPClient(client *http.Client) *GetV1Nunc
 	}
 }
 
-/* GetV1NuncConnectionsParams contains all the parameters to send to the API endpoint
-   for the get v1 nunc connections operation.
+/*
+GetV1NuncConnectionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 nunc connections operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1NuncConnectionsParams struct {
 	timeout    time.Duration

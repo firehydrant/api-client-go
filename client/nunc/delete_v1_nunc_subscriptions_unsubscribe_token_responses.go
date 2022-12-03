@@ -39,7 +39,8 @@ func NewDeleteV1NuncSubscriptionsUnsubscribeTokenOK() *DeleteV1NuncSubscriptions
 	return &DeleteV1NuncSubscriptionsUnsubscribeTokenOK{}
 }
 
-/* DeleteV1NuncSubscriptionsUnsubscribeTokenOK describes a response with status code 200, with default header values.
+/*
+DeleteV1NuncSubscriptionsUnsubscribeTokenOK describes a response with status code 200, with default header values.
 
 Unsubscribe from status page updates
 */
@@ -47,9 +48,39 @@ type DeleteV1NuncSubscriptionsUnsubscribeTokenOK struct {
 	Payload *models.NuncSubscription
 }
 
+// IsSuccess returns true when this delete v1 nunc subscriptions unsubscribe token o k response has a 2xx status code
+func (o *DeleteV1NuncSubscriptionsUnsubscribeTokenOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 nunc subscriptions unsubscribe token o k response has a 3xx status code
+func (o *DeleteV1NuncSubscriptionsUnsubscribeTokenOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 nunc subscriptions unsubscribe token o k response has a 4xx status code
+func (o *DeleteV1NuncSubscriptionsUnsubscribeTokenOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 nunc subscriptions unsubscribe token o k response has a 5xx status code
+func (o *DeleteV1NuncSubscriptionsUnsubscribeTokenOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 nunc subscriptions unsubscribe token o k response a status code equal to that given
+func (o *DeleteV1NuncSubscriptionsUnsubscribeTokenOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteV1NuncSubscriptionsUnsubscribeTokenOK) Error() string {
 	return fmt.Sprintf("[DELETE /v1/nunc/subscriptions/{unsubscribe_token}][%d] deleteV1NuncSubscriptionsUnsubscribeTokenOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteV1NuncSubscriptionsUnsubscribeTokenOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/nunc/subscriptions/{unsubscribe_token}][%d] deleteV1NuncSubscriptionsUnsubscribeTokenOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteV1NuncSubscriptionsUnsubscribeTokenOK) GetPayload() *models.NuncSubscription {
 	return o.Payload
 }

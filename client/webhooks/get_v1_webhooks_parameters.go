@@ -53,10 +53,12 @@ func NewGetV1WebhooksParamsWithHTTPClient(client *http.Client) *GetV1WebhooksPar
 	}
 }
 
-/* GetV1WebhooksParams contains all the parameters to send to the API endpoint
-   for the get v1 webhooks operation.
+/*
+GetV1WebhooksParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 webhooks operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1WebhooksParams struct {
 

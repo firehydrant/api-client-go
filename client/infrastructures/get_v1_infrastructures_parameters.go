@@ -53,10 +53,12 @@ func NewGetV1InfrastructuresParamsWithHTTPClient(client *http.Client) *GetV1Infr
 	}
 }
 
-/* GetV1InfrastructuresParams contains all the parameters to send to the API endpoint
-   for the get v1 infrastructures operation.
+/*
+GetV1InfrastructuresParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 infrastructures operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1InfrastructuresParams struct {
 
@@ -81,6 +83,12 @@ type GetV1InfrastructuresParams struct {
 	   A query to search infrastructures by their name
 	*/
 	Query *string
+
+	/* Type.
+
+	   Restrict infrastructure search to given type.
+	*/
+	Type *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -179,6 +187,17 @@ func (o *GetV1InfrastructuresParams) SetQuery(query *string) {
 	o.Query = query
 }
 
+// WithType adds the typeVar to the get v1 infrastructures params
+func (o *GetV1InfrastructuresParams) WithType(typeVar *string) *GetV1InfrastructuresParams {
+	o.SetType(typeVar)
+	return o
+}
+
+// SetType adds the type to the get v1 infrastructures params
+func (o *GetV1InfrastructuresParams) SetType(typeVar *string) {
+	o.Type = typeVar
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1InfrastructuresParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -250,6 +269,23 @@ func (o *GetV1InfrastructuresParams) WriteToRequest(r runtime.ClientRequest, reg
 		if qQuery != "" {
 
 			if err := r.SetQueryParam("query", qQuery); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Type != nil {
+
+		// query param type
+		var qrType string
+
+		if o.Type != nil {
+			qrType = *o.Type
+		}
+		qType := qrType
+		if qType != "" {
+
+			if err := r.SetQueryParam("type", qType); err != nil {
 				return err
 			}
 		}

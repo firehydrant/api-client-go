@@ -39,17 +39,48 @@ func NewGetV1EnvironmentsEnvironmentIDOK() *GetV1EnvironmentsEnvironmentIDOK {
 	return &GetV1EnvironmentsEnvironmentIDOK{}
 }
 
-/* GetV1EnvironmentsEnvironmentIDOK describes a response with status code 200, with default header values.
+/*
+GetV1EnvironmentsEnvironmentIDOK describes a response with status code 200, with default header values.
 
-Retrieve a single environment
+Retrieves a single environment by ID
 */
 type GetV1EnvironmentsEnvironmentIDOK struct {
 	Payload *models.EnvironmentEntity
 }
 
+// IsSuccess returns true when this get v1 environments environment Id o k response has a 2xx status code
+func (o *GetV1EnvironmentsEnvironmentIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 environments environment Id o k response has a 3xx status code
+func (o *GetV1EnvironmentsEnvironmentIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 environments environment Id o k response has a 4xx status code
+func (o *GetV1EnvironmentsEnvironmentIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 environments environment Id o k response has a 5xx status code
+func (o *GetV1EnvironmentsEnvironmentIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 environments environment Id o k response a status code equal to that given
+func (o *GetV1EnvironmentsEnvironmentIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1EnvironmentsEnvironmentIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/environments/{environment_id}][%d] getV1EnvironmentsEnvironmentIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1EnvironmentsEnvironmentIDOK) String() string {
+	return fmt.Sprintf("[GET /v1/environments/{environment_id}][%d] getV1EnvironmentsEnvironmentIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1EnvironmentsEnvironmentIDOK) GetPayload() *models.EnvironmentEntity {
 	return o.Payload
 }

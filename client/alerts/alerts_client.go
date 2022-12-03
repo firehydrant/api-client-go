@@ -36,7 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetV1Alerts Retrieve all alerts
+GetV1Alerts retrieves all alerts
+
+Retrieve all alerts from third parties
 */
 func (a *Client) GetV1Alerts(params *GetV1AlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AlertsOK, error) {
 	// TODO: Validate the params before sending

@@ -39,7 +39,8 @@ func NewPatchV1IntegrationsAwsConnectionsIDOK() *PatchV1IntegrationsAwsConnectio
 	return &PatchV1IntegrationsAwsConnectionsIDOK{}
 }
 
-/* PatchV1IntegrationsAwsConnectionsIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1IntegrationsAwsConnectionsIDOK describes a response with status code 200, with default header values.
 
 Update the AWS connection with the provided data.
 */
@@ -47,9 +48,39 @@ type PatchV1IntegrationsAwsConnectionsIDOK struct {
 	Payload *models.ConnectionEntity
 }
 
+// IsSuccess returns true when this patch v1 integrations aws connections Id o k response has a 2xx status code
+func (o *PatchV1IntegrationsAwsConnectionsIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 integrations aws connections Id o k response has a 3xx status code
+func (o *PatchV1IntegrationsAwsConnectionsIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 integrations aws connections Id o k response has a 4xx status code
+func (o *PatchV1IntegrationsAwsConnectionsIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 integrations aws connections Id o k response has a 5xx status code
+func (o *PatchV1IntegrationsAwsConnectionsIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 integrations aws connections Id o k response a status code equal to that given
+func (o *PatchV1IntegrationsAwsConnectionsIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1IntegrationsAwsConnectionsIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/integrations/aws/connections/{id}][%d] patchV1IntegrationsAwsConnectionsIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1IntegrationsAwsConnectionsIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/integrations/aws/connections/{id}][%d] patchV1IntegrationsAwsConnectionsIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1IntegrationsAwsConnectionsIDOK) GetPayload() *models.ConnectionEntity {
 	return o.Payload
 }

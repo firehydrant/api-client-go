@@ -53,10 +53,12 @@ func NewGetV1PostMortemsReportsReportIDParticipantsParamsWithHTTPClient(client *
 	}
 }
 
-/* GetV1PostMortemsReportsReportIDParticipantsParams contains all the parameters to send to the API endpoint
-   for the get v1 post mortems reports report Id participants operation.
+/*
+GetV1PostMortemsReportsReportIDParticipantsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 post mortems reports report Id participants operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1PostMortemsReportsReportIDParticipantsParams struct {
 

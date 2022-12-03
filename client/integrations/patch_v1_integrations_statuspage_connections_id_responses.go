@@ -39,7 +39,8 @@ func NewPatchV1IntegrationsStatuspageConnectionsIDOK() *PatchV1IntegrationsStatu
 	return &PatchV1IntegrationsStatuspageConnectionsIDOK{}
 }
 
-/* PatchV1IntegrationsStatuspageConnectionsIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1IntegrationsStatuspageConnectionsIDOK describes a response with status code 200, with default header values.
 
 Update the given Statuspage integration connection.
 */
@@ -47,9 +48,39 @@ type PatchV1IntegrationsStatuspageConnectionsIDOK struct {
 	Payload *models.ConnectionEntity
 }
 
+// IsSuccess returns true when this patch v1 integrations statuspage connections Id o k response has a 2xx status code
+func (o *PatchV1IntegrationsStatuspageConnectionsIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 integrations statuspage connections Id o k response has a 3xx status code
+func (o *PatchV1IntegrationsStatuspageConnectionsIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 integrations statuspage connections Id o k response has a 4xx status code
+func (o *PatchV1IntegrationsStatuspageConnectionsIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 integrations statuspage connections Id o k response has a 5xx status code
+func (o *PatchV1IntegrationsStatuspageConnectionsIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 integrations statuspage connections Id o k response a status code equal to that given
+func (o *PatchV1IntegrationsStatuspageConnectionsIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1IntegrationsStatuspageConnectionsIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/integrations/statuspage/connections/{id}][%d] patchV1IntegrationsStatuspageConnectionsIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1IntegrationsStatuspageConnectionsIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/integrations/statuspage/connections/{id}][%d] patchV1IntegrationsStatuspageConnectionsIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1IntegrationsStatuspageConnectionsIDOK) GetPayload() *models.ConnectionEntity {
 	return o.Payload
 }

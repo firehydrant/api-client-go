@@ -36,14 +36,44 @@ func NewPatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK() *PatchV1Integr
 	return &PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK{}
 }
 
-/* PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK describes a response with status code 200, with default header values.
+/*
+PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK describes a response with status code 200, with default header values.
 
 patched Refresh
 */
 type PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK struct {
 }
 
+// IsSuccess returns true when this patch v1 integrations connections slug connection Id refresh o k response has a 2xx status code
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 integrations connections slug connection Id refresh o k response has a 3xx status code
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 integrations connections slug connection Id refresh o k response has a 4xx status code
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 integrations connections slug connection Id refresh o k response has a 5xx status code
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 integrations connections slug connection Id refresh o k response a status code equal to that given
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK) Error() string {
+	return fmt.Sprintf("[PATCH /v1/integrations/connections/{slug}/{connection_id}/refresh][%d] patchV1IntegrationsConnectionsSlugConnectionIdRefreshOK ", 200)
+}
+
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK) String() string {
 	return fmt.Sprintf("[PATCH /v1/integrations/connections/{slug}/{connection_id}/refresh][%d] patchV1IntegrationsConnectionsSlugConnectionIdRefreshOK ", 200)
 }
 

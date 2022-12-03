@@ -36,9 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetV1Infrastructures lists functionality service and environment objects
+GetV1Infrastructures lists functionality service and environment objects
 
-  Lists functionality, service and environment objects
+Lists functionality, service and environment objects
 */
 func (a *Client) GetV1Infrastructures(params *GetV1InfrastructuresParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1InfrastructuresOK, error) {
 	// TODO: Validate the params before sending

@@ -54,10 +54,12 @@ func NewPostV1ChangesEventsParamsWithHTTPClient(client *http.Client) *PostV1Chan
 	}
 }
 
-/* PostV1ChangesEventsParams contains all the parameters to send to the API endpoint
-   for the post v1 changes events operation.
+/*
+PostV1ChangesEventsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 changes events operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1ChangesEventsParams struct {
 

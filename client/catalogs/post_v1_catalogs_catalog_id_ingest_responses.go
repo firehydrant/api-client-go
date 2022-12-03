@@ -39,7 +39,8 @@ func NewPostV1CatalogsCatalogIDIngestCreated() *PostV1CatalogsCatalogIDIngestCre
 	return &PostV1CatalogsCatalogIDIngestCreated{}
 }
 
-/* PostV1CatalogsCatalogIDIngestCreated describes a response with status code 201, with default header values.
+/*
+PostV1CatalogsCatalogIDIngestCreated describes a response with status code 201, with default header values.
 
 Accepts catalog data in the configured format and asyncronously processes the data to incorporate changes into service catalog.
 */
@@ -47,9 +48,39 @@ type PostV1CatalogsCatalogIDIngestCreated struct {
 	Payload *models.ImportEntity
 }
 
+// IsSuccess returns true when this post v1 catalogs catalog Id ingest created response has a 2xx status code
+func (o *PostV1CatalogsCatalogIDIngestCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 catalogs catalog Id ingest created response has a 3xx status code
+func (o *PostV1CatalogsCatalogIDIngestCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 catalogs catalog Id ingest created response has a 4xx status code
+func (o *PostV1CatalogsCatalogIDIngestCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 catalogs catalog Id ingest created response has a 5xx status code
+func (o *PostV1CatalogsCatalogIDIngestCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 catalogs catalog Id ingest created response a status code equal to that given
+func (o *PostV1CatalogsCatalogIDIngestCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1CatalogsCatalogIDIngestCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/catalogs/{catalog_id}/ingest][%d] postV1CatalogsCatalogIdIngestCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1CatalogsCatalogIDIngestCreated) String() string {
+	return fmt.Sprintf("[POST /v1/catalogs/{catalog_id}/ingest][%d] postV1CatalogsCatalogIdIngestCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1CatalogsCatalogIDIngestCreated) GetPayload() *models.ImportEntity {
 	return o.Payload
 }

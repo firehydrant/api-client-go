@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1EnvironmentsEnvironmentID(params *DeleteV1EnvironmentsEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1EnvironmentsEnvironmentIDNoContent, error)
+	DeleteV1EnvironmentsEnvironmentID(params *DeleteV1EnvironmentsEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1EnvironmentsEnvironmentIDOK, error)
 
 	GetV1Environments(params *GetV1EnvironmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1EnvironmentsOK, error)
 
@@ -44,9 +44,11 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1EnvironmentsEnvironmentID Archive an environment
+DeleteV1EnvironmentsEnvironmentID archives an environment
+
+Archive an environment
 */
-func (a *Client) DeleteV1EnvironmentsEnvironmentID(params *DeleteV1EnvironmentsEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1EnvironmentsEnvironmentIDNoContent, error) {
+func (a *Client) DeleteV1EnvironmentsEnvironmentID(params *DeleteV1EnvironmentsEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1EnvironmentsEnvironmentIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteV1EnvironmentsEnvironmentIDParams()
@@ -72,7 +74,7 @@ func (a *Client) DeleteV1EnvironmentsEnvironmentID(params *DeleteV1EnvironmentsE
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1EnvironmentsEnvironmentIDNoContent)
+	success, ok := result.(*DeleteV1EnvironmentsEnvironmentIDOK)
 	if ok {
 		return success, nil
 	}
@@ -83,7 +85,9 @@ func (a *Client) DeleteV1EnvironmentsEnvironmentID(params *DeleteV1EnvironmentsE
 }
 
 /*
-  GetV1Environments Retrieve all environments
+GetV1Environments lists all environments
+
+List all of the environments that have been added to the organiation
 */
 func (a *Client) GetV1Environments(params *GetV1EnvironmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1EnvironmentsOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +126,9 @@ func (a *Client) GetV1Environments(params *GetV1EnvironmentsParams, authInfo run
 }
 
 /*
-  GetV1EnvironmentsEnvironmentID Retrieve a single environment
+GetV1EnvironmentsEnvironmentID retrieves a single environment
+
+Retrieves a single environment by ID
 */
 func (a *Client) GetV1EnvironmentsEnvironmentID(params *GetV1EnvironmentsEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1EnvironmentsEnvironmentIDOK, error) {
 	// TODO: Validate the params before sending
@@ -161,7 +167,9 @@ func (a *Client) GetV1EnvironmentsEnvironmentID(params *GetV1EnvironmentsEnviron
 }
 
 /*
-  PatchV1EnvironmentsEnvironmentID Update an environment
+PatchV1EnvironmentsEnvironmentID updates an environment
+
+Update a environments attributes
 */
 func (a *Client) PatchV1EnvironmentsEnvironmentID(params *PatchV1EnvironmentsEnvironmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1EnvironmentsEnvironmentIDOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +208,9 @@ func (a *Client) PatchV1EnvironmentsEnvironmentID(params *PatchV1EnvironmentsEnv
 }
 
 /*
-  PostV1Environments Creates an environment
+PostV1Environments creates an environment
+
+Creates an environment for the organization
 */
 func (a *Client) PostV1Environments(params *PostV1EnvironmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1EnvironmentsCreated, error) {
 	// TODO: Validate the params before sending

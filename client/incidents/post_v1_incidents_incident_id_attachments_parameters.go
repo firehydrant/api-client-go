@@ -52,10 +52,12 @@ func NewPostV1IncidentsIncidentIDAttachmentsParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* PostV1IncidentsIncidentIDAttachmentsParams contains all the parameters to send to the API endpoint
-   for the post v1 incidents incident Id attachments operation.
+/*
+PostV1IncidentsIncidentIDAttachmentsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 incidents incident Id attachments operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1IncidentsIncidentIDAttachmentsParams struct {
 

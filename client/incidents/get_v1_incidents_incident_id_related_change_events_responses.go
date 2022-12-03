@@ -39,17 +39,48 @@ func NewGetV1IncidentsIncidentIDRelatedChangeEventsOK() *GetV1IncidentsIncidentI
 	return &GetV1IncidentsIncidentIDRelatedChangeEventsOK{}
 }
 
-/* GetV1IncidentsIncidentIDRelatedChangeEventsOK describes a response with status code 200, with default header values.
+/*
+GetV1IncidentsIncidentIDRelatedChangeEventsOK describes a response with status code 200, with default header values.
 
-Retrieve all change events that have been associated to the incident
+List related changes that have been attached to an incident
 */
 type GetV1IncidentsIncidentIDRelatedChangeEventsOK struct {
 	Payload *models.RelatedChangeEventEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 incidents incident Id related change events o k response has a 2xx status code
+func (o *GetV1IncidentsIncidentIDRelatedChangeEventsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 incidents incident Id related change events o k response has a 3xx status code
+func (o *GetV1IncidentsIncidentIDRelatedChangeEventsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 incidents incident Id related change events o k response has a 4xx status code
+func (o *GetV1IncidentsIncidentIDRelatedChangeEventsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 incidents incident Id related change events o k response has a 5xx status code
+func (o *GetV1IncidentsIncidentIDRelatedChangeEventsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 incidents incident Id related change events o k response a status code equal to that given
+func (o *GetV1IncidentsIncidentIDRelatedChangeEventsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IncidentsIncidentIDRelatedChangeEventsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/related_change_events][%d] getV1IncidentsIncidentIdRelatedChangeEventsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IncidentsIncidentIDRelatedChangeEventsOK) String() string {
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/related_change_events][%d] getV1IncidentsIncidentIdRelatedChangeEventsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IncidentsIncidentIDRelatedChangeEventsOK) GetPayload() *models.RelatedChangeEventEntityPaginated {
 	return o.Payload
 }

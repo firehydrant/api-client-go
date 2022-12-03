@@ -54,10 +54,12 @@ func NewPostV1SeverityMatrixConditionsParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* PostV1SeverityMatrixConditionsParams contains all the parameters to send to the API endpoint
-   for the post v1 severity matrix conditions operation.
+/*
+PostV1SeverityMatrixConditionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 severity matrix conditions operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1SeverityMatrixConditionsParams struct {
 

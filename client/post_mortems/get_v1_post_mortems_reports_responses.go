@@ -39,24 +39,55 @@ func NewGetV1PostMortemsReportsOK() *GetV1PostMortemsReportsOK {
 	return &GetV1PostMortemsReportsOK{}
 }
 
-/* GetV1PostMortemsReportsOK describes a response with status code 200, with default header values.
+/*
+GetV1PostMortemsReportsOK describes a response with status code 200, with default header values.
 
-Retrieve post mortem reports
+List all reports
 */
 type GetV1PostMortemsReportsOK struct {
-	Payload *models.ReportEntityPaginated
+	Payload *models.PostMortemReportEntityPaginated
+}
+
+// IsSuccess returns true when this get v1 post mortems reports o k response has a 2xx status code
+func (o *GetV1PostMortemsReportsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 post mortems reports o k response has a 3xx status code
+func (o *GetV1PostMortemsReportsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 post mortems reports o k response has a 4xx status code
+func (o *GetV1PostMortemsReportsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 post mortems reports o k response has a 5xx status code
+func (o *GetV1PostMortemsReportsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 post mortems reports o k response a status code equal to that given
+func (o *GetV1PostMortemsReportsOK) IsCode(code int) bool {
+	return code == 200
 }
 
 func (o *GetV1PostMortemsReportsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/post_mortems/reports][%d] getV1PostMortemsReportsOK  %+v", 200, o.Payload)
 }
-func (o *GetV1PostMortemsReportsOK) GetPayload() *models.ReportEntityPaginated {
+
+func (o *GetV1PostMortemsReportsOK) String() string {
+	return fmt.Sprintf("[GET /v1/post_mortems/reports][%d] getV1PostMortemsReportsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1PostMortemsReportsOK) GetPayload() *models.PostMortemReportEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1PostMortemsReportsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ReportEntityPaginated)
+	o.Payload = new(models.PostMortemReportEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

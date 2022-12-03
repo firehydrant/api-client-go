@@ -39,17 +39,48 @@ func NewPatchV1IncidentsIncidentIDTasksTaskIDOK() *PatchV1IncidentsIncidentIDTas
 	return &PatchV1IncidentsIncidentIDTasksTaskIDOK{}
 }
 
-/* PatchV1IncidentsIncidentIDTasksTaskIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1IncidentsIncidentIDTasksTaskIDOK describes a response with status code 200, with default header values.
 
-Update a task
+Update a task's attributes
 */
 type PatchV1IncidentsIncidentIDTasksTaskIDOK struct {
 	Payload *models.TaskEntity
 }
 
+// IsSuccess returns true when this patch v1 incidents incident Id tasks task Id o k response has a 2xx status code
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 incidents incident Id tasks task Id o k response has a 3xx status code
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 incidents incident Id tasks task Id o k response has a 4xx status code
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 incidents incident Id tasks task Id o k response has a 5xx status code
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 incidents incident Id tasks task Id o k response a status code equal to that given
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1IncidentsIncidentIDTasksTaskIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/tasks/{task_id}][%d] patchV1IncidentsIncidentIdTasksTaskIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/tasks/{task_id}][%d] patchV1IncidentsIncidentIdTasksTaskIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1IncidentsIncidentIDTasksTaskIDOK) GetPayload() *models.TaskEntity {
 	return o.Payload
 }

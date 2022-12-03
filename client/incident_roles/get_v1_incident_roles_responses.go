@@ -39,17 +39,48 @@ func NewGetV1IncidentRolesOK() *GetV1IncidentRolesOK {
 	return &GetV1IncidentRolesOK{}
 }
 
-/* GetV1IncidentRolesOK describes a response with status code 200, with default header values.
+/*
+GetV1IncidentRolesOK describes a response with status code 200, with default header values.
 
-List incident roles
+List all of the incident roles in the organization
 */
 type GetV1IncidentRolesOK struct {
 	Payload *models.IncidentRoleEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 incident roles o k response has a 2xx status code
+func (o *GetV1IncidentRolesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 incident roles o k response has a 3xx status code
+func (o *GetV1IncidentRolesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 incident roles o k response has a 4xx status code
+func (o *GetV1IncidentRolesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 incident roles o k response has a 5xx status code
+func (o *GetV1IncidentRolesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 incident roles o k response a status code equal to that given
+func (o *GetV1IncidentRolesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IncidentRolesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incident_roles][%d] getV1IncidentRolesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IncidentRolesOK) String() string {
+	return fmt.Sprintf("[GET /v1/incident_roles][%d] getV1IncidentRolesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IncidentRolesOK) GetPayload() *models.IncidentRoleEntityPaginated {
 	return o.Payload
 }

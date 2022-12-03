@@ -39,7 +39,8 @@ func NewGetV1NoauthPingOK() *GetV1NoauthPingOK {
 	return &GetV1NoauthPingOK{}
 }
 
-/* GetV1NoauthPingOK describes a response with status code 200, with default header values.
+/*
+GetV1NoauthPingOK describes a response with status code 200, with default header values.
 
 Simple endpoint to verify your API connection is working
 */
@@ -47,9 +48,39 @@ type GetV1NoauthPingOK struct {
 	Payload *models.PongEntity
 }
 
+// IsSuccess returns true when this get v1 noauth ping o k response has a 2xx status code
+func (o *GetV1NoauthPingOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 noauth ping o k response has a 3xx status code
+func (o *GetV1NoauthPingOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 noauth ping o k response has a 4xx status code
+func (o *GetV1NoauthPingOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 noauth ping o k response has a 5xx status code
+func (o *GetV1NoauthPingOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 noauth ping o k response a status code equal to that given
+func (o *GetV1NoauthPingOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1NoauthPingOK) Error() string {
 	return fmt.Sprintf("[GET /v1/noauth/ping][%d] getV1NoauthPingOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1NoauthPingOK) String() string {
+	return fmt.Sprintf("[GET /v1/noauth/ping][%d] getV1NoauthPingOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1NoauthPingOK) GetPayload() *models.PongEntity {
 	return o.Payload
 }

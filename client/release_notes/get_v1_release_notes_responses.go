@@ -39,7 +39,8 @@ func NewGetV1ReleaseNotesOK() *GetV1ReleaseNotesOK {
 	return &GetV1ReleaseNotesOK{}
 }
 
-/* GetV1ReleaseNotesOK describes a response with status code 200, with default header values.
+/*
+GetV1ReleaseNotesOK describes a response with status code 200, with default header values.
 
 Lists the release notes for FireHydrant
 */
@@ -47,9 +48,39 @@ type GetV1ReleaseNotesOK struct {
 	Payload *models.ReleaseNoteEntity
 }
 
+// IsSuccess returns true when this get v1 release notes o k response has a 2xx status code
+func (o *GetV1ReleaseNotesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 release notes o k response has a 3xx status code
+func (o *GetV1ReleaseNotesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 release notes o k response has a 4xx status code
+func (o *GetV1ReleaseNotesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 release notes o k response has a 5xx status code
+func (o *GetV1ReleaseNotesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 release notes o k response a status code equal to that given
+func (o *GetV1ReleaseNotesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1ReleaseNotesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/release_notes][%d] getV1ReleaseNotesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1ReleaseNotesOK) String() string {
+	return fmt.Sprintf("[GET /v1/release_notes][%d] getV1ReleaseNotesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1ReleaseNotesOK) GetPayload() *models.ReleaseNoteEntity {
 	return o.Payload
 }

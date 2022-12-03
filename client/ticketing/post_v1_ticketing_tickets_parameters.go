@@ -54,10 +54,12 @@ func NewPostV1TicketingTicketsParamsWithHTTPClient(client *http.Client) *PostV1T
 	}
 }
 
-/* PostV1TicketingTicketsParams contains all the parameters to send to the API endpoint
-   for the post v1 ticketing tickets operation.
+/*
+PostV1TicketingTicketsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 ticketing tickets operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1TicketingTicketsParams struct {
 

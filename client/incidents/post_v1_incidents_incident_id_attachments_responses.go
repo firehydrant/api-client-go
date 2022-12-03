@@ -39,17 +39,48 @@ func NewPostV1IncidentsIncidentIDAttachmentsCreated() *PostV1IncidentsIncidentID
 	return &PostV1IncidentsIncidentIDAttachmentsCreated{}
 }
 
-/* PostV1IncidentsIncidentIDAttachmentsCreated describes a response with status code 201, with default header values.
+/*
+PostV1IncidentsIncidentIDAttachmentsCreated describes a response with status code 201, with default header values.
 
-Upload a file to the incident
+Allows adding image attachments to an incident
 */
 type PostV1IncidentsIncidentIDAttachmentsCreated struct {
 	Payload *models.IncidentAttachmentEntity
 }
 
+// IsSuccess returns true when this post v1 incidents incident Id attachments created response has a 2xx status code
+func (o *PostV1IncidentsIncidentIDAttachmentsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 incidents incident Id attachments created response has a 3xx status code
+func (o *PostV1IncidentsIncidentIDAttachmentsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 incidents incident Id attachments created response has a 4xx status code
+func (o *PostV1IncidentsIncidentIDAttachmentsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 incidents incident Id attachments created response has a 5xx status code
+func (o *PostV1IncidentsIncidentIDAttachmentsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 incidents incident Id attachments created response a status code equal to that given
+func (o *PostV1IncidentsIncidentIDAttachmentsCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1IncidentsIncidentIDAttachmentsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/attachments][%d] postV1IncidentsIncidentIdAttachmentsCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1IncidentsIncidentIDAttachmentsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/attachments][%d] postV1IncidentsIncidentIdAttachmentsCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1IncidentsIncidentIDAttachmentsCreated) GetPayload() *models.IncidentAttachmentEntity {
 	return o.Payload
 }

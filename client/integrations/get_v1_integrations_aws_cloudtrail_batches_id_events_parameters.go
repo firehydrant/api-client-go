@@ -52,10 +52,12 @@ func NewGetV1IntegrationsAwsCloudtrailBatchesIDEventsParamsWithHTTPClient(client
 	}
 }
 
-/* GetV1IntegrationsAwsCloudtrailBatchesIDEventsParams contains all the parameters to send to the API endpoint
-   for the get v1 integrations aws cloudtrail batches Id events operation.
+/*
+GetV1IntegrationsAwsCloudtrailBatchesIDEventsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 integrations aws cloudtrail batches Id events operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IntegrationsAwsCloudtrailBatchesIDEventsParams struct {
 

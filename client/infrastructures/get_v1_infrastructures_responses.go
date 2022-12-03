@@ -39,7 +39,8 @@ func NewGetV1InfrastructuresOK() *GetV1InfrastructuresOK {
 	return &GetV1InfrastructuresOK{}
 }
 
-/* GetV1InfrastructuresOK describes a response with status code 200, with default header values.
+/*
+GetV1InfrastructuresOK describes a response with status code 200, with default header values.
 
 Lists functionality, service and environment objects
 */
@@ -47,9 +48,39 @@ type GetV1InfrastructuresOK struct {
 	Payload *models.InfrastructureSearchEntity
 }
 
+// IsSuccess returns true when this get v1 infrastructures o k response has a 2xx status code
+func (o *GetV1InfrastructuresOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 infrastructures o k response has a 3xx status code
+func (o *GetV1InfrastructuresOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 infrastructures o k response has a 4xx status code
+func (o *GetV1InfrastructuresOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 infrastructures o k response has a 5xx status code
+func (o *GetV1InfrastructuresOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 infrastructures o k response a status code equal to that given
+func (o *GetV1InfrastructuresOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1InfrastructuresOK) Error() string {
 	return fmt.Sprintf("[GET /v1/infrastructures][%d] getV1InfrastructuresOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1InfrastructuresOK) String() string {
+	return fmt.Sprintf("[GET /v1/infrastructures][%d] getV1InfrastructuresOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1InfrastructuresOK) GetPayload() *models.InfrastructureSearchEntity {
 	return o.Payload
 }

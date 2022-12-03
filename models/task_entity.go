@@ -7,7 +7,6 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -15,16 +14,20 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// TaskEntity Update a task
+// TaskEntity Update a task's attributes
 //
 // swagger:model TaskEntity
 type TaskEntity struct {
 
 	// assignee
-	Assignee *TaskAssigneeEntity `json:"assignee,omitempty"`
+	Assignee *AuthorEntity `json:"assignee,omitempty"`
 
 	// created at
-	CreatedAt string `json:"created_at,omitempty"`
+	// Format: date-time
+	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
+
+	// created by
+	CreatedBy *AuthorEntity `json:"created_by,omitempty"`
 
 	// description
 	Description string `json:"description,omitempty"`
@@ -32,27 +35,15 @@ type TaskEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
-	// incident role
-	IncidentRole *IncidentRoleSuccinctEntity `json:"incident_role,omitempty"`
-
-	// The id of the incident role task if this was task was created from a role
-	IncidentRoleTaskID string `json:"incident_role_task_id,omitempty"`
-
-	// notes
-	Notes string `json:"notes,omitempty"`
-
-	// position
-	Position string `json:"position,omitempty"`
-
 	// state
-	// Enum: [todo in_progress wont_do done]
 	State string `json:"state,omitempty"`
 
-	// summary
-	Summary string `json:"summary,omitempty"`
+	// title
+	Title string `json:"title,omitempty"`
 
 	// updated at
-	UpdatedAt string `json:"updated_at,omitempty"`
+	// Format: date-time
+	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
 }
 
 // Validate validates this task entity
@@ -63,11 +54,15 @@ func (m *TaskEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateIncidentRole(formats); err != nil {
+	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateState(formats); err != nil {
+	if err := m.validateCreatedBy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdatedAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -96,17 +91,29 @@ func (m *TaskEntity) validateAssignee(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *TaskEntity) validateIncidentRole(formats strfmt.Registry) error {
-	if swag.IsZero(m.IncidentRole) { // not required
+func (m *TaskEntity) validateCreatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
 
-	if m.IncidentRole != nil {
-		if err := m.IncidentRole.Validate(formats); err != nil {
+	if err := validate.FormatOf("created_at", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *TaskEntity) validateCreatedBy(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreatedBy) { // not required
+		return nil
+	}
+
+	if m.CreatedBy != nil {
+		if err := m.CreatedBy.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("incident_role")
+				return ve.ValidateName("created_by")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("incident_role")
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}
@@ -115,48 +122,12 @@ func (m *TaskEntity) validateIncidentRole(formats strfmt.Registry) error {
 	return nil
 }
 
-var taskEntityTypeStatePropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["todo","in_progress","wont_do","done"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		taskEntityTypeStatePropEnum = append(taskEntityTypeStatePropEnum, v)
-	}
-}
-
-const (
-
-	// TaskEntityStateTodo captures enum value "todo"
-	TaskEntityStateTodo string = "todo"
-
-	// TaskEntityStateInProgress captures enum value "in_progress"
-	TaskEntityStateInProgress string = "in_progress"
-
-	// TaskEntityStateWontDo captures enum value "wont_do"
-	TaskEntityStateWontDo string = "wont_do"
-
-	// TaskEntityStateDone captures enum value "done"
-	TaskEntityStateDone string = "done"
-)
-
-// prop value enum
-func (m *TaskEntity) validateStateEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, taskEntityTypeStatePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *TaskEntity) validateState(formats strfmt.Registry) error {
-	if swag.IsZero(m.State) { // not required
+func (m *TaskEntity) validateUpdatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateStateEnum("state", "body", m.State); err != nil {
+	if err := validate.FormatOf("updated_at", "body", "date-time", m.UpdatedAt.String(), formats); err != nil {
 		return err
 	}
 
@@ -171,7 +142,7 @@ func (m *TaskEntity) ContextValidate(ctx context.Context, formats strfmt.Registr
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateIncidentRole(ctx, formats); err != nil {
+	if err := m.contextValidateCreatedBy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -197,14 +168,14 @@ func (m *TaskEntity) contextValidateAssignee(ctx context.Context, formats strfmt
 	return nil
 }
 
-func (m *TaskEntity) contextValidateIncidentRole(ctx context.Context, formats strfmt.Registry) error {
+func (m *TaskEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.IncidentRole != nil {
-		if err := m.IncidentRole.ContextValidate(ctx, formats); err != nil {
+	if m.CreatedBy != nil {
+		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("incident_role")
+				return ve.ValidateName("created_by")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("incident_role")
+				return ce.ValidateName("created_by")
 			}
 			return err
 		}

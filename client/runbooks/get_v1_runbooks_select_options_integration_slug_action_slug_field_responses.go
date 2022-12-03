@@ -36,14 +36,44 @@ func NewGetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK() *GetV1Runbo
 	return &GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK{}
 }
 
-/* GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK describes a response with status code 200, with default header values.
+/*
+GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK describes a response with status code 200, with default header values.
 
 get SelectOption(s)
 */
 type GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK struct {
 }
 
+// IsSuccess returns true when this get v1 runbooks select options integration slug action slug field o k response has a 2xx status code
+func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 runbooks select options integration slug action slug field o k response has a 3xx status code
+func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 runbooks select options integration slug action slug field o k response has a 4xx status code
+func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 runbooks select options integration slug action slug field o k response has a 5xx status code
+func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 runbooks select options integration slug action slug field o k response a status code equal to that given
+func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK) Error() string {
+	return fmt.Sprintf("[GET /v1/runbooks/select_options/{integration_slug}/{action_slug}/{field}][%d] getV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK ", 200)
+}
+
+func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK) String() string {
 	return fmt.Sprintf("[GET /v1/runbooks/select_options/{integration_slug}/{action_slug}/{field}][%d] getV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK ", 200)
 }
 

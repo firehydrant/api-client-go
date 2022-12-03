@@ -39,17 +39,48 @@ func NewPatchV1FunctionalitiesFunctionalityIDOK() *PatchV1FunctionalitiesFunctio
 	return &PatchV1FunctionalitiesFunctionalityIDOK{}
 }
 
-/* PatchV1FunctionalitiesFunctionalityIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1FunctionalitiesFunctionalityIDOK describes a response with status code 200, with default header values.
 
-Update a functionalitys attributes
+Update a functionalities attributes
 */
 type PatchV1FunctionalitiesFunctionalityIDOK struct {
 	Payload *models.FunctionalityEntity
 }
 
+// IsSuccess returns true when this patch v1 functionalities functionality Id o k response has a 2xx status code
+func (o *PatchV1FunctionalitiesFunctionalityIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 functionalities functionality Id o k response has a 3xx status code
+func (o *PatchV1FunctionalitiesFunctionalityIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 functionalities functionality Id o k response has a 4xx status code
+func (o *PatchV1FunctionalitiesFunctionalityIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 functionalities functionality Id o k response has a 5xx status code
+func (o *PatchV1FunctionalitiesFunctionalityIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 functionalities functionality Id o k response a status code equal to that given
+func (o *PatchV1FunctionalitiesFunctionalityIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1FunctionalitiesFunctionalityIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/functionalities/{functionality_id}][%d] patchV1FunctionalitiesFunctionalityIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1FunctionalitiesFunctionalityIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/functionalities/{functionality_id}][%d] patchV1FunctionalitiesFunctionalityIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1FunctionalitiesFunctionalityIDOK) GetPayload() *models.FunctionalityEntity {
 	return o.Payload
 }

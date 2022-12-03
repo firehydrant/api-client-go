@@ -48,6 +48,12 @@ type ClientService interface {
 
 	GetV1IntegrationsConnections(params *GetV1IntegrationsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConnectionsOK, error)
 
+	GetV1IntegrationsDataExportExportRequests(params *GetV1IntegrationsDataExportExportRequestsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsDataExportExportRequestsOK, error)
+
+	GetV1IntegrationsDataExportExportRequestsExportRequestID(params *GetV1IntegrationsDataExportExportRequestsExportRequestIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsDataExportExportRequestsExportRequestIDOK, error)
+
+	GetV1IntegrationsFieldMapsFieldMapIDAvailableFields(params *GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK, error)
+
 	GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegrationIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsIntegrationIDOK, error)
 
 	GetV1IntegrationsStatusesSlug(params *GetV1IntegrationsStatusesSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatusesSlugOK, error)
@@ -58,6 +64,8 @@ type ClientService interface {
 
 	GetV1IntegrationsStatuspageConnectionsIDPages(params *GetV1IntegrationsStatuspageConnectionsIDPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsIDPagesOK, error)
 
+	GetV1IntegrationsZendeskSearch(params *GetV1IntegrationsZendeskSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsZendeskSearchOK, error)
+
 	PatchV1IntegrationsAwsCloudtrailBatchesID(params *PatchV1IntegrationsAwsCloudtrailBatchesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAwsCloudtrailBatchesIDOK, error)
 
 	PatchV1IntegrationsAwsConnectionsID(params *PatchV1IntegrationsAwsConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAwsConnectionsIDOK, error)
@@ -65,6 +73,8 @@ type ClientService interface {
 	PatchV1IntegrationsConnectionsSlugConnectionID(params *PatchV1IntegrationsConnectionsSlugConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDOK, error)
 
 	PatchV1IntegrationsConnectionsSlugConnectionIDRefresh(params *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK, error)
+
+	PatchV1IntegrationsFieldMapsFieldMapID(params *PatchV1IntegrationsFieldMapsFieldMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsFieldMapsFieldMapIDOK, error)
 
 	PatchV1IntegrationsStatuspageConnectionsID(params *PatchV1IntegrationsStatuspageConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsStatuspageConnectionsIDOK, error)
 
@@ -74,9 +84,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1IntegrationsStatuspageConnectionsID deletes a statuspage connection
+DeleteV1IntegrationsStatuspageConnectionsID deletes a statuspage connection
 
-  Deletes the given Statuspage integration connection.
+Deletes the given Statuspage integration connection.
 */
 func (a *Client) DeleteV1IntegrationsStatuspageConnectionsID(params *DeleteV1IntegrationsStatuspageConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsStatuspageConnectionsIDOK, error) {
 	// TODO: Validate the params before sending
@@ -115,7 +125,7 @@ func (a *Client) DeleteV1IntegrationsStatuspageConnectionsID(params *DeleteV1Int
 }
 
 /*
-  GetV1Integrations get v1 integrations API
+GetV1Integrations get v1 integrations API
 */
 func (a *Client) GetV1Integrations(params *GetV1IntegrationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsOK, error) {
 	// TODO: Validate the params before sending
@@ -154,9 +164,9 @@ func (a *Client) GetV1Integrations(params *GetV1IntegrationsParams, authInfo run
 }
 
 /*
-  GetV1IntegrationsAwsCloudtrailBatches lists cloud trail batches
+GetV1IntegrationsAwsCloudtrailBatches lists cloud trail batches
 
-  Lists CloudTrail batches for the authenticated organization.
+Lists CloudTrail batches for the authenticated organization.
 */
 func (a *Client) GetV1IntegrationsAwsCloudtrailBatches(params *GetV1IntegrationsAwsCloudtrailBatchesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsCloudtrailBatchesOK, error) {
 	// TODO: Validate the params before sending
@@ -195,9 +205,9 @@ func (a *Client) GetV1IntegrationsAwsCloudtrailBatches(params *GetV1Integrations
 }
 
 /*
-  GetV1IntegrationsAwsCloudtrailBatchesID retrieves a cloud trail batch
+GetV1IntegrationsAwsCloudtrailBatchesID retrieves a cloud trail batch
 
-  Retrieve a single CloudTrail batch.
+Retrieve a single CloudTrail batch.
 */
 func (a *Client) GetV1IntegrationsAwsCloudtrailBatchesID(params *GetV1IntegrationsAwsCloudtrailBatchesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsCloudtrailBatchesIDOK, error) {
 	// TODO: Validate the params before sending
@@ -236,7 +246,7 @@ func (a *Client) GetV1IntegrationsAwsCloudtrailBatchesID(params *GetV1Integratio
 }
 
 /*
-  GetV1IntegrationsAwsCloudtrailBatchesIDEvents get v1 integrations aws cloudtrail batches Id events API
+GetV1IntegrationsAwsCloudtrailBatchesIDEvents get v1 integrations aws cloudtrail batches Id events API
 */
 func (a *Client) GetV1IntegrationsAwsCloudtrailBatchesIDEvents(params *GetV1IntegrationsAwsCloudtrailBatchesIDEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK, error) {
 	// TODO: Validate the params before sending
@@ -275,9 +285,9 @@ func (a *Client) GetV1IntegrationsAwsCloudtrailBatchesIDEvents(params *GetV1Inte
 }
 
 /*
-  GetV1IntegrationsAwsConnections lists a w s connections
+GetV1IntegrationsAwsConnections lists a w s connections
 
-  Lists the available and configured AWS integration connections for the authenticated organization.
+Lists the available and configured AWS integration connections for the authenticated organization.
 */
 func (a *Client) GetV1IntegrationsAwsConnections(params *GetV1IntegrationsAwsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsConnectionsOK, error) {
 	// TODO: Validate the params before sending
@@ -316,9 +326,9 @@ func (a *Client) GetV1IntegrationsAwsConnections(params *GetV1IntegrationsAwsCon
 }
 
 /*
-  GetV1IntegrationsAwsConnectionsID retrieves an a w s connection
+GetV1IntegrationsAwsConnectionsID retrieves an a w s connection
 
-  Retrieves the information about the AWS connection.
+Retrieves the information about the AWS connection.
 */
 func (a *Client) GetV1IntegrationsAwsConnectionsID(params *GetV1IntegrationsAwsConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsConnectionsIDOK, error) {
 	// TODO: Validate the params before sending
@@ -357,9 +367,9 @@ func (a *Client) GetV1IntegrationsAwsConnectionsID(params *GetV1IntegrationsAwsC
 }
 
 /*
-  GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch lists available space keys
+GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch lists available space keys
 
-  Lists available space keys for the Confluence integration connection.
+Lists available space keys for the Confluence integration connection.
 */
 func (a *Client) GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch(params *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK, error) {
 	// TODO: Validate the params before sending
@@ -398,7 +408,7 @@ func (a *Client) GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch(params
 }
 
 /*
-  GetV1IntegrationsConnections get v1 integrations connections API
+GetV1IntegrationsConnections get v1 integrations connections API
 */
 func (a *Client) GetV1IntegrationsConnections(params *GetV1IntegrationsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConnectionsOK, error) {
 	// TODO: Validate the params before sending
@@ -437,7 +447,130 @@ func (a *Client) GetV1IntegrationsConnections(params *GetV1IntegrationsConnectio
 }
 
 /*
-  GetV1IntegrationsIntegrationID Retrieve a single integration
+GetV1IntegrationsDataExportExportRequests lists export requests
+
+Lists export requests for data exporting
+*/
+func (a *Client) GetV1IntegrationsDataExportExportRequests(params *GetV1IntegrationsDataExportExportRequestsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsDataExportExportRequestsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IntegrationsDataExportExportRequestsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IntegrationsDataExportExportRequests",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/data_export/export_requests",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IntegrationsDataExportExportRequestsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IntegrationsDataExportExportRequestsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsDataExportExportRequests: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IntegrationsDataExportExportRequestsExportRequestID retrieves a single export requests
+
+Retrieves a single export request for data exporting
+*/
+func (a *Client) GetV1IntegrationsDataExportExportRequestsExportRequestID(params *GetV1IntegrationsDataExportExportRequestsExportRequestIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsDataExportExportRequestsExportRequestIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IntegrationsDataExportExportRequestsExportRequestIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IntegrationsDataExportExportRequestsExportRequestId",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/data_export/export_requests/{export_request_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IntegrationsDataExportExportRequestsExportRequestIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IntegrationsDataExportExportRequestsExportRequestIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsDataExportExportRequestsExportRequestId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IntegrationsFieldMapsFieldMapIDAvailableFields gets mappable fields
+
+Get a description of the fields to which data can be mapped
+*/
+func (a *Client) GetV1IntegrationsFieldMapsFieldMapIDAvailableFields(params *GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IntegrationsFieldMapsFieldMapIdAvailableFields",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/field_maps/{field_map_id}/available_fields",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsFieldMapsFieldMapIdAvailableFields: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IntegrationsIntegrationID Retrieve a single integration
 */
 func (a *Client) GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegrationIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsIntegrationIDOK, error) {
 	// TODO: Validate the params before sending
@@ -476,7 +609,7 @@ func (a *Client) GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegra
 }
 
 /*
-  GetV1IntegrationsStatusesSlug get v1 integrations statuses slug API
+GetV1IntegrationsStatusesSlug get v1 integrations statuses slug API
 */
 func (a *Client) GetV1IntegrationsStatusesSlug(params *GetV1IntegrationsStatusesSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatusesSlugOK, error) {
 	// TODO: Validate the params before sending
@@ -515,9 +648,9 @@ func (a *Client) GetV1IntegrationsStatusesSlug(params *GetV1IntegrationsStatuses
 }
 
 /*
-  GetV1IntegrationsStatuspageConnections lists statuspage connections
+GetV1IntegrationsStatuspageConnections lists statuspage connections
 
-  Lists the available and configured Statuspage integrations connections for the authenticated organization.
+Lists the available and configured Statuspage integrations connections for the authenticated organization.
 */
 func (a *Client) GetV1IntegrationsStatuspageConnections(params *GetV1IntegrationsStatuspageConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsOK, error) {
 	// TODO: Validate the params before sending
@@ -556,9 +689,9 @@ func (a *Client) GetV1IntegrationsStatuspageConnections(params *GetV1Integration
 }
 
 /*
-  GetV1IntegrationsStatuspageConnectionsID retrieves a statuspage connection
+GetV1IntegrationsStatuspageConnectionsID retrieves a statuspage connection
 
-  Retrieve the information about the Statuspage connection.
+Retrieve the information about the Statuspage connection.
 */
 func (a *Client) GetV1IntegrationsStatuspageConnectionsID(params *GetV1IntegrationsStatuspageConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsIDOK, error) {
 	// TODO: Validate the params before sending
@@ -597,7 +730,7 @@ func (a *Client) GetV1IntegrationsStatuspageConnectionsID(params *GetV1Integrati
 }
 
 /*
-  GetV1IntegrationsStatuspageConnectionsIDPages get v1 integrations statuspage connections Id pages API
+GetV1IntegrationsStatuspageConnectionsIDPages get v1 integrations statuspage connections Id pages API
 */
 func (a *Client) GetV1IntegrationsStatuspageConnectionsIDPages(params *GetV1IntegrationsStatuspageConnectionsIDPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsIDPagesOK, error) {
 	// TODO: Validate the params before sending
@@ -636,9 +769,48 @@ func (a *Client) GetV1IntegrationsStatuspageConnectionsIDPages(params *GetV1Inte
 }
 
 /*
-  PatchV1IntegrationsAwsCloudtrailBatchesID updates a cloud trail batch
+GetV1IntegrationsZendeskSearch get v1 integrations zendesk search API
+*/
+func (a *Client) GetV1IntegrationsZendeskSearch(params *GetV1IntegrationsZendeskSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsZendeskSearchOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IntegrationsZendeskSearchParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IntegrationsZendeskSearch",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/zendesk/search",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IntegrationsZendeskSearchReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
 
-  Update a CloudTrail batch with new information.
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IntegrationsZendeskSearchOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsZendeskSearch: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1IntegrationsAwsCloudtrailBatchesID updates a cloud trail batch
+
+Update a CloudTrail batch with new information.
 */
 func (a *Client) PatchV1IntegrationsAwsCloudtrailBatchesID(params *PatchV1IntegrationsAwsCloudtrailBatchesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAwsCloudtrailBatchesIDOK, error) {
 	// TODO: Validate the params before sending
@@ -677,9 +849,9 @@ func (a *Client) PatchV1IntegrationsAwsCloudtrailBatchesID(params *PatchV1Integr
 }
 
 /*
-  PatchV1IntegrationsAwsConnectionsID updates an a w s connection
+PatchV1IntegrationsAwsConnectionsID updates an a w s connection
 
-  Update the AWS connection with the provided data.
+Update the AWS connection with the provided data.
 */
 func (a *Client) PatchV1IntegrationsAwsConnectionsID(params *PatchV1IntegrationsAwsConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAwsConnectionsIDOK, error) {
 	// TODO: Validate the params before sending
@@ -718,7 +890,7 @@ func (a *Client) PatchV1IntegrationsAwsConnectionsID(params *PatchV1Integrations
 }
 
 /*
-  PatchV1IntegrationsConnectionsSlugConnectionID patch v1 integrations connections slug connection Id API
+PatchV1IntegrationsConnectionsSlugConnectionID patch v1 integrations connections slug connection Id API
 */
 func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionID(params *PatchV1IntegrationsConnectionsSlugConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDOK, error) {
 	// TODO: Validate the params before sending
@@ -757,7 +929,7 @@ func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionID(params *PatchV1I
 }
 
 /*
-  PatchV1IntegrationsConnectionsSlugConnectionIDRefresh patch v1 integrations connections slug connection Id refresh API
+PatchV1IntegrationsConnectionsSlugConnectionIDRefresh patch v1 integrations connections slug connection Id refresh API
 */
 func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionIDRefresh(params *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK, error) {
 	// TODO: Validate the params before sending
@@ -796,9 +968,50 @@ func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionIDRefresh(params *P
 }
 
 /*
-  PatchV1IntegrationsStatuspageConnectionsID updates a statuspage connection
+PatchV1IntegrationsFieldMapsFieldMapID updates field map
 
-  Update the given Statuspage integration connection.
+Update field map
+*/
+func (a *Client) PatchV1IntegrationsFieldMapsFieldMapID(params *PatchV1IntegrationsFieldMapsFieldMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsFieldMapsFieldMapIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1IntegrationsFieldMapsFieldMapIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1IntegrationsFieldMapsFieldMapId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/field_maps/{field_map_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1IntegrationsFieldMapsFieldMapIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1IntegrationsFieldMapsFieldMapIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsFieldMapsFieldMapId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1IntegrationsStatuspageConnectionsID updates a statuspage connection
+
+Update the given Statuspage integration connection.
 */
 func (a *Client) PatchV1IntegrationsStatuspageConnectionsID(params *PatchV1IntegrationsStatuspageConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsStatuspageConnectionsIDOK, error) {
 	// TODO: Validate the params before sending
@@ -837,7 +1050,7 @@ func (a *Client) PatchV1IntegrationsStatuspageConnectionsID(params *PatchV1Integ
 }
 
 /*
-  PostV1IntegrationsConnectionsSlug post v1 integrations connections slug API
+PostV1IntegrationsConnectionsSlug post v1 integrations connections slug API
 */
 func (a *Client) PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsConnectionsSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsConnectionsSlugCreated, error) {
 	// TODO: Validate the params before sending

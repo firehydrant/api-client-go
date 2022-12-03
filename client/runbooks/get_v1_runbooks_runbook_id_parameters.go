@@ -52,10 +52,12 @@ func NewGetV1RunbooksRunbookIDParamsWithHTTPClient(client *http.Client) *GetV1Ru
 	}
 }
 
-/* GetV1RunbooksRunbookIDParams contains all the parameters to send to the API endpoint
-   for the get v1 runbooks runbook Id operation.
+/*
+GetV1RunbooksRunbookIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 runbooks runbook Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1RunbooksRunbookIDParams struct {
 

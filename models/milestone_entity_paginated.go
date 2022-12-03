@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// MilestoneEntityPaginated Retrieve all milestones for an incident
+// MilestoneEntityPaginated List times and durations for each milestone on an incident
 //
 // swagger:model MilestoneEntityPaginated
 type MilestoneEntityPaginated struct {

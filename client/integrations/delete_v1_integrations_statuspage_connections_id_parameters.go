@@ -52,10 +52,12 @@ func NewDeleteV1IntegrationsStatuspageConnectionsIDParamsWithHTTPClient(client *
 	}
 }
 
-/* DeleteV1IntegrationsStatuspageConnectionsIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 integrations statuspage connections Id operation.
+/*
+DeleteV1IntegrationsStatuspageConnectionsIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 integrations statuspage connections Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1IntegrationsStatuspageConnectionsIDParams struct {
 

@@ -54,9 +54,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1SeverityMatrixConditionsConditionID deletes a specific condition
+DeleteV1SeverityMatrixConditionsConditionID deletes a specific condition
 
-  Delete a specific condition
+Delete a specific condition
 */
 func (a *Client) DeleteV1SeverityMatrixConditionsConditionID(params *DeleteV1SeverityMatrixConditionsConditionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SeverityMatrixConditionsConditionIDOK, error) {
 	// TODO: Validate the params before sending
@@ -95,9 +95,9 @@ func (a *Client) DeleteV1SeverityMatrixConditionsConditionID(params *DeleteV1Sev
 }
 
 /*
-  DeleteV1SeverityMatrixImpactsImpactID deletes a specific impact
+DeleteV1SeverityMatrixImpactsImpactID deletes a specific impact
 
-  Delete a specific impact
+Delete a specific impact
 */
 func (a *Client) DeleteV1SeverityMatrixImpactsImpactID(params *DeleteV1SeverityMatrixImpactsImpactIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SeverityMatrixImpactsImpactIDOK, error) {
 	// TODO: Validate the params before sending
@@ -136,9 +136,9 @@ func (a *Client) DeleteV1SeverityMatrixImpactsImpactID(params *DeleteV1SeverityM
 }
 
 /*
-  GetV1SeverityMatrix retrieves your severity matrix
+GetV1SeverityMatrix retrieves your severity matrix
 
-  Retrieve the Severity matrix for your organization and its components and configured severities.
+Retrieve the Severity matrix for your organization and its components and configured severities.
 */
 func (a *Client) GetV1SeverityMatrix(params *GetV1SeverityMatrixParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixOK, error) {
 	// TODO: Validate the params before sending
@@ -177,9 +177,9 @@ func (a *Client) GetV1SeverityMatrix(params *GetV1SeverityMatrixParams, authInfo
 }
 
 /*
-  GetV1SeverityMatrixConditions lists conditions
+GetV1SeverityMatrixConditions lists conditions
 
-  Lists conditions
+Lists conditions
 */
 func (a *Client) GetV1SeverityMatrixConditions(params *GetV1SeverityMatrixConditionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixConditionsOK, error) {
 	// TODO: Validate the params before sending
@@ -218,9 +218,9 @@ func (a *Client) GetV1SeverityMatrixConditions(params *GetV1SeverityMatrixCondit
 }
 
 /*
-  GetV1SeverityMatrixImpacts lists impacts
+GetV1SeverityMatrixImpacts lists impacts
 
-  Lists impacts
+Lists impacts
 */
 func (a *Client) GetV1SeverityMatrixImpacts(params *GetV1SeverityMatrixImpactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixImpactsOK, error) {
 	// TODO: Validate the params before sending
@@ -259,9 +259,9 @@ func (a *Client) GetV1SeverityMatrixImpacts(params *GetV1SeverityMatrixImpactsPa
 }
 
 /*
-  PatchV1SeverityMatrix updates your severity matrix
+PatchV1SeverityMatrix updates your severity matrix
 
-  Update available severities and impacts in your organization's severity matrix.
+Update available severities and impacts in your organization's severity matrix.
 */
 func (a *Client) PatchV1SeverityMatrix(params *PatchV1SeverityMatrixParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeverityMatrixOK, error) {
 	// TODO: Validate the params before sending
@@ -300,9 +300,9 @@ func (a *Client) PatchV1SeverityMatrix(params *PatchV1SeverityMatrixParams, auth
 }
 
 /*
-  PatchV1SeverityMatrixConditionsConditionID updates a specific condition
+PatchV1SeverityMatrixConditionsConditionID updates a specific condition
 
-  Update a specific condition
+Update a specific condition
 */
 func (a *Client) PatchV1SeverityMatrixConditionsConditionID(params *PatchV1SeverityMatrixConditionsConditionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeverityMatrixConditionsConditionIDOK, error) {
 	// TODO: Validate the params before sending
@@ -341,9 +341,9 @@ func (a *Client) PatchV1SeverityMatrixConditionsConditionID(params *PatchV1Sever
 }
 
 /*
-  PatchV1SeverityMatrixImpactsImpactID updates a specific impact
+PatchV1SeverityMatrixImpactsImpactID updates a specific impact
 
-  Update a specific impact
+Update a specific impact
 */
 func (a *Client) PatchV1SeverityMatrixImpactsImpactID(params *PatchV1SeverityMatrixImpactsImpactIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeverityMatrixImpactsImpactIDOK, error) {
 	// TODO: Validate the params before sending
@@ -382,9 +382,9 @@ func (a *Client) PatchV1SeverityMatrixImpactsImpactID(params *PatchV1SeverityMat
 }
 
 /*
-  PostV1SeverityMatrixConditions creates condition
+PostV1SeverityMatrixConditions creates condition
 
-  Create a new condition
+Create a new condition
 */
 func (a *Client) PostV1SeverityMatrixConditions(params *PostV1SeverityMatrixConditionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SeverityMatrixConditionsCreated, error) {
 	// TODO: Validate the params before sending
@@ -423,9 +423,9 @@ func (a *Client) PostV1SeverityMatrixConditions(params *PostV1SeverityMatrixCond
 }
 
 /*
-  PostV1SeverityMatrixImpacts creates impact
+PostV1SeverityMatrixImpacts creates impact
 
-  Create a new impact
+Create a new impact
 */
 func (a *Client) PostV1SeverityMatrixImpacts(params *PostV1SeverityMatrixImpactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SeverityMatrixImpactsCreated, error) {
 	// TODO: Validate the params before sending

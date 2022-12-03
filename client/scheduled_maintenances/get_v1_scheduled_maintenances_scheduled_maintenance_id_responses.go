@@ -39,7 +39,8 @@ func NewGetV1ScheduledMaintenancesScheduledMaintenanceIDOK() *GetV1ScheduledMain
 	return &GetV1ScheduledMaintenancesScheduledMaintenanceIDOK{}
 }
 
-/* GetV1ScheduledMaintenancesScheduledMaintenanceIDOK describes a response with status code 200, with default header values.
+/*
+GetV1ScheduledMaintenancesScheduledMaintenanceIDOK describes a response with status code 200, with default header values.
 
 Fetch the details of a scheduled maintenance event.
 */
@@ -47,9 +48,39 @@ type GetV1ScheduledMaintenancesScheduledMaintenanceIDOK struct {
 	Payload *models.ScheduledMaintenanceEntity
 }
 
+// IsSuccess returns true when this get v1 scheduled maintenances scheduled maintenance Id o k response has a 2xx status code
+func (o *GetV1ScheduledMaintenancesScheduledMaintenanceIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 scheduled maintenances scheduled maintenance Id o k response has a 3xx status code
+func (o *GetV1ScheduledMaintenancesScheduledMaintenanceIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 scheduled maintenances scheduled maintenance Id o k response has a 4xx status code
+func (o *GetV1ScheduledMaintenancesScheduledMaintenanceIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 scheduled maintenances scheduled maintenance Id o k response has a 5xx status code
+func (o *GetV1ScheduledMaintenancesScheduledMaintenanceIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 scheduled maintenances scheduled maintenance Id o k response a status code equal to that given
+func (o *GetV1ScheduledMaintenancesScheduledMaintenanceIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1ScheduledMaintenancesScheduledMaintenanceIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/scheduled_maintenances/{scheduled_maintenance_id}][%d] getV1ScheduledMaintenancesScheduledMaintenanceIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1ScheduledMaintenancesScheduledMaintenanceIDOK) String() string {
+	return fmt.Sprintf("[GET /v1/scheduled_maintenances/{scheduled_maintenance_id}][%d] getV1ScheduledMaintenancesScheduledMaintenanceIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1ScheduledMaintenancesScheduledMaintenanceIDOK) GetPayload() *models.ScheduledMaintenanceEntity {
 	return o.Payload
 }

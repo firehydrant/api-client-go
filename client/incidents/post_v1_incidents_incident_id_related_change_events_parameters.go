@@ -54,10 +54,12 @@ func NewPostV1IncidentsIncidentIDRelatedChangeEventsParamsWithHTTPClient(client 
 	}
 }
 
-/* PostV1IncidentsIncidentIDRelatedChangeEventsParams contains all the parameters to send to the API endpoint
-   for the post v1 incidents incident Id related change events operation.
+/*
+PostV1IncidentsIncidentIDRelatedChangeEventsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 incidents incident Id related change events operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1IncidentsIncidentIDRelatedChangeEventsParams struct {
 

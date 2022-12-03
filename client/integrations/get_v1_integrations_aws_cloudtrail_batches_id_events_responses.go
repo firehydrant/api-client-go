@@ -36,14 +36,44 @@ func NewGetV1IntegrationsAwsCloudtrailBatchesIDEventsOK() *GetV1IntegrationsAwsC
 	return &GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK{}
 }
 
-/* GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK describes a response with status code 200, with default header values.
+/*
+GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK describes a response with status code 200, with default header values.
 
 get Event(s)
 */
 type GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK struct {
 }
 
+// IsSuccess returns true when this get v1 integrations aws cloudtrail batches Id events o k response has a 2xx status code
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 integrations aws cloudtrail batches Id events o k response has a 3xx status code
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 integrations aws cloudtrail batches Id events o k response has a 4xx status code
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 integrations aws cloudtrail batches Id events o k response has a 5xx status code
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 integrations aws cloudtrail batches Id events o k response a status code equal to that given
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK) Error() string {
+	return fmt.Sprintf("[GET /v1/integrations/aws/cloudtrail_batches/{id}/events][%d] getV1IntegrationsAwsCloudtrailBatchesIdEventsOK ", 200)
+}
+
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK) String() string {
 	return fmt.Sprintf("[GET /v1/integrations/aws/cloudtrail_batches/{id}/events][%d] getV1IntegrationsAwsCloudtrailBatchesIdEventsOK ", 200)
 }
 

@@ -54,10 +54,12 @@ func NewPatchV1WebhooksWebhookIDParamsWithHTTPClient(client *http.Client) *Patch
 	}
 }
 
-/* PatchV1WebhooksWebhookIDParams contains all the parameters to send to the API endpoint
-   for the patch v1 webhooks webhook Id operation.
+/*
+PatchV1WebhooksWebhookIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch v1 webhooks webhook Id operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchV1WebhooksWebhookIDParams struct {
 

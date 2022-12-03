@@ -39,7 +39,8 @@ func NewGetV1ReportsMeanTimeOK() *GetV1ReportsMeanTimeOK {
 	return &GetV1ReportsMeanTimeOK{}
 }
 
-/* GetV1ReportsMeanTimeOK describes a response with status code 200, with default header values.
+/*
+GetV1ReportsMeanTimeOK describes a response with status code 200, with default header values.
 
 Returns a report with time bucketed analytics data
 */
@@ -47,9 +48,39 @@ type GetV1ReportsMeanTimeOK struct {
 	Payload *models.ReportEntity
 }
 
+// IsSuccess returns true when this get v1 reports mean time o k response has a 2xx status code
+func (o *GetV1ReportsMeanTimeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 reports mean time o k response has a 3xx status code
+func (o *GetV1ReportsMeanTimeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 reports mean time o k response has a 4xx status code
+func (o *GetV1ReportsMeanTimeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 reports mean time o k response has a 5xx status code
+func (o *GetV1ReportsMeanTimeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 reports mean time o k response a status code equal to that given
+func (o *GetV1ReportsMeanTimeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1ReportsMeanTimeOK) Error() string {
 	return fmt.Sprintf("[GET /v1/reports/mean_time][%d] getV1ReportsMeanTimeOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1ReportsMeanTimeOK) String() string {
+	return fmt.Sprintf("[GET /v1/reports/mean_time][%d] getV1ReportsMeanTimeOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1ReportsMeanTimeOK) GetPayload() *models.ReportEntity {
 	return o.Payload
 }

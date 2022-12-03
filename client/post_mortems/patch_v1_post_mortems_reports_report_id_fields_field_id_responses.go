@@ -39,7 +39,8 @@ func NewPatchV1PostMortemsReportsReportIDFieldsFieldIDOK() *PatchV1PostMortemsRe
 	return &PatchV1PostMortemsReportsReportIDFieldsFieldIDOK{}
 }
 
-/* PatchV1PostMortemsReportsReportIDFieldsFieldIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1PostMortemsReportsReportIDFieldsFieldIDOK describes a response with status code 200, with default header values.
 
 Update a field value on a post mortem report
 */
@@ -47,9 +48,39 @@ type PatchV1PostMortemsReportsReportIDFieldsFieldIDOK struct {
 	Payload *models.SectionFieldEntity
 }
 
+// IsSuccess returns true when this patch v1 post mortems reports report Id fields field Id o k response has a 2xx status code
+func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 post mortems reports report Id fields field Id o k response has a 3xx status code
+func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 post mortems reports report Id fields field Id o k response has a 4xx status code
+func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 post mortems reports report Id fields field Id o k response has a 5xx status code
+func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 post mortems reports report Id fields field Id o k response a status code equal to that given
+func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}/fields/{field_id}][%d] patchV1PostMortemsReportsReportIdFieldsFieldIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}/fields/{field_id}][%d] patchV1PostMortemsReportsReportIdFieldsFieldIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDOK) GetPayload() *models.SectionFieldEntity {
 	return o.Payload
 }

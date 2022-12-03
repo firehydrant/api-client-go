@@ -52,10 +52,12 @@ func NewDeleteV1NuncSubscriptionsUnsubscribeTokenParamsWithHTTPClient(client *ht
 	}
 }
 
-/* DeleteV1NuncSubscriptionsUnsubscribeTokenParams contains all the parameters to send to the API endpoint
-   for the delete v1 nunc subscriptions unsubscribe token operation.
+/*
+DeleteV1NuncSubscriptionsUnsubscribeTokenParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 nunc subscriptions unsubscribe token operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1NuncSubscriptionsUnsubscribeTokenParams struct {
 

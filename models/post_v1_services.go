@@ -24,6 +24,9 @@ type PostV1Services struct {
 	// alert on add
 	AlertOnAdd bool `json:"alert_on_add,omitempty"`
 
+	// auto add responding team
+	AutoAddRespondingTeam bool `json:"auto_add_responding_team,omitempty"`
+
 	// checklists
 	Checklists *PostV1ServicesChecklists `json:"checklists,omitempty"`
 

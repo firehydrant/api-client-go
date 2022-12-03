@@ -52,10 +52,12 @@ func NewDeleteV1WebhooksWebhookIDParamsWithHTTPClient(client *http.Client) *Dele
 	}
 }
 
-/* DeleteV1WebhooksWebhookIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 webhooks webhook Id operation.
+/*
+DeleteV1WebhooksWebhookIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 webhooks webhook Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1WebhooksWebhookIDParams struct {
 

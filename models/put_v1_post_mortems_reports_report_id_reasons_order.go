@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PutV1PostMortemsReportsReportIDReasonsOrder Reorder a reason in the post mortem reasons list
+// PutV1PostMortemsReportsReportIDReasonsOrder Reorder a contributing factor
 //
 // swagger:model putV1PostMortemsReportsReportIdReasonsOrder
 type PutV1PostMortemsReportsReportIDReasonsOrder struct {
