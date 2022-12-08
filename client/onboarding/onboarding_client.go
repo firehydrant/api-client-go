@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  GetV1OnboardingQuickStartReport Onboarding quick start readiness report
+GetV1OnboardingQuickStartReport Onboarding quick start readiness report
 */
 func (a *Client) GetV1OnboardingQuickStartReport(params *GetV1OnboardingQuickStartReportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1OnboardingQuickStartReportOK, error) {
 	// TODO: Validate the params before sending
@@ -77,7 +77,7 @@ func (a *Client) GetV1OnboardingQuickStartReport(params *GetV1OnboardingQuickSta
 }
 
 /*
-  PutV1OnboardingQuickStartReportCompleteTaskSlug put v1 onboarding quick start report complete task slug API
+PutV1OnboardingQuickStartReportCompleteTaskSlug put v1 onboarding quick start report complete task slug API
 */
 func (a *Client) PutV1OnboardingQuickStartReportCompleteTaskSlug(params *PutV1OnboardingQuickStartReportCompleteTaskSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1OnboardingQuickStartReportCompleteTaskSlugOK, error) {
 	// TODO: Validate the params before sending

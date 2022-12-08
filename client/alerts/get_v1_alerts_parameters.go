@@ -53,10 +53,12 @@ func NewGetV1AlertsParamsWithHTTPClient(client *http.Client) *GetV1AlertsParams 
 	}
 }
 
-/* GetV1AlertsParams contains all the parameters to send to the API endpoint
-   for the get v1 alerts operation.
+/*
+GetV1AlertsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 alerts operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1AlertsParams struct {
 

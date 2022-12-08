@@ -14,6 +14,7 @@ import (
 	"github.com/firehydrant/api-client-go/client/catalogs"
 	"github.com/firehydrant/api-client-go/client/change_types"
 	"github.com/firehydrant/api-client-go/client/changes"
+	"github.com/firehydrant/api-client-go/client/checklist_templates"
 	"github.com/firehydrant/api-client-go/client/entitlements"
 	"github.com/firehydrant/api-client-go/client/environments"
 	"github.com/firehydrant/api-client-go/client/functionalities"
@@ -28,20 +29,24 @@ import (
 	"github.com/firehydrant/api-client-go/client/nunc"
 	"github.com/firehydrant/api-client-go/client/nunc_connections"
 	"github.com/firehydrant/api-client-go/client/onboarding"
-	"github.com/firehydrant/api-client-go/client/organization_users"
 	"github.com/firehydrant/api-client-go/client/ping"
 	"github.com/firehydrant/api-client-go/client/post_mortems"
 	"github.com/firehydrant/api-client-go/client/priorities"
+	"github.com/firehydrant/api-client-go/client/processing_log_entries"
 	"github.com/firehydrant/api-client-go/client/release_notes"
 	"github.com/firehydrant/api-client-go/client/reports"
+	"github.com/firehydrant/api-client-go/client/runbook_audits"
 	"github.com/firehydrant/api-client-go/client/runbook_templates"
 	"github.com/firehydrant/api-client-go/client/runbooks"
 	"github.com/firehydrant/api-client-go/client/saved_searches"
 	"github.com/firehydrant/api-client-go/client/scheduled_maintenances"
 	"github.com/firehydrant/api-client-go/client/schedules"
+	"github.com/firehydrant/api-client-go/client/scim"
+	"github.com/firehydrant/api-client-go/client/service_dependencies"
 	"github.com/firehydrant/api-client-go/client/services"
 	"github.com/firehydrant/api-client-go/client/severities"
 	"github.com/firehydrant/api-client-go/client/severity_matrix"
+	"github.com/firehydrant/api-client-go/client/task_lists"
 	"github.com/firehydrant/api-client-go/client/teams"
 	"github.com/firehydrant/api-client-go/client/ticketing"
 	"github.com/firehydrant/api-client-go/client/users"
@@ -94,6 +99,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Catalogs = catalogs.New(transport, formats)
 	cli.ChangeTypes = change_types.New(transport, formats)
 	cli.Changes = changes.New(transport, formats)
+	cli.ChecklistTemplates = checklist_templates.New(transport, formats)
 	cli.Entitlements = entitlements.New(transport, formats)
 	cli.Environments = environments.New(transport, formats)
 	cli.Functionalities = functionalities.New(transport, formats)
@@ -108,20 +114,24 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Nunc = nunc.New(transport, formats)
 	cli.NuncConnections = nunc_connections.New(transport, formats)
 	cli.Onboarding = onboarding.New(transport, formats)
-	cli.OrganizationUsers = organization_users.New(transport, formats)
 	cli.Ping = ping.New(transport, formats)
 	cli.PostMortems = post_mortems.New(transport, formats)
 	cli.Priorities = priorities.New(transport, formats)
+	cli.ProcessingLogEntries = processing_log_entries.New(transport, formats)
 	cli.ReleaseNotes = release_notes.New(transport, formats)
 	cli.Reports = reports.New(transport, formats)
+	cli.RunbookAudits = runbook_audits.New(transport, formats)
 	cli.RunbookTemplates = runbook_templates.New(transport, formats)
 	cli.Runbooks = runbooks.New(transport, formats)
 	cli.SavedSearches = saved_searches.New(transport, formats)
 	cli.ScheduledMaintenances = scheduled_maintenances.New(transport, formats)
 	cli.Schedules = schedules.New(transport, formats)
+	cli.Scim = scim.New(transport, formats)
+	cli.ServiceDependencies = service_dependencies.New(transport, formats)
 	cli.Services = services.New(transport, formats)
 	cli.Severities = severities.New(transport, formats)
 	cli.SeverityMatrix = severity_matrix.New(transport, formats)
+	cli.TaskLists = task_lists.New(transport, formats)
 	cli.Teams = teams.New(transport, formats)
 	cli.Ticketing = ticketing.New(transport, formats)
 	cli.Users = users.New(transport, formats)
@@ -178,6 +188,8 @@ type FireHydrantAPI struct {
 
 	Changes changes.ClientService
 
+	ChecklistTemplates checklist_templates.ClientService
+
 	Entitlements entitlements.ClientService
 
 	Environments environments.ClientService
@@ -206,17 +218,19 @@ type FireHydrantAPI struct {
 
 	Onboarding onboarding.ClientService
 
-	OrganizationUsers organization_users.ClientService
-
 	Ping ping.ClientService
 
 	PostMortems post_mortems.ClientService
 
 	Priorities priorities.ClientService
 
+	ProcessingLogEntries processing_log_entries.ClientService
+
 	ReleaseNotes release_notes.ClientService
 
 	Reports reports.ClientService
+
+	RunbookAudits runbook_audits.ClientService
 
 	RunbookTemplates runbook_templates.ClientService
 
@@ -228,11 +242,17 @@ type FireHydrantAPI struct {
 
 	Schedules schedules.ClientService
 
+	Scim scim.ClientService
+
+	ServiceDependencies service_dependencies.ClientService
+
 	Services services.ClientService
 
 	Severities severities.ClientService
 
 	SeverityMatrix severity_matrix.ClientService
+
+	TaskLists task_lists.ClientService
 
 	Teams teams.ClientService
 
@@ -252,6 +272,7 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Catalogs.SetTransport(transport)
 	c.ChangeTypes.SetTransport(transport)
 	c.Changes.SetTransport(transport)
+	c.ChecklistTemplates.SetTransport(transport)
 	c.Entitlements.SetTransport(transport)
 	c.Environments.SetTransport(transport)
 	c.Functionalities.SetTransport(transport)
@@ -266,20 +287,24 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Nunc.SetTransport(transport)
 	c.NuncConnections.SetTransport(transport)
 	c.Onboarding.SetTransport(transport)
-	c.OrganizationUsers.SetTransport(transport)
 	c.Ping.SetTransport(transport)
 	c.PostMortems.SetTransport(transport)
 	c.Priorities.SetTransport(transport)
+	c.ProcessingLogEntries.SetTransport(transport)
 	c.ReleaseNotes.SetTransport(transport)
 	c.Reports.SetTransport(transport)
+	c.RunbookAudits.SetTransport(transport)
 	c.RunbookTemplates.SetTransport(transport)
 	c.Runbooks.SetTransport(transport)
 	c.SavedSearches.SetTransport(transport)
 	c.ScheduledMaintenances.SetTransport(transport)
 	c.Schedules.SetTransport(transport)
+	c.Scim.SetTransport(transport)
+	c.ServiceDependencies.SetTransport(transport)
 	c.Services.SetTransport(transport)
 	c.Severities.SetTransport(transport)
 	c.SeverityMatrix.SetTransport(transport)
+	c.TaskLists.SetTransport(transport)
 	c.Teams.SetTransport(transport)
 	c.Ticketing.SetTransport(transport)
 	c.Users.SetTransport(transport)

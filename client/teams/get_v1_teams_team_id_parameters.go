@@ -53,10 +53,12 @@ func NewGetV1TeamsTeamIDParamsWithHTTPClient(client *http.Client) *GetV1TeamsTea
 	}
 }
 
-/* GetV1TeamsTeamIDParams contains all the parameters to send to the API endpoint
-   for the get v1 teams team Id operation.
+/*
+GetV1TeamsTeamIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 teams team Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1TeamsTeamIDParams struct {
 

@@ -54,10 +54,12 @@ func NewPatchV1PostMortemsReportsReportIDFieldsFieldIDParamsWithHTTPClient(clien
 	}
 }
 
-/* PatchV1PostMortemsReportsReportIDFieldsFieldIDParams contains all the parameters to send to the API endpoint
-   for the patch v1 post mortems reports report Id fields field Id operation.
+/*
+PatchV1PostMortemsReportsReportIDFieldsFieldIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch v1 post mortems reports report Id fields field Id operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchV1PostMortemsReportsReportIDFieldsFieldIDParams struct {
 

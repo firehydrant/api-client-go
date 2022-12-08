@@ -39,17 +39,48 @@ func NewPatchV1IncidentsIncidentIDNotesNoteIDOK() *PatchV1IncidentsIncidentIDNot
 	return &PatchV1IncidentsIncidentIDNotesNoteIDOK{}
 }
 
-/* PatchV1IncidentsIncidentIDNotesNoteIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1IncidentsIncidentIDNotesNoteIDOK describes a response with status code 200, with default header values.
 
-Update a note
+Updates the body of a note
 */
 type PatchV1IncidentsIncidentIDNotesNoteIDOK struct {
 	Payload *models.NoteEntity
 }
 
+// IsSuccess returns true when this patch v1 incidents incident Id notes note Id o k response has a 2xx status code
+func (o *PatchV1IncidentsIncidentIDNotesNoteIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 incidents incident Id notes note Id o k response has a 3xx status code
+func (o *PatchV1IncidentsIncidentIDNotesNoteIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 incidents incident Id notes note Id o k response has a 4xx status code
+func (o *PatchV1IncidentsIncidentIDNotesNoteIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 incidents incident Id notes note Id o k response has a 5xx status code
+func (o *PatchV1IncidentsIncidentIDNotesNoteIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 incidents incident Id notes note Id o k response a status code equal to that given
+func (o *PatchV1IncidentsIncidentIDNotesNoteIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1IncidentsIncidentIDNotesNoteIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/notes/{note_id}][%d] patchV1IncidentsIncidentIdNotesNoteIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1IncidentsIncidentIDNotesNoteIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/notes/{note_id}][%d] patchV1IncidentsIncidentIdNotesNoteIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1IncidentsIncidentIDNotesNoteIDOK) GetPayload() *models.NoteEntity {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewGetV1IncidentTypesParamsWithHTTPClient(client *http.Client) *GetV1Incide
 	}
 }
 
-/* GetV1IncidentTypesParams contains all the parameters to send to the API endpoint
-   for the get v1 incident types operation.
+/*
+GetV1IncidentTypesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 incident types operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IncidentTypesParams struct {
 	timeout    time.Duration

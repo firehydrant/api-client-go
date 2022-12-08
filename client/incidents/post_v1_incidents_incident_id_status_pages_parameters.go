@@ -52,10 +52,12 @@ func NewPostV1IncidentsIncidentIDStatusPagesParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* PostV1IncidentsIncidentIDStatusPagesParams contains all the parameters to send to the API endpoint
-   for the post v1 incidents incident Id status pages operation.
+/*
+PostV1IncidentsIncidentIDStatusPagesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 incidents incident Id status pages operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1IncidentsIncidentIDStatusPagesParams struct {
 

@@ -36,6 +36,8 @@ type ClientService interface {
 
 	GetV1FunctionalitiesFunctionalityID(params *GetV1FunctionalitiesFunctionalityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1FunctionalitiesFunctionalityIDOK, error)
 
+	GetV1FunctionalitiesFunctionalityIDServices(params *GetV1FunctionalitiesFunctionalityIDServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1FunctionalitiesFunctionalityIDServicesOK, error)
+
 	PatchV1FunctionalitiesFunctionalityID(params *PatchV1FunctionalitiesFunctionalityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1FunctionalitiesFunctionalityIDOK, error)
 
 	PostV1Functionalities(params *PostV1FunctionalitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1FunctionalitiesCreated, error)
@@ -44,9 +46,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1FunctionalitiesFunctionalityID archives a functionality
+DeleteV1FunctionalitiesFunctionalityID archives a functionality
 
-  Archive a functionality
+Archive a functionality
 */
 func (a *Client) DeleteV1FunctionalitiesFunctionalityID(params *DeleteV1FunctionalitiesFunctionalityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1FunctionalitiesFunctionalityIDOK, error) {
 	// TODO: Validate the params before sending
@@ -85,9 +87,9 @@ func (a *Client) DeleteV1FunctionalitiesFunctionalityID(params *DeleteV1Function
 }
 
 /*
-  GetV1Functionalities lists all functionalities
+GetV1Functionalities lists all functionalities
 
-  List all of the functionalities that have been added to the organiation
+List all of the functionalities that have been added to the organiation
 */
 func (a *Client) GetV1Functionalities(params *GetV1FunctionalitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1FunctionalitiesOK, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +128,9 @@ func (a *Client) GetV1Functionalities(params *GetV1FunctionalitiesParams, authIn
 }
 
 /*
-  GetV1FunctionalitiesFunctionalityID retrieves a single functionality
+GetV1FunctionalitiesFunctionalityID retrieves a single functionality
 
-  Retrieves a single functionality by ID
+Retrieves a single functionality by ID
 */
 func (a *Client) GetV1FunctionalitiesFunctionalityID(params *GetV1FunctionalitiesFunctionalityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1FunctionalitiesFunctionalityIDOK, error) {
 	// TODO: Validate the params before sending
@@ -167,9 +169,48 @@ func (a *Client) GetV1FunctionalitiesFunctionalityID(params *GetV1Functionalitie
 }
 
 /*
-  PatchV1FunctionalitiesFunctionalityID updates a functionality
+GetV1FunctionalitiesFunctionalityIDServices get v1 functionalities functionality Id services API
+*/
+func (a *Client) GetV1FunctionalitiesFunctionalityIDServices(params *GetV1FunctionalitiesFunctionalityIDServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1FunctionalitiesFunctionalityIDServicesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1FunctionalitiesFunctionalityIDServicesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1FunctionalitiesFunctionalityIdServices",
+		Method:             "GET",
+		PathPattern:        "/v1/functionalities/{functionality_id}/services",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1FunctionalitiesFunctionalityIDServicesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
 
-  Update a functionalitys attributes
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1FunctionalitiesFunctionalityIDServicesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1FunctionalitiesFunctionalityIdServices: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1FunctionalitiesFunctionalityID updates a functionality
+
+Update a functionalities attributes
 */
 func (a *Client) PatchV1FunctionalitiesFunctionalityID(params *PatchV1FunctionalitiesFunctionalityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1FunctionalitiesFunctionalityIDOK, error) {
 	// TODO: Validate the params before sending
@@ -208,9 +249,9 @@ func (a *Client) PatchV1FunctionalitiesFunctionalityID(params *PatchV1Functional
 }
 
 /*
-  PostV1Functionalities creates a functionality
+PostV1Functionalities creates a functionality
 
-  Creates a functionality for the organization
+Creates a functionality for the organization
 */
 func (a *Client) PostV1Functionalities(params *PostV1FunctionalitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1FunctionalitiesCreated, error) {
 	// TODO: Validate the params before sending

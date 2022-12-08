@@ -52,10 +52,12 @@ func NewPostV1CatalogsCatalogIDIngestParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* PostV1CatalogsCatalogIDIngestParams contains all the parameters to send to the API endpoint
-   for the post v1 catalogs catalog Id ingest operation.
+/*
+PostV1CatalogsCatalogIDIngestParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 catalogs catalog Id ingest operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1CatalogsCatalogIDIngestParams struct {
 

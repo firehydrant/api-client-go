@@ -18,7 +18,6 @@ import (
 // PutV1Runbooks Update a runbook and any attachment rules associated with it. This endpoint is used to configure nearly everything
 // about a runbook, including but not limited to the steps, environments, attachment rules, and severities.
 //
-//
 // swagger:model putV1Runbooks
 type PutV1Runbooks struct {
 
@@ -31,11 +30,11 @@ type PutV1Runbooks struct {
 	// environments
 	Environments []*PutV1RunbooksEnvironmentsItems0 `json:"environments"`
 
-	// incident roles
-	IncidentRoles []*PutV1RunbooksIncidentRolesItems0 `json:"incident_roles"`
-
 	// name
 	Name string `json:"name,omitempty"`
+
+	// owner
+	Owner *PutV1RunbooksOwner `json:"owner,omitempty"`
 
 	// services
 	Services []*PutV1RunbooksServicesItems0 `json:"services"`
@@ -62,7 +61,7 @@ func (m *PutV1Runbooks) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateIncidentRoles(formats); err != nil {
+	if err := m.validateOwner(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -129,27 +128,20 @@ func (m *PutV1Runbooks) validateEnvironments(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *PutV1Runbooks) validateIncidentRoles(formats strfmt.Registry) error {
-	if swag.IsZero(m.IncidentRoles) { // not required
+func (m *PutV1Runbooks) validateOwner(formats strfmt.Registry) error {
+	if swag.IsZero(m.Owner) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.IncidentRoles); i++ {
-		if swag.IsZero(m.IncidentRoles[i]) { // not required
-			continue
-		}
-
-		if m.IncidentRoles[i] != nil {
-			if err := m.IncidentRoles[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("incident_roles" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("incident_roles" + "." + strconv.Itoa(i))
-				}
-				return err
+	if m.Owner != nil {
+		if err := m.Owner.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
 			}
+			return err
 		}
-
 	}
 
 	return nil
@@ -245,7 +237,7 @@ func (m *PutV1Runbooks) ContextValidate(ctx context.Context, formats strfmt.Regi
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateIncidentRoles(ctx, formats); err != nil {
+	if err := m.contextValidateOwner(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -303,21 +295,17 @@ func (m *PutV1Runbooks) contextValidateEnvironments(ctx context.Context, formats
 	return nil
 }
 
-func (m *PutV1Runbooks) contextValidateIncidentRoles(ctx context.Context, formats strfmt.Registry) error {
+func (m *PutV1Runbooks) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.IncidentRoles); i++ {
-
-		if m.IncidentRoles[i] != nil {
-			if err := m.IncidentRoles[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("incident_roles" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("incident_roles" + "." + strconv.Itoa(i))
-				}
-				return err
+	if m.Owner != nil {
+		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
 			}
+			return err
 		}
-
 	}
 
 	return nil
@@ -497,27 +485,27 @@ func (m *PutV1RunbooksEnvironmentsItems0) UnmarshalBinary(b []byte) error {
 	return nil
 }
 
-// PutV1RunbooksIncidentRolesItems0 put v1 runbooks incident roles items0
+// PutV1RunbooksOwner An object representing a Team that owns the runbook
 //
-// swagger:model PutV1RunbooksIncidentRolesItems0
-type PutV1RunbooksIncidentRolesItems0 struct {
+// swagger:model PutV1RunbooksOwner
+type PutV1RunbooksOwner struct {
 
 	// id
 	ID string `json:"id,omitempty"`
 }
 
-// Validate validates this put v1 runbooks incident roles items0
-func (m *PutV1RunbooksIncidentRolesItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this put v1 runbooks owner
+func (m *PutV1RunbooksOwner) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this put v1 runbooks incident roles items0 based on context it is used
-func (m *PutV1RunbooksIncidentRolesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this put v1 runbooks owner based on context it is used
+func (m *PutV1RunbooksOwner) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *PutV1RunbooksIncidentRolesItems0) MarshalBinary() ([]byte, error) {
+func (m *PutV1RunbooksOwner) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -525,8 +513,8 @@ func (m *PutV1RunbooksIncidentRolesItems0) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *PutV1RunbooksIncidentRolesItems0) UnmarshalBinary(b []byte) error {
-	var res PutV1RunbooksIncidentRolesItems0
+func (m *PutV1RunbooksOwner) UnmarshalBinary(b []byte) error {
+	var res PutV1RunbooksOwner
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

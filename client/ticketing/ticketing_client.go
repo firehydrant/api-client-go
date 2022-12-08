@@ -42,9 +42,13 @@ type ClientService interface {
 
 	GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldID(params *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDOK, error)
 
+	GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFields(params *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK, error)
+
 	GetV1TicketingProjectsTicketingProjectIDFieldMapsMapID(params *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK, error)
 
 	GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error)
+
+	GetV1TicketingTicketTags(params *GetV1TicketingTicketTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingTicketTagsOK, error)
 
 	GetV1TicketingTickets(params *GetV1TicketingTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingTicketsOK, error)
 
@@ -66,9 +70,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapID archives field map for a ticketing project
+DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapID archives field map for a ticketing project
 
-  Archive field map for a ticketing project
+Archive field map for a ticketing project
 */
 func (a *Client) DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapID(params *DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -107,9 +111,9 @@ func (a *Client) DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapID(param
 }
 
 /*
-  DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID archives configuration for a ticketing project
+DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID archives configuration for a ticketing project
 
-  Archive configuration for a ticketing project
+Archive configuration for a ticketing project
 */
 func (a *Client) DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error) {
 	// TODO: Validate the params before sending
@@ -148,7 +152,7 @@ func (a *Client) DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfi
 }
 
 /*
-  DeleteV1TicketingTicketsTicketID delete v1 ticketing tickets ticket Id API
+DeleteV1TicketingTicketsTicketID delete v1 ticketing tickets ticket Id API
 */
 func (a *Client) DeleteV1TicketingTicketsTicketID(params *DeleteV1TicketingTicketsTicketIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TicketingTicketsTicketIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -187,9 +191,9 @@ func (a *Client) DeleteV1TicketingTicketsTicketID(params *DeleteV1TicketingTicke
 }
 
 /*
-  GetV1TicketingProjects lists all ticketing projects
+GetV1TicketingProjects lists all ticketing projects
 
-  List all ticketing projects available to the organization
+List all ticketing projects available to the organization
 */
 func (a *Client) GetV1TicketingProjects(params *GetV1TicketingProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsOK, error) {
 	// TODO: Validate the params before sending
@@ -228,7 +232,7 @@ func (a *Client) GetV1TicketingProjects(params *GetV1TicketingProjectsParams, au
 }
 
 /*
-  GetV1TicketingProjectsTicketingProjectIDConfigurationOptions get v1 ticketing projects ticketing project Id configuration options API
+GetV1TicketingProjectsTicketingProjectIDConfigurationOptions get v1 ticketing projects ticketing project Id configuration options API
 */
 func (a *Client) GetV1TicketingProjectsTicketingProjectIDConfigurationOptions(params *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK, error) {
 	// TODO: Validate the params before sending
@@ -267,7 +271,7 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDConfigurationOptions(pa
 }
 
 /*
-  GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldID get v1 ticketing projects ticketing project Id configuration options options for field Id API
+GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldID get v1 ticketing projects ticketing project Id configuration options options for field Id API
 */
 func (a *Client) GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldID(params *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDOK, error) {
 	// TODO: Validate the params before sending
@@ -306,9 +310,50 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOpt
 }
 
 /*
-  GetV1TicketingProjectsTicketingProjectIDFieldMapsMapID retrieves field map for a ticketing project
+GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFields gets the fields that can be mapped for this project
 
-  Retrieve field map for a ticketing project
+Returns metadata for the fields that are available for field mapping.
+*/
+func (a *Client) GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFields(params *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TicketingProjectsTicketingProjectIdFieldMapsAvailableFields",
+		Method:             "GET",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/field_maps/available_fields",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TicketingProjectsTicketingProjectIdFieldMapsAvailableFields: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1TicketingProjectsTicketingProjectIDFieldMapsMapID retrieves field map for a ticketing project
+
+Retrieve field map for a ticketing project
 */
 func (a *Client) GetV1TicketingProjectsTicketingProjectIDFieldMapsMapID(params *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK, error) {
 	// TODO: Validate the params before sending
@@ -347,9 +392,9 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDFieldMapsMapID(params *
 }
 
 /*
-  GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID retrieves configuration for a ticketing project
+GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID retrieves configuration for a ticketing project
 
-  Retrieve configuration for a ticketing project
+Retrieve configuration for a ticketing project
 */
 func (a *Client) GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error) {
 	// TODO: Validate the params before sending
@@ -388,9 +433,50 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigur
 }
 
 /*
-  GetV1TicketingTickets lists all functionalities
+GetV1TicketingTicketTags lists all ticket tags
 
-  List all of the functionalities that have been added to the organiation
+List all of the ticket tags in the organization
+*/
+func (a *Client) GetV1TicketingTicketTags(params *GetV1TicketingTicketTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingTicketTagsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TicketingTicketTagsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TicketingTicketTags",
+		Method:             "GET",
+		PathPattern:        "/v1/ticketing/ticket_tags",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TicketingTicketTagsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TicketingTicketTagsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TicketingTicketTags: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1TicketingTickets lists all tickets
+
+List all of the tickets that have been added to the organiation
 */
 func (a *Client) GetV1TicketingTickets(params *GetV1TicketingTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingTicketsOK, error) {
 	// TODO: Validate the params before sending
@@ -429,9 +515,9 @@ func (a *Client) GetV1TicketingTickets(params *GetV1TicketingTicketsParams, auth
 }
 
 /*
-  GetV1TicketingTicketsTicketID retrieves a single ticket
+GetV1TicketingTicketsTicketID retrieves a single ticket
 
-  Retrieves a single ticket by ID
+Retrieves a single ticket by ID
 */
 func (a *Client) GetV1TicketingTicketsTicketID(params *GetV1TicketingTicketsTicketIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingTicketsTicketIDOK, error) {
 	// TODO: Validate the params before sending
@@ -470,9 +556,9 @@ func (a *Client) GetV1TicketingTicketsTicketID(params *GetV1TicketingTicketsTick
 }
 
 /*
-  PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapID updates field map for a ticketing project
+PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapID updates field map for a ticketing project
 
-  Update field map for a ticketing project
+Update field map for a ticketing project
 */
 func (a *Client) PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapID(params *PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK, error) {
 	// TODO: Validate the params before sending
@@ -511,9 +597,9 @@ func (a *Client) PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapID(params
 }
 
 /*
-  PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID updates configuration for a ticketing project
+PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID updates configuration for a ticketing project
 
-  Update configuration for a ticketing project
+Update configuration for a ticketing project
 */
 func (a *Client) PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error) {
 	// TODO: Validate the params before sending
@@ -552,9 +638,9 @@ func (a *Client) PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfig
 }
 
 /*
-  PatchV1TicketingTicketsTicketID updates a ticket
+PatchV1TicketingTicketsTicketID updates a ticket
 
-  Update a ticket's attributes
+Update a ticket's attributes
 */
 func (a *Client) PatchV1TicketingTicketsTicketID(params *PatchV1TicketingTicketsTicketIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TicketingTicketsTicketIDOK, error) {
 	// TODO: Validate the params before sending
@@ -593,9 +679,9 @@ func (a *Client) PatchV1TicketingTicketsTicketID(params *PatchV1TicketingTickets
 }
 
 /*
-  PostV1TicketingProjectsTicketingProjectIDFieldMaps creates field map for a ticketing project
+PostV1TicketingProjectsTicketingProjectIDFieldMaps creates field map for a ticketing project
 
-  Creates field map for a ticketing project
+Creates field map for a ticketing project
 */
 func (a *Client) PostV1TicketingProjectsTicketingProjectIDFieldMaps(params *PostV1TicketingProjectsTicketingProjectIDFieldMapsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TicketingProjectsTicketingProjectIDFieldMapsCreated, error) {
 	// TODO: Validate the params before sending
@@ -634,9 +720,9 @@ func (a *Client) PostV1TicketingProjectsTicketingProjectIDFieldMaps(params *Post
 }
 
 /*
-  PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations creates configuration for a ticketing project
+PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations creates configuration for a ticketing project
 
-  Creates configuration for a ticketing project
+Creates configuration for a ticketing project
 */
 func (a *Client) PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations(params *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated, error) {
 	// TODO: Validate the params before sending
@@ -675,9 +761,9 @@ func (a *Client) PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigu
 }
 
 /*
-  PostV1TicketingTickets creates a ticket
+PostV1TicketingTickets creates a ticket
 
-  Creates a ticket for a project
+Creates a ticket for a project
 */
 func (a *Client) PostV1TicketingTickets(params *PostV1TicketingTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TicketingTicketsCreated, error) {
 	// TODO: Validate the params before sending

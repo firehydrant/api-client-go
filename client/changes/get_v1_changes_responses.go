@@ -39,7 +39,8 @@ func NewGetV1ChangesOK() *GetV1ChangesOK {
 	return &GetV1ChangesOK{}
 }
 
-/* GetV1ChangesOK describes a response with status code 200, with default header values.
+/*
+GetV1ChangesOK describes a response with status code 200, with default header values.
 
 Lists all changes
 */
@@ -47,9 +48,39 @@ type GetV1ChangesOK struct {
 	Payload *models.ChangeEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 changes o k response has a 2xx status code
+func (o *GetV1ChangesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 changes o k response has a 3xx status code
+func (o *GetV1ChangesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 changes o k response has a 4xx status code
+func (o *GetV1ChangesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 changes o k response has a 5xx status code
+func (o *GetV1ChangesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 changes o k response a status code equal to that given
+func (o *GetV1ChangesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1ChangesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/changes][%d] getV1ChangesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1ChangesOK) String() string {
+	return fmt.Sprintf("[GET /v1/changes][%d] getV1ChangesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1ChangesOK) GetPayload() *models.ChangeEntityPaginated {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewGetV1IntegrationsAwsConnectionsIDParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* GetV1IntegrationsAwsConnectionsIDParams contains all the parameters to send to the API endpoint
-   for the get v1 integrations aws connections Id operation.
+/*
+GetV1IntegrationsAwsConnectionsIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 integrations aws connections Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IntegrationsAwsConnectionsIDParams struct {
 

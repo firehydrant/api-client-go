@@ -39,7 +39,8 @@ func NewPostV1SeveritiesCreated() *PostV1SeveritiesCreated {
 	return &PostV1SeveritiesCreated{}
 }
 
-/* PostV1SeveritiesCreated describes a response with status code 201, with default header values.
+/*
+PostV1SeveritiesCreated describes a response with status code 201, with default header values.
 
 Create a new severity
 */
@@ -47,9 +48,39 @@ type PostV1SeveritiesCreated struct {
 	Payload *models.SeverityEntity
 }
 
+// IsSuccess returns true when this post v1 severities created response has a 2xx status code
+func (o *PostV1SeveritiesCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 severities created response has a 3xx status code
+func (o *PostV1SeveritiesCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 severities created response has a 4xx status code
+func (o *PostV1SeveritiesCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 severities created response has a 5xx status code
+func (o *PostV1SeveritiesCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 severities created response a status code equal to that given
+func (o *PostV1SeveritiesCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1SeveritiesCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/severities][%d] postV1SeveritiesCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1SeveritiesCreated) String() string {
+	return fmt.Sprintf("[POST /v1/severities][%d] postV1SeveritiesCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1SeveritiesCreated) GetPayload() *models.SeverityEntity {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewGetV1ReleaseNotesParamsWithHTTPClient(client *http.Client) *GetV1Release
 	}
 }
 
-/* GetV1ReleaseNotesParams contains all the parameters to send to the API endpoint
-   for the get v1 release notes operation.
+/*
+GetV1ReleaseNotesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 release notes operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1ReleaseNotesParams struct {
 	timeout    time.Duration

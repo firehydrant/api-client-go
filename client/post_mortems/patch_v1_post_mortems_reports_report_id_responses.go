@@ -29,12 +29,6 @@ func (o *PatchV1PostMortemsReportsReportIDReader) ReadResponse(response runtime.
 			return nil, err
 		}
 		return result, nil
-	case 400:
-		result := NewPatchV1PostMortemsReportsReportIDBadRequest()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -45,56 +39,55 @@ func NewPatchV1PostMortemsReportsReportIDOK() *PatchV1PostMortemsReportsReportID
 	return &PatchV1PostMortemsReportsReportIDOK{}
 }
 
-/* PatchV1PostMortemsReportsReportIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1PostMortemsReportsReportIDOK describes a response with status code 200, with default header values.
 
-Update a post mortem report
+Update a report
 */
 type PatchV1PostMortemsReportsReportIDOK struct {
-	Payload *models.ReportEntity
+	Payload *models.PostMortemReportEntity
+}
+
+// IsSuccess returns true when this patch v1 post mortems reports report Id o k response has a 2xx status code
+func (o *PatchV1PostMortemsReportsReportIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 post mortems reports report Id o k response has a 3xx status code
+func (o *PatchV1PostMortemsReportsReportIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 post mortems reports report Id o k response has a 4xx status code
+func (o *PatchV1PostMortemsReportsReportIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 post mortems reports report Id o k response has a 5xx status code
+func (o *PatchV1PostMortemsReportsReportIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 post mortems reports report Id o k response a status code equal to that given
+func (o *PatchV1PostMortemsReportsReportIDOK) IsCode(code int) bool {
+	return code == 200
 }
 
 func (o *PatchV1PostMortemsReportsReportIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}][%d] patchV1PostMortemsReportsReportIdOK  %+v", 200, o.Payload)
 }
-func (o *PatchV1PostMortemsReportsReportIDOK) GetPayload() *models.ReportEntity {
+
+func (o *PatchV1PostMortemsReportsReportIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}][%d] patchV1PostMortemsReportsReportIdOK  %+v", 200, o.Payload)
+}
+
+func (o *PatchV1PostMortemsReportsReportIDOK) GetPayload() *models.PostMortemReportEntity {
 	return o.Payload
 }
 
 func (o *PatchV1PostMortemsReportsReportIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ReportEntity)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPatchV1PostMortemsReportsReportIDBadRequest creates a PatchV1PostMortemsReportsReportIDBadRequest with default headers values
-func NewPatchV1PostMortemsReportsReportIDBadRequest() *PatchV1PostMortemsReportsReportIDBadRequest {
-	return &PatchV1PostMortemsReportsReportIDBadRequest{}
-}
-
-/* PatchV1PostMortemsReportsReportIDBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
-type PatchV1PostMortemsReportsReportIDBadRequest struct {
-	Payload *models.ErrorEntity
-}
-
-func (o *PatchV1PostMortemsReportsReportIDBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}][%d] patchV1PostMortemsReportsReportIdBadRequest  %+v", 400, o.Payload)
-}
-func (o *PatchV1PostMortemsReportsReportIDBadRequest) GetPayload() *models.ErrorEntity {
-	return o.Payload
-}
-
-func (o *PatchV1PostMortemsReportsReportIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ErrorEntity)
+	o.Payload = new(models.PostMortemReportEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

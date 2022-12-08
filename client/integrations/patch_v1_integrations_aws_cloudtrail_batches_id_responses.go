@@ -39,7 +39,8 @@ func NewPatchV1IntegrationsAwsCloudtrailBatchesIDOK() *PatchV1IntegrationsAwsClo
 	return &PatchV1IntegrationsAwsCloudtrailBatchesIDOK{}
 }
 
-/* PatchV1IntegrationsAwsCloudtrailBatchesIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1IntegrationsAwsCloudtrailBatchesIDOK describes a response with status code 200, with default header values.
 
 Update a CloudTrail batch with new information.
 */
@@ -47,9 +48,39 @@ type PatchV1IntegrationsAwsCloudtrailBatchesIDOK struct {
 	Payload *models.CloudtrailBatchEntity
 }
 
+// IsSuccess returns true when this patch v1 integrations aws cloudtrail batches Id o k response has a 2xx status code
+func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 integrations aws cloudtrail batches Id o k response has a 3xx status code
+func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 integrations aws cloudtrail batches Id o k response has a 4xx status code
+func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 integrations aws cloudtrail batches Id o k response has a 5xx status code
+func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 integrations aws cloudtrail batches Id o k response a status code equal to that given
+func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/integrations/aws/cloudtrail_batches/{id}][%d] patchV1IntegrationsAwsCloudtrailBatchesIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/integrations/aws/cloudtrail_batches/{id}][%d] patchV1IntegrationsAwsCloudtrailBatchesIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDOK) GetPayload() *models.CloudtrailBatchEntity {
 	return o.Payload
 }

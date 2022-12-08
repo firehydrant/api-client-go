@@ -52,10 +52,12 @@ func NewPutV1IncidentsIncidentIDResolveParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* PutV1IncidentsIncidentIDResolveParams contains all the parameters to send to the API endpoint
-   for the put v1 incidents incident Id resolve operation.
+/*
+PutV1IncidentsIncidentIDResolveParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put v1 incidents incident Id resolve operation.
+
+	Typically these are written to a http.Request.
 */
 type PutV1IncidentsIncidentIDResolveParams struct {
 

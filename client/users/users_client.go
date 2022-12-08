@@ -38,7 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetV1Users Retrieve a list of users for the organization
+GetV1Users lists users
+
+Retrieve a list of all users in an organization
 */
 func (a *Client) GetV1Users(params *GetV1UsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1UsersOK, error) {
 	// TODO: Validate the params before sending
@@ -77,9 +79,9 @@ func (a *Client) GetV1Users(params *GetV1UsersParams, authInfo runtime.ClientAut
 }
 
 /*
-  GetV1UsersIDServices retrieves a list of services owned by the teams a user is on
+GetV1UsersIDServices retrieves a list of services owned by the teams a user is on
 
-  Retrieves a list of services owned by the teams a user is on
+Retrieves a list of services owned by the teams a user is on
 */
 func (a *Client) GetV1UsersIDServices(params *GetV1UsersIDServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1UsersIDServicesOK, error) {
 	// TODO: Validate the params before sending

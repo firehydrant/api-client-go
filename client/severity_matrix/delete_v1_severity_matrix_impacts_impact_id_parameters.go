@@ -52,10 +52,12 @@ func NewDeleteV1SeverityMatrixImpactsImpactIDParamsWithHTTPClient(client *http.C
 	}
 }
 
-/* DeleteV1SeverityMatrixImpactsImpactIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 severity matrix impacts impact Id operation.
+/*
+DeleteV1SeverityMatrixImpactsImpactIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 severity matrix impacts impact Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1SeverityMatrixImpactsImpactIDParams struct {
 

@@ -39,17 +39,48 @@ func NewPostV1IncidentsIncidentIDStatusPagesCreated() *PostV1IncidentsIncidentID
 	return &PostV1IncidentsIncidentIDStatusPagesCreated{}
 }
 
-/* PostV1IncidentsIncidentIDStatusPagesCreated describes a response with status code 201, with default header values.
+/*
+PostV1IncidentsIncidentIDStatusPagesCreated describes a response with status code 201, with default header values.
 
-Create a status page for the incident
+Add a status page to an incident.
 */
 type PostV1IncidentsIncidentIDStatusPagesCreated struct {
 	Payload *models.StatusPageEntity
 }
 
+// IsSuccess returns true when this post v1 incidents incident Id status pages created response has a 2xx status code
+func (o *PostV1IncidentsIncidentIDStatusPagesCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 incidents incident Id status pages created response has a 3xx status code
+func (o *PostV1IncidentsIncidentIDStatusPagesCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 incidents incident Id status pages created response has a 4xx status code
+func (o *PostV1IncidentsIncidentIDStatusPagesCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 incidents incident Id status pages created response has a 5xx status code
+func (o *PostV1IncidentsIncidentIDStatusPagesCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 incidents incident Id status pages created response a status code equal to that given
+func (o *PostV1IncidentsIncidentIDStatusPagesCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1IncidentsIncidentIDStatusPagesCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/status_pages][%d] postV1IncidentsIncidentIdStatusPagesCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1IncidentsIncidentIDStatusPagesCreated) String() string {
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/status_pages][%d] postV1IncidentsIncidentIdStatusPagesCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1IncidentsIncidentIDStatusPagesCreated) GetPayload() *models.StatusPageEntity {
 	return o.Payload
 }

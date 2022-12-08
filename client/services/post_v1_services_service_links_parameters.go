@@ -53,10 +53,12 @@ func NewPostV1ServicesServiceLinksParamsWithHTTPClient(client *http.Client) *Pos
 	}
 }
 
-/* PostV1ServicesServiceLinksParams contains all the parameters to send to the API endpoint
-   for the post v1 services service links operation.
+/*
+PostV1ServicesServiceLinksParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 services service links operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1ServicesServiceLinksParams struct {
 

@@ -53,10 +53,12 @@ func NewGetV1SeverityMatrixImpactsParamsWithHTTPClient(client *http.Client) *Get
 	}
 }
 
-/* GetV1SeverityMatrixImpactsParams contains all the parameters to send to the API endpoint
-   for the get v1 severity matrix impacts operation.
+/*
+GetV1SeverityMatrixImpactsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 severity matrix impacts operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1SeverityMatrixImpactsParams struct {
 

@@ -39,7 +39,8 @@ func NewGetV1FunctionalitiesFunctionalityIDOK() *GetV1FunctionalitiesFunctionali
 	return &GetV1FunctionalitiesFunctionalityIDOK{}
 }
 
-/* GetV1FunctionalitiesFunctionalityIDOK describes a response with status code 200, with default header values.
+/*
+GetV1FunctionalitiesFunctionalityIDOK describes a response with status code 200, with default header values.
 
 Retrieves a single functionality by ID
 */
@@ -47,9 +48,39 @@ type GetV1FunctionalitiesFunctionalityIDOK struct {
 	Payload *models.FunctionalityEntity
 }
 
+// IsSuccess returns true when this get v1 functionalities functionality Id o k response has a 2xx status code
+func (o *GetV1FunctionalitiesFunctionalityIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 functionalities functionality Id o k response has a 3xx status code
+func (o *GetV1FunctionalitiesFunctionalityIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 functionalities functionality Id o k response has a 4xx status code
+func (o *GetV1FunctionalitiesFunctionalityIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 functionalities functionality Id o k response has a 5xx status code
+func (o *GetV1FunctionalitiesFunctionalityIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 functionalities functionality Id o k response a status code equal to that given
+func (o *GetV1FunctionalitiesFunctionalityIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1FunctionalitiesFunctionalityIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/functionalities/{functionality_id}][%d] getV1FunctionalitiesFunctionalityIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1FunctionalitiesFunctionalityIDOK) String() string {
+	return fmt.Sprintf("[GET /v1/functionalities/{functionality_id}][%d] getV1FunctionalitiesFunctionalityIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1FunctionalitiesFunctionalityIDOK) GetPayload() *models.FunctionalityEntity {
 	return o.Payload
 }

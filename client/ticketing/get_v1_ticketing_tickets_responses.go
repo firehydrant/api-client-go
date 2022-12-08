@@ -39,17 +39,48 @@ func NewGetV1TicketingTicketsOK() *GetV1TicketingTicketsOK {
 	return &GetV1TicketingTicketsOK{}
 }
 
-/* GetV1TicketingTicketsOK describes a response with status code 200, with default header values.
+/*
+GetV1TicketingTicketsOK describes a response with status code 200, with default header values.
 
-List all of the functionalities that have been added to the organiation
+List all of the tickets that have been added to the organiation
 */
 type GetV1TicketingTicketsOK struct {
 	Payload *models.TicketEntity
 }
 
+// IsSuccess returns true when this get v1 ticketing tickets o k response has a 2xx status code
+func (o *GetV1TicketingTicketsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 ticketing tickets o k response has a 3xx status code
+func (o *GetV1TicketingTicketsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 ticketing tickets o k response has a 4xx status code
+func (o *GetV1TicketingTicketsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 ticketing tickets o k response has a 5xx status code
+func (o *GetV1TicketingTicketsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 ticketing tickets o k response a status code equal to that given
+func (o *GetV1TicketingTicketsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1TicketingTicketsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/ticketing/tickets][%d] getV1TicketingTicketsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1TicketingTicketsOK) String() string {
+	return fmt.Sprintf("[GET /v1/ticketing/tickets][%d] getV1TicketingTicketsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1TicketingTicketsOK) GetPayload() *models.TicketEntity {
 	return o.Payload
 }

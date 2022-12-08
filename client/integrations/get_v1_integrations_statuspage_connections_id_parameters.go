@@ -52,10 +52,12 @@ func NewGetV1IntegrationsStatuspageConnectionsIDParamsWithHTTPClient(client *htt
 	}
 }
 
-/* GetV1IntegrationsStatuspageConnectionsIDParams contains all the parameters to send to the API endpoint
-   for the get v1 integrations statuspage connections Id operation.
+/*
+GetV1IntegrationsStatuspageConnectionsIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 integrations statuspage connections Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IntegrationsStatuspageConnectionsIDParams struct {
 

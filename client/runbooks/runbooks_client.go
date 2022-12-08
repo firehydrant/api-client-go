@@ -70,9 +70,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1RunbooksExecutionsExecutionID deletes a runbook execution
+DeleteV1RunbooksExecutionsExecutionID deletes a runbook execution
 
-  Deletes a runbook execution. Must be done before the execution has started.
+Deletes a runbook execution. Must be done before the execution has started.
 */
 func (a *Client) DeleteV1RunbooksExecutionsExecutionID(params *DeleteV1RunbooksExecutionsExecutionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1RunbooksExecutionsExecutionIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -111,9 +111,9 @@ func (a *Client) DeleteV1RunbooksExecutionsExecutionID(params *DeleteV1RunbooksE
 }
 
 /*
-  DeleteV1RunbooksRunbookID deletes a runbook
+DeleteV1RunbooksRunbookID deletes a runbook
 
-  Delete a runbook and make it unavailable for any future incidents.
+Delete a runbook and make it unavailable for any future incidents.
 */
 func (a *Client) DeleteV1RunbooksRunbookID(params *DeleteV1RunbooksRunbookIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1RunbooksRunbookIDOK, error) {
 	// TODO: Validate the params before sending
@@ -152,9 +152,9 @@ func (a *Client) DeleteV1RunbooksRunbookID(params *DeleteV1RunbooksRunbookIDPara
 }
 
 /*
-  GetV1Runbooks lists runbooks
+GetV1Runbooks lists runbooks
 
-  Lists all available runbooks.
+Lists all available runbooks.
 */
 func (a *Client) GetV1Runbooks(params *GetV1RunbooksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksOK, error) {
 	// TODO: Validate the params before sending
@@ -193,9 +193,9 @@ func (a *Client) GetV1Runbooks(params *GetV1RunbooksParams, authInfo runtime.Cli
 }
 
 /*
-  GetV1RunbooksActions lists all runbook actions
+GetV1RunbooksActions lists all runbook actions
 
-  List all Runbook actions available through your connected integrations
+List all Runbook actions available through your connected integrations
 */
 func (a *Client) GetV1RunbooksActions(params *GetV1RunbooksActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksActionsOK, error) {
 	// TODO: Validate the params before sending
@@ -234,9 +234,9 @@ func (a *Client) GetV1RunbooksActions(params *GetV1RunbooksActionsParams, authIn
 }
 
 /*
-  GetV1RunbooksExecutions lists all executions of runbooks
+GetV1RunbooksExecutions lists all executions of runbooks
 
-  List all Runbook executions across all Runbooks
+List all Runbook executions across all Runbooks
 */
 func (a *Client) GetV1RunbooksExecutions(params *GetV1RunbooksExecutionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsOK, error) {
 	// TODO: Validate the params before sending
@@ -275,7 +275,7 @@ func (a *Client) GetV1RunbooksExecutions(params *GetV1RunbooksExecutionsParams, 
 }
 
 /*
-  GetV1RunbooksExecutionsExecutionID get v1 runbooks executions execution Id API
+GetV1RunbooksExecutionsExecutionID get v1 runbooks executions execution Id API
 */
 func (a *Client) GetV1RunbooksExecutionsExecutionID(params *GetV1RunbooksExecutionsExecutionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDOK, error) {
 	// TODO: Validate the params before sending
@@ -314,9 +314,9 @@ func (a *Client) GetV1RunbooksExecutionsExecutionID(params *GetV1RunbooksExecuti
 }
 
 /*
-  GetV1RunbooksExecutionsExecutionIDStepsStepIDScript retrieves the bash script from a script step
+GetV1RunbooksExecutionsExecutionIDStepsStepIDScript retrieves the bash script from a script step
 
-  Retrieves the bash script from a "script" step.
+Retrieves the bash script from a "script" step.
 */
 func (a *Client) GetV1RunbooksExecutionsExecutionIDStepsStepIDScript(params *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK, error) {
 	// TODO: Validate the params before sending
@@ -355,9 +355,9 @@ func (a *Client) GetV1RunbooksExecutionsExecutionIDStepsStepIDScript(params *Get
 }
 
 /*
-  GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus returns the status of the votes
+GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus returns the current vote counts for an object
 
-  Returns the status of the votes
+Returns the current vote counts for an object
 */
 func (a *Client) GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -396,9 +396,9 @@ func (a *Client) GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus(params
 }
 
 /*
-  GetV1RunbooksExecutionsExecutionIDVotesStatus returns the status of the votes
+GetV1RunbooksExecutionsExecutionIDVotesStatus returns the current vote counts for an object
 
-  Returns the status of the votes
+Returns the current vote counts for an object
 */
 func (a *Client) GetV1RunbooksExecutionsExecutionIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDVotesStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -437,9 +437,9 @@ func (a *Client) GetV1RunbooksExecutionsExecutionIDVotesStatus(params *GetV1Runb
 }
 
 /*
-  GetV1RunbooksRunbookID retrieves a runbook
+GetV1RunbooksRunbookID retrieves a runbook
 
-  Get a runbook and all its configuration
+Get a runbook and all its configuration
 */
 func (a *Client) GetV1RunbooksRunbookID(params *GetV1RunbooksRunbookIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksRunbookIDOK, error) {
 	// TODO: Validate the params before sending
@@ -478,7 +478,7 @@ func (a *Client) GetV1RunbooksRunbookID(params *GetV1RunbooksRunbookIDParams, au
 }
 
 /*
-  GetV1RunbooksSelectOptionsIntegrationSlugActionSlugField get v1 runbooks select options integration slug action slug field API
+GetV1RunbooksSelectOptionsIntegrationSlugActionSlugField get v1 runbooks select options integration slug action slug field API
 */
 func (a *Client) GetV1RunbooksSelectOptionsIntegrationSlugActionSlugField(params *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK, error) {
 	// TODO: Validate the params before sending
@@ -517,7 +517,9 @@ func (a *Client) GetV1RunbooksSelectOptionsIntegrationSlugActionSlugField(params
 }
 
 /*
-  PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes patch v1 runbooks executions execution Id steps step Id votes API
+PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes updates the votes on an object
+
+Allows for upvoting or downvoting an event
 */
 func (a *Client) PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(params *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK, error) {
 	// TODO: Validate the params before sending
@@ -556,7 +558,9 @@ func (a *Client) PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(params *Pa
 }
 
 /*
-  PatchV1RunbooksExecutionsExecutionIDVotes patch v1 runbooks executions execution Id votes API
+PatchV1RunbooksExecutionsExecutionIDVotes updates the votes on an object
+
+Allows for upvoting or downvoting an event
 */
 func (a *Client) PatchV1RunbooksExecutionsExecutionIDVotes(params *PatchV1RunbooksExecutionsExecutionIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDVotesOK, error) {
 	// TODO: Validate the params before sending
@@ -595,9 +599,9 @@ func (a *Client) PatchV1RunbooksExecutionsExecutionIDVotes(params *PatchV1Runboo
 }
 
 /*
-  PostV1Runbooks creates a runbook
+PostV1Runbooks creates a runbook
 
-  Create a new runbook for use with incidents.
+Create a new runbook for use with incidents.
 */
 func (a *Client) PostV1Runbooks(params *PostV1RunbooksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1RunbooksCreated, error) {
 	// TODO: Validate the params before sending
@@ -636,7 +640,9 @@ func (a *Client) PostV1Runbooks(params *PostV1RunbooksParams, authInfo runtime.C
 }
 
 /*
-  PostV1RunbooksExecutions post v1 runbooks executions API
+PostV1RunbooksExecutions creates a runbook execution
+
+Attaches a runbook to an incident and executes it
 */
 func (a *Client) PostV1RunbooksExecutions(params *PostV1RunbooksExecutionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1RunbooksExecutionsCreated, error) {
 	// TODO: Validate the params before sending
@@ -675,9 +681,9 @@ func (a *Client) PostV1RunbooksExecutions(params *PostV1RunbooksExecutionsParams
 }
 
 /*
-  PutV1RunbooksExecutionsExecutionIDStepsStepID updates a runbook step execution
+PutV1RunbooksExecutionsExecutionIDStepsStepID updates a runbook step execution
 
-  Updates a runbook step execution, especially for changing the state of a step execution.
+Updates a runbook step execution, especially for changing the state of a step execution.
 */
 func (a *Client) PutV1RunbooksExecutionsExecutionIDStepsStepID(params *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1RunbooksExecutionsExecutionIDStepsStepIDOK, error) {
 	// TODO: Validate the params before sending
@@ -716,9 +722,9 @@ func (a *Client) PutV1RunbooksExecutionsExecutionIDStepsStepID(params *PutV1Runb
 }
 
 /*
-  PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptState updates the execution s step
+PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptState updates the execution s step
 
-  Updates the execution's step.
+Updates the execution's step.
 */
 func (a *Client) PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptState(params *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK, error) {
 	// TODO: Validate the params before sending
@@ -757,11 +763,11 @@ func (a *Client) PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptState(params
 }
 
 /*
-  PutV1RunbooksRunbookID updates a runbook
+	PutV1RunbooksRunbookID updates a runbook
 
-  Update a runbook and any attachment rules associated with it. This endpoint is used to configure nearly everything
+	Update a runbook and any attachment rules associated with it. This endpoint is used to configure nearly everything
+
 about a runbook, including but not limited to the steps, environments, attachment rules, and severities.
-
 */
 func (a *Client) PutV1RunbooksRunbookID(params *PutV1RunbooksRunbookIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1RunbooksRunbookIDOK, error) {
 	// TODO: Validate the params before sending

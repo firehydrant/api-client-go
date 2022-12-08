@@ -54,10 +54,12 @@ func NewPostV1ScheduledMaintenancesParamsWithHTTPClient(client *http.Client) *Po
 	}
 }
 
-/* PostV1ScheduledMaintenancesParams contains all the parameters to send to the API endpoint
-   for the post v1 scheduled maintenances operation.
+/*
+PostV1ScheduledMaintenancesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 scheduled maintenances operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1ScheduledMaintenancesParams struct {
 

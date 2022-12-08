@@ -54,10 +54,12 @@ func NewPutV1PostMortemsQuestionsParamsWithHTTPClient(client *http.Client) *PutV
 	}
 }
 
-/* PutV1PostMortemsQuestionsParams contains all the parameters to send to the API endpoint
-   for the put v1 post mortems questions operation.
+/*
+PutV1PostMortemsQuestionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put v1 post mortems questions operation.
+
+	Typically these are written to a http.Request.
 */
 type PutV1PostMortemsQuestionsParams struct {
 

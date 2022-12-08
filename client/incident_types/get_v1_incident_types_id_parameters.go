@@ -53,10 +53,12 @@ func NewGetV1IncidentTypesIDParamsWithHTTPClient(client *http.Client) *GetV1Inci
 	}
 }
 
-/* GetV1IncidentTypesIDParams contains all the parameters to send to the API endpoint
-   for the get v1 incident types Id operation.
+/*
+GetV1IncidentTypesIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 incident types Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IncidentTypesIDParams struct {
 

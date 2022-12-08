@@ -36,14 +36,44 @@ func NewGetV1IntegrationsStatuspageConnectionsIDPagesOK() *GetV1IntegrationsStat
 	return &GetV1IntegrationsStatuspageConnectionsIDPagesOK{}
 }
 
-/* GetV1IntegrationsStatuspageConnectionsIDPagesOK describes a response with status code 200, with default header values.
+/*
+GetV1IntegrationsStatuspageConnectionsIDPagesOK describes a response with status code 200, with default header values.
 
 get Page(s)
 */
 type GetV1IntegrationsStatuspageConnectionsIDPagesOK struct {
 }
 
+// IsSuccess returns true when this get v1 integrations statuspage connections Id pages o k response has a 2xx status code
+func (o *GetV1IntegrationsStatuspageConnectionsIDPagesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 integrations statuspage connections Id pages o k response has a 3xx status code
+func (o *GetV1IntegrationsStatuspageConnectionsIDPagesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 integrations statuspage connections Id pages o k response has a 4xx status code
+func (o *GetV1IntegrationsStatuspageConnectionsIDPagesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 integrations statuspage connections Id pages o k response has a 5xx status code
+func (o *GetV1IntegrationsStatuspageConnectionsIDPagesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 integrations statuspage connections Id pages o k response a status code equal to that given
+func (o *GetV1IntegrationsStatuspageConnectionsIDPagesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IntegrationsStatuspageConnectionsIDPagesOK) Error() string {
+	return fmt.Sprintf("[GET /v1/integrations/statuspage/connections/{id}/pages][%d] getV1IntegrationsStatuspageConnectionsIdPagesOK ", 200)
+}
+
+func (o *GetV1IntegrationsStatuspageConnectionsIDPagesOK) String() string {
 	return fmt.Sprintf("[GET /v1/integrations/statuspage/connections/{id}/pages][%d] getV1IntegrationsStatuspageConnectionsIdPagesOK ", 200)
 }
 

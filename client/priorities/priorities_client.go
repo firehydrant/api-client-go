@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1PrioritiesPrioritySlug deletes a specific priority
+DeleteV1PrioritiesPrioritySlug deletes a specific priority
 
-  Delete a specific priority
+Delete a specific priority
 */
 func (a *Client) DeleteV1PrioritiesPrioritySlug(params *DeleteV1PrioritiesPrioritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PrioritiesPrioritySlugOK, error) {
 	// TODO: Validate the params before sending
@@ -85,9 +85,9 @@ func (a *Client) DeleteV1PrioritiesPrioritySlug(params *DeleteV1PrioritiesPriori
 }
 
 /*
-  GetV1Priorities lists priorities
+GetV1Priorities lists priorities
 
-  Lists priorities
+Lists priorities
 */
 func (a *Client) GetV1Priorities(params *GetV1PrioritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PrioritiesOK, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) GetV1Priorities(params *GetV1PrioritiesParams, authInfo runtime
 }
 
 /*
-  GetV1PrioritiesPrioritySlug retrieves a specific priority
+GetV1PrioritiesPrioritySlug retrieves a specific priority
 
-  Retrieve a specific priority
+Retrieve a specific priority
 */
 func (a *Client) GetV1PrioritiesPrioritySlug(params *GetV1PrioritiesPrioritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PrioritiesPrioritySlugOK, error) {
 	// TODO: Validate the params before sending
@@ -167,9 +167,9 @@ func (a *Client) GetV1PrioritiesPrioritySlug(params *GetV1PrioritiesPrioritySlug
 }
 
 /*
-  PatchV1PrioritiesPrioritySlug updates a specific priority
+PatchV1PrioritiesPrioritySlug updates a specific priority
 
-  Update a specific priority
+Update a specific priority
 */
 func (a *Client) PatchV1PrioritiesPrioritySlug(params *PatchV1PrioritiesPrioritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PrioritiesPrioritySlugOK, error) {
 	// TODO: Validate the params before sending
@@ -208,9 +208,9 @@ func (a *Client) PatchV1PrioritiesPrioritySlug(params *PatchV1PrioritiesPriority
 }
 
 /*
-  PostV1Priorities creates priority
+PostV1Priorities creates priority
 
-  Create a new priority
+Create a new priority
 */
 func (a *Client) PostV1Priorities(params *PostV1PrioritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PrioritiesCreated, error) {
 	// TODO: Validate the params before sending

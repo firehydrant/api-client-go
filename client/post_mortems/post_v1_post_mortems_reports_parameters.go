@@ -54,10 +54,12 @@ func NewPostV1PostMortemsReportsParamsWithHTTPClient(client *http.Client) *PostV
 	}
 }
 
-/* PostV1PostMortemsReportsParams contains all the parameters to send to the API endpoint
-   for the post v1 post mortems reports operation.
+/*
+PostV1PostMortemsReportsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 post mortems reports operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1PostMortemsReportsParams struct {
 

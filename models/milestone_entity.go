@@ -34,7 +34,7 @@ type MilestoneEntity struct {
 	OccurredAt strfmt.DateTime `json:"occurred_at,omitempty"`
 
 	// type
-	// Enum: [started detected acknowledged first_action mitigated resolved postmortem_started postmortem_completed closed]
+	// Enum: [started detected acknowledged investigating identified mitigated resolved postmortem_started postmortem_completed closed]
 	Type string `json:"type,omitempty"`
 
 	// updated at
@@ -75,7 +75,7 @@ var milestoneEntityTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["started","detected","acknowledged","first_action","mitigated","resolved","postmortem_started","postmortem_completed","closed"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["started","detected","acknowledged","investigating","identified","mitigated","resolved","postmortem_started","postmortem_completed","closed"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -94,8 +94,11 @@ const (
 	// MilestoneEntityTypeAcknowledged captures enum value "acknowledged"
 	MilestoneEntityTypeAcknowledged string = "acknowledged"
 
-	// MilestoneEntityTypeFirstAction captures enum value "first_action"
-	MilestoneEntityTypeFirstAction string = "first_action"
+	// MilestoneEntityTypeInvestigating captures enum value "investigating"
+	MilestoneEntityTypeInvestigating string = "investigating"
+
+	// MilestoneEntityTypeIdentified captures enum value "identified"
+	MilestoneEntityTypeIdentified string = "identified"
 
 	// MilestoneEntityTypeMitigated captures enum value "mitigated"
 	MilestoneEntityTypeMitigated string = "mitigated"

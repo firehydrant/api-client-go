@@ -36,14 +36,44 @@ func NewDeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent() *DeleteV1I
 	return &DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent{}
 }
 
-/* DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent describes a response with status code 204, with default header values.
+/*
+DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent describes a response with status code 204, with default header values.
 
-Remove a status page
+Remove a status page incident attached to an incident
 */
 type DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent struct {
 }
 
+// IsSuccess returns true when this delete v1 incidents incident Id status pages status page Id no content response has a 2xx status code
+func (o *DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 incidents incident Id status pages status page Id no content response has a 3xx status code
+func (o *DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 incidents incident Id status pages status page Id no content response has a 4xx status code
+func (o *DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 incidents incident Id status pages status page Id no content response has a 5xx status code
+func (o *DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 incidents incident Id status pages status page Id no content response a status code equal to that given
+func (o *DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/status_pages/{status_page_id}][%d] deleteV1IncidentsIncidentIdStatusPagesStatusPageIdNoContent ", 204)
+}
+
+func (o *DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent) String() string {
 	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/status_pages/{status_page_id}][%d] deleteV1IncidentsIncidentIdStatusPagesStatusPageIdNoContent ", 204)
 }
 

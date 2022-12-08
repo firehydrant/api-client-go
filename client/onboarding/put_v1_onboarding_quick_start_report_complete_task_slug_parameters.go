@@ -53,10 +53,12 @@ func NewPutV1OnboardingQuickStartReportCompleteTaskSlugParamsWithHTTPClient(clie
 	}
 }
 
-/* PutV1OnboardingQuickStartReportCompleteTaskSlugParams contains all the parameters to send to the API endpoint
-   for the put v1 onboarding quick start report complete task slug operation.
+/*
+PutV1OnboardingQuickStartReportCompleteTaskSlugParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put v1 onboarding quick start report complete task slug operation.
+
+	Typically these are written to a http.Request.
 */
 type PutV1OnboardingQuickStartReportCompleteTaskSlugParams struct {
 

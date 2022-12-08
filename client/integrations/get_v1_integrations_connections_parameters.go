@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetV1IntegrationsConnectionsParams creates a new GetV1IntegrationsConnectionsParams object,
@@ -52,12 +53,21 @@ func NewGetV1IntegrationsConnectionsParamsWithHTTPClient(client *http.Client) *G
 	}
 }
 
-/* GetV1IntegrationsConnectionsParams contains all the parameters to send to the API endpoint
-   for the get v1 integrations connections operation.
+/*
+GetV1IntegrationsConnectionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 integrations connections operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IntegrationsConnectionsParams struct {
+
+	/* IntegrationSlug.
+
+	   Only return installed integrations with the supplied slugs (types).
+	*/
+	IntegrationSlug []string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -111,6 +121,17 @@ func (o *GetV1IntegrationsConnectionsParams) SetHTTPClient(client *http.Client) 
 	o.HTTPClient = client
 }
 
+// WithIntegrationSlug adds the integrationSlug to the get v1 integrations connections params
+func (o *GetV1IntegrationsConnectionsParams) WithIntegrationSlug(integrationSlug []string) *GetV1IntegrationsConnectionsParams {
+	o.SetIntegrationSlug(integrationSlug)
+	return o
+}
+
+// SetIntegrationSlug adds the integrationSlug to the get v1 integrations connections params
+func (o *GetV1IntegrationsConnectionsParams) SetIntegrationSlug(integrationSlug []string) {
+	o.IntegrationSlug = integrationSlug
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1IntegrationsConnectionsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -119,8 +140,36 @@ func (o *GetV1IntegrationsConnectionsParams) WriteToRequest(r runtime.ClientRequ
 	}
 	var res []error
 
+	if o.IntegrationSlug != nil {
+
+		// binding items for integration_slug
+		joinedIntegrationSlug := o.bindParamIntegrationSlug(reg)
+
+		// form array param integration_slug
+		if err := r.SetFormParam("integration_slug", joinedIntegrationSlug...); err != nil {
+			return err
+		}
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamGetV1IntegrationsConnections binds the parameter integration_slug
+func (o *GetV1IntegrationsConnectionsParams) bindParamIntegrationSlug(formats strfmt.Registry) []string {
+	integrationSlugIR := o.IntegrationSlug
+
+	var integrationSlugIC []string
+	for _, integrationSlugIIR := range integrationSlugIR { // explode []string
+
+		integrationSlugIIV := integrationSlugIIR // string as string
+		integrationSlugIC = append(integrationSlugIC, integrationSlugIIV)
+	}
+
+	// items.CollectionFormat: ""
+	integrationSlugIS := swag.JoinByFormat(integrationSlugIC, "")
+
+	return integrationSlugIS
 }

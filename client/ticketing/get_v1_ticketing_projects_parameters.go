@@ -53,10 +53,12 @@ func NewGetV1TicketingProjectsParamsWithHTTPClient(client *http.Client) *GetV1Ti
 	}
 }
 
-/* GetV1TicketingProjectsParams contains all the parameters to send to the API endpoint
-   for the get v1 ticketing projects operation.
+/*
+GetV1TicketingProjectsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 ticketing projects operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1TicketingProjectsParams struct {
 
@@ -65,6 +67,16 @@ type GetV1TicketingProjectsParams struct {
 
 	// ConnectionIds.
 	ConnectionIds *string
+
+	// Page.
+	//
+	// Format: int32
+	Page *int32
+
+	// PerPage.
+	//
+	// Format: int32
+	PerPage *int32
 
 	// Providers.
 	Providers *string
@@ -150,6 +162,28 @@ func (o *GetV1TicketingProjectsParams) SetConnectionIds(connectionIds *string) {
 	o.ConnectionIds = connectionIds
 }
 
+// WithPage adds the page to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) WithPage(page *int32) *GetV1TicketingProjectsParams {
+	o.SetPage(page)
+	return o
+}
+
+// SetPage adds the page to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) SetPage(page *int32) {
+	o.Page = page
+}
+
+// WithPerPage adds the perPage to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) WithPerPage(perPage *int32) *GetV1TicketingProjectsParams {
+	o.SetPerPage(perPage)
+	return o
+}
+
+// SetPerPage adds the perPage to the get v1 ticketing projects params
+func (o *GetV1TicketingProjectsParams) SetPerPage(perPage *int32) {
+	o.PerPage = perPage
+}
+
 // WithProviders adds the providers to the get v1 ticketing projects params
 func (o *GetV1TicketingProjectsParams) WithProviders(providers *string) *GetV1TicketingProjectsParams {
 	o.SetProviders(providers)
@@ -220,6 +254,40 @@ func (o *GetV1TicketingProjectsParams) WriteToRequest(r runtime.ClientRequest, r
 		if qConnectionIds != "" {
 
 			if err := r.SetQueryParam("connection_ids", qConnectionIds); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Page != nil {
+
+		// query param page
+		var qrPage int32
+
+		if o.Page != nil {
+			qrPage = *o.Page
+		}
+		qPage := swag.FormatInt32(qrPage)
+		if qPage != "" {
+
+			if err := r.SetQueryParam("page", qPage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.PerPage != nil {
+
+		// query param per_page
+		var qrPerPage int32
+
+		if o.PerPage != nil {
+			qrPerPage = *o.PerPage
+		}
+		qPerPage := swag.FormatInt32(qrPerPage)
+		if qPerPage != "" {
+
+			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
 				return err
 			}
 		}

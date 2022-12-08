@@ -36,14 +36,44 @@ func NewDeleteV1ChangesEventsChangeEventIDNoContent() *DeleteV1ChangesEventsChan
 	return &DeleteV1ChangesEventsChangeEventIDNoContent{}
 }
 
-/* DeleteV1ChangesEventsChangeEventIDNoContent describes a response with status code 204, with default header values.
+/*
+DeleteV1ChangesEventsChangeEventIDNoContent describes a response with status code 204, with default header values.
 
 Delete a change event
 */
 type DeleteV1ChangesEventsChangeEventIDNoContent struct {
 }
 
+// IsSuccess returns true when this delete v1 changes events change event Id no content response has a 2xx status code
+func (o *DeleteV1ChangesEventsChangeEventIDNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 changes events change event Id no content response has a 3xx status code
+func (o *DeleteV1ChangesEventsChangeEventIDNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 changes events change event Id no content response has a 4xx status code
+func (o *DeleteV1ChangesEventsChangeEventIDNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 changes events change event Id no content response has a 5xx status code
+func (o *DeleteV1ChangesEventsChangeEventIDNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 changes events change event Id no content response a status code equal to that given
+func (o *DeleteV1ChangesEventsChangeEventIDNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteV1ChangesEventsChangeEventIDNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /v1/changes/events/{change_event_id}][%d] deleteV1ChangesEventsChangeEventIdNoContent ", 204)
+}
+
+func (o *DeleteV1ChangesEventsChangeEventIDNoContent) String() string {
 	return fmt.Sprintf("[DELETE /v1/changes/events/{change_event_id}][%d] deleteV1ChangesEventsChangeEventIdNoContent ", 204)
 }
 

@@ -32,6 +32,9 @@ type PostV1TicketingTickets struct {
 	// Required: true
 	Summary *string `json:"summary"`
 
+	// List of tags for the ticket
+	TagList []string `json:"tag_list"`
+
 	// type
 	Type string `json:"type,omitempty"`
 }

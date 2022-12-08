@@ -36,14 +36,44 @@ func NewGetV1RunbookTemplatesIDOK() *GetV1RunbookTemplatesIDOK {
 	return &GetV1RunbookTemplatesIDOK{}
 }
 
-/* GetV1RunbookTemplatesIDOK describes a response with status code 200, with default header values.
+/*
+GetV1RunbookTemplatesIDOK describes a response with status code 200, with default header values.
 
-get RunbookTemplate(s)
+Retrieve a single runbook template
 */
 type GetV1RunbookTemplatesIDOK struct {
 }
 
+// IsSuccess returns true when this get v1 runbook templates Id o k response has a 2xx status code
+func (o *GetV1RunbookTemplatesIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 runbook templates Id o k response has a 3xx status code
+func (o *GetV1RunbookTemplatesIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 runbook templates Id o k response has a 4xx status code
+func (o *GetV1RunbookTemplatesIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 runbook templates Id o k response has a 5xx status code
+func (o *GetV1RunbookTemplatesIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 runbook templates Id o k response a status code equal to that given
+func (o *GetV1RunbookTemplatesIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1RunbookTemplatesIDOK) Error() string {
+	return fmt.Sprintf("[GET /v1/runbook_templates/{id}][%d] getV1RunbookTemplatesIdOK ", 200)
+}
+
+func (o *GetV1RunbookTemplatesIDOK) String() string {
 	return fmt.Sprintf("[GET /v1/runbook_templates/{id}][%d] getV1RunbookTemplatesIdOK ", 200)
 }
 

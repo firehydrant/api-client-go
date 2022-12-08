@@ -39,17 +39,48 @@ func NewGetV1ServicesOK() *GetV1ServicesOK {
 	return &GetV1ServicesOK{}
 }
 
-/* GetV1ServicesOK describes a response with status code 200, with default header values.
+/*
+GetV1ServicesOK describes a response with status code 200, with default header values.
 
-List all of the services that have been added to the organiation.
+List all of the services that have been added to the organization.
 */
 type GetV1ServicesOK struct {
 	Payload *models.ServiceEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 services o k response has a 2xx status code
+func (o *GetV1ServicesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 services o k response has a 3xx status code
+func (o *GetV1ServicesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 services o k response has a 4xx status code
+func (o *GetV1ServicesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 services o k response has a 5xx status code
+func (o *GetV1ServicesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 services o k response a status code equal to that given
+func (o *GetV1ServicesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1ServicesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/services][%d] getV1ServicesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1ServicesOK) String() string {
+	return fmt.Sprintf("[GET /v1/services][%d] getV1ServicesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1ServicesOK) GetPayload() *models.ServiceEntityPaginated {
 	return o.Payload
 }

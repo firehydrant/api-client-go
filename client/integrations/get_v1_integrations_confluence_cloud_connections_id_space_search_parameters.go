@@ -52,10 +52,12 @@ func NewGetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParamsWithHTTPCl
 	}
 }
 
-/* GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParams contains all the parameters to send to the API endpoint
-   for the get v1 integrations confluence cloud connections Id space search operation.
+/*
+GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 integrations confluence cloud connections Id space search operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParams struct {
 

@@ -39,17 +39,48 @@ func NewPostV1IncidentsIncidentIDRoleAssignmentsCreated() *PostV1IncidentsIncide
 	return &PostV1IncidentsIncidentIDRoleAssignmentsCreated{}
 }
 
-/* PostV1IncidentsIncidentIDRoleAssignmentsCreated describes a response with status code 201, with default header values.
+/*
+PostV1IncidentsIncidentIDRoleAssignmentsCreated describes a response with status code 201, with default header values.
 
-Assign a role to a user for this incident. All tasks associated to the role will also automatically be attached
+Assign a role to a user for this incident
 */
 type PostV1IncidentsIncidentIDRoleAssignmentsCreated struct {
 	Payload *models.RoleAssignmentEntity
 }
 
+// IsSuccess returns true when this post v1 incidents incident Id role assignments created response has a 2xx status code
+func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 incidents incident Id role assignments created response has a 3xx status code
+func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 incidents incident Id role assignments created response has a 4xx status code
+func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 incidents incident Id role assignments created response has a 5xx status code
+func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 incidents incident Id role assignments created response a status code equal to that given
+func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/role_assignments][%d] postV1IncidentsIncidentIdRoleAssignmentsCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/role_assignments][%d] postV1IncidentsIncidentIdRoleAssignmentsCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) GetPayload() *models.RoleAssignmentEntity {
 	return o.Payload
 }

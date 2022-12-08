@@ -53,10 +53,12 @@ func NewDeleteV1NuncConnectionsNuncConnectionIDParamsWithHTTPClient(client *http
 	}
 }
 
-/* DeleteV1NuncConnectionsNuncConnectionIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 nunc connections nunc connection Id operation.
+/*
+DeleteV1NuncConnectionsNuncConnectionIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 nunc connections nunc connection Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1NuncConnectionsNuncConnectionIDParams struct {
 

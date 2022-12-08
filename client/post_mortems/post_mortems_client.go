@@ -30,15 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1PostMortemsReportsReportIDActionItemsActionItemID(params *DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDNoContent, error)
-
 	DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID(params *DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDOK, error)
 
 	DeleteV1PostMortemsReportsReportIDEventsReportEventID(params *DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK, error)
 
-	DeleteV1PostMortemsReportsReportIDParticipantsParticipantID(params *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent, error)
+	DeleteV1PostMortemsReportsReportIDParticipantsParticipantID(params *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDOK, error)
 
-	DeleteV1PostMortemsReportsReportIDReasonsReasonID(params *DeleteV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent, error)
+	DeleteV1PostMortemsReportsReportIDReasonsReasonID(params *DeleteV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK, error)
 
 	DeleteV1PostMortemsReportsReportIDTags(params *DeleteV1PostMortemsReportsReportIDTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDTagsNoContent, error)
 
@@ -47,8 +45,6 @@ type ClientService interface {
 	GetV1PostMortemsReports(params *GetV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsOK, error)
 
 	GetV1PostMortemsReportsReportID(params *GetV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDOK, error)
-
-	GetV1PostMortemsReportsReportIDActionItems(params *GetV1PostMortemsReportsReportIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDActionItemsOK, error)
 
 	GetV1PostMortemsReportsReportIDEvents(params *GetV1PostMortemsReportsReportIDEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDEventsOK, error)
 
@@ -60,11 +56,7 @@ type ClientService interface {
 
 	GetV1PostMortemsReportsReportIDReasons(params *GetV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDReasonsOK, error)
 
-	GetV1PostMortemsTags(params *GetV1PostMortemsTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsTagsOK, error)
-
 	PatchV1PostMortemsReportsReportID(params *PatchV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDOK, error)
-
-	PatchV1PostMortemsReportsReportIDActionItemsActionItemID(params *PatchV1PostMortemsReportsReportIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK, error)
 
 	PatchV1PostMortemsReportsReportIDEventsNotesNoteID(params *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK, error)
 
@@ -75,8 +67,6 @@ type ClientService interface {
 	PatchV1PostMortemsReportsReportIDReasonsReasonID(params *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDReasonsReasonIDOK, error)
 
 	PostV1PostMortemsReports(params *PostV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsCreated, error)
-
-	PostV1PostMortemsReportsReportIDActionItems(params *PostV1PostMortemsReportsReportIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDActionItemsCreated, error)
 
 	PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID(params *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated, error)
 
@@ -92,54 +82,15 @@ type ClientService interface {
 
 	PutV1PostMortemsReportsReportIDReasonsOrder(params *PutV1PostMortemsReportsReportIDReasonsOrderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsReportsReportIDReasonsOrderOK, error)
 
-	PutV1PostMortemsReportsReportIDTags(params *PutV1PostMortemsReportsReportIDTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsReportsReportIDTagsNoContent, error)
+	PutV1PostMortemsReportsReportIDTags(params *PutV1PostMortemsReportsReportIDTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsReportsReportIDTagsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  DeleteV1PostMortemsReportsReportIDActionItemsActionItemID Delete an action item
-*/
-func (a *Client) DeleteV1PostMortemsReportsReportIDActionItemsActionItemID(params *DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1PostMortemsReportsReportIDActionItemsActionItemIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1PostMortemsReportsReportIdActionItemsActionItemId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/action_items/{action_item_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
+DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID deletes a report event
 
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1PostMortemsReportsReportIDActionItemsActionItemIDNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1PostMortemsReportsReportIdActionItemsActionItemId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID deletes a report event
-
-  Delete a report event by its incident ID
+Delete a report event by its incident ID
 */
 func (a *Client) DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID(params *DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDOK, error) {
 	// TODO: Validate the params before sending
@@ -178,9 +129,9 @@ func (a *Client) DeleteV1PostMortemsReportsReportIDEventsFromIncidentIncidentEve
 }
 
 /*
-  DeleteV1PostMortemsReportsReportIDEventsReportEventID deletes a report event
+DeleteV1PostMortemsReportsReportIDEventsReportEventID deletes a report event
 
-  Deletes an event by ID
+Deletes an event by ID
 */
 func (a *Client) DeleteV1PostMortemsReportsReportIDEventsReportEventID(params *DeleteV1PostMortemsReportsReportIDEventsReportEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDEventsReportEventIDOK, error) {
 	// TODO: Validate the params before sending
@@ -219,9 +170,11 @@ func (a *Client) DeleteV1PostMortemsReportsReportIDEventsReportEventID(params *D
 }
 
 /*
-  DeleteV1PostMortemsReportsReportIDParticipantsParticipantID Remove a participant from a post mortem report
+DeleteV1PostMortemsReportsReportIDParticipantsParticipantID removes a participant
+
+Remove a participant from a retrospective report
 */
-func (a *Client) DeleteV1PostMortemsReportsReportIDParticipantsParticipantID(params *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent, error) {
+func (a *Client) DeleteV1PostMortemsReportsReportIDParticipantsParticipantID(params *DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteV1PostMortemsReportsReportIDParticipantsParticipantIDParams()
@@ -247,7 +200,7 @@ func (a *Client) DeleteV1PostMortemsReportsReportIDParticipantsParticipantID(par
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDNoContent)
+	success, ok := result.(*DeleteV1PostMortemsReportsReportIDParticipantsParticipantIDOK)
 	if ok {
 		return success, nil
 	}
@@ -258,9 +211,11 @@ func (a *Client) DeleteV1PostMortemsReportsReportIDParticipantsParticipantID(par
 }
 
 /*
-  DeleteV1PostMortemsReportsReportIDReasonsReasonID Deletes a reason from a report
+DeleteV1PostMortemsReportsReportIDReasonsReasonID deletes a contributing factor
+
+Delete a contributing factor
 */
-func (a *Client) DeleteV1PostMortemsReportsReportIDReasonsReasonID(params *DeleteV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent, error) {
+func (a *Client) DeleteV1PostMortemsReportsReportIDReasonsReasonID(params *DeleteV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteV1PostMortemsReportsReportIDReasonsReasonIDParams()
@@ -286,7 +241,7 @@ func (a *Client) DeleteV1PostMortemsReportsReportIDReasonsReasonID(params *Delet
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent)
+	success, ok := result.(*DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK)
 	if ok {
 		return success, nil
 	}
@@ -297,7 +252,9 @@ func (a *Client) DeleteV1PostMortemsReportsReportIDReasonsReasonID(params *Delet
 }
 
 /*
-  DeleteV1PostMortemsReportsReportIDTags Remove tags from a report
+DeleteV1PostMortemsReportsReportIDTags removes tags
+
+Remove tags to a retrospective
 */
 func (a *Client) DeleteV1PostMortemsReportsReportIDTags(params *DeleteV1PostMortemsReportsReportIDTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDTagsNoContent, error) {
 	// TODO: Validate the params before sending
@@ -336,9 +293,9 @@ func (a *Client) DeleteV1PostMortemsReportsReportIDTags(params *DeleteV1PostMort
 }
 
 /*
-  GetV1PostMortemsQuestions lists incident retrospective questions
+GetV1PostMortemsQuestions lists incident retrospective questions
 
-  List the questions configured to be provided and filled out on each retrospective report.
+List the questions configured to be provided and filled out on each retrospective report.
 */
 func (a *Client) GetV1PostMortemsQuestions(params *GetV1PostMortemsQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsQuestionsOK, error) {
 	// TODO: Validate the params before sending
@@ -377,7 +334,9 @@ func (a *Client) GetV1PostMortemsQuestions(params *GetV1PostMortemsQuestionsPara
 }
 
 /*
-  GetV1PostMortemsReports Retrieve post mortem reports
+GetV1PostMortemsReports lists all reports
+
+List all reports
 */
 func (a *Client) GetV1PostMortemsReports(params *GetV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsOK, error) {
 	// TODO: Validate the params before sending
@@ -416,7 +375,9 @@ func (a *Client) GetV1PostMortemsReports(params *GetV1PostMortemsReportsParams, 
 }
 
 /*
-  GetV1PostMortemsReportsReportID Retrieve a single post mortem report
+GetV1PostMortemsReportsReportID gets a report
+
+Get a report
 */
 func (a *Client) GetV1PostMortemsReportsReportID(params *GetV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDOK, error) {
 	// TODO: Validate the params before sending
@@ -455,48 +416,9 @@ func (a *Client) GetV1PostMortemsReportsReportID(params *GetV1PostMortemsReports
 }
 
 /*
-  GetV1PostMortemsReportsReportIDActionItems List action items for a repo
-*/
-func (a *Client) GetV1PostMortemsReportsReportIDActionItems(params *GetV1PostMortemsReportsReportIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDActionItemsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PostMortemsReportsReportIDActionItemsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1PostMortemsReportsReportIdActionItems",
-		Method:             "GET",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/action_items",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1PostMortemsReportsReportIDActionItemsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
+GetV1PostMortemsReportsReportIDEvents lists report events
 
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1PostMortemsReportsReportIDActionItemsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsReportsReportIdActionItems: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetV1PostMortemsReportsReportIDEvents lists report events
-
-  Get all report events
+Get all report events
 */
 func (a *Client) GetV1PostMortemsReportsReportIDEvents(params *GetV1PostMortemsReportsReportIDEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDEventsOK, error) {
 	// TODO: Validate the params before sending
@@ -535,7 +457,9 @@ func (a *Client) GetV1PostMortemsReportsReportIDEvents(params *GetV1PostMortemsR
 }
 
 /*
-  GetV1PostMortemsReportsReportIDIncidentEvents get v1 post mortems reports report Id incident events API
+GetV1PostMortemsReportsReportIDIncidentEvents lists incident events
+
+Get a list of incident events for the report
 */
 func (a *Client) GetV1PostMortemsReportsReportIDIncidentEvents(params *GetV1PostMortemsReportsReportIDIncidentEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDIncidentEventsOK, error) {
 	// TODO: Validate the params before sending
@@ -574,7 +498,9 @@ func (a *Client) GetV1PostMortemsReportsReportIDIncidentEvents(params *GetV1Post
 }
 
 /*
-  GetV1PostMortemsReportsReportIDParticipants List participants for a post mortem report
+GetV1PostMortemsReportsReportIDParticipants lists participants
+
+List participants for a retrospective report
 */
 func (a *Client) GetV1PostMortemsReportsReportIDParticipants(params *GetV1PostMortemsReportsReportIDParticipantsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDParticipantsOK, error) {
 	// TODO: Validate the params before sending
@@ -613,7 +539,9 @@ func (a *Client) GetV1PostMortemsReportsReportIDParticipants(params *GetV1PostMo
 }
 
 /*
-  GetV1PostMortemsReportsReportIDParticipantsSearch List possible participants based on name, includes users and teams
+GetV1PostMortemsReportsReportIDParticipantsSearch searches participants
+
+List possible participants based on name, includes users and teams
 */
 func (a *Client) GetV1PostMortemsReportsReportIDParticipantsSearch(params *GetV1PostMortemsReportsReportIDParticipantsSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDParticipantsSearchOK, error) {
 	// TODO: Validate the params before sending
@@ -652,7 +580,9 @@ func (a *Client) GetV1PostMortemsReportsReportIDParticipantsSearch(params *GetV1
 }
 
 /*
-  GetV1PostMortemsReportsReportIDReasons Retrieve post mortem report reasons
+GetV1PostMortemsReportsReportIDReasons lists contributing factors
+
+List all contributing factors to an incident
 */
 func (a *Client) GetV1PostMortemsReportsReportIDReasons(params *GetV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDReasonsOK, error) {
 	// TODO: Validate the params before sending
@@ -691,46 +621,9 @@ func (a *Client) GetV1PostMortemsReportsReportIDReasons(params *GetV1PostMortems
 }
 
 /*
-  GetV1PostMortemsTags List tags for post mortems
-*/
-func (a *Client) GetV1PostMortemsTags(params *GetV1PostMortemsTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsTagsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PostMortemsTagsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1PostMortemsTags",
-		Method:             "GET",
-		PathPattern:        "/v1/post_mortems/tags",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1PostMortemsTagsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
+PatchV1PostMortemsReportsReportID updates a report
 
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1PostMortemsTagsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsTags: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  PatchV1PostMortemsReportsReportID Update a post mortem report
+Update a report
 */
 func (a *Client) PatchV1PostMortemsReportsReportID(params *PatchV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDOK, error) {
 	// TODO: Validate the params before sending
@@ -769,48 +662,9 @@ func (a *Client) PatchV1PostMortemsReportsReportID(params *PatchV1PostMortemsRep
 }
 
 /*
-  PatchV1PostMortemsReportsReportIDActionItemsActionItemID Update an action item
-*/
-func (a *Client) PatchV1PostMortemsReportsReportIDActionItemsActionItemID(params *PatchV1PostMortemsReportsReportIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1PostMortemsReportsReportIDActionItemsActionItemIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1PostMortemsReportsReportIdActionItemsActionItemId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/action_items/{action_item_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1PostMortemsReportsReportIDActionItemsActionItemIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
+PatchV1PostMortemsReportsReportIDEventsNotesNoteID updates a report note
 
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1PostMortemsReportsReportIDActionItemsActionItemIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1PostMortemsReportsReportIdActionItemsActionItemId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  PatchV1PostMortemsReportsReportIDEventsNotesNoteID updates a report note
-
-  Updates the note body and time by ID
+Updates the note body and time by ID
 */
 func (a *Client) PatchV1PostMortemsReportsReportIDEventsNotesNoteID(params *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK, error) {
 	// TODO: Validate the params before sending
@@ -849,9 +703,9 @@ func (a *Client) PatchV1PostMortemsReportsReportIDEventsNotesNoteID(params *Patc
 }
 
 /*
-  PatchV1PostMortemsReportsReportIDEventsReportEventID updates a report event
+PatchV1PostMortemsReportsReportIDEventsReportEventID updates a report event
 
-  Updates a report event to change its description
+Updates a report event to change its description
 */
 func (a *Client) PatchV1PostMortemsReportsReportIDEventsReportEventID(params *PatchV1PostMortemsReportsReportIDEventsReportEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDEventsReportEventIDOK, error) {
 	// TODO: Validate the params before sending
@@ -890,7 +744,9 @@ func (a *Client) PatchV1PostMortemsReportsReportIDEventsReportEventID(params *Pa
 }
 
 /*
-  PatchV1PostMortemsReportsReportIDFieldsFieldID Update a field value on a post mortem report
+PatchV1PostMortemsReportsReportIDFieldsFieldID updates a field
+
+Update a field value on a post mortem report
 */
 func (a *Client) PatchV1PostMortemsReportsReportIDFieldsFieldID(params *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDFieldsFieldIDOK, error) {
 	// TODO: Validate the params before sending
@@ -929,7 +785,9 @@ func (a *Client) PatchV1PostMortemsReportsReportIDFieldsFieldID(params *PatchV1P
 }
 
 /*
-  PatchV1PostMortemsReportsReportIDReasonsReasonID Updates a reason for a report
+PatchV1PostMortemsReportsReportIDReasonsReasonID updates a contributing factor
+
+Update a contributing factor
 */
 func (a *Client) PatchV1PostMortemsReportsReportIDReasonsReasonID(params *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDReasonsReasonIDOK, error) {
 	// TODO: Validate the params before sending
@@ -968,7 +826,9 @@ func (a *Client) PatchV1PostMortemsReportsReportIDReasonsReasonID(params *PatchV
 }
 
 /*
-  PostV1PostMortemsReports Create a post mortem
+PostV1PostMortemsReports creates a report
+
+Create a report
 */
 func (a *Client) PostV1PostMortemsReports(params *PostV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsCreated, error) {
 	// TODO: Validate the params before sending
@@ -1007,48 +867,9 @@ func (a *Client) PostV1PostMortemsReports(params *PostV1PostMortemsReportsParams
 }
 
 /*
-  PostV1PostMortemsReportsReportIDActionItems Create an action item on a report
-*/
-func (a *Client) PostV1PostMortemsReportsReportIDActionItems(params *PostV1PostMortemsReportsReportIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDActionItemsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1PostMortemsReportsReportIDActionItemsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1PostMortemsReportsReportIdActionItems",
-		Method:             "POST",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/action_items",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1PostMortemsReportsReportIDActionItemsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
+PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID creates a report event
 
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1PostMortemsReportsReportIDActionItemsCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1PostMortemsReportsReportIdActionItems: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID creates a report event
-
-  Creates an event on a report from an incident event
+Creates an event on a report from an incident event
 */
 func (a *Client) PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventID(params *PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDCreated, error) {
 	// TODO: Validate the params before sending
@@ -1087,9 +908,9 @@ func (a *Client) PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEvent
 }
 
 /*
-  PostV1PostMortemsReportsReportIDEventsNotes creates a note as a report event
+PostV1PostMortemsReportsReportIDEventsNotes creates a note as a report event
 
-  Creates a note with body and time available to modify
+Creates a note with body and time available to modify
 */
 func (a *Client) PostV1PostMortemsReportsReportIDEventsNotes(params *PostV1PostMortemsReportsReportIDEventsNotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDEventsNotesCreated, error) {
 	// TODO: Validate the params before sending
@@ -1128,7 +949,9 @@ func (a *Client) PostV1PostMortemsReportsReportIDEventsNotes(params *PostV1PostM
 }
 
 /*
-  PostV1PostMortemsReportsReportIDParticipants Add a participant to the post mortem report
+PostV1PostMortemsReportsReportIDParticipants adds a participant
+
+Add a participant to the retrospective report
 */
 func (a *Client) PostV1PostMortemsReportsReportIDParticipants(params *PostV1PostMortemsReportsReportIDParticipantsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDParticipantsCreated, error) {
 	// TODO: Validate the params before sending
@@ -1167,9 +990,9 @@ func (a *Client) PostV1PostMortemsReportsReportIDParticipants(params *PostV1Post
 }
 
 /*
-  PostV1PostMortemsReportsReportIDPublish publishes a retrospective report
+PostV1PostMortemsReportsReportIDPublish publishes a retrospective report
 
-  Marks an incident retrospective as published and emails all of the participants in the report the summary
+Marks an incident retrospective as published and emails all of the participants in the report the summary
 */
 func (a *Client) PostV1PostMortemsReportsReportIDPublish(params *PostV1PostMortemsReportsReportIDPublishParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDPublishCreated, error) {
 	// TODO: Validate the params before sending
@@ -1208,7 +1031,9 @@ func (a *Client) PostV1PostMortemsReportsReportIDPublish(params *PostV1PostMorte
 }
 
 /*
-  PostV1PostMortemsReportsReportIDReasons Add a post mortem reason to the report
+PostV1PostMortemsReportsReportIDReasons creates contributing factor
+
+Add a new contributing factor to an incident
 */
 func (a *Client) PostV1PostMortemsReportsReportIDReasons(params *PostV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDReasonsCreated, error) {
 	// TODO: Validate the params before sending
@@ -1247,9 +1072,9 @@ func (a *Client) PostV1PostMortemsReportsReportIDReasons(params *PostV1PostMorte
 }
 
 /*
-  PutV1PostMortemsQuestions updates incident retrospective questions
+PutV1PostMortemsQuestions updates incident retrospective questions
 
-  Update the questions configured to be provided and filled out on future retrospective reports.
+Update the questions configured to be provided and filled out on future retrospective reports.
 */
 func (a *Client) PutV1PostMortemsQuestions(params *PutV1PostMortemsQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsQuestionsOK, error) {
 	// TODO: Validate the params before sending
@@ -1288,7 +1113,9 @@ func (a *Client) PutV1PostMortemsQuestions(params *PutV1PostMortemsQuestionsPara
 }
 
 /*
-  PutV1PostMortemsReportsReportIDReasonsOrder Reorder a reason in the post mortem reasons list
+PutV1PostMortemsReportsReportIDReasonsOrder reorders a contributing factor
+
+Reorder a contributing factor
 */
 func (a *Client) PutV1PostMortemsReportsReportIDReasonsOrder(params *PutV1PostMortemsReportsReportIDReasonsOrderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsReportsReportIDReasonsOrderOK, error) {
 	// TODO: Validate the params before sending
@@ -1327,9 +1154,11 @@ func (a *Client) PutV1PostMortemsReportsReportIDReasonsOrder(params *PutV1PostMo
 }
 
 /*
-  PutV1PostMortemsReportsReportIDTags Add tags to a report
+PutV1PostMortemsReportsReportIDTags adds tags
+
+Add tags to a retrospective
 */
-func (a *Client) PutV1PostMortemsReportsReportIDTags(params *PutV1PostMortemsReportsReportIDTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsReportsReportIDTagsNoContent, error) {
+func (a *Client) PutV1PostMortemsReportsReportIDTags(params *PutV1PostMortemsReportsReportIDTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsReportsReportIDTagsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutV1PostMortemsReportsReportIDTagsParams()
@@ -1355,7 +1184,7 @@ func (a *Client) PutV1PostMortemsReportsReportIDTags(params *PutV1PostMortemsRep
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PutV1PostMortemsReportsReportIDTagsNoContent)
+	success, ok := result.(*PutV1PostMortemsReportsReportIDTagsOK)
 	if ok {
 		return success, nil
 	}

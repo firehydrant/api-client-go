@@ -54,10 +54,12 @@ func NewPutV1IncidentsIncidentIDMilestonesBulkUpdateParamsWithHTTPClient(client 
 	}
 }
 
-/* PutV1IncidentsIncidentIDMilestonesBulkUpdateParams contains all the parameters to send to the API endpoint
-   for the put v1 incidents incident Id milestones bulk update operation.
+/*
+PutV1IncidentsIncidentIDMilestonesBulkUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put v1 incidents incident Id milestones bulk update operation.
+
+	Typically these are written to a http.Request.
 */
 type PutV1IncidentsIncidentIDMilestonesBulkUpdateParams struct {
 

@@ -10,8 +10,6 @@ import (
 	transport "github.com/go-openapi/runtime/client"
 )
 
-const defaultApiHost = "api.firehydrant.io"
-
 type Config struct {
 	ApiHost   string
 	ApiKey    string
@@ -29,7 +27,7 @@ func NewApiClient(c Config) ApiClient {
 	fhApiClient := ApiClient{}
 
 	if c.ApiHost == "" {
-		c.ApiHost = defaultApiHost
+		c.ApiHost = client.DefaultHost
 	}
 
 	fhApiClient.transport = transport.New(c.ApiHost, "", []string{"https"})

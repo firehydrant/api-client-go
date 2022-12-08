@@ -39,7 +39,8 @@ func NewDeleteV1RunbooksRunbookIDOK() *DeleteV1RunbooksRunbookIDOK {
 	return &DeleteV1RunbooksRunbookIDOK{}
 }
 
-/* DeleteV1RunbooksRunbookIDOK describes a response with status code 200, with default header values.
+/*
+DeleteV1RunbooksRunbookIDOK describes a response with status code 200, with default header values.
 
 Delete a runbook and make it unavailable for any future incidents.
 */
@@ -47,9 +48,39 @@ type DeleteV1RunbooksRunbookIDOK struct {
 	Payload *models.RunbookEntity
 }
 
+// IsSuccess returns true when this delete v1 runbooks runbook Id o k response has a 2xx status code
+func (o *DeleteV1RunbooksRunbookIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 runbooks runbook Id o k response has a 3xx status code
+func (o *DeleteV1RunbooksRunbookIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 runbooks runbook Id o k response has a 4xx status code
+func (o *DeleteV1RunbooksRunbookIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 runbooks runbook Id o k response has a 5xx status code
+func (o *DeleteV1RunbooksRunbookIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 runbooks runbook Id o k response a status code equal to that given
+func (o *DeleteV1RunbooksRunbookIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteV1RunbooksRunbookIDOK) Error() string {
 	return fmt.Sprintf("[DELETE /v1/runbooks/{runbook_id}][%d] deleteV1RunbooksRunbookIdOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteV1RunbooksRunbookIDOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/runbooks/{runbook_id}][%d] deleteV1RunbooksRunbookIdOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteV1RunbooksRunbookIDOK) GetPayload() *models.RunbookEntity {
 	return o.Payload
 }

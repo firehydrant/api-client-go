@@ -39,7 +39,8 @@ func NewGetV1PostMortemsQuestionsOK() *GetV1PostMortemsQuestionsOK {
 	return &GetV1PostMortemsQuestionsOK{}
 }
 
-/* GetV1PostMortemsQuestionsOK describes a response with status code 200, with default header values.
+/*
+GetV1PostMortemsQuestionsOK describes a response with status code 200, with default header values.
 
 List the questions configured to be provided and filled out on each retrospective report.
 */
@@ -47,9 +48,39 @@ type GetV1PostMortemsQuestionsOK struct {
 	Payload *models.QuestionTypeEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 post mortems questions o k response has a 2xx status code
+func (o *GetV1PostMortemsQuestionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 post mortems questions o k response has a 3xx status code
+func (o *GetV1PostMortemsQuestionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 post mortems questions o k response has a 4xx status code
+func (o *GetV1PostMortemsQuestionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 post mortems questions o k response has a 5xx status code
+func (o *GetV1PostMortemsQuestionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 post mortems questions o k response a status code equal to that given
+func (o *GetV1PostMortemsQuestionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1PostMortemsQuestionsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/post_mortems/questions][%d] getV1PostMortemsQuestionsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1PostMortemsQuestionsOK) String() string {
+	return fmt.Sprintf("[GET /v1/post_mortems/questions][%d] getV1PostMortemsQuestionsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1PostMortemsQuestionsOK) GetPayload() *models.QuestionTypeEntityPaginated {
 	return o.Payload
 }

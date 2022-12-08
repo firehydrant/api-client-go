@@ -39,7 +39,8 @@ func NewGetV1PrioritiesPrioritySlugOK() *GetV1PrioritiesPrioritySlugOK {
 	return &GetV1PrioritiesPrioritySlugOK{}
 }
 
-/* GetV1PrioritiesPrioritySlugOK describes a response with status code 200, with default header values.
+/*
+GetV1PrioritiesPrioritySlugOK describes a response with status code 200, with default header values.
 
 Retrieve a specific priority
 */
@@ -47,9 +48,39 @@ type GetV1PrioritiesPrioritySlugOK struct {
 	Payload *models.PriorityEntity
 }
 
+// IsSuccess returns true when this get v1 priorities priority slug o k response has a 2xx status code
+func (o *GetV1PrioritiesPrioritySlugOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 priorities priority slug o k response has a 3xx status code
+func (o *GetV1PrioritiesPrioritySlugOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 priorities priority slug o k response has a 4xx status code
+func (o *GetV1PrioritiesPrioritySlugOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 priorities priority slug o k response has a 5xx status code
+func (o *GetV1PrioritiesPrioritySlugOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 priorities priority slug o k response a status code equal to that given
+func (o *GetV1PrioritiesPrioritySlugOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1PrioritiesPrioritySlugOK) Error() string {
 	return fmt.Sprintf("[GET /v1/priorities/{priority_slug}][%d] getV1PrioritiesPrioritySlugOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1PrioritiesPrioritySlugOK) String() string {
+	return fmt.Sprintf("[GET /v1/priorities/{priority_slug}][%d] getV1PrioritiesPrioritySlugOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1PrioritiesPrioritySlugOK) GetPayload() *models.PriorityEntity {
 	return o.Payload
 }

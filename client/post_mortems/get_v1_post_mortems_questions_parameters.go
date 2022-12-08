@@ -53,10 +53,12 @@ func NewGetV1PostMortemsQuestionsParamsWithHTTPClient(client *http.Client) *GetV
 	}
 }
 
-/* GetV1PostMortemsQuestionsParams contains all the parameters to send to the API endpoint
-   for the get v1 post mortems questions operation.
+/*
+GetV1PostMortemsQuestionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 post mortems questions operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1PostMortemsQuestionsParams struct {
 

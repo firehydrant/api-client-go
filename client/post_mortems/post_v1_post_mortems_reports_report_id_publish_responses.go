@@ -45,24 +45,55 @@ func NewPostV1PostMortemsReportsReportIDPublishCreated() *PostV1PostMortemsRepor
 	return &PostV1PostMortemsReportsReportIDPublishCreated{}
 }
 
-/* PostV1PostMortemsReportsReportIDPublishCreated describes a response with status code 201, with default header values.
+/*
+PostV1PostMortemsReportsReportIDPublishCreated describes a response with status code 201, with default header values.
 
 Marks an incident retrospective as published and emails all of the participants in the report the summary
 */
 type PostV1PostMortemsReportsReportIDPublishCreated struct {
-	Payload *models.ReportEntity
+	Payload *models.PostMortemReportEntity
+}
+
+// IsSuccess returns true when this post v1 post mortems reports report Id publish created response has a 2xx status code
+func (o *PostV1PostMortemsReportsReportIDPublishCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 post mortems reports report Id publish created response has a 3xx status code
+func (o *PostV1PostMortemsReportsReportIDPublishCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 post mortems reports report Id publish created response has a 4xx status code
+func (o *PostV1PostMortemsReportsReportIDPublishCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 post mortems reports report Id publish created response has a 5xx status code
+func (o *PostV1PostMortemsReportsReportIDPublishCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 post mortems reports report Id publish created response a status code equal to that given
+func (o *PostV1PostMortemsReportsReportIDPublishCreated) IsCode(code int) bool {
+	return code == 201
 }
 
 func (o *PostV1PostMortemsReportsReportIDPublishCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/publish][%d] postV1PostMortemsReportsReportIdPublishCreated  %+v", 201, o.Payload)
 }
-func (o *PostV1PostMortemsReportsReportIDPublishCreated) GetPayload() *models.ReportEntity {
+
+func (o *PostV1PostMortemsReportsReportIDPublishCreated) String() string {
+	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/publish][%d] postV1PostMortemsReportsReportIdPublishCreated  %+v", 201, o.Payload)
+}
+
+func (o *PostV1PostMortemsReportsReportIDPublishCreated) GetPayload() *models.PostMortemReportEntity {
 	return o.Payload
 }
 
 func (o *PostV1PostMortemsReportsReportIDPublishCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ReportEntity)
+	o.Payload = new(models.PostMortemReportEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -77,7 +108,8 @@ func NewPostV1PostMortemsReportsReportIDPublishBadRequest() *PostV1PostMortemsRe
 	return &PostV1PostMortemsReportsReportIDPublishBadRequest{}
 }
 
-/* PostV1PostMortemsReportsReportIDPublishBadRequest describes a response with status code 400, with default header values.
+/*
+PostV1PostMortemsReportsReportIDPublishBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -85,9 +117,39 @@ type PostV1PostMortemsReportsReportIDPublishBadRequest struct {
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this post v1 post mortems reports report Id publish bad request response has a 2xx status code
+func (o *PostV1PostMortemsReportsReportIDPublishBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post v1 post mortems reports report Id publish bad request response has a 3xx status code
+func (o *PostV1PostMortemsReportsReportIDPublishBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 post mortems reports report Id publish bad request response has a 4xx status code
+func (o *PostV1PostMortemsReportsReportIDPublishBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post v1 post mortems reports report Id publish bad request response has a 5xx status code
+func (o *PostV1PostMortemsReportsReportIDPublishBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 post mortems reports report Id publish bad request response a status code equal to that given
+func (o *PostV1PostMortemsReportsReportIDPublishBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PostV1PostMortemsReportsReportIDPublishBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/publish][%d] postV1PostMortemsReportsReportIdPublishBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PostV1PostMortemsReportsReportIDPublishBadRequest) String() string {
+	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/publish][%d] postV1PostMortemsReportsReportIdPublishBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PostV1PostMortemsReportsReportIDPublishBadRequest) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }

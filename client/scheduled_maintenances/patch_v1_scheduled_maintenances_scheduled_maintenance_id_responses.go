@@ -39,7 +39,8 @@ func NewPatchV1ScheduledMaintenancesScheduledMaintenanceIDOK() *PatchV1Scheduled
 	return &PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK{}
 }
 
-/* PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK describes a response with status code 200, with default header values.
 
 Change the conditions of a scheduled maintenance event, including updating any status page announcements of changes.
 */
@@ -47,9 +48,39 @@ type PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK struct {
 	Payload *models.ScheduledMaintenanceEntity
 }
 
+// IsSuccess returns true when this patch v1 scheduled maintenances scheduled maintenance Id o k response has a 2xx status code
+func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 scheduled maintenances scheduled maintenance Id o k response has a 3xx status code
+func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 scheduled maintenances scheduled maintenance Id o k response has a 4xx status code
+func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 scheduled maintenances scheduled maintenance Id o k response has a 5xx status code
+func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 scheduled maintenances scheduled maintenance Id o k response a status code equal to that given
+func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/scheduled_maintenances/{scheduled_maintenance_id}][%d] patchV1ScheduledMaintenancesScheduledMaintenanceIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/scheduled_maintenances/{scheduled_maintenance_id}][%d] patchV1ScheduledMaintenancesScheduledMaintenanceIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDOK) GetPayload() *models.ScheduledMaintenanceEntity {
 	return o.Payload
 }

@@ -36,7 +36,9 @@ type ClientService interface {
 }
 
 /*
-  GetV1ReportsMeanTime Returns a report with time bucketed analytics data
+GetV1ReportsMeanTime gets mean time report
+
+Returns a report with time bucketed analytics data
 */
 func (a *Client) GetV1ReportsMeanTime(params *GetV1ReportsMeanTimeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ReportsMeanTimeOK, error) {
 	// TODO: Validate the params before sending

@@ -53,10 +53,12 @@ func NewGetV1IncidentsIncidentIDEventsEventIDVotesStatusParamsWithHTTPClient(cli
 	}
 }
 
-/* GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams contains all the parameters to send to the API endpoint
-   for the get v1 incidents incident Id events event Id votes status operation.
+/*
+GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 incidents incident Id events event Id votes status operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams struct {
 

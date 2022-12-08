@@ -39,17 +39,52 @@ func NewPutV1IncidentsIncidentIDMilestonesBulkUpdateOK() *PutV1IncidentsIncident
 	return &PutV1IncidentsIncidentIDMilestonesBulkUpdateOK{}
 }
 
-/* PutV1IncidentsIncidentIDMilestonesBulkUpdateOK describes a response with status code 200, with default header values.
+/*
+	PutV1IncidentsIncidentIDMilestonesBulkUpdateOK describes a response with status code 200, with default header values.
 
-Update a list of milestones on an incident
+	Update milestone times in bulk for a given incident. All milestone times for an incident
+
+must occur in chronological order (%{milestones}). If the result of this request would
+cause any milestone(s) to appear out of place, a 422 response will instead be returned.
+This includes milestones not explicitly submitted or updated in this request.
 */
 type PutV1IncidentsIncidentIDMilestonesBulkUpdateOK struct {
 	Payload *models.MilestoneEntityPaginated
 }
 
+// IsSuccess returns true when this put v1 incidents incident Id milestones bulk update o k response has a 2xx status code
+func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put v1 incidents incident Id milestones bulk update o k response has a 3xx status code
+func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put v1 incidents incident Id milestones bulk update o k response has a 4xx status code
+func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put v1 incidents incident Id milestones bulk update o k response has a 5xx status code
+func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put v1 incidents incident Id milestones bulk update o k response a status code equal to that given
+func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /v1/incidents/{incident_id}/milestones/bulk_update][%d] putV1IncidentsIncidentIdMilestonesBulkUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) String() string {
+	return fmt.Sprintf("[PUT /v1/incidents/{incident_id}/milestones/bulk_update][%d] putV1IncidentsIncidentIdMilestonesBulkUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) GetPayload() *models.MilestoneEntityPaginated {
 	return o.Payload
 }

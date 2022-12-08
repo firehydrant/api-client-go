@@ -53,10 +53,12 @@ func NewDeleteV1IncidentRolesIncidentRoleIDParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* DeleteV1IncidentRolesIncidentRoleIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 incident roles incident role Id operation.
+/*
+DeleteV1IncidentRolesIncidentRoleIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 incident roles incident role Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1IncidentRolesIncidentRoleIDParams struct {
 

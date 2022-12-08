@@ -39,7 +39,8 @@ func NewPutV1PostMortemsQuestionsOK() *PutV1PostMortemsQuestionsOK {
 	return &PutV1PostMortemsQuestionsOK{}
 }
 
-/* PutV1PostMortemsQuestionsOK describes a response with status code 200, with default header values.
+/*
+PutV1PostMortemsQuestionsOK describes a response with status code 200, with default header values.
 
 Update the questions configured to be provided and filled out on future retrospective reports.
 */
@@ -47,9 +48,39 @@ type PutV1PostMortemsQuestionsOK struct {
 	Payload *models.QuestionTypeEntity
 }
 
+// IsSuccess returns true when this put v1 post mortems questions o k response has a 2xx status code
+func (o *PutV1PostMortemsQuestionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this put v1 post mortems questions o k response has a 3xx status code
+func (o *PutV1PostMortemsQuestionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this put v1 post mortems questions o k response has a 4xx status code
+func (o *PutV1PostMortemsQuestionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this put v1 post mortems questions o k response has a 5xx status code
+func (o *PutV1PostMortemsQuestionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this put v1 post mortems questions o k response a status code equal to that given
+func (o *PutV1PostMortemsQuestionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PutV1PostMortemsQuestionsOK) Error() string {
 	return fmt.Sprintf("[PUT /v1/post_mortems/questions][%d] putV1PostMortemsQuestionsOK  %+v", 200, o.Payload)
 }
+
+func (o *PutV1PostMortemsQuestionsOK) String() string {
+	return fmt.Sprintf("[PUT /v1/post_mortems/questions][%d] putV1PostMortemsQuestionsOK  %+v", 200, o.Payload)
+}
+
 func (o *PutV1PostMortemsQuestionsOK) GetPayload() *models.QuestionTypeEntity {
 	return o.Payload
 }

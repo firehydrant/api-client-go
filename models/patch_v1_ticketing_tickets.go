@@ -26,6 +26,9 @@ type PatchV1TicketingTickets struct {
 	// summary
 	Summary string `json:"summary,omitempty"`
 
+	// List of tags for the ticket
+	TagList []string `json:"tag_list"`
+
 	// type
 	Type string `json:"type,omitempty"`
 }

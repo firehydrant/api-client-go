@@ -30,7 +30,10 @@ type UserEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// slack linked
-	SlackLinked string `json:"slack_linked?,omitempty"`
+	SlackLinked bool `json:"slack_linked?,omitempty"`
+
+	// slack user id
+	SlackUserID string `json:"slack_user_id,omitempty"`
 
 	// updated at
 	UpdatedAt string `json:"updated_at,omitempty"`

@@ -52,10 +52,12 @@ func NewGetV1OnboardingQuickStartReportParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* GetV1OnboardingQuickStartReportParams contains all the parameters to send to the API endpoint
-   for the get v1 onboarding quick start report operation.
+/*
+GetV1OnboardingQuickStartReportParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 onboarding quick start report operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1OnboardingQuickStartReportParams struct {
 	timeout    time.Duration

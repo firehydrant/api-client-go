@@ -54,10 +54,12 @@ func NewPostV1IncidentRolesParamsWithHTTPClient(client *http.Client) *PostV1Inci
 	}
 }
 
-/* PostV1IncidentRolesParams contains all the parameters to send to the API endpoint
-   for the post v1 incident roles operation.
+/*
+PostV1IncidentRolesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 incident roles operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1IncidentRolesParams struct {
 

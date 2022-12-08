@@ -52,10 +52,12 @@ func NewGetV1SavedSearchesResourceTypeSavedSearchIDParamsWithHTTPClient(client *
 	}
 }
 
-/* GetV1SavedSearchesResourceTypeSavedSearchIDParams contains all the parameters to send to the API endpoint
-   for the get v1 saved searches resource type saved search Id operation.
+/*
+GetV1SavedSearchesResourceTypeSavedSearchIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 saved searches resource type saved search Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1SavedSearchesResourceTypeSavedSearchIDParams struct {
 

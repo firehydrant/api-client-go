@@ -19,8 +19,8 @@ import (
 // swagger:model putV1PostMortemsQuestions
 type PutV1PostMortemsQuestions struct {
 
-	// bunk
-	Bunk string `json:"bunk,omitempty"`
+	// make swagger work
+	MakeSwaggerWork string `json:"_make_swagger_work_,omitempty"`
 
 	// questions
 	Questions []*PutV1PostMortemsQuestionsQuestionsItems0 `json:"questions"`

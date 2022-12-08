@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// RelatedChangeEventEntityPaginated Retrieve all change events that have been associated to the incident
+// RelatedChangeEventEntityPaginated List related changes that have been attached to an incident
 //
 // swagger:model RelatedChangeEventEntityPaginated
 type RelatedChangeEventEntityPaginated struct {

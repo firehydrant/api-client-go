@@ -36,14 +36,44 @@ func NewDeleteV1WebhooksWebhookIDNoContent() *DeleteV1WebhooksWebhookIDNoContent
 	return &DeleteV1WebhooksWebhookIDNoContent{}
 }
 
-/* DeleteV1WebhooksWebhookIDNoContent describes a response with status code 204, with default header values.
+/*
+DeleteV1WebhooksWebhookIDNoContent describes a response with status code 204, with default header values.
 
 Delete a specific webhook
 */
 type DeleteV1WebhooksWebhookIDNoContent struct {
 }
 
+// IsSuccess returns true when this delete v1 webhooks webhook Id no content response has a 2xx status code
+func (o *DeleteV1WebhooksWebhookIDNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 webhooks webhook Id no content response has a 3xx status code
+func (o *DeleteV1WebhooksWebhookIDNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 webhooks webhook Id no content response has a 4xx status code
+func (o *DeleteV1WebhooksWebhookIDNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 webhooks webhook Id no content response has a 5xx status code
+func (o *DeleteV1WebhooksWebhookIDNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 webhooks webhook Id no content response a status code equal to that given
+func (o *DeleteV1WebhooksWebhookIDNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteV1WebhooksWebhookIDNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /v1/webhooks/{webhook_id}][%d] deleteV1WebhooksWebhookIdNoContent ", 204)
+}
+
+func (o *DeleteV1WebhooksWebhookIDNoContent) String() string {
 	return fmt.Sprintf("[DELETE /v1/webhooks/{webhook_id}][%d] deleteV1WebhooksWebhookIdNoContent ", 204)
 }
 

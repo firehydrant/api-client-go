@@ -39,7 +39,8 @@ func NewPatchV1SavedSearchesResourceTypeSavedSearchIDOK() *PatchV1SavedSearchesR
 	return &PatchV1SavedSearchesResourceTypeSavedSearchIDOK{}
 }
 
-/* PatchV1SavedSearchesResourceTypeSavedSearchIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1SavedSearchesResourceTypeSavedSearchIDOK describes a response with status code 200, with default header values.
 
 Update a specific saved search
 */
@@ -47,9 +48,39 @@ type PatchV1SavedSearchesResourceTypeSavedSearchIDOK struct {
 	Payload *models.SavedSearchEntity
 }
 
+// IsSuccess returns true when this patch v1 saved searches resource type saved search Id o k response has a 2xx status code
+func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 saved searches resource type saved search Id o k response has a 3xx status code
+func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 saved searches resource type saved search Id o k response has a 4xx status code
+func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 saved searches resource type saved search Id o k response has a 5xx status code
+func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 saved searches resource type saved search Id o k response a status code equal to that given
+func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/saved_searches/{resource_type}/{saved_search_id}][%d] patchV1SavedSearchesResourceTypeSavedSearchIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/saved_searches/{resource_type}/{saved_search_id}][%d] patchV1SavedSearchesResourceTypeSavedSearchIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDOK) GetPayload() *models.SavedSearchEntity {
 	return o.Payload
 }

@@ -38,9 +38,9 @@ type ClientService interface {
 }
 
 /*
-  GetV1ReleaseNotes lists release notes
+GetV1ReleaseNotes lists release notes
 
-  Lists the release notes for FireHydrant
+Lists the release notes for FireHydrant
 */
 func (a *Client) GetV1ReleaseNotes(params *GetV1ReleaseNotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ReleaseNotesOK, error) {
 	// TODO: Validate the params before sending
@@ -79,9 +79,9 @@ func (a *Client) GetV1ReleaseNotes(params *GetV1ReleaseNotesParams, authInfo run
 }
 
 /*
-  GetV1ReleaseNotesReleaseNoteID retrieves a release note
+GetV1ReleaseNotesReleaseNoteID retrieves a release note
 
-  Retrieve a single release note set
+Retrieve a single release note set
 */
 func (a *Client) GetV1ReleaseNotesReleaseNoteID(params *GetV1ReleaseNotesReleaseNoteIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ReleaseNotesReleaseNoteIDOK, error) {
 	// TODO: Validate the params before sending

@@ -33,7 +33,7 @@ type SeverityEntity struct {
 	Slug string `json:"slug,omitempty"`
 
 	// system record
-	SystemRecord string `json:"system_record,omitempty"`
+	SystemRecord bool `json:"system_record,omitempty"`
 
 	// type
 	Type string `json:"type,omitempty"`

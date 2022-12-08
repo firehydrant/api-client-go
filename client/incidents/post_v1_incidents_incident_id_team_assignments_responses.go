@@ -39,17 +39,48 @@ func NewPostV1IncidentsIncidentIDTeamAssignmentsCreated() *PostV1IncidentsIncide
 	return &PostV1IncidentsIncidentIDTeamAssignmentsCreated{}
 }
 
-/* PostV1IncidentsIncidentIDTeamAssignmentsCreated describes a response with status code 201, with default header values.
+/*
+PostV1IncidentsIncidentIDTeamAssignmentsCreated describes a response with status code 201, with default header values.
 
-Assign a team to an incident for the incident
+Assign a team for this incident
 */
 type PostV1IncidentsIncidentIDTeamAssignmentsCreated struct {
 	Payload *models.IncidentTeamAssignmentsEntity
 }
 
+// IsSuccess returns true when this post v1 incidents incident Id team assignments created response has a 2xx status code
+func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 incidents incident Id team assignments created response has a 3xx status code
+func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 incidents incident Id team assignments created response has a 4xx status code
+func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 incidents incident Id team assignments created response has a 5xx status code
+func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 incidents incident Id team assignments created response a status code equal to that given
+func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/team_assignments][%d] postV1IncidentsIncidentIdTeamAssignmentsCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/team_assignments][%d] postV1IncidentsIncidentIdTeamAssignmentsCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) GetPayload() *models.IncidentTeamAssignmentsEntity {
 	return o.Payload
 }

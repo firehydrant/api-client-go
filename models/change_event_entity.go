@@ -61,7 +61,7 @@ type ChangeEventEntity struct {
 	RelatedChanges []*ChangeEntity `json:"related_changes"`
 
 	// services
-	Services []*BaseServiceEntity `json:"services"`
+	Services []string `json:"services"`
 
 	// starts at
 	// Format: date-time
@@ -95,10 +95,6 @@ func (m *ChangeEventEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateRelatedChanges(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateServices(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -228,32 +224,6 @@ func (m *ChangeEventEntity) validateRelatedChanges(formats strfmt.Registry) erro
 	return nil
 }
 
-func (m *ChangeEventEntity) validateServices(formats strfmt.Registry) error {
-	if swag.IsZero(m.Services) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.Services); i++ {
-		if swag.IsZero(m.Services[i]) { // not required
-			continue
-		}
-
-		if m.Services[i] != nil {
-			if err := m.Services[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("services" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("services" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 func (m *ChangeEventEntity) validateStartsAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.StartsAt) { // not required
 		return nil
@@ -283,10 +253,6 @@ func (m *ChangeEventEntity) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateRelatedChanges(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateServices(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -366,26 +332,6 @@ func (m *ChangeEventEntity) contextValidateRelatedChanges(ctx context.Context, f
 					return ve.ValidateName("related_changes" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("related_changes" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *ChangeEventEntity) contextValidateServices(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Services); i++ {
-
-		if m.Services[i] != nil {
-			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("services" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("services" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

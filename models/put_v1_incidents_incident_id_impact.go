@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PutV1IncidentsIncidentIDImpact put v1 incidents incident Id impact
+// PutV1IncidentsIncidentIDImpact Updates an incident with new impact, milestone, and accompanying note. You can publish these events to a status page or multiple status pages. This can also be used to change the impact currently on an incident.
 //
 // swagger:model putV1IncidentsIncidentIdImpact
 type PutV1IncidentsIncidentIDImpact struct {
@@ -191,10 +191,6 @@ type PutV1IncidentsIncidentIDImpactImpactItems0 struct {
 	// id
 	// Required: true
 	ID *string `json:"id"`
-
-	// type
-	// Required: true
-	Type *string `json:"type"`
 }
 
 // Validate validates this put v1 incidents incident ID impact impact items0
@@ -206,10 +202,6 @@ func (m *PutV1IncidentsIncidentIDImpactImpactItems0) Validate(formats strfmt.Reg
 	}
 
 	if err := m.validateID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -231,15 +223,6 @@ func (m *PutV1IncidentsIncidentIDImpactImpactItems0) validateConditionID(formats
 func (m *PutV1IncidentsIncidentIDImpactImpactItems0) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *PutV1IncidentsIncidentIDImpactImpactItems0) validateType(formats strfmt.Registry) error {
-
-	if err := validate.Required("type", "body", m.Type); err != nil {
 		return err
 	}
 

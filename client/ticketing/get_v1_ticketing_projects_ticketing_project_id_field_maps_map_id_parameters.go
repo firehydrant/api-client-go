@@ -53,10 +53,12 @@ func NewGetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParamsWithHTTPClie
 	}
 }
 
-/* GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams contains all the parameters to send to the API endpoint
-   for the get v1 ticketing projects ticketing project Id field maps map Id operation.
+/*
+GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 ticketing projects ticketing project Id field maps map Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams struct {
 

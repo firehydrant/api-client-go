@@ -53,12 +53,20 @@ func NewPutV1NuncConnectionsNuncConnectionIDParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* PutV1NuncConnectionsNuncConnectionIDParams contains all the parameters to send to the API endpoint
-   for the put v1 nunc connections nunc connection Id operation.
+/*
+PutV1NuncConnectionsNuncConnectionIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put v1 nunc connections nunc connection Id operation.
+
+	Typically these are written to a http.Request.
 */
 type PutV1NuncConnectionsNuncConnectionIDParams struct {
+
+	// ButtonBackgroundColor.
+	ButtonBackgroundColor *string
+
+	// ButtonTextColor.
+	ButtonTextColor *string
 
 	// CompanyName.
 	CompanyName *string
@@ -69,11 +77,20 @@ type PutV1NuncConnectionsNuncConnectionIDParams struct {
 	// CompanyWebsite.
 	CompanyWebsite *string
 
+	// CoverImage.
+	CoverImage runtime.NamedReadCloser
+
+	// Favicon.
+	Favicon runtime.NamedReadCloser
+
 	// GreetingBody.
 	GreetingBody *string
 
 	// GreetingTitle.
 	GreetingTitle *string
+
+	// LinkColor.
+	LinkColor *string
 
 	// Logo.
 	Logo runtime.NamedReadCloser
@@ -83,8 +100,17 @@ type PutV1NuncConnectionsNuncConnectionIDParams struct {
 	// Format: int32
 	NuncConnectionID int32
 
+	// OpenGraphImage.
+	OpenGraphImage runtime.NamedReadCloser
+
 	// OperationalMessage.
 	OperationalMessage *string
+
+	// PrimaryColor.
+	PrimaryColor *string
+
+	// SecondaryColor.
+	SecondaryColor *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -139,6 +165,28 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetHTTPClient(client *http.
 	o.HTTPClient = client
 }
 
+// WithButtonBackgroundColor adds the buttonBackgroundColor to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithButtonBackgroundColor(buttonBackgroundColor *string) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetButtonBackgroundColor(buttonBackgroundColor)
+	return o
+}
+
+// SetButtonBackgroundColor adds the buttonBackgroundColor to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetButtonBackgroundColor(buttonBackgroundColor *string) {
+	o.ButtonBackgroundColor = buttonBackgroundColor
+}
+
+// WithButtonTextColor adds the buttonTextColor to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithButtonTextColor(buttonTextColor *string) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetButtonTextColor(buttonTextColor)
+	return o
+}
+
+// SetButtonTextColor adds the buttonTextColor to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetButtonTextColor(buttonTextColor *string) {
+	o.ButtonTextColor = buttonTextColor
+}
+
 // WithCompanyName adds the companyName to the put v1 nunc connections nunc connection Id params
 func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithCompanyName(companyName *string) *PutV1NuncConnectionsNuncConnectionIDParams {
 	o.SetCompanyName(companyName)
@@ -172,6 +220,28 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetCompanyWebsite(companyWe
 	o.CompanyWebsite = companyWebsite
 }
 
+// WithCoverImage adds the coverImage to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithCoverImage(coverImage runtime.NamedReadCloser) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetCoverImage(coverImage)
+	return o
+}
+
+// SetCoverImage adds the coverImage to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetCoverImage(coverImage runtime.NamedReadCloser) {
+	o.CoverImage = coverImage
+}
+
+// WithFavicon adds the favicon to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithFavicon(favicon runtime.NamedReadCloser) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetFavicon(favicon)
+	return o
+}
+
+// SetFavicon adds the favicon to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetFavicon(favicon runtime.NamedReadCloser) {
+	o.Favicon = favicon
+}
+
 // WithGreetingBody adds the greetingBody to the put v1 nunc connections nunc connection Id params
 func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithGreetingBody(greetingBody *string) *PutV1NuncConnectionsNuncConnectionIDParams {
 	o.SetGreetingBody(greetingBody)
@@ -192,6 +262,17 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithGreetingTitle(greetingT
 // SetGreetingTitle adds the greetingTitle to the put v1 nunc connections nunc connection Id params
 func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetGreetingTitle(greetingTitle *string) {
 	o.GreetingTitle = greetingTitle
+}
+
+// WithLinkColor adds the linkColor to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithLinkColor(linkColor *string) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetLinkColor(linkColor)
+	return o
+}
+
+// SetLinkColor adds the linkColor to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetLinkColor(linkColor *string) {
+	o.LinkColor = linkColor
 }
 
 // WithLogo adds the logo to the put v1 nunc connections nunc connection Id params
@@ -216,6 +297,17 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetNuncConnectionID(nuncCon
 	o.NuncConnectionID = nuncConnectionID
 }
 
+// WithOpenGraphImage adds the openGraphImage to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithOpenGraphImage(openGraphImage runtime.NamedReadCloser) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetOpenGraphImage(openGraphImage)
+	return o
+}
+
+// SetOpenGraphImage adds the openGraphImage to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetOpenGraphImage(openGraphImage runtime.NamedReadCloser) {
+	o.OpenGraphImage = openGraphImage
+}
+
 // WithOperationalMessage adds the operationalMessage to the put v1 nunc connections nunc connection Id params
 func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithOperationalMessage(operationalMessage *string) *PutV1NuncConnectionsNuncConnectionIDParams {
 	o.SetOperationalMessage(operationalMessage)
@@ -227,6 +319,28 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetOperationalMessage(opera
 	o.OperationalMessage = operationalMessage
 }
 
+// WithPrimaryColor adds the primaryColor to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithPrimaryColor(primaryColor *string) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetPrimaryColor(primaryColor)
+	return o
+}
+
+// SetPrimaryColor adds the primaryColor to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetPrimaryColor(primaryColor *string) {
+	o.PrimaryColor = primaryColor
+}
+
+// WithSecondaryColor adds the secondaryColor to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithSecondaryColor(secondaryColor *string) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetSecondaryColor(secondaryColor)
+	return o
+}
+
+// SetSecondaryColor adds the secondaryColor to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetSecondaryColor(secondaryColor *string) {
+	o.SecondaryColor = secondaryColor
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PutV1NuncConnectionsNuncConnectionIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -234,6 +348,36 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) WriteToRequest(r runtime.Cl
 		return err
 	}
 	var res []error
+
+	if o.ButtonBackgroundColor != nil {
+
+		// form param button_background_color
+		var frButtonBackgroundColor string
+		if o.ButtonBackgroundColor != nil {
+			frButtonBackgroundColor = *o.ButtonBackgroundColor
+		}
+		fButtonBackgroundColor := frButtonBackgroundColor
+		if fButtonBackgroundColor != "" {
+			if err := r.SetFormParam("button_background_color", fButtonBackgroundColor); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ButtonTextColor != nil {
+
+		// form param button_text_color
+		var frButtonTextColor string
+		if o.ButtonTextColor != nil {
+			frButtonTextColor = *o.ButtonTextColor
+		}
+		fButtonTextColor := frButtonTextColor
+		if fButtonTextColor != "" {
+			if err := r.SetFormParam("button_text_color", fButtonTextColor); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.CompanyName != nil {
 
@@ -280,6 +424,26 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) WriteToRequest(r runtime.Cl
 		}
 	}
 
+	if o.CoverImage != nil {
+
+		if o.CoverImage != nil {
+			// form file param cover_image
+			if err := r.SetFileParam("cover_image", o.CoverImage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Favicon != nil {
+
+		if o.Favicon != nil {
+			// form file param favicon
+			if err := r.SetFileParam("favicon", o.Favicon); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.GreetingBody != nil {
 
 		// form param greeting_body
@@ -310,6 +474,21 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) WriteToRequest(r runtime.Cl
 		}
 	}
 
+	if o.LinkColor != nil {
+
+		// form param link_color
+		var frLinkColor string
+		if o.LinkColor != nil {
+			frLinkColor = *o.LinkColor
+		}
+		fLinkColor := frLinkColor
+		if fLinkColor != "" {
+			if err := r.SetFormParam("link_color", fLinkColor); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.Logo != nil {
 
 		if o.Logo != nil {
@@ -325,6 +504,16 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) WriteToRequest(r runtime.Cl
 		return err
 	}
 
+	if o.OpenGraphImage != nil {
+
+		if o.OpenGraphImage != nil {
+			// form file param open_graph_image
+			if err := r.SetFileParam("open_graph_image", o.OpenGraphImage); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.OperationalMessage != nil {
 
 		// form param operational_message
@@ -335,6 +524,36 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) WriteToRequest(r runtime.Cl
 		fOperationalMessage := frOperationalMessage
 		if fOperationalMessage != "" {
 			if err := r.SetFormParam("operational_message", fOperationalMessage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.PrimaryColor != nil {
+
+		// form param primary_color
+		var frPrimaryColor string
+		if o.PrimaryColor != nil {
+			frPrimaryColor = *o.PrimaryColor
+		}
+		fPrimaryColor := frPrimaryColor
+		if fPrimaryColor != "" {
+			if err := r.SetFormParam("primary_color", fPrimaryColor); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SecondaryColor != nil {
+
+		// form param secondary_color
+		var frSecondaryColor string
+		if o.SecondaryColor != nil {
+			frSecondaryColor = *o.SecondaryColor
+		}
+		fSecondaryColor := frSecondaryColor
+		if fSecondaryColor != "" {
+			if err := r.SetFormParam("secondary_color", fSecondaryColor); err != nil {
 				return err
 			}
 		}

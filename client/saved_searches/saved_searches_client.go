@@ -44,9 +44,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1SavedSearchesResourceTypeSavedSearchID deletes a specific saved search
+DeleteV1SavedSearchesResourceTypeSavedSearchID deletes a specific saved search
 
-  Delete a specific saved search
+Delete a specific saved search
 */
 func (a *Client) DeleteV1SavedSearchesResourceTypeSavedSearchID(params *DeleteV1SavedSearchesResourceTypeSavedSearchIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SavedSearchesResourceTypeSavedSearchIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -85,9 +85,9 @@ func (a *Client) DeleteV1SavedSearchesResourceTypeSavedSearchID(params *DeleteV1
 }
 
 /*
-  GetV1SavedSearchesResourceType lists save searches
+GetV1SavedSearchesResourceType lists save searches
 
-  Lists save searches
+Lists save searches
 */
 func (a *Client) GetV1SavedSearchesResourceType(params *GetV1SavedSearchesResourceTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SavedSearchesResourceTypeOK, error) {
 	// TODO: Validate the params before sending
@@ -126,9 +126,9 @@ func (a *Client) GetV1SavedSearchesResourceType(params *GetV1SavedSearchesResour
 }
 
 /*
-  GetV1SavedSearchesResourceTypeSavedSearchID retrieves a specific save search
+GetV1SavedSearchesResourceTypeSavedSearchID retrieves a specific save search
 
-  Retrieve a specific save search
+Retrieve a specific save search
 */
 func (a *Client) GetV1SavedSearchesResourceTypeSavedSearchID(params *GetV1SavedSearchesResourceTypeSavedSearchIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SavedSearchesResourceTypeSavedSearchIDOK, error) {
 	// TODO: Validate the params before sending
@@ -167,9 +167,9 @@ func (a *Client) GetV1SavedSearchesResourceTypeSavedSearchID(params *GetV1SavedS
 }
 
 /*
-  PatchV1SavedSearchesResourceTypeSavedSearchID updates a specific saved search
+PatchV1SavedSearchesResourceTypeSavedSearchID updates a specific saved search
 
-  Update a specific saved search
+Update a specific saved search
 */
 func (a *Client) PatchV1SavedSearchesResourceTypeSavedSearchID(params *PatchV1SavedSearchesResourceTypeSavedSearchIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SavedSearchesResourceTypeSavedSearchIDOK, error) {
 	// TODO: Validate the params before sending
@@ -208,9 +208,9 @@ func (a *Client) PatchV1SavedSearchesResourceTypeSavedSearchID(params *PatchV1Sa
 }
 
 /*
-  PostV1SavedSearchesResourceType creates saved search
+PostV1SavedSearchesResourceType creates saved search
 
-  Create a new saved search for a particular resource type
+Create a new saved search for a particular resource type
 */
 func (a *Client) PostV1SavedSearchesResourceType(params *PostV1SavedSearchesResourceTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SavedSearchesResourceTypeCreated, error) {
 	// TODO: Validate the params before sending

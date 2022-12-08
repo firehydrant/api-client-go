@@ -53,10 +53,12 @@ func NewDeleteV1IncidentTypesIDParamsWithHTTPClient(client *http.Client) *Delete
 	}
 }
 
-/* DeleteV1IncidentTypesIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 incident types Id operation.
+/*
+DeleteV1IncidentTypesIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 incident types Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1IncidentTypesIDParams struct {
 

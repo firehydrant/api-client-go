@@ -52,10 +52,12 @@ func NewGetV1IncidentsIncidentIDUsersUserIDParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* GetV1IncidentsIncidentIDUsersUserIDParams contains all the parameters to send to the API endpoint
-   for the get v1 incidents incident Id users user Id operation.
+/*
+GetV1IncidentsIncidentIDUsersUserIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 incidents incident Id users user Id operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IncidentsIncidentIDUsersUserIDParams struct {
 

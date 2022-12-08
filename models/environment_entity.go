@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -14,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// EnvironmentEntity Retrieve a single environment
+// EnvironmentEntity Retrieves a single environment by ID
 //
 // swagger:model EnvironmentEntity
 type EnvironmentEntity struct {
@@ -25,6 +26,9 @@ type EnvironmentEntity struct {
 
 	// Description of the Environment
 	Description string `json:"description,omitempty"`
+
+	// Information about known linkages to representations of services outside of FireHydrant.
+	ExternalResources []*ExternalResourceEntity `json:"external_resources"`
 
 	// UUID of the Environment
 	ID string `json:"id,omitempty"`
@@ -38,6 +42,10 @@ func (m *EnvironmentEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateExternalResources(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -59,8 +67,63 @@ func (m *EnvironmentEntity) validateCreatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this environment entity based on context it is used
+func (m *EnvironmentEntity) validateExternalResources(formats strfmt.Registry) error {
+	if swag.IsZero(m.ExternalResources) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ExternalResources); i++ {
+		if swag.IsZero(m.ExternalResources[i]) { // not required
+			continue
+		}
+
+		if m.ExternalResources[i] != nil {
+			if err := m.ExternalResources[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this environment entity based on the context it is used
 func (m *EnvironmentEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateExternalResources(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EnvironmentEntity) contextValidateExternalResources(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ExternalResources); i++ {
+
+		if m.ExternalResources[i] != nil {
+			if err := m.ExternalResources[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("external_resources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

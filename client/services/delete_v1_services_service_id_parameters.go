@@ -53,10 +53,12 @@ func NewDeleteV1ServicesServiceIDParamsWithHTTPClient(client *http.Client) *Dele
 	}
 }
 
-/* DeleteV1ServicesServiceIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 services service Id operation.
+/*
+DeleteV1ServicesServiceIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 services service Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1ServicesServiceIDParams struct {
 

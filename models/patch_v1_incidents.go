@@ -23,6 +23,9 @@ type PatchV1Incidents struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// Key:value pairs to track custom data for the incident
+	Labels map[string]string `json:"labels,omitempty"`
+
 	// name
 	Name string `json:"name,omitempty"`
 

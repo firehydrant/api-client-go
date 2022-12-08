@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1PostMortemsReportsReportIDParticipants Add a participant to the post mortem report
+// PostV1PostMortemsReportsReportIDParticipants Add a participant to the retrospective report
 //
 // swagger:model postV1PostMortemsReportsReportIdParticipants
 type PostV1PostMortemsReportsReportIDParticipants struct {

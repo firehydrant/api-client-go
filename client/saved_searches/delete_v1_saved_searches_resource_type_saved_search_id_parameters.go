@@ -52,10 +52,12 @@ func NewDeleteV1SavedSearchesResourceTypeSavedSearchIDParamsWithHTTPClient(clien
 	}
 }
 
-/* DeleteV1SavedSearchesResourceTypeSavedSearchIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 saved searches resource type saved search Id operation.
+/*
+DeleteV1SavedSearchesResourceTypeSavedSearchIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 saved searches resource type saved search Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1SavedSearchesResourceTypeSavedSearchIDParams struct {
 

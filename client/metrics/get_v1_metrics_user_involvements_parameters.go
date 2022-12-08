@@ -53,10 +53,12 @@ func NewGetV1MetricsUserInvolvementsParamsWithHTTPClient(client *http.Client) *G
 	}
 }
 
-/* GetV1MetricsUserInvolvementsParams contains all the parameters to send to the API endpoint
-   for the get v1 metrics user involvements operation.
+/*
+GetV1MetricsUserInvolvementsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 metrics user involvements operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1MetricsUserInvolvementsParams struct {
 

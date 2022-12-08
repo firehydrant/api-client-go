@@ -39,7 +39,8 @@ func NewGetV1RunbooksOK() *GetV1RunbooksOK {
 	return &GetV1RunbooksOK{}
 }
 
-/* GetV1RunbooksOK describes a response with status code 200, with default header values.
+/*
+GetV1RunbooksOK describes a response with status code 200, with default header values.
 
 Lists all available runbooks.
 */
@@ -47,9 +48,39 @@ type GetV1RunbooksOK struct {
 	Payload *models.RunbookEntity
 }
 
+// IsSuccess returns true when this get v1 runbooks o k response has a 2xx status code
+func (o *GetV1RunbooksOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 runbooks o k response has a 3xx status code
+func (o *GetV1RunbooksOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 runbooks o k response has a 4xx status code
+func (o *GetV1RunbooksOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 runbooks o k response has a 5xx status code
+func (o *GetV1RunbooksOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 runbooks o k response a status code equal to that given
+func (o *GetV1RunbooksOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1RunbooksOK) Error() string {
 	return fmt.Sprintf("[GET /v1/runbooks][%d] getV1RunbooksOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1RunbooksOK) String() string {
+	return fmt.Sprintf("[GET /v1/runbooks][%d] getV1RunbooksOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1RunbooksOK) GetPayload() *models.RunbookEntity {
 	return o.Payload
 }

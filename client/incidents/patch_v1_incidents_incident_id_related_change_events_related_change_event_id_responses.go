@@ -51,17 +51,48 @@ func NewPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK() *P
 	return &PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK{}
 }
 
-/* PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK describes a response with status code 200, with default header values.
 
-Update a change event
+Update a change attached to an incident
 */
 type PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK struct {
 	Payload *models.RelatedChangeEventEntity
 }
 
+// IsSuccess returns true when this patch v1 incidents incident Id related change events related change event Id o k response has a 2xx status code
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 incidents incident Id related change events related change event Id o k response has a 3xx status code
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 incidents incident Id related change events related change event Id o k response has a 4xx status code
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 incidents incident Id related change events related change event Id o k response has a 5xx status code
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 incidents incident Id related change events related change event Id o k response a status code equal to that given
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/related_change_events/{related_change_event_id}][%d] patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/related_change_events/{related_change_event_id}][%d] patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) GetPayload() *models.RelatedChangeEventEntity {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequ
 	return &PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest{}
 }
 
-/* PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest describes a response with status code 400, with default header values.
+/*
+PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -91,9 +123,39 @@ type PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this patch v1 incidents incident Id related change events related change event Id bad request response has a 2xx status code
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch v1 incidents incident Id related change events related change event Id bad request response has a 3xx status code
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 incidents incident Id related change events related change event Id bad request response has a 4xx status code
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch v1 incidents incident Id related change events related change event Id bad request response has a 5xx status code
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 incidents incident Id related change events related change event Id bad request response a status code equal to that given
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/related_change_events/{related_change_event_id}][%d] patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventIdBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/related_change_events/{related_change_event_id}][%d] patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventIdBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflic
 	return &PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict{}
 }
 
-/* PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict describes a response with status code 409, with default header values.
+/*
+PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict describes a response with status code 409, with default header values.
 
 Already Added
 */
@@ -123,9 +186,39 @@ type PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict s
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this patch v1 incidents incident Id related change events related change event Id conflict response has a 2xx status code
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch v1 incidents incident Id related change events related change event Id conflict response has a 3xx status code
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 incidents incident Id related change events related change event Id conflict response has a 4xx status code
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch v1 incidents incident Id related change events related change event Id conflict response has a 5xx status code
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 incidents incident Id related change events related change event Id conflict response a status code equal to that given
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) Error() string {
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/related_change_events/{related_change_event_id}][%d] patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventIdConflict  %+v", 409, o.Payload)
 }
+
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) String() string {
+	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/related_change_events/{related_change_event_id}][%d] patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventIdConflict  %+v", 409, o.Payload)
+}
+
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }

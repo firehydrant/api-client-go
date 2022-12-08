@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1IncidentsIncidentIDNotes Add a note to an incident
+// PostV1IncidentsIncidentIDNotes Create a new note on for an incident. The visibility field on a note determines where it gets posted.
 //
 // swagger:model postV1IncidentsIncidentIdNotes
 type PostV1IncidentsIncidentIDNotes struct {

@@ -39,24 +39,55 @@ func NewGetV1PostMortemsReportsReportIDOK() *GetV1PostMortemsReportsReportIDOK {
 	return &GetV1PostMortemsReportsReportIDOK{}
 }
 
-/* GetV1PostMortemsReportsReportIDOK describes a response with status code 200, with default header values.
+/*
+GetV1PostMortemsReportsReportIDOK describes a response with status code 200, with default header values.
 
-Retrieve a single post mortem report
+Get a report
 */
 type GetV1PostMortemsReportsReportIDOK struct {
-	Payload *models.ReportEntity
+	Payload *models.PostMortemReportEntity
+}
+
+// IsSuccess returns true when this get v1 post mortems reports report Id o k response has a 2xx status code
+func (o *GetV1PostMortemsReportsReportIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 post mortems reports report Id o k response has a 3xx status code
+func (o *GetV1PostMortemsReportsReportIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 post mortems reports report Id o k response has a 4xx status code
+func (o *GetV1PostMortemsReportsReportIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 post mortems reports report Id o k response has a 5xx status code
+func (o *GetV1PostMortemsReportsReportIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 post mortems reports report Id o k response a status code equal to that given
+func (o *GetV1PostMortemsReportsReportIDOK) IsCode(code int) bool {
+	return code == 200
 }
 
 func (o *GetV1PostMortemsReportsReportIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/post_mortems/reports/{report_id}][%d] getV1PostMortemsReportsReportIdOK  %+v", 200, o.Payload)
 }
-func (o *GetV1PostMortemsReportsReportIDOK) GetPayload() *models.ReportEntity {
+
+func (o *GetV1PostMortemsReportsReportIDOK) String() string {
+	return fmt.Sprintf("[GET /v1/post_mortems/reports/{report_id}][%d] getV1PostMortemsReportsReportIdOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1PostMortemsReportsReportIDOK) GetPayload() *models.PostMortemReportEntity {
 	return o.Payload
 }
 
 func (o *GetV1PostMortemsReportsReportIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ReportEntity)
+	o.Payload = new(models.PostMortemReportEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

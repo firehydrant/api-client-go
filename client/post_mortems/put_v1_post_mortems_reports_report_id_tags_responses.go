@@ -7,12 +7,9 @@ package post_mortems
 
 import (
 	"fmt"
-	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/firehydrant/api-client-go/models"
 )
 
 // PutV1PostMortemsReportsReportIDTagsReader is a Reader for the PutV1PostMortemsReportsReportIDTags structure.
@@ -23,72 +20,64 @@ type PutV1PostMortemsReportsReportIDTagsReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PutV1PostMortemsReportsReportIDTagsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 204:
-		result := NewPutV1PostMortemsReportsReportIDTagsNoContent()
+	case 200:
+		result := NewPutV1PostMortemsReportsReportIDTagsOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
-	case 400:
-		result := NewPutV1PostMortemsReportsReportIDTagsBadRequest()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
 }
 
-// NewPutV1PostMortemsReportsReportIDTagsNoContent creates a PutV1PostMortemsReportsReportIDTagsNoContent with default headers values
-func NewPutV1PostMortemsReportsReportIDTagsNoContent() *PutV1PostMortemsReportsReportIDTagsNoContent {
-	return &PutV1PostMortemsReportsReportIDTagsNoContent{}
+// NewPutV1PostMortemsReportsReportIDTagsOK creates a PutV1PostMortemsReportsReportIDTagsOK with default headers values
+func NewPutV1PostMortemsReportsReportIDTagsOK() *PutV1PostMortemsReportsReportIDTagsOK {
+	return &PutV1PostMortemsReportsReportIDTagsOK{}
 }
 
-/* PutV1PostMortemsReportsReportIDTagsNoContent describes a response with status code 204, with default header values.
+/*
+PutV1PostMortemsReportsReportIDTagsOK describes a response with status code 200, with default header values.
 
-the tags have been applied to the post mortem report
+Add tags to a retrospective
 */
-type PutV1PostMortemsReportsReportIDTagsNoContent struct {
+type PutV1PostMortemsReportsReportIDTagsOK struct {
 }
 
-func (o *PutV1PostMortemsReportsReportIDTagsNoContent) Error() string {
-	return fmt.Sprintf("[PUT /v1/post_mortems/reports/{report_id}/tags][%d] putV1PostMortemsReportsReportIdTagsNoContent ", 204)
+// IsSuccess returns true when this put v1 post mortems reports report Id tags o k response has a 2xx status code
+func (o *PutV1PostMortemsReportsReportIDTagsOK) IsSuccess() bool {
+	return true
 }
 
-func (o *PutV1PostMortemsReportsReportIDTagsNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	return nil
+// IsRedirect returns true when this put v1 post mortems reports report Id tags o k response has a 3xx status code
+func (o *PutV1PostMortemsReportsReportIDTagsOK) IsRedirect() bool {
+	return false
 }
 
-// NewPutV1PostMortemsReportsReportIDTagsBadRequest creates a PutV1PostMortemsReportsReportIDTagsBadRequest with default headers values
-func NewPutV1PostMortemsReportsReportIDTagsBadRequest() *PutV1PostMortemsReportsReportIDTagsBadRequest {
-	return &PutV1PostMortemsReportsReportIDTagsBadRequest{}
+// IsClientError returns true when this put v1 post mortems reports report Id tags o k response has a 4xx status code
+func (o *PutV1PostMortemsReportsReportIDTagsOK) IsClientError() bool {
+	return false
 }
 
-/* PutV1PostMortemsReportsReportIDTagsBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
-type PutV1PostMortemsReportsReportIDTagsBadRequest struct {
-	Payload *models.ErrorEntity
+// IsServerError returns true when this put v1 post mortems reports report Id tags o k response has a 5xx status code
+func (o *PutV1PostMortemsReportsReportIDTagsOK) IsServerError() bool {
+	return false
 }
 
-func (o *PutV1PostMortemsReportsReportIDTagsBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/post_mortems/reports/{report_id}/tags][%d] putV1PostMortemsReportsReportIdTagsBadRequest  %+v", 400, o.Payload)
-}
-func (o *PutV1PostMortemsReportsReportIDTagsBadRequest) GetPayload() *models.ErrorEntity {
-	return o.Payload
+// IsCode returns true when this put v1 post mortems reports report Id tags o k response a status code equal to that given
+func (o *PutV1PostMortemsReportsReportIDTagsOK) IsCode(code int) bool {
+	return code == 200
 }
 
-func (o *PutV1PostMortemsReportsReportIDTagsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PutV1PostMortemsReportsReportIDTagsOK) Error() string {
+	return fmt.Sprintf("[PUT /v1/post_mortems/reports/{report_id}/tags][%d] putV1PostMortemsReportsReportIdTagsOK ", 200)
+}
 
-	o.Payload = new(models.ErrorEntity)
+func (o *PutV1PostMortemsReportsReportIDTagsOK) String() string {
+	return fmt.Sprintf("[PUT /v1/post_mortems/reports/{report_id}/tags][%d] putV1PostMortemsReportsReportIdTagsOK ", 200)
+}
 
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
+func (o *PutV1PostMortemsReportsReportIDTagsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -39,7 +39,8 @@ func NewGetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK() *GetV1RunbooksEx
 	return &GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK{}
 }
 
-/* GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK describes a response with status code 200, with default header values.
+/*
+GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK describes a response with status code 200, with default header values.
 
 Retrieves the bash script from a "script" step.
 */
@@ -47,9 +48,39 @@ type GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK struct {
 	Payload *models.ExecutionEntity
 }
 
+// IsSuccess returns true when this get v1 runbooks executions execution Id steps step Id script o k response has a 2xx status code
+func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 runbooks executions execution Id steps step Id script o k response has a 3xx status code
+func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 runbooks executions execution Id steps step Id script o k response has a 4xx status code
+func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 runbooks executions execution Id steps step Id script o k response has a 5xx status code
+func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 runbooks executions execution Id steps step Id script o k response a status code equal to that given
+func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK) Error() string {
 	return fmt.Sprintf("[GET /v1/runbooks/executions/{execution_id}/steps/{step_id}/script][%d] getV1RunbooksExecutionsExecutionIdStepsStepIdScriptOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK) String() string {
+	return fmt.Sprintf("[GET /v1/runbooks/executions/{execution_id}/steps/{step_id}/script][%d] getV1RunbooksExecutionsExecutionIdStepsStepIdScriptOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK) GetPayload() *models.ExecutionEntity {
 	return o.Payload
 }

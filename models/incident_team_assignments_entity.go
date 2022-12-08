@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// IncidentTeamAssignmentsEntity Assign a team to an incident for the incident
+// IncidentTeamAssignmentsEntity Assign a team for this incident
 //
 // swagger:model IncidentTeamAssignmentsEntity
 type IncidentTeamAssignmentsEntity struct {

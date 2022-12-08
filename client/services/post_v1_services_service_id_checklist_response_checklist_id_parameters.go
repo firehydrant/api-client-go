@@ -55,10 +55,12 @@ func NewPostV1ServicesServiceIDChecklistResponseChecklistIDParamsWithHTTPClient(
 	}
 }
 
-/* PostV1ServicesServiceIDChecklistResponseChecklistIDParams contains all the parameters to send to the API endpoint
-   for the post v1 services service Id checklist response checklist Id operation.
+/*
+PostV1ServicesServiceIDChecklistResponseChecklistIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 services service Id checklist response checklist Id operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1ServicesServiceIDChecklistResponseChecklistIDParams struct {
 

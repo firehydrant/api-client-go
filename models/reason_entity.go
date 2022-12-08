@@ -13,7 +13,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ReasonEntity Updates a reason for a report
+// ReasonEntity Reorder a contributing factor
 //
 // swagger:model ReasonEntity
 type ReasonEntity struct {

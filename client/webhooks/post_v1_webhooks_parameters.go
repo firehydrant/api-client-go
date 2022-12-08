@@ -54,10 +54,12 @@ func NewPostV1WebhooksParamsWithHTTPClient(client *http.Client) *PostV1WebhooksP
 	}
 }
 
-/* PostV1WebhooksParams contains all the parameters to send to the API endpoint
-   for the post v1 webhooks operation.
+/*
+PostV1WebhooksParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 webhooks operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1WebhooksParams struct {
 

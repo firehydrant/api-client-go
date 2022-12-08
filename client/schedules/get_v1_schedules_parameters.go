@@ -53,10 +53,12 @@ func NewGetV1SchedulesParamsWithHTTPClient(client *http.Client) *GetV1SchedulesP
 	}
 }
 
-/* GetV1SchedulesParams contains all the parameters to send to the API endpoint
-   for the get v1 schedules operation.
+/*
+GetV1SchedulesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 schedules operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1SchedulesParams struct {
 

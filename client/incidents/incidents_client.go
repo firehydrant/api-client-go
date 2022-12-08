@@ -32,27 +32,29 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	DeleteV1IncidentsIncidentID(params *DeleteV1IncidentsIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDOK, error)
 
-	DeleteV1IncidentsIncidentIDActionItemsActionItemID(params *DeleteV1IncidentsIncidentIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDActionItemsActionItemIDNoContent, error)
-
 	DeleteV1IncidentsIncidentIDAlertsIncidentAlertID(params *DeleteV1IncidentsIncidentIDAlertsIncidentAlertIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDAlertsIncidentAlertIDNoContent, error)
 
+	DeleteV1IncidentsIncidentIDGenericChatMessagesMessageID(params *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDOK, error)
+
 	DeleteV1IncidentsIncidentIDImpactTypeID(params *DeleteV1IncidentsIncidentIDImpactTypeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDImpactTypeIDNoContent, error)
+
+	DeleteV1IncidentsIncidentIDLinksLinkID(params *DeleteV1IncidentsIncidentIDLinksLinkIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDLinksLinkIDNoContent, error)
 
 	DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentID(params *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK, error)
 
 	DeleteV1IncidentsIncidentIDStatusPagesStatusPageID(params *DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent, error)
 
+	DeleteV1IncidentsIncidentIDTasksTaskID(params *DeleteV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDTasksTaskIDNoContent, error)
+
 	GetV1Incidents(params *GetV1IncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsOK, error)
 
 	GetV1IncidentsIncidentID(params *GetV1IncidentsIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDOK, error)
 
-	GetV1IncidentsIncidentIDActionItems(params *GetV1IncidentsIncidentIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDActionItemsOK, error)
-
 	GetV1IncidentsIncidentIDAlerts(params *GetV1IncidentsIncidentIDAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDAlertsOK, error)
 
-	GetV1IncidentsIncidentIDChannel(params *GetV1IncidentsIncidentIDChannelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDChannelOK, error)
+	GetV1IncidentsIncidentIDAttachments(params *GetV1IncidentsIncidentIDAttachmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDAttachmentsOK, error)
 
-	GetV1IncidentsIncidentIDCounts(params *GetV1IncidentsIncidentIDCountsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDCountsOK, error)
+	GetV1IncidentsIncidentIDChannel(params *GetV1IncidentsIncidentIDChannelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDChannelOK, error)
 
 	GetV1IncidentsIncidentIDEvents(params *GetV1IncidentsIncidentIDEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDEventsOK, error)
 
@@ -61,6 +63,8 @@ type ClientService interface {
 	GetV1IncidentsIncidentIDEventsEventIDVotesStatus(params *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK, error)
 
 	GetV1IncidentsIncidentIDImpactType(params *GetV1IncidentsIncidentIDImpactTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDImpactTypeOK, error)
+
+	GetV1IncidentsIncidentIDLinks(params *GetV1IncidentsIncidentIDLinksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDLinksOK, error)
 
 	GetV1IncidentsIncidentIDMilestones(params *GetV1IncidentsIncidentIDMilestonesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDMilestonesOK, error)
 
@@ -72,17 +76,19 @@ type ClientService interface {
 
 	GetV1IncidentsIncidentIDTasks(params *GetV1IncidentsIncidentIDTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTasksOK, error)
 
+	GetV1IncidentsIncidentIDTasksTaskID(params *GetV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTasksTaskIDOK, error)
+
 	GetV1IncidentsIncidentIDUsersUserID(params *GetV1IncidentsIncidentIDUsersUserIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDUsersUserIDOK, error)
 
 	PatchV1IncidentsIncidentID(params *PatchV1IncidentsIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDOK, error)
-
-	PatchV1IncidentsIncidentIDActionItemsActionItemID(params *PatchV1IncidentsIncidentIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDActionItemsActionItemIDOK, error)
 
 	PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary(params *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK, error)
 
 	PatchV1IncidentsIncidentIDEventsEventID(params *PatchV1IncidentsIncidentIDEventsEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDEventsEventIDOK, error)
 
 	PatchV1IncidentsIncidentIDEventsEventIDVotes(params *PatchV1IncidentsIncidentIDEventsEventIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDEventsEventIDVotesOK, error)
+
+	PatchV1IncidentsIncidentIDGenericChatMessagesMessageID(params *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDOK, error)
 
 	PatchV1IncidentsIncidentIDNotesNoteID(params *PatchV1IncidentsIncidentIDNotesNoteIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDNotesNoteIDOK, error)
 
@@ -92,13 +98,15 @@ type ClientService interface {
 
 	PostV1Incidents(params *PostV1IncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsCreated, error)
 
-	PostV1IncidentsIncidentIDActionItems(params *PostV1IncidentsIncidentIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDActionItemsCreated, error)
-
 	PostV1IncidentsIncidentIDAlerts(params *PostV1IncidentsIncidentIDAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDAlertsNoContent, error)
 
 	PostV1IncidentsIncidentIDAttachments(params *PostV1IncidentsIncidentIDAttachmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDAttachmentsCreated, error)
 
+	PostV1IncidentsIncidentIDGenericChatMessages(params *PostV1IncidentsIncidentIDGenericChatMessagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDGenericChatMessagesCreated, error)
+
 	PostV1IncidentsIncidentIDImpactType(params *PostV1IncidentsIncidentIDImpactTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDImpactTypeCreated, error)
+
+	PostV1IncidentsIncidentIDLinks(params *PostV1IncidentsIncidentIDLinksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDLinksCreated, error)
 
 	PostV1IncidentsIncidentIDNotes(params *PostV1IncidentsIncidentIDNotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDNotesCreated, error)
 
@@ -108,9 +116,15 @@ type ClientService interface {
 
 	PostV1IncidentsIncidentIDStatusPages(params *PostV1IncidentsIncidentIDStatusPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDStatusPagesCreated, error)
 
+	PostV1IncidentsIncidentIDTaskLists(params *PostV1IncidentsIncidentIDTaskListsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDTaskListsCreated, error)
+
+	PostV1IncidentsIncidentIDTasks(params *PostV1IncidentsIncidentIDTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDTasksCreated, error)
+
 	PostV1IncidentsIncidentIDTeamAssignments(params *PostV1IncidentsIncidentIDTeamAssignmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDTeamAssignmentsCreated, error)
 
 	PutV1IncidentsIncidentIDImpact(params *PutV1IncidentsIncidentIDImpactParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDImpactOK, error)
+
+	PutV1IncidentsIncidentIDLinksLinkID(params *PutV1IncidentsIncidentIDLinksLinkIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDLinksLinkIDOK, error)
 
 	PutV1IncidentsIncidentIDMilestonesBulkUpdate(params *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDMilestonesBulkUpdateOK, error)
 
@@ -120,9 +134,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1IncidentsIncidentID archives an incident
+DeleteV1IncidentsIncidentID archives an incident
 
-  Archives an incident which will hide it from lists and metrics
+Archives an incident which will hide it from lists and metrics
 */
 func (a *Client) DeleteV1IncidentsIncidentID(params *DeleteV1IncidentsIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDOK, error) {
 	// TODO: Validate the params before sending
@@ -161,46 +175,9 @@ func (a *Client) DeleteV1IncidentsIncidentID(params *DeleteV1IncidentsIncidentID
 }
 
 /*
-  DeleteV1IncidentsIncidentIDActionItemsActionItemID delete v1 incidents incident Id action items action item Id API
-*/
-func (a *Client) DeleteV1IncidentsIncidentIDActionItemsActionItemID(params *DeleteV1IncidentsIncidentIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDActionItemsActionItemIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1IncidentsIncidentIDActionItemsActionItemIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1IncidentsIncidentIdActionItemsActionItemId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/incidents/{incident_id}/action_items/{action_item_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1IncidentsIncidentIDActionItemsActionItemIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
+DeleteV1IncidentsIncidentIDAlertsIncidentAlertID removes an alert
 
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1IncidentsIncidentIDActionItemsActionItemIDNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentsIncidentIdActionItemsActionItemId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  DeleteV1IncidentsIncidentIDAlertsIncidentAlertID Remove an alert from the incident
+Remove an alert from an incident
 */
 func (a *Client) DeleteV1IncidentsIncidentIDAlertsIncidentAlertID(params *DeleteV1IncidentsIncidentIDAlertsIncidentAlertIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDAlertsIncidentAlertIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -239,7 +216,50 @@ func (a *Client) DeleteV1IncidentsIncidentIDAlertsIncidentAlertID(params *Delete
 }
 
 /*
-  DeleteV1IncidentsIncidentIDImpactTypeID Remove a piece of infrastructure from an incident as impact
+DeleteV1IncidentsIncidentIDGenericChatMessagesMessageID deletes an existing generic chat message on an incident
+
+Delete an existing generic chat message on an incident.
+*/
+func (a *Client) DeleteV1IncidentsIncidentIDGenericChatMessagesMessageID(params *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1IncidentsIncidentIdGenericChatMessagesMessageId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/incidents/{incident_id}/generic_chat_messages/{message_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentsIncidentIdGenericChatMessagesMessageId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteV1IncidentsIncidentIDImpactTypeID removes impacted infrastructure on an incident
+
+Remove impacted infrastructure on an incident
 */
 func (a *Client) DeleteV1IncidentsIncidentIDImpactTypeID(params *DeleteV1IncidentsIncidentIDImpactTypeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDImpactTypeIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -278,9 +298,50 @@ func (a *Client) DeleteV1IncidentsIncidentIDImpactTypeID(params *DeleteV1Inciden
 }
 
 /*
-  DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentID unassigns a role
+DeleteV1IncidentsIncidentIDLinksLinkID deles the external incident link
 
-  Unassign a role from a user. Any tasks that were created on the incident will remain in whatever state they are in
+Deletes the external incident link
+*/
+func (a *Client) DeleteV1IncidentsIncidentIDLinksLinkID(params *DeleteV1IncidentsIncidentIDLinksLinkIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDLinksLinkIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1IncidentsIncidentIDLinksLinkIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1IncidentsIncidentIdLinksLinkId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/incidents/{incident_id}/links/{link_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1IncidentsIncidentIDLinksLinkIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1IncidentsIncidentIDLinksLinkIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentsIncidentIdLinksLinkId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentID unassigns a role
+
+Unassign a role from a user
 */
 func (a *Client) DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentID(params *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK, error) {
 	// TODO: Validate the params before sending
@@ -319,7 +380,9 @@ func (a *Client) DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentID(para
 }
 
 /*
-  DeleteV1IncidentsIncidentIDStatusPagesStatusPageID Remove a status page
+DeleteV1IncidentsIncidentIDStatusPagesStatusPageID removes a status page incident attached to an incident
+
+Remove a status page incident attached to an incident
 */
 func (a *Client) DeleteV1IncidentsIncidentIDStatusPagesStatusPageID(params *DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -358,7 +421,50 @@ func (a *Client) DeleteV1IncidentsIncidentIDStatusPagesStatusPageID(params *Dele
 }
 
 /*
-  GetV1Incidents Retrieve incidents
+DeleteV1IncidentsIncidentIDTasksTaskID deletes a task
+
+Delete a task
+*/
+func (a *Client) DeleteV1IncidentsIncidentIDTasksTaskID(params *DeleteV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDTasksTaskIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1IncidentsIncidentIDTasksTaskIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1IncidentsIncidentIdTasksTaskId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/incidents/{incident_id}/tasks/{task_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1IncidentsIncidentIDTasksTaskIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1IncidentsIncidentIDTasksTaskIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentsIncidentIdTasksTaskId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1Incidents lists all incidents
+
+List all of the incidents in the organization
 */
 func (a *Client) GetV1Incidents(params *GetV1IncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsOK, error) {
 	// TODO: Validate the params before sending
@@ -397,7 +503,9 @@ func (a *Client) GetV1Incidents(params *GetV1IncidentsParams, authInfo runtime.C
 }
 
 /*
-  GetV1IncidentsIncidentID Retrieve an incident
+GetV1IncidentsIncidentID retrieves an incident
+
+Retrieve a single incident from its ID
 */
 func (a *Client) GetV1IncidentsIncidentID(params *GetV1IncidentsIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDOK, error) {
 	// TODO: Validate the params before sending
@@ -436,46 +544,9 @@ func (a *Client) GetV1IncidentsIncidentID(params *GetV1IncidentsIncidentIDParams
 }
 
 /*
-  GetV1IncidentsIncidentIDActionItems get v1 incidents incident Id action items API
-*/
-func (a *Client) GetV1IncidentsIncidentIDActionItems(params *GetV1IncidentsIncidentIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDActionItemsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IncidentsIncidentIDActionItemsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IncidentsIncidentIdActionItems",
-		Method:             "GET",
-		PathPattern:        "/v1/incidents/{incident_id}/action_items",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IncidentsIncidentIDActionItemsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
+GetV1IncidentsIncidentIDAlerts lists alerts on an incident
 
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IncidentsIncidentIDActionItemsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdActionItems: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetV1IncidentsIncidentIDAlerts Retrieve alerts that are linked to the incident
+List alerts that have been attached to an incident
 */
 func (a *Client) GetV1IncidentsIncidentIDAlerts(params *GetV1IncidentsIncidentIDAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDAlertsOK, error) {
 	// TODO: Validate the params before sending
@@ -514,7 +585,48 @@ func (a *Client) GetV1IncidentsIncidentIDAlerts(params *GetV1IncidentsIncidentID
 }
 
 /*
-  GetV1IncidentsIncidentIDChannel get v1 incidents incident Id channel API
+GetV1IncidentsIncidentIDAttachments get v1 incidents incident Id attachments API
+*/
+func (a *Client) GetV1IncidentsIncidentIDAttachments(params *GetV1IncidentsIncidentIDAttachmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDAttachmentsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IncidentsIncidentIDAttachmentsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IncidentsIncidentIdAttachments",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/attachments",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IncidentsIncidentIDAttachmentsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IncidentsIncidentIDAttachmentsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdAttachments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IncidentsIncidentIDChannel retrieves chat channel information for an incident
+
+Gives chat channel information for the specified incident
 */
 func (a *Client) GetV1IncidentsIncidentIDChannel(params *GetV1IncidentsIncidentIDChannelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDChannelOK, error) {
 	// TODO: Validate the params before sending
@@ -553,46 +665,9 @@ func (a *Client) GetV1IncidentsIncidentIDChannel(params *GetV1IncidentsIncidentI
 }
 
 /*
-  GetV1IncidentsIncidentIDCounts get v1 incidents incident Id counts API
-*/
-func (a *Client) GetV1IncidentsIncidentIDCounts(params *GetV1IncidentsIncidentIDCountsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDCountsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IncidentsIncidentIDCountsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IncidentsIncidentIdCounts",
-		Method:             "GET",
-		PathPattern:        "/v1/incidents/{incident_id}/counts",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IncidentsIncidentIDCountsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
+GetV1IncidentsIncidentIDEvents lists events for an incident
 
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IncidentsIncidentIDCountsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdCounts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  GetV1IncidentsIncidentIDEvents Retrieve the timeline for an incident
+List all events for an incident. An event is a timeline entry. This can be filtered with params to retrieve events of a certain type.
 */
 func (a *Client) GetV1IncidentsIncidentIDEvents(params *GetV1IncidentsIncidentIDEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDEventsOK, error) {
 	// TODO: Validate the params before sending
@@ -631,7 +706,9 @@ func (a *Client) GetV1IncidentsIncidentIDEvents(params *GetV1IncidentsIncidentID
 }
 
 /*
-  GetV1IncidentsIncidentIDEventsEventID Get an individual incident event
+GetV1IncidentsIncidentIDEventsEventID retrieves a single event for an incident
+
+Retrieve a single event for an incident
 */
 func (a *Client) GetV1IncidentsIncidentIDEventsEventID(params *GetV1IncidentsIncidentIDEventsEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDEventsEventIDOK, error) {
 	// TODO: Validate the params before sending
@@ -670,9 +747,9 @@ func (a *Client) GetV1IncidentsIncidentIDEventsEventID(params *GetV1IncidentsInc
 }
 
 /*
-  GetV1IncidentsIncidentIDEventsEventIDVotesStatus returns the status of the votes
+GetV1IncidentsIncidentIDEventsEventIDVotesStatus returns the current vote counts for an object
 
-  Returns the status of the votes
+Returns the current vote counts for an object
 */
 func (a *Client) GetV1IncidentsIncidentIDEventsEventIDVotesStatus(params *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -711,7 +788,9 @@ func (a *Client) GetV1IncidentsIncidentIDEventsEventIDVotesStatus(params *GetV1I
 }
 
 /*
-  GetV1IncidentsIncidentIDImpactType Retrieve impacted infrastructure for the type on the incident
+GetV1IncidentsIncidentIDImpactType lists impacted infrastructure
+
+List impacted infrastructure on an incident by specifying type
 */
 func (a *Client) GetV1IncidentsIncidentIDImpactType(params *GetV1IncidentsIncidentIDImpactTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDImpactTypeOK, error) {
 	// TODO: Validate the params before sending
@@ -750,7 +829,50 @@ func (a *Client) GetV1IncidentsIncidentIDImpactType(params *GetV1IncidentsIncide
 }
 
 /*
-  GetV1IncidentsIncidentIDMilestones Retrieve all milestones for an incident
+GetV1IncidentsIncidentIDLinks lists all the editable links on an incident
+
+List all the editable, external incident links attached to an incident
+*/
+func (a *Client) GetV1IncidentsIncidentIDLinks(params *GetV1IncidentsIncidentIDLinksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDLinksOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IncidentsIncidentIDLinksParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IncidentsIncidentIdLinks",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/links",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IncidentsIncidentIDLinksReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IncidentsIncidentIDLinksOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdLinks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IncidentsIncidentIDMilestones lists milestones on an incident
+
+List times and durations for each milestone on an incident
 */
 func (a *Client) GetV1IncidentsIncidentIDMilestones(params *GetV1IncidentsIncidentIDMilestonesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDMilestonesOK, error) {
 	// TODO: Validate the params before sending
@@ -789,7 +911,9 @@ func (a *Client) GetV1IncidentsIncidentIDMilestones(params *GetV1IncidentsIncide
 }
 
 /*
-  GetV1IncidentsIncidentIDRelatedChangeEvents Retrieve all change events that have been associated to the incident
+GetV1IncidentsIncidentIDRelatedChangeEvents lists related changes on an incident
+
+List related changes that have been attached to an incident
 */
 func (a *Client) GetV1IncidentsIncidentIDRelatedChangeEvents(params *GetV1IncidentsIncidentIDRelatedChangeEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRelatedChangeEventsOK, error) {
 	// TODO: Validate the params before sending
@@ -828,9 +952,9 @@ func (a *Client) GetV1IncidentsIncidentIDRelatedChangeEvents(params *GetV1Incide
 }
 
 /*
-  GetV1IncidentsIncidentIDRoleAssignments lists all assignees
+GetV1IncidentsIncidentIDRoleAssignments lists all assignees
 
-  Retrieve a list of all of the current role assignments for the incident
+Retrieve a list of all of the current role assignments for the incident
 */
 func (a *Client) GetV1IncidentsIncidentIDRoleAssignments(params *GetV1IncidentsIncidentIDRoleAssignmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRoleAssignmentsOK, error) {
 	// TODO: Validate the params before sending
@@ -869,7 +993,9 @@ func (a *Client) GetV1IncidentsIncidentIDRoleAssignments(params *GetV1IncidentsI
 }
 
 /*
-  GetV1IncidentsIncidentIDStatusPages Retrieve status pages for the incident
+GetV1IncidentsIncidentIDStatusPages lists status pages on an incident
+
+List status pages that are attached to an incident
 */
 func (a *Client) GetV1IncidentsIncidentIDStatusPages(params *GetV1IncidentsIncidentIDStatusPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDStatusPagesOK, error) {
 	// TODO: Validate the params before sending
@@ -908,7 +1034,9 @@ func (a *Client) GetV1IncidentsIncidentIDStatusPages(params *GetV1IncidentsIncid
 }
 
 /*
-  GetV1IncidentsIncidentIDTasks Retrieve tasks for the incident
+GetV1IncidentsIncidentIDTasks retrieves tasks
+
+Retrieve a list of all tasks for a specific incident
 */
 func (a *Client) GetV1IncidentsIncidentIDTasks(params *GetV1IncidentsIncidentIDTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTasksOK, error) {
 	// TODO: Validate the params before sending
@@ -947,7 +1075,50 @@ func (a *Client) GetV1IncidentsIncidentIDTasks(params *GetV1IncidentsIncidentIDT
 }
 
 /*
-  GetV1IncidentsIncidentIDUsersUserID Retrieve a user with current roles for an incident
+GetV1IncidentsIncidentIDTasksTaskID retrieves a single task for an incident
+
+Retrieve a single task for an incident
+*/
+func (a *Client) GetV1IncidentsIncidentIDTasksTaskID(params *GetV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTasksTaskIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IncidentsIncidentIDTasksTaskIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IncidentsIncidentIdTasksTaskId",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/tasks/{task_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IncidentsIncidentIDTasksTaskIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IncidentsIncidentIDTasksTaskIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdTasksTaskId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IncidentsIncidentIDUsersUserID gets current role for user
+
+Retrieve a user with current roles for an incident
 */
 func (a *Client) GetV1IncidentsIncidentIDUsersUserID(params *GetV1IncidentsIncidentIDUsersUserIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDUsersUserIDOK, error) {
 	// TODO: Validate the params before sending
@@ -986,9 +1157,9 @@ func (a *Client) GetV1IncidentsIncidentIDUsersUserID(params *GetV1IncidentsIncid
 }
 
 /*
-  PatchV1IncidentsIncidentID updates an incident
+PatchV1IncidentsIncidentID updates an incident
 
-  Updates an incident with provided parameters
+Updates an incident with provided parameters
 */
 func (a *Client) PatchV1IncidentsIncidentID(params *PatchV1IncidentsIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDOK, error) {
 	// TODO: Validate the params before sending
@@ -1027,46 +1198,9 @@ func (a *Client) PatchV1IncidentsIncidentID(params *PatchV1IncidentsIncidentIDPa
 }
 
 /*
-  PatchV1IncidentsIncidentIDActionItemsActionItemID patch v1 incidents incident Id action items action item Id API
-*/
-func (a *Client) PatchV1IncidentsIncidentIDActionItemsActionItemID(params *PatchV1IncidentsIncidentIDActionItemsActionItemIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDActionItemsActionItemIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IncidentsIncidentIDActionItemsActionItemIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IncidentsIncidentIdActionItemsActionItemId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/incidents/{incident_id}/action_items/{action_item_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IncidentsIncidentIDActionItemsActionItemIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
+PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary sets an alert as primary
 
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IncidentsIncidentIDActionItemsActionItemIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IncidentsIncidentIdActionItemsActionItemId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary Assign an alert a primary status
+Setting an alert as primary will overwrite milestone times in the FireHydrant incident with times included in the primary alert. Services attached to the primary alert will also be automatically added to the incident.
 */
 func (a *Client) PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary(params *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK, error) {
 	// TODO: Validate the params before sending
@@ -1105,7 +1239,9 @@ func (a *Client) PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary(params *
 }
 
 /*
-  PatchV1IncidentsIncidentIDEventsEventID Update an incident event
+PatchV1IncidentsIncidentIDEventsEventID updates a single event for an incident
+
+Update a single event for an incident
 */
 func (a *Client) PatchV1IncidentsIncidentIDEventsEventID(params *PatchV1IncidentsIncidentIDEventsEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDEventsEventIDOK, error) {
 	// TODO: Validate the params before sending
@@ -1144,7 +1280,9 @@ func (a *Client) PatchV1IncidentsIncidentIDEventsEventID(params *PatchV1Incident
 }
 
 /*
-  PatchV1IncidentsIncidentIDEventsEventIDVotes patch v1 incidents incident Id events event Id votes API
+PatchV1IncidentsIncidentIDEventsEventIDVotes updates the votes on an object
+
+Allows for upvoting or downvoting an event
 */
 func (a *Client) PatchV1IncidentsIncidentIDEventsEventIDVotes(params *PatchV1IncidentsIncidentIDEventsEventIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDEventsEventIDVotesOK, error) {
 	// TODO: Validate the params before sending
@@ -1183,7 +1321,50 @@ func (a *Client) PatchV1IncidentsIncidentIDEventsEventIDVotes(params *PatchV1Inc
 }
 
 /*
-  PatchV1IncidentsIncidentIDNotesNoteID Update a note
+PatchV1IncidentsIncidentIDGenericChatMessagesMessageID updates an existing generic chat message on an incident
+
+Update an existing generic chat message on an incident.
+*/
+func (a *Client) PatchV1IncidentsIncidentIDGenericChatMessagesMessageID(params *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1IncidentsIncidentIdGenericChatMessagesMessageId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/incidents/{incident_id}/generic_chat_messages/{message_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IncidentsIncidentIdGenericChatMessagesMessageId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1IncidentsIncidentIDNotesNoteID updates a note
+
+Updates the body of a note
 */
 func (a *Client) PatchV1IncidentsIncidentIDNotesNoteID(params *PatchV1IncidentsIncidentIDNotesNoteIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDNotesNoteIDOK, error) {
 	// TODO: Validate the params before sending
@@ -1222,7 +1403,9 @@ func (a *Client) PatchV1IncidentsIncidentIDNotesNoteID(params *PatchV1IncidentsI
 }
 
 /*
-  PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID Update a change event
+PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID updates a change attached to an incident
+
+Update a change attached to an incident
 */
 func (a *Client) PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID(params *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK, error) {
 	// TODO: Validate the params before sending
@@ -1261,7 +1444,9 @@ func (a *Client) PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEvent
 }
 
 /*
-  PatchV1IncidentsIncidentIDTasksTaskID Update a task
+PatchV1IncidentsIncidentIDTasksTaskID updates a task
+
+Update a task's attributes
 */
 func (a *Client) PatchV1IncidentsIncidentIDTasksTaskID(params *PatchV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDTasksTaskIDOK, error) {
 	// TODO: Validate the params before sending
@@ -1300,7 +1485,9 @@ func (a *Client) PatchV1IncidentsIncidentIDTasksTaskID(params *PatchV1IncidentsI
 }
 
 /*
-  PostV1Incidents Create an incident
+PostV1Incidents creates an incident
+
+Create a new incident
 */
 func (a *Client) PostV1Incidents(params *PostV1IncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsCreated, error) {
 	// TODO: Validate the params before sending
@@ -1339,46 +1526,9 @@ func (a *Client) PostV1Incidents(params *PostV1IncidentsParams, authInfo runtime
 }
 
 /*
-  PostV1IncidentsIncidentIDActionItems post v1 incidents incident Id action items API
-*/
-func (a *Client) PostV1IncidentsIncidentIDActionItems(params *PostV1IncidentsIncidentIDActionItemsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDActionItemsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1IncidentsIncidentIDActionItemsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1IncidentsIncidentIdActionItems",
-		Method:             "POST",
-		PathPattern:        "/v1/incidents/{incident_id}/action_items",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1IncidentsIncidentIDActionItemsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
+PostV1IncidentsIncidentIDAlerts attaches an alert to an incident
 
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1IncidentsIncidentIDActionItemsCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdActionItems: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  PostV1IncidentsIncidentIDAlerts Assign alerts to an incident
+Add an alert to an incident. FireHydrant needs to have ingested the alert from a third party system in order to attach it to the incident.
 */
 func (a *Client) PostV1IncidentsIncidentIDAlerts(params *PostV1IncidentsIncidentIDAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDAlertsNoContent, error) {
 	// TODO: Validate the params before sending
@@ -1417,7 +1567,9 @@ func (a *Client) PostV1IncidentsIncidentIDAlerts(params *PostV1IncidentsIncident
 }
 
 /*
-  PostV1IncidentsIncidentIDAttachments Upload a file to the incident
+PostV1IncidentsIncidentIDAttachments adds an attachment to the incident timeline
+
+Allows adding image attachments to an incident
 */
 func (a *Client) PostV1IncidentsIncidentIDAttachments(params *PostV1IncidentsIncidentIDAttachmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDAttachmentsCreated, error) {
 	// TODO: Validate the params before sending
@@ -1456,7 +1608,50 @@ func (a *Client) PostV1IncidentsIncidentIDAttachments(params *PostV1IncidentsInc
 }
 
 /*
-  PostV1IncidentsIncidentIDImpactType Add a piece of infrastructure to an incident as impact
+PostV1IncidentsIncidentIDGenericChatMessages adds a generic chat message to the incident timeline
+
+Create a new generic chat message on an incident timeline. These are independent of any specific chat provider.
+*/
+func (a *Client) PostV1IncidentsIncidentIDGenericChatMessages(params *PostV1IncidentsIncidentIDGenericChatMessagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDGenericChatMessagesCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1IncidentsIncidentIDGenericChatMessagesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1IncidentsIncidentIdGenericChatMessages",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/generic_chat_messages",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1IncidentsIncidentIDGenericChatMessagesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1IncidentsIncidentIDGenericChatMessagesCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdGenericChatMessages: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1IncidentsIncidentIDImpactType adds impacted infrastructure
+
+Add impacted infrastructure to an incident
 */
 func (a *Client) PostV1IncidentsIncidentIDImpactType(params *PostV1IncidentsIncidentIDImpactTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDImpactTypeCreated, error) {
 	// TODO: Validate the params before sending
@@ -1495,7 +1690,50 @@ func (a *Client) PostV1IncidentsIncidentIDImpactType(params *PostV1IncidentsInci
 }
 
 /*
-  PostV1IncidentsIncidentIDNotes Add a note to an incident
+PostV1IncidentsIncidentIDLinks adds a link to the incident
+
+Allows adding adhoc links to an incident as an attachment
+*/
+func (a *Client) PostV1IncidentsIncidentIDLinks(params *PostV1IncidentsIncidentIDLinksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDLinksCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1IncidentsIncidentIDLinksParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1IncidentsIncidentIdLinks",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/links",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1IncidentsIncidentIDLinksReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1IncidentsIncidentIDLinksCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdLinks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1IncidentsIncidentIDNotes adds a note to an incident
+
+Create a new note on for an incident. The visibility field on a note determines where it gets posted.
 */
 func (a *Client) PostV1IncidentsIncidentIDNotes(params *PostV1IncidentsIncidentIDNotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDNotesCreated, error) {
 	// TODO: Validate the params before sending
@@ -1534,7 +1772,9 @@ func (a *Client) PostV1IncidentsIncidentIDNotes(params *PostV1IncidentsIncidentI
 }
 
 /*
-  PostV1IncidentsIncidentIDRelatedChangeEvents Associate a change event to the incident
+PostV1IncidentsIncidentIDRelatedChangeEvents adds a related change to an incident
+
+Add a related change to an incident. Changes added to an incident can be causes, fixes, or suspects. To remove a change from an incident, the type field should be set to dismissed.
 */
 func (a *Client) PostV1IncidentsIncidentIDRelatedChangeEvents(params *PostV1IncidentsIncidentIDRelatedChangeEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRelatedChangeEventsCreated, error) {
 	// TODO: Validate the params before sending
@@ -1573,9 +1813,9 @@ func (a *Client) PostV1IncidentsIncidentIDRelatedChangeEvents(params *PostV1Inci
 }
 
 /*
-  PostV1IncidentsIncidentIDRoleAssignments assigns a role
+PostV1IncidentsIncidentIDRoleAssignments assigns a role
 
-  Assign a role to a user for this incident. All tasks associated to the role will also automatically be attached
+Assign a role to a user for this incident
 */
 func (a *Client) PostV1IncidentsIncidentIDRoleAssignments(params *PostV1IncidentsIncidentIDRoleAssignmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRoleAssignmentsCreated, error) {
 	// TODO: Validate the params before sending
@@ -1614,7 +1854,9 @@ func (a *Client) PostV1IncidentsIncidentIDRoleAssignments(params *PostV1Incident
 }
 
 /*
-  PostV1IncidentsIncidentIDStatusPages Create a status page for the incident
+PostV1IncidentsIncidentIDStatusPages adds a status page to an incident
+
+Add a status page to an incident.
 */
 func (a *Client) PostV1IncidentsIncidentIDStatusPages(params *PostV1IncidentsIncidentIDStatusPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDStatusPagesCreated, error) {
 	// TODO: Validate the params before sending
@@ -1653,7 +1895,91 @@ func (a *Client) PostV1IncidentsIncidentIDStatusPages(params *PostV1IncidentsInc
 }
 
 /*
-  PostV1IncidentsIncidentIDTeamAssignments Assign a team to an incident for the incident
+PostV1IncidentsIncidentIDTaskLists adds tasks to incident from task list
+
+Add all tasks from list to incident
+*/
+func (a *Client) PostV1IncidentsIncidentIDTaskLists(params *PostV1IncidentsIncidentIDTaskListsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDTaskListsCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1IncidentsIncidentIDTaskListsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1IncidentsIncidentIdTaskLists",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/task_lists",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1IncidentsIncidentIDTaskListsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1IncidentsIncidentIDTaskListsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdTaskLists: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1IncidentsIncidentIDTasks creates a new task
+
+Create a task
+*/
+func (a *Client) PostV1IncidentsIncidentIDTasks(params *PostV1IncidentsIncidentIDTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDTasksCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1IncidentsIncidentIDTasksParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1IncidentsIncidentIdTasks",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/tasks",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1IncidentsIncidentIDTasksReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1IncidentsIncidentIDTasksCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdTasks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1IncidentsIncidentIDTeamAssignments assigns a team
+
+Assign a team for this incident
 */
 func (a *Client) PostV1IncidentsIncidentIDTeamAssignments(params *PostV1IncidentsIncidentIDTeamAssignmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDTeamAssignmentsCreated, error) {
 	// TODO: Validate the params before sending
@@ -1692,7 +2018,9 @@ func (a *Client) PostV1IncidentsIncidentIDTeamAssignments(params *PostV1Incident
 }
 
 /*
-  PutV1IncidentsIncidentIDImpact put v1 incidents incident Id impact API
+PutV1IncidentsIncidentIDImpact creates a status update for an incident
+
+Updates an incident with new impact, milestone, and accompanying note. You can publish these events to a status page or multiple status pages. This can also be used to change the impact currently on an incident.
 */
 func (a *Client) PutV1IncidentsIncidentIDImpact(params *PutV1IncidentsIncidentIDImpactParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDImpactOK, error) {
 	// TODO: Validate the params before sending
@@ -1731,7 +2059,54 @@ func (a *Client) PutV1IncidentsIncidentIDImpact(params *PutV1IncidentsIncidentID
 }
 
 /*
-  PutV1IncidentsIncidentIDMilestonesBulkUpdate Update a list of milestones on an incident
+PutV1IncidentsIncidentIDLinksLinkID updates the external incident link
+
+Updates the external incident link attributes
+*/
+func (a *Client) PutV1IncidentsIncidentIDLinksLinkID(params *PutV1IncidentsIncidentIDLinksLinkIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDLinksLinkIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutV1IncidentsIncidentIDLinksLinkIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "putV1IncidentsIncidentIdLinksLinkId",
+		Method:             "PUT",
+		PathPattern:        "/v1/incidents/{incident_id}/links/{link_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutV1IncidentsIncidentIDLinksLinkIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutV1IncidentsIncidentIDLinksLinkIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for putV1IncidentsIncidentIdLinksLinkId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+	PutV1IncidentsIncidentIDMilestonesBulkUpdate updates milestone times
+
+	Update milestone times in bulk for a given incident. All milestone times for an incident
+
+must occur in chronological order (%{milestones}). If the result of this request would
+cause any milestone(s) to appear out of place, a 422 response will instead be returned.
+This includes milestones not explicitly submitted or updated in this request.
 */
 func (a *Client) PutV1IncidentsIncidentIDMilestonesBulkUpdate(params *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDMilestonesBulkUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -1770,7 +2145,9 @@ func (a *Client) PutV1IncidentsIncidentIDMilestonesBulkUpdate(params *PutV1Incid
 }
 
 /*
-  PutV1IncidentsIncidentIDResolve Resolve an active incident
+PutV1IncidentsIncidentIDResolve resolves an active incident
+
+Resolves a currently active incident
 */
 func (a *Client) PutV1IncidentsIncidentIDResolve(params *PutV1IncidentsIncidentIDResolveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDResolveOK, error) {
 	// TODO: Validate the params before sending

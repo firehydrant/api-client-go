@@ -39,7 +39,8 @@ func NewGetV1MetricsUserInvolvementsOK() *GetV1MetricsUserInvolvementsOK {
 	return &GetV1MetricsUserInvolvementsOK{}
 }
 
-/* GetV1MetricsUserInvolvementsOK describes a response with status code 200, with default header values.
+/*
+GetV1MetricsUserInvolvementsOK describes a response with status code 200, with default header values.
 
 Returns a report with time bucketed analytics data
 */
@@ -47,9 +48,39 @@ type GetV1MetricsUserInvolvementsOK struct {
 	Payload *models.MetricsEntity
 }
 
+// IsSuccess returns true when this get v1 metrics user involvements o k response has a 2xx status code
+func (o *GetV1MetricsUserInvolvementsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 metrics user involvements o k response has a 3xx status code
+func (o *GetV1MetricsUserInvolvementsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 metrics user involvements o k response has a 4xx status code
+func (o *GetV1MetricsUserInvolvementsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 metrics user involvements o k response has a 5xx status code
+func (o *GetV1MetricsUserInvolvementsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 metrics user involvements o k response a status code equal to that given
+func (o *GetV1MetricsUserInvolvementsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1MetricsUserInvolvementsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/metrics/user_involvements][%d] getV1MetricsUserInvolvementsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1MetricsUserInvolvementsOK) String() string {
+	return fmt.Sprintf("[GET /v1/metrics/user_involvements][%d] getV1MetricsUserInvolvementsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1MetricsUserInvolvementsOK) GetPayload() *models.MetricsEntity {
 	return o.Payload
 }

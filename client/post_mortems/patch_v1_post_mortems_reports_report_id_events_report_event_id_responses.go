@@ -45,7 +45,8 @@ func NewPatchV1PostMortemsReportsReportIDEventsReportEventIDOK() *PatchV1PostMor
 	return &PatchV1PostMortemsReportsReportIDEventsReportEventIDOK{}
 }
 
-/* PatchV1PostMortemsReportsReportIDEventsReportEventIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1PostMortemsReportsReportIDEventsReportEventIDOK describes a response with status code 200, with default header values.
 
 Updates a report event to change its description
 */
@@ -53,9 +54,39 @@ type PatchV1PostMortemsReportsReportIDEventsReportEventIDOK struct {
 	Payload *models.EventEntity
 }
 
+// IsSuccess returns true when this patch v1 post mortems reports report Id events report event Id o k response has a 2xx status code
+func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 post mortems reports report Id events report event Id o k response has a 3xx status code
+func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 post mortems reports report Id events report event Id o k response has a 4xx status code
+func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 post mortems reports report Id events report event Id o k response has a 5xx status code
+func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 post mortems reports report Id events report event Id o k response a status code equal to that given
+func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}/events/{report_event_id}][%d] patchV1PostMortemsReportsReportIdEventsReportEventIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}/events/{report_event_id}][%d] patchV1PostMortemsReportsReportIdEventsReportEventIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDOK) GetPayload() *models.EventEntity {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewPatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest() *PatchV
 	return &PatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest{}
 }
 
-/* PatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest describes a response with status code 400, with default header values.
+/*
+PatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -85,9 +117,39 @@ type PatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest struct {
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this patch v1 post mortems reports report Id events report event Id bad request response has a 2xx status code
+func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch v1 post mortems reports report Id events report event Id bad request response has a 3xx status code
+func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 post mortems reports report Id events report event Id bad request response has a 4xx status code
+func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch v1 post mortems reports report Id events report event Id bad request response has a 5xx status code
+func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 post mortems reports report Id events report event Id bad request response a status code equal to that given
+func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}/events/{report_event_id}][%d] patchV1PostMortemsReportsReportIdEventsReportEventIdBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}/events/{report_event_id}][%d] patchV1PostMortemsReportsReportIdEventsReportEventIdBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PatchV1PostMortemsReportsReportIDEventsReportEventIDBadRequest) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }

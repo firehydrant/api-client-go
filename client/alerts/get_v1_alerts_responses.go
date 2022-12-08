@@ -39,17 +39,48 @@ func NewGetV1AlertsOK() *GetV1AlertsOK {
 	return &GetV1AlertsOK{}
 }
 
-/* GetV1AlertsOK describes a response with status code 200, with default header values.
+/*
+GetV1AlertsOK describes a response with status code 200, with default header values.
 
-Retrieve all alerts
+Retrieve all alerts from third parties
 */
 type GetV1AlertsOK struct {
 	Payload *models.AlertEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 alerts o k response has a 2xx status code
+func (o *GetV1AlertsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 alerts o k response has a 3xx status code
+func (o *GetV1AlertsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 alerts o k response has a 4xx status code
+func (o *GetV1AlertsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 alerts o k response has a 5xx status code
+func (o *GetV1AlertsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 alerts o k response a status code equal to that given
+func (o *GetV1AlertsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1AlertsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/alerts][%d] getV1AlertsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1AlertsOK) String() string {
+	return fmt.Sprintf("[GET /v1/alerts][%d] getV1AlertsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1AlertsOK) GetPayload() *models.AlertEntityPaginated {
 	return o.Payload
 }

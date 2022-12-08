@@ -53,10 +53,12 @@ func NewPutV1PostMortemsReportsReportIDTagsParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* PutV1PostMortemsReportsReportIDTagsParams contains all the parameters to send to the API endpoint
-   for the put v1 post mortems reports report Id tags operation.
+/*
+PutV1PostMortemsReportsReportIDTagsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the put v1 post mortems reports report Id tags operation.
+
+	Typically these are written to a http.Request.
 */
 type PutV1PostMortemsReportsReportIDTagsParams struct {
 

@@ -39,17 +39,48 @@ func NewGetV1IncidentsIncidentIDEventsEventIDVotesStatusOK() *GetV1IncidentsInci
 	return &GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK{}
 }
 
-/* GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK describes a response with status code 200, with default header values.
+/*
+GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK describes a response with status code 200, with default header values.
 
-Returns the status of the votes
+Returns the current vote counts for an object
 */
 type GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK struct {
 	Payload *models.VotesEntity
 }
 
+// IsSuccess returns true when this get v1 incidents incident Id events event Id votes status o k response has a 2xx status code
+func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 incidents incident Id events event Id votes status o k response has a 3xx status code
+func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 incidents incident Id events event Id votes status o k response has a 4xx status code
+func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 incidents incident Id events event Id votes status o k response has a 5xx status code
+func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 incidents incident Id events event Id votes status o k response a status code equal to that given
+func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/events/{event_id}/votes/status][%d] getV1IncidentsIncidentIdEventsEventIdVotesStatusOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK) String() string {
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/events/{event_id}/votes/status][%d] getV1IncidentsIncidentIdEventsEventIdVotesStatusOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK) GetPayload() *models.VotesEntity {
 	return o.Payload
 }

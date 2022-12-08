@@ -52,10 +52,12 @@ func NewGetV1IncidentTagsParamsWithHTTPClient(client *http.Client) *GetV1Inciden
 	}
 }
 
-/* GetV1IncidentTagsParams contains all the parameters to send to the API endpoint
-   for the get v1 incident tags operation.
+/*
+GetV1IncidentTagsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 incident tags operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IncidentTagsParams struct {
 

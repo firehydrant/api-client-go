@@ -39,7 +39,8 @@ func NewPostV1SeverityMatrixConditionsCreated() *PostV1SeverityMatrixConditionsC
 	return &PostV1SeverityMatrixConditionsCreated{}
 }
 
-/* PostV1SeverityMatrixConditionsCreated describes a response with status code 201, with default header values.
+/*
+PostV1SeverityMatrixConditionsCreated describes a response with status code 201, with default header values.
 
 Create a new condition
 */
@@ -47,9 +48,39 @@ type PostV1SeverityMatrixConditionsCreated struct {
 	Payload *models.ConditionEntity
 }
 
+// IsSuccess returns true when this post v1 severity matrix conditions created response has a 2xx status code
+func (o *PostV1SeverityMatrixConditionsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 severity matrix conditions created response has a 3xx status code
+func (o *PostV1SeverityMatrixConditionsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 severity matrix conditions created response has a 4xx status code
+func (o *PostV1SeverityMatrixConditionsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 severity matrix conditions created response has a 5xx status code
+func (o *PostV1SeverityMatrixConditionsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 severity matrix conditions created response a status code equal to that given
+func (o *PostV1SeverityMatrixConditionsCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1SeverityMatrixConditionsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/severity_matrix/conditions][%d] postV1SeverityMatrixConditionsCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1SeverityMatrixConditionsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/severity_matrix/conditions][%d] postV1SeverityMatrixConditionsCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1SeverityMatrixConditionsCreated) GetPayload() *models.ConditionEntity {
 	return o.Payload
 }

@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PatchV1Teams Update a team
+// PatchV1Teams Update a single team from its ID
 //
 // swagger:model patchV1Teams
 type PatchV1Teams struct {

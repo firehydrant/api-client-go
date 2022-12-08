@@ -39,7 +39,8 @@ func NewGetV1IntegrationsStatuspageConnectionsOK() *GetV1IntegrationsStatuspageC
 	return &GetV1IntegrationsStatuspageConnectionsOK{}
 }
 
-/* GetV1IntegrationsStatuspageConnectionsOK describes a response with status code 200, with default header values.
+/*
+GetV1IntegrationsStatuspageConnectionsOK describes a response with status code 200, with default header values.
 
 Lists the available and configured Statuspage integrations connections for the authenticated organization.
 */
@@ -47,9 +48,39 @@ type GetV1IntegrationsStatuspageConnectionsOK struct {
 	Payload *models.ConnectionEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 integrations statuspage connections o k response has a 2xx status code
+func (o *GetV1IntegrationsStatuspageConnectionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 integrations statuspage connections o k response has a 3xx status code
+func (o *GetV1IntegrationsStatuspageConnectionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 integrations statuspage connections o k response has a 4xx status code
+func (o *GetV1IntegrationsStatuspageConnectionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 integrations statuspage connections o k response has a 5xx status code
+func (o *GetV1IntegrationsStatuspageConnectionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 integrations statuspage connections o k response a status code equal to that given
+func (o *GetV1IntegrationsStatuspageConnectionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IntegrationsStatuspageConnectionsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/integrations/statuspage/connections][%d] getV1IntegrationsStatuspageConnectionsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IntegrationsStatuspageConnectionsOK) String() string {
+	return fmt.Sprintf("[GET /v1/integrations/statuspage/connections][%d] getV1IntegrationsStatuspageConnectionsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IntegrationsStatuspageConnectionsOK) GetPayload() *models.ConnectionEntityPaginated {
 	return o.Payload
 }

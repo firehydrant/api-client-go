@@ -39,7 +39,8 @@ func NewGetV1SavedSearchesResourceTypeSavedSearchIDOK() *GetV1SavedSearchesResou
 	return &GetV1SavedSearchesResourceTypeSavedSearchIDOK{}
 }
 
-/* GetV1SavedSearchesResourceTypeSavedSearchIDOK describes a response with status code 200, with default header values.
+/*
+GetV1SavedSearchesResourceTypeSavedSearchIDOK describes a response with status code 200, with default header values.
 
 Retrieve a specific save search
 */
@@ -47,9 +48,39 @@ type GetV1SavedSearchesResourceTypeSavedSearchIDOK struct {
 	Payload *models.SavedSearchEntity
 }
 
+// IsSuccess returns true when this get v1 saved searches resource type saved search Id o k response has a 2xx status code
+func (o *GetV1SavedSearchesResourceTypeSavedSearchIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 saved searches resource type saved search Id o k response has a 3xx status code
+func (o *GetV1SavedSearchesResourceTypeSavedSearchIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 saved searches resource type saved search Id o k response has a 4xx status code
+func (o *GetV1SavedSearchesResourceTypeSavedSearchIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 saved searches resource type saved search Id o k response has a 5xx status code
+func (o *GetV1SavedSearchesResourceTypeSavedSearchIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 saved searches resource type saved search Id o k response a status code equal to that given
+func (o *GetV1SavedSearchesResourceTypeSavedSearchIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1SavedSearchesResourceTypeSavedSearchIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/saved_searches/{resource_type}/{saved_search_id}][%d] getV1SavedSearchesResourceTypeSavedSearchIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1SavedSearchesResourceTypeSavedSearchIDOK) String() string {
+	return fmt.Sprintf("[GET /v1/saved_searches/{resource_type}/{saved_search_id}][%d] getV1SavedSearchesResourceTypeSavedSearchIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1SavedSearchesResourceTypeSavedSearchIDOK) GetPayload() *models.SavedSearchEntity {
 	return o.Payload
 }

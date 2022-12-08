@@ -53,10 +53,12 @@ func NewGetV1ChangesEventsParamsWithHTTPClient(client *http.Client) *GetV1Change
 	}
 }
 
-/* GetV1ChangesEventsParams contains all the parameters to send to the API endpoint
-   for the get v1 changes events operation.
+/*
+GetV1ChangesEventsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 changes events operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1ChangesEventsParams struct {
 

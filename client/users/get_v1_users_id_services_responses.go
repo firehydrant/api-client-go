@@ -39,7 +39,8 @@ func NewGetV1UsersIDServicesOK() *GetV1UsersIDServicesOK {
 	return &GetV1UsersIDServicesOK{}
 }
 
-/* GetV1UsersIDServicesOK describes a response with status code 200, with default header values.
+/*
+GetV1UsersIDServicesOK describes a response with status code 200, with default header values.
 
 Retrieves a list of services owned by the teams a user is on
 */
@@ -47,9 +48,39 @@ type GetV1UsersIDServicesOK struct {
 	Payload []*models.TeamEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 users Id services o k response has a 2xx status code
+func (o *GetV1UsersIDServicesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 users Id services o k response has a 3xx status code
+func (o *GetV1UsersIDServicesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 users Id services o k response has a 4xx status code
+func (o *GetV1UsersIDServicesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 users Id services o k response has a 5xx status code
+func (o *GetV1UsersIDServicesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 users Id services o k response a status code equal to that given
+func (o *GetV1UsersIDServicesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1UsersIDServicesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/users/{id}/services][%d] getV1UsersIdServicesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1UsersIDServicesOK) String() string {
+	return fmt.Sprintf("[GET /v1/users/{id}/services][%d] getV1UsersIdServicesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1UsersIDServicesOK) GetPayload() []*models.TeamEntityPaginated {
 	return o.Payload
 }

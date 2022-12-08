@@ -55,10 +55,12 @@ func NewPatchV1ScheduledMaintenancesScheduledMaintenanceIDParamsWithHTTPClient(c
 	}
 }
 
-/* PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams contains all the parameters to send to the API endpoint
-   for the patch v1 scheduled maintenances scheduled maintenance Id operation.
+/*
+PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch v1 scheduled maintenances scheduled maintenance Id operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams struct {
 

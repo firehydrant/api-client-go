@@ -53,10 +53,12 @@ func NewGetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParamsWithHTTPCl
 	}
 }
 
-/* GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams contains all the parameters to send to the API endpoint
-   for the get v1 runbooks executions execution Id steps step Id votes status operation.
+/*
+GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 runbooks executions execution Id steps step Id votes status operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams struct {
 

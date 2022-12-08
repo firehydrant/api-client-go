@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  GetV1ChangeTypes Lists all change types
+GetV1ChangeTypes Lists all change types
 */
 func (a *Client) GetV1ChangeTypes(params *GetV1ChangeTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangeTypesOK, error) {
 	// TODO: Validate the params before sending

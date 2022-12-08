@@ -53,10 +53,12 @@ func NewGetV1MetricsIncidentsParamsWithHTTPClient(client *http.Client) *GetV1Met
 	}
 }
 
-/* GetV1MetricsIncidentsParams contains all the parameters to send to the API endpoint
-   for the get v1 metrics incidents operation.
+/*
+GetV1MetricsIncidentsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 metrics incidents operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1MetricsIncidentsParams struct {
 

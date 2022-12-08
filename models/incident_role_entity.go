@@ -7,14 +7,12 @@ package models
 
 import (
 	"context"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
-// IncidentRoleEntity Retrieve an incident role
+// IncidentRoleEntity Retrieve a single incident role from its ID
 //
 // swagger:model IncidentRoleEntity
 type IncidentRoleEntity struct {
@@ -37,84 +35,17 @@ type IncidentRoleEntity struct {
 	// summary
 	Summary string `json:"summary,omitempty"`
 
-	// tasks
-	Tasks []*IncidentRoleTaskEntity `json:"tasks"`
-
 	// updated at
 	UpdatedAt string `json:"updated_at,omitempty"`
 }
 
 // Validate validates this incident role entity
 func (m *IncidentRoleEntity) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateTasks(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
 	return nil
 }
 
-func (m *IncidentRoleEntity) validateTasks(formats strfmt.Registry) error {
-	if swag.IsZero(m.Tasks) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.Tasks); i++ {
-		if swag.IsZero(m.Tasks[i]) { // not required
-			continue
-		}
-
-		if m.Tasks[i] != nil {
-			if err := m.Tasks[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("tasks" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("tasks" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this incident role entity based on the context it is used
+// ContextValidate validates this incident role entity based on context it is used
 func (m *IncidentRoleEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateTasks(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *IncidentRoleEntity) contextValidateTasks(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Tasks); i++ {
-
-		if m.Tasks[i] != nil {
-			if err := m.Tasks[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("tasks" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("tasks" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
 	return nil
 }
 

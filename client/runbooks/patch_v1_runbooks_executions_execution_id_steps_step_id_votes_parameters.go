@@ -55,10 +55,12 @@ func NewPatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParamsWithHTTPClient
 	}
 }
 
-/* PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams contains all the parameters to send to the API endpoint
-   for the patch v1 runbooks executions execution Id steps step Id votes operation.
+/*
+PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the patch v1 runbooks executions execution Id steps step Id votes operation.
+
+	Typically these are written to a http.Request.
 */
 type PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams struct {
 

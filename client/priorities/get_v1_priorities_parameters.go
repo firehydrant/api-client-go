@@ -53,10 +53,12 @@ func NewGetV1PrioritiesParamsWithHTTPClient(client *http.Client) *GetV1Prioritie
 	}
 }
 
-/* GetV1PrioritiesParams contains all the parameters to send to the API endpoint
-   for the get v1 priorities operation.
+/*
+GetV1PrioritiesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 priorities operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1PrioritiesParams struct {
 

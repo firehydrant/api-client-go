@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1IncidentsIncidentIDRoleAssignments Assign a role to a user for this incident. All tasks associated to the role will also automatically be attached
+// PostV1IncidentsIncidentIDRoleAssignments Assign a role to a user for this incident
 //
 // swagger:model postV1IncidentsIncidentIdRoleAssignments
 type PostV1IncidentsIncidentIDRoleAssignments struct {

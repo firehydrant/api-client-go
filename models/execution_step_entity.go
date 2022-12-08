@@ -36,8 +36,14 @@ type ExecutionStepEntity struct {
 	// execution
 	Execution *ExecutionStepExecutionEntity `json:"execution,omitempty"`
 
+	// has been retried
+	HasBeenRetried string `json:"has_been_retried,omitempty"`
+
 	// id
 	ID string `json:"id,omitempty"`
+
+	// integration name
+	IntegrationName string `json:"integration_name,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`

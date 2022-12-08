@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ServiceEntity Retrieves a single service by ID or Slug
+// ServiceEntity Retrieves all services that are available to be upstream dependencies
 //
 // swagger:model ServiceEntity
 type ServiceEntity struct {
@@ -26,8 +26,14 @@ type ServiceEntity struct {
 	// alert on add
 	AlertOnAdd bool `json:"alert_on_add,omitempty"`
 
+	// auto add responding team
+	AutoAddRespondingTeam bool `json:"auto_add_responding_team,omitempty"`
+
 	// List of checklists associated with a service
 	Checklists []*ChecklistTemplateEntity `json:"checklists"`
+
+	// completed checks
+	CompletedChecks int32 `json:"completed_checks,omitempty"`
 
 	// created at
 	// Format: date-time
@@ -45,11 +51,11 @@ type ServiceEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
-	// A key/value of labels
+	// An object of label key and values
 	Labels interface{} `json:"labels,omitempty"`
 
 	// last import
-	LastImport string `json:"last_import,omitempty"`
+	LastImport interface{} `json:"last_import,omitempty"`
 
 	// List of links attached to this service.
 	Links []*LinksEntity `json:"links"`
@@ -58,13 +64,17 @@ type ServiceEntity struct {
 	ManagedBy string `json:"managed_by,omitempty"`
 
 	// Indicates the settings of the catalog that manages this service
-	ManagedBySettings string `json:"managed_by_settings,omitempty"`
+	ManagedBySettings interface{} `json:"managed_by_settings,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
 
 	// Team that owns the service
-	Owner string `json:"owner,omitempty"`
+	Owner interface{} `json:"owner,omitempty"`
+
+	// service checklist updated at
+	// Format: date-time
+	ServiceChecklistUpdatedAt strfmt.DateTime `json:"service_checklist_updated_at,omitempty"`
 
 	// service tier
 	ServiceTier int32 `json:"service_tier,omitempty"`
@@ -73,7 +83,7 @@ type ServiceEntity struct {
 	Slug string `json:"slug,omitempty"`
 
 	// List of teams attached to the service
-	Teams []string `json:"teams"`
+	Teams []interface{} `json:"teams"`
 
 	// updated at
 	// Format: date-time
@@ -104,6 +114,10 @@ func (m *ServiceEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLinks(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServiceChecklistUpdatedAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -232,6 +246,18 @@ func (m *ServiceEntity) validateLinks(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ServiceEntity) validateServiceChecklistUpdatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.ServiceChecklistUpdatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("service_checklist_updated_at", "body", "date-time", m.ServiceChecklistUpdatedAt.String(), formats); err != nil {
+		return err
 	}
 
 	return nil

@@ -53,10 +53,12 @@ func NewDeleteV1ChangesChangeIDParamsWithHTTPClient(client *http.Client) *Delete
 	}
 }
 
-/* DeleteV1ChangesChangeIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 changes change Id operation.
+/*
+DeleteV1ChangesChangeIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 changes change Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1ChangesChangeIDParams struct {
 

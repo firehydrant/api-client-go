@@ -39,7 +39,8 @@ func NewGetV1IncidentsIncidentIDRoleAssignmentsOK() *GetV1IncidentsIncidentIDRol
 	return &GetV1IncidentsIncidentIDRoleAssignmentsOK{}
 }
 
-/* GetV1IncidentsIncidentIDRoleAssignmentsOK describes a response with status code 200, with default header values.
+/*
+GetV1IncidentsIncidentIDRoleAssignmentsOK describes a response with status code 200, with default header values.
 
 Retrieve a list of all of the current role assignments for the incident
 */
@@ -47,9 +48,39 @@ type GetV1IncidentsIncidentIDRoleAssignmentsOK struct {
 	Payload *models.RoleAssignmentEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 incidents incident Id role assignments o k response has a 2xx status code
+func (o *GetV1IncidentsIncidentIDRoleAssignmentsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 incidents incident Id role assignments o k response has a 3xx status code
+func (o *GetV1IncidentsIncidentIDRoleAssignmentsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 incidents incident Id role assignments o k response has a 4xx status code
+func (o *GetV1IncidentsIncidentIDRoleAssignmentsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 incidents incident Id role assignments o k response has a 5xx status code
+func (o *GetV1IncidentsIncidentIDRoleAssignmentsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 incidents incident Id role assignments o k response a status code equal to that given
+func (o *GetV1IncidentsIncidentIDRoleAssignmentsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IncidentsIncidentIDRoleAssignmentsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/role_assignments][%d] getV1IncidentsIncidentIdRoleAssignmentsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IncidentsIncidentIDRoleAssignmentsOK) String() string {
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/role_assignments][%d] getV1IncidentsIncidentIdRoleAssignmentsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IncidentsIncidentIDRoleAssignmentsOK) GetPayload() *models.RoleAssignmentEntityPaginated {
 	return o.Payload
 }

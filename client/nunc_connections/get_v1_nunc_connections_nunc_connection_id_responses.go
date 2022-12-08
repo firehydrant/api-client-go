@@ -39,7 +39,8 @@ func NewGetV1NuncConnectionsNuncConnectionIDOK() *GetV1NuncConnectionsNuncConnec
 	return &GetV1NuncConnectionsNuncConnectionIDOK{}
 }
 
-/* GetV1NuncConnectionsNuncConnectionIDOK describes a response with status code 200, with default header values.
+/*
+GetV1NuncConnectionsNuncConnectionIDOK describes a response with status code 200, with default header values.
 
 Retrieve the information displayed as part of your FireHydrant hosted status page.
 */
@@ -47,9 +48,39 @@ type GetV1NuncConnectionsNuncConnectionIDOK struct {
 	Payload *models.NuncConnectionEntity
 }
 
+// IsSuccess returns true when this get v1 nunc connections nunc connection Id o k response has a 2xx status code
+func (o *GetV1NuncConnectionsNuncConnectionIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 nunc connections nunc connection Id o k response has a 3xx status code
+func (o *GetV1NuncConnectionsNuncConnectionIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 nunc connections nunc connection Id o k response has a 4xx status code
+func (o *GetV1NuncConnectionsNuncConnectionIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 nunc connections nunc connection Id o k response has a 5xx status code
+func (o *GetV1NuncConnectionsNuncConnectionIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 nunc connections nunc connection Id o k response a status code equal to that given
+func (o *GetV1NuncConnectionsNuncConnectionIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1NuncConnectionsNuncConnectionIDOK) Error() string {
 	return fmt.Sprintf("[GET /v1/nunc_connections/{nunc_connection_id}][%d] getV1NuncConnectionsNuncConnectionIdOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1NuncConnectionsNuncConnectionIDOK) String() string {
+	return fmt.Sprintf("[GET /v1/nunc_connections/{nunc_connection_id}][%d] getV1NuncConnectionsNuncConnectionIdOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1NuncConnectionsNuncConnectionIDOK) GetPayload() *models.NuncConnectionEntity {
 	return o.Payload
 }

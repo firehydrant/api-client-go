@@ -45,7 +45,8 @@ func NewPostV1ServicesCreated() *PostV1ServicesCreated {
 	return &PostV1ServicesCreated{}
 }
 
-/* PostV1ServicesCreated describes a response with status code 201, with default header values.
+/*
+PostV1ServicesCreated describes a response with status code 201, with default header values.
 
 Creates a service for the organization, you may also create or attach functionalities to the service on create.
 */
@@ -53,9 +54,39 @@ type PostV1ServicesCreated struct {
 	Payload *models.ServiceEntity
 }
 
+// IsSuccess returns true when this post v1 services created response has a 2xx status code
+func (o *PostV1ServicesCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 services created response has a 3xx status code
+func (o *PostV1ServicesCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 services created response has a 4xx status code
+func (o *PostV1ServicesCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 services created response has a 5xx status code
+func (o *PostV1ServicesCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 services created response a status code equal to that given
+func (o *PostV1ServicesCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1ServicesCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/services][%d] postV1ServicesCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1ServicesCreated) String() string {
+	return fmt.Sprintf("[POST /v1/services][%d] postV1ServicesCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1ServicesCreated) GetPayload() *models.ServiceEntity {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewPostV1ServicesBadRequest() *PostV1ServicesBadRequest {
 	return &PostV1ServicesBadRequest{}
 }
 
-/* PostV1ServicesBadRequest describes a response with status code 400, with default header values.
+/*
+PostV1ServicesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -85,9 +117,39 @@ type PostV1ServicesBadRequest struct {
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this post v1 services bad request response has a 2xx status code
+func (o *PostV1ServicesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post v1 services bad request response has a 3xx status code
+func (o *PostV1ServicesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 services bad request response has a 4xx status code
+func (o *PostV1ServicesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post v1 services bad request response has a 5xx status code
+func (o *PostV1ServicesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 services bad request response a status code equal to that given
+func (o *PostV1ServicesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PostV1ServicesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/services][%d] postV1ServicesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PostV1ServicesBadRequest) String() string {
+	return fmt.Sprintf("[POST /v1/services][%d] postV1ServicesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PostV1ServicesBadRequest) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }

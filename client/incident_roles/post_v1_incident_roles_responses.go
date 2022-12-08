@@ -39,17 +39,48 @@ func NewPostV1IncidentRolesCreated() *PostV1IncidentRolesCreated {
 	return &PostV1IncidentRolesCreated{}
 }
 
-/* PostV1IncidentRolesCreated describes a response with status code 201, with default header values.
+/*
+PostV1IncidentRolesCreated describes a response with status code 201, with default header values.
 
-Create an incident role
+Create a new incident role
 */
 type PostV1IncidentRolesCreated struct {
 	Payload *models.IncidentRoleEntity
 }
 
+// IsSuccess returns true when this post v1 incident roles created response has a 2xx status code
+func (o *PostV1IncidentRolesCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 incident roles created response has a 3xx status code
+func (o *PostV1IncidentRolesCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 incident roles created response has a 4xx status code
+func (o *PostV1IncidentRolesCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 incident roles created response has a 5xx status code
+func (o *PostV1IncidentRolesCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 incident roles created response a status code equal to that given
+func (o *PostV1IncidentRolesCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1IncidentRolesCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/incident_roles][%d] postV1IncidentRolesCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1IncidentRolesCreated) String() string {
+	return fmt.Sprintf("[POST /v1/incident_roles][%d] postV1IncidentRolesCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1IncidentRolesCreated) GetPayload() *models.IncidentRoleEntity {
 	return o.Payload
 }

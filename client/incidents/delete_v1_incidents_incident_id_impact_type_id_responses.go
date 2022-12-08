@@ -45,14 +45,44 @@ func NewDeleteV1IncidentsIncidentIDImpactTypeIDNoContent() *DeleteV1IncidentsInc
 	return &DeleteV1IncidentsIncidentIDImpactTypeIDNoContent{}
 }
 
-/* DeleteV1IncidentsIncidentIDImpactTypeIDNoContent describes a response with status code 204, with default header values.
+/*
+DeleteV1IncidentsIncidentIDImpactTypeIDNoContent describes a response with status code 204, with default header values.
 
-Remove a piece of infrastructure from an incident as impact
+Remove impacted infrastructure on an incident
 */
 type DeleteV1IncidentsIncidentIDImpactTypeIDNoContent struct {
 }
 
+// IsSuccess returns true when this delete v1 incidents incident Id impact type Id no content response has a 2xx status code
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 incidents incident Id impact type Id no content response has a 3xx status code
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 incidents incident Id impact type Id no content response has a 4xx status code
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 incidents incident Id impact type Id no content response has a 5xx status code
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 incidents incident Id impact type Id no content response a status code equal to that given
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteV1IncidentsIncidentIDImpactTypeIDNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/impact/{type}/{id}][%d] deleteV1IncidentsIncidentIdImpactTypeIdNoContent ", 204)
+}
+
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDNoContent) String() string {
 	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/impact/{type}/{id}][%d] deleteV1IncidentsIncidentIdImpactTypeIdNoContent ", 204)
 }
 
@@ -66,7 +96,8 @@ func NewDeleteV1IncidentsIncidentIDImpactTypeIDBadRequest() *DeleteV1IncidentsIn
 	return &DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest{}
 }
 
-/* DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -74,9 +105,39 @@ type DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest struct {
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this delete v1 incidents incident Id impact type Id bad request response has a 2xx status code
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete v1 incidents incident Id impact type Id bad request response has a 3xx status code
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 incidents incident Id impact type Id bad request response has a 4xx status code
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete v1 incidents incident Id impact type Id bad request response has a 5xx status code
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 incidents incident Id impact type Id bad request response a status code equal to that given
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/impact/{type}/{id}][%d] deleteV1IncidentsIncidentIdImpactTypeIdBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/impact/{type}/{id}][%d] deleteV1IncidentsIncidentIdImpactTypeIdBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *DeleteV1IncidentsIncidentIDImpactTypeIDBadRequest) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }

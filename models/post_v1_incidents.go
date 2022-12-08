@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -15,7 +16,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1Incidents Create an incident
+// PostV1Incidents Create a new incident
 //
 // swagger:model postV1Incidents
 type PostV1Incidents struct {
@@ -32,7 +33,10 @@ type PostV1Incidents struct {
 	// description
 	Description string `json:"description,omitempty"`
 
-	// labels
+	// An array of impacted infrastructure
+	Impacts []*PostV1IncidentsImpactsItems0 `json:"impacts"`
+
+	// Key:value pairs to track custom data for the incident
 	Labels map[string]string `json:"labels,omitempty"`
 
 	// name
@@ -72,6 +76,10 @@ func (m *PostV1Incidents) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateImpacts(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
@@ -101,6 +109,32 @@ func (m *PostV1Incidents) validateContextObject(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *PostV1Incidents) validateImpacts(formats strfmt.Registry) error {
+	if swag.IsZero(m.Impacts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Impacts); i++ {
+		if swag.IsZero(m.Impacts[i]) { // not required
+			continue
+		}
+
+		if m.Impacts[i] != nil {
+			if err := m.Impacts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("impacts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *PostV1Incidents) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
@@ -115,6 +149,10 @@ func (m *PostV1Incidents) ContextValidate(ctx context.Context, formats strfmt.Re
 	var res []error
 
 	if err := m.contextValidateContextObject(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateImpacts(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -135,6 +173,26 @@ func (m *PostV1Incidents) contextValidateContextObject(ctx context.Context, form
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *PostV1Incidents) contextValidateImpacts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Impacts); i++ {
+
+		if m.Impacts[i] != nil {
+			if err := m.Impacts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("impacts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -168,7 +226,7 @@ type PostV1IncidentsContextObject struct {
 
 	// context tag
 	// Required: true
-	// Enum: [runbook_testing]
+	// Enum: [runbook_testing runbook_isolation_testing]
 	ContextTag *string `json:"context_tag"`
 
 	// object id
@@ -207,7 +265,7 @@ var postV1IncidentsContextObjectTypeContextTagPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["runbook_testing"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["runbook_testing","runbook_isolation_testing"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -219,6 +277,9 @@ const (
 
 	// PostV1IncidentsContextObjectContextTagRunbookTesting captures enum value "runbook_testing"
 	PostV1IncidentsContextObjectContextTagRunbookTesting string = "runbook_testing"
+
+	// PostV1IncidentsContextObjectContextTagRunbookIsolationTesting captures enum value "runbook_isolation_testing"
+	PostV1IncidentsContextObjectContextTagRunbookIsolationTesting string = "runbook_isolation_testing"
 )
 
 // prop value enum
@@ -308,6 +369,96 @@ func (m *PostV1IncidentsContextObject) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PostV1IncidentsContextObject) UnmarshalBinary(b []byte) error {
 	var res PostV1IncidentsContextObject
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1IncidentsImpactsItems0 post v1 incidents impacts items0
+//
+// swagger:model PostV1IncidentsImpactsItems0
+type PostV1IncidentsImpactsItems0 struct {
+
+	// The ID of the impact condition. Find these at /v1/severity_matrix/conditions
+	// Required: true
+	ConditionID *string `json:"condition_id"`
+
+	// The ID of the impacted infrastructure
+	// Required: true
+	ID *string `json:"id"`
+
+	// The type of impacted infrastructure. One of: environment, functionality, or service
+	// Required: true
+	Type *string `json:"type"`
+}
+
+// Validate validates this post v1 incidents impacts items0
+func (m *PostV1IncidentsImpactsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateConditionID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1IncidentsImpactsItems0) validateConditionID(formats strfmt.Registry) error {
+
+	if err := validate.Required("condition_id", "body", m.ConditionID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PostV1IncidentsImpactsItems0) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PostV1IncidentsImpactsItems0) validateType(formats strfmt.Registry) error {
+
+	if err := validate.Required("type", "body", m.Type); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this post v1 incidents impacts items0 based on context it is used
+func (m *PostV1IncidentsImpactsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1IncidentsImpactsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1IncidentsImpactsItems0) UnmarshalBinary(b []byte) error {
+	var res PostV1IncidentsImpactsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -7,9 +7,12 @@ package runbooks
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PatchV1RunbooksExecutionsExecutionIDVotesReader is a Reader for the PatchV1RunbooksExecutionsExecutionIDVotes structure.
@@ -36,18 +39,60 @@ func NewPatchV1RunbooksExecutionsExecutionIDVotesOK() *PatchV1RunbooksExecutions
 	return &PatchV1RunbooksExecutionsExecutionIDVotesOK{}
 }
 
-/* PatchV1RunbooksExecutionsExecutionIDVotesOK describes a response with status code 200, with default header values.
+/*
+PatchV1RunbooksExecutionsExecutionIDVotesOK describes a response with status code 200, with default header values.
 
-patched Vote
+Allows for upvoting or downvoting an event
 */
 type PatchV1RunbooksExecutionsExecutionIDVotesOK struct {
+	Payload *models.VotesEntity
+}
+
+// IsSuccess returns true when this patch v1 runbooks executions execution Id votes o k response has a 2xx status code
+func (o *PatchV1RunbooksExecutionsExecutionIDVotesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 runbooks executions execution Id votes o k response has a 3xx status code
+func (o *PatchV1RunbooksExecutionsExecutionIDVotesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 runbooks executions execution Id votes o k response has a 4xx status code
+func (o *PatchV1RunbooksExecutionsExecutionIDVotesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 runbooks executions execution Id votes o k response has a 5xx status code
+func (o *PatchV1RunbooksExecutionsExecutionIDVotesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 runbooks executions execution Id votes o k response a status code equal to that given
+func (o *PatchV1RunbooksExecutionsExecutionIDVotesOK) IsCode(code int) bool {
+	return code == 200
 }
 
 func (o *PatchV1RunbooksExecutionsExecutionIDVotesOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/runbooks/executions/{execution_id}/votes][%d] patchV1RunbooksExecutionsExecutionIdVotesOK ", 200)
+	return fmt.Sprintf("[PATCH /v1/runbooks/executions/{execution_id}/votes][%d] patchV1RunbooksExecutionsExecutionIdVotesOK  %+v", 200, o.Payload)
+}
+
+func (o *PatchV1RunbooksExecutionsExecutionIDVotesOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/runbooks/executions/{execution_id}/votes][%d] patchV1RunbooksExecutionsExecutionIdVotesOK  %+v", 200, o.Payload)
+}
+
+func (o *PatchV1RunbooksExecutionsExecutionIDVotesOK) GetPayload() *models.VotesEntity {
+	return o.Payload
 }
 
 func (o *PatchV1RunbooksExecutionsExecutionIDVotesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.VotesEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

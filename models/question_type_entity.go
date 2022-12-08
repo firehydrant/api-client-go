@@ -17,8 +17,17 @@ import (
 // swagger:model QuestionTypeEntity
 type QuestionTypeEntity struct {
 
+	// available options
+	AvailableOptions []string `json:"available_options"`
+
 	// id
 	ID string `json:"id,omitempty"`
+
+	// is required
+	IsRequired string `json:"is_required,omitempty"`
+
+	// kind
+	Kind string `json:"kind,omitempty"`
 
 	// title
 	Title string `json:"title,omitempty"`

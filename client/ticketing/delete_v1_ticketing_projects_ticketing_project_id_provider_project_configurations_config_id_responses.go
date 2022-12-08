@@ -39,7 +39,8 @@ func NewDeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations
 	return &DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK{}
 }
 
-/* DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK describes a response with status code 200, with default header values.
+/*
+DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK describes a response with status code 200, with default header values.
 
 Archive configuration for a ticketing project
 */
@@ -47,9 +48,39 @@ type DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCon
 	Payload *models.ProjectConfigEntity
 }
 
+// IsSuccess returns true when this delete v1 ticketing projects ticketing project Id provider project configurations config Id o k response has a 2xx status code
+func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 ticketing projects ticketing project Id provider project configurations config Id o k response has a 3xx status code
+func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 ticketing projects ticketing project Id provider project configurations config Id o k response has a 4xx status code
+func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 ticketing projects ticketing project Id provider project configurations config Id o k response has a 5xx status code
+func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 ticketing projects ticketing project Id provider project configurations config Id o k response a status code equal to that given
+func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK) Error() string {
 	return fmt.Sprintf("[DELETE /v1/ticketing/projects/{ticketing_project_id}/provider_project_configurations/{config_id}][%d] deleteV1TicketingProjectsTicketingProjectIdProviderProjectConfigurationsConfigIdOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/ticketing/projects/{ticketing_project_id}/provider_project_configurations/{config_id}][%d] deleteV1TicketingProjectsTicketingProjectIdProviderProjectConfigurationsConfigIdOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK) GetPayload() *models.ProjectConfigEntity {
 	return o.Payload
 }

@@ -45,7 +45,8 @@ func NewPatchV1ChangesChangeIDIdentitiesIdentityIDOK() *PatchV1ChangesChangeIDId
 	return &PatchV1ChangesChangeIDIdentitiesIdentityIDOK{}
 }
 
-/* PatchV1ChangesChangeIDIdentitiesIdentityIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1ChangesChangeIDIdentitiesIdentityIDOK describes a response with status code 200, with default header values.
 
 Update an identity
 */
@@ -53,9 +54,39 @@ type PatchV1ChangesChangeIDIdentitiesIdentityIDOK struct {
 	Payload *models.ChangeIdentityEntity
 }
 
+// IsSuccess returns true when this patch v1 changes change Id identities identity Id o k response has a 2xx status code
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 changes change Id identities identity Id o k response has a 3xx status code
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 changes change Id identities identity Id o k response has a 4xx status code
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 changes change Id identities identity Id o k response has a 5xx status code
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 changes change Id identities identity Id o k response a status code equal to that given
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/changes/{change_id}/identities/{identity_id}][%d] patchV1ChangesChangeIdIdentitiesIdentityIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/changes/{change_id}/identities/{identity_id}][%d] patchV1ChangesChangeIdIdentitiesIdentityIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDOK) GetPayload() *models.ChangeIdentityEntity {
 	return o.Payload
 }
@@ -77,7 +108,8 @@ func NewPatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest() *PatchV1ChangesCh
 	return &PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest{}
 }
 
-/* PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest describes a response with status code 400, with default header values.
+/*
+PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -85,9 +117,39 @@ type PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest struct {
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this patch v1 changes change Id identities identity Id bad request response has a 2xx status code
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this patch v1 changes change Id identities identity Id bad request response has a 3xx status code
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 changes change Id identities identity Id bad request response has a 4xx status code
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this patch v1 changes change Id identities identity Id bad request response has a 5xx status code
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 changes change Id identities identity Id bad request response a status code equal to that given
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /v1/changes/{change_id}/identities/{identity_id}][%d] patchV1ChangesChangeIdIdentitiesIdentityIdBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /v1/changes/{change_id}/identities/{identity_id}][%d] patchV1ChangesChangeIdIdentitiesIdentityIdBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }

@@ -26,7 +26,7 @@ type PostV1ChangesEvents struct {
 	// Array of additional authors to add to the change event, the creating actor will automatically be added as an author
 	Authors []*PostV1ChangesEventsAuthorsItems0 `json:"authors"`
 
-	// If provided and valid, the event will be linked to all changes that have the same identities
+	// If provided and valid, the event will be linked to all changes that have the same identities. Identity *values* must be unique.
 	ChangeIdentities []*PostV1ChangesEventsChangeIdentitiesItems0 `json:"change_identities"`
 
 	// An array of change IDs

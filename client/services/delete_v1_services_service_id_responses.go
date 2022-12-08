@@ -39,7 +39,8 @@ func NewDeleteV1ServicesServiceIDOK() *DeleteV1ServicesServiceIDOK {
 	return &DeleteV1ServicesServiceIDOK{}
 }
 
-/* DeleteV1ServicesServiceIDOK describes a response with status code 200, with default header values.
+/*
+DeleteV1ServicesServiceIDOK describes a response with status code 200, with default header values.
 
 Deletes the service from FireHydrant.
 */
@@ -47,9 +48,39 @@ type DeleteV1ServicesServiceIDOK struct {
 	Payload *models.ServiceEntity
 }
 
+// IsSuccess returns true when this delete v1 services service Id o k response has a 2xx status code
+func (o *DeleteV1ServicesServiceIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 services service Id o k response has a 3xx status code
+func (o *DeleteV1ServicesServiceIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 services service Id o k response has a 4xx status code
+func (o *DeleteV1ServicesServiceIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 services service Id o k response has a 5xx status code
+func (o *DeleteV1ServicesServiceIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 services service Id o k response a status code equal to that given
+func (o *DeleteV1ServicesServiceIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteV1ServicesServiceIDOK) Error() string {
 	return fmt.Sprintf("[DELETE /v1/services/{service_id}][%d] deleteV1ServicesServiceIdOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteV1ServicesServiceIDOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/services/{service_id}][%d] deleteV1ServicesServiceIdOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteV1ServicesServiceIDOK) GetPayload() *models.ServiceEntity {
 	return o.Payload
 }

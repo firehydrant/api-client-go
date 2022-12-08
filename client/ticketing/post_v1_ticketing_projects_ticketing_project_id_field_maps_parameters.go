@@ -53,10 +53,12 @@ func NewPostV1TicketingProjectsTicketingProjectIDFieldMapsParamsWithHTTPClient(c
 	}
 }
 
-/* PostV1TicketingProjectsTicketingProjectIDFieldMapsParams contains all the parameters to send to the API endpoint
-   for the post v1 ticketing projects ticketing project Id field maps operation.
+/*
+PostV1TicketingProjectsTicketingProjectIDFieldMapsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 ticketing projects ticketing project Id field maps operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1TicketingProjectsTicketingProjectIDFieldMapsParams struct {
 

@@ -21,19 +21,19 @@ type MetricsEntity struct {
 	BucketSize string `json:"bucket_size,omitempty"`
 
 	// buckets
-	Buckets string `json:"buckets,omitempty"`
+	Buckets []interface{} `json:"buckets"`
 
 	// by
 	By string `json:"by,omitempty"`
 
 	// display information
-	DisplayInformation string `json:"display_information,omitempty"`
+	DisplayInformation interface{} `json:"display_information,omitempty"`
 
 	// keys
-	Keys string `json:"keys,omitempty"`
+	Keys []string `json:"keys"`
 
 	// sort
-	Sort string `json:"sort,omitempty"`
+	Sort interface{} `json:"sort,omitempty"`
 
 	// type
 	Type string `json:"type,omitempty"`

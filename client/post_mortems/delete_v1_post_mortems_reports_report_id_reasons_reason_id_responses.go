@@ -7,9 +7,12 @@ package post_mortems
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // DeleteV1PostMortemsReportsReportIDReasonsReasonIDReader is a Reader for the DeleteV1PostMortemsReportsReportIDReasonsReasonID structure.
@@ -20,8 +23,8 @@ type DeleteV1PostMortemsReportsReportIDReasonsReasonIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 204:
-		result := NewDeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent()
+	case 200:
+		result := NewDeleteV1PostMortemsReportsReportIDReasonsReasonIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -31,23 +34,65 @@ func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDReader) ReadResponse(r
 	}
 }
 
-// NewDeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent creates a DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent with default headers values
-func NewDeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent() *DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent {
-	return &DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent{}
+// NewDeleteV1PostMortemsReportsReportIDReasonsReasonIDOK creates a DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK with default headers values
+func NewDeleteV1PostMortemsReportsReportIDReasonsReasonIDOK() *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK {
+	return &DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK{}
 }
 
-/* DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent describes a response with status code 204, with default header values.
+/*
+DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK describes a response with status code 200, with default header values.
 
-Deletes a reason from a report
+Delete a contributing factor
 */
-type DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent struct {
+type DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK struct {
+	Payload *models.ReasonEntity
 }
 
-func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/reasons/{reason_id}][%d] deleteV1PostMortemsReportsReportIdReasonsReasonIdNoContent ", 204)
+// IsSuccess returns true when this delete v1 post mortems reports report Id reasons reason Id o k response has a 2xx status code
+func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) IsSuccess() bool {
+	return true
 }
 
-func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+// IsRedirect returns true when this delete v1 post mortems reports report Id reasons reason Id o k response has a 3xx status code
+func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 post mortems reports report Id reasons reason Id o k response has a 4xx status code
+func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 post mortems reports report Id reasons reason Id o k response has a 5xx status code
+func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 post mortems reports report Id reasons reason Id o k response a status code equal to that given
+func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
+func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) Error() string {
+	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/reasons/{reason_id}][%d] deleteV1PostMortemsReportsReportIdReasonsReasonIdOK  %+v", 200, o.Payload)
+}
+
+func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/reasons/{reason_id}][%d] deleteV1PostMortemsReportsReportIdReasonsReasonIdOK  %+v", 200, o.Payload)
+}
+
+func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) GetPayload() *models.ReasonEntity {
+	return o.Payload
+}
+
+func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ReasonEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

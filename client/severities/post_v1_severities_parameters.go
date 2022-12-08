@@ -54,10 +54,12 @@ func NewPostV1SeveritiesParamsWithHTTPClient(client *http.Client) *PostV1Severit
 	}
 }
 
-/* PostV1SeveritiesParams contains all the parameters to send to the API endpoint
-   for the post v1 severities operation.
+/*
+PostV1SeveritiesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 severities operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1SeveritiesParams struct {
 

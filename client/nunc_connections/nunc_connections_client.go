@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	DeleteV1NuncConnectionsNuncConnectionID(params *DeleteV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDOK, error)
 
+	DeleteV1NuncConnectionsNuncConnectionIDSubscribers(params *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDSubscribersOK, error)
+
 	GetV1NuncConnections(params *GetV1NuncConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsOK, error)
 
 	GetV1NuncConnectionsNuncConnectionID(params *GetV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsNuncConnectionIDOK, error)
@@ -46,9 +48,9 @@ type ClientService interface {
 }
 
 /*
-  DeleteV1NuncConnectionsNuncConnectionID deletes a fire hydrant hosted status page
+DeleteV1NuncConnectionsNuncConnectionID deletes a fire hydrant hosted status page
 
-  Delete a FireHydrant hosted status page, stopping updates of your incidents to it.
+Delete a FireHydrant hosted status page, stopping updates of your incidents to it.
 */
 func (a *Client) DeleteV1NuncConnectionsNuncConnectionID(params *DeleteV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDOK, error) {
 	// TODO: Validate the params before sending
@@ -87,9 +89,50 @@ func (a *Client) DeleteV1NuncConnectionsNuncConnectionID(params *DeleteV1NuncCon
 }
 
 /*
-  GetV1NuncConnections lists the fire hydrant hosted status pages
+DeleteV1NuncConnectionsNuncConnectionIDSubscribers unsubscribes one or more status page subscribers
 
-  Lists the information displayed as part of your FireHydrant hosted status pages.
+Unsubscribes one or more status page subscribers.
+*/
+func (a *Client) DeleteV1NuncConnectionsNuncConnectionIDSubscribers(params *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDSubscribersOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1NuncConnectionsNuncConnectionIDSubscribersParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1NuncConnectionsNuncConnectionIdSubscribers",
+		Method:             "DELETE",
+		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/subscribers",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1NuncConnectionsNuncConnectionIDSubscribersReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1NuncConnectionsNuncConnectionIDSubscribersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1NuncConnectionsNuncConnectionIdSubscribers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1NuncConnections lists the fire hydrant hosted status pages
+
+Lists the information displayed as part of your FireHydrant hosted status pages.
 */
 func (a *Client) GetV1NuncConnections(params *GetV1NuncConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsOK, error) {
 	// TODO: Validate the params before sending
@@ -128,9 +171,9 @@ func (a *Client) GetV1NuncConnections(params *GetV1NuncConnectionsParams, authIn
 }
 
 /*
-  GetV1NuncConnectionsNuncConnectionID retrieves information about a fire hydrant hosted status page
+GetV1NuncConnectionsNuncConnectionID retrieves information about a fire hydrant hosted status page
 
-  Retrieve the information displayed as part of your FireHydrant hosted status page.
+Retrieve the information displayed as part of your FireHydrant hosted status page.
 */
 func (a *Client) GetV1NuncConnectionsNuncConnectionID(params *GetV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsNuncConnectionIDOK, error) {
 	// TODO: Validate the params before sending
@@ -169,9 +212,9 @@ func (a *Client) GetV1NuncConnectionsNuncConnectionID(params *GetV1NuncConnectio
 }
 
 /*
-  GetV1NuncConnectionsNuncConnectionIDSubscribers retrieves the list of subscribers for a status page
+GetV1NuncConnectionsNuncConnectionIDSubscribers retrieves the list of subscribers for a status page
 
-  Retrieves the list of subscribers for a status page.
+Retrieves the list of subscribers for a status page.
 */
 func (a *Client) GetV1NuncConnectionsNuncConnectionIDSubscribers(params *GetV1NuncConnectionsNuncConnectionIDSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsNuncConnectionIDSubscribersOK, error) {
 	// TODO: Validate the params before sending
@@ -210,9 +253,9 @@ func (a *Client) GetV1NuncConnectionsNuncConnectionIDSubscribers(params *GetV1Nu
 }
 
 /*
-  PostV1NuncConnections creates a fire hydrant hosted status page
+PostV1NuncConnections creates a fire hydrant hosted status page
 
-  Create a new FireHydrant hosted status page for customer facing statuses.
+Create a new FireHydrant hosted status page for customer facing statuses.
 */
 func (a *Client) PostV1NuncConnections(params *PostV1NuncConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncConnectionsCreated, error) {
 	// TODO: Validate the params before sending
@@ -251,9 +294,9 @@ func (a *Client) PostV1NuncConnections(params *PostV1NuncConnectionsParams, auth
 }
 
 /*
-  PutV1NuncConnectionsNuncConnectionID updates a fire hydrant hosted status page
+PutV1NuncConnectionsNuncConnectionID updates a fire hydrant hosted status page
 
-  Update your company's information and other components in the specified FireHydrant hosted status page.
+Update your company's information and other components in the specified FireHydrant hosted status page.
 */
 func (a *Client) PutV1NuncConnectionsNuncConnectionID(params *PutV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1NuncConnectionsNuncConnectionIDOK, error) {
 	// TODO: Validate the params before sending

@@ -39,17 +39,48 @@ func NewGetV1IncidentsIncidentIDMilestonesOK() *GetV1IncidentsIncidentIDMileston
 	return &GetV1IncidentsIncidentIDMilestonesOK{}
 }
 
-/* GetV1IncidentsIncidentIDMilestonesOK describes a response with status code 200, with default header values.
+/*
+GetV1IncidentsIncidentIDMilestonesOK describes a response with status code 200, with default header values.
 
-Retrieve all milestones for an incident
+List times and durations for each milestone on an incident
 */
 type GetV1IncidentsIncidentIDMilestonesOK struct {
 	Payload *models.MilestoneEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 incidents incident Id milestones o k response has a 2xx status code
+func (o *GetV1IncidentsIncidentIDMilestonesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 incidents incident Id milestones o k response has a 3xx status code
+func (o *GetV1IncidentsIncidentIDMilestonesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 incidents incident Id milestones o k response has a 4xx status code
+func (o *GetV1IncidentsIncidentIDMilestonesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 incidents incident Id milestones o k response has a 5xx status code
+func (o *GetV1IncidentsIncidentIDMilestonesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 incidents incident Id milestones o k response a status code equal to that given
+func (o *GetV1IncidentsIncidentIDMilestonesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IncidentsIncidentIDMilestonesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/milestones][%d] getV1IncidentsIncidentIdMilestonesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IncidentsIncidentIDMilestonesOK) String() string {
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/milestones][%d] getV1IncidentsIncidentIdMilestonesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IncidentsIncidentIDMilestonesOK) GetPayload() *models.MilestoneEntityPaginated {
 	return o.Payload
 }

@@ -53,10 +53,12 @@ func NewGetV1IncidentRolesParamsWithHTTPClient(client *http.Client) *GetV1Incide
 	}
 }
 
-/* GetV1IncidentRolesParams contains all the parameters to send to the API endpoint
-   for the get v1 incident roles operation.
+/*
+GetV1IncidentRolesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 incident roles operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1IncidentRolesParams struct {
 

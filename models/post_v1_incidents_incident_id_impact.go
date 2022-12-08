@@ -14,10 +14,13 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1IncidentsIncidentIDImpact Add a piece of infrastructure to an incident as impact
+// PostV1IncidentsIncidentIDImpact Add impacted infrastructure to an incident
 //
 // swagger:model postV1IncidentsIncidentIdImpact
 type PostV1IncidentsIncidentIDImpact struct {
+
+	// condition id
+	ConditionID string `json:"condition_id,omitempty"`
 
 	// id
 	// Required: true

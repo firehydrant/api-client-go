@@ -39,17 +39,48 @@ func NewGetV1IncidentsIncidentIDStatusPagesOK() *GetV1IncidentsIncidentIDStatusP
 	return &GetV1IncidentsIncidentIDStatusPagesOK{}
 }
 
-/* GetV1IncidentsIncidentIDStatusPagesOK describes a response with status code 200, with default header values.
+/*
+GetV1IncidentsIncidentIDStatusPagesOK describes a response with status code 200, with default header values.
 
-Retrieve status pages for the incident
+List status pages that are attached to an incident
 */
 type GetV1IncidentsIncidentIDStatusPagesOK struct {
 	Payload *models.StatusPageEntityPaginated
 }
 
+// IsSuccess returns true when this get v1 incidents incident Id status pages o k response has a 2xx status code
+func (o *GetV1IncidentsIncidentIDStatusPagesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 incidents incident Id status pages o k response has a 3xx status code
+func (o *GetV1IncidentsIncidentIDStatusPagesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 incidents incident Id status pages o k response has a 4xx status code
+func (o *GetV1IncidentsIncidentIDStatusPagesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 incidents incident Id status pages o k response has a 5xx status code
+func (o *GetV1IncidentsIncidentIDStatusPagesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 incidents incident Id status pages o k response a status code equal to that given
+func (o *GetV1IncidentsIncidentIDStatusPagesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1IncidentsIncidentIDStatusPagesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/status_pages][%d] getV1IncidentsIncidentIdStatusPagesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1IncidentsIncidentIDStatusPagesOK) String() string {
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/status_pages][%d] getV1IncidentsIncidentIdStatusPagesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1IncidentsIncidentIDStatusPagesOK) GetPayload() *models.StatusPageEntityPaginated {
 	return o.Payload
 }

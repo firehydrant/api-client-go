@@ -7,9 +7,12 @@ package runbooks
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PostV1RunbooksExecutionsReader is a Reader for the PostV1RunbooksExecutions structure.
@@ -36,18 +39,60 @@ func NewPostV1RunbooksExecutionsCreated() *PostV1RunbooksExecutionsCreated {
 	return &PostV1RunbooksExecutionsCreated{}
 }
 
-/* PostV1RunbooksExecutionsCreated describes a response with status code 201, with default header values.
+/*
+PostV1RunbooksExecutionsCreated describes a response with status code 201, with default header values.
 
-created Execution
+Attaches a runbook to an incident and executes it
 */
 type PostV1RunbooksExecutionsCreated struct {
+	Payload *models.ExecutionEntity
+}
+
+// IsSuccess returns true when this post v1 runbooks executions created response has a 2xx status code
+func (o *PostV1RunbooksExecutionsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 runbooks executions created response has a 3xx status code
+func (o *PostV1RunbooksExecutionsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 runbooks executions created response has a 4xx status code
+func (o *PostV1RunbooksExecutionsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 runbooks executions created response has a 5xx status code
+func (o *PostV1RunbooksExecutionsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 runbooks executions created response a status code equal to that given
+func (o *PostV1RunbooksExecutionsCreated) IsCode(code int) bool {
+	return code == 201
 }
 
 func (o *PostV1RunbooksExecutionsCreated) Error() string {
-	return fmt.Sprintf("[POST /v1/runbooks/executions][%d] postV1RunbooksExecutionsCreated ", 201)
+	return fmt.Sprintf("[POST /v1/runbooks/executions][%d] postV1RunbooksExecutionsCreated  %+v", 201, o.Payload)
+}
+
+func (o *PostV1RunbooksExecutionsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/runbooks/executions][%d] postV1RunbooksExecutionsCreated  %+v", 201, o.Payload)
+}
+
+func (o *PostV1RunbooksExecutionsCreated) GetPayload() *models.ExecutionEntity {
+	return o.Payload
 }
 
 func (o *PostV1RunbooksExecutionsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ExecutionEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

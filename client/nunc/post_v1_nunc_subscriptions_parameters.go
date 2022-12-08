@@ -52,10 +52,12 @@ func NewPostV1NuncSubscriptionsParamsWithHTTPClient(client *http.Client) *PostV1
 	}
 }
 
-/* PostV1NuncSubscriptionsParams contains all the parameters to send to the API endpoint
-   for the post v1 nunc subscriptions operation.
+/*
+PostV1NuncSubscriptionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 nunc subscriptions operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1NuncSubscriptionsParams struct {
 

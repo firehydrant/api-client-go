@@ -36,14 +36,44 @@ func NewGetV1OnboardingQuickStartReportOK() *GetV1OnboardingQuickStartReportOK {
 	return &GetV1OnboardingQuickStartReportOK{}
 }
 
-/* GetV1OnboardingQuickStartReportOK describes a response with status code 200, with default header values.
+/*
+GetV1OnboardingQuickStartReportOK describes a response with status code 200, with default header values.
 
 Onboarding quick start readiness report
 */
 type GetV1OnboardingQuickStartReportOK struct {
 }
 
+// IsSuccess returns true when this get v1 onboarding quick start report o k response has a 2xx status code
+func (o *GetV1OnboardingQuickStartReportOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 onboarding quick start report o k response has a 3xx status code
+func (o *GetV1OnboardingQuickStartReportOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 onboarding quick start report o k response has a 4xx status code
+func (o *GetV1OnboardingQuickStartReportOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 onboarding quick start report o k response has a 5xx status code
+func (o *GetV1OnboardingQuickStartReportOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 onboarding quick start report o k response a status code equal to that given
+func (o *GetV1OnboardingQuickStartReportOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1OnboardingQuickStartReportOK) Error() string {
+	return fmt.Sprintf("[GET /v1/onboarding/quick_start_report][%d] getV1OnboardingQuickStartReportOK ", 200)
+}
+
+func (o *GetV1OnboardingQuickStartReportOK) String() string {
 	return fmt.Sprintf("[GET /v1/onboarding/quick_start_report][%d] getV1OnboardingQuickStartReportOK ", 200)
 }
 

@@ -53,10 +53,12 @@ func NewPostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParamsW
 	}
 }
 
-/* PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams contains all the parameters to send to the API endpoint
-   for the post v1 post mortems reports report Id events from incident incident event Id operation.
+/*
+PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 post mortems reports report Id events from incident incident event Id operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1PostMortemsReportsReportIDEventsFromIncidentIncidentEventIDParams struct {
 

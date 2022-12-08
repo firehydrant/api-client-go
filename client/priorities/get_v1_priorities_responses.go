@@ -39,7 +39,8 @@ func NewGetV1PrioritiesOK() *GetV1PrioritiesOK {
 	return &GetV1PrioritiesOK{}
 }
 
-/* GetV1PrioritiesOK describes a response with status code 200, with default header values.
+/*
+GetV1PrioritiesOK describes a response with status code 200, with default header values.
 
 Lists priorities
 */
@@ -47,9 +48,39 @@ type GetV1PrioritiesOK struct {
 	Payload *models.PriorityEntity
 }
 
+// IsSuccess returns true when this get v1 priorities o k response has a 2xx status code
+func (o *GetV1PrioritiesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 priorities o k response has a 3xx status code
+func (o *GetV1PrioritiesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 priorities o k response has a 4xx status code
+func (o *GetV1PrioritiesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 priorities o k response has a 5xx status code
+func (o *GetV1PrioritiesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 priorities o k response a status code equal to that given
+func (o *GetV1PrioritiesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1PrioritiesOK) Error() string {
 	return fmt.Sprintf("[GET /v1/priorities][%d] getV1PrioritiesOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1PrioritiesOK) String() string {
+	return fmt.Sprintf("[GET /v1/priorities][%d] getV1PrioritiesOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1PrioritiesOK) GetPayload() *models.PriorityEntity {
 	return o.Payload
 }

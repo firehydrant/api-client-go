@@ -39,17 +39,48 @@ func NewDeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK() *DeleteV1
 	return &DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK{}
 }
 
-/* DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK describes a response with status code 200, with default header values.
+/*
+DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK describes a response with status code 200, with default header values.
 
-Unassign a role from a user. Any tasks that were created on the incident will remain in whatever state they are in
+Unassign a role from a user
 */
 type DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK struct {
 	Payload *models.RoleAssignmentEntity
 }
 
+// IsSuccess returns true when this delete v1 incidents incident Id role assignments role assignment Id o k response has a 2xx status code
+func (o *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 incidents incident Id role assignments role assignment Id o k response has a 3xx status code
+func (o *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 incidents incident Id role assignments role assignment Id o k response has a 4xx status code
+func (o *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 incidents incident Id role assignments role assignment Id o k response has a 5xx status code
+func (o *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 incidents incident Id role assignments role assignment Id o k response a status code equal to that given
+func (o *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK) Error() string {
 	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/role_assignments/{role_assignment_id}][%d] deleteV1IncidentsIncidentIdRoleAssignmentsRoleAssignmentIdOK  %+v", 200, o.Payload)
 }
+
+func (o *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/role_assignments/{role_assignment_id}][%d] deleteV1IncidentsIncidentIdRoleAssignmentsRoleAssignmentIdOK  %+v", 200, o.Payload)
+}
+
 func (o *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK) GetPayload() *models.RoleAssignmentEntity {
 	return o.Payload
 }

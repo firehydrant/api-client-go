@@ -52,10 +52,12 @@ func NewGetV1RunbookTemplatesParamsWithHTTPClient(client *http.Client) *GetV1Run
 	}
 }
 
-/* GetV1RunbookTemplatesParams contains all the parameters to send to the API endpoint
-   for the get v1 runbook templates operation.
+/*
+GetV1RunbookTemplatesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 runbook templates operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1RunbookTemplatesParams struct {
 	timeout    time.Duration

@@ -29,12 +29,6 @@ func (o *PostV1IncidentTypesReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return result, nil
-	case 400:
-		result := NewPostV1IncidentTypesBadRequest()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -45,17 +39,48 @@ func NewPostV1IncidentTypesCreated() *PostV1IncidentTypesCreated {
 	return &PostV1IncidentTypesCreated{}
 }
 
-/* PostV1IncidentTypesCreated describes a response with status code 201, with default header values.
+/*
+PostV1IncidentTypesCreated describes a response with status code 201, with default header values.
 
-Create an incident type
+Create a new incident type
 */
 type PostV1IncidentTypesCreated struct {
 	Payload *models.IncidentTypeEntity
 }
 
+// IsSuccess returns true when this post v1 incident types created response has a 2xx status code
+func (o *PostV1IncidentTypesCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 incident types created response has a 3xx status code
+func (o *PostV1IncidentTypesCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 incident types created response has a 4xx status code
+func (o *PostV1IncidentTypesCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 incident types created response has a 5xx status code
+func (o *PostV1IncidentTypesCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 incident types created response a status code equal to that given
+func (o *PostV1IncidentTypesCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1IncidentTypesCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/incident_types][%d] postV1IncidentTypesCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1IncidentTypesCreated) String() string {
+	return fmt.Sprintf("[POST /v1/incident_types][%d] postV1IncidentTypesCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1IncidentTypesCreated) GetPayload() *models.IncidentTypeEntity {
 	return o.Payload
 }
@@ -63,38 +88,6 @@ func (o *PostV1IncidentTypesCreated) GetPayload() *models.IncidentTypeEntity {
 func (o *PostV1IncidentTypesCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.IncidentTypeEntity)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPostV1IncidentTypesBadRequest creates a PostV1IncidentTypesBadRequest with default headers values
-func NewPostV1IncidentTypesBadRequest() *PostV1IncidentTypesBadRequest {
-	return &PostV1IncidentTypesBadRequest{}
-}
-
-/* PostV1IncidentTypesBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
-type PostV1IncidentTypesBadRequest struct {
-	Payload *models.ErrorEntity
-}
-
-func (o *PostV1IncidentTypesBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/incident_types][%d] postV1IncidentTypesBadRequest  %+v", 400, o.Payload)
-}
-func (o *PostV1IncidentTypesBadRequest) GetPayload() *models.ErrorEntity {
-	return o.Payload
-}
-
-func (o *PostV1IncidentTypesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ErrorEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

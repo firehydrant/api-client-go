@@ -29,12 +29,6 @@ func (o *PostV1PostMortemsReportsReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return result, nil
-	case 400:
-		result := NewPostV1PostMortemsReportsBadRequest()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -45,56 +39,55 @@ func NewPostV1PostMortemsReportsCreated() *PostV1PostMortemsReportsCreated {
 	return &PostV1PostMortemsReportsCreated{}
 }
 
-/* PostV1PostMortemsReportsCreated describes a response with status code 201, with default header values.
+/*
+PostV1PostMortemsReportsCreated describes a response with status code 201, with default header values.
 
-Create a post mortem
+Create a report
 */
 type PostV1PostMortemsReportsCreated struct {
-	Payload *models.ReportEntity
+	Payload *models.PostMortemReportEntity
+}
+
+// IsSuccess returns true when this post v1 post mortems reports created response has a 2xx status code
+func (o *PostV1PostMortemsReportsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 post mortems reports created response has a 3xx status code
+func (o *PostV1PostMortemsReportsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 post mortems reports created response has a 4xx status code
+func (o *PostV1PostMortemsReportsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 post mortems reports created response has a 5xx status code
+func (o *PostV1PostMortemsReportsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 post mortems reports created response a status code equal to that given
+func (o *PostV1PostMortemsReportsCreated) IsCode(code int) bool {
+	return code == 201
 }
 
 func (o *PostV1PostMortemsReportsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/post_mortems/reports][%d] postV1PostMortemsReportsCreated  %+v", 201, o.Payload)
 }
-func (o *PostV1PostMortemsReportsCreated) GetPayload() *models.ReportEntity {
+
+func (o *PostV1PostMortemsReportsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/post_mortems/reports][%d] postV1PostMortemsReportsCreated  %+v", 201, o.Payload)
+}
+
+func (o *PostV1PostMortemsReportsCreated) GetPayload() *models.PostMortemReportEntity {
 	return o.Payload
 }
 
 func (o *PostV1PostMortemsReportsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ReportEntity)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPostV1PostMortemsReportsBadRequest creates a PostV1PostMortemsReportsBadRequest with default headers values
-func NewPostV1PostMortemsReportsBadRequest() *PostV1PostMortemsReportsBadRequest {
-	return &PostV1PostMortemsReportsBadRequest{}
-}
-
-/* PostV1PostMortemsReportsBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
-type PostV1PostMortemsReportsBadRequest struct {
-	Payload *models.ErrorEntity
-}
-
-func (o *PostV1PostMortemsReportsBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/post_mortems/reports][%d] postV1PostMortemsReportsBadRequest  %+v", 400, o.Payload)
-}
-func (o *PostV1PostMortemsReportsBadRequest) GetPayload() *models.ErrorEntity {
-	return o.Payload
-}
-
-func (o *PostV1PostMortemsReportsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ErrorEntity)
+	o.Payload = new(models.PostMortemReportEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

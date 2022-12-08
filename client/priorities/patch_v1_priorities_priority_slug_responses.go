@@ -39,7 +39,8 @@ func NewPatchV1PrioritiesPrioritySlugOK() *PatchV1PrioritiesPrioritySlugOK {
 	return &PatchV1PrioritiesPrioritySlugOK{}
 }
 
-/* PatchV1PrioritiesPrioritySlugOK describes a response with status code 200, with default header values.
+/*
+PatchV1PrioritiesPrioritySlugOK describes a response with status code 200, with default header values.
 
 Update a specific priority
 */
@@ -47,9 +48,39 @@ type PatchV1PrioritiesPrioritySlugOK struct {
 	Payload *models.PriorityEntity
 }
 
+// IsSuccess returns true when this patch v1 priorities priority slug o k response has a 2xx status code
+func (o *PatchV1PrioritiesPrioritySlugOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 priorities priority slug o k response has a 3xx status code
+func (o *PatchV1PrioritiesPrioritySlugOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 priorities priority slug o k response has a 4xx status code
+func (o *PatchV1PrioritiesPrioritySlugOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 priorities priority slug o k response has a 5xx status code
+func (o *PatchV1PrioritiesPrioritySlugOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 priorities priority slug o k response a status code equal to that given
+func (o *PatchV1PrioritiesPrioritySlugOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1PrioritiesPrioritySlugOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/priorities/{priority_slug}][%d] patchV1PrioritiesPrioritySlugOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1PrioritiesPrioritySlugOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/priorities/{priority_slug}][%d] patchV1PrioritiesPrioritySlugOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1PrioritiesPrioritySlugOK) GetPayload() *models.PriorityEntity {
 	return o.Payload
 }

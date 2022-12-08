@@ -7,9 +7,12 @@ package incidents
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1IncidentsIncidentIDChannelReader is a Reader for the GetV1IncidentsIncidentIDChannel structure.
@@ -36,18 +39,60 @@ func NewGetV1IncidentsIncidentIDChannelOK() *GetV1IncidentsIncidentIDChannelOK {
 	return &GetV1IncidentsIncidentIDChannelOK{}
 }
 
-/* GetV1IncidentsIncidentIDChannelOK describes a response with status code 200, with default header values.
+/*
+GetV1IncidentsIncidentIDChannelOK describes a response with status code 200, with default header values.
 
-get Channel(s)
+Gives chat channel information for the specified incident
 */
 type GetV1IncidentsIncidentIDChannelOK struct {
+	Payload *models.ChannelEntity
+}
+
+// IsSuccess returns true when this get v1 incidents incident Id channel o k response has a 2xx status code
+func (o *GetV1IncidentsIncidentIDChannelOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 incidents incident Id channel o k response has a 3xx status code
+func (o *GetV1IncidentsIncidentIDChannelOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 incidents incident Id channel o k response has a 4xx status code
+func (o *GetV1IncidentsIncidentIDChannelOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 incidents incident Id channel o k response has a 5xx status code
+func (o *GetV1IncidentsIncidentIDChannelOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 incidents incident Id channel o k response a status code equal to that given
+func (o *GetV1IncidentsIncidentIDChannelOK) IsCode(code int) bool {
+	return code == 200
 }
 
 func (o *GetV1IncidentsIncidentIDChannelOK) Error() string {
-	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/channel][%d] getV1IncidentsIncidentIdChannelOK ", 200)
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/channel][%d] getV1IncidentsIncidentIdChannelOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1IncidentsIncidentIDChannelOK) String() string {
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/channel][%d] getV1IncidentsIncidentIdChannelOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1IncidentsIncidentIDChannelOK) GetPayload() *models.ChannelEntity {
+	return o.Payload
 }
 
 func (o *GetV1IncidentsIncidentIDChannelOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ChannelEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// StatusPageEntityPaginated Retrieve status pages for the incident
+// StatusPageEntityPaginated List status pages that are attached to an incident
 //
 // swagger:model StatusPageEntityPaginated
 type StatusPageEntityPaginated struct {

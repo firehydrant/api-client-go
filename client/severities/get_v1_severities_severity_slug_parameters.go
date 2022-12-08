@@ -52,10 +52,12 @@ func NewGetV1SeveritiesSeveritySlugParamsWithHTTPClient(client *http.Client) *Ge
 	}
 }
 
-/* GetV1SeveritiesSeveritySlugParams contains all the parameters to send to the API endpoint
-   for the get v1 severities severity slug operation.
+/*
+GetV1SeveritiesSeveritySlugParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the get v1 severities severity slug operation.
+
+	Typically these are written to a http.Request.
 */
 type GetV1SeveritiesSeveritySlugParams struct {
 

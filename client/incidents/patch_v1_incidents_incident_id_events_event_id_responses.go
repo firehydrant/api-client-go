@@ -39,17 +39,48 @@ func NewPatchV1IncidentsIncidentIDEventsEventIDOK() *PatchV1IncidentsIncidentIDE
 	return &PatchV1IncidentsIncidentIDEventsEventIDOK{}
 }
 
-/* PatchV1IncidentsIncidentIDEventsEventIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1IncidentsIncidentIDEventsEventIDOK describes a response with status code 200, with default header values.
 
-Update an incident event
+Update a single event for an incident
 */
 type PatchV1IncidentsIncidentIDEventsEventIDOK struct {
 	Payload *models.IncidentEventEntity
 }
 
+// IsSuccess returns true when this patch v1 incidents incident Id events event Id o k response has a 2xx status code
+func (o *PatchV1IncidentsIncidentIDEventsEventIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 incidents incident Id events event Id o k response has a 3xx status code
+func (o *PatchV1IncidentsIncidentIDEventsEventIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 incidents incident Id events event Id o k response has a 4xx status code
+func (o *PatchV1IncidentsIncidentIDEventsEventIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 incidents incident Id events event Id o k response has a 5xx status code
+func (o *PatchV1IncidentsIncidentIDEventsEventIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 incidents incident Id events event Id o k response a status code equal to that given
+func (o *PatchV1IncidentsIncidentIDEventsEventIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1IncidentsIncidentIDEventsEventIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/events/{event_id}][%d] patchV1IncidentsIncidentIdEventsEventIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1IncidentsIncidentIDEventsEventIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/events/{event_id}][%d] patchV1IncidentsIncidentIdEventsEventIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1IncidentsIncidentIDEventsEventIDOK) GetPayload() *models.IncidentEventEntity {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewDeleteV1EnvironmentsEnvironmentIDParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* DeleteV1EnvironmentsEnvironmentIDParams contains all the parameters to send to the API endpoint
-   for the delete v1 environments environment Id operation.
+/*
+DeleteV1EnvironmentsEnvironmentIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the delete v1 environments environment Id operation.
+
+	Typically these are written to a http.Request.
 */
 type DeleteV1EnvironmentsEnvironmentIDParams struct {
 

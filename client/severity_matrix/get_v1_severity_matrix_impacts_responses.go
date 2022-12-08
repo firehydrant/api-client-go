@@ -39,7 +39,8 @@ func NewGetV1SeverityMatrixImpactsOK() *GetV1SeverityMatrixImpactsOK {
 	return &GetV1SeverityMatrixImpactsOK{}
 }
 
-/* GetV1SeverityMatrixImpactsOK describes a response with status code 200, with default header values.
+/*
+GetV1SeverityMatrixImpactsOK describes a response with status code 200, with default header values.
 
 Lists impacts
 */
@@ -47,9 +48,39 @@ type GetV1SeverityMatrixImpactsOK struct {
 	Payload *models.ImpactEntity
 }
 
+// IsSuccess returns true when this get v1 severity matrix impacts o k response has a 2xx status code
+func (o *GetV1SeverityMatrixImpactsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this get v1 severity matrix impacts o k response has a 3xx status code
+func (o *GetV1SeverityMatrixImpactsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this get v1 severity matrix impacts o k response has a 4xx status code
+func (o *GetV1SeverityMatrixImpactsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this get v1 severity matrix impacts o k response has a 5xx status code
+func (o *GetV1SeverityMatrixImpactsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this get v1 severity matrix impacts o k response a status code equal to that given
+func (o *GetV1SeverityMatrixImpactsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GetV1SeverityMatrixImpactsOK) Error() string {
 	return fmt.Sprintf("[GET /v1/severity_matrix/impacts][%d] getV1SeverityMatrixImpactsOK  %+v", 200, o.Payload)
 }
+
+func (o *GetV1SeverityMatrixImpactsOK) String() string {
+	return fmt.Sprintf("[GET /v1/severity_matrix/impacts][%d] getV1SeverityMatrixImpactsOK  %+v", 200, o.Payload)
+}
+
 func (o *GetV1SeverityMatrixImpactsOK) GetPayload() *models.ImpactEntity {
 	return o.Payload
 }

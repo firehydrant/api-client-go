@@ -45,14 +45,44 @@ func NewDeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent() *DeleteV1ChangesC
 	return &DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent{}
 }
 
-/* DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent describes a response with status code 204, with default header values.
+/*
+DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent describes a response with status code 204, with default header values.
 
 Delete an identity
 */
 type DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent struct {
 }
 
+// IsSuccess returns true when this delete v1 changes change Id identities identity Id no content response has a 2xx status code
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this delete v1 changes change Id identities identity Id no content response has a 3xx status code
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 changes change Id identities identity Id no content response has a 4xx status code
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this delete v1 changes change Id identities identity Id no content response has a 5xx status code
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 changes change Id identities identity Id no content response a status code equal to that given
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /v1/changes/{change_id}/identities/{identity_id}][%d] deleteV1ChangesChangeIdIdentitiesIdentityIdNoContent ", 204)
+}
+
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent) String() string {
 	return fmt.Sprintf("[DELETE /v1/changes/{change_id}/identities/{identity_id}][%d] deleteV1ChangesChangeIdIdentitiesIdentityIdNoContent ", 204)
 }
 
@@ -66,7 +96,8 @@ func NewDeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest() *DeleteV1Changes
 	return &DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest{}
 }
 
-/* DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest describes a response with status code 400, with default header values.
+/*
+DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -74,9 +105,39 @@ type DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest struct {
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this delete v1 changes change Id identities identity Id bad request response has a 2xx status code
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this delete v1 changes change Id identities identity Id bad request response has a 3xx status code
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this delete v1 changes change Id identities identity Id bad request response has a 4xx status code
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this delete v1 changes change Id identities identity Id bad request response has a 5xx status code
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this delete v1 changes change Id identities identity Id bad request response a status code equal to that given
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /v1/changes/{change_id}/identities/{identity_id}][%d] deleteV1ChangesChangeIdIdentitiesIdentityIdBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /v1/changes/{change_id}/identities/{identity_id}][%d] deleteV1ChangesChangeIdIdentitiesIdentityIdBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }

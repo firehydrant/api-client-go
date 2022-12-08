@@ -54,10 +54,12 @@ func NewPostV1TeamsParamsWithHTTPClient(client *http.Client) *PostV1TeamsParams 
 	}
 }
 
-/* PostV1TeamsParams contains all the parameters to send to the API endpoint
-   for the post v1 teams operation.
+/*
+PostV1TeamsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the post v1 teams operation.
+
+	Typically these are written to a http.Request.
 */
 type PostV1TeamsParams struct {
 

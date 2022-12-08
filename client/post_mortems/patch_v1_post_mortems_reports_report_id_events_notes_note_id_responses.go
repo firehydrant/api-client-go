@@ -39,7 +39,8 @@ func NewPatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK() *PatchV1PostMorte
 	return &PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK{}
 }
 
-/* PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK describes a response with status code 200, with default header values.
+/*
+PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK describes a response with status code 200, with default header values.
 
 Updates the note body and time by ID
 */
@@ -47,9 +48,39 @@ type PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK struct {
 	Payload *models.EventEntity
 }
 
+// IsSuccess returns true when this patch v1 post mortems reports report Id events notes note Id o k response has a 2xx status code
+func (o *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this patch v1 post mortems reports report Id events notes note Id o k response has a 3xx status code
+func (o *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this patch v1 post mortems reports report Id events notes note Id o k response has a 4xx status code
+func (o *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this patch v1 post mortems reports report Id events notes note Id o k response has a 5xx status code
+func (o *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this patch v1 post mortems reports report Id events notes note Id o k response a status code equal to that given
+func (o *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK) Error() string {
 	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}/events/notes/{note_id}][%d] patchV1PostMortemsReportsReportIdEventsNotesNoteIdOK  %+v", 200, o.Payload)
 }
+
+func (o *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK) String() string {
+	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}/events/notes/{note_id}][%d] patchV1PostMortemsReportsReportIdEventsNotesNoteIdOK  %+v", 200, o.Payload)
+}
+
 func (o *PatchV1PostMortemsReportsReportIDEventsNotesNoteIDOK) GetPayload() *models.EventEntity {
 	return o.Payload
 }

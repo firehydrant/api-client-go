@@ -51,17 +51,48 @@ func NewPostV1IncidentsIncidentIDRelatedChangeEventsCreated() *PostV1IncidentsIn
 	return &PostV1IncidentsIncidentIDRelatedChangeEventsCreated{}
 }
 
-/* PostV1IncidentsIncidentIDRelatedChangeEventsCreated describes a response with status code 201, with default header values.
+/*
+PostV1IncidentsIncidentIDRelatedChangeEventsCreated describes a response with status code 201, with default header values.
 
-Associate a change event to the incident
+Add a related change to an incident. Changes added to an incident can be causes, fixes, or suspects. To remove a change from an incident, the type field should be set to dismissed.
 */
 type PostV1IncidentsIncidentIDRelatedChangeEventsCreated struct {
 	Payload *models.RelatedChangeEventEntity
 }
 
+// IsSuccess returns true when this post v1 incidents incident Id related change events created response has a 2xx status code
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this post v1 incidents incident Id related change events created response has a 3xx status code
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 incidents incident Id related change events created response has a 4xx status code
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this post v1 incidents incident Id related change events created response has a 5xx status code
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 incidents incident Id related change events created response a status code equal to that given
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/related_change_events][%d] postV1IncidentsIncidentIdRelatedChangeEventsCreated  %+v", 201, o.Payload)
 }
+
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) String() string {
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/related_change_events][%d] postV1IncidentsIncidentIdRelatedChangeEventsCreated  %+v", 201, o.Payload)
+}
+
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) GetPayload() *models.RelatedChangeEventEntity {
 	return o.Payload
 }
@@ -83,7 +114,8 @@ func NewPostV1IncidentsIncidentIDRelatedChangeEventsBadRequest() *PostV1Incident
 	return &PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest{}
 }
 
-/* PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest describes a response with status code 400, with default header values.
+/*
+PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -91,9 +123,39 @@ type PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest struct {
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this post v1 incidents incident Id related change events bad request response has a 2xx status code
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post v1 incidents incident Id related change events bad request response has a 3xx status code
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 incidents incident Id related change events bad request response has a 4xx status code
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post v1 incidents incident Id related change events bad request response has a 5xx status code
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 incidents incident Id related change events bad request response a status code equal to that given
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/related_change_events][%d] postV1IncidentsIncidentIdRelatedChangeEventsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) String() string {
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/related_change_events][%d] postV1IncidentsIncidentIdRelatedChangeEventsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }
@@ -115,7 +177,8 @@ func NewPostV1IncidentsIncidentIDRelatedChangeEventsConflict() *PostV1IncidentsI
 	return &PostV1IncidentsIncidentIDRelatedChangeEventsConflict{}
 }
 
-/* PostV1IncidentsIncidentIDRelatedChangeEventsConflict describes a response with status code 409, with default header values.
+/*
+PostV1IncidentsIncidentIDRelatedChangeEventsConflict describes a response with status code 409, with default header values.
 
 Already Added
 */
@@ -123,9 +186,39 @@ type PostV1IncidentsIncidentIDRelatedChangeEventsConflict struct {
 	Payload *models.ErrorEntity
 }
 
+// IsSuccess returns true when this post v1 incidents incident Id related change events conflict response has a 2xx status code
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this post v1 incidents incident Id related change events conflict response has a 3xx status code
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this post v1 incidents incident Id related change events conflict response has a 4xx status code
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this post v1 incidents incident Id related change events conflict response has a 5xx status code
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this post v1 incidents incident Id related change events conflict response a status code equal to that given
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) IsCode(code int) bool {
+	return code == 409
+}
+
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/related_change_events][%d] postV1IncidentsIncidentIdRelatedChangeEventsConflict  %+v", 409, o.Payload)
 }
+
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) String() string {
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/related_change_events][%d] postV1IncidentsIncidentIdRelatedChangeEventsConflict  %+v", 409, o.Payload)
+}
+
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) GetPayload() *models.ErrorEntity {
 	return o.Payload
 }
