@@ -194,8 +194,8 @@ func (o *GetV1RunbookAuditsParams) WriteToRequest(r runtime.ClientRequest, reg s
 		// binding items for auditable_type
 		joinedAuditableType := o.bindParamAuditableType(reg)
 
-		// form array param auditable_type
-		if err := r.SetFormParam("auditable_type", joinedAuditableType...); err != nil {
+		// query array param auditable_type
+		if err := r.SetQueryParam("auditable_type", joinedAuditableType...); err != nil {
 			return err
 		}
 	}

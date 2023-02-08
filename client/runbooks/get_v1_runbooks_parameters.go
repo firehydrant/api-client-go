@@ -211,8 +211,8 @@ func (o *GetV1RunbooksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		// binding items for owners
 		joinedOwners := o.bindParamOwners(reg)
 
-		// form array param owners
-		if err := r.SetFormParam("owners", joinedOwners...); err != nil {
+		// query array param owners
+		if err := r.SetQueryParam("owners", joinedOwners...); err != nil {
 			return err
 		}
 	}

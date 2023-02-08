@@ -20,6 +20,9 @@ type IncidentAttachmentEntity struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// external id
+	ExternalID string `json:"external_id,omitempty"`
+
 	// file content type
 	FileContentType string `json:"file_content_type,omitempty"`
 

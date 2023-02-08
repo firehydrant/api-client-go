@@ -41,6 +41,9 @@ type IncidentEntity struct {
 	// context object
 	ContextObject *ContextObjectEntity `json:"context_object,omitempty"`
 
+	// conversations
+	Conversations *Reference `json:"conversations,omitempty"`
+
 	// The time the incident was opened
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
@@ -176,6 +179,10 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateConversations(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
 	}
@@ -287,6 +294,25 @@ func (m *IncidentEntity) validateContextObject(formats strfmt.Registry) error {
 				return ve.ValidateName("context_object")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("context_object")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) validateConversations(formats strfmt.Registry) error {
+	if swag.IsZero(m.Conversations) { // not required
+		return nil
+	}
+
+	if m.Conversations != nil {
+		if err := m.Conversations.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("conversations")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("conversations")
 			}
 			return err
 		}
@@ -679,6 +705,10 @@ func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateConversations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateCreatedBy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -773,6 +803,22 @@ func (m *IncidentEntity) contextValidateContextObject(ctx context.Context, forma
 				return ve.ValidateName("context_object")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("context_object")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) contextValidateConversations(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Conversations != nil {
+		if err := m.Conversations.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("conversations")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("conversations")
 			}
 			return err
 		}

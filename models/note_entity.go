@@ -23,6 +23,9 @@ type NoteEntity struct {
 	// body
 	Body string `json:"body,omitempty"`
 
+	// conversations
+	Conversations []*Reference `json:"conversations"`
+
 	// created at
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
@@ -38,6 +41,10 @@ type NoteEntity struct {
 func (m *NoteEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateConversations(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
 	}
@@ -49,6 +56,32 @@ func (m *NoteEntity) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NoteEntity) validateConversations(formats strfmt.Registry) error {
+	if swag.IsZero(m.Conversations) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Conversations); i++ {
+		if swag.IsZero(m.Conversations[i]) { // not required
+			continue
+		}
+
+		if m.Conversations[i] != nil {
+			if err := m.Conversations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conversations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -94,6 +127,10 @@ func (m *NoteEntity) validateStatusPages(formats strfmt.Registry) error {
 func (m *NoteEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateConversations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateStatusPages(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -101,6 +138,26 @@ func (m *NoteEntity) ContextValidate(ctx context.Context, formats strfmt.Registr
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NoteEntity) contextValidateConversations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Conversations); i++ {
+
+		if m.Conversations[i] != nil {
+			if err := m.Conversations[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conversations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

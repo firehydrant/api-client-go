@@ -7,7 +7,9 @@ package models
 
 import (
 	"context"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -22,6 +24,9 @@ type QuestionEntity struct {
 
 	// body
 	Body string `json:"body,omitempty"`
+
+	// conversations
+	Conversations []*Reference `json:"conversations"`
 
 	// id
 	ID string `json:"id,omitempty"`
@@ -41,11 +46,75 @@ type QuestionEntity struct {
 
 // Validate validates this question entity
 func (m *QuestionEntity) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateConversations(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this question entity based on context it is used
+func (m *QuestionEntity) validateConversations(formats strfmt.Registry) error {
+	if swag.IsZero(m.Conversations) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Conversations); i++ {
+		if swag.IsZero(m.Conversations[i]) { // not required
+			continue
+		}
+
+		if m.Conversations[i] != nil {
+			if err := m.Conversations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conversations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this question entity based on the context it is used
 func (m *QuestionEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateConversations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *QuestionEntity) contextValidateConversations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Conversations); i++ {
+
+		if m.Conversations[i] != nil {
+			if err := m.Conversations[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conversations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

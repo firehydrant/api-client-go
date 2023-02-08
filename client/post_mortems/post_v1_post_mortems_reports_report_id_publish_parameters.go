@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPostV1PostMortemsReportsReportIDPublishParams creates a new PostV1PostMortemsReportsReportIDPublishParams object,
@@ -60,6 +62,9 @@ PostV1PostMortemsReportsReportIDPublishParams contains all the parameters to sen
 	Typically these are written to a http.Request.
 */
 type PostV1PostMortemsReportsReportIDPublishParams struct {
+
+	// V1PostMortemsReportsReportIDPublish.
+	V1PostMortemsReportsReportIDPublish *models.PostV1PostMortemsReportsReportIDPublish
 
 	// ReportID.
 	ReportID string
@@ -117,6 +122,17 @@ func (o *PostV1PostMortemsReportsReportIDPublishParams) SetHTTPClient(client *ht
 	o.HTTPClient = client
 }
 
+// WithV1PostMortemsReportsReportIDPublish adds the v1PostMortemsReportsReportIDPublish to the post v1 post mortems reports report Id publish params
+func (o *PostV1PostMortemsReportsReportIDPublishParams) WithV1PostMortemsReportsReportIDPublish(v1PostMortemsReportsReportIDPublish *models.PostV1PostMortemsReportsReportIDPublish) *PostV1PostMortemsReportsReportIDPublishParams {
+	o.SetV1PostMortemsReportsReportIDPublish(v1PostMortemsReportsReportIDPublish)
+	return o
+}
+
+// SetV1PostMortemsReportsReportIDPublish adds the v1PostMortemsReportsReportIdPublish to the post v1 post mortems reports report Id publish params
+func (o *PostV1PostMortemsReportsReportIDPublishParams) SetV1PostMortemsReportsReportIDPublish(v1PostMortemsReportsReportIDPublish *models.PostV1PostMortemsReportsReportIDPublish) {
+	o.V1PostMortemsReportsReportIDPublish = v1PostMortemsReportsReportIDPublish
+}
+
 // WithReportID adds the reportID to the post v1 post mortems reports report Id publish params
 func (o *PostV1PostMortemsReportsReportIDPublishParams) WithReportID(reportID string) *PostV1PostMortemsReportsReportIDPublishParams {
 	o.SetReportID(reportID)
@@ -135,6 +151,11 @@ func (o *PostV1PostMortemsReportsReportIDPublishParams) WriteToRequest(r runtime
 		return err
 	}
 	var res []error
+	if o.V1PostMortemsReportsReportIDPublish != nil {
+		if err := r.SetBodyParam(o.V1PostMortemsReportsReportIDPublish); err != nil {
+			return err
+		}
+	}
 
 	// path param report_id
 	if err := r.SetPathParam("report_id", o.ReportID); err != nil {

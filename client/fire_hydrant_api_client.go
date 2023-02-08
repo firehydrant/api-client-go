@@ -15,6 +15,8 @@ import (
 	"github.com/firehydrant/api-client-go/client/change_types"
 	"github.com/firehydrant/api-client-go/client/changes"
 	"github.com/firehydrant/api-client-go/client/checklist_templates"
+	"github.com/firehydrant/api-client-go/client/commenting"
+	"github.com/firehydrant/api-client-go/client/conversations"
 	"github.com/firehydrant/api-client-go/client/entitlements"
 	"github.com/firehydrant/api-client-go/client/environments"
 	"github.com/firehydrant/api-client-go/client/functionalities"
@@ -100,6 +102,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.ChangeTypes = change_types.New(transport, formats)
 	cli.Changes = changes.New(transport, formats)
 	cli.ChecklistTemplates = checklist_templates.New(transport, formats)
+	cli.Commenting = commenting.New(transport, formats)
+	cli.Conversations = conversations.New(transport, formats)
 	cli.Entitlements = entitlements.New(transport, formats)
 	cli.Environments = environments.New(transport, formats)
 	cli.Functionalities = functionalities.New(transport, formats)
@@ -190,6 +194,10 @@ type FireHydrantAPI struct {
 
 	ChecklistTemplates checklist_templates.ClientService
 
+	Commenting commenting.ClientService
+
+	Conversations conversations.ClientService
+
 	Entitlements entitlements.ClientService
 
 	Environments environments.ClientService
@@ -273,6 +281,8 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.ChangeTypes.SetTransport(transport)
 	c.Changes.SetTransport(transport)
 	c.ChecklistTemplates.SetTransport(transport)
+	c.Commenting.SetTransport(transport)
+	c.Conversations.SetTransport(transport)
 	c.Entitlements.SetTransport(transport)
 	c.Environments.SetTransport(transport)
 	c.Functionalities.SetTransport(transport)

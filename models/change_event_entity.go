@@ -43,7 +43,7 @@ type ChangeEventEntity struct {
 	EndsAt *strfmt.DateTime `json:"ends_at,omitempty"`
 
 	// environments
-	Environments []*EnvironmentEntity `json:"environments"`
+	Environments []*EnvironmentEntryEntity `json:"environments"`
 
 	// external id
 	ExternalID string `json:"external_id,omitempty"`

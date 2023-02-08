@@ -45,7 +45,7 @@ GetV1EnvironmentsOK describes a response with status code 200, with default head
 List all of the environments that have been added to the organiation
 */
 type GetV1EnvironmentsOK struct {
-	Payload *models.EnvironmentEntityPaginated
+	Payload *models.EnvironmentEntryEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 environments o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1EnvironmentsOK) String() string {
 	return fmt.Sprintf("[GET /v1/environments][%d] getV1EnvironmentsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1EnvironmentsOK) GetPayload() *models.EnvironmentEntityPaginated {
+func (o *GetV1EnvironmentsOK) GetPayload() *models.EnvironmentEntryEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1EnvironmentsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.EnvironmentEntityPaginated)
+	o.Payload = new(models.EnvironmentEntryEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

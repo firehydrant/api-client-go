@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPostV1IncidentTagsValidateParams creates a new PostV1IncidentTagsValidateParams object,
@@ -139,14 +138,8 @@ func (o *PostV1IncidentTagsValidateParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-
 	if o.Tags != nil {
-
-		// binding items for tags
-		joinedTags := o.bindParamTags(reg)
-
-		// form array param tags
-		if err := r.SetFormParam("tags", joinedTags...); err != nil {
+		if err := r.SetBodyParam(o.Tags); err != nil {
 			return err
 		}
 	}
@@ -155,21 +148,4 @@ func (o *PostV1IncidentTagsValidateParams) WriteToRequest(r runtime.ClientReques
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
-}
-
-// bindParamPostV1IncidentTagsValidate binds the parameter tags
-func (o *PostV1IncidentTagsValidateParams) bindParamTags(formats strfmt.Registry) []string {
-	tagsIR := o.Tags
-
-	var tagsIC []string
-	for _, tagsIIR := range tagsIR { // explode []string
-
-		tagsIIV := tagsIIR // string as string
-		tagsIC = append(tagsIC, tagsIIV)
-	}
-
-	// items.CollectionFormat: ""
-	tagsIS := swag.JoinByFormat(tagsIC, "")
-
-	return tagsIS
 }

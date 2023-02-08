@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -23,6 +24,9 @@ type IncidentEventEntity struct {
 
 	// context
 	Context string `json:"context,omitempty"`
+
+	// conversations
+	Conversations []*Reference `json:"conversations"`
 
 	// data
 	Data string `json:"data,omitempty"`
@@ -51,6 +55,10 @@ func (m *IncidentEventEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAuthor(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateConversations(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -83,6 +91,32 @@ func (m *IncidentEventEntity) validateAuthor(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IncidentEventEntity) validateConversations(formats strfmt.Registry) error {
+	if swag.IsZero(m.Conversations) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Conversations); i++ {
+		if swag.IsZero(m.Conversations[i]) { // not required
+			continue
+		}
+
+		if m.Conversations[i] != nil {
+			if err := m.Conversations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conversations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *IncidentEventEntity) validateVotes(formats strfmt.Registry) error {
 	if swag.IsZero(m.Votes) { // not required
 		return nil
@@ -110,6 +144,10 @@ func (m *IncidentEventEntity) ContextValidate(ctx context.Context, formats strfm
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateConversations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVotes(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -131,6 +169,26 @@ func (m *IncidentEventEntity) contextValidateAuthor(ctx context.Context, formats
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *IncidentEventEntity) contextValidateConversations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Conversations); i++ {
+
+		if m.Conversations[i] != nil {
+			if err := m.Conversations[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conversations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

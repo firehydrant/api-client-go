@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPutV1IncidentsIncidentIDLinksLinkIDParams creates a new PutV1IncidentsIncidentIDLinksLinkIDParams object,
@@ -61,14 +63,8 @@ PutV1IncidentsIncidentIDLinksLinkIDParams contains all the parameters to send to
 */
 type PutV1IncidentsIncidentIDLinksLinkIDParams struct {
 
-	// DisplayText.
-	DisplayText *string
-
-	// HrefURL.
-	HrefURL *string
-
-	// IconURL.
-	IconURL *string
+	// V1IncidentsIncidentIDLinks.
+	V1IncidentsIncidentIDLinks *models.PutV1IncidentsIncidentIDLinks
 
 	// IncidentID.
 	IncidentID string
@@ -129,37 +125,15 @@ func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) SetHTTPClient(client *http.C
 	o.HTTPClient = client
 }
 
-// WithDisplayText adds the displayText to the put v1 incidents incident Id links link Id params
-func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WithDisplayText(displayText *string) *PutV1IncidentsIncidentIDLinksLinkIDParams {
-	o.SetDisplayText(displayText)
+// WithV1IncidentsIncidentIDLinks adds the v1IncidentsIncidentIDLinks to the put v1 incidents incident Id links link Id params
+func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WithV1IncidentsIncidentIDLinks(v1IncidentsIncidentIDLinks *models.PutV1IncidentsIncidentIDLinks) *PutV1IncidentsIncidentIDLinksLinkIDParams {
+	o.SetV1IncidentsIncidentIDLinks(v1IncidentsIncidentIDLinks)
 	return o
 }
 
-// SetDisplayText adds the displayText to the put v1 incidents incident Id links link Id params
-func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) SetDisplayText(displayText *string) {
-	o.DisplayText = displayText
-}
-
-// WithHrefURL adds the hrefURL to the put v1 incidents incident Id links link Id params
-func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WithHrefURL(hrefURL *string) *PutV1IncidentsIncidentIDLinksLinkIDParams {
-	o.SetHrefURL(hrefURL)
-	return o
-}
-
-// SetHrefURL adds the hrefUrl to the put v1 incidents incident Id links link Id params
-func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) SetHrefURL(hrefURL *string) {
-	o.HrefURL = hrefURL
-}
-
-// WithIconURL adds the iconURL to the put v1 incidents incident Id links link Id params
-func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WithIconURL(iconURL *string) *PutV1IncidentsIncidentIDLinksLinkIDParams {
-	o.SetIconURL(iconURL)
-	return o
-}
-
-// SetIconURL adds the iconUrl to the put v1 incidents incident Id links link Id params
-func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) SetIconURL(iconURL *string) {
-	o.IconURL = iconURL
+// SetV1IncidentsIncidentIDLinks adds the v1IncidentsIncidentIdLinks to the put v1 incidents incident Id links link Id params
+func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) SetV1IncidentsIncidentIDLinks(v1IncidentsIncidentIDLinks *models.PutV1IncidentsIncidentIDLinks) {
+	o.V1IncidentsIncidentIDLinks = v1IncidentsIncidentIDLinks
 }
 
 // WithIncidentID adds the incidentID to the put v1 incidents incident Id links link Id params
@@ -191,49 +165,9 @@ func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WriteToRequest(r runtime.Cli
 		return err
 	}
 	var res []error
-
-	if o.DisplayText != nil {
-
-		// form param display_text
-		var frDisplayText string
-		if o.DisplayText != nil {
-			frDisplayText = *o.DisplayText
-		}
-		fDisplayText := frDisplayText
-		if fDisplayText != "" {
-			if err := r.SetFormParam("display_text", fDisplayText); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.HrefURL != nil {
-
-		// form param href_url
-		var frHrefURL string
-		if o.HrefURL != nil {
-			frHrefURL = *o.HrefURL
-		}
-		fHrefURL := frHrefURL
-		if fHrefURL != "" {
-			if err := r.SetFormParam("href_url", fHrefURL); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.IconURL != nil {
-
-		// form param icon_url
-		var frIconURL string
-		if o.IconURL != nil {
-			frIconURL = *o.IconURL
-		}
-		fIconURL := frIconURL
-		if fIconURL != "" {
-			if err := r.SetFormParam("icon_url", fIconURL); err != nil {
-				return err
-			}
+	if o.V1IncidentsIncidentIDLinks != nil {
+		if err := r.SetBodyParam(o.V1IncidentsIncidentIDLinks); err != nil {
+			return err
 		}
 	}
 

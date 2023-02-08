@@ -162,8 +162,8 @@ func (o *GetV1IntegrationsZendeskSearchParams) WriteToRequest(r runtime.ClientRe
 		// binding items for include
 		joinedInclude := o.bindParamInclude(reg)
 
-		// form array param include
-		if err := r.SetFormParam("include", joinedInclude...); err != nil {
+		// query array param include
+		if err := r.SetQueryParam("include", joinedInclude...); err != nil {
 			return err
 		}
 	}

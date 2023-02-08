@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PriorityEntity Retrieve a specific priority
+// PriorityEntity Retrieve a single ticketing priority by ID
 //
 // swagger:model PriorityEntity
 type PriorityEntity struct {
@@ -23,17 +23,14 @@ type PriorityEntity struct {
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
-	// default
-	Default bool `json:"default,omitempty"`
+	// id
+	ID string `json:"id,omitempty"`
 
-	// description
-	Description string `json:"description,omitempty"`
+	// name
+	Name string `json:"name,omitempty"`
 
 	// position
 	Position int32 `json:"position,omitempty"`
-
-	// slug
-	Slug string `json:"slug,omitempty"`
 
 	// updated at
 	// Format: date-time

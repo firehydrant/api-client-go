@@ -15,6 +15,8 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPatchV1ServiceDependenciesServiceDependencyIDParams creates a new PatchV1ServiceDependenciesServiceDependencyIDParams object,
@@ -62,11 +64,8 @@ PatchV1ServiceDependenciesServiceDependencyIDParams contains all the parameters 
 */
 type PatchV1ServiceDependenciesServiceDependencyIDParams struct {
 
-	/* Notes.
-
-	   A note to describe the service dependency relationship
-	*/
-	Notes *string
+	// V1ServiceDependencies.
+	V1ServiceDependencies *models.PatchV1ServiceDependencies
 
 	// ServiceDependencyID.
 	//
@@ -126,15 +125,15 @@ func (o *PatchV1ServiceDependenciesServiceDependencyIDParams) SetHTTPClient(clie
 	o.HTTPClient = client
 }
 
-// WithNotes adds the notes to the patch v1 service dependencies service dependency Id params
-func (o *PatchV1ServiceDependenciesServiceDependencyIDParams) WithNotes(notes *string) *PatchV1ServiceDependenciesServiceDependencyIDParams {
-	o.SetNotes(notes)
+// WithV1ServiceDependencies adds the v1ServiceDependencies to the patch v1 service dependencies service dependency Id params
+func (o *PatchV1ServiceDependenciesServiceDependencyIDParams) WithV1ServiceDependencies(v1ServiceDependencies *models.PatchV1ServiceDependencies) *PatchV1ServiceDependenciesServiceDependencyIDParams {
+	o.SetV1ServiceDependencies(v1ServiceDependencies)
 	return o
 }
 
-// SetNotes adds the notes to the patch v1 service dependencies service dependency Id params
-func (o *PatchV1ServiceDependenciesServiceDependencyIDParams) SetNotes(notes *string) {
-	o.Notes = notes
+// SetV1ServiceDependencies adds the v1ServiceDependencies to the patch v1 service dependencies service dependency Id params
+func (o *PatchV1ServiceDependenciesServiceDependencyIDParams) SetV1ServiceDependencies(v1ServiceDependencies *models.PatchV1ServiceDependencies) {
+	o.V1ServiceDependencies = v1ServiceDependencies
 }
 
 // WithServiceDependencyID adds the serviceDependencyID to the patch v1 service dependencies service dependency Id params
@@ -155,19 +154,9 @@ func (o *PatchV1ServiceDependenciesServiceDependencyIDParams) WriteToRequest(r r
 		return err
 	}
 	var res []error
-
-	if o.Notes != nil {
-
-		// form param notes
-		var frNotes string
-		if o.Notes != nil {
-			frNotes = *o.Notes
-		}
-		fNotes := frNotes
-		if fNotes != "" {
-			if err := r.SetFormParam("notes", fNotes); err != nil {
-				return err
-			}
+	if o.V1ServiceDependencies != nil {
+		if err := r.SetBodyParam(o.V1ServiceDependencies); err != nil {
+			return err
 		}
 	}
 

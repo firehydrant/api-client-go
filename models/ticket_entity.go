@@ -40,6 +40,9 @@ type TicketEntity struct {
 	// link
 	Link *LinkEntity `json:"link,omitempty"`
 
+	// priority
+	Priority *PriorityEntity `json:"priority,omitempty"`
+
 	// state
 	State string `json:"state,omitempty"`
 
@@ -69,6 +72,10 @@ func (m *TicketEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLink(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePriority(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -142,6 +149,25 @@ func (m *TicketEntity) validateLink(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *TicketEntity) validatePriority(formats strfmt.Registry) error {
+	if swag.IsZero(m.Priority) { // not required
+		return nil
+	}
+
+	if m.Priority != nil {
+		if err := m.Priority.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("priority")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("priority")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this ticket entity based on the context it is used
 func (m *TicketEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -155,6 +181,10 @@ func (m *TicketEntity) ContextValidate(ctx context.Context, formats strfmt.Regis
 	}
 
 	if err := m.contextValidateLink(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePriority(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -208,6 +238,22 @@ func (m *TicketEntity) contextValidateLink(ctx context.Context, formats strfmt.R
 				return ve.ValidateName("link")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("link")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *TicketEntity) contextValidatePriority(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Priority != nil {
+		if err := m.Priority.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("priority")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("priority")
 			}
 			return err
 		}

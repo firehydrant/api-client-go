@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPostV1IncidentsIncidentIDStatusPagesParams creates a new PostV1IncidentsIncidentIDStatusPagesParams object,
@@ -61,17 +63,11 @@ PostV1IncidentsIncidentIDStatusPagesParams contains all the parameters to send t
 */
 type PostV1IncidentsIncidentIDStatusPagesParams struct {
 
+	// V1IncidentsIncidentIDStatusPages.
+	V1IncidentsIncidentIDStatusPages *models.PostV1IncidentsIncidentIDStatusPages
+
 	// IncidentID.
 	IncidentID string
-
-	// IntegrationID.
-	IntegrationID string
-
-	// IntegrationSlug.
-	IntegrationSlug string
-
-	// Title.
-	Title *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,6 +122,17 @@ func (o *PostV1IncidentsIncidentIDStatusPagesParams) SetHTTPClient(client *http.
 	o.HTTPClient = client
 }
 
+// WithV1IncidentsIncidentIDStatusPages adds the v1IncidentsIncidentIDStatusPages to the post v1 incidents incident Id status pages params
+func (o *PostV1IncidentsIncidentIDStatusPagesParams) WithV1IncidentsIncidentIDStatusPages(v1IncidentsIncidentIDStatusPages *models.PostV1IncidentsIncidentIDStatusPages) *PostV1IncidentsIncidentIDStatusPagesParams {
+	o.SetV1IncidentsIncidentIDStatusPages(v1IncidentsIncidentIDStatusPages)
+	return o
+}
+
+// SetV1IncidentsIncidentIDStatusPages adds the v1IncidentsIncidentIdStatusPages to the post v1 incidents incident Id status pages params
+func (o *PostV1IncidentsIncidentIDStatusPagesParams) SetV1IncidentsIncidentIDStatusPages(v1IncidentsIncidentIDStatusPages *models.PostV1IncidentsIncidentIDStatusPages) {
+	o.V1IncidentsIncidentIDStatusPages = v1IncidentsIncidentIDStatusPages
+}
+
 // WithIncidentID adds the incidentID to the post v1 incidents incident Id status pages params
 func (o *PostV1IncidentsIncidentIDStatusPagesParams) WithIncidentID(incidentID string) *PostV1IncidentsIncidentIDStatusPagesParams {
 	o.SetIncidentID(incidentID)
@@ -137,39 +144,6 @@ func (o *PostV1IncidentsIncidentIDStatusPagesParams) SetIncidentID(incidentID st
 	o.IncidentID = incidentID
 }
 
-// WithIntegrationID adds the integrationID to the post v1 incidents incident Id status pages params
-func (o *PostV1IncidentsIncidentIDStatusPagesParams) WithIntegrationID(integrationID string) *PostV1IncidentsIncidentIDStatusPagesParams {
-	o.SetIntegrationID(integrationID)
-	return o
-}
-
-// SetIntegrationID adds the integrationId to the post v1 incidents incident Id status pages params
-func (o *PostV1IncidentsIncidentIDStatusPagesParams) SetIntegrationID(integrationID string) {
-	o.IntegrationID = integrationID
-}
-
-// WithIntegrationSlug adds the integrationSlug to the post v1 incidents incident Id status pages params
-func (o *PostV1IncidentsIncidentIDStatusPagesParams) WithIntegrationSlug(integrationSlug string) *PostV1IncidentsIncidentIDStatusPagesParams {
-	o.SetIntegrationSlug(integrationSlug)
-	return o
-}
-
-// SetIntegrationSlug adds the integrationSlug to the post v1 incidents incident Id status pages params
-func (o *PostV1IncidentsIncidentIDStatusPagesParams) SetIntegrationSlug(integrationSlug string) {
-	o.IntegrationSlug = integrationSlug
-}
-
-// WithTitle adds the title to the post v1 incidents incident Id status pages params
-func (o *PostV1IncidentsIncidentIDStatusPagesParams) WithTitle(title *string) *PostV1IncidentsIncidentIDStatusPagesParams {
-	o.SetTitle(title)
-	return o
-}
-
-// SetTitle adds the title to the post v1 incidents incident Id status pages params
-func (o *PostV1IncidentsIncidentIDStatusPagesParams) SetTitle(title *string) {
-	o.Title = title
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *PostV1IncidentsIncidentIDStatusPagesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -177,43 +151,15 @@ func (o *PostV1IncidentsIncidentIDStatusPagesParams) WriteToRequest(r runtime.Cl
 		return err
 	}
 	var res []error
+	if o.V1IncidentsIncidentIDStatusPages != nil {
+		if err := r.SetBodyParam(o.V1IncidentsIncidentIDStatusPages); err != nil {
+			return err
+		}
+	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
-	}
-
-	// form param integration_id
-	frIntegrationID := o.IntegrationID
-	fIntegrationID := frIntegrationID
-	if fIntegrationID != "" {
-		if err := r.SetFormParam("integration_id", fIntegrationID); err != nil {
-			return err
-		}
-	}
-
-	// form param integration_slug
-	frIntegrationSlug := o.IntegrationSlug
-	fIntegrationSlug := frIntegrationSlug
-	if fIntegrationSlug != "" {
-		if err := r.SetFormParam("integration_slug", fIntegrationSlug); err != nil {
-			return err
-		}
-	}
-
-	if o.Title != nil {
-
-		// form param title
-		var frTitle string
-		if o.Title != nil {
-			frTitle = *o.Title
-		}
-		fTitle := frTitle
-		if fTitle != "" {
-			if err := r.SetFormParam("title", fTitle); err != nil {
-				return err
-			}
-		}
 	}
 
 	if len(res) > 0 {
