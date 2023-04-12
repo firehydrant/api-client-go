@@ -45,7 +45,7 @@ PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK describes a response 
 Updates the execution's step.
 */
 type PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK struct {
-	Payload *models.ExecutionEntity
+	Payload *models.RunbooksExecutionEntity
 }
 
 // IsSuccess returns true when this put v1 runbooks executions execution Id steps step Id script state o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK) String() st
 	return fmt.Sprintf("[PUT /v1/runbooks/executions/{execution_id}/steps/{step_id}/script/{state}][%d] putV1RunbooksExecutionsExecutionIdStepsStepIdScriptStateOK  %+v", 200, o.Payload)
 }
 
-func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK) GetPayload() *models.ExecutionEntity {
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK) GetPayload() *models.RunbooksExecutionEntity {
 	return o.Payload
 }
 
 func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ExecutionEntity)
+	o.Payload = new(models.RunbooksExecutionEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

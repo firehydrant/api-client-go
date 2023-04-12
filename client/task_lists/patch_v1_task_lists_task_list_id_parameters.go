@@ -64,8 +64,8 @@ PatchV1TaskListsTaskListIDParams contains all the parameters to send to the API 
 */
 type PatchV1TaskListsTaskListIDParams struct {
 
-	// V1TaskLists.
-	V1TaskLists *models.PatchV1TaskLists
+	// PatchV1TaskListsTaskListID.
+	PatchV1TaskListsTaskListID *models.PatchV1TaskListsTaskListID
 
 	// TaskListID.
 	//
@@ -125,15 +125,15 @@ func (o *PatchV1TaskListsTaskListIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1TaskLists adds the v1TaskLists to the patch v1 task lists task list Id params
-func (o *PatchV1TaskListsTaskListIDParams) WithV1TaskLists(v1TaskLists *models.PatchV1TaskLists) *PatchV1TaskListsTaskListIDParams {
-	o.SetV1TaskLists(v1TaskLists)
+// WithPatchV1TaskListsTaskListID adds the patchV1TaskListsTaskListID to the patch v1 task lists task list Id params
+func (o *PatchV1TaskListsTaskListIDParams) WithPatchV1TaskListsTaskListID(patchV1TaskListsTaskListID *models.PatchV1TaskListsTaskListID) *PatchV1TaskListsTaskListIDParams {
+	o.SetPatchV1TaskListsTaskListID(patchV1TaskListsTaskListID)
 	return o
 }
 
-// SetV1TaskLists adds the v1TaskLists to the patch v1 task lists task list Id params
-func (o *PatchV1TaskListsTaskListIDParams) SetV1TaskLists(v1TaskLists *models.PatchV1TaskLists) {
-	o.V1TaskLists = v1TaskLists
+// SetPatchV1TaskListsTaskListID adds the patchV1TaskListsTaskListId to the patch v1 task lists task list Id params
+func (o *PatchV1TaskListsTaskListIDParams) SetPatchV1TaskListsTaskListID(patchV1TaskListsTaskListID *models.PatchV1TaskListsTaskListID) {
+	o.PatchV1TaskListsTaskListID = patchV1TaskListsTaskListID
 }
 
 // WithTaskListID adds the taskListID to the patch v1 task lists task list Id params
@@ -154,8 +154,8 @@ func (o *PatchV1TaskListsTaskListIDParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-	if o.V1TaskLists != nil {
-		if err := r.SetBodyParam(o.V1TaskLists); err != nil {
+	if o.PatchV1TaskListsTaskListID != nil {
+		if err := r.SetBodyParam(o.PatchV1TaskListsTaskListID); err != nil {
 			return err
 		}
 	}

@@ -45,7 +45,7 @@ PostV1CatalogsCatalogIDIngestCreated describes a response with status code 201, 
 Accepts catalog data in the configured format and asyncronously processes the data to incorporate changes into service catalog.
 */
 type PostV1CatalogsCatalogIDIngestCreated struct {
-	Payload *models.ImportEntity
+	Payload *models.ImportsImportEntity
 }
 
 // IsSuccess returns true when this post v1 catalogs catalog Id ingest created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1CatalogsCatalogIDIngestCreated) String() string {
 	return fmt.Sprintf("[POST /v1/catalogs/{catalog_id}/ingest][%d] postV1CatalogsCatalogIdIngestCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1CatalogsCatalogIDIngestCreated) GetPayload() *models.ImportEntity {
+func (o *PostV1CatalogsCatalogIDIngestCreated) GetPayload() *models.ImportsImportEntity {
 	return o.Payload
 }
 
 func (o *PostV1CatalogsCatalogIDIngestCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ImportEntity)
+	o.Payload = new(models.ImportsImportEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

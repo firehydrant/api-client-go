@@ -63,8 +63,8 @@ PostV1ChangesEventsParams contains all the parameters to send to the API endpoin
 */
 type PostV1ChangesEventsParams struct {
 
-	// V1ChangesEvents.
-	V1ChangesEvents *models.PostV1ChangesEvents
+	// PostV1ChangesEvents.
+	PostV1ChangesEvents *models.PostV1ChangesEvents
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1ChangesEventsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1ChangesEvents adds the v1ChangesEvents to the post v1 changes events params
-func (o *PostV1ChangesEventsParams) WithV1ChangesEvents(v1ChangesEvents *models.PostV1ChangesEvents) *PostV1ChangesEventsParams {
-	o.SetV1ChangesEvents(v1ChangesEvents)
+// WithPostV1ChangesEvents adds the postV1ChangesEvents to the post v1 changes events params
+func (o *PostV1ChangesEventsParams) WithPostV1ChangesEvents(postV1ChangesEvents *models.PostV1ChangesEvents) *PostV1ChangesEventsParams {
+	o.SetPostV1ChangesEvents(postV1ChangesEvents)
 	return o
 }
 
-// SetV1ChangesEvents adds the v1ChangesEvents to the post v1 changes events params
-func (o *PostV1ChangesEventsParams) SetV1ChangesEvents(v1ChangesEvents *models.PostV1ChangesEvents) {
-	o.V1ChangesEvents = v1ChangesEvents
+// SetPostV1ChangesEvents adds the postV1ChangesEvents to the post v1 changes events params
+func (o *PostV1ChangesEventsParams) SetPostV1ChangesEvents(postV1ChangesEvents *models.PostV1ChangesEvents) {
+	o.PostV1ChangesEvents = postV1ChangesEvents
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1ChangesEventsParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if o.V1ChangesEvents != nil {
-		if err := r.SetBodyParam(o.V1ChangesEvents); err != nil {
+	if o.PostV1ChangesEvents != nil {
+		if err := r.SetBodyParam(o.PostV1ChangesEvents); err != nil {
 			return err
 		}
 	}

@@ -74,6 +74,12 @@ type GetV1ProcessingLogEntriesParams struct {
 	*/
 	ExactLevel *string
 
+	/* IntegrationSlug.
+
+	   Scopes returned log entries to a specific integration ID
+	*/
+	IntegrationSlug *string
+
 	/* OfLevel.
 
 	   Returns logs of all levels equal to or above the provided level
@@ -165,6 +171,17 @@ func (o *GetV1ProcessingLogEntriesParams) SetExactLevel(exactLevel *string) {
 	o.ExactLevel = exactLevel
 }
 
+// WithIntegrationSlug adds the integrationSlug to the get v1 processing log entries params
+func (o *GetV1ProcessingLogEntriesParams) WithIntegrationSlug(integrationSlug *string) *GetV1ProcessingLogEntriesParams {
+	o.SetIntegrationSlug(integrationSlug)
+	return o
+}
+
+// SetIntegrationSlug adds the integrationSlug to the get v1 processing log entries params
+func (o *GetV1ProcessingLogEntriesParams) SetIntegrationSlug(integrationSlug *string) {
+	o.IntegrationSlug = integrationSlug
+}
+
 // WithOfLevel adds the ofLevel to the get v1 processing log entries params
 func (o *GetV1ProcessingLogEntriesParams) WithOfLevel(ofLevel *string) *GetV1ProcessingLogEntriesParams {
 	o.SetOfLevel(ofLevel)
@@ -235,6 +252,23 @@ func (o *GetV1ProcessingLogEntriesParams) WriteToRequest(r runtime.ClientRequest
 		if qExactLevel != "" {
 
 			if err := r.SetQueryParam("exact_level", qExactLevel); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.IntegrationSlug != nil {
+
+		// query param integration_slug
+		var qrIntegrationSlug string
+
+		if o.IntegrationSlug != nil {
+			qrIntegrationSlug = *o.IntegrationSlug
+		}
+		qIntegrationSlug := qrIntegrationSlug
+		if qIntegrationSlug != "" {
+
+			if err := r.SetQueryParam("integration_slug", qIntegrationSlug); err != nil {
 				return err
 			}
 		}

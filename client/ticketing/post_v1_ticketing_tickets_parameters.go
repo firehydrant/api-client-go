@@ -63,8 +63,8 @@ PostV1TicketingTicketsParams contains all the parameters to send to the API endp
 */
 type PostV1TicketingTicketsParams struct {
 
-	// V1TicketingTickets.
-	V1TicketingTickets *models.PostV1TicketingTickets
+	// PostV1TicketingTickets.
+	PostV1TicketingTickets *models.PostV1TicketingTickets
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1TicketingTicketsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1TicketingTickets adds the v1TicketingTickets to the post v1 ticketing tickets params
-func (o *PostV1TicketingTicketsParams) WithV1TicketingTickets(v1TicketingTickets *models.PostV1TicketingTickets) *PostV1TicketingTicketsParams {
-	o.SetV1TicketingTickets(v1TicketingTickets)
+// WithPostV1TicketingTickets adds the postV1TicketingTickets to the post v1 ticketing tickets params
+func (o *PostV1TicketingTicketsParams) WithPostV1TicketingTickets(postV1TicketingTickets *models.PostV1TicketingTickets) *PostV1TicketingTicketsParams {
+	o.SetPostV1TicketingTickets(postV1TicketingTickets)
 	return o
 }
 
-// SetV1TicketingTickets adds the v1TicketingTickets to the post v1 ticketing tickets params
-func (o *PostV1TicketingTicketsParams) SetV1TicketingTickets(v1TicketingTickets *models.PostV1TicketingTickets) {
-	o.V1TicketingTickets = v1TicketingTickets
+// SetPostV1TicketingTickets adds the postV1TicketingTickets to the post v1 ticketing tickets params
+func (o *PostV1TicketingTicketsParams) SetPostV1TicketingTickets(postV1TicketingTickets *models.PostV1TicketingTickets) {
+	o.PostV1TicketingTickets = postV1TicketingTickets
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1TicketingTicketsParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if o.V1TicketingTickets != nil {
-		if err := r.SetBodyParam(o.V1TicketingTickets); err != nil {
+	if o.PostV1TicketingTickets != nil {
+		if err := r.SetBodyParam(o.PostV1TicketingTickets); err != nil {
 			return err
 		}
 	}

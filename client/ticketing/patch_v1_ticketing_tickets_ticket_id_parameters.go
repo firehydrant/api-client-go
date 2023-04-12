@@ -64,8 +64,8 @@ PatchV1TicketingTicketsTicketIDParams contains all the parameters to send to the
 */
 type PatchV1TicketingTicketsTicketIDParams struct {
 
-	// V1TicketingTickets.
-	V1TicketingTickets *models.PatchV1TicketingTickets
+	// PatchV1TicketingTicketsTicketID.
+	PatchV1TicketingTicketsTicketID *models.PatchV1TicketingTicketsTicketID
 
 	// TicketID.
 	//
@@ -125,15 +125,15 @@ func (o *PatchV1TicketingTicketsTicketIDParams) SetHTTPClient(client *http.Clien
 	o.HTTPClient = client
 }
 
-// WithV1TicketingTickets adds the v1TicketingTickets to the patch v1 ticketing tickets ticket Id params
-func (o *PatchV1TicketingTicketsTicketIDParams) WithV1TicketingTickets(v1TicketingTickets *models.PatchV1TicketingTickets) *PatchV1TicketingTicketsTicketIDParams {
-	o.SetV1TicketingTickets(v1TicketingTickets)
+// WithPatchV1TicketingTicketsTicketID adds the patchV1TicketingTicketsTicketID to the patch v1 ticketing tickets ticket Id params
+func (o *PatchV1TicketingTicketsTicketIDParams) WithPatchV1TicketingTicketsTicketID(patchV1TicketingTicketsTicketID *models.PatchV1TicketingTicketsTicketID) *PatchV1TicketingTicketsTicketIDParams {
+	o.SetPatchV1TicketingTicketsTicketID(patchV1TicketingTicketsTicketID)
 	return o
 }
 
-// SetV1TicketingTickets adds the v1TicketingTickets to the patch v1 ticketing tickets ticket Id params
-func (o *PatchV1TicketingTicketsTicketIDParams) SetV1TicketingTickets(v1TicketingTickets *models.PatchV1TicketingTickets) {
-	o.V1TicketingTickets = v1TicketingTickets
+// SetPatchV1TicketingTicketsTicketID adds the patchV1TicketingTicketsTicketId to the patch v1 ticketing tickets ticket Id params
+func (o *PatchV1TicketingTicketsTicketIDParams) SetPatchV1TicketingTicketsTicketID(patchV1TicketingTicketsTicketID *models.PatchV1TicketingTicketsTicketID) {
+	o.PatchV1TicketingTicketsTicketID = patchV1TicketingTicketsTicketID
 }
 
 // WithTicketID adds the ticketID to the patch v1 ticketing tickets ticket Id params
@@ -154,8 +154,8 @@ func (o *PatchV1TicketingTicketsTicketIDParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
-	if o.V1TicketingTickets != nil {
-		if err := r.SetBodyParam(o.V1TicketingTickets); err != nil {
+	if o.PatchV1TicketingTicketsTicketID != nil {
+		if err := r.SetBodyParam(o.PatchV1TicketingTicketsTicketID); err != nil {
 			return err
 		}
 	}

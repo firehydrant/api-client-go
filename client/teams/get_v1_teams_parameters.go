@@ -62,6 +62,12 @@ GetV1TeamsParams contains all the parameters to send to the API endpoint
 */
 type GetV1TeamsParams struct {
 
+	/* DefaultIncidentRole.
+
+	   Filter by teams that have or do not have members with a default incident role asssigned. Value may be 'present', 'blank', or the ID of an incident role.
+	*/
+	DefaultIncidentRole *string
+
 	/* Lite.
 
 	   Boolean to determine whether to return a slimified version of the teams object
@@ -149,6 +155,17 @@ func (o *GetV1TeamsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithDefaultIncidentRole adds the defaultIncidentRole to the get v1 teams params
+func (o *GetV1TeamsParams) WithDefaultIncidentRole(defaultIncidentRole *string) *GetV1TeamsParams {
+	o.SetDefaultIncidentRole(defaultIncidentRole)
+	return o
+}
+
+// SetDefaultIncidentRole adds the defaultIncidentRole to the get v1 teams params
+func (o *GetV1TeamsParams) SetDefaultIncidentRole(defaultIncidentRole *string) {
+	o.DefaultIncidentRole = defaultIncidentRole
+}
+
 // WithLite adds the lite to the get v1 teams params
 func (o *GetV1TeamsParams) WithLite(lite *bool) *GetV1TeamsParams {
 	o.SetLite(lite)
@@ -222,6 +239,23 @@ func (o *GetV1TeamsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 		return err
 	}
 	var res []error
+
+	if o.DefaultIncidentRole != nil {
+
+		// query param default_incident_role
+		var qrDefaultIncidentRole string
+
+		if o.DefaultIncidentRole != nil {
+			qrDefaultIncidentRole = *o.DefaultIncidentRole
+		}
+		qDefaultIncidentRole := qrDefaultIncidentRole
+		if qDefaultIncidentRole != "" {
+
+			if err := r.SetQueryParam("default_incident_role", qDefaultIncidentRole); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Lite != nil {
 

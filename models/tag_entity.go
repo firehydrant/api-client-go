@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// TagEntity Validate the format of a list of tags
+// TagEntity TagEntity model
 //
 // swagger:model TagEntity
 type TagEntity struct {

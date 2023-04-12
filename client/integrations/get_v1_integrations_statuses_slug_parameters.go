@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1IntegrationsStatusesSlugParams creates a new GetV1IntegrationsStatusesSlugParams object,
@@ -63,9 +62,7 @@ GetV1IntegrationsStatusesSlugParams contains all the parameters to send to the A
 type GetV1IntegrationsStatusesSlugParams struct {
 
 	// Slug.
-	//
-	// Format: int32
-	Slug int32
+	Slug string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *GetV1IntegrationsStatusesSlugParams) SetHTTPClient(client *http.Client)
 }
 
 // WithSlug adds the slug to the get v1 integrations statuses slug params
-func (o *GetV1IntegrationsStatusesSlugParams) WithSlug(slug int32) *GetV1IntegrationsStatusesSlugParams {
+func (o *GetV1IntegrationsStatusesSlugParams) WithSlug(slug string) *GetV1IntegrationsStatusesSlugParams {
 	o.SetSlug(slug)
 	return o
 }
 
 // SetSlug adds the slug to the get v1 integrations statuses slug params
-func (o *GetV1IntegrationsStatusesSlugParams) SetSlug(slug int32) {
+func (o *GetV1IntegrationsStatusesSlugParams) SetSlug(slug string) {
 	o.Slug = slug
 }
 
@@ -140,7 +137,7 @@ func (o *GetV1IntegrationsStatusesSlugParams) WriteToRequest(r runtime.ClientReq
 	var res []error
 
 	// path param slug
-	if err := r.SetPathParam("slug", swag.FormatInt32(o.Slug)); err != nil {
+	if err := r.SetPathParam("slug", o.Slug); err != nil {
 		return err
 	}
 

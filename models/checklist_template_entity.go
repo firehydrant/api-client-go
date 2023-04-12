@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ChecklistTemplateEntity Retrieves a single checklist template by ID
+// ChecklistTemplateEntity ChecklistTemplateEntity model
 //
 // swagger:model ChecklistTemplateEntity
 type ChecklistTemplateEntity struct {
@@ -39,7 +39,7 @@ type ChecklistTemplateEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// Team that owns the checklist template
-	Owner string `json:"owner,omitempty"`
+	Owner *TeamEntity `json:"owner,omitempty"`
 
 	// updated at
 	// Format: date-time
@@ -55,6 +55,10 @@ func (m *ChecklistTemplateEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateConnectedServices(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOwner(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -120,6 +124,25 @@ func (m *ChecklistTemplateEntity) validateConnectedServices(formats strfmt.Regis
 	return nil
 }
 
+func (m *ChecklistTemplateEntity) validateOwner(formats strfmt.Registry) error {
+	if swag.IsZero(m.Owner) { // not required
+		return nil
+	}
+
+	if m.Owner != nil {
+		if err := m.Owner.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ChecklistTemplateEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
@@ -141,6 +164,10 @@ func (m *ChecklistTemplateEntity) ContextValidate(ctx context.Context, formats s
 	}
 
 	if err := m.contextValidateConnectedServices(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOwner(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -185,6 +212,22 @@ func (m *ChecklistTemplateEntity) contextValidateConnectedServices(ctx context.C
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ChecklistTemplateEntity) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Owner != nil {
+		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
+			}
+			return err
+		}
 	}
 
 	return nil

@@ -45,7 +45,7 @@ GetV1TicketingTicketsOK describes a response with status code 200, with default 
 List all of the tickets that have been added to the organiation
 */
 type GetV1TicketingTicketsOK struct {
-	Payload *models.TicketEntity
+	Payload *models.TicketingTicketEntity
 }
 
 // IsSuccess returns true when this get v1 ticketing tickets o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1TicketingTicketsOK) String() string {
 	return fmt.Sprintf("[GET /v1/ticketing/tickets][%d] getV1TicketingTicketsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1TicketingTicketsOK) GetPayload() *models.TicketEntity {
+func (o *GetV1TicketingTicketsOK) GetPayload() *models.TicketingTicketEntity {
 	return o.Payload
 }
 
 func (o *GetV1TicketingTicketsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.TicketEntity)
+	o.Payload = new(models.TicketingTicketEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

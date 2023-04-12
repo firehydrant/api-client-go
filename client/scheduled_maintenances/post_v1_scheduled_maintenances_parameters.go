@@ -63,8 +63,8 @@ PostV1ScheduledMaintenancesParams contains all the parameters to send to the API
 */
 type PostV1ScheduledMaintenancesParams struct {
 
-	// V1ScheduledMaintenances.
-	V1ScheduledMaintenances *models.PostV1ScheduledMaintenances
+	// PostV1ScheduledMaintenances.
+	PostV1ScheduledMaintenances *models.PostV1ScheduledMaintenances
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1ScheduledMaintenancesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1ScheduledMaintenances adds the v1ScheduledMaintenances to the post v1 scheduled maintenances params
-func (o *PostV1ScheduledMaintenancesParams) WithV1ScheduledMaintenances(v1ScheduledMaintenances *models.PostV1ScheduledMaintenances) *PostV1ScheduledMaintenancesParams {
-	o.SetV1ScheduledMaintenances(v1ScheduledMaintenances)
+// WithPostV1ScheduledMaintenances adds the postV1ScheduledMaintenances to the post v1 scheduled maintenances params
+func (o *PostV1ScheduledMaintenancesParams) WithPostV1ScheduledMaintenances(postV1ScheduledMaintenances *models.PostV1ScheduledMaintenances) *PostV1ScheduledMaintenancesParams {
+	o.SetPostV1ScheduledMaintenances(postV1ScheduledMaintenances)
 	return o
 }
 
-// SetV1ScheduledMaintenances adds the v1ScheduledMaintenances to the post v1 scheduled maintenances params
-func (o *PostV1ScheduledMaintenancesParams) SetV1ScheduledMaintenances(v1ScheduledMaintenances *models.PostV1ScheduledMaintenances) {
-	o.V1ScheduledMaintenances = v1ScheduledMaintenances
+// SetPostV1ScheduledMaintenances adds the postV1ScheduledMaintenances to the post v1 scheduled maintenances params
+func (o *PostV1ScheduledMaintenancesParams) SetPostV1ScheduledMaintenances(postV1ScheduledMaintenances *models.PostV1ScheduledMaintenances) {
+	o.PostV1ScheduledMaintenances = postV1ScheduledMaintenances
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1ScheduledMaintenancesParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 	var res []error
-	if o.V1ScheduledMaintenances != nil {
-		if err := r.SetBodyParam(o.V1ScheduledMaintenances); err != nil {
+	if o.PostV1ScheduledMaintenances != nil {
+		if err := r.SetBodyParam(o.PostV1ScheduledMaintenances); err != nil {
 			return err
 		}
 	}

@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -312,6 +313,7 @@ type PostV1ChangesEventsAttachmentsItems0 struct {
 
 	// type
 	// Required: true
+	// Enum: [link]
 	Type *string `json:"type"`
 }
 
@@ -329,9 +331,40 @@ func (m *PostV1ChangesEventsAttachmentsItems0) Validate(formats strfmt.Registry)
 	return nil
 }
 
+var postV1ChangesEventsAttachmentsItems0TypeTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["link"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		postV1ChangesEventsAttachmentsItems0TypeTypePropEnum = append(postV1ChangesEventsAttachmentsItems0TypeTypePropEnum, v)
+	}
+}
+
+const (
+
+	// PostV1ChangesEventsAttachmentsItems0TypeLink captures enum value "link"
+	PostV1ChangesEventsAttachmentsItems0TypeLink string = "link"
+)
+
+// prop value enum
+func (m *PostV1ChangesEventsAttachmentsItems0) validateTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, postV1ChangesEventsAttachmentsItems0TypeTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *PostV1ChangesEventsAttachmentsItems0) validateType(formats strfmt.Registry) error {
 
 	if err := validate.Required("type", "body", m.Type); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
 		return err
 	}
 

@@ -63,8 +63,8 @@ PatchV1SeverityMatrixParams contains all the parameters to send to the API endpo
 */
 type PatchV1SeverityMatrixParams struct {
 
-	// V1SeverityMatrix.
-	V1SeverityMatrix *models.PatchV1SeverityMatrix
+	// PatchV1SeverityMatrix.
+	PatchV1SeverityMatrix *models.PatchV1SeverityMatrix
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PatchV1SeverityMatrixParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1SeverityMatrix adds the v1SeverityMatrix to the patch v1 severity matrix params
-func (o *PatchV1SeverityMatrixParams) WithV1SeverityMatrix(v1SeverityMatrix *models.PatchV1SeverityMatrix) *PatchV1SeverityMatrixParams {
-	o.SetV1SeverityMatrix(v1SeverityMatrix)
+// WithPatchV1SeverityMatrix adds the patchV1SeverityMatrix to the patch v1 severity matrix params
+func (o *PatchV1SeverityMatrixParams) WithPatchV1SeverityMatrix(patchV1SeverityMatrix *models.PatchV1SeverityMatrix) *PatchV1SeverityMatrixParams {
+	o.SetPatchV1SeverityMatrix(patchV1SeverityMatrix)
 	return o
 }
 
-// SetV1SeverityMatrix adds the v1SeverityMatrix to the patch v1 severity matrix params
-func (o *PatchV1SeverityMatrixParams) SetV1SeverityMatrix(v1SeverityMatrix *models.PatchV1SeverityMatrix) {
-	o.V1SeverityMatrix = v1SeverityMatrix
+// SetPatchV1SeverityMatrix adds the patchV1SeverityMatrix to the patch v1 severity matrix params
+func (o *PatchV1SeverityMatrixParams) SetPatchV1SeverityMatrix(patchV1SeverityMatrix *models.PatchV1SeverityMatrix) {
+	o.PatchV1SeverityMatrix = patchV1SeverityMatrix
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PatchV1SeverityMatrixParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
-	if o.V1SeverityMatrix != nil {
-		if err := r.SetBodyParam(o.V1SeverityMatrix); err != nil {
+	if o.PatchV1SeverityMatrix != nil {
+		if err := r.SetBodyParam(o.PatchV1SeverityMatrix); err != nil {
 			return err
 		}
 	}

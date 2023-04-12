@@ -63,8 +63,8 @@ PostV1IncidentTypesParams contains all the parameters to send to the API endpoin
 */
 type PostV1IncidentTypesParams struct {
 
-	// V1IncidentTypes.
-	V1IncidentTypes *models.PostV1IncidentTypes
+	// PostV1IncidentTypes.
+	PostV1IncidentTypes *models.PostV1IncidentTypes
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1IncidentTypesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1IncidentTypes adds the v1IncidentTypes to the post v1 incident types params
-func (o *PostV1IncidentTypesParams) WithV1IncidentTypes(v1IncidentTypes *models.PostV1IncidentTypes) *PostV1IncidentTypesParams {
-	o.SetV1IncidentTypes(v1IncidentTypes)
+// WithPostV1IncidentTypes adds the postV1IncidentTypes to the post v1 incident types params
+func (o *PostV1IncidentTypesParams) WithPostV1IncidentTypes(postV1IncidentTypes *models.PostV1IncidentTypes) *PostV1IncidentTypesParams {
+	o.SetPostV1IncidentTypes(postV1IncidentTypes)
 	return o
 }
 
-// SetV1IncidentTypes adds the v1IncidentTypes to the post v1 incident types params
-func (o *PostV1IncidentTypesParams) SetV1IncidentTypes(v1IncidentTypes *models.PostV1IncidentTypes) {
-	o.V1IncidentTypes = v1IncidentTypes
+// SetPostV1IncidentTypes adds the postV1IncidentTypes to the post v1 incident types params
+func (o *PostV1IncidentTypesParams) SetPostV1IncidentTypes(postV1IncidentTypes *models.PostV1IncidentTypes) {
+	o.PostV1IncidentTypes = postV1IncidentTypes
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1IncidentTypesParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if o.V1IncidentTypes != nil {
-		if err := r.SetBodyParam(o.V1IncidentTypes); err != nil {
+	if o.PostV1IncidentTypes != nil {
+		if err := r.SetBodyParam(o.PostV1IncidentTypes); err != nil {
 			return err
 		}
 	}

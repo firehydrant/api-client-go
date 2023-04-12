@@ -63,8 +63,8 @@ PostV1PrioritiesParams contains all the parameters to send to the API endpoint
 */
 type PostV1PrioritiesParams struct {
 
-	// V1Priorities.
-	V1Priorities *models.PostV1Priorities
+	// PostV1Priorities.
+	PostV1Priorities *models.PostV1Priorities
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1PrioritiesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Priorities adds the v1Priorities to the post v1 priorities params
-func (o *PostV1PrioritiesParams) WithV1Priorities(v1Priorities *models.PostV1Priorities) *PostV1PrioritiesParams {
-	o.SetV1Priorities(v1Priorities)
+// WithPostV1Priorities adds the postV1Priorities to the post v1 priorities params
+func (o *PostV1PrioritiesParams) WithPostV1Priorities(postV1Priorities *models.PostV1Priorities) *PostV1PrioritiesParams {
+	o.SetPostV1Priorities(postV1Priorities)
 	return o
 }
 
-// SetV1Priorities adds the v1Priorities to the post v1 priorities params
-func (o *PostV1PrioritiesParams) SetV1Priorities(v1Priorities *models.PostV1Priorities) {
-	o.V1Priorities = v1Priorities
+// SetPostV1Priorities adds the postV1Priorities to the post v1 priorities params
+func (o *PostV1PrioritiesParams) SetPostV1Priorities(postV1Priorities *models.PostV1Priorities) {
+	o.PostV1Priorities = postV1Priorities
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1PrioritiesParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if o.V1Priorities != nil {
-		if err := r.SetBodyParam(o.V1Priorities); err != nil {
+	if o.PostV1Priorities != nil {
+		if err := r.SetBodyParam(o.PostV1Priorities); err != nil {
 			return err
 		}
 	}

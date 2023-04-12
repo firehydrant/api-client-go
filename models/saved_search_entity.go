@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// SavedSearchEntity Create a new saved search for a particular resource type
+// SavedSearchEntity SavedSearchEntity model
 //
 // swagger:model SavedSearchEntity
 type SavedSearchEntity struct {
@@ -23,7 +23,7 @@ type SavedSearchEntity struct {
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
-	// filter values
+	// An unstructured key/value pair of saved values for searching
 	FilterValues interface{} `json:"filter_values,omitempty"`
 
 	// id

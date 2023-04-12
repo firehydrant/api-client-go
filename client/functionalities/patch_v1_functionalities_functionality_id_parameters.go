@@ -64,13 +64,13 @@ PatchV1FunctionalitiesFunctionalityIDParams contains all the parameters to send 
 */
 type PatchV1FunctionalitiesFunctionalityIDParams struct {
 
-	// V1Functionalities.
-	V1Functionalities *models.PatchV1Functionalities
-
 	// FunctionalityID.
 	//
 	// Format: int32
 	FunctionalityID int32
+
+	// PatchV1FunctionalitiesFunctionalityID.
+	PatchV1FunctionalitiesFunctionalityID *models.PatchV1FunctionalitiesFunctionalityID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *PatchV1FunctionalitiesFunctionalityIDParams) SetHTTPClient(client *http
 	o.HTTPClient = client
 }
 
-// WithV1Functionalities adds the v1Functionalities to the patch v1 functionalities functionality Id params
-func (o *PatchV1FunctionalitiesFunctionalityIDParams) WithV1Functionalities(v1Functionalities *models.PatchV1Functionalities) *PatchV1FunctionalitiesFunctionalityIDParams {
-	o.SetV1Functionalities(v1Functionalities)
-	return o
-}
-
-// SetV1Functionalities adds the v1Functionalities to the patch v1 functionalities functionality Id params
-func (o *PatchV1FunctionalitiesFunctionalityIDParams) SetV1Functionalities(v1Functionalities *models.PatchV1Functionalities) {
-	o.V1Functionalities = v1Functionalities
-}
-
 // WithFunctionalityID adds the functionalityID to the patch v1 functionalities functionality Id params
 func (o *PatchV1FunctionalitiesFunctionalityIDParams) WithFunctionalityID(functionalityID int32) *PatchV1FunctionalitiesFunctionalityIDParams {
 	o.SetFunctionalityID(functionalityID)
@@ -147,6 +136,17 @@ func (o *PatchV1FunctionalitiesFunctionalityIDParams) SetFunctionalityID(functio
 	o.FunctionalityID = functionalityID
 }
 
+// WithPatchV1FunctionalitiesFunctionalityID adds the patchV1FunctionalitiesFunctionalityID to the patch v1 functionalities functionality Id params
+func (o *PatchV1FunctionalitiesFunctionalityIDParams) WithPatchV1FunctionalitiesFunctionalityID(patchV1FunctionalitiesFunctionalityID *models.PatchV1FunctionalitiesFunctionalityID) *PatchV1FunctionalitiesFunctionalityIDParams {
+	o.SetPatchV1FunctionalitiesFunctionalityID(patchV1FunctionalitiesFunctionalityID)
+	return o
+}
+
+// SetPatchV1FunctionalitiesFunctionalityID adds the patchV1FunctionalitiesFunctionalityId to the patch v1 functionalities functionality Id params
+func (o *PatchV1FunctionalitiesFunctionalityIDParams) SetPatchV1FunctionalitiesFunctionalityID(patchV1FunctionalitiesFunctionalityID *models.PatchV1FunctionalitiesFunctionalityID) {
+	o.PatchV1FunctionalitiesFunctionalityID = patchV1FunctionalitiesFunctionalityID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1FunctionalitiesFunctionalityIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -154,15 +154,15 @@ func (o *PatchV1FunctionalitiesFunctionalityIDParams) WriteToRequest(r runtime.C
 		return err
 	}
 	var res []error
-	if o.V1Functionalities != nil {
-		if err := r.SetBodyParam(o.V1Functionalities); err != nil {
-			return err
-		}
-	}
 
 	// path param functionality_id
 	if err := r.SetPathParam("functionality_id", swag.FormatInt32(o.FunctionalityID)); err != nil {
 		return err
+	}
+	if o.PatchV1FunctionalitiesFunctionalityID != nil {
+		if err := r.SetBodyParam(o.PatchV1FunctionalitiesFunctionalityID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

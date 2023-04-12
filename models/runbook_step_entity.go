@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // RunbookStepEntity runbook step entity
@@ -19,37 +20,39 @@ import (
 type RunbookStepEntity struct {
 
 	// action
-	Action *ActionsEntity `json:"action,omitempty"`
+	Action *RunbooksActionsEntity `json:"action,omitempty"`
 
-	// action elements
-	ActionElements string `json:"action_elements,omitempty"`
+	// A list of action elements
+	ActionElements []interface{} `json:"action_elements"`
 
 	// action id
 	ActionID string `json:"action_id,omitempty"`
 
 	// automatic
-	Automatic string `json:"automatic,omitempty"`
+	Automatic bool `json:"automatic,omitempty"`
 
-	// config
-	Config string `json:"config,omitempty"`
+	// An unstructured object of key/value pairs describing the config settings for the step.
+	Config interface{} `json:"config,omitempty"`
 
 	// delay duration
-	DelayDuration string `json:"delay_duration,omitempty"`
+	// Format: date-time
+	DelayDuration strfmt.DateTime `json:"delay_duration,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
 
 	// repeats
-	Repeats string `json:"repeats,omitempty"`
+	Repeats bool `json:"repeats,omitempty"`
 
 	// repeats duration
-	RepeatsDuration string `json:"repeats_duration,omitempty"`
+	// Format: date-time
+	RepeatsDuration strfmt.DateTime `json:"repeats_duration,omitempty"`
 
 	// rule
-	Rule string `json:"rule,omitempty"`
+	Rule *RulesRuleEntity `json:"rule,omitempty"`
 
-	// step elements
-	StepElements string `json:"step_elements,omitempty"`
+	// A list of step elements
+	StepElements []interface{} `json:"step_elements"`
 
 	// step id
 	StepID string `json:"step_id,omitempty"`
@@ -63,6 +66,18 @@ func (m *RunbookStepEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAction(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDelayDuration(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRepeatsDuration(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRule(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -87,6 +102,49 @@ func (m *RunbookStepEntity) validateAction(formats strfmt.Registry) error {
 				return ve.ValidateName("action")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("action")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *RunbookStepEntity) validateDelayDuration(formats strfmt.Registry) error {
+	if swag.IsZero(m.DelayDuration) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("delay_duration", "body", "date-time", m.DelayDuration.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RunbookStepEntity) validateRepeatsDuration(formats strfmt.Registry) error {
+	if swag.IsZero(m.RepeatsDuration) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("repeats_duration", "body", "date-time", m.RepeatsDuration.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RunbookStepEntity) validateRule(formats strfmt.Registry) error {
+	if swag.IsZero(m.Rule) { // not required
+		return nil
+	}
+
+	if m.Rule != nil {
+		if err := m.Rule.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("rule")
 			}
 			return err
 		}
@@ -122,6 +180,10 @@ func (m *RunbookStepEntity) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateRule(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVotes(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -140,6 +202,22 @@ func (m *RunbookStepEntity) contextValidateAction(ctx context.Context, formats s
 				return ve.ValidateName("action")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("action")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *RunbookStepEntity) contextValidateRule(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Rule != nil {
+		if err := m.Rule.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("rule")
 			}
 			return err
 		}

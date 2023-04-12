@@ -45,7 +45,7 @@ GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK describes a r
 Returns metadata for the fields that are available for field mapping.
 */
 type GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK struct {
-	Payload *models.MappableFieldEntity
+	Payload *models.TicketingFieldMapsMappableFieldEntity
 }
 
 // IsSuccess returns true when this get v1 ticketing projects ticketing project Id field maps available fields o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK) Str
 	return fmt.Sprintf("[GET /v1/ticketing/projects/{ticketing_project_id}/field_maps/available_fields][%d] getV1TicketingProjectsTicketingProjectIdFieldMapsAvailableFieldsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK) GetPayload() *models.MappableFieldEntity {
+func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK) GetPayload() *models.TicketingFieldMapsMappableFieldEntity {
 	return o.Payload
 }
 
 func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.MappableFieldEntity)
+	o.Payload = new(models.TicketingFieldMapsMappableFieldEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

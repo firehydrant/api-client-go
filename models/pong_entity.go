@@ -13,7 +13,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PongEntity Simple endpoint to verify your API connection is working
+// PongEntity PongEntity model
 //
 // swagger:model PongEntity
 type PongEntity struct {

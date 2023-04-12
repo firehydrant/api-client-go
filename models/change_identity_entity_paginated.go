@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ChangeIdentityEntityPaginated Retrieve all identities for the change
+// ChangeIdentityEntityPaginated ChangeIdentityEntityPaginated model
 //
 // swagger:model ChangeIdentityEntityPaginated
 type ChangeIdentityEntityPaginated struct {

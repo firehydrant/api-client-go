@@ -45,7 +45,7 @@ PostV1PostMortemsReportsReportIDReasonsCreated describes a response with status 
 Add a new contributing factor to an incident
 */
 type PostV1PostMortemsReportsReportIDReasonsCreated struct {
-	Payload *models.ReasonEntity
+	Payload *models.PostMortemsReasonEntity
 }
 
 // IsSuccess returns true when this post v1 post mortems reports report Id reasons created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1PostMortemsReportsReportIDReasonsCreated) String() string {
 	return fmt.Sprintf("[POST /v1/post_mortems/reports/{report_id}/reasons][%d] postV1PostMortemsReportsReportIdReasonsCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1PostMortemsReportsReportIDReasonsCreated) GetPayload() *models.ReasonEntity {
+func (o *PostV1PostMortemsReportsReportIDReasonsCreated) GetPayload() *models.PostMortemsReasonEntity {
 	return o.Payload
 }
 
 func (o *PostV1PostMortemsReportsReportIDReasonsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ReasonEntity)
+	o.Payload = new(models.PostMortemsReasonEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -63,8 +63,8 @@ PostV1SeverityMatrixImpactsParams contains all the parameters to send to the API
 */
 type PostV1SeverityMatrixImpactsParams struct {
 
-	// V1SeverityMatrixImpacts.
-	V1SeverityMatrixImpacts *models.PostV1SeverityMatrixImpacts
+	// PostV1SeverityMatrixImpacts.
+	PostV1SeverityMatrixImpacts *models.PostV1SeverityMatrixImpacts
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1SeverityMatrixImpactsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1SeverityMatrixImpacts adds the v1SeverityMatrixImpacts to the post v1 severity matrix impacts params
-func (o *PostV1SeverityMatrixImpactsParams) WithV1SeverityMatrixImpacts(v1SeverityMatrixImpacts *models.PostV1SeverityMatrixImpacts) *PostV1SeverityMatrixImpactsParams {
-	o.SetV1SeverityMatrixImpacts(v1SeverityMatrixImpacts)
+// WithPostV1SeverityMatrixImpacts adds the postV1SeverityMatrixImpacts to the post v1 severity matrix impacts params
+func (o *PostV1SeverityMatrixImpactsParams) WithPostV1SeverityMatrixImpacts(postV1SeverityMatrixImpacts *models.PostV1SeverityMatrixImpacts) *PostV1SeverityMatrixImpactsParams {
+	o.SetPostV1SeverityMatrixImpacts(postV1SeverityMatrixImpacts)
 	return o
 }
 
-// SetV1SeverityMatrixImpacts adds the v1SeverityMatrixImpacts to the post v1 severity matrix impacts params
-func (o *PostV1SeverityMatrixImpactsParams) SetV1SeverityMatrixImpacts(v1SeverityMatrixImpacts *models.PostV1SeverityMatrixImpacts) {
-	o.V1SeverityMatrixImpacts = v1SeverityMatrixImpacts
+// SetPostV1SeverityMatrixImpacts adds the postV1SeverityMatrixImpacts to the post v1 severity matrix impacts params
+func (o *PostV1SeverityMatrixImpactsParams) SetPostV1SeverityMatrixImpacts(postV1SeverityMatrixImpacts *models.PostV1SeverityMatrixImpacts) {
+	o.PostV1SeverityMatrixImpacts = postV1SeverityMatrixImpacts
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1SeverityMatrixImpactsParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 	var res []error
-	if o.V1SeverityMatrixImpacts != nil {
-		if err := r.SetBodyParam(o.V1SeverityMatrixImpacts); err != nil {
+	if o.PostV1SeverityMatrixImpacts != nil {
+		if err := r.SetBodyParam(o.PostV1SeverityMatrixImpacts); err != nil {
 			return err
 		}
 	}

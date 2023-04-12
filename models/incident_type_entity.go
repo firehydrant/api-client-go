@@ -8,17 +8,20 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// IncidentTypeEntity Retrieve a single incident type from its ID
+// IncidentTypeEntity IncidentTypeEntity model
 //
 // swagger:model IncidentTypeEntity
 type IncidentTypeEntity struct {
 
 	// created at
-	CreatedAt string `json:"created_at,omitempty"`
+	// Format: date-time
+	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
 	// id
 	ID string `json:"id,omitempty"`
@@ -27,22 +30,151 @@ type IncidentTypeEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// template
-	Template string `json:"template,omitempty"`
+	Template *IncidentTypeEntityTemplateEntity `json:"template,omitempty"`
 
 	// template values
-	TemplateValues string `json:"template_values,omitempty"`
+	TemplateValues *IncidentTypeEntityTemplateValuesEntity `json:"template_values,omitempty"`
 
 	// updated at
-	UpdatedAt string `json:"updated_at,omitempty"`
+	// Format: date-time
+	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
 }
 
 // Validate validates this incident type entity
 func (m *IncidentTypeEntity) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTemplate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTemplateValues(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this incident type entity based on context it is used
+func (m *IncidentTypeEntity) validateCreatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("created_at", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *IncidentTypeEntity) validateTemplate(formats strfmt.Registry) error {
+	if swag.IsZero(m.Template) { // not required
+		return nil
+	}
+
+	if m.Template != nil {
+		if err := m.Template.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("template")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("template")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IncidentTypeEntity) validateTemplateValues(formats strfmt.Registry) error {
+	if swag.IsZero(m.TemplateValues) { // not required
+		return nil
+	}
+
+	if m.TemplateValues != nil {
+		if err := m.TemplateValues.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("template_values")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("template_values")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IncidentTypeEntity) validateUpdatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.UpdatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("updated_at", "body", "date-time", m.UpdatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this incident type entity based on the context it is used
 func (m *IncidentTypeEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateTemplate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTemplateValues(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *IncidentTypeEntity) contextValidateTemplate(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Template != nil {
+		if err := m.Template.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("template")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("template")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IncidentTypeEntity) contextValidateTemplateValues(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.TemplateValues != nil {
+		if err := m.TemplateValues.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("template_values")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("template_values")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

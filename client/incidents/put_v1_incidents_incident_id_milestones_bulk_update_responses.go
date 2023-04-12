@@ -49,7 +49,7 @@ cause any milestone(s) to appear out of place, a 422 response will instead be re
 This includes milestones not explicitly submitted or updated in this request.
 */
 type PutV1IncidentsIncidentIDMilestonesBulkUpdateOK struct {
-	Payload *models.MilestoneEntityPaginated
+	Payload *models.IncidentsMilestoneEntityPaginated
 }
 
 // IsSuccess returns true when this put v1 incidents incident Id milestones bulk update o k response has a 2xx status code
@@ -85,13 +85,13 @@ func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) String() string {
 	return fmt.Sprintf("[PUT /v1/incidents/{incident_id}/milestones/bulk_update][%d] putV1IncidentsIncidentIdMilestonesBulkUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) GetPayload() *models.MilestoneEntityPaginated {
+func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) GetPayload() *models.IncidentsMilestoneEntityPaginated {
 	return o.Payload
 }
 
 func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.MilestoneEntityPaginated)
+	o.Payload = new(models.IncidentsMilestoneEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

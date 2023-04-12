@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPostV1IncidentsIncidentIDStatusPagesParams creates a new PostV1IncidentsIncidentIDStatusPagesParams object,
@@ -64,14 +66,8 @@ type PostV1IncidentsIncidentIDStatusPagesParams struct {
 	// IncidentID.
 	IncidentID string
 
-	// IntegrationID.
-	IntegrationID string
-
-	// IntegrationSlug.
-	IntegrationSlug string
-
-	// Title.
-	Title *string
+	// PostV1IncidentsIncidentIDStatusPages.
+	PostV1IncidentsIncidentIDStatusPages *models.PostV1IncidentsIncidentIDStatusPages
 
 	timeout    time.Duration
 	Context    context.Context
@@ -137,37 +133,15 @@ func (o *PostV1IncidentsIncidentIDStatusPagesParams) SetIncidentID(incidentID st
 	o.IncidentID = incidentID
 }
 
-// WithIntegrationID adds the integrationID to the post v1 incidents incident Id status pages params
-func (o *PostV1IncidentsIncidentIDStatusPagesParams) WithIntegrationID(integrationID string) *PostV1IncidentsIncidentIDStatusPagesParams {
-	o.SetIntegrationID(integrationID)
+// WithPostV1IncidentsIncidentIDStatusPages adds the postV1IncidentsIncidentIDStatusPages to the post v1 incidents incident Id status pages params
+func (o *PostV1IncidentsIncidentIDStatusPagesParams) WithPostV1IncidentsIncidentIDStatusPages(postV1IncidentsIncidentIDStatusPages *models.PostV1IncidentsIncidentIDStatusPages) *PostV1IncidentsIncidentIDStatusPagesParams {
+	o.SetPostV1IncidentsIncidentIDStatusPages(postV1IncidentsIncidentIDStatusPages)
 	return o
 }
 
-// SetIntegrationID adds the integrationId to the post v1 incidents incident Id status pages params
-func (o *PostV1IncidentsIncidentIDStatusPagesParams) SetIntegrationID(integrationID string) {
-	o.IntegrationID = integrationID
-}
-
-// WithIntegrationSlug adds the integrationSlug to the post v1 incidents incident Id status pages params
-func (o *PostV1IncidentsIncidentIDStatusPagesParams) WithIntegrationSlug(integrationSlug string) *PostV1IncidentsIncidentIDStatusPagesParams {
-	o.SetIntegrationSlug(integrationSlug)
-	return o
-}
-
-// SetIntegrationSlug adds the integrationSlug to the post v1 incidents incident Id status pages params
-func (o *PostV1IncidentsIncidentIDStatusPagesParams) SetIntegrationSlug(integrationSlug string) {
-	o.IntegrationSlug = integrationSlug
-}
-
-// WithTitle adds the title to the post v1 incidents incident Id status pages params
-func (o *PostV1IncidentsIncidentIDStatusPagesParams) WithTitle(title *string) *PostV1IncidentsIncidentIDStatusPagesParams {
-	o.SetTitle(title)
-	return o
-}
-
-// SetTitle adds the title to the post v1 incidents incident Id status pages params
-func (o *PostV1IncidentsIncidentIDStatusPagesParams) SetTitle(title *string) {
-	o.Title = title
+// SetPostV1IncidentsIncidentIDStatusPages adds the postV1IncidentsIncidentIdStatusPages to the post v1 incidents incident Id status pages params
+func (o *PostV1IncidentsIncidentIDStatusPagesParams) SetPostV1IncidentsIncidentIDStatusPages(postV1IncidentsIncidentIDStatusPages *models.PostV1IncidentsIncidentIDStatusPages) {
+	o.PostV1IncidentsIncidentIDStatusPages = postV1IncidentsIncidentIDStatusPages
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -182,37 +156,9 @@ func (o *PostV1IncidentsIncidentIDStatusPagesParams) WriteToRequest(r runtime.Cl
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
-
-	// form param integration_id
-	frIntegrationID := o.IntegrationID
-	fIntegrationID := frIntegrationID
-	if fIntegrationID != "" {
-		if err := r.SetFormParam("integration_id", fIntegrationID); err != nil {
+	if o.PostV1IncidentsIncidentIDStatusPages != nil {
+		if err := r.SetBodyParam(o.PostV1IncidentsIncidentIDStatusPages); err != nil {
 			return err
-		}
-	}
-
-	// form param integration_slug
-	frIntegrationSlug := o.IntegrationSlug
-	fIntegrationSlug := frIntegrationSlug
-	if fIntegrationSlug != "" {
-		if err := r.SetFormParam("integration_slug", fIntegrationSlug); err != nil {
-			return err
-		}
-	}
-
-	if o.Title != nil {
-
-		// form param title
-		var frTitle string
-		if o.Title != nil {
-			frTitle = *o.Title
-		}
-		fTitle := frTitle
-		if fTitle != "" {
-			if err := r.SetFormParam("title", fTitle); err != nil {
-				return err
-			}
 		}
 	}
 

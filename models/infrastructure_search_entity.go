@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// InfrastructureSearchEntity Lists functionality, service and environment objects
+// InfrastructureSearchEntity InfrastructureSearchEntity model
 //
 // swagger:model InfrastructureSearchEntity
 type InfrastructureSearchEntity struct {

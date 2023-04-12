@@ -63,11 +63,11 @@ PostV1IncidentsIncidentIDTaskListsParams contains all the parameters to send to 
 */
 type PostV1IncidentsIncidentIDTaskListsParams struct {
 
-	// V1IncidentsIncidentIDTaskLists.
-	V1IncidentsIncidentIDTaskLists *models.PostV1IncidentsIncidentIDTaskLists
-
 	// IncidentID.
 	IncidentID string
+
+	// PostV1IncidentsIncidentIDTaskLists.
+	PostV1IncidentsIncidentIDTaskLists *models.PostV1IncidentsIncidentIDTaskLists
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PostV1IncidentsIncidentIDTaskListsParams) SetHTTPClient(client *http.Cl
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDTaskLists adds the v1IncidentsIncidentIDTaskLists to the post v1 incidents incident Id task lists params
-func (o *PostV1IncidentsIncidentIDTaskListsParams) WithV1IncidentsIncidentIDTaskLists(v1IncidentsIncidentIDTaskLists *models.PostV1IncidentsIncidentIDTaskLists) *PostV1IncidentsIncidentIDTaskListsParams {
-	o.SetV1IncidentsIncidentIDTaskLists(v1IncidentsIncidentIDTaskLists)
-	return o
-}
-
-// SetV1IncidentsIncidentIDTaskLists adds the v1IncidentsIncidentIdTaskLists to the post v1 incidents incident Id task lists params
-func (o *PostV1IncidentsIncidentIDTaskListsParams) SetV1IncidentsIncidentIDTaskLists(v1IncidentsIncidentIDTaskLists *models.PostV1IncidentsIncidentIDTaskLists) {
-	o.V1IncidentsIncidentIDTaskLists = v1IncidentsIncidentIDTaskLists
-}
-
 // WithIncidentID adds the incidentID to the post v1 incidents incident Id task lists params
 func (o *PostV1IncidentsIncidentIDTaskListsParams) WithIncidentID(incidentID string) *PostV1IncidentsIncidentIDTaskListsParams {
 	o.SetIncidentID(incidentID)
@@ -144,6 +133,17 @@ func (o *PostV1IncidentsIncidentIDTaskListsParams) SetIncidentID(incidentID stri
 	o.IncidentID = incidentID
 }
 
+// WithPostV1IncidentsIncidentIDTaskLists adds the postV1IncidentsIncidentIDTaskLists to the post v1 incidents incident Id task lists params
+func (o *PostV1IncidentsIncidentIDTaskListsParams) WithPostV1IncidentsIncidentIDTaskLists(postV1IncidentsIncidentIDTaskLists *models.PostV1IncidentsIncidentIDTaskLists) *PostV1IncidentsIncidentIDTaskListsParams {
+	o.SetPostV1IncidentsIncidentIDTaskLists(postV1IncidentsIncidentIDTaskLists)
+	return o
+}
+
+// SetPostV1IncidentsIncidentIDTaskLists adds the postV1IncidentsIncidentIdTaskLists to the post v1 incidents incident Id task lists params
+func (o *PostV1IncidentsIncidentIDTaskListsParams) SetPostV1IncidentsIncidentIDTaskLists(postV1IncidentsIncidentIDTaskLists *models.PostV1IncidentsIncidentIDTaskLists) {
+	o.PostV1IncidentsIncidentIDTaskLists = postV1IncidentsIncidentIDTaskLists
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PostV1IncidentsIncidentIDTaskListsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PostV1IncidentsIncidentIDTaskListsParams) WriteToRequest(r runtime.Clie
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDTaskLists != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDTaskLists); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PostV1IncidentsIncidentIDTaskLists != nil {
+		if err := r.SetBodyParam(o.PostV1IncidentsIncidentIDTaskLists); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

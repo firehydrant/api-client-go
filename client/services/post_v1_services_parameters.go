@@ -63,8 +63,8 @@ PostV1ServicesParams contains all the parameters to send to the API endpoint
 */
 type PostV1ServicesParams struct {
 
-	// V1Services.
-	V1Services *models.PostV1Services
+	// PostV1Services.
+	PostV1Services *models.PostV1Services
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1ServicesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Services adds the v1Services to the post v1 services params
-func (o *PostV1ServicesParams) WithV1Services(v1Services *models.PostV1Services) *PostV1ServicesParams {
-	o.SetV1Services(v1Services)
+// WithPostV1Services adds the postV1Services to the post v1 services params
+func (o *PostV1ServicesParams) WithPostV1Services(postV1Services *models.PostV1Services) *PostV1ServicesParams {
+	o.SetPostV1Services(postV1Services)
 	return o
 }
 
-// SetV1Services adds the v1Services to the post v1 services params
-func (o *PostV1ServicesParams) SetV1Services(v1Services *models.PostV1Services) {
-	o.V1Services = v1Services
+// SetPostV1Services adds the postV1Services to the post v1 services params
+func (o *PostV1ServicesParams) SetPostV1Services(postV1Services *models.PostV1Services) {
+	o.PostV1Services = postV1Services
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1ServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if o.V1Services != nil {
-		if err := r.SetBodyParam(o.V1Services); err != nil {
+	if o.PostV1Services != nil {
+		if err := r.SetBodyParam(o.PostV1Services); err != nil {
 			return err
 		}
 	}

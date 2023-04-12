@@ -7,9 +7,12 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ActorEntity actor entity
@@ -27,11 +30,138 @@ type ActorEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// type
+	// Enum: [firehydrant_user firehydrant_bot aws checkly custom_alerts data_export shortcut nunc github giphy google_meet microsoft_teams webex jira_cloud jira_onprem opsgenie pager_duty patchy service_now slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2]
 	Type string `json:"type,omitempty"`
 }
 
 // Validate validates this actor entity
 func (m *ActorEntity) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var actorEntityTypeTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","aws","checkly","custom_alerts","data_export","shortcut","nunc","github","giphy","google_meet","microsoft_teams","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","patchy","service_now","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		actorEntityTypeTypePropEnum = append(actorEntityTypeTypePropEnum, v)
+	}
+}
+
+const (
+
+	// ActorEntityTypeFirehydrantUser captures enum value "firehydrant_user"
+	ActorEntityTypeFirehydrantUser string = "firehydrant_user"
+
+	// ActorEntityTypeFirehydrantBot captures enum value "firehydrant_bot"
+	ActorEntityTypeFirehydrantBot string = "firehydrant_bot"
+
+	// ActorEntityTypeAws captures enum value "aws"
+	ActorEntityTypeAws string = "aws"
+
+	// ActorEntityTypeCheckly captures enum value "checkly"
+	ActorEntityTypeCheckly string = "checkly"
+
+	// ActorEntityTypeCustomAlerts captures enum value "custom_alerts"
+	ActorEntityTypeCustomAlerts string = "custom_alerts"
+
+	// ActorEntityTypeDataExport captures enum value "data_export"
+	ActorEntityTypeDataExport string = "data_export"
+
+	// ActorEntityTypeShortcut captures enum value "shortcut"
+	ActorEntityTypeShortcut string = "shortcut"
+
+	// ActorEntityTypeNunc captures enum value "nunc"
+	ActorEntityTypeNunc string = "nunc"
+
+	// ActorEntityTypeGithub captures enum value "github"
+	ActorEntityTypeGithub string = "github"
+
+	// ActorEntityTypeGiphy captures enum value "giphy"
+	ActorEntityTypeGiphy string = "giphy"
+
+	// ActorEntityTypeGoogleMeet captures enum value "google_meet"
+	ActorEntityTypeGoogleMeet string = "google_meet"
+
+	// ActorEntityTypeMicrosoftTeams captures enum value "microsoft_teams"
+	ActorEntityTypeMicrosoftTeams string = "microsoft_teams"
+
+	// ActorEntityTypeWebex captures enum value "webex"
+	ActorEntityTypeWebex string = "webex"
+
+	// ActorEntityTypeJiraCloud captures enum value "jira_cloud"
+	ActorEntityTypeJiraCloud string = "jira_cloud"
+
+	// ActorEntityTypeJiraOnprem captures enum value "jira_onprem"
+	ActorEntityTypeJiraOnprem string = "jira_onprem"
+
+	// ActorEntityTypeOpsgenie captures enum value "opsgenie"
+	ActorEntityTypeOpsgenie string = "opsgenie"
+
+	// ActorEntityTypePagerDuty captures enum value "pager_duty"
+	ActorEntityTypePagerDuty string = "pager_duty"
+
+	// ActorEntityTypePatchy captures enum value "patchy"
+	ActorEntityTypePatchy string = "patchy"
+
+	// ActorEntityTypeServiceNow captures enum value "service_now"
+	ActorEntityTypeServiceNow string = "service_now"
+
+	// ActorEntityTypeSlack captures enum value "slack"
+	ActorEntityTypeSlack string = "slack"
+
+	// ActorEntityTypeStatuspage captures enum value "statuspage"
+	ActorEntityTypeStatuspage string = "statuspage"
+
+	// ActorEntityTypeVictorops captures enum value "victorops"
+	ActorEntityTypeVictorops string = "victorops"
+
+	// ActorEntityTypeZendesk captures enum value "zendesk"
+	ActorEntityTypeZendesk string = "zendesk"
+
+	// ActorEntityTypeZoom captures enum value "zoom"
+	ActorEntityTypeZoom string = "zoom"
+
+	// ActorEntityTypeConfluenceCloud captures enum value "confluence_cloud"
+	ActorEntityTypeConfluenceCloud string = "confluence_cloud"
+
+	// ActorEntityTypeGoogleDocs captures enum value "google_docs"
+	ActorEntityTypeGoogleDocs string = "google_docs"
+
+	// ActorEntityTypeZoomV2 captures enum value "zoom_v2"
+	ActorEntityTypeZoomV2 string = "zoom_v2"
+)
+
+// prop value enum
+func (m *ActorEntity) validateTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, actorEntityTypeTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *ActorEntity) validateType(formats strfmt.Registry) error {
+	if swag.IsZero(m.Type) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTypeEnum("type", "body", m.Type); err != nil {
+		return err
+	}
+
 	return nil
 }
 

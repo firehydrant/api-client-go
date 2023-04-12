@@ -45,7 +45,7 @@ PostV1PostMortemsReportsCreated describes a response with status code 201, with 
 Create a report
 */
 type PostV1PostMortemsReportsCreated struct {
-	Payload *models.PostMortemReportEntity
+	Payload *models.PostMortemsPostMortemReportEntity
 }
 
 // IsSuccess returns true when this post v1 post mortems reports created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1PostMortemsReportsCreated) String() string {
 	return fmt.Sprintf("[POST /v1/post_mortems/reports][%d] postV1PostMortemsReportsCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1PostMortemsReportsCreated) GetPayload() *models.PostMortemReportEntity {
+func (o *PostV1PostMortemsReportsCreated) GetPayload() *models.PostMortemsPostMortemReportEntity {
 	return o.Payload
 }
 
 func (o *PostV1PostMortemsReportsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PostMortemReportEntity)
+	o.Payload = new(models.PostMortemsPostMortemReportEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

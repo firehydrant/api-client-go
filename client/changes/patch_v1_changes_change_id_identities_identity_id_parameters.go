@@ -64,9 +64,6 @@ PatchV1ChangesChangeIDIdentitiesIdentityIDParams contains all the parameters to 
 */
 type PatchV1ChangesChangeIDIdentitiesIdentityIDParams struct {
 
-	// V1ChangesChangeIDIdentities.
-	V1ChangesChangeIDIdentities *models.PatchV1ChangesChangeIDIdentities
-
 	// ChangeID.
 	//
 	// Format: int32
@@ -74,6 +71,9 @@ type PatchV1ChangesChangeIDIdentitiesIdentityIDParams struct {
 
 	// IdentityID.
 	IdentityID string
+
+	// PatchV1ChangesChangeIDIdentitiesIdentityID.
+	PatchV1ChangesChangeIDIdentitiesIdentityID *models.PatchV1ChangesChangeIDIdentitiesIdentityID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -128,17 +128,6 @@ func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) SetHTTPClient(client 
 	o.HTTPClient = client
 }
 
-// WithV1ChangesChangeIDIdentities adds the v1ChangesChangeIDIdentities to the patch v1 changes change Id identities identity Id params
-func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) WithV1ChangesChangeIDIdentities(v1ChangesChangeIDIdentities *models.PatchV1ChangesChangeIDIdentities) *PatchV1ChangesChangeIDIdentitiesIdentityIDParams {
-	o.SetV1ChangesChangeIDIdentities(v1ChangesChangeIDIdentities)
-	return o
-}
-
-// SetV1ChangesChangeIDIdentities adds the v1ChangesChangeIdIdentities to the patch v1 changes change Id identities identity Id params
-func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) SetV1ChangesChangeIDIdentities(v1ChangesChangeIDIdentities *models.PatchV1ChangesChangeIDIdentities) {
-	o.V1ChangesChangeIDIdentities = v1ChangesChangeIDIdentities
-}
-
 // WithChangeID adds the changeID to the patch v1 changes change Id identities identity Id params
 func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) WithChangeID(changeID int32) *PatchV1ChangesChangeIDIdentitiesIdentityIDParams {
 	o.SetChangeID(changeID)
@@ -161,6 +150,17 @@ func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) SetIdentityID(identit
 	o.IdentityID = identityID
 }
 
+// WithPatchV1ChangesChangeIDIdentitiesIdentityID adds the patchV1ChangesChangeIDIdentitiesIdentityID to the patch v1 changes change Id identities identity Id params
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) WithPatchV1ChangesChangeIDIdentitiesIdentityID(patchV1ChangesChangeIDIdentitiesIdentityID *models.PatchV1ChangesChangeIDIdentitiesIdentityID) *PatchV1ChangesChangeIDIdentitiesIdentityIDParams {
+	o.SetPatchV1ChangesChangeIDIdentitiesIdentityID(patchV1ChangesChangeIDIdentitiesIdentityID)
+	return o
+}
+
+// SetPatchV1ChangesChangeIDIdentitiesIdentityID adds the patchV1ChangesChangeIdIdentitiesIdentityId to the patch v1 changes change Id identities identity Id params
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) SetPatchV1ChangesChangeIDIdentitiesIdentityID(patchV1ChangesChangeIDIdentitiesIdentityID *models.PatchV1ChangesChangeIDIdentitiesIdentityID) {
+	o.PatchV1ChangesChangeIDIdentitiesIdentityID = patchV1ChangesChangeIDIdentitiesIdentityID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -168,11 +168,6 @@ func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) WriteToRequest(r runt
 		return err
 	}
 	var res []error
-	if o.V1ChangesChangeIDIdentities != nil {
-		if err := r.SetBodyParam(o.V1ChangesChangeIDIdentities); err != nil {
-			return err
-		}
-	}
 
 	// path param change_id
 	if err := r.SetPathParam("change_id", swag.FormatInt32(o.ChangeID)); err != nil {
@@ -182,6 +177,11 @@ func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) WriteToRequest(r runt
 	// path param identity_id
 	if err := r.SetPathParam("identity_id", o.IdentityID); err != nil {
 		return err
+	}
+	if o.PatchV1ChangesChangeIDIdentitiesIdentityID != nil {
+		if err := r.SetBodyParam(o.PatchV1ChangesChangeIDIdentitiesIdentityID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

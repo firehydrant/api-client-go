@@ -417,7 +417,7 @@ type PostV1RunbooksStepsItems0 struct {
 	Name *string `json:"name"`
 
 	// rule
-	Rule []*PostV1RunbooksStepsItems0RuleItems0 `json:"rule"`
+	Rule *PostV1RunbooksStepsItems0Rule `json:"rule,omitempty"`
 }
 
 // Validate validates this post v1 runbooks steps items0
@@ -465,22 +465,15 @@ func (m *PostV1RunbooksStepsItems0) validateRule(formats strfmt.Registry) error 
 		return nil
 	}
 
-	for i := 0; i < len(m.Rule); i++ {
-		if swag.IsZero(m.Rule[i]) { // not required
-			continue
-		}
-
-		if m.Rule[i] != nil {
-			if err := m.Rule[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("rule" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("rule" + "." + strconv.Itoa(i))
-				}
-				return err
+	if m.Rule != nil {
+		if err := m.Rule.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("rule")
 			}
+			return err
 		}
-
 	}
 
 	return nil
@@ -502,19 +495,15 @@ func (m *PostV1RunbooksStepsItems0) ContextValidate(ctx context.Context, formats
 
 func (m *PostV1RunbooksStepsItems0) contextValidateRule(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.Rule); i++ {
-
-		if m.Rule[i] != nil {
-			if err := m.Rule[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("rule" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("rule" + "." + strconv.Itoa(i))
-				}
-				return err
+	if m.Rule != nil {
+		if err := m.Rule.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("rule")
 			}
+			return err
 		}
-
 	}
 
 	return nil
@@ -538,10 +527,10 @@ func (m *PostV1RunbooksStepsItems0) UnmarshalBinary(b []byte) error {
 	return nil
 }
 
-// PostV1RunbooksStepsItems0RuleItems0 post v1 runbooks steps items0 rule items0
+// PostV1RunbooksStepsItems0Rule post v1 runbooks steps items0 rule
 //
-// swagger:model PostV1RunbooksStepsItems0RuleItems0
-type PostV1RunbooksStepsItems0RuleItems0 struct {
+// swagger:model PostV1RunbooksStepsItems0Rule
+type PostV1RunbooksStepsItems0Rule struct {
 
 	// The JSON logic for the rule
 	// Required: true
@@ -551,8 +540,8 @@ type PostV1RunbooksStepsItems0RuleItems0 struct {
 	UserData string `json:"user_data,omitempty"`
 }
 
-// Validate validates this post v1 runbooks steps items0 rule items0
-func (m *PostV1RunbooksStepsItems0RuleItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this post v1 runbooks steps items0 rule
+func (m *PostV1RunbooksStepsItems0Rule) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateLogic(formats); err != nil {
@@ -565,22 +554,22 @@ func (m *PostV1RunbooksStepsItems0RuleItems0) Validate(formats strfmt.Registry) 
 	return nil
 }
 
-func (m *PostV1RunbooksStepsItems0RuleItems0) validateLogic(formats strfmt.Registry) error {
+func (m *PostV1RunbooksStepsItems0Rule) validateLogic(formats strfmt.Registry) error {
 
-	if err := validate.Required("logic", "body", m.Logic); err != nil {
+	if err := validate.Required("rule"+"."+"logic", "body", m.Logic); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validates this post v1 runbooks steps items0 rule items0 based on context it is used
-func (m *PostV1RunbooksStepsItems0RuleItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this post v1 runbooks steps items0 rule based on context it is used
+func (m *PostV1RunbooksStepsItems0Rule) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *PostV1RunbooksStepsItems0RuleItems0) MarshalBinary() ([]byte, error) {
+func (m *PostV1RunbooksStepsItems0Rule) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -588,8 +577,8 @@ func (m *PostV1RunbooksStepsItems0RuleItems0) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *PostV1RunbooksStepsItems0RuleItems0) UnmarshalBinary(b []byte) error {
-	var res PostV1RunbooksStepsItems0RuleItems0
+func (m *PostV1RunbooksStepsItems0Rule) UnmarshalBinary(b []byte) error {
+	var res PostV1RunbooksStepsItems0Rule
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

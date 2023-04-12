@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPatchV1SeveritiesSeveritySlugParams creates a new PatchV1SeveritiesSeveritySlugParams object,
@@ -61,14 +63,11 @@ PatchV1SeveritiesSeveritySlugParams contains all the parameters to send to the A
 */
 type PatchV1SeveritiesSeveritySlugParams struct {
 
-	// Description.
-	Description *string
+	// PatchV1SeveritiesSeveritySlug.
+	PatchV1SeveritiesSeveritySlug *models.PatchV1SeveritiesSeveritySlug
 
 	// SeveritySlug.
 	SeveritySlug string
-
-	// Slug.
-	Slug *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -123,15 +122,15 @@ func (o *PatchV1SeveritiesSeveritySlugParams) SetHTTPClient(client *http.Client)
 	o.HTTPClient = client
 }
 
-// WithDescription adds the description to the patch v1 severities severity slug params
-func (o *PatchV1SeveritiesSeveritySlugParams) WithDescription(description *string) *PatchV1SeveritiesSeveritySlugParams {
-	o.SetDescription(description)
+// WithPatchV1SeveritiesSeveritySlug adds the patchV1SeveritiesSeveritySlug to the patch v1 severities severity slug params
+func (o *PatchV1SeveritiesSeveritySlugParams) WithPatchV1SeveritiesSeveritySlug(patchV1SeveritiesSeveritySlug *models.PatchV1SeveritiesSeveritySlug) *PatchV1SeveritiesSeveritySlugParams {
+	o.SetPatchV1SeveritiesSeveritySlug(patchV1SeveritiesSeveritySlug)
 	return o
 }
 
-// SetDescription adds the description to the patch v1 severities severity slug params
-func (o *PatchV1SeveritiesSeveritySlugParams) SetDescription(description *string) {
-	o.Description = description
+// SetPatchV1SeveritiesSeveritySlug adds the patchV1SeveritiesSeveritySlug to the patch v1 severities severity slug params
+func (o *PatchV1SeveritiesSeveritySlugParams) SetPatchV1SeveritiesSeveritySlug(patchV1SeveritiesSeveritySlug *models.PatchV1SeveritiesSeveritySlug) {
+	o.PatchV1SeveritiesSeveritySlug = patchV1SeveritiesSeveritySlug
 }
 
 // WithSeveritySlug adds the severitySlug to the patch v1 severities severity slug params
@@ -145,17 +144,6 @@ func (o *PatchV1SeveritiesSeveritySlugParams) SetSeveritySlug(severitySlug strin
 	o.SeveritySlug = severitySlug
 }
 
-// WithSlug adds the slug to the patch v1 severities severity slug params
-func (o *PatchV1SeveritiesSeveritySlugParams) WithSlug(slug *string) *PatchV1SeveritiesSeveritySlugParams {
-	o.SetSlug(slug)
-	return o
-}
-
-// SetSlug adds the slug to the patch v1 severities severity slug params
-func (o *PatchV1SeveritiesSeveritySlugParams) SetSlug(slug *string) {
-	o.Slug = slug
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1SeveritiesSeveritySlugParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -163,40 +151,15 @@ func (o *PatchV1SeveritiesSeveritySlugParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
-
-	if o.Description != nil {
-
-		// form param description
-		var frDescription string
-		if o.Description != nil {
-			frDescription = *o.Description
-		}
-		fDescription := frDescription
-		if fDescription != "" {
-			if err := r.SetFormParam("description", fDescription); err != nil {
-				return err
-			}
+	if o.PatchV1SeveritiesSeveritySlug != nil {
+		if err := r.SetBodyParam(o.PatchV1SeveritiesSeveritySlug); err != nil {
+			return err
 		}
 	}
 
 	// path param severity_slug
 	if err := r.SetPathParam("severity_slug", o.SeveritySlug); err != nil {
 		return err
-	}
-
-	if o.Slug != nil {
-
-		// form param slug
-		var frSlug string
-		if o.Slug != nil {
-			frSlug = *o.Slug
-		}
-		fSlug := frSlug
-		if fSlug != "" {
-			if err := r.SetFormParam("slug", fSlug); err != nil {
-				return err
-			}
-		}
 	}
 
 	if len(res) > 0 {

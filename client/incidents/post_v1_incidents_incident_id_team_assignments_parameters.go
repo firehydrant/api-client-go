@@ -63,11 +63,11 @@ PostV1IncidentsIncidentIDTeamAssignmentsParams contains all the parameters to se
 */
 type PostV1IncidentsIncidentIDTeamAssignmentsParams struct {
 
-	// V1IncidentsIncidentIDTeamAssignments.
-	V1IncidentsIncidentIDTeamAssignments *models.PostV1IncidentsIncidentIDTeamAssignments
-
 	// IncidentID.
 	IncidentID string
+
+	// PostV1IncidentsIncidentIDTeamAssignments.
+	PostV1IncidentsIncidentIDTeamAssignments *models.PostV1IncidentsIncidentIDTeamAssignments
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PostV1IncidentsIncidentIDTeamAssignmentsParams) SetHTTPClient(client *h
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDTeamAssignments adds the v1IncidentsIncidentIDTeamAssignments to the post v1 incidents incident Id team assignments params
-func (o *PostV1IncidentsIncidentIDTeamAssignmentsParams) WithV1IncidentsIncidentIDTeamAssignments(v1IncidentsIncidentIDTeamAssignments *models.PostV1IncidentsIncidentIDTeamAssignments) *PostV1IncidentsIncidentIDTeamAssignmentsParams {
-	o.SetV1IncidentsIncidentIDTeamAssignments(v1IncidentsIncidentIDTeamAssignments)
-	return o
-}
-
-// SetV1IncidentsIncidentIDTeamAssignments adds the v1IncidentsIncidentIdTeamAssignments to the post v1 incidents incident Id team assignments params
-func (o *PostV1IncidentsIncidentIDTeamAssignmentsParams) SetV1IncidentsIncidentIDTeamAssignments(v1IncidentsIncidentIDTeamAssignments *models.PostV1IncidentsIncidentIDTeamAssignments) {
-	o.V1IncidentsIncidentIDTeamAssignments = v1IncidentsIncidentIDTeamAssignments
-}
-
 // WithIncidentID adds the incidentID to the post v1 incidents incident Id team assignments params
 func (o *PostV1IncidentsIncidentIDTeamAssignmentsParams) WithIncidentID(incidentID string) *PostV1IncidentsIncidentIDTeamAssignmentsParams {
 	o.SetIncidentID(incidentID)
@@ -144,6 +133,17 @@ func (o *PostV1IncidentsIncidentIDTeamAssignmentsParams) SetIncidentID(incidentI
 	o.IncidentID = incidentID
 }
 
+// WithPostV1IncidentsIncidentIDTeamAssignments adds the postV1IncidentsIncidentIDTeamAssignments to the post v1 incidents incident Id team assignments params
+func (o *PostV1IncidentsIncidentIDTeamAssignmentsParams) WithPostV1IncidentsIncidentIDTeamAssignments(postV1IncidentsIncidentIDTeamAssignments *models.PostV1IncidentsIncidentIDTeamAssignments) *PostV1IncidentsIncidentIDTeamAssignmentsParams {
+	o.SetPostV1IncidentsIncidentIDTeamAssignments(postV1IncidentsIncidentIDTeamAssignments)
+	return o
+}
+
+// SetPostV1IncidentsIncidentIDTeamAssignments adds the postV1IncidentsIncidentIdTeamAssignments to the post v1 incidents incident Id team assignments params
+func (o *PostV1IncidentsIncidentIDTeamAssignmentsParams) SetPostV1IncidentsIncidentIDTeamAssignments(postV1IncidentsIncidentIDTeamAssignments *models.PostV1IncidentsIncidentIDTeamAssignments) {
+	o.PostV1IncidentsIncidentIDTeamAssignments = postV1IncidentsIncidentIDTeamAssignments
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PostV1IncidentsIncidentIDTeamAssignmentsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PostV1IncidentsIncidentIDTeamAssignmentsParams) WriteToRequest(r runtim
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDTeamAssignments != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDTeamAssignments); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PostV1IncidentsIncidentIDTeamAssignments != nil {
+		if err := r.SetBodyParam(o.PostV1IncidentsIncidentIDTeamAssignments); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

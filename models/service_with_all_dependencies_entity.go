@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ServiceWithAllDependenciesEntity Retrieves a service's dependencies
+// ServiceWithAllDependenciesEntity ServiceWithAllDependenciesEntity model
 //
 // swagger:model ServiceWithAllDependenciesEntity
 type ServiceWithAllDependenciesEntity struct {
@@ -25,8 +25,8 @@ type ServiceWithAllDependenciesEntity struct {
 	// Services that this service is dependent on
 	ParentServiceDependencies []*ServiceParentDependencyEntity `json:"parent_service_dependencies"`
 
-	// All dependencies
-	ServiceDependencies []string `json:"service_dependencies"`
+	// All dependencies. Can be one of: ServiceChildDependencyEntity, ServiceParentDependencyEntity
+	ServiceDependencies []interface{} `json:"service_dependencies"`
 }
 
 // Validate validates this service with all dependencies entity

@@ -63,8 +63,8 @@ PostV1SeveritiesParams contains all the parameters to send to the API endpoint
 */
 type PostV1SeveritiesParams struct {
 
-	// V1Severities.
-	V1Severities *models.PostV1Severities
+	// PostV1Severities.
+	PostV1Severities *models.PostV1Severities
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1SeveritiesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Severities adds the v1Severities to the post v1 severities params
-func (o *PostV1SeveritiesParams) WithV1Severities(v1Severities *models.PostV1Severities) *PostV1SeveritiesParams {
-	o.SetV1Severities(v1Severities)
+// WithPostV1Severities adds the postV1Severities to the post v1 severities params
+func (o *PostV1SeveritiesParams) WithPostV1Severities(postV1Severities *models.PostV1Severities) *PostV1SeveritiesParams {
+	o.SetPostV1Severities(postV1Severities)
 	return o
 }
 
-// SetV1Severities adds the v1Severities to the post v1 severities params
-func (o *PostV1SeveritiesParams) SetV1Severities(v1Severities *models.PostV1Severities) {
-	o.V1Severities = v1Severities
+// SetPostV1Severities adds the postV1Severities to the post v1 severities params
+func (o *PostV1SeveritiesParams) SetPostV1Severities(postV1Severities *models.PostV1Severities) {
+	o.PostV1Severities = postV1Severities
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1SeveritiesParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if o.V1Severities != nil {
-		if err := r.SetBodyParam(o.V1Severities); err != nil {
+	if o.PostV1Severities != nil {
+		if err := r.SetBodyParam(o.PostV1Severities); err != nil {
 			return err
 		}
 	}

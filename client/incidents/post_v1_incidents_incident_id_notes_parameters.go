@@ -63,11 +63,11 @@ PostV1IncidentsIncidentIDNotesParams contains all the parameters to send to the 
 */
 type PostV1IncidentsIncidentIDNotesParams struct {
 
-	// V1IncidentsIncidentIDNotes.
-	V1IncidentsIncidentIDNotes *models.PostV1IncidentsIncidentIDNotes
-
 	// IncidentID.
 	IncidentID string
+
+	// PostV1IncidentsIncidentIDNotes.
+	PostV1IncidentsIncidentIDNotes *models.PostV1IncidentsIncidentIDNotes
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PostV1IncidentsIncidentIDNotesParams) SetHTTPClient(client *http.Client
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDNotes adds the v1IncidentsIncidentIDNotes to the post v1 incidents incident Id notes params
-func (o *PostV1IncidentsIncidentIDNotesParams) WithV1IncidentsIncidentIDNotes(v1IncidentsIncidentIDNotes *models.PostV1IncidentsIncidentIDNotes) *PostV1IncidentsIncidentIDNotesParams {
-	o.SetV1IncidentsIncidentIDNotes(v1IncidentsIncidentIDNotes)
-	return o
-}
-
-// SetV1IncidentsIncidentIDNotes adds the v1IncidentsIncidentIdNotes to the post v1 incidents incident Id notes params
-func (o *PostV1IncidentsIncidentIDNotesParams) SetV1IncidentsIncidentIDNotes(v1IncidentsIncidentIDNotes *models.PostV1IncidentsIncidentIDNotes) {
-	o.V1IncidentsIncidentIDNotes = v1IncidentsIncidentIDNotes
-}
-
 // WithIncidentID adds the incidentID to the post v1 incidents incident Id notes params
 func (o *PostV1IncidentsIncidentIDNotesParams) WithIncidentID(incidentID string) *PostV1IncidentsIncidentIDNotesParams {
 	o.SetIncidentID(incidentID)
@@ -144,6 +133,17 @@ func (o *PostV1IncidentsIncidentIDNotesParams) SetIncidentID(incidentID string) 
 	o.IncidentID = incidentID
 }
 
+// WithPostV1IncidentsIncidentIDNotes adds the postV1IncidentsIncidentIDNotes to the post v1 incidents incident Id notes params
+func (o *PostV1IncidentsIncidentIDNotesParams) WithPostV1IncidentsIncidentIDNotes(postV1IncidentsIncidentIDNotes *models.PostV1IncidentsIncidentIDNotes) *PostV1IncidentsIncidentIDNotesParams {
+	o.SetPostV1IncidentsIncidentIDNotes(postV1IncidentsIncidentIDNotes)
+	return o
+}
+
+// SetPostV1IncidentsIncidentIDNotes adds the postV1IncidentsIncidentIdNotes to the post v1 incidents incident Id notes params
+func (o *PostV1IncidentsIncidentIDNotesParams) SetPostV1IncidentsIncidentIDNotes(postV1IncidentsIncidentIDNotes *models.PostV1IncidentsIncidentIDNotes) {
+	o.PostV1IncidentsIncidentIDNotes = postV1IncidentsIncidentIDNotes
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PostV1IncidentsIncidentIDNotesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PostV1IncidentsIncidentIDNotesParams) WriteToRequest(r runtime.ClientRe
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDNotes != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDNotes); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PostV1IncidentsIncidentIDNotes != nil {
+		if err := r.SetBodyParam(o.PostV1IncidentsIncidentIDNotes); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

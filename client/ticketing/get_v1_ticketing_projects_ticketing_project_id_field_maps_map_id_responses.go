@@ -45,7 +45,7 @@ GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK describes a response wi
 Retrieve field map for a ticketing project
 */
 type GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK struct {
-	Payload *models.ProjectFieldMapEntity
+	Payload *models.TicketingProjectFieldMapEntity
 }
 
 // IsSuccess returns true when this get v1 ticketing projects ticketing project Id field maps map Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK) String() stri
 	return fmt.Sprintf("[GET /v1/ticketing/projects/{ticketing_project_id}/field_maps/{map_id}][%d] getV1TicketingProjectsTicketingProjectIdFieldMapsMapIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK) GetPayload() *models.ProjectFieldMapEntity {
+func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK) GetPayload() *models.TicketingProjectFieldMapEntity {
 	return o.Payload
 }
 
 func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectFieldMapEntity)
+	o.Payload = new(models.TicketingProjectFieldMapEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

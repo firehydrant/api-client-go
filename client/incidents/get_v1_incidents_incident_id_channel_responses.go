@@ -45,7 +45,7 @@ GetV1IncidentsIncidentIDChannelOK describes a response with status code 200, wit
 Gives chat channel information for the specified incident
 */
 type GetV1IncidentsIncidentIDChannelOK struct {
-	Payload *models.ChannelEntity
+	Payload *models.IncidentsChannelEntity
 }
 
 // IsSuccess returns true when this get v1 incidents incident Id channel o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1IncidentsIncidentIDChannelOK) String() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/channel][%d] getV1IncidentsIncidentIdChannelOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1IncidentsIncidentIDChannelOK) GetPayload() *models.ChannelEntity {
+func (o *GetV1IncidentsIncidentIDChannelOK) GetPayload() *models.IncidentsChannelEntity {
 	return o.Payload
 }
 
 func (o *GetV1IncidentsIncidentIDChannelOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ChannelEntity)
+	o.Payload = new(models.IncidentsChannelEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

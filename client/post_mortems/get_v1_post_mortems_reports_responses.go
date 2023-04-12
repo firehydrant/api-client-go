@@ -45,7 +45,7 @@ GetV1PostMortemsReportsOK describes a response with status code 200, with defaul
 List all reports
 */
 type GetV1PostMortemsReportsOK struct {
-	Payload *models.PostMortemReportEntityPaginated
+	Payload *models.PostMortemsPostMortemReportEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 post mortems reports o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1PostMortemsReportsOK) String() string {
 	return fmt.Sprintf("[GET /v1/post_mortems/reports][%d] getV1PostMortemsReportsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1PostMortemsReportsOK) GetPayload() *models.PostMortemReportEntityPaginated {
+func (o *GetV1PostMortemsReportsOK) GetPayload() *models.PostMortemsPostMortemReportEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1PostMortemsReportsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PostMortemReportEntityPaginated)
+	o.Payload = new(models.PostMortemsPostMortemReportEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

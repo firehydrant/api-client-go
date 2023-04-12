@@ -63,8 +63,8 @@ PatchV1SavedSearchesResourceTypeSavedSearchIDParams contains all the parameters 
 */
 type PatchV1SavedSearchesResourceTypeSavedSearchIDParams struct {
 
-	// V1SavedSearchesResourceType.
-	V1SavedSearchesResourceType *models.PatchV1SavedSearchesResourceType
+	// PatchV1SavedSearchesResourceTypeSavedSearchID.
+	PatchV1SavedSearchesResourceTypeSavedSearchID *models.PatchV1SavedSearchesResourceTypeSavedSearchID
 
 	// ResourceType.
 	ResourceType string
@@ -128,15 +128,15 @@ func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDParams) SetHTTPClient(clie
 	o.HTTPClient = client
 }
 
-// WithV1SavedSearchesResourceType adds the v1SavedSearchesResourceType to the patch v1 saved searches resource type saved search Id params
-func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDParams) WithV1SavedSearchesResourceType(v1SavedSearchesResourceType *models.PatchV1SavedSearchesResourceType) *PatchV1SavedSearchesResourceTypeSavedSearchIDParams {
-	o.SetV1SavedSearchesResourceType(v1SavedSearchesResourceType)
+// WithPatchV1SavedSearchesResourceTypeSavedSearchID adds the patchV1SavedSearchesResourceTypeSavedSearchID to the patch v1 saved searches resource type saved search Id params
+func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDParams) WithPatchV1SavedSearchesResourceTypeSavedSearchID(patchV1SavedSearchesResourceTypeSavedSearchID *models.PatchV1SavedSearchesResourceTypeSavedSearchID) *PatchV1SavedSearchesResourceTypeSavedSearchIDParams {
+	o.SetPatchV1SavedSearchesResourceTypeSavedSearchID(patchV1SavedSearchesResourceTypeSavedSearchID)
 	return o
 }
 
-// SetV1SavedSearchesResourceType adds the v1SavedSearchesResourceType to the patch v1 saved searches resource type saved search Id params
-func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDParams) SetV1SavedSearchesResourceType(v1SavedSearchesResourceType *models.PatchV1SavedSearchesResourceType) {
-	o.V1SavedSearchesResourceType = v1SavedSearchesResourceType
+// SetPatchV1SavedSearchesResourceTypeSavedSearchID adds the patchV1SavedSearchesResourceTypeSavedSearchId to the patch v1 saved searches resource type saved search Id params
+func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDParams) SetPatchV1SavedSearchesResourceTypeSavedSearchID(patchV1SavedSearchesResourceTypeSavedSearchID *models.PatchV1SavedSearchesResourceTypeSavedSearchID) {
+	o.PatchV1SavedSearchesResourceTypeSavedSearchID = patchV1SavedSearchesResourceTypeSavedSearchID
 }
 
 // WithResourceType adds the resourceType to the patch v1 saved searches resource type saved search Id params
@@ -168,8 +168,8 @@ func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDParams) WriteToRequest(r r
 		return err
 	}
 	var res []error
-	if o.V1SavedSearchesResourceType != nil {
-		if err := r.SetBodyParam(o.V1SavedSearchesResourceType); err != nil {
+	if o.PatchV1SavedSearchesResourceTypeSavedSearchID != nil {
+		if err := r.SetBodyParam(o.PatchV1SavedSearchesResourceTypeSavedSearchID); err != nil {
 			return err
 		}
 	}

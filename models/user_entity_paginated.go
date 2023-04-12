@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// UserEntityPaginated Retrieve a list of all users in an organization
+// UserEntityPaginated UserEntityPaginated model
 //
 // swagger:model UserEntityPaginated
 type UserEntityPaginated struct {

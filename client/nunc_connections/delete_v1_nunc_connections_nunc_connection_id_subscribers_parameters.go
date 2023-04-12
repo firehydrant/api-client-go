@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1NuncConnectionsNuncConnectionIDSubscribersParams creates a new DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams object,
@@ -69,7 +68,7 @@ type DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams struct {
 
 	   A list of subscriber IDs to unsubscribe.
 	*/
-	SubscriberIds []string
+	SubscriberIds string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -136,13 +135,13 @@ func (o *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams) SetNuncConnec
 }
 
 // WithSubscriberIds adds the subscriberIds to the delete v1 nunc connections nunc connection Id subscribers params
-func (o *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams) WithSubscriberIds(subscriberIds []string) *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams {
+func (o *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams) WithSubscriberIds(subscriberIds string) *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams {
 	o.SetSubscriberIds(subscriberIds)
 	return o
 }
 
 // SetSubscriberIds adds the subscriberIds to the delete v1 nunc connections nunc connection Id subscribers params
-func (o *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams) SetSubscriberIds(subscriberIds []string) {
+func (o *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams) SetSubscriberIds(subscriberIds string) {
 	o.SubscriberIds = subscriberIds
 }
 
@@ -159,13 +158,12 @@ func (o *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams) WriteToReques
 		return err
 	}
 
-	if o.SubscriberIds != nil {
+	// query param subscriber_ids
+	qrSubscriberIds := o.SubscriberIds
+	qSubscriberIds := qrSubscriberIds
+	if qSubscriberIds != "" {
 
-		// binding items for subscriber_ids
-		joinedSubscriberIds := o.bindParamSubscriberIds(reg)
-
-		// form array param subscriber_ids
-		if err := r.SetFormParam("subscriber_ids", joinedSubscriberIds...); err != nil {
+		if err := r.SetQueryParam("subscriber_ids", qSubscriberIds); err != nil {
 			return err
 		}
 	}
@@ -174,21 +172,4 @@ func (o *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams) WriteToReques
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
-}
-
-// bindParamDeleteV1NuncConnectionsNuncConnectionIDSubscribers binds the parameter subscriber_ids
-func (o *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams) bindParamSubscriberIds(formats strfmt.Registry) []string {
-	subscriberIdsIR := o.SubscriberIds
-
-	var subscriberIdsIC []string
-	for _, subscriberIdsIIR := range subscriberIdsIR { // explode []string
-
-		subscriberIdsIIV := subscriberIdsIIR // string as string
-		subscriberIdsIC = append(subscriberIdsIC, subscriberIdsIIV)
-	}
-
-	// items.CollectionFormat: ""
-	subscriberIdsIS := swag.JoinByFormat(subscriberIdsIC, "")
-
-	return subscriberIdsIS
 }

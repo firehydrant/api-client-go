@@ -64,13 +64,13 @@ PatchV1IncidentRolesIncidentRoleIDParams contains all the parameters to send to 
 */
 type PatchV1IncidentRolesIncidentRoleIDParams struct {
 
-	// V1IncidentRoles.
-	V1IncidentRoles *models.PatchV1IncidentRoles
-
 	// IncidentRoleID.
 	//
 	// Format: int32
 	IncidentRoleID int32
+
+	// PatchV1IncidentRolesIncidentRoleID.
+	PatchV1IncidentRolesIncidentRoleID *models.PatchV1IncidentRolesIncidentRoleID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *PatchV1IncidentRolesIncidentRoleIDParams) SetHTTPClient(client *http.Cl
 	o.HTTPClient = client
 }
 
-// WithV1IncidentRoles adds the v1IncidentRoles to the patch v1 incident roles incident role Id params
-func (o *PatchV1IncidentRolesIncidentRoleIDParams) WithV1IncidentRoles(v1IncidentRoles *models.PatchV1IncidentRoles) *PatchV1IncidentRolesIncidentRoleIDParams {
-	o.SetV1IncidentRoles(v1IncidentRoles)
-	return o
-}
-
-// SetV1IncidentRoles adds the v1IncidentRoles to the patch v1 incident roles incident role Id params
-func (o *PatchV1IncidentRolesIncidentRoleIDParams) SetV1IncidentRoles(v1IncidentRoles *models.PatchV1IncidentRoles) {
-	o.V1IncidentRoles = v1IncidentRoles
-}
-
 // WithIncidentRoleID adds the incidentRoleID to the patch v1 incident roles incident role Id params
 func (o *PatchV1IncidentRolesIncidentRoleIDParams) WithIncidentRoleID(incidentRoleID int32) *PatchV1IncidentRolesIncidentRoleIDParams {
 	o.SetIncidentRoleID(incidentRoleID)
@@ -147,6 +136,17 @@ func (o *PatchV1IncidentRolesIncidentRoleIDParams) SetIncidentRoleID(incidentRol
 	o.IncidentRoleID = incidentRoleID
 }
 
+// WithPatchV1IncidentRolesIncidentRoleID adds the patchV1IncidentRolesIncidentRoleID to the patch v1 incident roles incident role Id params
+func (o *PatchV1IncidentRolesIncidentRoleIDParams) WithPatchV1IncidentRolesIncidentRoleID(patchV1IncidentRolesIncidentRoleID *models.PatchV1IncidentRolesIncidentRoleID) *PatchV1IncidentRolesIncidentRoleIDParams {
+	o.SetPatchV1IncidentRolesIncidentRoleID(patchV1IncidentRolesIncidentRoleID)
+	return o
+}
+
+// SetPatchV1IncidentRolesIncidentRoleID adds the patchV1IncidentRolesIncidentRoleId to the patch v1 incident roles incident role Id params
+func (o *PatchV1IncidentRolesIncidentRoleIDParams) SetPatchV1IncidentRolesIncidentRoleID(patchV1IncidentRolesIncidentRoleID *models.PatchV1IncidentRolesIncidentRoleID) {
+	o.PatchV1IncidentRolesIncidentRoleID = patchV1IncidentRolesIncidentRoleID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1IncidentRolesIncidentRoleIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -154,15 +154,15 @@ func (o *PatchV1IncidentRolesIncidentRoleIDParams) WriteToRequest(r runtime.Clie
 		return err
 	}
 	var res []error
-	if o.V1IncidentRoles != nil {
-		if err := r.SetBodyParam(o.V1IncidentRoles); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_role_id
 	if err := r.SetPathParam("incident_role_id", swag.FormatInt32(o.IncidentRoleID)); err != nil {
 		return err
+	}
+	if o.PatchV1IncidentRolesIncidentRoleID != nil {
+		if err := r.SetBodyParam(o.PatchV1IncidentRolesIncidentRoleID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

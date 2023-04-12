@@ -45,7 +45,7 @@ GetV1EnvironmentsEnvironmentIDOK describes a response with status code 200, with
 Retrieves a single environment by ID
 */
 type GetV1EnvironmentsEnvironmentIDOK struct {
-	Payload *models.EnvironmentEntity
+	Payload *models.EnvironmentEntryEntity
 }
 
 // IsSuccess returns true when this get v1 environments environment Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1EnvironmentsEnvironmentIDOK) String() string {
 	return fmt.Sprintf("[GET /v1/environments/{environment_id}][%d] getV1EnvironmentsEnvironmentIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1EnvironmentsEnvironmentIDOK) GetPayload() *models.EnvironmentEntity {
+func (o *GetV1EnvironmentsEnvironmentIDOK) GetPayload() *models.EnvironmentEntryEntity {
 	return o.Payload
 }
 
 func (o *GetV1EnvironmentsEnvironmentIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.EnvironmentEntity)
+	o.Payload = new(models.EnvironmentEntryEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

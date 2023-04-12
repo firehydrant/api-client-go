@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// TaskListEntity Retrieves a single task list by ID
+// TaskListEntity TaskListEntity model
 //
 // swagger:model TaskListEntity
 type TaskListEntity struct {

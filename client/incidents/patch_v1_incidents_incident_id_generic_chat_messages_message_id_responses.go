@@ -45,7 +45,7 @@ PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDOK describes a response wi
 Update an existing generic chat message on an incident.
 */
 type PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDOK struct {
-	Payload *models.GenericChatMessageEntity
+	Payload *models.EventGenericChatMessageEntity
 }
 
 // IsSuccess returns true when this patch v1 incidents incident Id generic chat messages message Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDOK) String() stri
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/generic_chat_messages/{message_id}][%d] patchV1IncidentsIncidentIdGenericChatMessagesMessageIdOK  %+v", 200, o.Payload)
 }
 
-func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDOK) GetPayload() *models.GenericChatMessageEntity {
+func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDOK) GetPayload() *models.EventGenericChatMessageEntity {
 	return o.Payload
 }
 
 func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GenericChatMessageEntity)
+	o.Payload = new(models.EventGenericChatMessageEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

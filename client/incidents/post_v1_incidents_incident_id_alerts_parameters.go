@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPostV1IncidentsIncidentIDAlertsParams creates a new PostV1IncidentsIncidentIDAlertsParams object,
@@ -153,14 +152,8 @@ func (o *PostV1IncidentsIncidentIDAlertsParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
-
 	if o.AlertIds != nil {
-
-		// binding items for alert_ids
-		joinedAlertIds := o.bindParamAlertIds(reg)
-
-		// form array param alert_ids
-		if err := r.SetFormParam("alert_ids", joinedAlertIds...); err != nil {
+		if err := r.SetBodyParam(o.AlertIds); err != nil {
 			return err
 		}
 	}
@@ -174,21 +167,4 @@ func (o *PostV1IncidentsIncidentIDAlertsParams) WriteToRequest(r runtime.ClientR
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
-}
-
-// bindParamPostV1IncidentsIncidentIDAlerts binds the parameter alert_ids
-func (o *PostV1IncidentsIncidentIDAlertsParams) bindParamAlertIds(formats strfmt.Registry) []string {
-	alertIdsIR := o.AlertIds
-
-	var alertIdsIC []string
-	for _, alertIdsIIR := range alertIdsIR { // explode []string
-
-		alertIdsIIV := alertIdsIIR // string as string
-		alertIdsIC = append(alertIdsIC, alertIdsIIV)
-	}
-
-	// items.CollectionFormat: ""
-	alertIdsIS := swag.JoinByFormat(alertIdsIC, "")
-
-	return alertIdsIS
 }

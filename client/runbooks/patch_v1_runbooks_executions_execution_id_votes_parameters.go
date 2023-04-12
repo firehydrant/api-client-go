@@ -64,13 +64,13 @@ PatchV1RunbooksExecutionsExecutionIDVotesParams contains all the parameters to s
 */
 type PatchV1RunbooksExecutionsExecutionIDVotesParams struct {
 
-	// V1RunbooksExecutionsExecutionIDVotes.
-	V1RunbooksExecutionsExecutionIDVotes *models.PatchV1RunbooksExecutionsExecutionIDVotes
-
 	// ExecutionID.
 	//
 	// Format: int32
 	ExecutionID int32
+
+	// PatchV1RunbooksExecutionsExecutionIDVotes.
+	PatchV1RunbooksExecutionsExecutionIDVotes *models.PatchV1RunbooksExecutionsExecutionIDVotes
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) SetHTTPClient(client *
 	o.HTTPClient = client
 }
 
-// WithV1RunbooksExecutionsExecutionIDVotes adds the v1RunbooksExecutionsExecutionIDVotes to the patch v1 runbooks executions execution Id votes params
-func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) WithV1RunbooksExecutionsExecutionIDVotes(v1RunbooksExecutionsExecutionIDVotes *models.PatchV1RunbooksExecutionsExecutionIDVotes) *PatchV1RunbooksExecutionsExecutionIDVotesParams {
-	o.SetV1RunbooksExecutionsExecutionIDVotes(v1RunbooksExecutionsExecutionIDVotes)
-	return o
-}
-
-// SetV1RunbooksExecutionsExecutionIDVotes adds the v1RunbooksExecutionsExecutionIdVotes to the patch v1 runbooks executions execution Id votes params
-func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) SetV1RunbooksExecutionsExecutionIDVotes(v1RunbooksExecutionsExecutionIDVotes *models.PatchV1RunbooksExecutionsExecutionIDVotes) {
-	o.V1RunbooksExecutionsExecutionIDVotes = v1RunbooksExecutionsExecutionIDVotes
-}
-
 // WithExecutionID adds the executionID to the patch v1 runbooks executions execution Id votes params
 func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) WithExecutionID(executionID int32) *PatchV1RunbooksExecutionsExecutionIDVotesParams {
 	o.SetExecutionID(executionID)
@@ -147,6 +136,17 @@ func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) SetExecutionID(executi
 	o.ExecutionID = executionID
 }
 
+// WithPatchV1RunbooksExecutionsExecutionIDVotes adds the patchV1RunbooksExecutionsExecutionIDVotes to the patch v1 runbooks executions execution Id votes params
+func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) WithPatchV1RunbooksExecutionsExecutionIDVotes(patchV1RunbooksExecutionsExecutionIDVotes *models.PatchV1RunbooksExecutionsExecutionIDVotes) *PatchV1RunbooksExecutionsExecutionIDVotesParams {
+	o.SetPatchV1RunbooksExecutionsExecutionIDVotes(patchV1RunbooksExecutionsExecutionIDVotes)
+	return o
+}
+
+// SetPatchV1RunbooksExecutionsExecutionIDVotes adds the patchV1RunbooksExecutionsExecutionIdVotes to the patch v1 runbooks executions execution Id votes params
+func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) SetPatchV1RunbooksExecutionsExecutionIDVotes(patchV1RunbooksExecutionsExecutionIDVotes *models.PatchV1RunbooksExecutionsExecutionIDVotes) {
+	o.PatchV1RunbooksExecutionsExecutionIDVotes = patchV1RunbooksExecutionsExecutionIDVotes
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -154,15 +154,15 @@ func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) WriteToRequest(r runti
 		return err
 	}
 	var res []error
-	if o.V1RunbooksExecutionsExecutionIDVotes != nil {
-		if err := r.SetBodyParam(o.V1RunbooksExecutionsExecutionIDVotes); err != nil {
-			return err
-		}
-	}
 
 	// path param execution_id
 	if err := r.SetPathParam("execution_id", swag.FormatInt32(o.ExecutionID)); err != nil {
 		return err
+	}
+	if o.PatchV1RunbooksExecutionsExecutionIDVotes != nil {
+		if err := r.SetBodyParam(o.PatchV1RunbooksExecutionsExecutionIDVotes); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

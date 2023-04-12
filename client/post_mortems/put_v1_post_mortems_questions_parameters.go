@@ -63,8 +63,8 @@ PutV1PostMortemsQuestionsParams contains all the parameters to send to the API e
 */
 type PutV1PostMortemsQuestionsParams struct {
 
-	// V1PostMortemsQuestions.
-	V1PostMortemsQuestions *models.PutV1PostMortemsQuestions
+	// PutV1PostMortemsQuestions.
+	PutV1PostMortemsQuestions *models.PutV1PostMortemsQuestions
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PutV1PostMortemsQuestionsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1PostMortemsQuestions adds the v1PostMortemsQuestions to the put v1 post mortems questions params
-func (o *PutV1PostMortemsQuestionsParams) WithV1PostMortemsQuestions(v1PostMortemsQuestions *models.PutV1PostMortemsQuestions) *PutV1PostMortemsQuestionsParams {
-	o.SetV1PostMortemsQuestions(v1PostMortemsQuestions)
+// WithPutV1PostMortemsQuestions adds the putV1PostMortemsQuestions to the put v1 post mortems questions params
+func (o *PutV1PostMortemsQuestionsParams) WithPutV1PostMortemsQuestions(putV1PostMortemsQuestions *models.PutV1PostMortemsQuestions) *PutV1PostMortemsQuestionsParams {
+	o.SetPutV1PostMortemsQuestions(putV1PostMortemsQuestions)
 	return o
 }
 
-// SetV1PostMortemsQuestions adds the v1PostMortemsQuestions to the put v1 post mortems questions params
-func (o *PutV1PostMortemsQuestionsParams) SetV1PostMortemsQuestions(v1PostMortemsQuestions *models.PutV1PostMortemsQuestions) {
-	o.V1PostMortemsQuestions = v1PostMortemsQuestions
+// SetPutV1PostMortemsQuestions adds the putV1PostMortemsQuestions to the put v1 post mortems questions params
+func (o *PutV1PostMortemsQuestionsParams) SetPutV1PostMortemsQuestions(putV1PostMortemsQuestions *models.PutV1PostMortemsQuestions) {
+	o.PutV1PostMortemsQuestions = putV1PostMortemsQuestions
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PutV1PostMortemsQuestionsParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if o.V1PostMortemsQuestions != nil {
-		if err := r.SetBodyParam(o.V1PostMortemsQuestions); err != nil {
+	if o.PutV1PostMortemsQuestions != nil {
+		if err := r.SetBodyParam(o.PutV1PostMortemsQuestions); err != nil {
 			return err
 		}
 	}

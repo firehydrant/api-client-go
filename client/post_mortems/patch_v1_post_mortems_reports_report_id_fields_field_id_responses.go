@@ -45,7 +45,7 @@ PatchV1PostMortemsReportsReportIDFieldsFieldIDOK describes a response with statu
 Update a field value on a post mortem report
 */
 type PatchV1PostMortemsReportsReportIDFieldsFieldIDOK struct {
-	Payload *models.SectionFieldEntity
+	Payload *models.PostMortemsSectionFieldEntity
 }
 
 // IsSuccess returns true when this patch v1 post mortems reports report Id fields field Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDOK) String() string {
 	return fmt.Sprintf("[PATCH /v1/post_mortems/reports/{report_id}/fields/{field_id}][%d] patchV1PostMortemsReportsReportIdFieldsFieldIdOK  %+v", 200, o.Payload)
 }
 
-func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDOK) GetPayload() *models.SectionFieldEntity {
+func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDOK) GetPayload() *models.PostMortemsSectionFieldEntity {
 	return o.Payload
 }
 
 func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.SectionFieldEntity)
+	o.Payload = new(models.PostMortemsSectionFieldEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

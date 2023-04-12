@@ -30,7 +30,7 @@ type ServiceParentDependencyEntity struct {
 	Notes string `json:"notes,omitempty"`
 
 	// service
-	Service string `json:"service,omitempty"`
+	Service *ServiceEntity `json:"service,omitempty"`
 
 	// type
 	Type string `json:"type,omitempty"`
@@ -45,6 +45,10 @@ func (m *ServiceParentDependencyEntity) Validate(formats strfmt.Registry) error 
 	var res []error
 
 	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -70,6 +74,25 @@ func (m *ServiceParentDependencyEntity) validateCreatedAt(formats strfmt.Registr
 	return nil
 }
 
+func (m *ServiceParentDependencyEntity) validateService(formats strfmt.Registry) error {
+	if swag.IsZero(m.Service) { // not required
+		return nil
+	}
+
+	if m.Service != nil {
+		if err := m.Service.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("service")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ServiceParentDependencyEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
@@ -82,8 +105,33 @@ func (m *ServiceParentDependencyEntity) validateUpdatedAt(formats strfmt.Registr
 	return nil
 }
 
-// ContextValidate validates this service parent dependency entity based on context it is used
+// ContextValidate validate this service parent dependency entity based on the context it is used
 func (m *ServiceParentDependencyEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateService(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ServiceParentDependencyEntity) contextValidateService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Service != nil {
+		if err := m.Service.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("service")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

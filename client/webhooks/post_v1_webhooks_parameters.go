@@ -63,8 +63,8 @@ PostV1WebhooksParams contains all the parameters to send to the API endpoint
 */
 type PostV1WebhooksParams struct {
 
-	// V1Webhooks.
-	V1Webhooks *models.PostV1Webhooks
+	// PostV1Webhooks.
+	PostV1Webhooks *models.PostV1Webhooks
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1WebhooksParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Webhooks adds the v1Webhooks to the post v1 webhooks params
-func (o *PostV1WebhooksParams) WithV1Webhooks(v1Webhooks *models.PostV1Webhooks) *PostV1WebhooksParams {
-	o.SetV1Webhooks(v1Webhooks)
+// WithPostV1Webhooks adds the postV1Webhooks to the post v1 webhooks params
+func (o *PostV1WebhooksParams) WithPostV1Webhooks(postV1Webhooks *models.PostV1Webhooks) *PostV1WebhooksParams {
+	o.SetPostV1Webhooks(postV1Webhooks)
 	return o
 }
 
-// SetV1Webhooks adds the v1Webhooks to the post v1 webhooks params
-func (o *PostV1WebhooksParams) SetV1Webhooks(v1Webhooks *models.PostV1Webhooks) {
-	o.V1Webhooks = v1Webhooks
+// SetPostV1Webhooks adds the postV1Webhooks to the post v1 webhooks params
+func (o *PostV1WebhooksParams) SetPostV1Webhooks(postV1Webhooks *models.PostV1Webhooks) {
+	o.PostV1Webhooks = postV1Webhooks
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1WebhooksParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if o.V1Webhooks != nil {
-		if err := r.SetBodyParam(o.V1Webhooks); err != nil {
+	if o.PostV1Webhooks != nil {
+		if err := r.SetBodyParam(o.PostV1Webhooks); err != nil {
 			return err
 		}
 	}

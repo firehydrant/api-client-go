@@ -24,9 +24,6 @@ type PostV1Incidents struct {
 	// List of alert IDs that this incident should be associated to
 	AlertIds []string `json:"alert_ids"`
 
-	// context object
-	ContextObject *PostV1IncidentsContextObject `json:"context_object,omitempty"`
-
 	// customer impact summary
 	CustomerImpactSummary string `json:"customer_impact_summary,omitempty"`
 
@@ -37,7 +34,10 @@ type PostV1Incidents struct {
 	Impacts []*PostV1IncidentsImpactsItems0 `json:"impacts"`
 
 	// Key:value pairs to track custom data for the incident
-	Labels map[string]string `json:"labels,omitempty"`
+	Labels interface{} `json:"labels,omitempty"`
+
+	// An array of milestones to set on an incident. This can be used to create an already-resolved incident.
+	Milestones []*PostV1IncidentsMilestonesItems0 `json:"milestones"`
 
 	// name
 	// Required: true
@@ -66,17 +66,20 @@ type PostV1Incidents struct {
 
 	// List of tags for the incident
 	TagList []string `json:"tag_list"`
+
+	// IDs of teams you wish to assign to this incident.
+	TeamIds []string `json:"team_ids"`
 }
 
 // Validate validates this post v1 incidents
 func (m *PostV1Incidents) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateContextObject(formats); err != nil {
+	if err := m.validateImpacts(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateImpacts(formats); err != nil {
+	if err := m.validateMilestones(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -87,25 +90,6 @@ func (m *PostV1Incidents) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *PostV1Incidents) validateContextObject(formats strfmt.Registry) error {
-	if swag.IsZero(m.ContextObject) { // not required
-		return nil
-	}
-
-	if m.ContextObject != nil {
-		if err := m.ContextObject.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("context_object")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("context_object")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -135,6 +119,32 @@ func (m *PostV1Incidents) validateImpacts(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *PostV1Incidents) validateMilestones(formats strfmt.Registry) error {
+	if swag.IsZero(m.Milestones) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Milestones); i++ {
+		if swag.IsZero(m.Milestones[i]) { // not required
+			continue
+		}
+
+		if m.Milestones[i] != nil {
+			if err := m.Milestones[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("milestones" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("milestones" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *PostV1Incidents) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
@@ -148,33 +158,17 @@ func (m *PostV1Incidents) validateName(formats strfmt.Registry) error {
 func (m *PostV1Incidents) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateContextObject(ctx, formats); err != nil {
+	if err := m.contextValidateImpacts(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateImpacts(ctx, formats); err != nil {
+	if err := m.contextValidateMilestones(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *PostV1Incidents) contextValidateContextObject(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ContextObject != nil {
-		if err := m.ContextObject.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("context_object")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("context_object")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -198,6 +192,26 @@ func (m *PostV1Incidents) contextValidateImpacts(ctx context.Context, formats st
 	return nil
 }
 
+func (m *PostV1Incidents) contextValidateMilestones(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Milestones); i++ {
+
+		if m.Milestones[i] != nil {
+			if err := m.Milestones[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("milestones" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("milestones" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // MarshalBinary interface implementation
 func (m *PostV1Incidents) MarshalBinary() ([]byte, error) {
 	if m == nil {
@@ -209,166 +223,6 @@ func (m *PostV1Incidents) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PostV1Incidents) UnmarshalBinary(b []byte) error {
 	var res PostV1Incidents
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// PostV1IncidentsContextObject post v1 incidents context object
-//
-// swagger:model PostV1IncidentsContextObject
-type PostV1IncidentsContextObject struct {
-
-	// context description
-	ContextDescription string `json:"context_description,omitempty"`
-
-	// context tag
-	// Required: true
-	// Enum: [runbook_testing runbook_isolation_testing]
-	ContextTag *string `json:"context_tag"`
-
-	// object id
-	// Required: true
-	ObjectID *string `json:"object_id"`
-
-	// object type
-	// Required: true
-	// Enum: [Runbooks::Runbook]
-	ObjectType *string `json:"object_type"`
-}
-
-// Validate validates this post v1 incidents context object
-func (m *PostV1IncidentsContextObject) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateContextTag(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateObjectID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateObjectType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-var postV1IncidentsContextObjectTypeContextTagPropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["runbook_testing","runbook_isolation_testing"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		postV1IncidentsContextObjectTypeContextTagPropEnum = append(postV1IncidentsContextObjectTypeContextTagPropEnum, v)
-	}
-}
-
-const (
-
-	// PostV1IncidentsContextObjectContextTagRunbookTesting captures enum value "runbook_testing"
-	PostV1IncidentsContextObjectContextTagRunbookTesting string = "runbook_testing"
-
-	// PostV1IncidentsContextObjectContextTagRunbookIsolationTesting captures enum value "runbook_isolation_testing"
-	PostV1IncidentsContextObjectContextTagRunbookIsolationTesting string = "runbook_isolation_testing"
-)
-
-// prop value enum
-func (m *PostV1IncidentsContextObject) validateContextTagEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, postV1IncidentsContextObjectTypeContextTagPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *PostV1IncidentsContextObject) validateContextTag(formats strfmt.Registry) error {
-
-	if err := validate.Required("context_object"+"."+"context_tag", "body", m.ContextTag); err != nil {
-		return err
-	}
-
-	// value enum
-	if err := m.validateContextTagEnum("context_object"+"."+"context_tag", "body", *m.ContextTag); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *PostV1IncidentsContextObject) validateObjectID(formats strfmt.Registry) error {
-
-	if err := validate.Required("context_object"+"."+"object_id", "body", m.ObjectID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-var postV1IncidentsContextObjectTypeObjectTypePropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["Runbooks::Runbook"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		postV1IncidentsContextObjectTypeObjectTypePropEnum = append(postV1IncidentsContextObjectTypeObjectTypePropEnum, v)
-	}
-}
-
-const (
-
-	// PostV1IncidentsContextObjectObjectTypeRunbooksRunbook captures enum value "Runbooks::Runbook"
-	PostV1IncidentsContextObjectObjectTypeRunbooksRunbook string = "Runbooks::Runbook"
-)
-
-// prop value enum
-func (m *PostV1IncidentsContextObject) validateObjectTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, postV1IncidentsContextObjectTypeObjectTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *PostV1IncidentsContextObject) validateObjectType(formats strfmt.Registry) error {
-
-	if err := validate.Required("context_object"+"."+"object_type", "body", m.ObjectType); err != nil {
-		return err
-	}
-
-	// value enum
-	if err := m.validateObjectTypeEnum("context_object"+"."+"object_type", "body", *m.ObjectType); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this post v1 incidents context object based on context it is used
-func (m *PostV1IncidentsContextObject) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *PostV1IncidentsContextObject) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *PostV1IncidentsContextObject) UnmarshalBinary(b []byte) error {
-	var res PostV1IncidentsContextObject
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -459,6 +313,143 @@ func (m *PostV1IncidentsImpactsItems0) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PostV1IncidentsImpactsItems0) UnmarshalBinary(b []byte) error {
 	var res PostV1IncidentsImpactsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1IncidentsMilestonesItems0 post v1 incidents milestones items0
+//
+// swagger:model PostV1IncidentsMilestonesItems0
+type PostV1IncidentsMilestonesItems0 struct {
+
+	// An ISO8601 formatted string for when this milestone occurred. If you are removing a milestone, this field still needs to be set to some value
+	// Required: true
+	// Format: date-time
+	OccurredAt *strfmt.DateTime `json:"occurred_at"`
+
+	// type
+	// Required: true
+	// Enum: [started detected acknowledged investigating identified mitigated resolved postmortem_started postmortem_completed closed]
+	Type *string `json:"type"`
+}
+
+// Validate validates this post v1 incidents milestones items0
+func (m *PostV1IncidentsMilestonesItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateOccurredAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1IncidentsMilestonesItems0) validateOccurredAt(formats strfmt.Registry) error {
+
+	if err := validate.Required("occurred_at", "body", m.OccurredAt); err != nil {
+		return err
+	}
+
+	if err := validate.FormatOf("occurred_at", "body", "date-time", m.OccurredAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var postV1IncidentsMilestonesItems0TypeTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["started","detected","acknowledged","investigating","identified","mitigated","resolved","postmortem_started","postmortem_completed","closed"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		postV1IncidentsMilestonesItems0TypeTypePropEnum = append(postV1IncidentsMilestonesItems0TypeTypePropEnum, v)
+	}
+}
+
+const (
+
+	// PostV1IncidentsMilestonesItems0TypeStarted captures enum value "started"
+	PostV1IncidentsMilestonesItems0TypeStarted string = "started"
+
+	// PostV1IncidentsMilestonesItems0TypeDetected captures enum value "detected"
+	PostV1IncidentsMilestonesItems0TypeDetected string = "detected"
+
+	// PostV1IncidentsMilestonesItems0TypeAcknowledged captures enum value "acknowledged"
+	PostV1IncidentsMilestonesItems0TypeAcknowledged string = "acknowledged"
+
+	// PostV1IncidentsMilestonesItems0TypeInvestigating captures enum value "investigating"
+	PostV1IncidentsMilestonesItems0TypeInvestigating string = "investigating"
+
+	// PostV1IncidentsMilestonesItems0TypeIdentified captures enum value "identified"
+	PostV1IncidentsMilestonesItems0TypeIdentified string = "identified"
+
+	// PostV1IncidentsMilestonesItems0TypeMitigated captures enum value "mitigated"
+	PostV1IncidentsMilestonesItems0TypeMitigated string = "mitigated"
+
+	// PostV1IncidentsMilestonesItems0TypeResolved captures enum value "resolved"
+	PostV1IncidentsMilestonesItems0TypeResolved string = "resolved"
+
+	// PostV1IncidentsMilestonesItems0TypePostmortemStarted captures enum value "postmortem_started"
+	PostV1IncidentsMilestonesItems0TypePostmortemStarted string = "postmortem_started"
+
+	// PostV1IncidentsMilestonesItems0TypePostmortemCompleted captures enum value "postmortem_completed"
+	PostV1IncidentsMilestonesItems0TypePostmortemCompleted string = "postmortem_completed"
+
+	// PostV1IncidentsMilestonesItems0TypeClosed captures enum value "closed"
+	PostV1IncidentsMilestonesItems0TypeClosed string = "closed"
+)
+
+// prop value enum
+func (m *PostV1IncidentsMilestonesItems0) validateTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, postV1IncidentsMilestonesItems0TypeTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PostV1IncidentsMilestonesItems0) validateType(formats strfmt.Registry) error {
+
+	if err := validate.Required("type", "body", m.Type); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this post v1 incidents milestones items0 based on context it is used
+func (m *PostV1IncidentsMilestonesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1IncidentsMilestonesItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1IncidentsMilestonesItems0) UnmarshalBinary(b []byte) error {
+	var res PostV1IncidentsMilestonesItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

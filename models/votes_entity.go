@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// VotesEntity Allows for upvoting or downvoting an event
+// VotesEntity VotesEntity model
 //
 // swagger:model VotesEntity
 type VotesEntity struct {

@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// TagEntityPaginated List all of the ticket tags in the organization
+// TagEntityPaginated TagEntityPaginated model
 //
 // swagger:model TagEntityPaginated
 type TagEntityPaginated struct {

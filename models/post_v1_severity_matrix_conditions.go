@@ -23,7 +23,7 @@ type PostV1SeverityMatrixConditions struct {
 	// Required: true
 	Name *string `json:"name"`
 
-	// position
+	// Position is used to determine ordering of conditions in API responses and dropdowns. The condition with the lowest position (typically 0) will be considered the Default Condition
 	Position int32 `json:"position,omitempty"`
 }
 

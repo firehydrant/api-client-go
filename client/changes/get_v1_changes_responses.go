@@ -7,12 +7,9 @@ package changes
 
 import (
 	"fmt"
-	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1ChangesReader is a Reader for the GetV1Changes structure.
@@ -45,7 +42,6 @@ GetV1ChangesOK describes a response with status code 200, with default header va
 Lists all changes
 */
 type GetV1ChangesOK struct {
-	Payload *models.ChangeEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 changes o k response has a 2xx status code
@@ -74,25 +70,14 @@ func (o *GetV1ChangesOK) IsCode(code int) bool {
 }
 
 func (o *GetV1ChangesOK) Error() string {
-	return fmt.Sprintf("[GET /v1/changes][%d] getV1ChangesOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/changes][%d] getV1ChangesOK ", 200)
 }
 
 func (o *GetV1ChangesOK) String() string {
-	return fmt.Sprintf("[GET /v1/changes][%d] getV1ChangesOK  %+v", 200, o.Payload)
-}
-
-func (o *GetV1ChangesOK) GetPayload() *models.ChangeEntityPaginated {
-	return o.Payload
+	return fmt.Sprintf("[GET /v1/changes][%d] getV1ChangesOK ", 200)
 }
 
 func (o *GetV1ChangesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ChangeEntityPaginated)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

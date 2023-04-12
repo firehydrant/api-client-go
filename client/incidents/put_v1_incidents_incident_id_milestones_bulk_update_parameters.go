@@ -63,11 +63,11 @@ PutV1IncidentsIncidentIDMilestonesBulkUpdateParams contains all the parameters t
 */
 type PutV1IncidentsIncidentIDMilestonesBulkUpdateParams struct {
 
-	// V1IncidentsIncidentIDMilestonesBulkUpdate.
-	V1IncidentsIncidentIDMilestonesBulkUpdate *models.PutV1IncidentsIncidentIDMilestonesBulkUpdate
-
 	// IncidentID.
 	IncidentID string
+
+	// PutV1IncidentsIncidentIDMilestonesBulkUpdate.
+	PutV1IncidentsIncidentIDMilestonesBulkUpdate *models.PutV1IncidentsIncidentIDMilestonesBulkUpdate
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams) SetHTTPClient(clien
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDMilestonesBulkUpdate adds the v1IncidentsIncidentIDMilestonesBulkUpdate to the put v1 incidents incident Id milestones bulk update params
-func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams) WithV1IncidentsIncidentIDMilestonesBulkUpdate(v1IncidentsIncidentIDMilestonesBulkUpdate *models.PutV1IncidentsIncidentIDMilestonesBulkUpdate) *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams {
-	o.SetV1IncidentsIncidentIDMilestonesBulkUpdate(v1IncidentsIncidentIDMilestonesBulkUpdate)
-	return o
-}
-
-// SetV1IncidentsIncidentIDMilestonesBulkUpdate adds the v1IncidentsIncidentIdMilestonesBulkUpdate to the put v1 incidents incident Id milestones bulk update params
-func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams) SetV1IncidentsIncidentIDMilestonesBulkUpdate(v1IncidentsIncidentIDMilestonesBulkUpdate *models.PutV1IncidentsIncidentIDMilestonesBulkUpdate) {
-	o.V1IncidentsIncidentIDMilestonesBulkUpdate = v1IncidentsIncidentIDMilestonesBulkUpdate
-}
-
 // WithIncidentID adds the incidentID to the put v1 incidents incident Id milestones bulk update params
 func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams) WithIncidentID(incidentID string) *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams {
 	o.SetIncidentID(incidentID)
@@ -144,6 +133,17 @@ func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams) SetIncidentID(incid
 	o.IncidentID = incidentID
 }
 
+// WithPutV1IncidentsIncidentIDMilestonesBulkUpdate adds the putV1IncidentsIncidentIDMilestonesBulkUpdate to the put v1 incidents incident Id milestones bulk update params
+func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams) WithPutV1IncidentsIncidentIDMilestonesBulkUpdate(putV1IncidentsIncidentIDMilestonesBulkUpdate *models.PutV1IncidentsIncidentIDMilestonesBulkUpdate) *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams {
+	o.SetPutV1IncidentsIncidentIDMilestonesBulkUpdate(putV1IncidentsIncidentIDMilestonesBulkUpdate)
+	return o
+}
+
+// SetPutV1IncidentsIncidentIDMilestonesBulkUpdate adds the putV1IncidentsIncidentIdMilestonesBulkUpdate to the put v1 incidents incident Id milestones bulk update params
+func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams) SetPutV1IncidentsIncidentIDMilestonesBulkUpdate(putV1IncidentsIncidentIDMilestonesBulkUpdate *models.PutV1IncidentsIncidentIDMilestonesBulkUpdate) {
+	o.PutV1IncidentsIncidentIDMilestonesBulkUpdate = putV1IncidentsIncidentIDMilestonesBulkUpdate
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams) WriteToRequest(r ru
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDMilestonesBulkUpdate != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDMilestonesBulkUpdate); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PutV1IncidentsIncidentIDMilestonesBulkUpdate != nil {
+		if err := r.SetBodyParam(o.PutV1IncidentsIncidentIDMilestonesBulkUpdate); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

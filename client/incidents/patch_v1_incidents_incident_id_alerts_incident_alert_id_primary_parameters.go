@@ -63,14 +63,14 @@ PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams contains all the pa
 */
 type PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams struct {
 
-	// V1IncidentsIncidentIDAlertsIncidentAlertIDPrimary.
-	V1IncidentsIncidentIDAlertsIncidentAlertIDPrimary *models.PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary
-
 	// IncidentAlertID.
 	IncidentAlertID string
 
 	// IncidentID.
 	IncidentID string
+
+	// PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary.
+	PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary *models.PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams) SetHTTPCl
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary adds the v1IncidentsIncidentIDAlertsIncidentAlertIDPrimary to the patch v1 incidents incident Id alerts incident alert Id primary params
-func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams) WithV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary(v1IncidentsIncidentIDAlertsIncidentAlertIDPrimary *models.PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary) *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams {
-	o.SetV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary(v1IncidentsIncidentIDAlertsIncidentAlertIDPrimary)
-	return o
-}
-
-// SetV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary adds the v1IncidentsIncidentIdAlertsIncidentAlertIdPrimary to the patch v1 incidents incident Id alerts incident alert Id primary params
-func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams) SetV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary(v1IncidentsIncidentIDAlertsIncidentAlertIDPrimary *models.PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary) {
-	o.V1IncidentsIncidentIDAlertsIncidentAlertIDPrimary = v1IncidentsIncidentIDAlertsIncidentAlertIDPrimary
-}
-
 // WithIncidentAlertID adds the incidentAlertID to the patch v1 incidents incident Id alerts incident alert Id primary params
 func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams) WithIncidentAlertID(incidentAlertID string) *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams {
 	o.SetIncidentAlertID(incidentAlertID)
@@ -158,6 +147,17 @@ func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams) SetIncide
 	o.IncidentID = incidentID
 }
 
+// WithPatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary adds the patchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary to the patch v1 incidents incident Id alerts incident alert Id primary params
+func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams) WithPatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary(patchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary *models.PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary) *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams {
+	o.SetPatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary(patchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary)
+	return o
+}
+
+// SetPatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary adds the patchV1IncidentsIncidentIdAlertsIncidentAlertIdPrimary to the patch v1 incidents incident Id alerts incident alert Id primary params
+func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams) SetPatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary(patchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary *models.PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary) {
+	o.PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary = patchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -165,11 +165,6 @@ func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams) WriteToRe
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDAlertsIncidentAlertIDPrimary != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDAlertsIncidentAlertIDPrimary); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_alert_id
 	if err := r.SetPathParam("incident_alert_id", o.IncidentAlertID); err != nil {
@@ -179,6 +174,11 @@ func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryParams) WriteToRe
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary != nil {
+		if err := r.SetBodyParam(o.PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimary); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

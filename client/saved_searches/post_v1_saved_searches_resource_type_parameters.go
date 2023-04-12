@@ -63,8 +63,8 @@ PostV1SavedSearchesResourceTypeParams contains all the parameters to send to the
 */
 type PostV1SavedSearchesResourceTypeParams struct {
 
-	// V1SavedSearches.
-	V1SavedSearches *models.PostV1SavedSearches
+	// PostV1SavedSearchesResourceType.
+	PostV1SavedSearchesResourceType *models.PostV1SavedSearchesResourceType
 
 	// ResourceType.
 	ResourceType string
@@ -122,15 +122,15 @@ func (o *PostV1SavedSearchesResourceTypeParams) SetHTTPClient(client *http.Clien
 	o.HTTPClient = client
 }
 
-// WithV1SavedSearches adds the v1SavedSearches to the post v1 saved searches resource type params
-func (o *PostV1SavedSearchesResourceTypeParams) WithV1SavedSearches(v1SavedSearches *models.PostV1SavedSearches) *PostV1SavedSearchesResourceTypeParams {
-	o.SetV1SavedSearches(v1SavedSearches)
+// WithPostV1SavedSearchesResourceType adds the postV1SavedSearchesResourceType to the post v1 saved searches resource type params
+func (o *PostV1SavedSearchesResourceTypeParams) WithPostV1SavedSearchesResourceType(postV1SavedSearchesResourceType *models.PostV1SavedSearchesResourceType) *PostV1SavedSearchesResourceTypeParams {
+	o.SetPostV1SavedSearchesResourceType(postV1SavedSearchesResourceType)
 	return o
 }
 
-// SetV1SavedSearches adds the v1SavedSearches to the post v1 saved searches resource type params
-func (o *PostV1SavedSearchesResourceTypeParams) SetV1SavedSearches(v1SavedSearches *models.PostV1SavedSearches) {
-	o.V1SavedSearches = v1SavedSearches
+// SetPostV1SavedSearchesResourceType adds the postV1SavedSearchesResourceType to the post v1 saved searches resource type params
+func (o *PostV1SavedSearchesResourceTypeParams) SetPostV1SavedSearchesResourceType(postV1SavedSearchesResourceType *models.PostV1SavedSearchesResourceType) {
+	o.PostV1SavedSearchesResourceType = postV1SavedSearchesResourceType
 }
 
 // WithResourceType adds the resourceType to the post v1 saved searches resource type params
@@ -151,8 +151,8 @@ func (o *PostV1SavedSearchesResourceTypeParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
-	if o.V1SavedSearches != nil {
-		if err := r.SetBodyParam(o.V1SavedSearches); err != nil {
+	if o.PostV1SavedSearchesResourceType != nil {
+		if err := r.SetBodyParam(o.PostV1SavedSearchesResourceType); err != nil {
 			return err
 		}
 	}

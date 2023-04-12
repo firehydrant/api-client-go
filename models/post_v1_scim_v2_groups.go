@@ -140,7 +140,7 @@ func (m *PostV1ScimV2Groups) UnmarshalBinary(b []byte) error {
 // swagger:model PostV1ScimV2GroupsMembersItems0
 type PostV1ScimV2GroupsMembersItems0 struct {
 
-	// String that represents the users UUID to assign to the team
+	// String that represents the user's UUID to assign to the team
 	// Required: true
 	Value *string `json:"value"`
 }

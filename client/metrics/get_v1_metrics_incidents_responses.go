@@ -45,7 +45,7 @@ GetV1MetricsIncidentsOK describes a response with status code 200, with default 
 Returns a report with time bucketed analytics data
 */
 type GetV1MetricsIncidentsOK struct {
-	Payload *models.MetricsEntity
+	Payload *models.MetricsMetricsEntity
 }
 
 // IsSuccess returns true when this get v1 metrics incidents o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1MetricsIncidentsOK) String() string {
 	return fmt.Sprintf("[GET /v1/metrics/incidents][%d] getV1MetricsIncidentsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1MetricsIncidentsOK) GetPayload() *models.MetricsEntity {
+func (o *GetV1MetricsIncidentsOK) GetPayload() *models.MetricsMetricsEntity {
 	return o.Payload
 }
 
 func (o *GetV1MetricsIncidentsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.MetricsEntity)
+	o.Payload = new(models.MetricsMetricsEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

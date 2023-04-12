@@ -63,11 +63,11 @@ PutV1ScimV2UsersIDParams contains all the parameters to send to the API endpoint
 */
 type PutV1ScimV2UsersIDParams struct {
 
-	// V1ScimV2Users.
-	V1ScimV2Users *models.PutV1ScimV2Users
-
 	// ID.
 	ID string
+
+	// PutV1ScimV2UsersID.
+	PutV1ScimV2UsersID *models.PutV1ScimV2UsersID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PutV1ScimV2UsersIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1ScimV2Users adds the v1ScimV2Users to the put v1 scim v2 users Id params
-func (o *PutV1ScimV2UsersIDParams) WithV1ScimV2Users(v1ScimV2Users *models.PutV1ScimV2Users) *PutV1ScimV2UsersIDParams {
-	o.SetV1ScimV2Users(v1ScimV2Users)
-	return o
-}
-
-// SetV1ScimV2Users adds the v1ScimV2Users to the put v1 scim v2 users Id params
-func (o *PutV1ScimV2UsersIDParams) SetV1ScimV2Users(v1ScimV2Users *models.PutV1ScimV2Users) {
-	o.V1ScimV2Users = v1ScimV2Users
-}
-
 // WithID adds the id to the put v1 scim v2 users Id params
 func (o *PutV1ScimV2UsersIDParams) WithID(id string) *PutV1ScimV2UsersIDParams {
 	o.SetID(id)
@@ -144,6 +133,17 @@ func (o *PutV1ScimV2UsersIDParams) SetID(id string) {
 	o.ID = id
 }
 
+// WithPutV1ScimV2UsersID adds the putV1ScimV2UsersID to the put v1 scim v2 users Id params
+func (o *PutV1ScimV2UsersIDParams) WithPutV1ScimV2UsersID(putV1ScimV2UsersID *models.PutV1ScimV2UsersID) *PutV1ScimV2UsersIDParams {
+	o.SetPutV1ScimV2UsersID(putV1ScimV2UsersID)
+	return o
+}
+
+// SetPutV1ScimV2UsersID adds the putV1ScimV2UsersId to the put v1 scim v2 users Id params
+func (o *PutV1ScimV2UsersIDParams) SetPutV1ScimV2UsersID(putV1ScimV2UsersID *models.PutV1ScimV2UsersID) {
+	o.PutV1ScimV2UsersID = putV1ScimV2UsersID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PutV1ScimV2UsersIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PutV1ScimV2UsersIDParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-	if o.V1ScimV2Users != nil {
-		if err := r.SetBodyParam(o.V1ScimV2Users); err != nil {
-			return err
-		}
-	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
+	}
+	if o.PutV1ScimV2UsersID != nil {
+		if err := r.SetBodyParam(o.PutV1ScimV2UsersID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

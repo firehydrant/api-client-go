@@ -45,7 +45,7 @@ GetV1IntegrationsIntegrationIDOK describes a response with status code 200, with
 Retrieve a single integration
 */
 type GetV1IntegrationsIntegrationIDOK struct {
-	Payload *models.IntegrationEntity
+	Payload *models.IntegrationsIntegrationEntity
 }
 
 // IsSuccess returns true when this get v1 integrations integration Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1IntegrationsIntegrationIDOK) String() string {
 	return fmt.Sprintf("[GET /v1/integrations/{integration_id}][%d] getV1IntegrationsIntegrationIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1IntegrationsIntegrationIDOK) GetPayload() *models.IntegrationEntity {
+func (o *GetV1IntegrationsIntegrationIDOK) GetPayload() *models.IntegrationsIntegrationEntity {
 	return o.Payload
 }
 
 func (o *GetV1IntegrationsIntegrationIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.IntegrationEntity)
+	o.Payload = new(models.IntegrationsIntegrationEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

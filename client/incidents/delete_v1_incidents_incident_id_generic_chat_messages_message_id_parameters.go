@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams creates a new DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams object,
@@ -66,9 +65,7 @@ type DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams struct {
 	IncidentID string
 
 	// MessageID.
-	//
-	// Format: int32
-	MessageID int32
+	MessageID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -135,13 +132,13 @@ func (o *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) SetIncid
 }
 
 // WithMessageID adds the messageID to the delete v1 incidents incident Id generic chat messages message Id params
-func (o *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) WithMessageID(messageID int32) *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams {
+func (o *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) WithMessageID(messageID string) *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams {
 	o.SetMessageID(messageID)
 	return o
 }
 
 // SetMessageID adds the messageId to the delete v1 incidents incident Id generic chat messages message Id params
-func (o *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) SetMessageID(messageID int32) {
+func (o *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) SetMessageID(messageID string) {
 	o.MessageID = messageID
 }
 
@@ -159,7 +156,7 @@ func (o *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) WriteToR
 	}
 
 	// path param message_id
-	if err := r.SetPathParam("message_id", swag.FormatInt32(o.MessageID)); err != nil {
+	if err := r.SetPathParam("message_id", o.MessageID); err != nil {
 		return err
 	}
 

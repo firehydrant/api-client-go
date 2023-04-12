@@ -45,7 +45,7 @@ DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK describes a response with st
 Delete a contributing factor
 */
 type DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK struct {
-	Payload *models.ReasonEntity
+	Payload *models.PostMortemsReasonEntity
 }
 
 // IsSuccess returns true when this delete v1 post mortems reports report Id reasons reason Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) String() string {
 	return fmt.Sprintf("[DELETE /v1/post_mortems/reports/{report_id}/reasons/{reason_id}][%d] deleteV1PostMortemsReportsReportIdReasonsReasonIdOK  %+v", 200, o.Payload)
 }
 
-func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) GetPayload() *models.ReasonEntity {
+func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) GetPayload() *models.PostMortemsReasonEntity {
 	return o.Payload
 }
 
 func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ReasonEntity)
+	o.Payload = new(models.PostMortemsReasonEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

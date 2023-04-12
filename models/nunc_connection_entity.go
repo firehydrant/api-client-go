@@ -13,7 +13,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NuncConnectionEntity Retrieve the information displayed as part of your FireHydrant hosted status page.
+// NuncConnectionEntity NuncConnectionEntity model
 //
 // swagger:model NuncConnectionEntity
 type NuncConnectionEntity struct {

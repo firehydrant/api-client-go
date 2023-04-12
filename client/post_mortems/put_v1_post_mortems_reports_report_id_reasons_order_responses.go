@@ -45,7 +45,7 @@ PutV1PostMortemsReportsReportIDReasonsOrderOK describes a response with status c
 Reorder a contributing factor
 */
 type PutV1PostMortemsReportsReportIDReasonsOrderOK struct {
-	Payload *models.ReasonEntity
+	Payload *models.PostMortemsReasonEntity
 }
 
 // IsSuccess returns true when this put v1 post mortems reports report Id reasons order o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PutV1PostMortemsReportsReportIDReasonsOrderOK) String() string {
 	return fmt.Sprintf("[PUT /v1/post_mortems/reports/{report_id}/reasons/order][%d] putV1PostMortemsReportsReportIdReasonsOrderOK  %+v", 200, o.Payload)
 }
 
-func (o *PutV1PostMortemsReportsReportIDReasonsOrderOK) GetPayload() *models.ReasonEntity {
+func (o *PutV1PostMortemsReportsReportIDReasonsOrderOK) GetPayload() *models.PostMortemsReasonEntity {
 	return o.Payload
 }
 
 func (o *PutV1PostMortemsReportsReportIDReasonsOrderOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ReasonEntity)
+	o.Payload = new(models.PostMortemsReasonEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

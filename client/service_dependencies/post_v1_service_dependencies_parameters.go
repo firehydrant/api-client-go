@@ -63,8 +63,8 @@ PostV1ServiceDependenciesParams contains all the parameters to send to the API e
 */
 type PostV1ServiceDependenciesParams struct {
 
-	// V1ServiceDependencies.
-	V1ServiceDependencies *models.PostV1ServiceDependencies
+	// PostV1ServiceDependencies.
+	PostV1ServiceDependencies *models.PostV1ServiceDependencies
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1ServiceDependenciesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1ServiceDependencies adds the v1ServiceDependencies to the post v1 service dependencies params
-func (o *PostV1ServiceDependenciesParams) WithV1ServiceDependencies(v1ServiceDependencies *models.PostV1ServiceDependencies) *PostV1ServiceDependenciesParams {
-	o.SetV1ServiceDependencies(v1ServiceDependencies)
+// WithPostV1ServiceDependencies adds the postV1ServiceDependencies to the post v1 service dependencies params
+func (o *PostV1ServiceDependenciesParams) WithPostV1ServiceDependencies(postV1ServiceDependencies *models.PostV1ServiceDependencies) *PostV1ServiceDependenciesParams {
+	o.SetPostV1ServiceDependencies(postV1ServiceDependencies)
 	return o
 }
 
-// SetV1ServiceDependencies adds the v1ServiceDependencies to the post v1 service dependencies params
-func (o *PostV1ServiceDependenciesParams) SetV1ServiceDependencies(v1ServiceDependencies *models.PostV1ServiceDependencies) {
-	o.V1ServiceDependencies = v1ServiceDependencies
+// SetPostV1ServiceDependencies adds the postV1ServiceDependencies to the post v1 service dependencies params
+func (o *PostV1ServiceDependenciesParams) SetPostV1ServiceDependencies(postV1ServiceDependencies *models.PostV1ServiceDependencies) {
+	o.PostV1ServiceDependencies = postV1ServiceDependencies
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1ServiceDependenciesParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if o.V1ServiceDependencies != nil {
-		if err := r.SetBodyParam(o.V1ServiceDependencies); err != nil {
+	if o.PostV1ServiceDependencies != nil {
+		if err := r.SetBodyParam(o.PostV1ServiceDependencies); err != nil {
 			return err
 		}
 	}

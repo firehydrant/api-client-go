@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -24,11 +25,16 @@ type PostV1IncidentsIncidentIDNotes struct {
 	// Required: true
 	Body *string `json:"body"`
 
+	// ISO8601 timestamp for when the note occurred
+	// Format: date-time
+	OccurredAt strfmt.DateTime `json:"occurred_at,omitempty"`
+
 	// status pages
 	StatusPages []*PostV1IncidentsIncidentIDNotesStatusPagesItems0 `json:"status_pages"`
 
 	// visibility
-	Visibility string `json:"visibility,omitempty"`
+	// Enum: [private_to_org open_to_public internal_status_page]
+	Visibility *string `json:"visibility,omitempty"`
 }
 
 // Validate validates this post v1 incidents incident Id notes
@@ -39,7 +45,15 @@ func (m *PostV1IncidentsIncidentIDNotes) Validate(formats strfmt.Registry) error
 		res = append(res, err)
 	}
 
+	if err := m.validateOccurredAt(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStatusPages(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVisibility(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -52,6 +66,18 @@ func (m *PostV1IncidentsIncidentIDNotes) Validate(formats strfmt.Registry) error
 func (m *PostV1IncidentsIncidentIDNotes) validateBody(formats strfmt.Registry) error {
 
 	if err := validate.Required("body", "body", m.Body); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PostV1IncidentsIncidentIDNotes) validateOccurredAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.OccurredAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("occurred_at", "body", "date-time", m.OccurredAt.String(), formats); err != nil {
 		return err
 	}
 
@@ -79,6 +105,51 @@ func (m *PostV1IncidentsIncidentIDNotes) validateStatusPages(formats strfmt.Regi
 			}
 		}
 
+	}
+
+	return nil
+}
+
+var postV1IncidentsIncidentIdNotesTypeVisibilityPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["private_to_org","open_to_public","internal_status_page"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		postV1IncidentsIncidentIdNotesTypeVisibilityPropEnum = append(postV1IncidentsIncidentIdNotesTypeVisibilityPropEnum, v)
+	}
+}
+
+const (
+
+	// PostV1IncidentsIncidentIDNotesVisibilityPrivateToOrg captures enum value "private_to_org"
+	PostV1IncidentsIncidentIDNotesVisibilityPrivateToOrg string = "private_to_org"
+
+	// PostV1IncidentsIncidentIDNotesVisibilityOpenToPublic captures enum value "open_to_public"
+	PostV1IncidentsIncidentIDNotesVisibilityOpenToPublic string = "open_to_public"
+
+	// PostV1IncidentsIncidentIDNotesVisibilityInternalStatusPage captures enum value "internal_status_page"
+	PostV1IncidentsIncidentIDNotesVisibilityInternalStatusPage string = "internal_status_page"
+)
+
+// prop value enum
+func (m *PostV1IncidentsIncidentIDNotes) validateVisibilityEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, postV1IncidentsIncidentIdNotesTypeVisibilityPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PostV1IncidentsIncidentIDNotes) validateVisibility(formats strfmt.Registry) error {
+	if swag.IsZero(m.Visibility) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateVisibilityEnum("visibility", "body", *m.Visibility); err != nil {
+		return err
 	}
 
 	return nil

@@ -7,13 +7,16 @@ package models
 
 import (
 	"context"
+	"encoding/json"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// IncidentEventEntity Retrieve a single event for an incident
+// IncidentEventEntity IncidentEventEntity model
 //
 // swagger:model IncidentEventEntity
 type IncidentEventEntity struct {
@@ -24,8 +27,11 @@ type IncidentEventEntity struct {
 	// context
 	Context string `json:"context,omitempty"`
 
-	// data
-	Data string `json:"data,omitempty"`
+	// conversations
+	Conversations []*ConversationsAPIEntitiesReference `json:"conversations"`
+
+	// Can be one of: NoteEntity, TourStepEntity, RootCauseEntity, ChangeTypeEntity, RoleUpdateEntity, TaskUpdateEntity, AlertLinkedEntity, ChatMessageEntity, AddTaskListEntity, ImpactUpdateEntity, TicketUpdateEntity, GeneralUpdateEntity, ChangelogEntryEntity, IncidentStatusEntity, TeamAssignmentEntity, BulkUpdateEntity
+	Data interface{} `json:"data,omitempty"`
 
 	// id
 	ID string `json:"id,omitempty"`
@@ -34,12 +40,14 @@ type IncidentEventEntity struct {
 	IncidentID string `json:"incident_id,omitempty"`
 
 	// occurred at
-	OccurredAt string `json:"occurred_at,omitempty"`
+	// Format: date-time
+	OccurredAt strfmt.DateTime `json:"occurred_at,omitempty"`
 
 	// type
 	Type string `json:"type,omitempty"`
 
 	// visibility
+	// Enum: [private_to_org open_to_public internal_status_page]
 	Visibility string `json:"visibility,omitempty"`
 
 	// votes
@@ -51,6 +59,18 @@ func (m *IncidentEventEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAuthor(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateConversations(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOccurredAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVisibility(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -83,6 +103,89 @@ func (m *IncidentEventEntity) validateAuthor(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IncidentEventEntity) validateConversations(formats strfmt.Registry) error {
+	if swag.IsZero(m.Conversations) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Conversations); i++ {
+		if swag.IsZero(m.Conversations[i]) { // not required
+			continue
+		}
+
+		if m.Conversations[i] != nil {
+			if err := m.Conversations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conversations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IncidentEventEntity) validateOccurredAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.OccurredAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("occurred_at", "body", "date-time", m.OccurredAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var incidentEventEntityTypeVisibilityPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["private_to_org","open_to_public","internal_status_page"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		incidentEventEntityTypeVisibilityPropEnum = append(incidentEventEntityTypeVisibilityPropEnum, v)
+	}
+}
+
+const (
+
+	// IncidentEventEntityVisibilityPrivateToOrg captures enum value "private_to_org"
+	IncidentEventEntityVisibilityPrivateToOrg string = "private_to_org"
+
+	// IncidentEventEntityVisibilityOpenToPublic captures enum value "open_to_public"
+	IncidentEventEntityVisibilityOpenToPublic string = "open_to_public"
+
+	// IncidentEventEntityVisibilityInternalStatusPage captures enum value "internal_status_page"
+	IncidentEventEntityVisibilityInternalStatusPage string = "internal_status_page"
+)
+
+// prop value enum
+func (m *IncidentEventEntity) validateVisibilityEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, incidentEventEntityTypeVisibilityPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *IncidentEventEntity) validateVisibility(formats strfmt.Registry) error {
+	if swag.IsZero(m.Visibility) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateVisibilityEnum("visibility", "body", m.Visibility); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *IncidentEventEntity) validateVotes(formats strfmt.Registry) error {
 	if swag.IsZero(m.Votes) { // not required
 		return nil
@@ -110,6 +213,10 @@ func (m *IncidentEventEntity) ContextValidate(ctx context.Context, formats strfm
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateConversations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateVotes(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -131,6 +238,26 @@ func (m *IncidentEventEntity) contextValidateAuthor(ctx context.Context, formats
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *IncidentEventEntity) contextValidateConversations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Conversations); i++ {
+
+		if m.Conversations[i] != nil {
+			if err := m.Conversations[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conversations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

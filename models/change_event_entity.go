@@ -15,19 +15,20 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ChangeEventEntity Retrieve a change event
+// ChangeEventEntity ChangeEventEntity model
 //
 // swagger:model ChangeEventEntity
 type ChangeEventEntity struct {
 
-	// attachments
+	// A list of objects attached to this item. Can be one of: LinkEntity, CustomerSupportIssueEntity, or GenericAttachmentEntity
 	Attachments []interface{} `json:"attachments"`
 
 	// authors
 	Authors []*AuthorEntity `json:"authors"`
 
 	// created at
-	CreatedAt string `json:"created_at,omitempty"`
+	// Format: date-time
+	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
 	// description
 	Description string `json:"description,omitempty"`
@@ -43,7 +44,7 @@ type ChangeEventEntity struct {
 	EndsAt *strfmt.DateTime `json:"ends_at,omitempty"`
 
 	// environments
-	Environments []*EnvironmentEntity `json:"environments"`
+	Environments []*EnvironmentEntryEntity `json:"environments"`
 
 	// external id
 	ExternalID string `json:"external_id,omitempty"`
@@ -54,14 +55,14 @@ type ChangeEventEntity struct {
 	// identities
 	Identities []*ChangeIdentityEntity `json:"identities"`
 
-	// labels
+	// An object of label key and values
 	Labels interface{} `json:"labels,omitempty"`
 
 	// related changes
 	RelatedChanges []*ChangeEntity `json:"related_changes"`
 
 	// services
-	Services []string `json:"services"`
+	Services []*ServiceEntity `json:"services"`
 
 	// starts at
 	// Format: date-time
@@ -71,7 +72,8 @@ type ChangeEventEntity struct {
 	Summary string `json:"summary,omitempty"`
 
 	// updated at
-	UpdatedAt string `json:"updated_at,omitempty"`
+	// Format: date-time
+	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
 }
 
 // Validate validates this change event entity
@@ -79,6 +81,10 @@ func (m *ChangeEventEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAuthors(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -98,7 +104,15 @@ func (m *ChangeEventEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateServices(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStartsAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdatedAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -129,6 +143,18 @@ func (m *ChangeEventEntity) validateAuthors(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ChangeEventEntity) validateCreatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("created_at", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
+		return err
 	}
 
 	return nil
@@ -224,12 +250,50 @@ func (m *ChangeEventEntity) validateRelatedChanges(formats strfmt.Registry) erro
 	return nil
 }
 
+func (m *ChangeEventEntity) validateServices(formats strfmt.Registry) error {
+	if swag.IsZero(m.Services) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Services); i++ {
+		if swag.IsZero(m.Services[i]) { // not required
+			continue
+		}
+
+		if m.Services[i] != nil {
+			if err := m.Services[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ChangeEventEntity) validateStartsAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.StartsAt) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("starts_at", "body", "date-time", m.StartsAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ChangeEventEntity) validateUpdatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.UpdatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("updated_at", "body", "date-time", m.UpdatedAt.String(), formats); err != nil {
 		return err
 	}
 
@@ -253,6 +317,10 @@ func (m *ChangeEventEntity) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateRelatedChanges(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateServices(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -332,6 +400,26 @@ func (m *ChangeEventEntity) contextValidateRelatedChanges(ctx context.Context, f
 					return ve.ValidateName("related_changes" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("related_changes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ChangeEventEntity) contextValidateServices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Services); i++ {
+
+		if m.Services[i] != nil {
+			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

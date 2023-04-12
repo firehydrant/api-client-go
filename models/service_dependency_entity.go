@@ -14,13 +14,13 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ServiceDependencyEntity Retrieves a single service dependency by ID
+// ServiceDependencyEntity ServiceDependencyEntity model
 //
 // swagger:model ServiceDependencyEntity
 type ServiceDependencyEntity struct {
 
 	// connected service
-	ConnectedService string `json:"connected_service,omitempty"`
+	ConnectedService *ServiceEntity `json:"connected_service,omitempty"`
 
 	// created at
 	// Format: date-time
@@ -33,7 +33,7 @@ type ServiceDependencyEntity struct {
 	Notes string `json:"notes,omitempty"`
 
 	// service
-	Service string `json:"service,omitempty"`
+	Service *ServiceEntity `json:"service,omitempty"`
 
 	// updated at
 	// Format: date-time
@@ -44,7 +44,15 @@ type ServiceDependencyEntity struct {
 func (m *ServiceDependencyEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateConnectedService(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -58,6 +66,25 @@ func (m *ServiceDependencyEntity) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *ServiceDependencyEntity) validateConnectedService(formats strfmt.Registry) error {
+	if swag.IsZero(m.ConnectedService) { // not required
+		return nil
+	}
+
+	if m.ConnectedService != nil {
+		if err := m.ConnectedService.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("connected_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("connected_service")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ServiceDependencyEntity) validateCreatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
@@ -65,6 +92,25 @@ func (m *ServiceDependencyEntity) validateCreatedAt(formats strfmt.Registry) err
 
 	if err := validate.FormatOf("created_at", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *ServiceDependencyEntity) validateService(formats strfmt.Registry) error {
+	if swag.IsZero(m.Service) { // not required
+		return nil
+	}
+
+	if m.Service != nil {
+		if err := m.Service.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("service")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -82,8 +128,53 @@ func (m *ServiceDependencyEntity) validateUpdatedAt(formats strfmt.Registry) err
 	return nil
 }
 
-// ContextValidate validates this service dependency entity based on context it is used
+// ContextValidate validate this service dependency entity based on the context it is used
 func (m *ServiceDependencyEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateConnectedService(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateService(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ServiceDependencyEntity) contextValidateConnectedService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ConnectedService != nil {
+		if err := m.ConnectedService.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("connected_service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("connected_service")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ServiceDependencyEntity) contextValidateService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Service != nil {
+		if err := m.Service.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("service")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

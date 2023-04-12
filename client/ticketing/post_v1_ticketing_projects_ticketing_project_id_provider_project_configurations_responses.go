@@ -45,7 +45,7 @@ PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated de
 Creates configuration for a ticketing project
 */
 type PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated struct {
-	Payload *models.ProjectConfigEntity
+	Payload *models.TicketingProjectConfigEntity
 }
 
 // IsSuccess returns true when this post v1 ticketing projects ticketing project Id provider project configurations created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsC
 	return fmt.Sprintf("[POST /v1/ticketing/projects/{ticketing_project_id}/provider_project_configurations][%d] postV1TicketingProjectsTicketingProjectIdProviderProjectConfigurationsCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated) GetPayload() *models.ProjectConfigEntity {
+func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated) GetPayload() *models.TicketingProjectConfigEntity {
 	return o.Payload
 }
 
 func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectConfigEntity)
+	o.Payload = new(models.TicketingProjectConfigEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

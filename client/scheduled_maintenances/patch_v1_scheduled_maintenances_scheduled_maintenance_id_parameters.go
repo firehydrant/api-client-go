@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -64,13 +63,11 @@ PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams contains all the parame
 */
 type PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams struct {
 
-	// V1ScheduledMaintenances.
-	V1ScheduledMaintenances *models.PatchV1ScheduledMaintenances
+	// PatchV1ScheduledMaintenancesScheduledMaintenanceID.
+	PatchV1ScheduledMaintenancesScheduledMaintenanceID *models.PatchV1ScheduledMaintenancesScheduledMaintenanceID
 
 	// ScheduledMaintenanceID.
-	//
-	// Format: int32
-	ScheduledMaintenanceID int32
+	ScheduledMaintenanceID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,25 +122,25 @@ func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams) SetHTTPClient
 	o.HTTPClient = client
 }
 
-// WithV1ScheduledMaintenances adds the v1ScheduledMaintenances to the patch v1 scheduled maintenances scheduled maintenance Id params
-func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams) WithV1ScheduledMaintenances(v1ScheduledMaintenances *models.PatchV1ScheduledMaintenances) *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams {
-	o.SetV1ScheduledMaintenances(v1ScheduledMaintenances)
+// WithPatchV1ScheduledMaintenancesScheduledMaintenanceID adds the patchV1ScheduledMaintenancesScheduledMaintenanceID to the patch v1 scheduled maintenances scheduled maintenance Id params
+func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams) WithPatchV1ScheduledMaintenancesScheduledMaintenanceID(patchV1ScheduledMaintenancesScheduledMaintenanceID *models.PatchV1ScheduledMaintenancesScheduledMaintenanceID) *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams {
+	o.SetPatchV1ScheduledMaintenancesScheduledMaintenanceID(patchV1ScheduledMaintenancesScheduledMaintenanceID)
 	return o
 }
 
-// SetV1ScheduledMaintenances adds the v1ScheduledMaintenances to the patch v1 scheduled maintenances scheduled maintenance Id params
-func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams) SetV1ScheduledMaintenances(v1ScheduledMaintenances *models.PatchV1ScheduledMaintenances) {
-	o.V1ScheduledMaintenances = v1ScheduledMaintenances
+// SetPatchV1ScheduledMaintenancesScheduledMaintenanceID adds the patchV1ScheduledMaintenancesScheduledMaintenanceId to the patch v1 scheduled maintenances scheduled maintenance Id params
+func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams) SetPatchV1ScheduledMaintenancesScheduledMaintenanceID(patchV1ScheduledMaintenancesScheduledMaintenanceID *models.PatchV1ScheduledMaintenancesScheduledMaintenanceID) {
+	o.PatchV1ScheduledMaintenancesScheduledMaintenanceID = patchV1ScheduledMaintenancesScheduledMaintenanceID
 }
 
 // WithScheduledMaintenanceID adds the scheduledMaintenanceID to the patch v1 scheduled maintenances scheduled maintenance Id params
-func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams) WithScheduledMaintenanceID(scheduledMaintenanceID int32) *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams {
+func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams) WithScheduledMaintenanceID(scheduledMaintenanceID string) *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams {
 	o.SetScheduledMaintenanceID(scheduledMaintenanceID)
 	return o
 }
 
 // SetScheduledMaintenanceID adds the scheduledMaintenanceId to the patch v1 scheduled maintenances scheduled maintenance Id params
-func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams) SetScheduledMaintenanceID(scheduledMaintenanceID int32) {
+func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams) SetScheduledMaintenanceID(scheduledMaintenanceID string) {
 	o.ScheduledMaintenanceID = scheduledMaintenanceID
 }
 
@@ -154,14 +151,14 @@ func (o *PatchV1ScheduledMaintenancesScheduledMaintenanceIDParams) WriteToReques
 		return err
 	}
 	var res []error
-	if o.V1ScheduledMaintenances != nil {
-		if err := r.SetBodyParam(o.V1ScheduledMaintenances); err != nil {
+	if o.PatchV1ScheduledMaintenancesScheduledMaintenanceID != nil {
+		if err := r.SetBodyParam(o.PatchV1ScheduledMaintenancesScheduledMaintenanceID); err != nil {
 			return err
 		}
 	}
 
 	// path param scheduled_maintenance_id
-	if err := r.SetPathParam("scheduled_maintenance_id", swag.FormatInt32(o.ScheduledMaintenanceID)); err != nil {
+	if err := r.SetPathParam("scheduled_maintenance_id", o.ScheduledMaintenanceID); err != nil {
 		return err
 	}
 

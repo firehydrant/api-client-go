@@ -45,7 +45,7 @@ PostV1EnvironmentsCreated describes a response with status code 201, with defaul
 Creates an environment for the organization
 */
 type PostV1EnvironmentsCreated struct {
-	Payload *models.EnvironmentEntity
+	Payload *models.EnvironmentEntryEntity
 }
 
 // IsSuccess returns true when this post v1 environments created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1EnvironmentsCreated) String() string {
 	return fmt.Sprintf("[POST /v1/environments][%d] postV1EnvironmentsCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1EnvironmentsCreated) GetPayload() *models.EnvironmentEntity {
+func (o *PostV1EnvironmentsCreated) GetPayload() *models.EnvironmentEntryEntity {
 	return o.Payload
 }
 
 func (o *PostV1EnvironmentsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.EnvironmentEntity)
+	o.Payload = new(models.EnvironmentEntryEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

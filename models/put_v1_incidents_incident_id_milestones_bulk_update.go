@@ -184,6 +184,7 @@ type PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0 struct {
 
 	// type
 	// Required: true
+	// Enum: [started detected acknowledged investigating identified mitigated resolved postmortem_started postmortem_completed closed]
 	Type *string `json:"type"`
 }
 
@@ -218,9 +219,67 @@ func (m *PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0) validateO
 	return nil
 }
 
+var putV1IncidentsIncidentIdMilestonesBulkUpdateMilestonesItems0TypeTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["started","detected","acknowledged","investigating","identified","mitigated","resolved","postmortem_started","postmortem_completed","closed"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		putV1IncidentsIncidentIdMilestonesBulkUpdateMilestonesItems0TypeTypePropEnum = append(putV1IncidentsIncidentIdMilestonesBulkUpdateMilestonesItems0TypeTypePropEnum, v)
+	}
+}
+
+const (
+
+	// PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeStarted captures enum value "started"
+	PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeStarted string = "started"
+
+	// PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeDetected captures enum value "detected"
+	PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeDetected string = "detected"
+
+	// PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeAcknowledged captures enum value "acknowledged"
+	PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeAcknowledged string = "acknowledged"
+
+	// PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeInvestigating captures enum value "investigating"
+	PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeInvestigating string = "investigating"
+
+	// PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeIdentified captures enum value "identified"
+	PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeIdentified string = "identified"
+
+	// PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeMitigated captures enum value "mitigated"
+	PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeMitigated string = "mitigated"
+
+	// PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeResolved captures enum value "resolved"
+	PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeResolved string = "resolved"
+
+	// PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypePostmortemStarted captures enum value "postmortem_started"
+	PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypePostmortemStarted string = "postmortem_started"
+
+	// PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypePostmortemCompleted captures enum value "postmortem_completed"
+	PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypePostmortemCompleted string = "postmortem_completed"
+
+	// PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeClosed captures enum value "closed"
+	PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0TypeClosed string = "closed"
+)
+
+// prop value enum
+func (m *PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0) validateTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, putV1IncidentsIncidentIdMilestonesBulkUpdateMilestonesItems0TypeTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *PutV1IncidentsIncidentIDMilestonesBulkUpdateMilestonesItems0) validateType(formats strfmt.Registry) error {
 
 	if err := validate.Required("type", "body", m.Type); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
 		return err
 	}
 

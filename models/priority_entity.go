@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PriorityEntity Retrieve a specific priority
+// PriorityEntity PriorityEntity model
 //
 // swagger:model PriorityEntity
 type PriorityEntity struct {

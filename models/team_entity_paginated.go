@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// TeamEntityPaginated Retrieves a list of services owned by the teams a user is on
+// TeamEntityPaginated TeamEntityPaginated model
 //
 // swagger:model TeamEntityPaginated
 type TeamEntityPaginated struct {

@@ -14,13 +14,16 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// RunbookEntity Get a runbook and all its configuration
+// RunbookEntity RunbookEntity model
 //
 // swagger:model RunbookEntity
 type RunbookEntity struct {
 
 	// attachment rule
-	AttachmentRule string `json:"attachment_rule,omitempty"`
+	AttachmentRule *RulesRuleEntity `json:"attachment_rule,omitempty"`
+
+	// auto attach to restricted incidents
+	AutoAttachToRestrictedIncidents bool `json:"auto_attach_to_restricted_incidents,omitempty"`
 
 	// created at
 	// Format: date-time
@@ -36,13 +39,13 @@ type RunbookEntity struct {
 	ID string `json:"id,omitempty"`
 
 	// is editable
-	IsEditable string `json:"is_editable,omitempty"`
+	IsEditable bool `json:"is_editable,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
 
 	// Team that owns the runbook
-	Owner string `json:"owner,omitempty"`
+	Owner *TeamEntity `json:"owner,omitempty"`
 
 	// runbook template id
 	RunbookTemplateID string `json:"runbook_template_id,omitempty"`
@@ -71,11 +74,19 @@ type RunbookEntity struct {
 func (m *RunbookEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAttachmentRule(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateCreatedBy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOwner(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -98,6 +109,25 @@ func (m *RunbookEntity) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *RunbookEntity) validateAttachmentRule(formats strfmt.Registry) error {
+	if swag.IsZero(m.AttachmentRule) { // not required
+		return nil
+	}
+
+	if m.AttachmentRule != nil {
+		if err := m.AttachmentRule.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("attachment_rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("attachment_rule")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -124,6 +154,25 @@ func (m *RunbookEntity) validateCreatedBy(formats strfmt.Registry) error {
 				return ve.ValidateName("created_by")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("created_by")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *RunbookEntity) validateOwner(formats strfmt.Registry) error {
+	if swag.IsZero(m.Owner) { // not required
+		return nil
+	}
+
+	if m.Owner != nil {
+		if err := m.Owner.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
 			}
 			return err
 		}
@@ -205,7 +254,15 @@ func (m *RunbookEntity) validateVotes(formats strfmt.Registry) error {
 func (m *RunbookEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateAttachmentRule(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateCreatedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOwner(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -227,6 +284,22 @@ func (m *RunbookEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 	return nil
 }
 
+func (m *RunbookEntity) contextValidateAttachmentRule(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.AttachmentRule != nil {
+		if err := m.AttachmentRule.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("attachment_rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("attachment_rule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *RunbookEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CreatedBy != nil {
@@ -235,6 +308,22 @@ func (m *RunbookEntity) contextValidateCreatedBy(ctx context.Context, formats st
 				return ve.ValidateName("created_by")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("created_by")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *RunbookEntity) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Owner != nil {
+		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
 			}
 			return err
 		}

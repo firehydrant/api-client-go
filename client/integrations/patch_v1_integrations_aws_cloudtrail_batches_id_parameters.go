@@ -63,14 +63,14 @@ PatchV1IntegrationsAwsCloudtrailBatchesIDParams contains all the parameters to s
 */
 type PatchV1IntegrationsAwsCloudtrailBatchesIDParams struct {
 
-	// V1IntegrationsAwsCloudtrailBatches.
-	V1IntegrationsAwsCloudtrailBatches *models.PatchV1IntegrationsAwsCloudtrailBatches
-
 	/* ID.
 
 	   Connection UUID
 	*/
 	ID string
+
+	// PatchV1IntegrationsAwsCloudtrailBatchesID.
+	PatchV1IntegrationsAwsCloudtrailBatchesID *models.PatchV1IntegrationsAwsCloudtrailBatchesID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDParams) SetHTTPClient(client *
 	o.HTTPClient = client
 }
 
-// WithV1IntegrationsAwsCloudtrailBatches adds the v1IntegrationsAwsCloudtrailBatches to the patch v1 integrations aws cloudtrail batches Id params
-func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDParams) WithV1IntegrationsAwsCloudtrailBatches(v1IntegrationsAwsCloudtrailBatches *models.PatchV1IntegrationsAwsCloudtrailBatches) *PatchV1IntegrationsAwsCloudtrailBatchesIDParams {
-	o.SetV1IntegrationsAwsCloudtrailBatches(v1IntegrationsAwsCloudtrailBatches)
-	return o
-}
-
-// SetV1IntegrationsAwsCloudtrailBatches adds the v1IntegrationsAwsCloudtrailBatches to the patch v1 integrations aws cloudtrail batches Id params
-func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDParams) SetV1IntegrationsAwsCloudtrailBatches(v1IntegrationsAwsCloudtrailBatches *models.PatchV1IntegrationsAwsCloudtrailBatches) {
-	o.V1IntegrationsAwsCloudtrailBatches = v1IntegrationsAwsCloudtrailBatches
-}
-
 // WithID adds the id to the patch v1 integrations aws cloudtrail batches Id params
 func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDParams) WithID(id string) *PatchV1IntegrationsAwsCloudtrailBatchesIDParams {
 	o.SetID(id)
@@ -147,6 +136,17 @@ func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDParams) SetID(id string) {
 	o.ID = id
 }
 
+// WithPatchV1IntegrationsAwsCloudtrailBatchesID adds the patchV1IntegrationsAwsCloudtrailBatchesID to the patch v1 integrations aws cloudtrail batches Id params
+func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDParams) WithPatchV1IntegrationsAwsCloudtrailBatchesID(patchV1IntegrationsAwsCloudtrailBatchesID *models.PatchV1IntegrationsAwsCloudtrailBatchesID) *PatchV1IntegrationsAwsCloudtrailBatchesIDParams {
+	o.SetPatchV1IntegrationsAwsCloudtrailBatchesID(patchV1IntegrationsAwsCloudtrailBatchesID)
+	return o
+}
+
+// SetPatchV1IntegrationsAwsCloudtrailBatchesID adds the patchV1IntegrationsAwsCloudtrailBatchesId to the patch v1 integrations aws cloudtrail batches Id params
+func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDParams) SetPatchV1IntegrationsAwsCloudtrailBatchesID(patchV1IntegrationsAwsCloudtrailBatchesID *models.PatchV1IntegrationsAwsCloudtrailBatchesID) {
+	o.PatchV1IntegrationsAwsCloudtrailBatchesID = patchV1IntegrationsAwsCloudtrailBatchesID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -154,15 +154,15 @@ func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDParams) WriteToRequest(r runti
 		return err
 	}
 	var res []error
-	if o.V1IntegrationsAwsCloudtrailBatches != nil {
-		if err := r.SetBodyParam(o.V1IntegrationsAwsCloudtrailBatches); err != nil {
-			return err
-		}
-	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
+	}
+	if o.PatchV1IntegrationsAwsCloudtrailBatchesID != nil {
+		if err := r.SetBodyParam(o.PatchV1IntegrationsAwsCloudtrailBatchesID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

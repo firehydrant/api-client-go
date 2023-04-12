@@ -63,8 +63,8 @@ PatchV1WebhooksWebhookIDParams contains all the parameters to send to the API en
 */
 type PatchV1WebhooksWebhookIDParams struct {
 
-	// V1Webhooks.
-	V1Webhooks *models.PatchV1Webhooks
+	// PatchV1WebhooksWebhookID.
+	PatchV1WebhooksWebhookID *models.PatchV1WebhooksWebhookID
 
 	/* WebhookID.
 
@@ -125,15 +125,15 @@ func (o *PatchV1WebhooksWebhookIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Webhooks adds the v1Webhooks to the patch v1 webhooks webhook Id params
-func (o *PatchV1WebhooksWebhookIDParams) WithV1Webhooks(v1Webhooks *models.PatchV1Webhooks) *PatchV1WebhooksWebhookIDParams {
-	o.SetV1Webhooks(v1Webhooks)
+// WithPatchV1WebhooksWebhookID adds the patchV1WebhooksWebhookID to the patch v1 webhooks webhook Id params
+func (o *PatchV1WebhooksWebhookIDParams) WithPatchV1WebhooksWebhookID(patchV1WebhooksWebhookID *models.PatchV1WebhooksWebhookID) *PatchV1WebhooksWebhookIDParams {
+	o.SetPatchV1WebhooksWebhookID(patchV1WebhooksWebhookID)
 	return o
 }
 
-// SetV1Webhooks adds the v1Webhooks to the patch v1 webhooks webhook Id params
-func (o *PatchV1WebhooksWebhookIDParams) SetV1Webhooks(v1Webhooks *models.PatchV1Webhooks) {
-	o.V1Webhooks = v1Webhooks
+// SetPatchV1WebhooksWebhookID adds the patchV1WebhooksWebhookId to the patch v1 webhooks webhook Id params
+func (o *PatchV1WebhooksWebhookIDParams) SetPatchV1WebhooksWebhookID(patchV1WebhooksWebhookID *models.PatchV1WebhooksWebhookID) {
+	o.PatchV1WebhooksWebhookID = patchV1WebhooksWebhookID
 }
 
 // WithWebhookID adds the webhookID to the patch v1 webhooks webhook Id params
@@ -154,8 +154,8 @@ func (o *PatchV1WebhooksWebhookIDParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if o.V1Webhooks != nil {
-		if err := r.SetBodyParam(o.V1Webhooks); err != nil {
+	if o.PatchV1WebhooksWebhookID != nil {
+		if err := r.SetBodyParam(o.PatchV1WebhooksWebhookID); err != nil {
 			return err
 		}
 	}

@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// TaskEntity Update a task's attributes
+// TaskEntity TaskEntity model
 //
 // swagger:model TaskEntity
 type TaskEntity struct {

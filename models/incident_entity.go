@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -15,7 +16,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// IncidentEntity Retrieve a single incident from its ID
+// IncidentEntity IncidentEntity model
 //
 // swagger:model IncidentEntity
 type IncidentEntity struct {
@@ -36,10 +37,13 @@ type IncidentEntity struct {
 	ChannelStatus string `json:"channel_status,omitempty"`
 
 	// conference bridges
-	ConferenceBridges []*ConferenceBridgeEntity `json:"conference_bridges"`
+	ConferenceBridges []*IncidentsConferenceBridgeEntity `json:"conference_bridges"`
 
 	// context object
-	ContextObject *ContextObjectEntity `json:"context_object,omitempty"`
+	ContextObject *IncidentsContextObjectEntity `json:"context_object,omitempty"`
+
+	// conversations
+	Conversations *ConversationsAPIEntitiesReference `json:"conversations,omitempty"`
 
 	// The time the incident was opened
 	// Format: date-time
@@ -49,6 +53,7 @@ type IncidentEntity struct {
 	CreatedBy *AuthorEntity `json:"created_by,omitempty"`
 
 	// current milestone
+	// Enum: [started detected acknowledged investigating identified mitigated resolved postmortem_started postmortem_completed closed]
 	CurrentMilestone string `json:"current_milestone,omitempty"`
 
 	// customer impact summary
@@ -70,13 +75,13 @@ type IncidentEntity struct {
 	ID string `json:"id,omitempty"`
 
 	// impacts
-	Impacts []*ImpactEntity `json:"impacts"`
+	Impacts []*IncidentsImpactEntity `json:"impacts"`
 
 	// incident channels
-	IncidentChannels []*ChannelEntity `json:"incident_channels"`
+	IncidentChannels []*IncidentsChannelEntity `json:"incident_channels"`
 
 	// incident tickets
-	IncidentTickets []*TicketEntity `json:"incident_tickets"`
+	IncidentTickets []*TicketingTicketEntity `json:"incident_tickets"`
 
 	// incident url
 	IncidentURL string `json:"incident_url,omitempty"`
@@ -85,13 +90,13 @@ type IncidentEntity struct {
 	Labels interface{} `json:"labels,omitempty"`
 
 	// last note
-	LastNote *NoteEntity `json:"last_note,omitempty"`
+	LastNote *EventNoteEntity `json:"last_note,omitempty"`
 
 	// last update
 	LastUpdate string `json:"last_update,omitempty"`
 
 	// milestones
-	Milestones []*MilestoneEntity `json:"milestones"`
+	Milestones []*IncidentsMilestoneEntity `json:"milestones"`
 
 	// monetary impact
 	MonetaryImpact int32 `json:"monetary_impact,omitempty"`
@@ -123,11 +128,11 @@ type IncidentEntity struct {
 	// report id
 	ReportID string `json:"report_id,omitempty"`
 
-	// retro exports
+	// A list of objects attached to this item. Can be one of: LinkEntity, CustomerSupportIssueEntity, or GenericAttachmentEntity
 	RetroExports []string `json:"retro_exports"`
 
 	// role assignments
-	RoleAssignments []*RoleAssignmentEntity `json:"role_assignments"`
+	RoleAssignments []*IncidentsRoleAssignmentEntity `json:"role_assignments"`
 
 	// services
 	Services []*SuccinctEntity `json:"services"`
@@ -139,20 +144,20 @@ type IncidentEntity struct {
 	SeverityCondition string `json:"severity_condition,omitempty"`
 
 	// severity condition object
-	SeverityConditionObject *ConditionEntity `json:"severity_condition_object,omitempty"`
+	SeverityConditionObject *SeverityMatrixConditionEntity `json:"severity_condition_object,omitempty"`
 
 	// severity impact
 	SeverityImpact string `json:"severity_impact,omitempty"`
 
 	// severity impact object
-	SeverityImpactObject *ImpactEntity `json:"severity_impact_object,omitempty"`
+	SeverityImpactObject *SeverityMatrixImpactEntity `json:"severity_impact_object,omitempty"`
 
 	// The time the incident started
 	// Format: date-time
 	StartedAt strfmt.DateTime `json:"started_at,omitempty"`
 
 	// status pages
-	StatusPages []*StatusPageEntity `json:"status_pages"`
+	StatusPages []*IncidentsStatusPageEntity `json:"status_pages"`
 
 	// summary
 	Summary string `json:"summary,omitempty"`
@@ -160,8 +165,11 @@ type IncidentEntity struct {
 	// tag list
 	TagList []string `json:"tag_list"`
 
+	// team assignments
+	TeamAssignments []*IncidentsTeamAssignmentEntity `json:"team_assignments"`
+
 	// ticket
-	Ticket *TicketEntity `json:"ticket,omitempty"`
+	Ticket *TicketingTicketEntity `json:"ticket,omitempty"`
 }
 
 // Validate validates this incident entity
@@ -176,11 +184,19 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateConversations(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateCreatedBy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCurrentMilestone(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -240,6 +256,10 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateTeamAssignments(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTicket(formats); err != nil {
 		res = append(res, err)
 	}
@@ -295,6 +315,25 @@ func (m *IncidentEntity) validateContextObject(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IncidentEntity) validateConversations(formats strfmt.Registry) error {
+	if swag.IsZero(m.Conversations) { // not required
+		return nil
+	}
+
+	if m.Conversations != nil {
+		if err := m.Conversations.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("conversations")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("conversations")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *IncidentEntity) validateCreatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
@@ -321,6 +360,72 @@ func (m *IncidentEntity) validateCreatedBy(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var incidentEntityTypeCurrentMilestonePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["started","detected","acknowledged","investigating","identified","mitigated","resolved","postmortem_started","postmortem_completed","closed"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		incidentEntityTypeCurrentMilestonePropEnum = append(incidentEntityTypeCurrentMilestonePropEnum, v)
+	}
+}
+
+const (
+
+	// IncidentEntityCurrentMilestoneStarted captures enum value "started"
+	IncidentEntityCurrentMilestoneStarted string = "started"
+
+	// IncidentEntityCurrentMilestoneDetected captures enum value "detected"
+	IncidentEntityCurrentMilestoneDetected string = "detected"
+
+	// IncidentEntityCurrentMilestoneAcknowledged captures enum value "acknowledged"
+	IncidentEntityCurrentMilestoneAcknowledged string = "acknowledged"
+
+	// IncidentEntityCurrentMilestoneInvestigating captures enum value "investigating"
+	IncidentEntityCurrentMilestoneInvestigating string = "investigating"
+
+	// IncidentEntityCurrentMilestoneIdentified captures enum value "identified"
+	IncidentEntityCurrentMilestoneIdentified string = "identified"
+
+	// IncidentEntityCurrentMilestoneMitigated captures enum value "mitigated"
+	IncidentEntityCurrentMilestoneMitigated string = "mitigated"
+
+	// IncidentEntityCurrentMilestoneResolved captures enum value "resolved"
+	IncidentEntityCurrentMilestoneResolved string = "resolved"
+
+	// IncidentEntityCurrentMilestonePostmortemStarted captures enum value "postmortem_started"
+	IncidentEntityCurrentMilestonePostmortemStarted string = "postmortem_started"
+
+	// IncidentEntityCurrentMilestonePostmortemCompleted captures enum value "postmortem_completed"
+	IncidentEntityCurrentMilestonePostmortemCompleted string = "postmortem_completed"
+
+	// IncidentEntityCurrentMilestoneClosed captures enum value "closed"
+	IncidentEntityCurrentMilestoneClosed string = "closed"
+)
+
+// prop value enum
+func (m *IncidentEntity) validateCurrentMilestoneEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, incidentEntityTypeCurrentMilestonePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *IncidentEntity) validateCurrentMilestone(formats strfmt.Registry) error {
+	if swag.IsZero(m.CurrentMilestone) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateCurrentMilestoneEnum("current_milestone", "body", m.CurrentMilestone); err != nil {
+		return err
 	}
 
 	return nil
@@ -648,6 +753,32 @@ func (m *IncidentEntity) validateStatusPages(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IncidentEntity) validateTeamAssignments(formats strfmt.Registry) error {
+	if swag.IsZero(m.TeamAssignments) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.TeamAssignments); i++ {
+		if swag.IsZero(m.TeamAssignments[i]) { // not required
+			continue
+		}
+
+		if m.TeamAssignments[i] != nil {
+			if err := m.TeamAssignments[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("team_assignments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("team_assignments" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *IncidentEntity) validateTicket(formats strfmt.Registry) error {
 	if swag.IsZero(m.Ticket) { // not required
 		return nil
@@ -676,6 +807,10 @@ func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 	}
 
 	if err := m.contextValidateContextObject(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateConversations(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -735,6 +870,10 @@ func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateTeamAssignments(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateTicket(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -773,6 +912,22 @@ func (m *IncidentEntity) contextValidateContextObject(ctx context.Context, forma
 				return ve.ValidateName("context_object")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("context_object")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) contextValidateConversations(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Conversations != nil {
+		if err := m.Conversations.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("conversations")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("conversations")
 			}
 			return err
 		}
@@ -1031,6 +1186,26 @@ func (m *IncidentEntity) contextValidateStatusPages(ctx context.Context, formats
 					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("status_pages" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) contextValidateTeamAssignments(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.TeamAssignments); i++ {
+
+		if m.TeamAssignments[i] != nil {
+			if err := m.TeamAssignments[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("team_assignments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("team_assignments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

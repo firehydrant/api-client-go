@@ -45,7 +45,7 @@ PatchV1IntegrationsAwsCloudtrailBatchesIDOK describes a response with status cod
 Update a CloudTrail batch with new information.
 */
 type PatchV1IntegrationsAwsCloudtrailBatchesIDOK struct {
-	Payload *models.CloudtrailBatchEntity
+	Payload *models.IntegrationsAwsCloudtrailBatchEntity
 }
 
 // IsSuccess returns true when this patch v1 integrations aws cloudtrail batches Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDOK) String() string {
 	return fmt.Sprintf("[PATCH /v1/integrations/aws/cloudtrail_batches/{id}][%d] patchV1IntegrationsAwsCloudtrailBatchesIdOK  %+v", 200, o.Payload)
 }
 
-func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDOK) GetPayload() *models.CloudtrailBatchEntity {
+func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDOK) GetPayload() *models.IntegrationsAwsCloudtrailBatchEntity {
 	return o.Payload
 }
 
 func (o *PatchV1IntegrationsAwsCloudtrailBatchesIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.CloudtrailBatchEntity)
+	o.Payload = new(models.IntegrationsAwsCloudtrailBatchEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

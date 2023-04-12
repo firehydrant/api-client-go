@@ -63,11 +63,11 @@ PatchV1PostMortemsReportsReportIDFieldsFieldIDParams contains all the parameters
 */
 type PatchV1PostMortemsReportsReportIDFieldsFieldIDParams struct {
 
-	// V1PostMortemsReportsReportIDFields.
-	V1PostMortemsReportsReportIDFields *models.PatchV1PostMortemsReportsReportIDFields
-
 	// FieldID.
 	FieldID string
+
+	// PatchV1PostMortemsReportsReportIDFieldsFieldID.
+	PatchV1PostMortemsReportsReportIDFieldsFieldID *models.PatchV1PostMortemsReportsReportIDFieldsFieldID
 
 	// ReportID.
 	ReportID string
@@ -125,17 +125,6 @@ func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams) SetHTTPClient(cli
 	o.HTTPClient = client
 }
 
-// WithV1PostMortemsReportsReportIDFields adds the v1PostMortemsReportsReportIDFields to the patch v1 post mortems reports report Id fields field Id params
-func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams) WithV1PostMortemsReportsReportIDFields(v1PostMortemsReportsReportIDFields *models.PatchV1PostMortemsReportsReportIDFields) *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams {
-	o.SetV1PostMortemsReportsReportIDFields(v1PostMortemsReportsReportIDFields)
-	return o
-}
-
-// SetV1PostMortemsReportsReportIDFields adds the v1PostMortemsReportsReportIdFields to the patch v1 post mortems reports report Id fields field Id params
-func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams) SetV1PostMortemsReportsReportIDFields(v1PostMortemsReportsReportIDFields *models.PatchV1PostMortemsReportsReportIDFields) {
-	o.V1PostMortemsReportsReportIDFields = v1PostMortemsReportsReportIDFields
-}
-
 // WithFieldID adds the fieldID to the patch v1 post mortems reports report Id fields field Id params
 func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams) WithFieldID(fieldID string) *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams {
 	o.SetFieldID(fieldID)
@@ -145,6 +134,17 @@ func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams) WithFieldID(field
 // SetFieldID adds the fieldId to the patch v1 post mortems reports report Id fields field Id params
 func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams) SetFieldID(fieldID string) {
 	o.FieldID = fieldID
+}
+
+// WithPatchV1PostMortemsReportsReportIDFieldsFieldID adds the patchV1PostMortemsReportsReportIDFieldsFieldID to the patch v1 post mortems reports report Id fields field Id params
+func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams) WithPatchV1PostMortemsReportsReportIDFieldsFieldID(patchV1PostMortemsReportsReportIDFieldsFieldID *models.PatchV1PostMortemsReportsReportIDFieldsFieldID) *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams {
+	o.SetPatchV1PostMortemsReportsReportIDFieldsFieldID(patchV1PostMortemsReportsReportIDFieldsFieldID)
+	return o
+}
+
+// SetPatchV1PostMortemsReportsReportIDFieldsFieldID adds the patchV1PostMortemsReportsReportIdFieldsFieldId to the patch v1 post mortems reports report Id fields field Id params
+func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams) SetPatchV1PostMortemsReportsReportIDFieldsFieldID(patchV1PostMortemsReportsReportIDFieldsFieldID *models.PatchV1PostMortemsReportsReportIDFieldsFieldID) {
+	o.PatchV1PostMortemsReportsReportIDFieldsFieldID = patchV1PostMortemsReportsReportIDFieldsFieldID
 }
 
 // WithReportID adds the reportID to the patch v1 post mortems reports report Id fields field Id params
@@ -165,15 +165,15 @@ func (o *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams) WriteToRequest(r 
 		return err
 	}
 	var res []error
-	if o.V1PostMortemsReportsReportIDFields != nil {
-		if err := r.SetBodyParam(o.V1PostMortemsReportsReportIDFields); err != nil {
-			return err
-		}
-	}
 
 	// path param field_id
 	if err := r.SetPathParam("field_id", o.FieldID); err != nil {
 		return err
+	}
+	if o.PatchV1PostMortemsReportsReportIDFieldsFieldID != nil {
+		if err := r.SetBodyParam(o.PatchV1PostMortemsReportsReportIDFieldsFieldID); err != nil {
+			return err
+		}
 	}
 
 	// path param report_id

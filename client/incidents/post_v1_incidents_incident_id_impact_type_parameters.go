@@ -63,11 +63,11 @@ PostV1IncidentsIncidentIDImpactTypeParams contains all the parameters to send to
 */
 type PostV1IncidentsIncidentIDImpactTypeParams struct {
 
-	// V1IncidentsIncidentIDImpact.
-	V1IncidentsIncidentIDImpact *models.PostV1IncidentsIncidentIDImpact
-
 	// IncidentID.
 	IncidentID string
+
+	// PostV1IncidentsIncidentIDImpactType.
+	PostV1IncidentsIncidentIDImpactType *models.PostV1IncidentsIncidentIDImpactType
 
 	// Type.
 	Type string
@@ -125,17 +125,6 @@ func (o *PostV1IncidentsIncidentIDImpactTypeParams) SetHTTPClient(client *http.C
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDImpact adds the v1IncidentsIncidentIDImpact to the post v1 incidents incident Id impact type params
-func (o *PostV1IncidentsIncidentIDImpactTypeParams) WithV1IncidentsIncidentIDImpact(v1IncidentsIncidentIDImpact *models.PostV1IncidentsIncidentIDImpact) *PostV1IncidentsIncidentIDImpactTypeParams {
-	o.SetV1IncidentsIncidentIDImpact(v1IncidentsIncidentIDImpact)
-	return o
-}
-
-// SetV1IncidentsIncidentIDImpact adds the v1IncidentsIncidentIdImpact to the post v1 incidents incident Id impact type params
-func (o *PostV1IncidentsIncidentIDImpactTypeParams) SetV1IncidentsIncidentIDImpact(v1IncidentsIncidentIDImpact *models.PostV1IncidentsIncidentIDImpact) {
-	o.V1IncidentsIncidentIDImpact = v1IncidentsIncidentIDImpact
-}
-
 // WithIncidentID adds the incidentID to the post v1 incidents incident Id impact type params
 func (o *PostV1IncidentsIncidentIDImpactTypeParams) WithIncidentID(incidentID string) *PostV1IncidentsIncidentIDImpactTypeParams {
 	o.SetIncidentID(incidentID)
@@ -145,6 +134,17 @@ func (o *PostV1IncidentsIncidentIDImpactTypeParams) WithIncidentID(incidentID st
 // SetIncidentID adds the incidentId to the post v1 incidents incident Id impact type params
 func (o *PostV1IncidentsIncidentIDImpactTypeParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
+}
+
+// WithPostV1IncidentsIncidentIDImpactType adds the postV1IncidentsIncidentIDImpactType to the post v1 incidents incident Id impact type params
+func (o *PostV1IncidentsIncidentIDImpactTypeParams) WithPostV1IncidentsIncidentIDImpactType(postV1IncidentsIncidentIDImpactType *models.PostV1IncidentsIncidentIDImpactType) *PostV1IncidentsIncidentIDImpactTypeParams {
+	o.SetPostV1IncidentsIncidentIDImpactType(postV1IncidentsIncidentIDImpactType)
+	return o
+}
+
+// SetPostV1IncidentsIncidentIDImpactType adds the postV1IncidentsIncidentIdImpactType to the post v1 incidents incident Id impact type params
+func (o *PostV1IncidentsIncidentIDImpactTypeParams) SetPostV1IncidentsIncidentIDImpactType(postV1IncidentsIncidentIDImpactType *models.PostV1IncidentsIncidentIDImpactType) {
+	o.PostV1IncidentsIncidentIDImpactType = postV1IncidentsIncidentIDImpactType
 }
 
 // WithType adds the typeVar to the post v1 incidents incident Id impact type params
@@ -165,15 +165,15 @@ func (o *PostV1IncidentsIncidentIDImpactTypeParams) WriteToRequest(r runtime.Cli
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDImpact != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDImpact); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PostV1IncidentsIncidentIDImpactType != nil {
+		if err := r.SetBodyParam(o.PostV1IncidentsIncidentIDImpactType); err != nil {
+			return err
+		}
 	}
 
 	// path param type

@@ -13,7 +13,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ServiceLinkEntity Creates a service with the appropriate integration for each external service ID passed
+// ServiceLinkEntity ServiceLinkEntity model
 //
 // swagger:model ServiceLinkEntity
 type ServiceLinkEntity struct {

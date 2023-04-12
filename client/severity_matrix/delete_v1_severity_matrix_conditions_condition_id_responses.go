@@ -45,7 +45,7 @@ DeleteV1SeverityMatrixConditionsConditionIDOK describes a response with status c
 Delete a specific condition
 */
 type DeleteV1SeverityMatrixConditionsConditionIDOK struct {
-	Payload *models.ConditionEntity
+	Payload *models.SeverityMatrixConditionEntity
 }
 
 // IsSuccess returns true when this delete v1 severity matrix conditions condition Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *DeleteV1SeverityMatrixConditionsConditionIDOK) String() string {
 	return fmt.Sprintf("[DELETE /v1/severity_matrix/conditions/{condition_id}][%d] deleteV1SeverityMatrixConditionsConditionIdOK  %+v", 200, o.Payload)
 }
 
-func (o *DeleteV1SeverityMatrixConditionsConditionIDOK) GetPayload() *models.ConditionEntity {
+func (o *DeleteV1SeverityMatrixConditionsConditionIDOK) GetPayload() *models.SeverityMatrixConditionEntity {
 	return o.Payload
 }
 
 func (o *DeleteV1SeverityMatrixConditionsConditionIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ConditionEntity)
+	o.Payload = new(models.SeverityMatrixConditionEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

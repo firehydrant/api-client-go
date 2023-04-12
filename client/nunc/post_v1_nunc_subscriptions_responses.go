@@ -45,7 +45,7 @@ PostV1NuncSubscriptionsCreated describes a response with status code 201, with d
 Subscribe to status page updates
 */
 type PostV1NuncSubscriptionsCreated struct {
-	Payload *models.NuncSubscription
+	Payload *models.NuncNuncSubscription
 }
 
 // IsSuccess returns true when this post v1 nunc subscriptions created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1NuncSubscriptionsCreated) String() string {
 	return fmt.Sprintf("[POST /v1/nunc/subscriptions][%d] postV1NuncSubscriptionsCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1NuncSubscriptionsCreated) GetPayload() *models.NuncSubscription {
+func (o *PostV1NuncSubscriptionsCreated) GetPayload() *models.NuncNuncSubscription {
 	return o.Payload
 }
 
 func (o *PostV1NuncSubscriptionsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.NuncSubscription)
+	o.Payload = new(models.NuncNuncSubscription)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

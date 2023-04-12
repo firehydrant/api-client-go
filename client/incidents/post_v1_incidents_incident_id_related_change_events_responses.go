@@ -57,7 +57,7 @@ PostV1IncidentsIncidentIDRelatedChangeEventsCreated describes a response with st
 Add a related change to an incident. Changes added to an incident can be causes, fixes, or suspects. To remove a change from an incident, the type field should be set to dismissed.
 */
 type PostV1IncidentsIncidentIDRelatedChangeEventsCreated struct {
-	Payload *models.RelatedChangeEventEntity
+	Payload *models.IncidentsRelatedChangeEventEntity
 }
 
 // IsSuccess returns true when this post v1 incidents incident Id related change events created response has a 2xx status code
@@ -93,13 +93,13 @@ func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) String() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/related_change_events][%d] postV1IncidentsIncidentIdRelatedChangeEventsCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) GetPayload() *models.RelatedChangeEventEntity {
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) GetPayload() *models.IncidentsRelatedChangeEventEntity {
 	return o.Payload
 }
 
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.RelatedChangeEventEntity)
+	o.Payload = new(models.IncidentsRelatedChangeEventEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

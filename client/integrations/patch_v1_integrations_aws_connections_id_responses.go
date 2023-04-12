@@ -45,7 +45,7 @@ PatchV1IntegrationsAwsConnectionsIDOK describes a response with status code 200,
 Update the AWS connection with the provided data.
 */
 type PatchV1IntegrationsAwsConnectionsIDOK struct {
-	Payload *models.ConnectionEntity
+	Payload *models.IntegrationsAwsConnectionEntity
 }
 
 // IsSuccess returns true when this patch v1 integrations aws connections Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PatchV1IntegrationsAwsConnectionsIDOK) String() string {
 	return fmt.Sprintf("[PATCH /v1/integrations/aws/connections/{id}][%d] patchV1IntegrationsAwsConnectionsIdOK  %+v", 200, o.Payload)
 }
 
-func (o *PatchV1IntegrationsAwsConnectionsIDOK) GetPayload() *models.ConnectionEntity {
+func (o *PatchV1IntegrationsAwsConnectionsIDOK) GetPayload() *models.IntegrationsAwsConnectionEntity {
 	return o.Payload
 }
 
 func (o *PatchV1IntegrationsAwsConnectionsIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ConnectionEntity)
+	o.Payload = new(models.IntegrationsAwsConnectionEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

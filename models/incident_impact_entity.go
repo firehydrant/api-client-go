@@ -8,11 +8,12 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
 
-// IncidentImpactEntity Add impacted infrastructure to an incident
+// IncidentImpactEntity IncidentImpactEntity model
 //
 // swagger:model IncidentImpactEntity
 type IncidentImpactEntity struct {
@@ -20,8 +21,8 @@ type IncidentImpactEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
-	// Depending on the type attribute, could be an environment or service entity
-	Infrastructure interface{} `json:"infrastructure,omitempty"`
+	// infrastructure
+	Infrastructure *SuccinctEntity `json:"infrastructure,omitempty"`
 
 	// type
 	Type string `json:"type,omitempty"`
@@ -29,11 +30,64 @@ type IncidentImpactEntity struct {
 
 // Validate validates this incident impact entity
 func (m *IncidentImpactEntity) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateInfrastructure(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this incident impact entity based on context it is used
+func (m *IncidentImpactEntity) validateInfrastructure(formats strfmt.Registry) error {
+	if swag.IsZero(m.Infrastructure) { // not required
+		return nil
+	}
+
+	if m.Infrastructure != nil {
+		if err := m.Infrastructure.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("infrastructure")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("infrastructure")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this incident impact entity based on the context it is used
 func (m *IncidentImpactEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateInfrastructure(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *IncidentImpactEntity) contextValidateInfrastructure(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Infrastructure != nil {
+		if err := m.Infrastructure.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("infrastructure")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("infrastructure")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

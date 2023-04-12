@@ -45,7 +45,7 @@ PostV1IncidentsIncidentIDStatusPagesCreated describes a response with status cod
 Add a status page to an incident.
 */
 type PostV1IncidentsIncidentIDStatusPagesCreated struct {
-	Payload *models.StatusPageEntity
+	Payload *models.IncidentsStatusPageEntity
 }
 
 // IsSuccess returns true when this post v1 incidents incident Id status pages created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1IncidentsIncidentIDStatusPagesCreated) String() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/status_pages][%d] postV1IncidentsIncidentIdStatusPagesCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1IncidentsIncidentIDStatusPagesCreated) GetPayload() *models.StatusPageEntity {
+func (o *PostV1IncidentsIncidentIDStatusPagesCreated) GetPayload() *models.IncidentsStatusPageEntity {
 	return o.Payload
 }
 
 func (o *PostV1IncidentsIncidentIDStatusPagesCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.StatusPageEntity)
+	o.Payload = new(models.IncidentsStatusPageEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

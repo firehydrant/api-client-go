@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// SeverityEntity Retrieve a specific severity
+// SeverityEntity SeverityEntity model
 //
 // swagger:model SeverityEntity
 type SeverityEntity struct {

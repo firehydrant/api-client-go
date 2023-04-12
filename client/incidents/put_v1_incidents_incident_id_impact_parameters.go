@@ -63,11 +63,11 @@ PutV1IncidentsIncidentIDImpactParams contains all the parameters to send to the 
 */
 type PutV1IncidentsIncidentIDImpactParams struct {
 
-	// V1IncidentsIncidentIDImpact.
-	V1IncidentsIncidentIDImpact *models.PutV1IncidentsIncidentIDImpact
-
 	// IncidentID.
 	IncidentID string
+
+	// PutV1IncidentsIncidentIDImpact.
+	PutV1IncidentsIncidentIDImpact *models.PutV1IncidentsIncidentIDImpact
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PutV1IncidentsIncidentIDImpactParams) SetHTTPClient(client *http.Client
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDImpact adds the v1IncidentsIncidentIDImpact to the put v1 incidents incident Id impact params
-func (o *PutV1IncidentsIncidentIDImpactParams) WithV1IncidentsIncidentIDImpact(v1IncidentsIncidentIDImpact *models.PutV1IncidentsIncidentIDImpact) *PutV1IncidentsIncidentIDImpactParams {
-	o.SetV1IncidentsIncidentIDImpact(v1IncidentsIncidentIDImpact)
-	return o
-}
-
-// SetV1IncidentsIncidentIDImpact adds the v1IncidentsIncidentIdImpact to the put v1 incidents incident Id impact params
-func (o *PutV1IncidentsIncidentIDImpactParams) SetV1IncidentsIncidentIDImpact(v1IncidentsIncidentIDImpact *models.PutV1IncidentsIncidentIDImpact) {
-	o.V1IncidentsIncidentIDImpact = v1IncidentsIncidentIDImpact
-}
-
 // WithIncidentID adds the incidentID to the put v1 incidents incident Id impact params
 func (o *PutV1IncidentsIncidentIDImpactParams) WithIncidentID(incidentID string) *PutV1IncidentsIncidentIDImpactParams {
 	o.SetIncidentID(incidentID)
@@ -144,6 +133,17 @@ func (o *PutV1IncidentsIncidentIDImpactParams) SetIncidentID(incidentID string) 
 	o.IncidentID = incidentID
 }
 
+// WithPutV1IncidentsIncidentIDImpact adds the putV1IncidentsIncidentIDImpact to the put v1 incidents incident Id impact params
+func (o *PutV1IncidentsIncidentIDImpactParams) WithPutV1IncidentsIncidentIDImpact(putV1IncidentsIncidentIDImpact *models.PutV1IncidentsIncidentIDImpact) *PutV1IncidentsIncidentIDImpactParams {
+	o.SetPutV1IncidentsIncidentIDImpact(putV1IncidentsIncidentIDImpact)
+	return o
+}
+
+// SetPutV1IncidentsIncidentIDImpact adds the putV1IncidentsIncidentIdImpact to the put v1 incidents incident Id impact params
+func (o *PutV1IncidentsIncidentIDImpactParams) SetPutV1IncidentsIncidentIDImpact(putV1IncidentsIncidentIDImpact *models.PutV1IncidentsIncidentIDImpact) {
+	o.PutV1IncidentsIncidentIDImpact = putV1IncidentsIncidentIDImpact
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PutV1IncidentsIncidentIDImpactParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PutV1IncidentsIncidentIDImpactParams) WriteToRequest(r runtime.ClientRe
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDImpact != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDImpact); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PutV1IncidentsIncidentIDImpact != nil {
+		if err := r.SetBodyParam(o.PutV1IncidentsIncidentIDImpact); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

@@ -63,11 +63,11 @@ PatchV1SeverityMatrixConditionsConditionIDParams contains all the parameters to 
 */
 type PatchV1SeverityMatrixConditionsConditionIDParams struct {
 
-	// V1SeverityMatrixConditions.
-	V1SeverityMatrixConditions *models.PatchV1SeverityMatrixConditions
-
 	// ConditionID.
 	ConditionID string
+
+	// PatchV1SeverityMatrixConditionsConditionID.
+	PatchV1SeverityMatrixConditionsConditionID *models.PatchV1SeverityMatrixConditionsConditionID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PatchV1SeverityMatrixConditionsConditionIDParams) SetHTTPClient(client 
 	o.HTTPClient = client
 }
 
-// WithV1SeverityMatrixConditions adds the v1SeverityMatrixConditions to the patch v1 severity matrix conditions condition Id params
-func (o *PatchV1SeverityMatrixConditionsConditionIDParams) WithV1SeverityMatrixConditions(v1SeverityMatrixConditions *models.PatchV1SeverityMatrixConditions) *PatchV1SeverityMatrixConditionsConditionIDParams {
-	o.SetV1SeverityMatrixConditions(v1SeverityMatrixConditions)
-	return o
-}
-
-// SetV1SeverityMatrixConditions adds the v1SeverityMatrixConditions to the patch v1 severity matrix conditions condition Id params
-func (o *PatchV1SeverityMatrixConditionsConditionIDParams) SetV1SeverityMatrixConditions(v1SeverityMatrixConditions *models.PatchV1SeverityMatrixConditions) {
-	o.V1SeverityMatrixConditions = v1SeverityMatrixConditions
-}
-
 // WithConditionID adds the conditionID to the patch v1 severity matrix conditions condition Id params
 func (o *PatchV1SeverityMatrixConditionsConditionIDParams) WithConditionID(conditionID string) *PatchV1SeverityMatrixConditionsConditionIDParams {
 	o.SetConditionID(conditionID)
@@ -144,6 +133,17 @@ func (o *PatchV1SeverityMatrixConditionsConditionIDParams) SetConditionID(condit
 	o.ConditionID = conditionID
 }
 
+// WithPatchV1SeverityMatrixConditionsConditionID adds the patchV1SeverityMatrixConditionsConditionID to the patch v1 severity matrix conditions condition Id params
+func (o *PatchV1SeverityMatrixConditionsConditionIDParams) WithPatchV1SeverityMatrixConditionsConditionID(patchV1SeverityMatrixConditionsConditionID *models.PatchV1SeverityMatrixConditionsConditionID) *PatchV1SeverityMatrixConditionsConditionIDParams {
+	o.SetPatchV1SeverityMatrixConditionsConditionID(patchV1SeverityMatrixConditionsConditionID)
+	return o
+}
+
+// SetPatchV1SeverityMatrixConditionsConditionID adds the patchV1SeverityMatrixConditionsConditionId to the patch v1 severity matrix conditions condition Id params
+func (o *PatchV1SeverityMatrixConditionsConditionIDParams) SetPatchV1SeverityMatrixConditionsConditionID(patchV1SeverityMatrixConditionsConditionID *models.PatchV1SeverityMatrixConditionsConditionID) {
+	o.PatchV1SeverityMatrixConditionsConditionID = patchV1SeverityMatrixConditionsConditionID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1SeverityMatrixConditionsConditionIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PatchV1SeverityMatrixConditionsConditionIDParams) WriteToRequest(r runt
 		return err
 	}
 	var res []error
-	if o.V1SeverityMatrixConditions != nil {
-		if err := r.SetBodyParam(o.V1SeverityMatrixConditions); err != nil {
-			return err
-		}
-	}
 
 	// path param condition_id
 	if err := r.SetPathParam("condition_id", o.ConditionID); err != nil {
 		return err
+	}
+	if o.PatchV1SeverityMatrixConditionsConditionID != nil {
+		if err := r.SetBodyParam(o.PatchV1SeverityMatrixConditionsConditionID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

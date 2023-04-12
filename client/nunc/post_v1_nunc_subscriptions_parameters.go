@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPostV1NuncSubscriptionsParams creates a new PostV1NuncSubscriptionsParams object,
@@ -61,11 +63,8 @@ PostV1NuncSubscriptionsParams contains all the parameters to send to the API end
 */
 type PostV1NuncSubscriptionsParams struct {
 
-	// Email.
-	Email string
-
-	// RecaptchaToken.
-	RecaptchaToken string
+	// PostV1NuncSubscriptions.
+	PostV1NuncSubscriptions *models.PostV1NuncSubscriptions
 
 	timeout    time.Duration
 	Context    context.Context
@@ -120,26 +119,15 @@ func (o *PostV1NuncSubscriptionsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithEmail adds the email to the post v1 nunc subscriptions params
-func (o *PostV1NuncSubscriptionsParams) WithEmail(email string) *PostV1NuncSubscriptionsParams {
-	o.SetEmail(email)
+// WithPostV1NuncSubscriptions adds the postV1NuncSubscriptions to the post v1 nunc subscriptions params
+func (o *PostV1NuncSubscriptionsParams) WithPostV1NuncSubscriptions(postV1NuncSubscriptions *models.PostV1NuncSubscriptions) *PostV1NuncSubscriptionsParams {
+	o.SetPostV1NuncSubscriptions(postV1NuncSubscriptions)
 	return o
 }
 
-// SetEmail adds the email to the post v1 nunc subscriptions params
-func (o *PostV1NuncSubscriptionsParams) SetEmail(email string) {
-	o.Email = email
-}
-
-// WithRecaptchaToken adds the recaptchaToken to the post v1 nunc subscriptions params
-func (o *PostV1NuncSubscriptionsParams) WithRecaptchaToken(recaptchaToken string) *PostV1NuncSubscriptionsParams {
-	o.SetRecaptchaToken(recaptchaToken)
-	return o
-}
-
-// SetRecaptchaToken adds the recaptchaToken to the post v1 nunc subscriptions params
-func (o *PostV1NuncSubscriptionsParams) SetRecaptchaToken(recaptchaToken string) {
-	o.RecaptchaToken = recaptchaToken
+// SetPostV1NuncSubscriptions adds the postV1NuncSubscriptions to the post v1 nunc subscriptions params
+func (o *PostV1NuncSubscriptionsParams) SetPostV1NuncSubscriptions(postV1NuncSubscriptions *models.PostV1NuncSubscriptions) {
+	o.PostV1NuncSubscriptions = postV1NuncSubscriptions
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -149,21 +137,8 @@ func (o *PostV1NuncSubscriptionsParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
-
-	// form param email
-	frEmail := o.Email
-	fEmail := frEmail
-	if fEmail != "" {
-		if err := r.SetFormParam("email", fEmail); err != nil {
-			return err
-		}
-	}
-
-	// form param recaptcha_token
-	frRecaptchaToken := o.RecaptchaToken
-	fRecaptchaToken := frRecaptchaToken
-	if fRecaptchaToken != "" {
-		if err := r.SetFormParam("recaptcha_token", fRecaptchaToken); err != nil {
+	if o.PostV1NuncSubscriptions != nil {
+		if err := r.SetBodyParam(o.PostV1NuncSubscriptions); err != nil {
 			return err
 		}
 	}

@@ -45,7 +45,7 @@ GetV1IncidentsIncidentIDAlertsOK describes a response with status code 200, with
 List alerts that have been attached to an incident
 */
 type GetV1IncidentsIncidentIDAlertsOK struct {
-	Payload *models.AlertEntityPaginated
+	Payload *models.IncidentsAlertEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 incidents incident Id alerts o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1IncidentsIncidentIDAlertsOK) String() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/alerts][%d] getV1IncidentsIncidentIdAlertsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1IncidentsIncidentIDAlertsOK) GetPayload() *models.AlertEntityPaginated {
+func (o *GetV1IncidentsIncidentIDAlertsOK) GetPayload() *models.IncidentsAlertEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1IncidentsIncidentIDAlertsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.AlertEntityPaginated)
+	o.Payload = new(models.IncidentsAlertEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

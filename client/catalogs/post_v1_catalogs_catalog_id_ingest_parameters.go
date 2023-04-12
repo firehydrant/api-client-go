@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPostV1CatalogsCatalogIDIngestParams creates a new PostV1CatalogsCatalogIDIngestParams object,
@@ -64,17 +66,8 @@ type PostV1CatalogsCatalogIDIngestParams struct {
 	// CatalogID.
 	CatalogID string
 
-	/* Data.
-
-	   Service data
-	*/
-	Data string
-
-	/* Encoding.
-
-	   Encoding for submitted data
-	*/
-	Encoding string
+	// PostV1CatalogsCatalogIDIngest.
+	PostV1CatalogsCatalogIDIngest *models.PostV1CatalogsCatalogIDIngest
 
 	timeout    time.Duration
 	Context    context.Context
@@ -140,26 +133,15 @@ func (o *PostV1CatalogsCatalogIDIngestParams) SetCatalogID(catalogID string) {
 	o.CatalogID = catalogID
 }
 
-// WithData adds the data to the post v1 catalogs catalog Id ingest params
-func (o *PostV1CatalogsCatalogIDIngestParams) WithData(data string) *PostV1CatalogsCatalogIDIngestParams {
-	o.SetData(data)
+// WithPostV1CatalogsCatalogIDIngest adds the postV1CatalogsCatalogIDIngest to the post v1 catalogs catalog Id ingest params
+func (o *PostV1CatalogsCatalogIDIngestParams) WithPostV1CatalogsCatalogIDIngest(postV1CatalogsCatalogIDIngest *models.PostV1CatalogsCatalogIDIngest) *PostV1CatalogsCatalogIDIngestParams {
+	o.SetPostV1CatalogsCatalogIDIngest(postV1CatalogsCatalogIDIngest)
 	return o
 }
 
-// SetData adds the data to the post v1 catalogs catalog Id ingest params
-func (o *PostV1CatalogsCatalogIDIngestParams) SetData(data string) {
-	o.Data = data
-}
-
-// WithEncoding adds the encoding to the post v1 catalogs catalog Id ingest params
-func (o *PostV1CatalogsCatalogIDIngestParams) WithEncoding(encoding string) *PostV1CatalogsCatalogIDIngestParams {
-	o.SetEncoding(encoding)
-	return o
-}
-
-// SetEncoding adds the encoding to the post v1 catalogs catalog Id ingest params
-func (o *PostV1CatalogsCatalogIDIngestParams) SetEncoding(encoding string) {
-	o.Encoding = encoding
+// SetPostV1CatalogsCatalogIDIngest adds the postV1CatalogsCatalogIdIngest to the post v1 catalogs catalog Id ingest params
+func (o *PostV1CatalogsCatalogIDIngestParams) SetPostV1CatalogsCatalogIDIngest(postV1CatalogsCatalogIDIngest *models.PostV1CatalogsCatalogIDIngest) {
+	o.PostV1CatalogsCatalogIDIngest = postV1CatalogsCatalogIDIngest
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -174,21 +156,8 @@ func (o *PostV1CatalogsCatalogIDIngestParams) WriteToRequest(r runtime.ClientReq
 	if err := r.SetPathParam("catalog_id", o.CatalogID); err != nil {
 		return err
 	}
-
-	// form param data
-	frData := o.Data
-	fData := frData
-	if fData != "" {
-		if err := r.SetFormParam("data", fData); err != nil {
-			return err
-		}
-	}
-
-	// form param encoding
-	frEncoding := o.Encoding
-	fEncoding := frEncoding
-	if fEncoding != "" {
-		if err := r.SetFormParam("encoding", fEncoding); err != nil {
+	if o.PostV1CatalogsCatalogIDIngest != nil {
+		if err := r.SetBodyParam(o.PostV1CatalogsCatalogIDIngest); err != nil {
 			return err
 		}
 	}

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPutV1IncidentsIncidentIDLinksLinkIDParams creates a new PutV1IncidentsIncidentIDLinksLinkIDParams object,
@@ -61,20 +63,14 @@ PutV1IncidentsIncidentIDLinksLinkIDParams contains all the parameters to send to
 */
 type PutV1IncidentsIncidentIDLinksLinkIDParams struct {
 
-	// DisplayText.
-	DisplayText *string
-
-	// HrefURL.
-	HrefURL *string
-
-	// IconURL.
-	IconURL *string
-
 	// IncidentID.
 	IncidentID string
 
 	// LinkID.
 	LinkID string
+
+	// PutV1IncidentsIncidentIDLinksLinkID.
+	PutV1IncidentsIncidentIDLinksLinkID *models.PutV1IncidentsIncidentIDLinksLinkID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -129,39 +125,6 @@ func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) SetHTTPClient(client *http.C
 	o.HTTPClient = client
 }
 
-// WithDisplayText adds the displayText to the put v1 incidents incident Id links link Id params
-func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WithDisplayText(displayText *string) *PutV1IncidentsIncidentIDLinksLinkIDParams {
-	o.SetDisplayText(displayText)
-	return o
-}
-
-// SetDisplayText adds the displayText to the put v1 incidents incident Id links link Id params
-func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) SetDisplayText(displayText *string) {
-	o.DisplayText = displayText
-}
-
-// WithHrefURL adds the hrefURL to the put v1 incidents incident Id links link Id params
-func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WithHrefURL(hrefURL *string) *PutV1IncidentsIncidentIDLinksLinkIDParams {
-	o.SetHrefURL(hrefURL)
-	return o
-}
-
-// SetHrefURL adds the hrefUrl to the put v1 incidents incident Id links link Id params
-func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) SetHrefURL(hrefURL *string) {
-	o.HrefURL = hrefURL
-}
-
-// WithIconURL adds the iconURL to the put v1 incidents incident Id links link Id params
-func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WithIconURL(iconURL *string) *PutV1IncidentsIncidentIDLinksLinkIDParams {
-	o.SetIconURL(iconURL)
-	return o
-}
-
-// SetIconURL adds the iconUrl to the put v1 incidents incident Id links link Id params
-func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) SetIconURL(iconURL *string) {
-	o.IconURL = iconURL
-}
-
 // WithIncidentID adds the incidentID to the put v1 incidents incident Id links link Id params
 func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WithIncidentID(incidentID string) *PutV1IncidentsIncidentIDLinksLinkIDParams {
 	o.SetIncidentID(incidentID)
@@ -184,6 +147,17 @@ func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) SetLinkID(linkID string) {
 	o.LinkID = linkID
 }
 
+// WithPutV1IncidentsIncidentIDLinksLinkID adds the putV1IncidentsIncidentIDLinksLinkID to the put v1 incidents incident Id links link Id params
+func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WithPutV1IncidentsIncidentIDLinksLinkID(putV1IncidentsIncidentIDLinksLinkID *models.PutV1IncidentsIncidentIDLinksLinkID) *PutV1IncidentsIncidentIDLinksLinkIDParams {
+	o.SetPutV1IncidentsIncidentIDLinksLinkID(putV1IncidentsIncidentIDLinksLinkID)
+	return o
+}
+
+// SetPutV1IncidentsIncidentIDLinksLinkID adds the putV1IncidentsIncidentIdLinksLinkId to the put v1 incidents incident Id links link Id params
+func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) SetPutV1IncidentsIncidentIDLinksLinkID(putV1IncidentsIncidentIDLinksLinkID *models.PutV1IncidentsIncidentIDLinksLinkID) {
+	o.PutV1IncidentsIncidentIDLinksLinkID = putV1IncidentsIncidentIDLinksLinkID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -191,51 +165,6 @@ func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WriteToRequest(r runtime.Cli
 		return err
 	}
 	var res []error
-
-	if o.DisplayText != nil {
-
-		// form param display_text
-		var frDisplayText string
-		if o.DisplayText != nil {
-			frDisplayText = *o.DisplayText
-		}
-		fDisplayText := frDisplayText
-		if fDisplayText != "" {
-			if err := r.SetFormParam("display_text", fDisplayText); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.HrefURL != nil {
-
-		// form param href_url
-		var frHrefURL string
-		if o.HrefURL != nil {
-			frHrefURL = *o.HrefURL
-		}
-		fHrefURL := frHrefURL
-		if fHrefURL != "" {
-			if err := r.SetFormParam("href_url", fHrefURL); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.IconURL != nil {
-
-		// form param icon_url
-		var frIconURL string
-		if o.IconURL != nil {
-			frIconURL = *o.IconURL
-		}
-		fIconURL := frIconURL
-		if fIconURL != "" {
-			if err := r.SetFormParam("icon_url", fIconURL); err != nil {
-				return err
-			}
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
@@ -245,6 +174,11 @@ func (o *PutV1IncidentsIncidentIDLinksLinkIDParams) WriteToRequest(r runtime.Cli
 	// path param link_id
 	if err := r.SetPathParam("link_id", o.LinkID); err != nil {
 		return err
+	}
+	if o.PutV1IncidentsIncidentIDLinksLinkID != nil {
+		if err := r.SetBodyParam(o.PutV1IncidentsIncidentIDLinksLinkID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

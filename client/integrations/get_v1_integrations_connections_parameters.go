@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1IntegrationsConnectionsParams creates a new GetV1IntegrationsConnectionsParams object,
@@ -66,7 +65,7 @@ type GetV1IntegrationsConnectionsParams struct {
 
 	   Only return installed integrations with the supplied slugs (types).
 	*/
-	IntegrationSlug []string
+	IntegrationSlug *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,13 +121,13 @@ func (o *GetV1IntegrationsConnectionsParams) SetHTTPClient(client *http.Client) 
 }
 
 // WithIntegrationSlug adds the integrationSlug to the get v1 integrations connections params
-func (o *GetV1IntegrationsConnectionsParams) WithIntegrationSlug(integrationSlug []string) *GetV1IntegrationsConnectionsParams {
+func (o *GetV1IntegrationsConnectionsParams) WithIntegrationSlug(integrationSlug *string) *GetV1IntegrationsConnectionsParams {
 	o.SetIntegrationSlug(integrationSlug)
 	return o
 }
 
 // SetIntegrationSlug adds the integrationSlug to the get v1 integrations connections params
-func (o *GetV1IntegrationsConnectionsParams) SetIntegrationSlug(integrationSlug []string) {
+func (o *GetV1IntegrationsConnectionsParams) SetIntegrationSlug(integrationSlug *string) {
 	o.IntegrationSlug = integrationSlug
 }
 
@@ -142,12 +141,18 @@ func (o *GetV1IntegrationsConnectionsParams) WriteToRequest(r runtime.ClientRequ
 
 	if o.IntegrationSlug != nil {
 
-		// binding items for integration_slug
-		joinedIntegrationSlug := o.bindParamIntegrationSlug(reg)
+		// query param integration_slug
+		var qrIntegrationSlug string
 
-		// form array param integration_slug
-		if err := r.SetFormParam("integration_slug", joinedIntegrationSlug...); err != nil {
-			return err
+		if o.IntegrationSlug != nil {
+			qrIntegrationSlug = *o.IntegrationSlug
+		}
+		qIntegrationSlug := qrIntegrationSlug
+		if qIntegrationSlug != "" {
+
+			if err := r.SetQueryParam("integration_slug", qIntegrationSlug); err != nil {
+				return err
+			}
 		}
 	}
 
@@ -155,21 +160,4 @@ func (o *GetV1IntegrationsConnectionsParams) WriteToRequest(r runtime.ClientRequ
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
-}
-
-// bindParamGetV1IntegrationsConnections binds the parameter integration_slug
-func (o *GetV1IntegrationsConnectionsParams) bindParamIntegrationSlug(formats strfmt.Registry) []string {
-	integrationSlugIR := o.IntegrationSlug
-
-	var integrationSlugIC []string
-	for _, integrationSlugIIR := range integrationSlugIR { // explode []string
-
-		integrationSlugIIV := integrationSlugIIR // string as string
-		integrationSlugIC = append(integrationSlugIC, integrationSlugIIV)
-	}
-
-	// items.CollectionFormat: ""
-	integrationSlugIS := swag.JoinByFormat(integrationSlugIC, "")
-
-	return integrationSlugIS
 }

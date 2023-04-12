@@ -63,8 +63,8 @@ PostV1ChecklistTemplatesParams contains all the parameters to send to the API en
 */
 type PostV1ChecklistTemplatesParams struct {
 
-	// V1ChecklistTemplates.
-	V1ChecklistTemplates *models.PostV1ChecklistTemplates
+	// PostV1ChecklistTemplates.
+	PostV1ChecklistTemplates *models.PostV1ChecklistTemplates
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1ChecklistTemplatesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1ChecklistTemplates adds the v1ChecklistTemplates to the post v1 checklist templates params
-func (o *PostV1ChecklistTemplatesParams) WithV1ChecklistTemplates(v1ChecklistTemplates *models.PostV1ChecklistTemplates) *PostV1ChecklistTemplatesParams {
-	o.SetV1ChecklistTemplates(v1ChecklistTemplates)
+// WithPostV1ChecklistTemplates adds the postV1ChecklistTemplates to the post v1 checklist templates params
+func (o *PostV1ChecklistTemplatesParams) WithPostV1ChecklistTemplates(postV1ChecklistTemplates *models.PostV1ChecklistTemplates) *PostV1ChecklistTemplatesParams {
+	o.SetPostV1ChecklistTemplates(postV1ChecklistTemplates)
 	return o
 }
 
-// SetV1ChecklistTemplates adds the v1ChecklistTemplates to the post v1 checklist templates params
-func (o *PostV1ChecklistTemplatesParams) SetV1ChecklistTemplates(v1ChecklistTemplates *models.PostV1ChecklistTemplates) {
-	o.V1ChecklistTemplates = v1ChecklistTemplates
+// SetPostV1ChecklistTemplates adds the postV1ChecklistTemplates to the post v1 checklist templates params
+func (o *PostV1ChecklistTemplatesParams) SetPostV1ChecklistTemplates(postV1ChecklistTemplates *models.PostV1ChecklistTemplates) {
+	o.PostV1ChecklistTemplates = postV1ChecklistTemplates
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1ChecklistTemplatesParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if o.V1ChecklistTemplates != nil {
-		if err := r.SetBodyParam(o.V1ChecklistTemplates); err != nil {
+	if o.PostV1ChecklistTemplates != nil {
+		if err := r.SetBodyParam(o.PostV1ChecklistTemplates); err != nil {
 			return err
 		}
 	}

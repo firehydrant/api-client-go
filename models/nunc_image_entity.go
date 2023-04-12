@@ -20,8 +20,8 @@ type NuncImageEntity struct {
 	// original url
 	OriginalURL string `json:"original_url,omitempty"`
 
-	// versions urls
-	VersionsUrls string `json:"versions_urls,omitempty"`
+	// An object with keys that can be of type logo, favicon, cover_image, or open_graph_image
+	VersionsUrls interface{} `json:"versions_urls,omitempty"`
 }
 
 // Validate validates this nunc image entity

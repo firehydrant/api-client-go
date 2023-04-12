@@ -63,11 +63,11 @@ PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams contains
 */
 type PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams struct {
 
-	// V1IncidentsIncidentIDRelatedChangeEvents.
-	V1IncidentsIncidentIDRelatedChangeEvents *models.PatchV1IncidentsIncidentIDRelatedChangeEvents
-
 	// IncidentID.
 	IncidentID string
+
+	// PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID.
+	PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID *models.PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID
 
 	// RelatedChangeEventID.
 	RelatedChangeEventID string
@@ -125,17 +125,6 @@ func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDRelatedChangeEvents adds the v1IncidentsIncidentIDRelatedChangeEvents to the patch v1 incidents incident Id related change events related change event Id params
-func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams) WithV1IncidentsIncidentIDRelatedChangeEvents(v1IncidentsIncidentIDRelatedChangeEvents *models.PatchV1IncidentsIncidentIDRelatedChangeEvents) *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams {
-	o.SetV1IncidentsIncidentIDRelatedChangeEvents(v1IncidentsIncidentIDRelatedChangeEvents)
-	return o
-}
-
-// SetV1IncidentsIncidentIDRelatedChangeEvents adds the v1IncidentsIncidentIdRelatedChangeEvents to the patch v1 incidents incident Id related change events related change event Id params
-func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams) SetV1IncidentsIncidentIDRelatedChangeEvents(v1IncidentsIncidentIDRelatedChangeEvents *models.PatchV1IncidentsIncidentIDRelatedChangeEvents) {
-	o.V1IncidentsIncidentIDRelatedChangeEvents = v1IncidentsIncidentIDRelatedChangeEvents
-}
-
 // WithIncidentID adds the incidentID to the patch v1 incidents incident Id related change events related change event Id params
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams) WithIncidentID(incidentID string) *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams {
 	o.SetIncidentID(incidentID)
@@ -145,6 +134,17 @@ func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams
 // SetIncidentID adds the incidentId to the patch v1 incidents incident Id related change events related change event Id params
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
+}
+
+// WithPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID adds the patchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID to the patch v1 incidents incident Id related change events related change event Id params
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams) WithPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID(patchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID *models.PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID) *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams {
+	o.SetPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID(patchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID)
+	return o
+}
+
+// SetPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID adds the patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventId to the patch v1 incidents incident Id related change events related change event Id params
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams) SetPatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID(patchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID *models.PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID) {
+	o.PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID = patchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID
 }
 
 // WithRelatedChangeEventID adds the relatedChangeEventID to the patch v1 incidents incident Id related change events related change event Id params
@@ -165,15 +165,15 @@ func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDRelatedChangeEvents != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDRelatedChangeEvents); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID != nil {
+		if err := r.SetBodyParam(o.PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID); err != nil {
+			return err
+		}
 	}
 
 	// path param related_change_event_id

@@ -63,11 +63,11 @@ PatchV1ChangesChangeIDParams contains all the parameters to send to the API endp
 */
 type PatchV1ChangesChangeIDParams struct {
 
-	// V1Changes.
-	V1Changes *models.PatchV1Changes
-
 	// ChangeID.
 	ChangeID string
+
+	// PatchV1ChangesChangeID.
+	PatchV1ChangesChangeID *models.PatchV1ChangesChangeID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PatchV1ChangesChangeIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Changes adds the v1Changes to the patch v1 changes change Id params
-func (o *PatchV1ChangesChangeIDParams) WithV1Changes(v1Changes *models.PatchV1Changes) *PatchV1ChangesChangeIDParams {
-	o.SetV1Changes(v1Changes)
-	return o
-}
-
-// SetV1Changes adds the v1Changes to the patch v1 changes change Id params
-func (o *PatchV1ChangesChangeIDParams) SetV1Changes(v1Changes *models.PatchV1Changes) {
-	o.V1Changes = v1Changes
-}
-
 // WithChangeID adds the changeID to the patch v1 changes change Id params
 func (o *PatchV1ChangesChangeIDParams) WithChangeID(changeID string) *PatchV1ChangesChangeIDParams {
 	o.SetChangeID(changeID)
@@ -144,6 +133,17 @@ func (o *PatchV1ChangesChangeIDParams) SetChangeID(changeID string) {
 	o.ChangeID = changeID
 }
 
+// WithPatchV1ChangesChangeID adds the patchV1ChangesChangeID to the patch v1 changes change Id params
+func (o *PatchV1ChangesChangeIDParams) WithPatchV1ChangesChangeID(patchV1ChangesChangeID *models.PatchV1ChangesChangeID) *PatchV1ChangesChangeIDParams {
+	o.SetPatchV1ChangesChangeID(patchV1ChangesChangeID)
+	return o
+}
+
+// SetPatchV1ChangesChangeID adds the patchV1ChangesChangeId to the patch v1 changes change Id params
+func (o *PatchV1ChangesChangeIDParams) SetPatchV1ChangesChangeID(patchV1ChangesChangeID *models.PatchV1ChangesChangeID) {
+	o.PatchV1ChangesChangeID = patchV1ChangesChangeID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1ChangesChangeIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PatchV1ChangesChangeIDParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if o.V1Changes != nil {
-		if err := r.SetBodyParam(o.V1Changes); err != nil {
-			return err
-		}
-	}
 
 	// path param change_id
 	if err := r.SetPathParam("change_id", o.ChangeID); err != nil {
 		return err
+	}
+	if o.PatchV1ChangesChangeID != nil {
+		if err := r.SetBodyParam(o.PatchV1ChangesChangeID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {
