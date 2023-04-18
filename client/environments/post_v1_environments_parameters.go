@@ -63,8 +63,8 @@ PostV1EnvironmentsParams contains all the parameters to send to the API endpoint
 */
 type PostV1EnvironmentsParams struct {
 
-	// V1Environments.
-	V1Environments *models.PostV1Environments
+	// PostV1Environments.
+	PostV1Environments *models.PostV1Environments
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1EnvironmentsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Environments adds the v1Environments to the post v1 environments params
-func (o *PostV1EnvironmentsParams) WithV1Environments(v1Environments *models.PostV1Environments) *PostV1EnvironmentsParams {
-	o.SetV1Environments(v1Environments)
+// WithPostV1Environments adds the postV1Environments to the post v1 environments params
+func (o *PostV1EnvironmentsParams) WithPostV1Environments(postV1Environments *models.PostV1Environments) *PostV1EnvironmentsParams {
+	o.SetPostV1Environments(postV1Environments)
 	return o
 }
 
-// SetV1Environments adds the v1Environments to the post v1 environments params
-func (o *PostV1EnvironmentsParams) SetV1Environments(v1Environments *models.PostV1Environments) {
-	o.V1Environments = v1Environments
+// SetPostV1Environments adds the postV1Environments to the post v1 environments params
+func (o *PostV1EnvironmentsParams) SetPostV1Environments(postV1Environments *models.PostV1Environments) {
+	o.PostV1Environments = postV1Environments
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1EnvironmentsParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-	if o.V1Environments != nil {
-		if err := r.SetBodyParam(o.V1Environments); err != nil {
+	if o.PostV1Environments != nil {
+		if err := r.SetBodyParam(o.PostV1Environments); err != nil {
 			return err
 		}
 	}

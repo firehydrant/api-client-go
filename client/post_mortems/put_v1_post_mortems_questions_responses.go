@@ -45,7 +45,7 @@ PutV1PostMortemsQuestionsOK describes a response with status code 200, with defa
 Update the questions configured to be provided and filled out on future retrospective reports.
 */
 type PutV1PostMortemsQuestionsOK struct {
-	Payload *models.QuestionTypeEntity
+	Payload *models.PostMortemsQuestionTypeEntity
 }
 
 // IsSuccess returns true when this put v1 post mortems questions o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PutV1PostMortemsQuestionsOK) String() string {
 	return fmt.Sprintf("[PUT /v1/post_mortems/questions][%d] putV1PostMortemsQuestionsOK  %+v", 200, o.Payload)
 }
 
-func (o *PutV1PostMortemsQuestionsOK) GetPayload() *models.QuestionTypeEntity {
+func (o *PutV1PostMortemsQuestionsOK) GetPayload() *models.PostMortemsQuestionTypeEntity {
 	return o.Payload
 }
 
 func (o *PutV1PostMortemsQuestionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.QuestionTypeEntity)
+	o.Payload = new(models.PostMortemsQuestionTypeEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

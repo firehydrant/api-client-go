@@ -64,8 +64,8 @@ PutV1RunbooksRunbookIDParams contains all the parameters to send to the API endp
 */
 type PutV1RunbooksRunbookIDParams struct {
 
-	// V1Runbooks.
-	V1Runbooks *models.PutV1Runbooks
+	// PutV1RunbooksRunbookID.
+	PutV1RunbooksRunbookID *models.PutV1RunbooksRunbookID
 
 	// RunbookID.
 	//
@@ -125,15 +125,15 @@ func (o *PutV1RunbooksRunbookIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Runbooks adds the v1Runbooks to the put v1 runbooks runbook Id params
-func (o *PutV1RunbooksRunbookIDParams) WithV1Runbooks(v1Runbooks *models.PutV1Runbooks) *PutV1RunbooksRunbookIDParams {
-	o.SetV1Runbooks(v1Runbooks)
+// WithPutV1RunbooksRunbookID adds the putV1RunbooksRunbookID to the put v1 runbooks runbook Id params
+func (o *PutV1RunbooksRunbookIDParams) WithPutV1RunbooksRunbookID(putV1RunbooksRunbookID *models.PutV1RunbooksRunbookID) *PutV1RunbooksRunbookIDParams {
+	o.SetPutV1RunbooksRunbookID(putV1RunbooksRunbookID)
 	return o
 }
 
-// SetV1Runbooks adds the v1Runbooks to the put v1 runbooks runbook Id params
-func (o *PutV1RunbooksRunbookIDParams) SetV1Runbooks(v1Runbooks *models.PutV1Runbooks) {
-	o.V1Runbooks = v1Runbooks
+// SetPutV1RunbooksRunbookID adds the putV1RunbooksRunbookId to the put v1 runbooks runbook Id params
+func (o *PutV1RunbooksRunbookIDParams) SetPutV1RunbooksRunbookID(putV1RunbooksRunbookID *models.PutV1RunbooksRunbookID) {
+	o.PutV1RunbooksRunbookID = putV1RunbooksRunbookID
 }
 
 // WithRunbookID adds the runbookID to the put v1 runbooks runbook Id params
@@ -154,8 +154,8 @@ func (o *PutV1RunbooksRunbookIDParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if o.V1Runbooks != nil {
-		if err := r.SetBodyParam(o.V1Runbooks); err != nil {
+	if o.PutV1RunbooksRunbookID != nil {
+		if err := r.SetBodyParam(o.PutV1RunbooksRunbookID); err != nil {
 			return err
 		}
 	}

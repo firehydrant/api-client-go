@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPatchV1IntegrationsFieldMapsFieldMapIDParams creates a new PatchV1IntegrationsFieldMapsFieldMapIDParams object,
@@ -63,9 +62,7 @@ PatchV1IntegrationsFieldMapsFieldMapIDParams contains all the parameters to send
 type PatchV1IntegrationsFieldMapsFieldMapIDParams struct {
 
 	// FieldMapID.
-	//
-	// Format: int32
-	FieldMapID int32
+	FieldMapID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *PatchV1IntegrationsFieldMapsFieldMapIDParams) SetHTTPClient(client *htt
 }
 
 // WithFieldMapID adds the fieldMapID to the patch v1 integrations field maps field map Id params
-func (o *PatchV1IntegrationsFieldMapsFieldMapIDParams) WithFieldMapID(fieldMapID int32) *PatchV1IntegrationsFieldMapsFieldMapIDParams {
+func (o *PatchV1IntegrationsFieldMapsFieldMapIDParams) WithFieldMapID(fieldMapID string) *PatchV1IntegrationsFieldMapsFieldMapIDParams {
 	o.SetFieldMapID(fieldMapID)
 	return o
 }
 
 // SetFieldMapID adds the fieldMapId to the patch v1 integrations field maps field map Id params
-func (o *PatchV1IntegrationsFieldMapsFieldMapIDParams) SetFieldMapID(fieldMapID int32) {
+func (o *PatchV1IntegrationsFieldMapsFieldMapIDParams) SetFieldMapID(fieldMapID string) {
 	o.FieldMapID = fieldMapID
 }
 
@@ -140,7 +137,7 @@ func (o *PatchV1IntegrationsFieldMapsFieldMapIDParams) WriteToRequest(r runtime.
 	var res []error
 
 	// path param field_map_id
-	if err := r.SetPathParam("field_map_id", swag.FormatInt32(o.FieldMapID)); err != nil {
+	if err := r.SetPathParam("field_map_id", o.FieldMapID); err != nil {
 		return err
 	}
 

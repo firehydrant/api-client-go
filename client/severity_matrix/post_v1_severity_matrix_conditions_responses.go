@@ -45,7 +45,7 @@ PostV1SeverityMatrixConditionsCreated describes a response with status code 201,
 Create a new condition
 */
 type PostV1SeverityMatrixConditionsCreated struct {
-	Payload *models.ConditionEntity
+	Payload *models.SeverityMatrixConditionEntity
 }
 
 // IsSuccess returns true when this post v1 severity matrix conditions created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1SeverityMatrixConditionsCreated) String() string {
 	return fmt.Sprintf("[POST /v1/severity_matrix/conditions][%d] postV1SeverityMatrixConditionsCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1SeverityMatrixConditionsCreated) GetPayload() *models.ConditionEntity {
+func (o *PostV1SeverityMatrixConditionsCreated) GetPayload() *models.SeverityMatrixConditionEntity {
 	return o.Payload
 }
 
 func (o *PostV1SeverityMatrixConditionsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ConditionEntity)
+	o.Payload = new(models.SeverityMatrixConditionEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

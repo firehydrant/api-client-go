@@ -8,23 +8,27 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// IncidentRoleEntity Retrieve a single incident role from its ID
+// IncidentRoleEntity IncidentRoleEntity model
 //
 // swagger:model IncidentRoleEntity
 type IncidentRoleEntity struct {
 
 	// created at
-	CreatedAt string `json:"created_at,omitempty"`
+	// Format: date-time
+	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
 	// description
 	Description string `json:"description,omitempty"`
 
 	// discarded at
-	DiscardedAt string `json:"discarded_at,omitempty"`
+	// Format: date-time
+	DiscardedAt strfmt.DateTime `json:"discarded_at,omitempty"`
 
 	// id
 	ID string `json:"id,omitempty"`
@@ -36,11 +40,65 @@ type IncidentRoleEntity struct {
 	Summary string `json:"summary,omitempty"`
 
 	// updated at
-	UpdatedAt string `json:"updated_at,omitempty"`
+	// Format: date-time
+	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
 }
 
 // Validate validates this incident role entity
 func (m *IncidentRoleEntity) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDiscardedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *IncidentRoleEntity) validateCreatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("created_at", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *IncidentRoleEntity) validateDiscardedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.DiscardedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("discarded_at", "body", "date-time", m.DiscardedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *IncidentRoleEntity) validateUpdatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.UpdatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("updated_at", "body", "date-time", m.UpdatedAt.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

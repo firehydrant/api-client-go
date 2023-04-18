@@ -65,8 +65,10 @@ type GetV1RunbookAuditsParams struct {
 	/* AuditableType.
 
 	   A query to filter audits by type
+
+	   Default: "Runbooks::Step"
 	*/
-	AuditableType []string
+	AuditableType *string
 
 	// Page.
 	//
@@ -101,7 +103,18 @@ func (o *GetV1RunbookAuditsParams) WithDefaults() *GetV1RunbookAuditsParams {
 //
 // All values with no default are reset to their zero value.
 func (o *GetV1RunbookAuditsParams) SetDefaults() {
-	// no default values defined for this parameter
+	var (
+		auditableTypeDefault = string("Runbooks::Step")
+	)
+
+	val := GetV1RunbookAuditsParams{
+		AuditableType: &auditableTypeDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the get v1 runbook audits params
@@ -138,13 +151,13 @@ func (o *GetV1RunbookAuditsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithAuditableType adds the auditableType to the get v1 runbook audits params
-func (o *GetV1RunbookAuditsParams) WithAuditableType(auditableType []string) *GetV1RunbookAuditsParams {
+func (o *GetV1RunbookAuditsParams) WithAuditableType(auditableType *string) *GetV1RunbookAuditsParams {
 	o.SetAuditableType(auditableType)
 	return o
 }
 
 // SetAuditableType adds the auditableType to the get v1 runbook audits params
-func (o *GetV1RunbookAuditsParams) SetAuditableType(auditableType []string) {
+func (o *GetV1RunbookAuditsParams) SetAuditableType(auditableType *string) {
 	o.AuditableType = auditableType
 }
 
@@ -191,12 +204,18 @@ func (o *GetV1RunbookAuditsParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 	if o.AuditableType != nil {
 
-		// binding items for auditable_type
-		joinedAuditableType := o.bindParamAuditableType(reg)
+		// query param auditable_type
+		var qrAuditableType string
 
-		// form array param auditable_type
-		if err := r.SetFormParam("auditable_type", joinedAuditableType...); err != nil {
-			return err
+		if o.AuditableType != nil {
+			qrAuditableType = *o.AuditableType
+		}
+		qAuditableType := qrAuditableType
+		if qAuditableType != "" {
+
+			if err := r.SetQueryParam("auditable_type", qAuditableType); err != nil {
+				return err
+			}
 		}
 	}
 
@@ -255,21 +274,4 @@ func (o *GetV1RunbookAuditsParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
-}
-
-// bindParamGetV1RunbookAudits binds the parameter auditable_type
-func (o *GetV1RunbookAuditsParams) bindParamAuditableType(formats strfmt.Registry) []string {
-	auditableTypeIR := o.AuditableType
-
-	var auditableTypeIC []string
-	for _, auditableTypeIIR := range auditableTypeIR { // explode []string
-
-		auditableTypeIIV := auditableTypeIIR // string as string
-		auditableTypeIC = append(auditableTypeIC, auditableTypeIIV)
-	}
-
-	// items.CollectionFormat: ""
-	auditableTypeIS := swag.JoinByFormat(auditableTypeIC, "")
-
-	return auditableTypeIS
 }

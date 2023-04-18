@@ -45,7 +45,7 @@ GetV1IntegrationsAwsConnectionsIDOK describes a response with status code 200, w
 Retrieves the information about the AWS connection.
 */
 type GetV1IntegrationsAwsConnectionsIDOK struct {
-	Payload *models.ConnectionEntity
+	Payload *models.IntegrationsAwsConnectionEntity
 }
 
 // IsSuccess returns true when this get v1 integrations aws connections Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1IntegrationsAwsConnectionsIDOK) String() string {
 	return fmt.Sprintf("[GET /v1/integrations/aws/connections/{id}][%d] getV1IntegrationsAwsConnectionsIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1IntegrationsAwsConnectionsIDOK) GetPayload() *models.ConnectionEntity {
+func (o *GetV1IntegrationsAwsConnectionsIDOK) GetPayload() *models.IntegrationsAwsConnectionEntity {
 	return o.Payload
 }
 
 func (o *GetV1IntegrationsAwsConnectionsIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ConnectionEntity)
+	o.Payload = new(models.IntegrationsAwsConnectionEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

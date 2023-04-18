@@ -63,8 +63,8 @@ PostV1IncidentRolesParams contains all the parameters to send to the API endpoin
 */
 type PostV1IncidentRolesParams struct {
 
-	// V1IncidentRoles.
-	V1IncidentRoles *models.PostV1IncidentRoles
+	// PostV1IncidentRoles.
+	PostV1IncidentRoles *models.PostV1IncidentRoles
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1IncidentRolesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1IncidentRoles adds the v1IncidentRoles to the post v1 incident roles params
-func (o *PostV1IncidentRolesParams) WithV1IncidentRoles(v1IncidentRoles *models.PostV1IncidentRoles) *PostV1IncidentRolesParams {
-	o.SetV1IncidentRoles(v1IncidentRoles)
+// WithPostV1IncidentRoles adds the postV1IncidentRoles to the post v1 incident roles params
+func (o *PostV1IncidentRolesParams) WithPostV1IncidentRoles(postV1IncidentRoles *models.PostV1IncidentRoles) *PostV1IncidentRolesParams {
+	o.SetPostV1IncidentRoles(postV1IncidentRoles)
 	return o
 }
 
-// SetV1IncidentRoles adds the v1IncidentRoles to the post v1 incident roles params
-func (o *PostV1IncidentRolesParams) SetV1IncidentRoles(v1IncidentRoles *models.PostV1IncidentRoles) {
-	o.V1IncidentRoles = v1IncidentRoles
+// SetPostV1IncidentRoles adds the postV1IncidentRoles to the post v1 incident roles params
+func (o *PostV1IncidentRolesParams) SetPostV1IncidentRoles(postV1IncidentRoles *models.PostV1IncidentRoles) {
+	o.PostV1IncidentRoles = postV1IncidentRoles
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1IncidentRolesParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if o.V1IncidentRoles != nil {
-		if err := r.SetBodyParam(o.V1IncidentRoles); err != nil {
+	if o.PostV1IncidentRoles != nil {
+		if err := r.SetBodyParam(o.PostV1IncidentRoles); err != nil {
 			return err
 		}
 	}

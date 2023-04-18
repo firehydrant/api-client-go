@@ -19,7 +19,7 @@ import (
 type ScheduledMaintenancesImpactEntity struct {
 
 	// condition
-	Condition *ConditionEntity `json:"condition,omitempty"`
+	Condition *SeverityMatrixConditionEntity `json:"condition,omitempty"`
 
 	// id
 	ID string `json:"id,omitempty"`

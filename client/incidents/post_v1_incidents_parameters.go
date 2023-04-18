@@ -63,8 +63,8 @@ PostV1IncidentsParams contains all the parameters to send to the API endpoint
 */
 type PostV1IncidentsParams struct {
 
-	// V1Incidents.
-	V1Incidents *models.PostV1Incidents
+	// PostV1Incidents.
+	PostV1Incidents *models.PostV1Incidents
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1IncidentsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Incidents adds the v1Incidents to the post v1 incidents params
-func (o *PostV1IncidentsParams) WithV1Incidents(v1Incidents *models.PostV1Incidents) *PostV1IncidentsParams {
-	o.SetV1Incidents(v1Incidents)
+// WithPostV1Incidents adds the postV1Incidents to the post v1 incidents params
+func (o *PostV1IncidentsParams) WithPostV1Incidents(postV1Incidents *models.PostV1Incidents) *PostV1IncidentsParams {
+	o.SetPostV1Incidents(postV1Incidents)
 	return o
 }
 
-// SetV1Incidents adds the v1Incidents to the post v1 incidents params
-func (o *PostV1IncidentsParams) SetV1Incidents(v1Incidents *models.PostV1Incidents) {
-	o.V1Incidents = v1Incidents
+// SetPostV1Incidents adds the postV1Incidents to the post v1 incidents params
+func (o *PostV1IncidentsParams) SetPostV1Incidents(postV1Incidents *models.PostV1Incidents) {
+	o.PostV1Incidents = postV1Incidents
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1IncidentsParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 	var res []error
-	if o.V1Incidents != nil {
-		if err := r.SetBodyParam(o.V1Incidents); err != nil {
+	if o.PostV1Incidents != nil {
+		if err := r.SetBodyParam(o.PostV1Incidents); err != nil {
 			return err
 		}
 	}

@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1IntegrationsStatuspageConnectionsID(params *DeleteV1IntegrationsStatuspageConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsStatuspageConnectionsIDOK, error)
+	DeleteV1IntegrationsStatuspageConnectionsConnectionID(params *DeleteV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsStatuspageConnectionsConnectionIDOK, error)
 
 	GetV1Integrations(params *GetV1IntegrationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsOK, error)
 
@@ -60,9 +60,9 @@ type ClientService interface {
 
 	GetV1IntegrationsStatuspageConnections(params *GetV1IntegrationsStatuspageConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsOK, error)
 
-	GetV1IntegrationsStatuspageConnectionsID(params *GetV1IntegrationsStatuspageConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsIDOK, error)
+	GetV1IntegrationsStatuspageConnectionsConnectionID(params *GetV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsConnectionIDOK, error)
 
-	GetV1IntegrationsStatuspageConnectionsIDPages(params *GetV1IntegrationsStatuspageConnectionsIDPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsIDPagesOK, error)
+	GetV1IntegrationsStatuspageConnectionsConnectionIDPages(params *GetV1IntegrationsStatuspageConnectionsConnectionIDPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsConnectionIDPagesOK, error)
 
 	GetV1IntegrationsZendeskSearch(params *GetV1IntegrationsZendeskSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsZendeskSearchOK, error)
 
@@ -76,7 +76,7 @@ type ClientService interface {
 
 	PatchV1IntegrationsFieldMapsFieldMapID(params *PatchV1IntegrationsFieldMapsFieldMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsFieldMapsFieldMapIDOK, error)
 
-	PatchV1IntegrationsStatuspageConnectionsID(params *PatchV1IntegrationsStatuspageConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsStatuspageConnectionsIDOK, error)
+	PatchV1IntegrationsStatuspageConnectionsConnectionID(params *PatchV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsStatuspageConnectionsConnectionIDOK, error)
 
 	PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsConnectionsSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsConnectionsSlugCreated, error)
 
@@ -84,24 +84,24 @@ type ClientService interface {
 }
 
 /*
-DeleteV1IntegrationsStatuspageConnectionsID deletes a statuspage connection
+DeleteV1IntegrationsStatuspageConnectionsConnectionID deletes a statuspage connection
 
 Deletes the given Statuspage integration connection.
 */
-func (a *Client) DeleteV1IntegrationsStatuspageConnectionsID(params *DeleteV1IntegrationsStatuspageConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsStatuspageConnectionsIDOK, error) {
+func (a *Client) DeleteV1IntegrationsStatuspageConnectionsConnectionID(params *DeleteV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsStatuspageConnectionsConnectionIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteV1IntegrationsStatuspageConnectionsIDParams()
+		params = NewDeleteV1IntegrationsStatuspageConnectionsConnectionIDParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteV1IntegrationsStatuspageConnectionsId",
+		ID:                 "deleteV1IntegrationsStatuspageConnectionsConnectionId",
 		Method:             "DELETE",
-		PathPattern:        "/v1/integrations/statuspage/connections/{id}",
+		PathPattern:        "/v1/integrations/statuspage/connections/{connection_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteV1IntegrationsStatuspageConnectionsIDReader{formats: a.formats},
+		Reader:             &DeleteV1IntegrationsStatuspageConnectionsConnectionIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -114,13 +114,13 @@ func (a *Client) DeleteV1IntegrationsStatuspageConnectionsID(params *DeleteV1Int
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1IntegrationsStatuspageConnectionsIDOK)
+	success, ok := result.(*DeleteV1IntegrationsStatuspageConnectionsConnectionIDOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1IntegrationsStatuspageConnectionsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for deleteV1IntegrationsStatuspageConnectionsConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -689,24 +689,24 @@ func (a *Client) GetV1IntegrationsStatuspageConnections(params *GetV1Integration
 }
 
 /*
-GetV1IntegrationsStatuspageConnectionsID retrieves a statuspage connection
+GetV1IntegrationsStatuspageConnectionsConnectionID retrieves a statuspage connection
 
 Retrieve the information about the Statuspage connection.
 */
-func (a *Client) GetV1IntegrationsStatuspageConnectionsID(params *GetV1IntegrationsStatuspageConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsIDOK, error) {
+func (a *Client) GetV1IntegrationsStatuspageConnectionsConnectionID(params *GetV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsConnectionIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1IntegrationsStatuspageConnectionsIDParams()
+		params = NewGetV1IntegrationsStatuspageConnectionsConnectionIDParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsStatuspageConnectionsId",
+		ID:                 "getV1IntegrationsStatuspageConnectionsConnectionId",
 		Method:             "GET",
-		PathPattern:        "/v1/integrations/statuspage/connections/{id}",
+		PathPattern:        "/v1/integrations/statuspage/connections/{connection_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1IntegrationsStatuspageConnectionsIDReader{formats: a.formats},
+		Reader:             &GetV1IntegrationsStatuspageConnectionsConnectionIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -719,33 +719,33 @@ func (a *Client) GetV1IntegrationsStatuspageConnectionsID(params *GetV1Integrati
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1IntegrationsStatuspageConnectionsIDOK)
+	success, ok := result.(*GetV1IntegrationsStatuspageConnectionsConnectionIDOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsStatuspageConnectionsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsStatuspageConnectionsConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1IntegrationsStatuspageConnectionsIDPages get v1 integrations statuspage connections Id pages API
+GetV1IntegrationsStatuspageConnectionsConnectionIDPages get v1 integrations statuspage connections connection Id pages API
 */
-func (a *Client) GetV1IntegrationsStatuspageConnectionsIDPages(params *GetV1IntegrationsStatuspageConnectionsIDPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsIDPagesOK, error) {
+func (a *Client) GetV1IntegrationsStatuspageConnectionsConnectionIDPages(params *GetV1IntegrationsStatuspageConnectionsConnectionIDPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsConnectionIDPagesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1IntegrationsStatuspageConnectionsIDPagesParams()
+		params = NewGetV1IntegrationsStatuspageConnectionsConnectionIDPagesParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsStatuspageConnectionsIdPages",
+		ID:                 "getV1IntegrationsStatuspageConnectionsConnectionIdPages",
 		Method:             "GET",
-		PathPattern:        "/v1/integrations/statuspage/connections/{id}/pages",
+		PathPattern:        "/v1/integrations/statuspage/connections/{connection_id}/pages",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1IntegrationsStatuspageConnectionsIDPagesReader{formats: a.formats},
+		Reader:             &GetV1IntegrationsStatuspageConnectionsConnectionIDPagesReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -758,13 +758,13 @@ func (a *Client) GetV1IntegrationsStatuspageConnectionsIDPages(params *GetV1Inte
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1IntegrationsStatuspageConnectionsIDPagesOK)
+	success, ok := result.(*GetV1IntegrationsStatuspageConnectionsConnectionIDPagesOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsStatuspageConnectionsIdPages: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsStatuspageConnectionsConnectionIdPages: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1009,24 +1009,24 @@ func (a *Client) PatchV1IntegrationsFieldMapsFieldMapID(params *PatchV1Integrati
 }
 
 /*
-PatchV1IntegrationsStatuspageConnectionsID updates a statuspage connection
+PatchV1IntegrationsStatuspageConnectionsConnectionID updates a statuspage connection
 
 Update the given Statuspage integration connection.
 */
-func (a *Client) PatchV1IntegrationsStatuspageConnectionsID(params *PatchV1IntegrationsStatuspageConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsStatuspageConnectionsIDOK, error) {
+func (a *Client) PatchV1IntegrationsStatuspageConnectionsConnectionID(params *PatchV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsStatuspageConnectionsConnectionIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchV1IntegrationsStatuspageConnectionsIDParams()
+		params = NewPatchV1IntegrationsStatuspageConnectionsConnectionIDParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchV1IntegrationsStatuspageConnectionsId",
+		ID:                 "patchV1IntegrationsStatuspageConnectionsConnectionId",
 		Method:             "PATCH",
-		PathPattern:        "/v1/integrations/statuspage/connections/{id}",
+		PathPattern:        "/v1/integrations/statuspage/connections/{connection_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchV1IntegrationsStatuspageConnectionsIDReader{formats: a.formats},
+		Reader:             &PatchV1IntegrationsStatuspageConnectionsConnectionIDReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1039,13 +1039,13 @@ func (a *Client) PatchV1IntegrationsStatuspageConnectionsID(params *PatchV1Integ
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchV1IntegrationsStatuspageConnectionsIDOK)
+	success, ok := result.(*PatchV1IntegrationsStatuspageConnectionsConnectionIDOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsStatuspageConnectionsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsStatuspageConnectionsConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

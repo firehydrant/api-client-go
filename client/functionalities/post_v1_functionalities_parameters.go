@@ -63,8 +63,8 @@ PostV1FunctionalitiesParams contains all the parameters to send to the API endpo
 */
 type PostV1FunctionalitiesParams struct {
 
-	// V1Functionalities.
-	V1Functionalities *models.PostV1Functionalities
+	// PostV1Functionalities.
+	PostV1Functionalities *models.PostV1Functionalities
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1FunctionalitiesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Functionalities adds the v1Functionalities to the post v1 functionalities params
-func (o *PostV1FunctionalitiesParams) WithV1Functionalities(v1Functionalities *models.PostV1Functionalities) *PostV1FunctionalitiesParams {
-	o.SetV1Functionalities(v1Functionalities)
+// WithPostV1Functionalities adds the postV1Functionalities to the post v1 functionalities params
+func (o *PostV1FunctionalitiesParams) WithPostV1Functionalities(postV1Functionalities *models.PostV1Functionalities) *PostV1FunctionalitiesParams {
+	o.SetPostV1Functionalities(postV1Functionalities)
 	return o
 }
 
-// SetV1Functionalities adds the v1Functionalities to the post v1 functionalities params
-func (o *PostV1FunctionalitiesParams) SetV1Functionalities(v1Functionalities *models.PostV1Functionalities) {
-	o.V1Functionalities = v1Functionalities
+// SetPostV1Functionalities adds the postV1Functionalities to the post v1 functionalities params
+func (o *PostV1FunctionalitiesParams) SetPostV1Functionalities(postV1Functionalities *models.PostV1Functionalities) {
+	o.PostV1Functionalities = postV1Functionalities
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1FunctionalitiesParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
-	if o.V1Functionalities != nil {
-		if err := r.SetBodyParam(o.V1Functionalities); err != nil {
+	if o.PostV1Functionalities != nil {
+		if err := r.SetBodyParam(o.PostV1Functionalities); err != nil {
 			return err
 		}
 	}

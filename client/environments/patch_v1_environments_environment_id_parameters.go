@@ -63,14 +63,14 @@ PatchV1EnvironmentsEnvironmentIDParams contains all the parameters to send to th
 */
 type PatchV1EnvironmentsEnvironmentIDParams struct {
 
-	// V1Environments.
-	V1Environments *models.PatchV1Environments
-
 	/* EnvironmentID.
 
 	   Environment UUID
 	*/
 	EnvironmentID string
+
+	// PatchV1EnvironmentsEnvironmentID.
+	PatchV1EnvironmentsEnvironmentID *models.PatchV1EnvironmentsEnvironmentID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *PatchV1EnvironmentsEnvironmentIDParams) SetHTTPClient(client *http.Clie
 	o.HTTPClient = client
 }
 
-// WithV1Environments adds the v1Environments to the patch v1 environments environment Id params
-func (o *PatchV1EnvironmentsEnvironmentIDParams) WithV1Environments(v1Environments *models.PatchV1Environments) *PatchV1EnvironmentsEnvironmentIDParams {
-	o.SetV1Environments(v1Environments)
-	return o
-}
-
-// SetV1Environments adds the v1Environments to the patch v1 environments environment Id params
-func (o *PatchV1EnvironmentsEnvironmentIDParams) SetV1Environments(v1Environments *models.PatchV1Environments) {
-	o.V1Environments = v1Environments
-}
-
 // WithEnvironmentID adds the environmentID to the patch v1 environments environment Id params
 func (o *PatchV1EnvironmentsEnvironmentIDParams) WithEnvironmentID(environmentID string) *PatchV1EnvironmentsEnvironmentIDParams {
 	o.SetEnvironmentID(environmentID)
@@ -147,6 +136,17 @@ func (o *PatchV1EnvironmentsEnvironmentIDParams) SetEnvironmentID(environmentID 
 	o.EnvironmentID = environmentID
 }
 
+// WithPatchV1EnvironmentsEnvironmentID adds the patchV1EnvironmentsEnvironmentID to the patch v1 environments environment Id params
+func (o *PatchV1EnvironmentsEnvironmentIDParams) WithPatchV1EnvironmentsEnvironmentID(patchV1EnvironmentsEnvironmentID *models.PatchV1EnvironmentsEnvironmentID) *PatchV1EnvironmentsEnvironmentIDParams {
+	o.SetPatchV1EnvironmentsEnvironmentID(patchV1EnvironmentsEnvironmentID)
+	return o
+}
+
+// SetPatchV1EnvironmentsEnvironmentID adds the patchV1EnvironmentsEnvironmentId to the patch v1 environments environment Id params
+func (o *PatchV1EnvironmentsEnvironmentIDParams) SetPatchV1EnvironmentsEnvironmentID(patchV1EnvironmentsEnvironmentID *models.PatchV1EnvironmentsEnvironmentID) {
+	o.PatchV1EnvironmentsEnvironmentID = patchV1EnvironmentsEnvironmentID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1EnvironmentsEnvironmentIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -154,15 +154,15 @@ func (o *PatchV1EnvironmentsEnvironmentIDParams) WriteToRequest(r runtime.Client
 		return err
 	}
 	var res []error
-	if o.V1Environments != nil {
-		if err := r.SetBodyParam(o.V1Environments); err != nil {
-			return err
-		}
-	}
 
 	// path param environment_id
 	if err := r.SetPathParam("environment_id", o.EnvironmentID); err != nil {
 		return err
+	}
+	if o.PatchV1EnvironmentsEnvironmentID != nil {
+		if err := r.SetBodyParam(o.PatchV1EnvironmentsEnvironmentID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

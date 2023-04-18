@@ -27,9 +27,6 @@ type PostV1Services struct {
 	// auto add responding team
 	AutoAddRespondingTeam bool `json:"auto_add_responding_team,omitempty"`
 
-	// checklists
-	Checklists *PostV1ServicesChecklists `json:"checklists,omitempty"`
-
 	// description
 	Description string `json:"description,omitempty"`
 
@@ -64,10 +61,6 @@ type PostV1Services struct {
 func (m *PostV1Services) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateChecklists(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateExternalResources(formats); err != nil {
 		res = append(res, err)
 	}
@@ -99,25 +92,6 @@ func (m *PostV1Services) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *PostV1Services) validateChecklists(formats strfmt.Registry) error {
-	if swag.IsZero(m.Checklists) { // not required
-		return nil
-	}
-
-	if m.Checklists != nil {
-		if err := m.Checklists.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("checklists")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("checklists")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -290,10 +264,6 @@ func (m *PostV1Services) validateTeams(formats strfmt.Registry) error {
 func (m *PostV1Services) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateChecklists(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateExternalResources(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -317,22 +287,6 @@ func (m *PostV1Services) ContextValidate(ctx context.Context, formats strfmt.Reg
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *PostV1Services) contextValidateChecklists(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Checklists != nil {
-		if err := m.Checklists.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("checklists")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("checklists")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -450,66 +404,13 @@ func (m *PostV1Services) UnmarshalBinary(b []byte) error {
 	return nil
 }
 
-// PostV1ServicesChecklists post v1 services checklists
-//
-// swagger:model PostV1ServicesChecklists
-type PostV1ServicesChecklists struct {
-
-	// id
-	// Required: true
-	ID *string `json:"id"`
-}
-
-// Validate validates this post v1 services checklists
-func (m *PostV1ServicesChecklists) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *PostV1ServicesChecklists) validateID(formats strfmt.Registry) error {
-
-	if err := validate.Required("checklists"+"."+"id", "body", m.ID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this post v1 services checklists based on context it is used
-func (m *PostV1ServicesChecklists) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *PostV1ServicesChecklists) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *PostV1ServicesChecklists) UnmarshalBinary(b []byte) error {
-	var res PostV1ServicesChecklists
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
 // PostV1ServicesExternalResourcesItems0 post v1 services external resources items0
 //
 // swagger:model PostV1ServicesExternalResourcesItems0
 type PostV1ServicesExternalResourcesItems0 struct {
+
+	// The integration slug for the external resource. Can be one of: github, opsgenie, pager_duty, victorops. Not required if the resource has already been imported.
+	ConnectionType string `json:"connection_type,omitempty"`
 
 	// remote id
 	// Required: true

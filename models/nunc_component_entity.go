@@ -27,7 +27,7 @@ type NuncComponentEntity struct {
 	Label string `json:"label,omitempty"`
 
 	// position
-	Position string `json:"position,omitempty"`
+	Position int32 `json:"position,omitempty"`
 }
 
 // Validate validates this nunc component entity

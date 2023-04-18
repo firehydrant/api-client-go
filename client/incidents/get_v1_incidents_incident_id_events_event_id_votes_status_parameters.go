@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1IncidentsIncidentIDEventsEventIDVotesStatusParams creates a new GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams object,
@@ -63,14 +62,10 @@ GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams contains all the paramete
 type GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams struct {
 
 	// EventID.
-	//
-	// Format: int32
-	EventID int32
+	EventID string
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,24 +121,24 @@ func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams) SetHTTPClient(c
 }
 
 // WithEventID adds the eventID to the get v1 incidents incident Id events event Id votes status params
-func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams) WithEventID(eventID int32) *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams {
+func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams) WithEventID(eventID string) *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams {
 	o.SetEventID(eventID)
 	return o
 }
 
 // SetEventID adds the eventId to the get v1 incidents incident Id events event Id votes status params
-func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams) SetEventID(eventID int32) {
+func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams) SetEventID(eventID string) {
 	o.EventID = eventID
 }
 
 // WithIncidentID adds the incidentID to the get v1 incidents incident Id events event Id votes status params
-func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams) WithIncidentID(incidentID int32) *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams {
+func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams) WithIncidentID(incidentID string) *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the get v1 incidents incident Id events event Id votes status params
-func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams) SetIncidentID(incidentID int32) {
+func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -156,12 +151,12 @@ func (o *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams) WriteToRequest(
 	var res []error
 
 	// path param event_id
-	if err := r.SetPathParam("event_id", swag.FormatInt32(o.EventID)); err != nil {
+	if err := r.SetPathParam("event_id", o.EventID); err != nil {
 		return err
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

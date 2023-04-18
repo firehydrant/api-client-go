@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -64,18 +63,14 @@ PatchV1IncidentsIncidentIDEventsEventIDVotesParams contains all the parameters t
 */
 type PatchV1IncidentsIncidentIDEventsEventIDVotesParams struct {
 
-	// V1IncidentsIncidentIDEventsEventIDVotes.
-	V1IncidentsIncidentIDEventsEventIDVotes *models.PatchV1IncidentsIncidentIDEventsEventIDVotes
-
 	// EventID.
-	//
-	// Format: int32
-	EventID int32
+	EventID string
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
+
+	// PatchV1IncidentsIncidentIDEventsEventIDVotes.
+	PatchV1IncidentsIncidentIDEventsEventIDVotes *models.PatchV1IncidentsIncidentIDEventsEventIDVotes
 
 	timeout    time.Duration
 	Context    context.Context
@@ -130,37 +125,37 @@ func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) SetHTTPClient(clien
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDEventsEventIDVotes adds the v1IncidentsIncidentIDEventsEventIDVotes to the patch v1 incidents incident Id events event Id votes params
-func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) WithV1IncidentsIncidentIDEventsEventIDVotes(v1IncidentsIncidentIDEventsEventIDVotes *models.PatchV1IncidentsIncidentIDEventsEventIDVotes) *PatchV1IncidentsIncidentIDEventsEventIDVotesParams {
-	o.SetV1IncidentsIncidentIDEventsEventIDVotes(v1IncidentsIncidentIDEventsEventIDVotes)
-	return o
-}
-
-// SetV1IncidentsIncidentIDEventsEventIDVotes adds the v1IncidentsIncidentIdEventsEventIdVotes to the patch v1 incidents incident Id events event Id votes params
-func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) SetV1IncidentsIncidentIDEventsEventIDVotes(v1IncidentsIncidentIDEventsEventIDVotes *models.PatchV1IncidentsIncidentIDEventsEventIDVotes) {
-	o.V1IncidentsIncidentIDEventsEventIDVotes = v1IncidentsIncidentIDEventsEventIDVotes
-}
-
 // WithEventID adds the eventID to the patch v1 incidents incident Id events event Id votes params
-func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) WithEventID(eventID int32) *PatchV1IncidentsIncidentIDEventsEventIDVotesParams {
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) WithEventID(eventID string) *PatchV1IncidentsIncidentIDEventsEventIDVotesParams {
 	o.SetEventID(eventID)
 	return o
 }
 
 // SetEventID adds the eventId to the patch v1 incidents incident Id events event Id votes params
-func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) SetEventID(eventID int32) {
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) SetEventID(eventID string) {
 	o.EventID = eventID
 }
 
 // WithIncidentID adds the incidentID to the patch v1 incidents incident Id events event Id votes params
-func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) WithIncidentID(incidentID int32) *PatchV1IncidentsIncidentIDEventsEventIDVotesParams {
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) WithIncidentID(incidentID string) *PatchV1IncidentsIncidentIDEventsEventIDVotesParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the patch v1 incidents incident Id events event Id votes params
-func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) SetIncidentID(incidentID int32) {
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
+}
+
+// WithPatchV1IncidentsIncidentIDEventsEventIDVotes adds the patchV1IncidentsIncidentIDEventsEventIDVotes to the patch v1 incidents incident Id events event Id votes params
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) WithPatchV1IncidentsIncidentIDEventsEventIDVotes(patchV1IncidentsIncidentIDEventsEventIDVotes *models.PatchV1IncidentsIncidentIDEventsEventIDVotes) *PatchV1IncidentsIncidentIDEventsEventIDVotesParams {
+	o.SetPatchV1IncidentsIncidentIDEventsEventIDVotes(patchV1IncidentsIncidentIDEventsEventIDVotes)
+	return o
+}
+
+// SetPatchV1IncidentsIncidentIDEventsEventIDVotes adds the patchV1IncidentsIncidentIdEventsEventIdVotes to the patch v1 incidents incident Id events event Id votes params
+func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) SetPatchV1IncidentsIncidentIDEventsEventIDVotes(patchV1IncidentsIncidentIDEventsEventIDVotes *models.PatchV1IncidentsIncidentIDEventsEventIDVotes) {
+	o.PatchV1IncidentsIncidentIDEventsEventIDVotes = patchV1IncidentsIncidentIDEventsEventIDVotes
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -170,20 +165,20 @@ func (o *PatchV1IncidentsIncidentIDEventsEventIDVotesParams) WriteToRequest(r ru
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDEventsEventIDVotes != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDEventsEventIDVotes); err != nil {
-			return err
-		}
-	}
 
 	// path param event_id
-	if err := r.SetPathParam("event_id", swag.FormatInt32(o.EventID)); err != nil {
+	if err := r.SetPathParam("event_id", o.EventID); err != nil {
 		return err
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PatchV1IncidentsIncidentIDEventsEventIDVotes != nil {
+		if err := r.SetBodyParam(o.PatchV1IncidentsIncidentIDEventsEventIDVotes); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

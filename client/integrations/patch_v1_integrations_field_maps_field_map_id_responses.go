@@ -45,7 +45,7 @@ PatchV1IntegrationsFieldMapsFieldMapIDOK describes a response with status code 2
 Update field map
 */
 type PatchV1IntegrationsFieldMapsFieldMapIDOK struct {
-	Payload *models.FieldMapEntity
+	Payload *models.FieldMappingFieldMapEntity
 }
 
 // IsSuccess returns true when this patch v1 integrations field maps field map Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PatchV1IntegrationsFieldMapsFieldMapIDOK) String() string {
 	return fmt.Sprintf("[PATCH /v1/integrations/field_maps/{field_map_id}][%d] patchV1IntegrationsFieldMapsFieldMapIdOK  %+v", 200, o.Payload)
 }
 
-func (o *PatchV1IntegrationsFieldMapsFieldMapIDOK) GetPayload() *models.FieldMapEntity {
+func (o *PatchV1IntegrationsFieldMapsFieldMapIDOK) GetPayload() *models.FieldMappingFieldMapEntity {
 	return o.Payload
 }
 
 func (o *PatchV1IntegrationsFieldMapsFieldMapIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.FieldMapEntity)
+	o.Payload = new(models.FieldMappingFieldMapEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

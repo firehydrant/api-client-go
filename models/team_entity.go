@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// TeamEntity Retrieve a single team from its ID
+// TeamEntity TeamEntity model
 //
 // swagger:model TeamEntity
 type TeamEntity struct {

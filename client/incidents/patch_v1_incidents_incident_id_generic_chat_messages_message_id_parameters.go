@@ -63,14 +63,14 @@ PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams contains all the pa
 */
 type PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams struct {
 
-	// V1IncidentsIncidentIDGenericChatMessages.
-	V1IncidentsIncidentIDGenericChatMessages *models.PatchV1IncidentsIncidentIDGenericChatMessages
-
 	// IncidentID.
 	IncidentID string
 
 	// MessageID.
 	MessageID string
+
+	// PatchV1IncidentsIncidentIDGenericChatMessagesMessageID.
+	PatchV1IncidentsIncidentIDGenericChatMessagesMessageID *models.PatchV1IncidentsIncidentIDGenericChatMessagesMessageID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) SetHTTPCl
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDGenericChatMessages adds the v1IncidentsIncidentIDGenericChatMessages to the patch v1 incidents incident Id generic chat messages message Id params
-func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) WithV1IncidentsIncidentIDGenericChatMessages(v1IncidentsIncidentIDGenericChatMessages *models.PatchV1IncidentsIncidentIDGenericChatMessages) *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams {
-	o.SetV1IncidentsIncidentIDGenericChatMessages(v1IncidentsIncidentIDGenericChatMessages)
-	return o
-}
-
-// SetV1IncidentsIncidentIDGenericChatMessages adds the v1IncidentsIncidentIdGenericChatMessages to the patch v1 incidents incident Id generic chat messages message Id params
-func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) SetV1IncidentsIncidentIDGenericChatMessages(v1IncidentsIncidentIDGenericChatMessages *models.PatchV1IncidentsIncidentIDGenericChatMessages) {
-	o.V1IncidentsIncidentIDGenericChatMessages = v1IncidentsIncidentIDGenericChatMessages
-}
-
 // WithIncidentID adds the incidentID to the patch v1 incidents incident Id generic chat messages message Id params
 func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) WithIncidentID(incidentID string) *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams {
 	o.SetIncidentID(incidentID)
@@ -158,6 +147,17 @@ func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) SetMessag
 	o.MessageID = messageID
 }
 
+// WithPatchV1IncidentsIncidentIDGenericChatMessagesMessageID adds the patchV1IncidentsIncidentIDGenericChatMessagesMessageID to the patch v1 incidents incident Id generic chat messages message Id params
+func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) WithPatchV1IncidentsIncidentIDGenericChatMessagesMessageID(patchV1IncidentsIncidentIDGenericChatMessagesMessageID *models.PatchV1IncidentsIncidentIDGenericChatMessagesMessageID) *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams {
+	o.SetPatchV1IncidentsIncidentIDGenericChatMessagesMessageID(patchV1IncidentsIncidentIDGenericChatMessagesMessageID)
+	return o
+}
+
+// SetPatchV1IncidentsIncidentIDGenericChatMessagesMessageID adds the patchV1IncidentsIncidentIdGenericChatMessagesMessageId to the patch v1 incidents incident Id generic chat messages message Id params
+func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) SetPatchV1IncidentsIncidentIDGenericChatMessagesMessageID(patchV1IncidentsIncidentIDGenericChatMessagesMessageID *models.PatchV1IncidentsIncidentIDGenericChatMessagesMessageID) {
+	o.PatchV1IncidentsIncidentIDGenericChatMessagesMessageID = patchV1IncidentsIncidentIDGenericChatMessagesMessageID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -165,11 +165,6 @@ func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) WriteToRe
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDGenericChatMessages != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDGenericChatMessages); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
@@ -179,6 +174,11 @@ func (o *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams) WriteToRe
 	// path param message_id
 	if err := r.SetPathParam("message_id", o.MessageID); err != nil {
 		return err
+	}
+	if o.PatchV1IncidentsIncidentIDGenericChatMessagesMessageID != nil {
+		if err := r.SetBodyParam(o.PatchV1IncidentsIncidentIDGenericChatMessagesMessageID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

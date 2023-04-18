@@ -45,7 +45,7 @@ DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK describes a respons
 Unassign a role from a user
 */
 type DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK struct {
-	Payload *models.RoleAssignmentEntity
+	Payload *models.IncidentsRoleAssignmentEntity
 }
 
 // IsSuccess returns true when this delete v1 incidents incident Id role assignments role assignment Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK) String() 
 	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/role_assignments/{role_assignment_id}][%d] deleteV1IncidentsIncidentIdRoleAssignmentsRoleAssignmentIdOK  %+v", 200, o.Payload)
 }
 
-func (o *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK) GetPayload() *models.RoleAssignmentEntity {
+func (o *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK) GetPayload() *models.IncidentsRoleAssignmentEntity {
 	return o.Payload
 }
 
 func (o *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.RoleAssignmentEntity)
+	o.Payload = new(models.IncidentsRoleAssignmentEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

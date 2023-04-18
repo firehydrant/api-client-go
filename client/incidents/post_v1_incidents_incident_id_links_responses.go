@@ -45,7 +45,7 @@ PostV1IncidentsIncidentIDLinksCreated describes a response with status code 201,
 Allows adding adhoc links to an incident as an attachment
 */
 type PostV1IncidentsIncidentIDLinksCreated struct {
-	Payload *models.LinkEntity
+	Payload *models.AttachmentsLinkEntity
 }
 
 // IsSuccess returns true when this post v1 incidents incident Id links created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1IncidentsIncidentIDLinksCreated) String() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/links][%d] postV1IncidentsIncidentIdLinksCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1IncidentsIncidentIDLinksCreated) GetPayload() *models.LinkEntity {
+func (o *PostV1IncidentsIncidentIDLinksCreated) GetPayload() *models.AttachmentsLinkEntity {
 	return o.Payload
 }
 
 func (o *PostV1IncidentsIncidentIDLinksCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.LinkEntity)
+	o.Payload = new(models.AttachmentsLinkEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

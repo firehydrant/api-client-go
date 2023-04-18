@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// NuncEmailSubscribersEntity Retrieves the list of subscribers for a status page.
+// NuncEmailSubscribersEntity NuncEmailSubscribersEntity model
 //
 // swagger:model NuncEmailSubscribersEntity
 type NuncEmailSubscribersEntity struct {

@@ -15,13 +15,13 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// FunctionalityEntity Retrieves a single functionality by ID
+// FunctionalityEntity FunctionalityEntity model
 //
 // swagger:model FunctionalityEntity
 type FunctionalityEntity struct {
 
 	// List of active incident guids
-	ActiveIncidents []string `json:"active_incidents"`
+	ActiveIncidents string `json:"active_incidents,omitempty"`
 
 	// alert on add
 	AlertOnAdd bool `json:"alert_on_add,omitempty"`
@@ -52,10 +52,10 @@ type FunctionalityEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// Team that owns the functionality
-	Owner interface{} `json:"owner,omitempty"`
+	Owner *TeamEntity `json:"owner,omitempty"`
 
 	// Services this functionality provides
-	Services []interface{} `json:"services"`
+	Services []*ServiceEntity `json:"services"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`
@@ -64,7 +64,7 @@ type FunctionalityEntity struct {
 	Summary string `json:"summary,omitempty"`
 
 	// List of teams attached to the functionality
-	Teams []interface{} `json:"teams"`
+	Teams []*TeamEntity `json:"teams"`
 
 	// updated at
 	// Format: date-time
@@ -87,6 +87,18 @@ func (m *FunctionalityEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLinks(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOwner(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateServices(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTeams(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -168,6 +180,77 @@ func (m *FunctionalityEntity) validateLinks(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *FunctionalityEntity) validateOwner(formats strfmt.Registry) error {
+	if swag.IsZero(m.Owner) { // not required
+		return nil
+	}
+
+	if m.Owner != nil {
+		if err := m.Owner.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *FunctionalityEntity) validateServices(formats strfmt.Registry) error {
+	if swag.IsZero(m.Services) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Services); i++ {
+		if swag.IsZero(m.Services[i]) { // not required
+			continue
+		}
+
+		if m.Services[i] != nil {
+			if err := m.Services[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *FunctionalityEntity) validateTeams(formats strfmt.Registry) error {
+	if swag.IsZero(m.Teams) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Teams); i++ {
+		if swag.IsZero(m.Teams[i]) { // not required
+			continue
+		}
+
+		if m.Teams[i] != nil {
+			if err := m.Teams[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("teams" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *FunctionalityEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
@@ -211,6 +294,18 @@ func (m *FunctionalityEntity) ContextValidate(ctx context.Context, formats strfm
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateOwner(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateServices(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTeams(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateUpdatedBy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -251,6 +346,62 @@ func (m *FunctionalityEntity) contextValidateLinks(ctx context.Context, formats 
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("links" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *FunctionalityEntity) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Owner != nil {
+		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *FunctionalityEntity) contextValidateServices(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Services); i++ {
+
+		if m.Services[i] != nil {
+			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("services" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("services" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *FunctionalityEntity) contextValidateTeams(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Teams); i++ {
+
+		if m.Teams[i] != nil {
+			if err := m.Teams[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("teams" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

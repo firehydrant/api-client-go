@@ -14,7 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPostV1ServicesServiceLinksParams creates a new PostV1ServicesServiceLinksParams object,
@@ -62,23 +63,8 @@ PostV1ServicesServiceLinksParams contains all the parameters to send to the API 
 */
 type PostV1ServicesServiceLinksParams struct {
 
-	/* ConnectionID.
-
-	   ID for the integration. This can be found by going to the edit page for the integration
-	*/
-	ConnectionID string
-
-	/* ExternalServiceIds.
-
-	   ID of the service
-	*/
-	ExternalServiceIds []string
-
-	/* Integration.
-
-	   The name of the service
-	*/
-	Integration string
+	// PostV1ServicesServiceLinks.
+	PostV1ServicesServiceLinks *models.PostV1ServicesServiceLinks
 
 	timeout    time.Duration
 	Context    context.Context
@@ -133,37 +119,15 @@ func (o *PostV1ServicesServiceLinksParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithConnectionID adds the connectionID to the post v1 services service links params
-func (o *PostV1ServicesServiceLinksParams) WithConnectionID(connectionID string) *PostV1ServicesServiceLinksParams {
-	o.SetConnectionID(connectionID)
+// WithPostV1ServicesServiceLinks adds the postV1ServicesServiceLinks to the post v1 services service links params
+func (o *PostV1ServicesServiceLinksParams) WithPostV1ServicesServiceLinks(postV1ServicesServiceLinks *models.PostV1ServicesServiceLinks) *PostV1ServicesServiceLinksParams {
+	o.SetPostV1ServicesServiceLinks(postV1ServicesServiceLinks)
 	return o
 }
 
-// SetConnectionID adds the connectionId to the post v1 services service links params
-func (o *PostV1ServicesServiceLinksParams) SetConnectionID(connectionID string) {
-	o.ConnectionID = connectionID
-}
-
-// WithExternalServiceIds adds the externalServiceIds to the post v1 services service links params
-func (o *PostV1ServicesServiceLinksParams) WithExternalServiceIds(externalServiceIds []string) *PostV1ServicesServiceLinksParams {
-	o.SetExternalServiceIds(externalServiceIds)
-	return o
-}
-
-// SetExternalServiceIds adds the externalServiceIds to the post v1 services service links params
-func (o *PostV1ServicesServiceLinksParams) SetExternalServiceIds(externalServiceIds []string) {
-	o.ExternalServiceIds = externalServiceIds
-}
-
-// WithIntegration adds the integration to the post v1 services service links params
-func (o *PostV1ServicesServiceLinksParams) WithIntegration(integration string) *PostV1ServicesServiceLinksParams {
-	o.SetIntegration(integration)
-	return o
-}
-
-// SetIntegration adds the integration to the post v1 services service links params
-func (o *PostV1ServicesServiceLinksParams) SetIntegration(integration string) {
-	o.Integration = integration
+// SetPostV1ServicesServiceLinks adds the postV1ServicesServiceLinks to the post v1 services service links params
+func (o *PostV1ServicesServiceLinksParams) SetPostV1ServicesServiceLinks(postV1ServicesServiceLinks *models.PostV1ServicesServiceLinks) {
+	o.PostV1ServicesServiceLinks = postV1ServicesServiceLinks
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -173,32 +137,8 @@ func (o *PostV1ServicesServiceLinksParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-
-	// form param connection_id
-	frConnectionID := o.ConnectionID
-	fConnectionID := frConnectionID
-	if fConnectionID != "" {
-		if err := r.SetFormParam("connection_id", fConnectionID); err != nil {
-			return err
-		}
-	}
-
-	if o.ExternalServiceIds != nil {
-
-		// binding items for external_service_ids
-		joinedExternalServiceIds := o.bindParamExternalServiceIds(reg)
-
-		// form array param external_service_ids
-		if err := r.SetFormParam("external_service_ids", joinedExternalServiceIds...); err != nil {
-			return err
-		}
-	}
-
-	// form param integration
-	frIntegration := o.Integration
-	fIntegration := frIntegration
-	if fIntegration != "" {
-		if err := r.SetFormParam("integration", fIntegration); err != nil {
+	if o.PostV1ServicesServiceLinks != nil {
+		if err := r.SetBodyParam(o.PostV1ServicesServiceLinks); err != nil {
 			return err
 		}
 	}
@@ -207,21 +147,4 @@ func (o *PostV1ServicesServiceLinksParams) WriteToRequest(r runtime.ClientReques
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
-}
-
-// bindParamPostV1ServicesServiceLinks binds the parameter external_service_ids
-func (o *PostV1ServicesServiceLinksParams) bindParamExternalServiceIds(formats strfmt.Registry) []string {
-	externalServiceIdsIR := o.ExternalServiceIds
-
-	var externalServiceIdsIC []string
-	for _, externalServiceIdsIIR := range externalServiceIdsIR { // explode []string
-
-		externalServiceIdsIIV := externalServiceIdsIIR // string as string
-		externalServiceIdsIC = append(externalServiceIdsIC, externalServiceIdsIIV)
-	}
-
-	// items.CollectionFormat: ""
-	externalServiceIdsIS := swag.JoinByFormat(externalServiceIdsIC, "")
-
-	return externalServiceIdsIS
 }

@@ -63,8 +63,8 @@ PostV1TeamsParams contains all the parameters to send to the API endpoint
 */
 type PostV1TeamsParams struct {
 
-	// V1Teams.
-	V1Teams *models.PostV1Teams
+	// PostV1Teams.
+	PostV1Teams *models.PostV1Teams
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1TeamsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Teams adds the v1Teams to the post v1 teams params
-func (o *PostV1TeamsParams) WithV1Teams(v1Teams *models.PostV1Teams) *PostV1TeamsParams {
-	o.SetV1Teams(v1Teams)
+// WithPostV1Teams adds the postV1Teams to the post v1 teams params
+func (o *PostV1TeamsParams) WithPostV1Teams(postV1Teams *models.PostV1Teams) *PostV1TeamsParams {
+	o.SetPostV1Teams(postV1Teams)
 	return o
 }
 
-// SetV1Teams adds the v1Teams to the post v1 teams params
-func (o *PostV1TeamsParams) SetV1Teams(v1Teams *models.PostV1Teams) {
-	o.V1Teams = v1Teams
+// SetPostV1Teams adds the postV1Teams to the post v1 teams params
+func (o *PostV1TeamsParams) SetPostV1Teams(postV1Teams *models.PostV1Teams) {
+	o.PostV1Teams = postV1Teams
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1TeamsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
-	if o.V1Teams != nil {
-		if err := r.SetBodyParam(o.V1Teams); err != nil {
+	if o.PostV1Teams != nil {
+		if err := r.SetBodyParam(o.PostV1Teams); err != nil {
 			return err
 		}
 	}

@@ -63,8 +63,8 @@ PostV1PostMortemsReportsParams contains all the parameters to send to the API en
 */
 type PostV1PostMortemsReportsParams struct {
 
-	// V1PostMortemsReports.
-	V1PostMortemsReports *models.PostV1PostMortemsReports
+	// PostV1PostMortemsReports.
+	PostV1PostMortemsReports *models.PostV1PostMortemsReports
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1PostMortemsReportsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1PostMortemsReports adds the v1PostMortemsReports to the post v1 post mortems reports params
-func (o *PostV1PostMortemsReportsParams) WithV1PostMortemsReports(v1PostMortemsReports *models.PostV1PostMortemsReports) *PostV1PostMortemsReportsParams {
-	o.SetV1PostMortemsReports(v1PostMortemsReports)
+// WithPostV1PostMortemsReports adds the postV1PostMortemsReports to the post v1 post mortems reports params
+func (o *PostV1PostMortemsReportsParams) WithPostV1PostMortemsReports(postV1PostMortemsReports *models.PostV1PostMortemsReports) *PostV1PostMortemsReportsParams {
+	o.SetPostV1PostMortemsReports(postV1PostMortemsReports)
 	return o
 }
 
-// SetV1PostMortemsReports adds the v1PostMortemsReports to the post v1 post mortems reports params
-func (o *PostV1PostMortemsReportsParams) SetV1PostMortemsReports(v1PostMortemsReports *models.PostV1PostMortemsReports) {
-	o.V1PostMortemsReports = v1PostMortemsReports
+// SetPostV1PostMortemsReports adds the postV1PostMortemsReports to the post v1 post mortems reports params
+func (o *PostV1PostMortemsReportsParams) SetPostV1PostMortemsReports(postV1PostMortemsReports *models.PostV1PostMortemsReports) {
+	o.PostV1PostMortemsReports = postV1PostMortemsReports
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1PostMortemsReportsParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if o.V1PostMortemsReports != nil {
-		if err := r.SetBodyParam(o.V1PostMortemsReports); err != nil {
+	if o.PostV1PostMortemsReports != nil {
+		if err := r.SetBodyParam(o.PostV1PostMortemsReports); err != nil {
 			return err
 		}
 	}

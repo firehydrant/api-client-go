@@ -45,7 +45,7 @@ PatchV1SeverityMatrixOK describes a response with status code 200, with default 
 Update available severities and impacts in your organization's severity matrix.
 */
 type PatchV1SeverityMatrixOK struct {
-	Payload *models.SeverityMatrixEntity
+	Payload *models.SeverityMatrixSeverityMatrixEntity
 }
 
 // IsSuccess returns true when this patch v1 severity matrix o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PatchV1SeverityMatrixOK) String() string {
 	return fmt.Sprintf("[PATCH /v1/severity_matrix][%d] patchV1SeverityMatrixOK  %+v", 200, o.Payload)
 }
 
-func (o *PatchV1SeverityMatrixOK) GetPayload() *models.SeverityMatrixEntity {
+func (o *PatchV1SeverityMatrixOK) GetPayload() *models.SeverityMatrixSeverityMatrixEntity {
 	return o.Payload
 }
 
 func (o *PatchV1SeverityMatrixOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.SeverityMatrixEntity)
+	o.Payload = new(models.SeverityMatrixSeverityMatrixEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

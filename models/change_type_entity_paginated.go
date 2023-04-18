@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ChangeTypeEntityPaginated Lists all change types
+// ChangeTypeEntityPaginated ChangeTypeEntityPaginated model
 //
 // swagger:model ChangeTypeEntityPaginated
 type ChangeTypeEntityPaginated struct {

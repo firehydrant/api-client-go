@@ -367,6 +367,9 @@ func (m *PostV1Functionalities) UnmarshalBinary(b []byte) error {
 // swagger:model PostV1FunctionalitiesExternalResourcesItems0
 type PostV1FunctionalitiesExternalResourcesItems0 struct {
 
+	// The integration slug for the external resource. Can be one of: github, opsgenie, pager_duty, statuspage, victorops. Not required if the resource has already been imported.
+	ConnectionType string `json:"connection_type,omitempty"`
+
 	// remote id
 	// Required: true
 	RemoteID *string `json:"remote_id"`

@@ -45,7 +45,7 @@ GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK describes a response with 
 Retrieves the bash script from a "script" step.
 */
 type GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK struct {
-	Payload *models.ExecutionEntity
+	Payload *models.RunbooksExecutionEntity
 }
 
 // IsSuccess returns true when this get v1 runbooks executions execution Id steps step Id script o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK) String() string 
 	return fmt.Sprintf("[GET /v1/runbooks/executions/{execution_id}/steps/{step_id}/script][%d] getV1RunbooksExecutionsExecutionIdStepsStepIdScriptOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK) GetPayload() *models.ExecutionEntity {
+func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK) GetPayload() *models.RunbooksExecutionEntity {
 	return o.Payload
 }
 
 func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ExecutionEntity)
+	o.Payload = new(models.RunbooksExecutionEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

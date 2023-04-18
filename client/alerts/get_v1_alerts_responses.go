@@ -45,7 +45,7 @@ GetV1AlertsOK describes a response with status code 200, with default header val
 Retrieve all alerts from third parties
 */
 type GetV1AlertsOK struct {
-	Payload *models.AlertEntityPaginated
+	Payload *models.AlertsAlertEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 alerts o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1AlertsOK) String() string {
 	return fmt.Sprintf("[GET /v1/alerts][%d] getV1AlertsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1AlertsOK) GetPayload() *models.AlertEntityPaginated {
+func (o *GetV1AlertsOK) GetPayload() *models.AlertsAlertEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1AlertsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.AlertEntityPaginated)
+	o.Payload = new(models.AlertsAlertEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

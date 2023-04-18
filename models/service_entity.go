@@ -15,16 +15,19 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ServiceEntity Retrieves all services that are available to be upstream dependencies
+// ServiceEntity ServiceEntity model
 //
 // swagger:model ServiceEntity
 type ServiceEntity struct {
 
 	// List of active incident guids
-	ActiveIncidents []string `json:"active_incidents"`
+	ActiveIncidents []*IncidentEntity `json:"active_incidents"`
 
 	// alert on add
 	AlertOnAdd bool `json:"alert_on_add,omitempty"`
+
+	// allowed params
+	AllowedParams []string `json:"allowed_params"`
 
 	// auto add responding team
 	AutoAddRespondingTeam bool `json:"auto_add_responding_team,omitempty"`
@@ -55,7 +58,7 @@ type ServiceEntity struct {
 	Labels interface{} `json:"labels,omitempty"`
 
 	// last import
-	LastImport interface{} `json:"last_import,omitempty"`
+	LastImport *ImportsImportableResourceEntity `json:"last_import,omitempty"`
 
 	// List of links attached to this service.
 	Links []*LinksEntity `json:"links"`
@@ -70,7 +73,7 @@ type ServiceEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// Team that owns the service
-	Owner interface{} `json:"owner,omitempty"`
+	Owner *TeamEntity `json:"owner,omitempty"`
 
 	// service checklist updated at
 	// Format: date-time
@@ -83,7 +86,7 @@ type ServiceEntity struct {
 	Slug string `json:"slug,omitempty"`
 
 	// List of teams attached to the service
-	Teams []interface{} `json:"teams"`
+	Teams []*TeamEntity `json:"teams"`
 
 	// updated at
 	// Format: date-time
@@ -96,6 +99,10 @@ type ServiceEntity struct {
 // Validate validates this service entity
 func (m *ServiceEntity) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateActiveIncidents(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateChecklists(formats); err != nil {
 		res = append(res, err)
@@ -113,11 +120,23 @@ func (m *ServiceEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateLastImport(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLinks(formats); err != nil {
 		res = append(res, err)
 	}
 
+	if err := m.validateOwner(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateServiceChecklistUpdatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTeams(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -132,6 +151,32 @@ func (m *ServiceEntity) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ServiceEntity) validateActiveIncidents(formats strfmt.Registry) error {
+	if swag.IsZero(m.ActiveIncidents) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ActiveIncidents); i++ {
+		if swag.IsZero(m.ActiveIncidents[i]) { // not required
+			continue
+		}
+
+		if m.ActiveIncidents[i] != nil {
+			if err := m.ActiveIncidents[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("active_incidents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("active_incidents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -225,6 +270,25 @@ func (m *ServiceEntity) validateFunctionalities(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *ServiceEntity) validateLastImport(formats strfmt.Registry) error {
+	if swag.IsZero(m.LastImport) { // not required
+		return nil
+	}
+
+	if m.LastImport != nil {
+		if err := m.LastImport.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("last_import")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("last_import")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ServiceEntity) validateLinks(formats strfmt.Registry) error {
 	if swag.IsZero(m.Links) { // not required
 		return nil
@@ -251,6 +315,25 @@ func (m *ServiceEntity) validateLinks(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *ServiceEntity) validateOwner(formats strfmt.Registry) error {
+	if swag.IsZero(m.Owner) { // not required
+		return nil
+	}
+
+	if m.Owner != nil {
+		if err := m.Owner.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ServiceEntity) validateServiceChecklistUpdatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.ServiceChecklistUpdatedAt) { // not required
 		return nil
@@ -258,6 +341,32 @@ func (m *ServiceEntity) validateServiceChecklistUpdatedAt(formats strfmt.Registr
 
 	if err := validate.FormatOf("service_checklist_updated_at", "body", "date-time", m.ServiceChecklistUpdatedAt.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *ServiceEntity) validateTeams(formats strfmt.Registry) error {
+	if swag.IsZero(m.Teams) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Teams); i++ {
+		if swag.IsZero(m.Teams[i]) { // not required
+			continue
+		}
+
+		if m.Teams[i] != nil {
+			if err := m.Teams[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("teams" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -298,6 +407,10 @@ func (m *ServiceEntity) validateUpdatedBy(formats strfmt.Registry) error {
 func (m *ServiceEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateActiveIncidents(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateChecklists(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -310,7 +423,19 @@ func (m *ServiceEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateLastImport(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateLinks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOwner(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateTeams(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -321,6 +446,26 @@ func (m *ServiceEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ServiceEntity) contextValidateActiveIncidents(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ActiveIncidents); i++ {
+
+		if m.ActiveIncidents[i] != nil {
+			if err := m.ActiveIncidents[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("active_incidents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("active_incidents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -384,6 +529,22 @@ func (m *ServiceEntity) contextValidateFunctionalities(ctx context.Context, form
 	return nil
 }
 
+func (m *ServiceEntity) contextValidateLastImport(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.LastImport != nil {
+		if err := m.LastImport.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("last_import")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("last_import")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ServiceEntity) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Links); i++ {
@@ -394,6 +555,42 @@ func (m *ServiceEntity) contextValidateLinks(ctx context.Context, formats strfmt
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("links" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ServiceEntity) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Owner != nil {
+		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ServiceEntity) contextValidateTeams(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Teams); i++ {
+
+		if m.Teams[i] != nil {
+			if err := m.Teams[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("teams" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

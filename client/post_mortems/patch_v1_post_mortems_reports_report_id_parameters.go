@@ -63,8 +63,8 @@ PatchV1PostMortemsReportsReportIDParams contains all the parameters to send to t
 */
 type PatchV1PostMortemsReportsReportIDParams struct {
 
-	// V1PostMortemsReports.
-	V1PostMortemsReports *models.PatchV1PostMortemsReports
+	// PatchV1PostMortemsReportsReportID.
+	PatchV1PostMortemsReportsReportID *models.PatchV1PostMortemsReportsReportID
 
 	// ReportID.
 	ReportID string
@@ -122,15 +122,15 @@ func (o *PatchV1PostMortemsReportsReportIDParams) SetHTTPClient(client *http.Cli
 	o.HTTPClient = client
 }
 
-// WithV1PostMortemsReports adds the v1PostMortemsReports to the patch v1 post mortems reports report Id params
-func (o *PatchV1PostMortemsReportsReportIDParams) WithV1PostMortemsReports(v1PostMortemsReports *models.PatchV1PostMortemsReports) *PatchV1PostMortemsReportsReportIDParams {
-	o.SetV1PostMortemsReports(v1PostMortemsReports)
+// WithPatchV1PostMortemsReportsReportID adds the patchV1PostMortemsReportsReportID to the patch v1 post mortems reports report Id params
+func (o *PatchV1PostMortemsReportsReportIDParams) WithPatchV1PostMortemsReportsReportID(patchV1PostMortemsReportsReportID *models.PatchV1PostMortemsReportsReportID) *PatchV1PostMortemsReportsReportIDParams {
+	o.SetPatchV1PostMortemsReportsReportID(patchV1PostMortemsReportsReportID)
 	return o
 }
 
-// SetV1PostMortemsReports adds the v1PostMortemsReports to the patch v1 post mortems reports report Id params
-func (o *PatchV1PostMortemsReportsReportIDParams) SetV1PostMortemsReports(v1PostMortemsReports *models.PatchV1PostMortemsReports) {
-	o.V1PostMortemsReports = v1PostMortemsReports
+// SetPatchV1PostMortemsReportsReportID adds the patchV1PostMortemsReportsReportId to the patch v1 post mortems reports report Id params
+func (o *PatchV1PostMortemsReportsReportIDParams) SetPatchV1PostMortemsReportsReportID(patchV1PostMortemsReportsReportID *models.PatchV1PostMortemsReportsReportID) {
+	o.PatchV1PostMortemsReportsReportID = patchV1PostMortemsReportsReportID
 }
 
 // WithReportID adds the reportID to the patch v1 post mortems reports report Id params
@@ -151,8 +151,8 @@ func (o *PatchV1PostMortemsReportsReportIDParams) WriteToRequest(r runtime.Clien
 		return err
 	}
 	var res []error
-	if o.V1PostMortemsReports != nil {
-		if err := r.SetBodyParam(o.V1PostMortemsReports); err != nil {
+	if o.PatchV1PostMortemsReportsReportID != nil {
+		if err := r.SetBodyParam(o.PatchV1PostMortemsReportsReportID); err != nil {
 			return err
 		}
 	}

@@ -63,8 +63,8 @@ PostV1ScimV2UsersParams contains all the parameters to send to the API endpoint
 */
 type PostV1ScimV2UsersParams struct {
 
-	// V1ScimV2Users.
-	V1ScimV2Users *models.PostV1ScimV2Users
+	// PostV1ScimV2Users.
+	PostV1ScimV2Users *models.PostV1ScimV2Users
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1ScimV2UsersParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1ScimV2Users adds the v1ScimV2Users to the post v1 scim v2 users params
-func (o *PostV1ScimV2UsersParams) WithV1ScimV2Users(v1ScimV2Users *models.PostV1ScimV2Users) *PostV1ScimV2UsersParams {
-	o.SetV1ScimV2Users(v1ScimV2Users)
+// WithPostV1ScimV2Users adds the postV1ScimV2Users to the post v1 scim v2 users params
+func (o *PostV1ScimV2UsersParams) WithPostV1ScimV2Users(postV1ScimV2Users *models.PostV1ScimV2Users) *PostV1ScimV2UsersParams {
+	o.SetPostV1ScimV2Users(postV1ScimV2Users)
 	return o
 }
 
-// SetV1ScimV2Users adds the v1ScimV2Users to the post v1 scim v2 users params
-func (o *PostV1ScimV2UsersParams) SetV1ScimV2Users(v1ScimV2Users *models.PostV1ScimV2Users) {
-	o.V1ScimV2Users = v1ScimV2Users
+// SetPostV1ScimV2Users adds the postV1ScimV2Users to the post v1 scim v2 users params
+func (o *PostV1ScimV2UsersParams) SetPostV1ScimV2Users(postV1ScimV2Users *models.PostV1ScimV2Users) {
+	o.PostV1ScimV2Users = postV1ScimV2Users
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1ScimV2UsersParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if o.V1ScimV2Users != nil {
-		if err := r.SetBodyParam(o.V1ScimV2Users); err != nil {
+	if o.PostV1ScimV2Users != nil {
+		if err := r.SetBodyParam(o.PostV1ScimV2Users); err != nil {
 			return err
 		}
 	}

@@ -63,8 +63,8 @@ PostV1RunbooksExecutionsParams contains all the parameters to send to the API en
 */
 type PostV1RunbooksExecutionsParams struct {
 
-	// V1RunbooksExecutions.
-	V1RunbooksExecutions *models.PostV1RunbooksExecutions
+	// PostV1RunbooksExecutions.
+	PostV1RunbooksExecutions *models.PostV1RunbooksExecutions
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1RunbooksExecutionsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1RunbooksExecutions adds the v1RunbooksExecutions to the post v1 runbooks executions params
-func (o *PostV1RunbooksExecutionsParams) WithV1RunbooksExecutions(v1RunbooksExecutions *models.PostV1RunbooksExecutions) *PostV1RunbooksExecutionsParams {
-	o.SetV1RunbooksExecutions(v1RunbooksExecutions)
+// WithPostV1RunbooksExecutions adds the postV1RunbooksExecutions to the post v1 runbooks executions params
+func (o *PostV1RunbooksExecutionsParams) WithPostV1RunbooksExecutions(postV1RunbooksExecutions *models.PostV1RunbooksExecutions) *PostV1RunbooksExecutionsParams {
+	o.SetPostV1RunbooksExecutions(postV1RunbooksExecutions)
 	return o
 }
 
-// SetV1RunbooksExecutions adds the v1RunbooksExecutions to the post v1 runbooks executions params
-func (o *PostV1RunbooksExecutionsParams) SetV1RunbooksExecutions(v1RunbooksExecutions *models.PostV1RunbooksExecutions) {
-	o.V1RunbooksExecutions = v1RunbooksExecutions
+// SetPostV1RunbooksExecutions adds the postV1RunbooksExecutions to the post v1 runbooks executions params
+func (o *PostV1RunbooksExecutionsParams) SetPostV1RunbooksExecutions(postV1RunbooksExecutions *models.PostV1RunbooksExecutions) {
+	o.PostV1RunbooksExecutions = postV1RunbooksExecutions
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1RunbooksExecutionsParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if o.V1RunbooksExecutions != nil {
-		if err := r.SetBodyParam(o.V1RunbooksExecutions); err != nil {
+	if o.PostV1RunbooksExecutions != nil {
+		if err := r.SetBodyParam(o.PostV1RunbooksExecutions); err != nil {
 			return err
 		}
 	}

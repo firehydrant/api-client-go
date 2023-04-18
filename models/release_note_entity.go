@@ -8,11 +8,13 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// ReleaseNoteEntity Retrieve a single release note set
+// ReleaseNoteEntity ReleaseNoteEntity model
 //
 // swagger:model ReleaseNoteEntity
 type ReleaseNoteEntity struct {
@@ -24,11 +26,33 @@ type ReleaseNoteEntity struct {
 	Subject string `json:"subject,omitempty"`
 
 	// timestamp
-	Timestamp string `json:"timestamp,omitempty"`
+	// Format: date-time
+	Timestamp strfmt.DateTime `json:"timestamp,omitempty"`
 }
 
 // Validate validates this release note entity
 func (m *ReleaseNoteEntity) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateTimestamp(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ReleaseNoteEntity) validateTimestamp(formats strfmt.Registry) error {
+	if swag.IsZero(m.Timestamp) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("timestamp", "body", "date-time", m.Timestamp.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

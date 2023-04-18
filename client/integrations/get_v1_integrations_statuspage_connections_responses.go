@@ -45,7 +45,7 @@ GetV1IntegrationsStatuspageConnectionsOK describes a response with status code 2
 Lists the available and configured Statuspage integrations connections for the authenticated organization.
 */
 type GetV1IntegrationsStatuspageConnectionsOK struct {
-	Payload *models.ConnectionEntityPaginated
+	Payload *models.IntegrationsStatuspageConnectionEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 integrations statuspage connections o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1IntegrationsStatuspageConnectionsOK) String() string {
 	return fmt.Sprintf("[GET /v1/integrations/statuspage/connections][%d] getV1IntegrationsStatuspageConnectionsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1IntegrationsStatuspageConnectionsOK) GetPayload() *models.ConnectionEntityPaginated {
+func (o *GetV1IntegrationsStatuspageConnectionsOK) GetPayload() *models.IntegrationsStatuspageConnectionEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1IntegrationsStatuspageConnectionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ConnectionEntityPaginated)
+	o.Payload = new(models.IntegrationsStatuspageConnectionEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

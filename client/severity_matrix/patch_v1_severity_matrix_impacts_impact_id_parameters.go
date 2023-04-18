@@ -63,11 +63,11 @@ PatchV1SeverityMatrixImpactsImpactIDParams contains all the parameters to send t
 */
 type PatchV1SeverityMatrixImpactsImpactIDParams struct {
 
-	// V1SeverityMatrixImpacts.
-	V1SeverityMatrixImpacts *models.PatchV1SeverityMatrixImpacts
-
 	// ImpactID.
 	ImpactID string
+
+	// PatchV1SeverityMatrixImpactsImpactID.
+	PatchV1SeverityMatrixImpactsImpactID *models.PatchV1SeverityMatrixImpactsImpactID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PatchV1SeverityMatrixImpactsImpactIDParams) SetHTTPClient(client *http.
 	o.HTTPClient = client
 }
 
-// WithV1SeverityMatrixImpacts adds the v1SeverityMatrixImpacts to the patch v1 severity matrix impacts impact Id params
-func (o *PatchV1SeverityMatrixImpactsImpactIDParams) WithV1SeverityMatrixImpacts(v1SeverityMatrixImpacts *models.PatchV1SeverityMatrixImpacts) *PatchV1SeverityMatrixImpactsImpactIDParams {
-	o.SetV1SeverityMatrixImpacts(v1SeverityMatrixImpacts)
-	return o
-}
-
-// SetV1SeverityMatrixImpacts adds the v1SeverityMatrixImpacts to the patch v1 severity matrix impacts impact Id params
-func (o *PatchV1SeverityMatrixImpactsImpactIDParams) SetV1SeverityMatrixImpacts(v1SeverityMatrixImpacts *models.PatchV1SeverityMatrixImpacts) {
-	o.V1SeverityMatrixImpacts = v1SeverityMatrixImpacts
-}
-
 // WithImpactID adds the impactID to the patch v1 severity matrix impacts impact Id params
 func (o *PatchV1SeverityMatrixImpactsImpactIDParams) WithImpactID(impactID string) *PatchV1SeverityMatrixImpactsImpactIDParams {
 	o.SetImpactID(impactID)
@@ -144,6 +133,17 @@ func (o *PatchV1SeverityMatrixImpactsImpactIDParams) SetImpactID(impactID string
 	o.ImpactID = impactID
 }
 
+// WithPatchV1SeverityMatrixImpactsImpactID adds the patchV1SeverityMatrixImpactsImpactID to the patch v1 severity matrix impacts impact Id params
+func (o *PatchV1SeverityMatrixImpactsImpactIDParams) WithPatchV1SeverityMatrixImpactsImpactID(patchV1SeverityMatrixImpactsImpactID *models.PatchV1SeverityMatrixImpactsImpactID) *PatchV1SeverityMatrixImpactsImpactIDParams {
+	o.SetPatchV1SeverityMatrixImpactsImpactID(patchV1SeverityMatrixImpactsImpactID)
+	return o
+}
+
+// SetPatchV1SeverityMatrixImpactsImpactID adds the patchV1SeverityMatrixImpactsImpactId to the patch v1 severity matrix impacts impact Id params
+func (o *PatchV1SeverityMatrixImpactsImpactIDParams) SetPatchV1SeverityMatrixImpactsImpactID(patchV1SeverityMatrixImpactsImpactID *models.PatchV1SeverityMatrixImpactsImpactID) {
+	o.PatchV1SeverityMatrixImpactsImpactID = patchV1SeverityMatrixImpactsImpactID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1SeverityMatrixImpactsImpactIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PatchV1SeverityMatrixImpactsImpactIDParams) WriteToRequest(r runtime.Cl
 		return err
 	}
 	var res []error
-	if o.V1SeverityMatrixImpacts != nil {
-		if err := r.SetBodyParam(o.V1SeverityMatrixImpacts); err != nil {
-			return err
-		}
-	}
 
 	// path param impact_id
 	if err := r.SetPathParam("impact_id", o.ImpactID); err != nil {
 		return err
+	}
+	if o.PatchV1SeverityMatrixImpactsImpactID != nil {
+		if err := r.SetBodyParam(o.PatchV1SeverityMatrixImpactsImpactID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

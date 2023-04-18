@@ -63,8 +63,8 @@ PostV1TaskListsParams contains all the parameters to send to the API endpoint
 */
 type PostV1TaskListsParams struct {
 
-	// V1TaskLists.
-	V1TaskLists *models.PostV1TaskLists
+	// PostV1TaskLists.
+	PostV1TaskLists *models.PostV1TaskLists
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1TaskListsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1TaskLists adds the v1TaskLists to the post v1 task lists params
-func (o *PostV1TaskListsParams) WithV1TaskLists(v1TaskLists *models.PostV1TaskLists) *PostV1TaskListsParams {
-	o.SetV1TaskLists(v1TaskLists)
+// WithPostV1TaskLists adds the postV1TaskLists to the post v1 task lists params
+func (o *PostV1TaskListsParams) WithPostV1TaskLists(postV1TaskLists *models.PostV1TaskLists) *PostV1TaskListsParams {
+	o.SetPostV1TaskLists(postV1TaskLists)
 	return o
 }
 
-// SetV1TaskLists adds the v1TaskLists to the post v1 task lists params
-func (o *PostV1TaskListsParams) SetV1TaskLists(v1TaskLists *models.PostV1TaskLists) {
-	o.V1TaskLists = v1TaskLists
+// SetPostV1TaskLists adds the postV1TaskLists to the post v1 task lists params
+func (o *PostV1TaskListsParams) SetPostV1TaskLists(postV1TaskLists *models.PostV1TaskLists) {
+	o.PostV1TaskLists = postV1TaskLists
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1TaskListsParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 	var res []error
-	if o.V1TaskLists != nil {
-		if err := r.SetBodyParam(o.V1TaskLists); err != nil {
+	if o.PostV1TaskLists != nil {
+		if err := r.SetBodyParam(o.PostV1TaskLists); err != nil {
 			return err
 		}
 	}

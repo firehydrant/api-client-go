@@ -45,7 +45,7 @@ PostV1RunbooksExecutionsCreated describes a response with status code 201, with 
 Attaches a runbook to an incident and executes it
 */
 type PostV1RunbooksExecutionsCreated struct {
-	Payload *models.ExecutionEntity
+	Payload *models.RunbooksExecutionEntity
 }
 
 // IsSuccess returns true when this post v1 runbooks executions created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1RunbooksExecutionsCreated) String() string {
 	return fmt.Sprintf("[POST /v1/runbooks/executions][%d] postV1RunbooksExecutionsCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1RunbooksExecutionsCreated) GetPayload() *models.ExecutionEntity {
+func (o *PostV1RunbooksExecutionsCreated) GetPayload() *models.RunbooksExecutionEntity {
 	return o.Payload
 }
 
 func (o *PostV1RunbooksExecutionsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ExecutionEntity)
+	o.Payload = new(models.RunbooksExecutionEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

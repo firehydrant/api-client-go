@@ -45,7 +45,7 @@ GetV1SeverityMatrixImpactsOK describes a response with status code 200, with def
 Lists impacts
 */
 type GetV1SeverityMatrixImpactsOK struct {
-	Payload *models.ImpactEntity
+	Payload *models.SeverityMatrixImpactEntity
 }
 
 // IsSuccess returns true when this get v1 severity matrix impacts o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1SeverityMatrixImpactsOK) String() string {
 	return fmt.Sprintf("[GET /v1/severity_matrix/impacts][%d] getV1SeverityMatrixImpactsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1SeverityMatrixImpactsOK) GetPayload() *models.ImpactEntity {
+func (o *GetV1SeverityMatrixImpactsOK) GetPayload() *models.SeverityMatrixImpactEntity {
 	return o.Payload
 }
 
 func (o *GetV1SeverityMatrixImpactsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ImpactEntity)
+	o.Payload = new(models.SeverityMatrixImpactEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -45,7 +45,7 @@ GetV1RunbooksActionsOK describes a response with status code 200, with default h
 List all Runbook actions available through your connected integrations
 */
 type GetV1RunbooksActionsOK struct {
-	Payload *models.ActionsEntityPaginated
+	Payload *models.RunbooksActionsEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 runbooks actions o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1RunbooksActionsOK) String() string {
 	return fmt.Sprintf("[GET /v1/runbooks/actions][%d] getV1RunbooksActionsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1RunbooksActionsOK) GetPayload() *models.ActionsEntityPaginated {
+func (o *GetV1RunbooksActionsOK) GetPayload() *models.RunbooksActionsEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1RunbooksActionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ActionsEntityPaginated)
+	o.Payload = new(models.RunbooksActionsEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

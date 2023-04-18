@@ -14,7 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPatchV1PostMortemsReportsReportIDReasonsReasonIDParams creates a new PatchV1PostMortemsReportsReportIDReasonsReasonIDParams object,
@@ -62,16 +63,14 @@ PatchV1PostMortemsReportsReportIDReasonsReasonIDParams contains all the paramete
 */
 type PatchV1PostMortemsReportsReportIDReasonsReasonIDParams struct {
 
+	// PatchV1PostMortemsReportsReportIDReasonsReasonID.
+	PatchV1PostMortemsReportsReportIDReasonsReasonID *models.PatchV1PostMortemsReportsReportIDReasonsReasonID
+
 	// ReasonID.
-	//
-	// Format: int32
-	ReasonID int32
+	ReasonID string
 
 	// ReportID.
 	ReportID string
-
-	// Summary.
-	Summary *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,14 +125,25 @@ func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams) SetHTTPClient(c
 	o.HTTPClient = client
 }
 
+// WithPatchV1PostMortemsReportsReportIDReasonsReasonID adds the patchV1PostMortemsReportsReportIDReasonsReasonID to the patch v1 post mortems reports report Id reasons reason Id params
+func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams) WithPatchV1PostMortemsReportsReportIDReasonsReasonID(patchV1PostMortemsReportsReportIDReasonsReasonID *models.PatchV1PostMortemsReportsReportIDReasonsReasonID) *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams {
+	o.SetPatchV1PostMortemsReportsReportIDReasonsReasonID(patchV1PostMortemsReportsReportIDReasonsReasonID)
+	return o
+}
+
+// SetPatchV1PostMortemsReportsReportIDReasonsReasonID adds the patchV1PostMortemsReportsReportIdReasonsReasonId to the patch v1 post mortems reports report Id reasons reason Id params
+func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams) SetPatchV1PostMortemsReportsReportIDReasonsReasonID(patchV1PostMortemsReportsReportIDReasonsReasonID *models.PatchV1PostMortemsReportsReportIDReasonsReasonID) {
+	o.PatchV1PostMortemsReportsReportIDReasonsReasonID = patchV1PostMortemsReportsReportIDReasonsReasonID
+}
+
 // WithReasonID adds the reasonID to the patch v1 post mortems reports report Id reasons reason Id params
-func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams) WithReasonID(reasonID int32) *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams {
+func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams) WithReasonID(reasonID string) *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams {
 	o.SetReasonID(reasonID)
 	return o
 }
 
 // SetReasonID adds the reasonId to the patch v1 post mortems reports report Id reasons reason Id params
-func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams) SetReasonID(reasonID int32) {
+func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams) SetReasonID(reasonID string) {
 	o.ReasonID = reasonID
 }
 
@@ -148,17 +158,6 @@ func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams) SetReportID(rep
 	o.ReportID = reportID
 }
 
-// WithSummary adds the summary to the patch v1 post mortems reports report Id reasons reason Id params
-func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams) WithSummary(summary *string) *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams {
-	o.SetSummary(summary)
-	return o
-}
-
-// SetSummary adds the summary to the patch v1 post mortems reports report Id reasons reason Id params
-func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams) SetSummary(summary *string) {
-	o.Summary = summary
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -166,30 +165,20 @@ func (o *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams) WriteToRequest(
 		return err
 	}
 	var res []error
+	if o.PatchV1PostMortemsReportsReportIDReasonsReasonID != nil {
+		if err := r.SetBodyParam(o.PatchV1PostMortemsReportsReportIDReasonsReasonID); err != nil {
+			return err
+		}
+	}
 
 	// path param reason_id
-	if err := r.SetPathParam("reason_id", swag.FormatInt32(o.ReasonID)); err != nil {
+	if err := r.SetPathParam("reason_id", o.ReasonID); err != nil {
 		return err
 	}
 
 	// path param report_id
 	if err := r.SetPathParam("report_id", o.ReportID); err != nil {
 		return err
-	}
-
-	if o.Summary != nil {
-
-		// form param summary
-		var frSummary string
-		if o.Summary != nil {
-			frSummary = *o.Summary
-		}
-		fSummary := frSummary
-		if fSummary != "" {
-			if err := r.SetFormParam("summary", fSummary); err != nil {
-				return err
-			}
-		}
 	}
 
 	if len(res) > 0 {

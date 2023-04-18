@@ -7,12 +7,9 @@ package incidents
 
 import (
 	"fmt"
-	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/firehydrant/api-client-go/models"
 )
 
 // PostV1IncidentsIncidentIDTeamAssignmentsReader is a Reader for the PostV1IncidentsIncidentIDTeamAssignments structure.
@@ -45,7 +42,6 @@ PostV1IncidentsIncidentIDTeamAssignmentsCreated describes a response with status
 Assign a team for this incident
 */
 type PostV1IncidentsIncidentIDTeamAssignmentsCreated struct {
-	Payload *models.IncidentTeamAssignmentsEntity
 }
 
 // IsSuccess returns true when this post v1 incidents incident Id team assignments created response has a 2xx status code
@@ -74,25 +70,14 @@ func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) IsCode(code int) bool 
 }
 
 func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) Error() string {
-	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/team_assignments][%d] postV1IncidentsIncidentIdTeamAssignmentsCreated  %+v", 201, o.Payload)
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/team_assignments][%d] postV1IncidentsIncidentIdTeamAssignmentsCreated ", 201)
 }
 
 func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) String() string {
-	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/team_assignments][%d] postV1IncidentsIncidentIdTeamAssignmentsCreated  %+v", 201, o.Payload)
-}
-
-func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) GetPayload() *models.IncidentTeamAssignmentsEntity {
-	return o.Payload
+	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/team_assignments][%d] postV1IncidentsIncidentIdTeamAssignmentsCreated ", 201)
 }
 
 func (o *PostV1IncidentsIncidentIDTeamAssignmentsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.IncidentTeamAssignmentsEntity)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

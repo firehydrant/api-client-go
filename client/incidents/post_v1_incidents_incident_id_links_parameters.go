@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // NewPostV1IncidentsIncidentIDLinksParams creates a new PostV1IncidentsIncidentIDLinksParams object,
@@ -61,17 +63,11 @@ PostV1IncidentsIncidentIDLinksParams contains all the parameters to send to the 
 */
 type PostV1IncidentsIncidentIDLinksParams struct {
 
-	// DisplayText.
-	DisplayText *string
-
-	// Href.
-	Href string
-
-	// IconURL.
-	IconURL *string
-
 	// IncidentID.
 	IncidentID string
+
+	// PostV1IncidentsIncidentIDLinks.
+	PostV1IncidentsIncidentIDLinks *models.PostV1IncidentsIncidentIDLinks
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,39 +122,6 @@ func (o *PostV1IncidentsIncidentIDLinksParams) SetHTTPClient(client *http.Client
 	o.HTTPClient = client
 }
 
-// WithDisplayText adds the displayText to the post v1 incidents incident Id links params
-func (o *PostV1IncidentsIncidentIDLinksParams) WithDisplayText(displayText *string) *PostV1IncidentsIncidentIDLinksParams {
-	o.SetDisplayText(displayText)
-	return o
-}
-
-// SetDisplayText adds the displayText to the post v1 incidents incident Id links params
-func (o *PostV1IncidentsIncidentIDLinksParams) SetDisplayText(displayText *string) {
-	o.DisplayText = displayText
-}
-
-// WithHref adds the href to the post v1 incidents incident Id links params
-func (o *PostV1IncidentsIncidentIDLinksParams) WithHref(href string) *PostV1IncidentsIncidentIDLinksParams {
-	o.SetHref(href)
-	return o
-}
-
-// SetHref adds the href to the post v1 incidents incident Id links params
-func (o *PostV1IncidentsIncidentIDLinksParams) SetHref(href string) {
-	o.Href = href
-}
-
-// WithIconURL adds the iconURL to the post v1 incidents incident Id links params
-func (o *PostV1IncidentsIncidentIDLinksParams) WithIconURL(iconURL *string) *PostV1IncidentsIncidentIDLinksParams {
-	o.SetIconURL(iconURL)
-	return o
-}
-
-// SetIconURL adds the iconUrl to the post v1 incidents incident Id links params
-func (o *PostV1IncidentsIncidentIDLinksParams) SetIconURL(iconURL *string) {
-	o.IconURL = iconURL
-}
-
 // WithIncidentID adds the incidentID to the post v1 incidents incident Id links params
 func (o *PostV1IncidentsIncidentIDLinksParams) WithIncidentID(incidentID string) *PostV1IncidentsIncidentIDLinksParams {
 	o.SetIncidentID(incidentID)
@@ -170,6 +133,17 @@ func (o *PostV1IncidentsIncidentIDLinksParams) SetIncidentID(incidentID string) 
 	o.IncidentID = incidentID
 }
 
+// WithPostV1IncidentsIncidentIDLinks adds the postV1IncidentsIncidentIDLinks to the post v1 incidents incident Id links params
+func (o *PostV1IncidentsIncidentIDLinksParams) WithPostV1IncidentsIncidentIDLinks(postV1IncidentsIncidentIDLinks *models.PostV1IncidentsIncidentIDLinks) *PostV1IncidentsIncidentIDLinksParams {
+	o.SetPostV1IncidentsIncidentIDLinks(postV1IncidentsIncidentIDLinks)
+	return o
+}
+
+// SetPostV1IncidentsIncidentIDLinks adds the postV1IncidentsIncidentIdLinks to the post v1 incidents incident Id links params
+func (o *PostV1IncidentsIncidentIDLinksParams) SetPostV1IncidentsIncidentIDLinks(postV1IncidentsIncidentIDLinks *models.PostV1IncidentsIncidentIDLinks) {
+	o.PostV1IncidentsIncidentIDLinks = postV1IncidentsIncidentIDLinks
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PostV1IncidentsIncidentIDLinksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -178,48 +152,14 @@ func (o *PostV1IncidentsIncidentIDLinksParams) WriteToRequest(r runtime.ClientRe
 	}
 	var res []error
 
-	if o.DisplayText != nil {
-
-		// form param display_text
-		var frDisplayText string
-		if o.DisplayText != nil {
-			frDisplayText = *o.DisplayText
-		}
-		fDisplayText := frDisplayText
-		if fDisplayText != "" {
-			if err := r.SetFormParam("display_text", fDisplayText); err != nil {
-				return err
-			}
-		}
-	}
-
-	// form param href
-	frHref := o.Href
-	fHref := frHref
-	if fHref != "" {
-		if err := r.SetFormParam("href", fHref); err != nil {
-			return err
-		}
-	}
-
-	if o.IconURL != nil {
-
-		// form param icon_url
-		var frIconURL string
-		if o.IconURL != nil {
-			frIconURL = *o.IconURL
-		}
-		fIconURL := frIconURL
-		if fIconURL != "" {
-			if err := r.SetFormParam("icon_url", fIconURL); err != nil {
-				return err
-			}
-		}
-	}
-
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PostV1IncidentsIncidentIDLinks != nil {
+		if err := r.SetBodyParam(o.PostV1IncidentsIncidentIDLinks); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

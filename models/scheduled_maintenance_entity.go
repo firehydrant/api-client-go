@@ -12,21 +12,24 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// ScheduledMaintenanceEntity Fetch the details of a scheduled maintenance event.
+// ScheduledMaintenanceEntity ScheduledMaintenanceEntity model
 //
 // swagger:model ScheduledMaintenanceEntity
 type ScheduledMaintenanceEntity struct {
 
 	// created at
-	CreatedAt string `json:"created_at,omitempty"`
+	// Format: date-time
+	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
 	// description
 	Description string `json:"description,omitempty"`
 
 	// ends at
-	EndsAt string `json:"ends_at,omitempty"`
+	// Format: date-time
+	EndsAt strfmt.DateTime `json:"ends_at,omitempty"`
 
 	// id
 	ID string `json:"id,omitempty"`
@@ -35,13 +38,17 @@ type ScheduledMaintenanceEntity struct {
 	Impacts []*ScheduledMaintenancesImpactEntity `json:"impacts"`
 
 	// incident
-	Incident string `json:"incident,omitempty"`
+	Incident *IncidentEntity `json:"incident,omitempty"`
+
+	// An object of label key and values
+	Labels interface{} `json:"labels,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
 
 	// starts at
-	StartsAt string `json:"starts_at,omitempty"`
+	// Format: date-time
+	StartsAt strfmt.DateTime `json:"starts_at,omitempty"`
 
 	// status pages
 	StatusPages []*ScheduledMaintenancesStatusPageEntity `json:"status_pages"`
@@ -50,14 +57,31 @@ type ScheduledMaintenanceEntity struct {
 	Summary string `json:"summary,omitempty"`
 
 	// updated at
-	UpdatedAt string `json:"updated_at,omitempty"`
+	// Format: date-time
+	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
 }
 
 // Validate validates this scheduled maintenance entity
 func (m *ScheduledMaintenanceEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEndsAt(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateImpacts(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIncident(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStartsAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -65,9 +89,37 @@ func (m *ScheduledMaintenanceEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateUpdatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ScheduledMaintenanceEntity) validateCreatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("created_at", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ScheduledMaintenanceEntity) validateEndsAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.EndsAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("ends_at", "body", "date-time", m.EndsAt.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -92,6 +144,37 @@ func (m *ScheduledMaintenanceEntity) validateImpacts(formats strfmt.Registry) er
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ScheduledMaintenanceEntity) validateIncident(formats strfmt.Registry) error {
+	if swag.IsZero(m.Incident) { // not required
+		return nil
+	}
+
+	if m.Incident != nil {
+		if err := m.Incident.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("incident")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("incident")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ScheduledMaintenanceEntity) validateStartsAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.StartsAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("starts_at", "body", "date-time", m.StartsAt.String(), formats); err != nil {
+		return err
 	}
 
 	return nil
@@ -123,11 +206,27 @@ func (m *ScheduledMaintenanceEntity) validateStatusPages(formats strfmt.Registry
 	return nil
 }
 
+func (m *ScheduledMaintenanceEntity) validateUpdatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.UpdatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("updated_at", "body", "date-time", m.UpdatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this scheduled maintenance entity based on the context it is used
 func (m *ScheduledMaintenanceEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateImpacts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIncident(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -156,6 +255,22 @@ func (m *ScheduledMaintenanceEntity) contextValidateImpacts(ctx context.Context,
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ScheduledMaintenanceEntity) contextValidateIncident(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Incident != nil {
+		if err := m.Incident.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("incident")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("incident")
+			}
+			return err
+		}
 	}
 
 	return nil

@@ -45,7 +45,7 @@ DeleteV1NuncSubscriptionsUnsubscribeTokenOK describes a response with status cod
 Unsubscribe from status page updates
 */
 type DeleteV1NuncSubscriptionsUnsubscribeTokenOK struct {
-	Payload *models.NuncSubscription
+	Payload *models.NuncNuncSubscription
 }
 
 // IsSuccess returns true when this delete v1 nunc subscriptions unsubscribe token o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *DeleteV1NuncSubscriptionsUnsubscribeTokenOK) String() string {
 	return fmt.Sprintf("[DELETE /v1/nunc/subscriptions/{unsubscribe_token}][%d] deleteV1NuncSubscriptionsUnsubscribeTokenOK  %+v", 200, o.Payload)
 }
 
-func (o *DeleteV1NuncSubscriptionsUnsubscribeTokenOK) GetPayload() *models.NuncSubscription {
+func (o *DeleteV1NuncSubscriptionsUnsubscribeTokenOK) GetPayload() *models.NuncNuncSubscription {
 	return o.Payload
 }
 
 func (o *DeleteV1NuncSubscriptionsUnsubscribeTokenOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.NuncSubscription)
+	o.Payload = new(models.NuncNuncSubscription)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

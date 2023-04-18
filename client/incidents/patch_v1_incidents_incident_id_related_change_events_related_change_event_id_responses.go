@@ -57,7 +57,7 @@ PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK describes a 
 Update a change attached to an incident
 */
 type PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK struct {
-	Payload *models.RelatedChangeEventEntity
+	Payload *models.IncidentsRelatedChangeEventEntity
 }
 
 // IsSuccess returns true when this patch v1 incidents incident Id related change events related change event Id o k response has a 2xx status code
@@ -93,13 +93,13 @@ func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) St
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/related_change_events/{related_change_event_id}][%d] patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventIdOK  %+v", 200, o.Payload)
 }
 
-func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) GetPayload() *models.RelatedChangeEventEntity {
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) GetPayload() *models.IncidentsRelatedChangeEventEntity {
 	return o.Payload
 }
 
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.RelatedChangeEventEntity)
+	o.Payload = new(models.IncidentsRelatedChangeEventEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

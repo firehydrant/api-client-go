@@ -20,7 +20,7 @@ import (
 type SlimRunbookEntity struct {
 
 	// attachment rule
-	AttachmentRule string `json:"attachment_rule,omitempty"`
+	AttachmentRule *RulesRuleEntity `json:"attachment_rule,omitempty"`
 
 	// created at
 	// Format: date-time
@@ -36,7 +36,7 @@ type SlimRunbookEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// Team that owns the runbook
-	Owner string `json:"owner,omitempty"`
+	Owner *TeamEntity `json:"owner,omitempty"`
 
 	// summary
 	Summary string `json:"summary,omitempty"`
@@ -53,7 +53,15 @@ type SlimRunbookEntity struct {
 func (m *SlimRunbookEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAttachmentRule(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOwner(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -67,6 +75,25 @@ func (m *SlimRunbookEntity) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *SlimRunbookEntity) validateAttachmentRule(formats strfmt.Registry) error {
+	if swag.IsZero(m.AttachmentRule) { // not required
+		return nil
+	}
+
+	if m.AttachmentRule != nil {
+		if err := m.AttachmentRule.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("attachment_rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("attachment_rule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *SlimRunbookEntity) validateCreatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
@@ -74,6 +101,25 @@ func (m *SlimRunbookEntity) validateCreatedAt(formats strfmt.Registry) error {
 
 	if err := validate.FormatOf("created_at", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *SlimRunbookEntity) validateOwner(formats strfmt.Registry) error {
+	if swag.IsZero(m.Owner) { // not required
+		return nil
+	}
+
+	if m.Owner != nil {
+		if err := m.Owner.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -91,8 +137,53 @@ func (m *SlimRunbookEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this slim runbook entity based on context it is used
+// ContextValidate validate this slim runbook entity based on the context it is used
 func (m *SlimRunbookEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAttachmentRule(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOwner(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SlimRunbookEntity) contextValidateAttachmentRule(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.AttachmentRule != nil {
+		if err := m.AttachmentRule.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("attachment_rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("attachment_rule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *SlimRunbookEntity) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Owner != nil {
+		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

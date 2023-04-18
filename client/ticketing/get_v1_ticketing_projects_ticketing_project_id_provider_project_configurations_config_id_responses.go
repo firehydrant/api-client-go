@@ -45,7 +45,7 @@ GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK 
 Retrieve configuration for a ticketing project
 */
 type GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK struct {
-	Payload *models.ProjectConfigEntity
+	Payload *models.TicketingProjectConfigEntity
 }
 
 // IsSuccess returns true when this get v1 ticketing projects ticketing project Id provider project configurations config Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCo
 	return fmt.Sprintf("[GET /v1/ticketing/projects/{ticketing_project_id}/provider_project_configurations/{config_id}][%d] getV1TicketingProjectsTicketingProjectIdProviderProjectConfigurationsConfigIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK) GetPayload() *models.ProjectConfigEntity {
+func (o *GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK) GetPayload() *models.TicketingProjectConfigEntity {
 	return o.Payload
 }
 
 func (o *GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectConfigEntity)
+	o.Payload = new(models.TicketingProjectConfigEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

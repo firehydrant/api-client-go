@@ -64,13 +64,13 @@ PatchV1ChangesEventsChangeEventIDParams contains all the parameters to send to t
 */
 type PatchV1ChangesEventsChangeEventIDParams struct {
 
-	// V1ChangesEvents.
-	V1ChangesEvents *models.PatchV1ChangesEvents
-
 	// ChangeEventID.
 	//
 	// Format: int32
 	ChangeEventID int32
+
+	// PatchV1ChangesEventsChangeEventID.
+	PatchV1ChangesEventsChangeEventID *models.PatchV1ChangesEventsChangeEventID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *PatchV1ChangesEventsChangeEventIDParams) SetHTTPClient(client *http.Cli
 	o.HTTPClient = client
 }
 
-// WithV1ChangesEvents adds the v1ChangesEvents to the patch v1 changes events change event Id params
-func (o *PatchV1ChangesEventsChangeEventIDParams) WithV1ChangesEvents(v1ChangesEvents *models.PatchV1ChangesEvents) *PatchV1ChangesEventsChangeEventIDParams {
-	o.SetV1ChangesEvents(v1ChangesEvents)
-	return o
-}
-
-// SetV1ChangesEvents adds the v1ChangesEvents to the patch v1 changes events change event Id params
-func (o *PatchV1ChangesEventsChangeEventIDParams) SetV1ChangesEvents(v1ChangesEvents *models.PatchV1ChangesEvents) {
-	o.V1ChangesEvents = v1ChangesEvents
-}
-
 // WithChangeEventID adds the changeEventID to the patch v1 changes events change event Id params
 func (o *PatchV1ChangesEventsChangeEventIDParams) WithChangeEventID(changeEventID int32) *PatchV1ChangesEventsChangeEventIDParams {
 	o.SetChangeEventID(changeEventID)
@@ -147,6 +136,17 @@ func (o *PatchV1ChangesEventsChangeEventIDParams) SetChangeEventID(changeEventID
 	o.ChangeEventID = changeEventID
 }
 
+// WithPatchV1ChangesEventsChangeEventID adds the patchV1ChangesEventsChangeEventID to the patch v1 changes events change event Id params
+func (o *PatchV1ChangesEventsChangeEventIDParams) WithPatchV1ChangesEventsChangeEventID(patchV1ChangesEventsChangeEventID *models.PatchV1ChangesEventsChangeEventID) *PatchV1ChangesEventsChangeEventIDParams {
+	o.SetPatchV1ChangesEventsChangeEventID(patchV1ChangesEventsChangeEventID)
+	return o
+}
+
+// SetPatchV1ChangesEventsChangeEventID adds the patchV1ChangesEventsChangeEventId to the patch v1 changes events change event Id params
+func (o *PatchV1ChangesEventsChangeEventIDParams) SetPatchV1ChangesEventsChangeEventID(patchV1ChangesEventsChangeEventID *models.PatchV1ChangesEventsChangeEventID) {
+	o.PatchV1ChangesEventsChangeEventID = patchV1ChangesEventsChangeEventID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1ChangesEventsChangeEventIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -154,15 +154,15 @@ func (o *PatchV1ChangesEventsChangeEventIDParams) WriteToRequest(r runtime.Clien
 		return err
 	}
 	var res []error
-	if o.V1ChangesEvents != nil {
-		if err := r.SetBodyParam(o.V1ChangesEvents); err != nil {
-			return err
-		}
-	}
 
 	// path param change_event_id
 	if err := r.SetPathParam("change_event_id", swag.FormatInt32(o.ChangeEventID)); err != nil {
 		return err
+	}
+	if o.PatchV1ChangesEventsChangeEventID != nil {
+		if err := r.SetBodyParam(o.PatchV1ChangesEventsChangeEventID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

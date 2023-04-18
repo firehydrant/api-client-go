@@ -63,8 +63,8 @@ PatchV1PrioritiesPrioritySlugParams contains all the parameters to send to the A
 */
 type PatchV1PrioritiesPrioritySlugParams struct {
 
-	// V1Priorities.
-	V1Priorities *models.PatchV1Priorities
+	// PatchV1PrioritiesPrioritySlug.
+	PatchV1PrioritiesPrioritySlug *models.PatchV1PrioritiesPrioritySlug
 
 	// PrioritySlug.
 	PrioritySlug string
@@ -122,15 +122,15 @@ func (o *PatchV1PrioritiesPrioritySlugParams) SetHTTPClient(client *http.Client)
 	o.HTTPClient = client
 }
 
-// WithV1Priorities adds the v1Priorities to the patch v1 priorities priority slug params
-func (o *PatchV1PrioritiesPrioritySlugParams) WithV1Priorities(v1Priorities *models.PatchV1Priorities) *PatchV1PrioritiesPrioritySlugParams {
-	o.SetV1Priorities(v1Priorities)
+// WithPatchV1PrioritiesPrioritySlug adds the patchV1PrioritiesPrioritySlug to the patch v1 priorities priority slug params
+func (o *PatchV1PrioritiesPrioritySlugParams) WithPatchV1PrioritiesPrioritySlug(patchV1PrioritiesPrioritySlug *models.PatchV1PrioritiesPrioritySlug) *PatchV1PrioritiesPrioritySlugParams {
+	o.SetPatchV1PrioritiesPrioritySlug(patchV1PrioritiesPrioritySlug)
 	return o
 }
 
-// SetV1Priorities adds the v1Priorities to the patch v1 priorities priority slug params
-func (o *PatchV1PrioritiesPrioritySlugParams) SetV1Priorities(v1Priorities *models.PatchV1Priorities) {
-	o.V1Priorities = v1Priorities
+// SetPatchV1PrioritiesPrioritySlug adds the patchV1PrioritiesPrioritySlug to the patch v1 priorities priority slug params
+func (o *PatchV1PrioritiesPrioritySlugParams) SetPatchV1PrioritiesPrioritySlug(patchV1PrioritiesPrioritySlug *models.PatchV1PrioritiesPrioritySlug) {
+	o.PatchV1PrioritiesPrioritySlug = patchV1PrioritiesPrioritySlug
 }
 
 // WithPrioritySlug adds the prioritySlug to the patch v1 priorities priority slug params
@@ -151,8 +151,8 @@ func (o *PatchV1PrioritiesPrioritySlugParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
-	if o.V1Priorities != nil {
-		if err := r.SetBodyParam(o.V1Priorities); err != nil {
+	if o.PatchV1PrioritiesPrioritySlug != nil {
+		if err := r.SetBodyParam(o.PatchV1PrioritiesPrioritySlug); err != nil {
 			return err
 		}
 	}

@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// EntitlementEntityPaginated Retrieve all entitlements
+// EntitlementEntityPaginated EntitlementEntityPaginated model
 //
 // swagger:model EntitlementEntityPaginated
 type EntitlementEntityPaginated struct {

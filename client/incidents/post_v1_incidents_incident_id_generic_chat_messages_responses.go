@@ -45,7 +45,7 @@ PostV1IncidentsIncidentIDGenericChatMessagesCreated describes a response with st
 Create a new generic chat message on an incident timeline. These are independent of any specific chat provider.
 */
 type PostV1IncidentsIncidentIDGenericChatMessagesCreated struct {
-	Payload *models.GenericChatMessageEntity
+	Payload *models.EventGenericChatMessageEntity
 }
 
 // IsSuccess returns true when this post v1 incidents incident Id generic chat messages created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1IncidentsIncidentIDGenericChatMessagesCreated) String() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/generic_chat_messages][%d] postV1IncidentsIncidentIdGenericChatMessagesCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1IncidentsIncidentIDGenericChatMessagesCreated) GetPayload() *models.GenericChatMessageEntity {
+func (o *PostV1IncidentsIncidentIDGenericChatMessagesCreated) GetPayload() *models.EventGenericChatMessageEntity {
 	return o.Payload
 }
 
 func (o *PostV1IncidentsIncidentIDGenericChatMessagesCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GenericChatMessageEntity)
+	o.Payload = new(models.EventGenericChatMessageEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

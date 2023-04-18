@@ -45,7 +45,7 @@ GetV1PostMortemsReportsReportIDReasonsOK describes a response with status code 2
 List all contributing factors to an incident
 */
 type GetV1PostMortemsReportsReportIDReasonsOK struct {
-	Payload *models.ReasonEntityPaginated
+	Payload *models.PostMortemsReasonEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 post mortems reports report Id reasons o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1PostMortemsReportsReportIDReasonsOK) String() string {
 	return fmt.Sprintf("[GET /v1/post_mortems/reports/{report_id}/reasons][%d] getV1PostMortemsReportsReportIdReasonsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1PostMortemsReportsReportIDReasonsOK) GetPayload() *models.ReasonEntityPaginated {
+func (o *GetV1PostMortemsReportsReportIDReasonsOK) GetPayload() *models.PostMortemsReasonEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1PostMortemsReportsReportIDReasonsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ReasonEntityPaginated)
+	o.Payload = new(models.PostMortemsReasonEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

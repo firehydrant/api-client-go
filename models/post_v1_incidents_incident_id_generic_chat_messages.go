@@ -22,6 +22,10 @@ type PostV1IncidentsIncidentIDGenericChatMessages struct {
 	// body
 	// Required: true
 	Body *string `json:"body"`
+
+	// ISO8601 timestamp for when the chat message occurred
+	// Format: date-time
+	OccurredAt strfmt.DateTime `json:"occurred_at,omitempty"`
 }
 
 // Validate validates this post v1 incidents incident Id generic chat messages
@@ -29,6 +33,10 @@ func (m *PostV1IncidentsIncidentIDGenericChatMessages) Validate(formats strfmt.R
 	var res []error
 
 	if err := m.validateBody(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOccurredAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -41,6 +49,18 @@ func (m *PostV1IncidentsIncidentIDGenericChatMessages) Validate(formats strfmt.R
 func (m *PostV1IncidentsIncidentIDGenericChatMessages) validateBody(formats strfmt.Registry) error {
 
 	if err := validate.Required("body", "body", m.Body); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PostV1IncidentsIncidentIDGenericChatMessages) validateOccurredAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.OccurredAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("occurred_at", "body", "date-time", m.OccurredAt.String(), formats); err != nil {
 		return err
 	}
 

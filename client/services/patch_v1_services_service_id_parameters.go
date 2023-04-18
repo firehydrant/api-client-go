@@ -64,8 +64,8 @@ PatchV1ServicesServiceIDParams contains all the parameters to send to the API en
 */
 type PatchV1ServicesServiceIDParams struct {
 
-	// V1Services.
-	V1Services *models.PatchV1Services
+	// PatchV1ServicesServiceID.
+	PatchV1ServicesServiceID *models.PatchV1ServicesServiceID
 
 	// ServiceID.
 	//
@@ -125,15 +125,15 @@ func (o *PatchV1ServicesServiceIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Services adds the v1Services to the patch v1 services service Id params
-func (o *PatchV1ServicesServiceIDParams) WithV1Services(v1Services *models.PatchV1Services) *PatchV1ServicesServiceIDParams {
-	o.SetV1Services(v1Services)
+// WithPatchV1ServicesServiceID adds the patchV1ServicesServiceID to the patch v1 services service Id params
+func (o *PatchV1ServicesServiceIDParams) WithPatchV1ServicesServiceID(patchV1ServicesServiceID *models.PatchV1ServicesServiceID) *PatchV1ServicesServiceIDParams {
+	o.SetPatchV1ServicesServiceID(patchV1ServicesServiceID)
 	return o
 }
 
-// SetV1Services adds the v1Services to the patch v1 services service Id params
-func (o *PatchV1ServicesServiceIDParams) SetV1Services(v1Services *models.PatchV1Services) {
-	o.V1Services = v1Services
+// SetPatchV1ServicesServiceID adds the patchV1ServicesServiceId to the patch v1 services service Id params
+func (o *PatchV1ServicesServiceIDParams) SetPatchV1ServicesServiceID(patchV1ServicesServiceID *models.PatchV1ServicesServiceID) {
+	o.PatchV1ServicesServiceID = patchV1ServicesServiceID
 }
 
 // WithServiceID adds the serviceID to the patch v1 services service Id params
@@ -154,8 +154,8 @@ func (o *PatchV1ServicesServiceIDParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if o.V1Services != nil {
-		if err := r.SetBodyParam(o.V1Services); err != nil {
+	if o.PatchV1ServicesServiceID != nil {
+		if err := r.SetBodyParam(o.PatchV1ServicesServiceID); err != nil {
 			return err
 		}
 	}

@@ -63,11 +63,11 @@ PostV1ChangesChangeIDIdentitiesParams contains all the parameters to send to the
 */
 type PostV1ChangesChangeIDIdentitiesParams struct {
 
-	// V1ChangesChangeIDIdentities.
-	V1ChangesChangeIDIdentities *models.PostV1ChangesChangeIDIdentities
-
 	// ChangeID.
 	ChangeID string
+
+	// PostV1ChangesChangeIDIdentities.
+	PostV1ChangesChangeIDIdentities *models.PostV1ChangesChangeIDIdentities
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PostV1ChangesChangeIDIdentitiesParams) SetHTTPClient(client *http.Clien
 	o.HTTPClient = client
 }
 
-// WithV1ChangesChangeIDIdentities adds the v1ChangesChangeIDIdentities to the post v1 changes change Id identities params
-func (o *PostV1ChangesChangeIDIdentitiesParams) WithV1ChangesChangeIDIdentities(v1ChangesChangeIDIdentities *models.PostV1ChangesChangeIDIdentities) *PostV1ChangesChangeIDIdentitiesParams {
-	o.SetV1ChangesChangeIDIdentities(v1ChangesChangeIDIdentities)
-	return o
-}
-
-// SetV1ChangesChangeIDIdentities adds the v1ChangesChangeIdIdentities to the post v1 changes change Id identities params
-func (o *PostV1ChangesChangeIDIdentitiesParams) SetV1ChangesChangeIDIdentities(v1ChangesChangeIDIdentities *models.PostV1ChangesChangeIDIdentities) {
-	o.V1ChangesChangeIDIdentities = v1ChangesChangeIDIdentities
-}
-
 // WithChangeID adds the changeID to the post v1 changes change Id identities params
 func (o *PostV1ChangesChangeIDIdentitiesParams) WithChangeID(changeID string) *PostV1ChangesChangeIDIdentitiesParams {
 	o.SetChangeID(changeID)
@@ -144,6 +133,17 @@ func (o *PostV1ChangesChangeIDIdentitiesParams) SetChangeID(changeID string) {
 	o.ChangeID = changeID
 }
 
+// WithPostV1ChangesChangeIDIdentities adds the postV1ChangesChangeIDIdentities to the post v1 changes change Id identities params
+func (o *PostV1ChangesChangeIDIdentitiesParams) WithPostV1ChangesChangeIDIdentities(postV1ChangesChangeIDIdentities *models.PostV1ChangesChangeIDIdentities) *PostV1ChangesChangeIDIdentitiesParams {
+	o.SetPostV1ChangesChangeIDIdentities(postV1ChangesChangeIDIdentities)
+	return o
+}
+
+// SetPostV1ChangesChangeIDIdentities adds the postV1ChangesChangeIdIdentities to the post v1 changes change Id identities params
+func (o *PostV1ChangesChangeIDIdentitiesParams) SetPostV1ChangesChangeIDIdentities(postV1ChangesChangeIDIdentities *models.PostV1ChangesChangeIDIdentities) {
+	o.PostV1ChangesChangeIDIdentities = postV1ChangesChangeIDIdentities
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PostV1ChangesChangeIDIdentitiesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PostV1ChangesChangeIDIdentitiesParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
-	if o.V1ChangesChangeIDIdentities != nil {
-		if err := r.SetBodyParam(o.V1ChangesChangeIDIdentities); err != nil {
-			return err
-		}
-	}
 
 	// path param change_id
 	if err := r.SetPathParam("change_id", o.ChangeID); err != nil {
 		return err
+	}
+	if o.PostV1ChangesChangeIDIdentities != nil {
+		if err := r.SetBodyParam(o.PostV1ChangesChangeIDIdentities); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

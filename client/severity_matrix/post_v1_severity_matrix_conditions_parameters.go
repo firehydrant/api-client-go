@@ -63,8 +63,8 @@ PostV1SeverityMatrixConditionsParams contains all the parameters to send to the 
 */
 type PostV1SeverityMatrixConditionsParams struct {
 
-	// V1SeverityMatrixConditions.
-	V1SeverityMatrixConditions *models.PostV1SeverityMatrixConditions
+	// PostV1SeverityMatrixConditions.
+	PostV1SeverityMatrixConditions *models.PostV1SeverityMatrixConditions
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1SeverityMatrixConditionsParams) SetHTTPClient(client *http.Client
 	o.HTTPClient = client
 }
 
-// WithV1SeverityMatrixConditions adds the v1SeverityMatrixConditions to the post v1 severity matrix conditions params
-func (o *PostV1SeverityMatrixConditionsParams) WithV1SeverityMatrixConditions(v1SeverityMatrixConditions *models.PostV1SeverityMatrixConditions) *PostV1SeverityMatrixConditionsParams {
-	o.SetV1SeverityMatrixConditions(v1SeverityMatrixConditions)
+// WithPostV1SeverityMatrixConditions adds the postV1SeverityMatrixConditions to the post v1 severity matrix conditions params
+func (o *PostV1SeverityMatrixConditionsParams) WithPostV1SeverityMatrixConditions(postV1SeverityMatrixConditions *models.PostV1SeverityMatrixConditions) *PostV1SeverityMatrixConditionsParams {
+	o.SetPostV1SeverityMatrixConditions(postV1SeverityMatrixConditions)
 	return o
 }
 
-// SetV1SeverityMatrixConditions adds the v1SeverityMatrixConditions to the post v1 severity matrix conditions params
-func (o *PostV1SeverityMatrixConditionsParams) SetV1SeverityMatrixConditions(v1SeverityMatrixConditions *models.PostV1SeverityMatrixConditions) {
-	o.V1SeverityMatrixConditions = v1SeverityMatrixConditions
+// SetPostV1SeverityMatrixConditions adds the postV1SeverityMatrixConditions to the post v1 severity matrix conditions params
+func (o *PostV1SeverityMatrixConditionsParams) SetPostV1SeverityMatrixConditions(postV1SeverityMatrixConditions *models.PostV1SeverityMatrixConditions) {
+	o.PostV1SeverityMatrixConditions = postV1SeverityMatrixConditions
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1SeverityMatrixConditionsParams) WriteToRequest(r runtime.ClientRe
 		return err
 	}
 	var res []error
-	if o.V1SeverityMatrixConditions != nil {
-		if err := r.SetBodyParam(o.V1SeverityMatrixConditions); err != nil {
+	if o.PostV1SeverityMatrixConditions != nil {
+		if err := r.SetBodyParam(o.PostV1SeverityMatrixConditions); err != nil {
 			return err
 		}
 	}

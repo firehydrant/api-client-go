@@ -63,8 +63,8 @@ PostV1RunbooksParams contains all the parameters to send to the API endpoint
 */
 type PostV1RunbooksParams struct {
 
-	// V1Runbooks.
-	V1Runbooks *models.PostV1Runbooks
+	// PostV1Runbooks.
+	PostV1Runbooks *models.PostV1Runbooks
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1RunbooksParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Runbooks adds the v1Runbooks to the post v1 runbooks params
-func (o *PostV1RunbooksParams) WithV1Runbooks(v1Runbooks *models.PostV1Runbooks) *PostV1RunbooksParams {
-	o.SetV1Runbooks(v1Runbooks)
+// WithPostV1Runbooks adds the postV1Runbooks to the post v1 runbooks params
+func (o *PostV1RunbooksParams) WithPostV1Runbooks(postV1Runbooks *models.PostV1Runbooks) *PostV1RunbooksParams {
+	o.SetPostV1Runbooks(postV1Runbooks)
 	return o
 }
 
-// SetV1Runbooks adds the v1Runbooks to the post v1 runbooks params
-func (o *PostV1RunbooksParams) SetV1Runbooks(v1Runbooks *models.PostV1Runbooks) {
-	o.V1Runbooks = v1Runbooks
+// SetPostV1Runbooks adds the postV1Runbooks to the post v1 runbooks params
+func (o *PostV1RunbooksParams) SetPostV1Runbooks(postV1Runbooks *models.PostV1Runbooks) {
+	o.PostV1Runbooks = postV1Runbooks
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1RunbooksParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if o.V1Runbooks != nil {
-		if err := r.SetBodyParam(o.V1Runbooks); err != nil {
+	if o.PostV1Runbooks != nil {
+		if err := r.SetBodyParam(o.PostV1Runbooks); err != nil {
 			return err
 		}
 	}

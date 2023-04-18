@@ -45,7 +45,7 @@ PatchV1SeverityMatrixConditionsConditionIDOK describes a response with status co
 Update a specific condition
 */
 type PatchV1SeverityMatrixConditionsConditionIDOK struct {
-	Payload *models.ConditionEntity
+	Payload *models.SeverityMatrixConditionEntity
 }
 
 // IsSuccess returns true when this patch v1 severity matrix conditions condition Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PatchV1SeverityMatrixConditionsConditionIDOK) String() string {
 	return fmt.Sprintf("[PATCH /v1/severity_matrix/conditions/{condition_id}][%d] patchV1SeverityMatrixConditionsConditionIdOK  %+v", 200, o.Payload)
 }
 
-func (o *PatchV1SeverityMatrixConditionsConditionIDOK) GetPayload() *models.ConditionEntity {
+func (o *PatchV1SeverityMatrixConditionsConditionIDOK) GetPayload() *models.SeverityMatrixConditionEntity {
 	return o.Payload
 }
 
 func (o *PatchV1SeverityMatrixConditionsConditionIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ConditionEntity)
+	o.Payload = new(models.SeverityMatrixConditionEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

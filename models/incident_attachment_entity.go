@@ -7,18 +7,24 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// IncidentAttachmentEntity Allows adding image attachments to an incident
+// IncidentAttachmentEntity IncidentAttachmentEntity model
 //
 // swagger:model IncidentAttachmentEntity
 type IncidentAttachmentEntity struct {
 
 	// description
 	Description string `json:"description,omitempty"`
+
+	// external id
+	ExternalID string `json:"external_id,omitempty"`
 
 	// file content type
 	FileContentType string `json:"file_content_type,omitempty"`
@@ -27,7 +33,7 @@ type IncidentAttachmentEntity struct {
 	FileName string `json:"file_name,omitempty"`
 
 	// file size
-	FileSize string `json:"file_size,omitempty"`
+	FileSize int32 `json:"file_size,omitempty"`
 
 	// media type
 	MediaType string `json:"media_type,omitempty"`
@@ -36,14 +42,66 @@ type IncidentAttachmentEntity struct {
 	SignedURL string `json:"signed_url,omitempty"`
 
 	// status
+	// Enum: [pending_upload uploaded]
 	Status string `json:"status,omitempty"`
 
-	// versions
-	Versions string `json:"versions,omitempty"`
+	// An object with keys that designate a specific version or size of the attachment
+	Versions interface{} `json:"versions,omitempty"`
 }
 
 // Validate validates this incident attachment entity
 func (m *IncidentAttachmentEntity) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var incidentAttachmentEntityTypeStatusPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["pending_upload","uploaded"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		incidentAttachmentEntityTypeStatusPropEnum = append(incidentAttachmentEntityTypeStatusPropEnum, v)
+	}
+}
+
+const (
+
+	// IncidentAttachmentEntityStatusPendingUpload captures enum value "pending_upload"
+	IncidentAttachmentEntityStatusPendingUpload string = "pending_upload"
+
+	// IncidentAttachmentEntityStatusUploaded captures enum value "uploaded"
+	IncidentAttachmentEntityStatusUploaded string = "uploaded"
+)
+
+// prop value enum
+func (m *IncidentAttachmentEntity) validateStatusEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, incidentAttachmentEntityTypeStatusPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *IncidentAttachmentEntity) validateStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.Status) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
+		return err
+	}
+
 	return nil
 }
 

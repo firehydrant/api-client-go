@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPatchV1IncidentsIncidentIDEventsEventIDParams creates a new PatchV1IncidentsIncidentIDEventsEventIDParams object,
@@ -63,9 +62,7 @@ PatchV1IncidentsIncidentIDEventsEventIDParams contains all the parameters to sen
 type PatchV1IncidentsIncidentIDEventsEventIDParams struct {
 
 	// EventID.
-	//
-	// Format: int32
-	EventID int32
+	EventID string
 
 	// IncidentID.
 	IncidentID string
@@ -124,13 +121,13 @@ func (o *PatchV1IncidentsIncidentIDEventsEventIDParams) SetHTTPClient(client *ht
 }
 
 // WithEventID adds the eventID to the patch v1 incidents incident Id events event Id params
-func (o *PatchV1IncidentsIncidentIDEventsEventIDParams) WithEventID(eventID int32) *PatchV1IncidentsIncidentIDEventsEventIDParams {
+func (o *PatchV1IncidentsIncidentIDEventsEventIDParams) WithEventID(eventID string) *PatchV1IncidentsIncidentIDEventsEventIDParams {
 	o.SetEventID(eventID)
 	return o
 }
 
 // SetEventID adds the eventId to the patch v1 incidents incident Id events event Id params
-func (o *PatchV1IncidentsIncidentIDEventsEventIDParams) SetEventID(eventID int32) {
+func (o *PatchV1IncidentsIncidentIDEventsEventIDParams) SetEventID(eventID string) {
 	o.EventID = eventID
 }
 
@@ -154,7 +151,7 @@ func (o *PatchV1IncidentsIncidentIDEventsEventIDParams) WriteToRequest(r runtime
 	var res []error
 
 	// path param event_id
-	if err := r.SetPathParam("event_id", swag.FormatInt32(o.EventID)); err != nil {
+	if err := r.SetPathParam("event_id", o.EventID); err != nil {
 		return err
 	}
 

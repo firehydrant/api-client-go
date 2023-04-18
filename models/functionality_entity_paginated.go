@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// FunctionalityEntityPaginated List all of the functionalities that have been added to the organiation
+// FunctionalityEntityPaginated FunctionalityEntityPaginated model
 //
 // swagger:model FunctionalityEntityPaginated
 type FunctionalityEntityPaginated struct {

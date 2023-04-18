@@ -63,8 +63,8 @@ PostV1ScimV2GroupsParams contains all the parameters to send to the API endpoint
 */
 type PostV1ScimV2GroupsParams struct {
 
-	// V1ScimV2Groups.
-	V1ScimV2Groups *models.PostV1ScimV2Groups
+	// PostV1ScimV2Groups.
+	PostV1ScimV2Groups *models.PostV1ScimV2Groups
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1ScimV2GroupsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1ScimV2Groups adds the v1ScimV2Groups to the post v1 scim v2 groups params
-func (o *PostV1ScimV2GroupsParams) WithV1ScimV2Groups(v1ScimV2Groups *models.PostV1ScimV2Groups) *PostV1ScimV2GroupsParams {
-	o.SetV1ScimV2Groups(v1ScimV2Groups)
+// WithPostV1ScimV2Groups adds the postV1ScimV2Groups to the post v1 scim v2 groups params
+func (o *PostV1ScimV2GroupsParams) WithPostV1ScimV2Groups(postV1ScimV2Groups *models.PostV1ScimV2Groups) *PostV1ScimV2GroupsParams {
+	o.SetPostV1ScimV2Groups(postV1ScimV2Groups)
 	return o
 }
 
-// SetV1ScimV2Groups adds the v1ScimV2Groups to the post v1 scim v2 groups params
-func (o *PostV1ScimV2GroupsParams) SetV1ScimV2Groups(v1ScimV2Groups *models.PostV1ScimV2Groups) {
-	o.V1ScimV2Groups = v1ScimV2Groups
+// SetPostV1ScimV2Groups adds the postV1ScimV2Groups to the post v1 scim v2 groups params
+func (o *PostV1ScimV2GroupsParams) SetPostV1ScimV2Groups(postV1ScimV2Groups *models.PostV1ScimV2Groups) {
+	o.PostV1ScimV2Groups = postV1ScimV2Groups
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1ScimV2GroupsParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-	if o.V1ScimV2Groups != nil {
-		if err := r.SetBodyParam(o.V1ScimV2Groups); err != nil {
+	if o.PostV1ScimV2Groups != nil {
+		if err := r.SetBodyParam(o.PostV1ScimV2Groups); err != nil {
 			return err
 		}
 	}

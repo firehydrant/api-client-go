@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// SeverityEntityPaginated Lists severities
+// SeverityEntityPaginated SeverityEntityPaginated model
 //
 // swagger:model SeverityEntityPaginated
 type SeverityEntityPaginated struct {

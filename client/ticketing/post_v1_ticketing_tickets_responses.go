@@ -45,7 +45,7 @@ PostV1TicketingTicketsCreated describes a response with status code 201, with de
 Creates a ticket for a project
 */
 type PostV1TicketingTicketsCreated struct {
-	Payload *models.TicketEntity
+	Payload *models.TicketingTicketEntity
 }
 
 // IsSuccess returns true when this post v1 ticketing tickets created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1TicketingTicketsCreated) String() string {
 	return fmt.Sprintf("[POST /v1/ticketing/tickets][%d] postV1TicketingTicketsCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1TicketingTicketsCreated) GetPayload() *models.TicketEntity {
+func (o *PostV1TicketingTicketsCreated) GetPayload() *models.TicketingTicketEntity {
 	return o.Payload
 }
 
 func (o *PostV1TicketingTicketsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.TicketEntity)
+	o.Payload = new(models.TicketingTicketEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

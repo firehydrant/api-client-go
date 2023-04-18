@@ -45,7 +45,7 @@ GetV1SeverityMatrixConditionsOK describes a response with status code 200, with 
 Lists conditions
 */
 type GetV1SeverityMatrixConditionsOK struct {
-	Payload *models.ConditionEntity
+	Payload *models.SeverityMatrixConditionEntity
 }
 
 // IsSuccess returns true when this get v1 severity matrix conditions o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1SeverityMatrixConditionsOK) String() string {
 	return fmt.Sprintf("[GET /v1/severity_matrix/conditions][%d] getV1SeverityMatrixConditionsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1SeverityMatrixConditionsOK) GetPayload() *models.ConditionEntity {
+func (o *GetV1SeverityMatrixConditionsOK) GetPayload() *models.SeverityMatrixConditionEntity {
 	return o.Payload
 }
 
 func (o *GetV1SeverityMatrixConditionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ConditionEntity)
+	o.Payload = new(models.SeverityMatrixConditionEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

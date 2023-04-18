@@ -45,7 +45,7 @@ GetV1SeverityMatrixOK describes a response with status code 200, with default he
 Retrieve the Severity matrix for your organization and its components and configured severities.
 */
 type GetV1SeverityMatrixOK struct {
-	Payload *models.SeverityMatrixEntity
+	Payload *models.SeverityMatrixSeverityMatrixEntity
 }
 
 // IsSuccess returns true when this get v1 severity matrix o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1SeverityMatrixOK) String() string {
 	return fmt.Sprintf("[GET /v1/severity_matrix][%d] getV1SeverityMatrixOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1SeverityMatrixOK) GetPayload() *models.SeverityMatrixEntity {
+func (o *GetV1SeverityMatrixOK) GetPayload() *models.SeverityMatrixSeverityMatrixEntity {
 	return o.Payload
 }
 
 func (o *GetV1SeverityMatrixOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.SeverityMatrixEntity)
+	o.Payload = new(models.SeverityMatrixSeverityMatrixEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

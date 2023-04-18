@@ -12,13 +12,13 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ScheduleEntity List all known schedules in FireHydrant as pulled from external sources
+// ScheduleEntity ScheduleEntity model
 //
 // swagger:model ScheduleEntity
 type ScheduleEntity struct {
 
 	// discarded
-	Discarded string `json:"discarded,omitempty"`
+	Discarded bool `json:"discarded,omitempty"`
 
 	// id
 	ID string `json:"id,omitempty"`

@@ -45,7 +45,7 @@ GetV1PostMortemsQuestionsOK describes a response with status code 200, with defa
 List the questions configured to be provided and filled out on each retrospective report.
 */
 type GetV1PostMortemsQuestionsOK struct {
-	Payload *models.QuestionTypeEntityPaginated
+	Payload *models.PostMortemsQuestionTypeEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 post mortems questions o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1PostMortemsQuestionsOK) String() string {
 	return fmt.Sprintf("[GET /v1/post_mortems/questions][%d] getV1PostMortemsQuestionsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1PostMortemsQuestionsOK) GetPayload() *models.QuestionTypeEntityPaginated {
+func (o *GetV1PostMortemsQuestionsOK) GetPayload() *models.PostMortemsQuestionTypeEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1PostMortemsQuestionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.QuestionTypeEntityPaginated)
+	o.Payload = new(models.PostMortemsQuestionTypeEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

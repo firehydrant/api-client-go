@@ -63,11 +63,11 @@ PostV1IncidentsIncidentIDGenericChatMessagesParams contains all the parameters t
 */
 type PostV1IncidentsIncidentIDGenericChatMessagesParams struct {
 
-	// V1IncidentsIncidentIDGenericChatMessages.
-	V1IncidentsIncidentIDGenericChatMessages *models.PostV1IncidentsIncidentIDGenericChatMessages
-
 	// IncidentID.
 	IncidentID string
+
+	// PostV1IncidentsIncidentIDGenericChatMessages.
+	PostV1IncidentsIncidentIDGenericChatMessages *models.PostV1IncidentsIncidentIDGenericChatMessages
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PostV1IncidentsIncidentIDGenericChatMessagesParams) SetHTTPClient(clien
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDGenericChatMessages adds the v1IncidentsIncidentIDGenericChatMessages to the post v1 incidents incident Id generic chat messages params
-func (o *PostV1IncidentsIncidentIDGenericChatMessagesParams) WithV1IncidentsIncidentIDGenericChatMessages(v1IncidentsIncidentIDGenericChatMessages *models.PostV1IncidentsIncidentIDGenericChatMessages) *PostV1IncidentsIncidentIDGenericChatMessagesParams {
-	o.SetV1IncidentsIncidentIDGenericChatMessages(v1IncidentsIncidentIDGenericChatMessages)
-	return o
-}
-
-// SetV1IncidentsIncidentIDGenericChatMessages adds the v1IncidentsIncidentIdGenericChatMessages to the post v1 incidents incident Id generic chat messages params
-func (o *PostV1IncidentsIncidentIDGenericChatMessagesParams) SetV1IncidentsIncidentIDGenericChatMessages(v1IncidentsIncidentIDGenericChatMessages *models.PostV1IncidentsIncidentIDGenericChatMessages) {
-	o.V1IncidentsIncidentIDGenericChatMessages = v1IncidentsIncidentIDGenericChatMessages
-}
-
 // WithIncidentID adds the incidentID to the post v1 incidents incident Id generic chat messages params
 func (o *PostV1IncidentsIncidentIDGenericChatMessagesParams) WithIncidentID(incidentID string) *PostV1IncidentsIncidentIDGenericChatMessagesParams {
 	o.SetIncidentID(incidentID)
@@ -144,6 +133,17 @@ func (o *PostV1IncidentsIncidentIDGenericChatMessagesParams) SetIncidentID(incid
 	o.IncidentID = incidentID
 }
 
+// WithPostV1IncidentsIncidentIDGenericChatMessages adds the postV1IncidentsIncidentIDGenericChatMessages to the post v1 incidents incident Id generic chat messages params
+func (o *PostV1IncidentsIncidentIDGenericChatMessagesParams) WithPostV1IncidentsIncidentIDGenericChatMessages(postV1IncidentsIncidentIDGenericChatMessages *models.PostV1IncidentsIncidentIDGenericChatMessages) *PostV1IncidentsIncidentIDGenericChatMessagesParams {
+	o.SetPostV1IncidentsIncidentIDGenericChatMessages(postV1IncidentsIncidentIDGenericChatMessages)
+	return o
+}
+
+// SetPostV1IncidentsIncidentIDGenericChatMessages adds the postV1IncidentsIncidentIdGenericChatMessages to the post v1 incidents incident Id generic chat messages params
+func (o *PostV1IncidentsIncidentIDGenericChatMessagesParams) SetPostV1IncidentsIncidentIDGenericChatMessages(postV1IncidentsIncidentIDGenericChatMessages *models.PostV1IncidentsIncidentIDGenericChatMessages) {
+	o.PostV1IncidentsIncidentIDGenericChatMessages = postV1IncidentsIncidentIDGenericChatMessages
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PostV1IncidentsIncidentIDGenericChatMessagesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PostV1IncidentsIncidentIDGenericChatMessagesParams) WriteToRequest(r ru
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDGenericChatMessages != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDGenericChatMessages); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PostV1IncidentsIncidentIDGenericChatMessages != nil {
+		if err := r.SetBodyParam(o.PostV1IncidentsIncidentIDGenericChatMessages); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

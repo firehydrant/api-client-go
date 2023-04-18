@@ -63,8 +63,8 @@ PostV1ChangesParams contains all the parameters to send to the API endpoint
 */
 type PostV1ChangesParams struct {
 
-	// V1Changes.
-	V1Changes *models.PostV1Changes
+	// PostV1Changes.
+	PostV1Changes *models.PostV1Changes
 
 	timeout    time.Duration
 	Context    context.Context
@@ -119,15 +119,15 @@ func (o *PostV1ChangesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Changes adds the v1Changes to the post v1 changes params
-func (o *PostV1ChangesParams) WithV1Changes(v1Changes *models.PostV1Changes) *PostV1ChangesParams {
-	o.SetV1Changes(v1Changes)
+// WithPostV1Changes adds the postV1Changes to the post v1 changes params
+func (o *PostV1ChangesParams) WithPostV1Changes(postV1Changes *models.PostV1Changes) *PostV1ChangesParams {
+	o.SetPostV1Changes(postV1Changes)
 	return o
 }
 
-// SetV1Changes adds the v1Changes to the post v1 changes params
-func (o *PostV1ChangesParams) SetV1Changes(v1Changes *models.PostV1Changes) {
-	o.V1Changes = v1Changes
+// SetPostV1Changes adds the postV1Changes to the post v1 changes params
+func (o *PostV1ChangesParams) SetPostV1Changes(postV1Changes *models.PostV1Changes) {
+	o.PostV1Changes = postV1Changes
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -137,8 +137,8 @@ func (o *PostV1ChangesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return err
 	}
 	var res []error
-	if o.V1Changes != nil {
-		if err := r.SetBodyParam(o.V1Changes); err != nil {
+	if o.PostV1Changes != nil {
+		if err := r.SetBodyParam(o.PostV1Changes); err != nil {
 			return err
 		}
 	}

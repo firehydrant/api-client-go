@@ -22,16 +22,6 @@ type PostV1PostMortemsReports struct {
 	// incident id
 	// Required: true
 	IncidentID *string `json:"incident_id"`
-
-	// name
-	// Required: true
-	Name *string `json:"name"`
-
-	// summary
-	Summary string `json:"summary,omitempty"`
-
-	// tag list
-	TagList []string `json:"tag_list"`
 }
 
 // Validate validates this post v1 post mortems reports
@@ -39,10 +29,6 @@ func (m *PostV1PostMortemsReports) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateIncidentID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -55,15 +41,6 @@ func (m *PostV1PostMortemsReports) Validate(formats strfmt.Registry) error {
 func (m *PostV1PostMortemsReports) validateIncidentID(formats strfmt.Registry) error {
 
 	if err := validate.Required("incident_id", "body", m.IncidentID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *PostV1PostMortemsReports) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
 	}
 

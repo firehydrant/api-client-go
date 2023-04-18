@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ChecklistTemplateEntityPaginated List all of the checklist templates that have been added to the organization
+// ChecklistTemplateEntityPaginated ChecklistTemplateEntityPaginated model
 //
 // swagger:model ChecklistTemplateEntityPaginated
 type ChecklistTemplateEntityPaginated struct {

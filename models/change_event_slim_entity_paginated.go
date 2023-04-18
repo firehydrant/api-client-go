@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ChangeEventSlimEntityPaginated List change events for the organization. Note: Not all information is included on a change event like attachments and related changes. You must fetch a change event separately to retrieve all of the information about it
+// ChangeEventSlimEntityPaginated ChangeEventSlimEntityPaginated model
 //
 // swagger:model ChangeEventSlimEntityPaginated
 type ChangeEventSlimEntityPaginated struct {

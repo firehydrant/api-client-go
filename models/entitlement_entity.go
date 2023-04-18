@@ -7,9 +7,12 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // EntitlementEntity entitlement entity
@@ -18,19 +21,19 @@ import (
 type EntitlementEntity struct {
 
 	// available
-	Available string `json:"available,omitempty"`
+	Available bool `json:"available,omitempty"`
 
 	// current count
-	CurrentCount string `json:"current_count,omitempty"`
+	CurrentCount int32 `json:"current_count,omitempty"`
 
 	// errors
-	Errors string `json:"errors,omitempty"`
+	Errors []string `json:"errors"`
 
 	// exists
-	Exists string `json:"exists,omitempty"`
+	Exists bool `json:"exists,omitempty"`
 
 	// maximum
-	Maximum string `json:"maximum,omitempty"`
+	Maximum int32 `json:"maximum,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
@@ -39,11 +42,66 @@ type EntitlementEntity struct {
 	Slug string `json:"slug,omitempty"`
 
 	// tier
+	// Enum: [free essentials enterprise]
 	Tier string `json:"tier,omitempty"`
 }
 
 // Validate validates this entitlement entity
 func (m *EntitlementEntity) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateTier(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var entitlementEntityTypeTierPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["free","essentials","enterprise"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		entitlementEntityTypeTierPropEnum = append(entitlementEntityTypeTierPropEnum, v)
+	}
+}
+
+const (
+
+	// EntitlementEntityTierFree captures enum value "free"
+	EntitlementEntityTierFree string = "free"
+
+	// EntitlementEntityTierEssentials captures enum value "essentials"
+	EntitlementEntityTierEssentials string = "essentials"
+
+	// EntitlementEntityTierEnterprise captures enum value "enterprise"
+	EntitlementEntityTierEnterprise string = "enterprise"
+)
+
+// prop value enum
+func (m *EntitlementEntity) validateTierEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, entitlementEntityTypeTierPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *EntitlementEntity) validateTier(formats strfmt.Registry) error {
+	if swag.IsZero(m.Tier) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateTierEnum("tier", "body", m.Tier); err != nil {
+		return err
+	}
+
 	return nil
 }
 

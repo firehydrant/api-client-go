@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NuncConnectionEntityPaginated Lists the information displayed as part of your FireHydrant hosted status pages.
+// NuncConnectionEntityPaginated NuncConnectionEntityPaginated model
 //
 // swagger:model NuncConnectionEntityPaginated
 type NuncConnectionEntityPaginated struct {

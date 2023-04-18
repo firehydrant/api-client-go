@@ -45,7 +45,7 @@ GetV1IntegrationsDataExportExportRequestsOK describes a response with status cod
 Lists export requests for data exporting
 */
 type GetV1IntegrationsDataExportExportRequestsOK struct {
-	Payload *models.ExportRequestEntityPaginated
+	Payload *models.IntegrationsDataExportExportRequestEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 integrations data export export requests o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1IntegrationsDataExportExportRequestsOK) String() string {
 	return fmt.Sprintf("[GET /v1/integrations/data_export/export_requests][%d] getV1IntegrationsDataExportExportRequestsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1IntegrationsDataExportExportRequestsOK) GetPayload() *models.ExportRequestEntityPaginated {
+func (o *GetV1IntegrationsDataExportExportRequestsOK) GetPayload() *models.IntegrationsDataExportExportRequestEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1IntegrationsDataExportExportRequestsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ExportRequestEntityPaginated)
+	o.Payload = new(models.IntegrationsDataExportExportRequestEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

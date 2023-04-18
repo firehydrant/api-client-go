@@ -432,8 +432,8 @@ func (o *GetV1ServicesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		// binding items for include
 		joinedInclude := o.bindParamInclude(reg)
 
-		// form array param include
-		if err := r.SetFormParam("include", joinedInclude...); err != nil {
+		// query array param include
+		if err := r.SetQueryParam("include", joinedInclude...); err != nil {
 			return err
 		}
 	}

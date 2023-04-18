@@ -45,7 +45,7 @@ GetV1IntegrationsAwsCloudtrailBatchesOK describes a response with status code 20
 Lists CloudTrail batches for the authenticated organization.
 */
 type GetV1IntegrationsAwsCloudtrailBatchesOK struct {
-	Payload *models.CloudtrailBatchEntityPaginated
+	Payload *models.IntegrationsAwsCloudtrailBatchEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 integrations aws cloudtrail batches o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1IntegrationsAwsCloudtrailBatchesOK) String() string {
 	return fmt.Sprintf("[GET /v1/integrations/aws/cloudtrail_batches][%d] getV1IntegrationsAwsCloudtrailBatchesOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1IntegrationsAwsCloudtrailBatchesOK) GetPayload() *models.CloudtrailBatchEntityPaginated {
+func (o *GetV1IntegrationsAwsCloudtrailBatchesOK) GetPayload() *models.IntegrationsAwsCloudtrailBatchEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1IntegrationsAwsCloudtrailBatchesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.CloudtrailBatchEntityPaginated)
+	o.Payload = new(models.IntegrationsAwsCloudtrailBatchEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

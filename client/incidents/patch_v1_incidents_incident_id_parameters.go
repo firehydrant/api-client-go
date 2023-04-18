@@ -63,11 +63,11 @@ PatchV1IncidentsIncidentIDParams contains all the parameters to send to the API 
 */
 type PatchV1IncidentsIncidentIDParams struct {
 
-	// V1Incidents.
-	V1Incidents *models.PatchV1Incidents
-
 	// IncidentID.
 	IncidentID string
+
+	// PatchV1IncidentsIncidentID.
+	PatchV1IncidentsIncidentID *models.PatchV1IncidentsIncidentID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PatchV1IncidentsIncidentIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Incidents adds the v1Incidents to the patch v1 incidents incident Id params
-func (o *PatchV1IncidentsIncidentIDParams) WithV1Incidents(v1Incidents *models.PatchV1Incidents) *PatchV1IncidentsIncidentIDParams {
-	o.SetV1Incidents(v1Incidents)
-	return o
-}
-
-// SetV1Incidents adds the v1Incidents to the patch v1 incidents incident Id params
-func (o *PatchV1IncidentsIncidentIDParams) SetV1Incidents(v1Incidents *models.PatchV1Incidents) {
-	o.V1Incidents = v1Incidents
-}
-
 // WithIncidentID adds the incidentID to the patch v1 incidents incident Id params
 func (o *PatchV1IncidentsIncidentIDParams) WithIncidentID(incidentID string) *PatchV1IncidentsIncidentIDParams {
 	o.SetIncidentID(incidentID)
@@ -144,6 +133,17 @@ func (o *PatchV1IncidentsIncidentIDParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
+// WithPatchV1IncidentsIncidentID adds the patchV1IncidentsIncidentID to the patch v1 incidents incident Id params
+func (o *PatchV1IncidentsIncidentIDParams) WithPatchV1IncidentsIncidentID(patchV1IncidentsIncidentID *models.PatchV1IncidentsIncidentID) *PatchV1IncidentsIncidentIDParams {
+	o.SetPatchV1IncidentsIncidentID(patchV1IncidentsIncidentID)
+	return o
+}
+
+// SetPatchV1IncidentsIncidentID adds the patchV1IncidentsIncidentId to the patch v1 incidents incident Id params
+func (o *PatchV1IncidentsIncidentIDParams) SetPatchV1IncidentsIncidentID(patchV1IncidentsIncidentID *models.PatchV1IncidentsIncidentID) {
+	o.PatchV1IncidentsIncidentID = patchV1IncidentsIncidentID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1IncidentsIncidentIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PatchV1IncidentsIncidentIDParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-	if o.V1Incidents != nil {
-		if err := r.SetBodyParam(o.V1Incidents); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PatchV1IncidentsIncidentID != nil {
+		if err := r.SetBodyParam(o.PatchV1IncidentsIncidentID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

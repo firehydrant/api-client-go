@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1IntegrationsZendeskSearchParams creates a new GetV1IntegrationsZendeskSearchParams object,
@@ -66,7 +65,7 @@ type GetV1IntegrationsZendeskSearchParams struct {
 
 	   Use to include attached_incidents
 	*/
-	Include []string
+	Include *string
 
 	/* TicketID.
 
@@ -128,13 +127,13 @@ func (o *GetV1IntegrationsZendeskSearchParams) SetHTTPClient(client *http.Client
 }
 
 // WithInclude adds the include to the get v1 integrations zendesk search params
-func (o *GetV1IntegrationsZendeskSearchParams) WithInclude(include []string) *GetV1IntegrationsZendeskSearchParams {
+func (o *GetV1IntegrationsZendeskSearchParams) WithInclude(include *string) *GetV1IntegrationsZendeskSearchParams {
 	o.SetInclude(include)
 	return o
 }
 
 // SetInclude adds the include to the get v1 integrations zendesk search params
-func (o *GetV1IntegrationsZendeskSearchParams) SetInclude(include []string) {
+func (o *GetV1IntegrationsZendeskSearchParams) SetInclude(include *string) {
 	o.Include = include
 }
 
@@ -159,12 +158,18 @@ func (o *GetV1IntegrationsZendeskSearchParams) WriteToRequest(r runtime.ClientRe
 
 	if o.Include != nil {
 
-		// binding items for include
-		joinedInclude := o.bindParamInclude(reg)
+		// query param include
+		var qrInclude string
 
-		// form array param include
-		if err := r.SetFormParam("include", joinedInclude...); err != nil {
-			return err
+		if o.Include != nil {
+			qrInclude = *o.Include
+		}
+		qInclude := qrInclude
+		if qInclude != "" {
+
+			if err := r.SetQueryParam("include", qInclude); err != nil {
+				return err
+			}
 		}
 	}
 
@@ -182,21 +187,4 @@ func (o *GetV1IntegrationsZendeskSearchParams) WriteToRequest(r runtime.ClientRe
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
-}
-
-// bindParamGetV1IntegrationsZendeskSearch binds the parameter include
-func (o *GetV1IntegrationsZendeskSearchParams) bindParamInclude(formats strfmt.Registry) []string {
-	includeIR := o.Include
-
-	var includeIC []string
-	for _, includeIIR := range includeIR { // explode []string
-
-		includeIIV := includeIIR // string as string
-		includeIC = append(includeIC, includeIIV)
-	}
-
-	// items.CollectionFormat: ""
-	includeIS := swag.JoinByFormat(includeIC, "")
-
-	return includeIS
 }

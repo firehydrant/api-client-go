@@ -63,11 +63,11 @@ PutV1ScimV2GroupsIDParams contains all the parameters to send to the API endpoin
 */
 type PutV1ScimV2GroupsIDParams struct {
 
-	// V1ScimV2Groups.
-	V1ScimV2Groups *models.PutV1ScimV2Groups
-
 	// ID.
 	ID string
+
+	// PutV1ScimV2GroupsID.
+	PutV1ScimV2GroupsID *models.PutV1ScimV2GroupsID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PutV1ScimV2GroupsIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1ScimV2Groups adds the v1ScimV2Groups to the put v1 scim v2 groups Id params
-func (o *PutV1ScimV2GroupsIDParams) WithV1ScimV2Groups(v1ScimV2Groups *models.PutV1ScimV2Groups) *PutV1ScimV2GroupsIDParams {
-	o.SetV1ScimV2Groups(v1ScimV2Groups)
-	return o
-}
-
-// SetV1ScimV2Groups adds the v1ScimV2Groups to the put v1 scim v2 groups Id params
-func (o *PutV1ScimV2GroupsIDParams) SetV1ScimV2Groups(v1ScimV2Groups *models.PutV1ScimV2Groups) {
-	o.V1ScimV2Groups = v1ScimV2Groups
-}
-
 // WithID adds the id to the put v1 scim v2 groups Id params
 func (o *PutV1ScimV2GroupsIDParams) WithID(id string) *PutV1ScimV2GroupsIDParams {
 	o.SetID(id)
@@ -144,6 +133,17 @@ func (o *PutV1ScimV2GroupsIDParams) SetID(id string) {
 	o.ID = id
 }
 
+// WithPutV1ScimV2GroupsID adds the putV1ScimV2GroupsID to the put v1 scim v2 groups Id params
+func (o *PutV1ScimV2GroupsIDParams) WithPutV1ScimV2GroupsID(putV1ScimV2GroupsID *models.PutV1ScimV2GroupsID) *PutV1ScimV2GroupsIDParams {
+	o.SetPutV1ScimV2GroupsID(putV1ScimV2GroupsID)
+	return o
+}
+
+// SetPutV1ScimV2GroupsID adds the putV1ScimV2GroupsId to the put v1 scim v2 groups Id params
+func (o *PutV1ScimV2GroupsIDParams) SetPutV1ScimV2GroupsID(putV1ScimV2GroupsID *models.PutV1ScimV2GroupsID) {
+	o.PutV1ScimV2GroupsID = putV1ScimV2GroupsID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PutV1ScimV2GroupsIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PutV1ScimV2GroupsIDParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if o.V1ScimV2Groups != nil {
-		if err := r.SetBodyParam(o.V1ScimV2Groups); err != nil {
-			return err
-		}
-	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
+	}
+	if o.PutV1ScimV2GroupsID != nil {
+		if err := r.SetBodyParam(o.PutV1ScimV2GroupsID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

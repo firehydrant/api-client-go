@@ -45,7 +45,7 @@ GetV1RunbooksExecutionsOK describes a response with status code 200, with defaul
 List all Runbook executions across all Runbooks
 */
 type GetV1RunbooksExecutionsOK struct {
-	Payload *models.ExecutionEntityPaginated
+	Payload *models.RunbooksExecutionEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 runbooks executions o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1RunbooksExecutionsOK) String() string {
 	return fmt.Sprintf("[GET /v1/runbooks/executions][%d] getV1RunbooksExecutionsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1RunbooksExecutionsOK) GetPayload() *models.ExecutionEntityPaginated {
+func (o *GetV1RunbooksExecutionsOK) GetPayload() *models.RunbooksExecutionEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1RunbooksExecutionsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ExecutionEntityPaginated)
+	o.Payload = new(models.RunbooksExecutionEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

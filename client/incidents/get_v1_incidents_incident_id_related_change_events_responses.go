@@ -45,7 +45,7 @@ GetV1IncidentsIncidentIDRelatedChangeEventsOK describes a response with status c
 List related changes that have been attached to an incident
 */
 type GetV1IncidentsIncidentIDRelatedChangeEventsOK struct {
-	Payload *models.RelatedChangeEventEntityPaginated
+	Payload *models.IncidentsRelatedChangeEventEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 incidents incident Id related change events o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1IncidentsIncidentIDRelatedChangeEventsOK) String() string {
 	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/related_change_events][%d] getV1IncidentsIncidentIdRelatedChangeEventsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1IncidentsIncidentIDRelatedChangeEventsOK) GetPayload() *models.RelatedChangeEventEntityPaginated {
+func (o *GetV1IncidentsIncidentIDRelatedChangeEventsOK) GetPayload() *models.IncidentsRelatedChangeEventEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1IncidentsIncidentIDRelatedChangeEventsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.RelatedChangeEventEntityPaginated)
+	o.Payload = new(models.IncidentsRelatedChangeEventEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

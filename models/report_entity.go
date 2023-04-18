@@ -12,9 +12,10 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// ReportEntity Returns a report with time bucketed analytics data
+// ReportEntity ReportEntity model
 //
 // swagger:model ReportEntity
 type ReportEntity struct {
@@ -23,13 +24,15 @@ type ReportEntity struct {
 	BucketPeriod string `json:"bucket_period,omitempty"`
 
 	// data
-	Data []*BucketEntity `json:"data"`
+	Data []*ReportsBucketEntity `json:"data"`
 
 	// end date
-	EndDate string `json:"end_date,omitempty"`
+	// Format: date
+	EndDate strfmt.Date `json:"end_date,omitempty"`
 
 	// start date
-	StartDate string `json:"start_date,omitempty"`
+	// Format: date
+	StartDate strfmt.Date `json:"start_date,omitempty"`
 }
 
 // Validate validates this report entity
@@ -37,6 +40,14 @@ func (m *ReportEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateData(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateEndDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStartDate(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -67,6 +78,30 @@ func (m *ReportEntity) validateData(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ReportEntity) validateEndDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.EndDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("end_date", "body", "date", m.EndDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *ReportEntity) validateStartDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.StartDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("start_date", "body", "date", m.StartDate.String(), formats); err != nil {
+		return err
 	}
 
 	return nil

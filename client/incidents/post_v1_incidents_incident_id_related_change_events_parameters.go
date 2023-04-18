@@ -63,11 +63,11 @@ PostV1IncidentsIncidentIDRelatedChangeEventsParams contains all the parameters t
 */
 type PostV1IncidentsIncidentIDRelatedChangeEventsParams struct {
 
-	// V1IncidentsIncidentIDRelatedChangeEvents.
-	V1IncidentsIncidentIDRelatedChangeEvents *models.PostV1IncidentsIncidentIDRelatedChangeEvents
-
 	// IncidentID.
 	IncidentID string
+
+	// PostV1IncidentsIncidentIDRelatedChangeEvents.
+	PostV1IncidentsIncidentIDRelatedChangeEvents *models.PostV1IncidentsIncidentIDRelatedChangeEvents
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +122,6 @@ func (o *PostV1IncidentsIncidentIDRelatedChangeEventsParams) SetHTTPClient(clien
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDRelatedChangeEvents adds the v1IncidentsIncidentIDRelatedChangeEvents to the post v1 incidents incident Id related change events params
-func (o *PostV1IncidentsIncidentIDRelatedChangeEventsParams) WithV1IncidentsIncidentIDRelatedChangeEvents(v1IncidentsIncidentIDRelatedChangeEvents *models.PostV1IncidentsIncidentIDRelatedChangeEvents) *PostV1IncidentsIncidentIDRelatedChangeEventsParams {
-	o.SetV1IncidentsIncidentIDRelatedChangeEvents(v1IncidentsIncidentIDRelatedChangeEvents)
-	return o
-}
-
-// SetV1IncidentsIncidentIDRelatedChangeEvents adds the v1IncidentsIncidentIdRelatedChangeEvents to the post v1 incidents incident Id related change events params
-func (o *PostV1IncidentsIncidentIDRelatedChangeEventsParams) SetV1IncidentsIncidentIDRelatedChangeEvents(v1IncidentsIncidentIDRelatedChangeEvents *models.PostV1IncidentsIncidentIDRelatedChangeEvents) {
-	o.V1IncidentsIncidentIDRelatedChangeEvents = v1IncidentsIncidentIDRelatedChangeEvents
-}
-
 // WithIncidentID adds the incidentID to the post v1 incidents incident Id related change events params
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsParams) WithIncidentID(incidentID string) *PostV1IncidentsIncidentIDRelatedChangeEventsParams {
 	o.SetIncidentID(incidentID)
@@ -144,6 +133,17 @@ func (o *PostV1IncidentsIncidentIDRelatedChangeEventsParams) SetIncidentID(incid
 	o.IncidentID = incidentID
 }
 
+// WithPostV1IncidentsIncidentIDRelatedChangeEvents adds the postV1IncidentsIncidentIDRelatedChangeEvents to the post v1 incidents incident Id related change events params
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsParams) WithPostV1IncidentsIncidentIDRelatedChangeEvents(postV1IncidentsIncidentIDRelatedChangeEvents *models.PostV1IncidentsIncidentIDRelatedChangeEvents) *PostV1IncidentsIncidentIDRelatedChangeEventsParams {
+	o.SetPostV1IncidentsIncidentIDRelatedChangeEvents(postV1IncidentsIncidentIDRelatedChangeEvents)
+	return o
+}
+
+// SetPostV1IncidentsIncidentIDRelatedChangeEvents adds the postV1IncidentsIncidentIdRelatedChangeEvents to the post v1 incidents incident Id related change events params
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsParams) SetPostV1IncidentsIncidentIDRelatedChangeEvents(postV1IncidentsIncidentIDRelatedChangeEvents *models.PostV1IncidentsIncidentIDRelatedChangeEvents) {
+	o.PostV1IncidentsIncidentIDRelatedChangeEvents = postV1IncidentsIncidentIDRelatedChangeEvents
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -151,15 +151,15 @@ func (o *PostV1IncidentsIncidentIDRelatedChangeEventsParams) WriteToRequest(r ru
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDRelatedChangeEvents != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDRelatedChangeEvents); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PostV1IncidentsIncidentIDRelatedChangeEvents != nil {
+		if err := r.SetBodyParam(o.PostV1IncidentsIncidentIDRelatedChangeEvents); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

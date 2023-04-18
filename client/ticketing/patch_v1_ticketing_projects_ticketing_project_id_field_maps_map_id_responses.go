@@ -45,7 +45,7 @@ PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK describes a response 
 Update field map for a ticketing project
 */
 type PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK struct {
-	Payload *models.ProjectFieldMapEntity
+	Payload *models.TicketingProjectFieldMapEntity
 }
 
 // IsSuccess returns true when this patch v1 ticketing projects ticketing project Id field maps map Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK) String() st
 	return fmt.Sprintf("[PATCH /v1/ticketing/projects/{ticketing_project_id}/field_maps/{map_id}][%d] patchV1TicketingProjectsTicketingProjectIdFieldMapsMapIdOK  %+v", 200, o.Payload)
 }
 
-func (o *PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK) GetPayload() *models.ProjectFieldMapEntity {
+func (o *PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK) GetPayload() *models.TicketingProjectFieldMapEntity {
 	return o.Payload
 }
 
 func (o *PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectFieldMapEntity)
+	o.Payload = new(models.TicketingProjectFieldMapEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

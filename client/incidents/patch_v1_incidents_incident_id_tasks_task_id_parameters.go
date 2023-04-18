@@ -63,11 +63,11 @@ PatchV1IncidentsIncidentIDTasksTaskIDParams contains all the parameters to send 
 */
 type PatchV1IncidentsIncidentIDTasksTaskIDParams struct {
 
-	// V1IncidentsIncidentIDTasks.
-	V1IncidentsIncidentIDTasks *models.PatchV1IncidentsIncidentIDTasks
-
 	// IncidentID.
 	IncidentID string
+
+	// PatchV1IncidentsIncidentIDTasksTaskID.
+	PatchV1IncidentsIncidentIDTasksTaskID *models.PatchV1IncidentsIncidentIDTasksTaskID
 
 	// TaskID.
 	TaskID string
@@ -125,17 +125,6 @@ func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetHTTPClient(client *http
 	o.HTTPClient = client
 }
 
-// WithV1IncidentsIncidentIDTasks adds the v1IncidentsIncidentIDTasks to the patch v1 incidents incident Id tasks task Id params
-func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WithV1IncidentsIncidentIDTasks(v1IncidentsIncidentIDTasks *models.PatchV1IncidentsIncidentIDTasks) *PatchV1IncidentsIncidentIDTasksTaskIDParams {
-	o.SetV1IncidentsIncidentIDTasks(v1IncidentsIncidentIDTasks)
-	return o
-}
-
-// SetV1IncidentsIncidentIDTasks adds the v1IncidentsIncidentIdTasks to the patch v1 incidents incident Id tasks task Id params
-func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetV1IncidentsIncidentIDTasks(v1IncidentsIncidentIDTasks *models.PatchV1IncidentsIncidentIDTasks) {
-	o.V1IncidentsIncidentIDTasks = v1IncidentsIncidentIDTasks
-}
-
 // WithIncidentID adds the incidentID to the patch v1 incidents incident Id tasks task Id params
 func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WithIncidentID(incidentID string) *PatchV1IncidentsIncidentIDTasksTaskIDParams {
 	o.SetIncidentID(incidentID)
@@ -145,6 +134,17 @@ func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WithIncidentID(incidentID 
 // SetIncidentID adds the incidentId to the patch v1 incidents incident Id tasks task Id params
 func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
+}
+
+// WithPatchV1IncidentsIncidentIDTasksTaskID adds the patchV1IncidentsIncidentIDTasksTaskID to the patch v1 incidents incident Id tasks task Id params
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WithPatchV1IncidentsIncidentIDTasksTaskID(patchV1IncidentsIncidentIDTasksTaskID *models.PatchV1IncidentsIncidentIDTasksTaskID) *PatchV1IncidentsIncidentIDTasksTaskIDParams {
+	o.SetPatchV1IncidentsIncidentIDTasksTaskID(patchV1IncidentsIncidentIDTasksTaskID)
+	return o
+}
+
+// SetPatchV1IncidentsIncidentIDTasksTaskID adds the patchV1IncidentsIncidentIdTasksTaskId to the patch v1 incidents incident Id tasks task Id params
+func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) SetPatchV1IncidentsIncidentIDTasksTaskID(patchV1IncidentsIncidentIDTasksTaskID *models.PatchV1IncidentsIncidentIDTasksTaskID) {
+	o.PatchV1IncidentsIncidentIDTasksTaskID = patchV1IncidentsIncidentIDTasksTaskID
 }
 
 // WithTaskID adds the taskID to the patch v1 incidents incident Id tasks task Id params
@@ -165,15 +165,15 @@ func (o *PatchV1IncidentsIncidentIDTasksTaskIDParams) WriteToRequest(r runtime.C
 		return err
 	}
 	var res []error
-	if o.V1IncidentsIncidentIDTasks != nil {
-		if err := r.SetBodyParam(o.V1IncidentsIncidentIDTasks); err != nil {
-			return err
-		}
-	}
 
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+	if o.PatchV1IncidentsIncidentIDTasksTaskID != nil {
+		if err := r.SetBodyParam(o.PatchV1IncidentsIncidentIDTasksTaskID); err != nil {
+			return err
+		}
 	}
 
 	// path param task_id

@@ -45,7 +45,7 @@ DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDOK describes a response w
 Delete an existing generic chat message on an incident.
 */
 type DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDOK struct {
-	Payload *models.GenericChatMessageEntity
+	Payload *models.EventGenericChatMessageEntity
 }
 
 // IsSuccess returns true when this delete v1 incidents incident Id generic chat messages message Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDOK) String() str
 	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/generic_chat_messages/{message_id}][%d] deleteV1IncidentsIncidentIdGenericChatMessagesMessageIdOK  %+v", 200, o.Payload)
 }
 
-func (o *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDOK) GetPayload() *models.GenericChatMessageEntity {
+func (o *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDOK) GetPayload() *models.EventGenericChatMessageEntity {
 	return o.Payload
 }
 
 func (o *DeleteV1IncidentsIncidentIDGenericChatMessagesMessageIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.GenericChatMessageEntity)
+	o.Payload = new(models.EventGenericChatMessageEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

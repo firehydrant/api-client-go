@@ -64,13 +64,13 @@ PutV1RunbooksExecutionsExecutionIDStepsStepIDParams contains all the parameters 
 */
 type PutV1RunbooksExecutionsExecutionIDStepsStepIDParams struct {
 
-	// V1RunbooksExecutionsExecutionIDSteps.
-	V1RunbooksExecutionsExecutionIDSteps *models.PutV1RunbooksExecutionsExecutionIDSteps
-
 	// ExecutionID.
 	//
 	// Format: int32
 	ExecutionID int32
+
+	// PutV1RunbooksExecutionsExecutionIDStepsStepID.
+	PutV1RunbooksExecutionsExecutionIDStepsStepID *models.PutV1RunbooksExecutionsExecutionIDStepsStepID
 
 	// StepID.
 	//
@@ -130,17 +130,6 @@ func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams) SetHTTPClient(clie
 	o.HTTPClient = client
 }
 
-// WithV1RunbooksExecutionsExecutionIDSteps adds the v1RunbooksExecutionsExecutionIDSteps to the put v1 runbooks executions execution Id steps step Id params
-func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams) WithV1RunbooksExecutionsExecutionIDSteps(v1RunbooksExecutionsExecutionIDSteps *models.PutV1RunbooksExecutionsExecutionIDSteps) *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams {
-	o.SetV1RunbooksExecutionsExecutionIDSteps(v1RunbooksExecutionsExecutionIDSteps)
-	return o
-}
-
-// SetV1RunbooksExecutionsExecutionIDSteps adds the v1RunbooksExecutionsExecutionIdSteps to the put v1 runbooks executions execution Id steps step Id params
-func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams) SetV1RunbooksExecutionsExecutionIDSteps(v1RunbooksExecutionsExecutionIDSteps *models.PutV1RunbooksExecutionsExecutionIDSteps) {
-	o.V1RunbooksExecutionsExecutionIDSteps = v1RunbooksExecutionsExecutionIDSteps
-}
-
 // WithExecutionID adds the executionID to the put v1 runbooks executions execution Id steps step Id params
 func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams) WithExecutionID(executionID int32) *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams {
 	o.SetExecutionID(executionID)
@@ -150,6 +139,17 @@ func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams) WithExecutionID(ex
 // SetExecutionID adds the executionId to the put v1 runbooks executions execution Id steps step Id params
 func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams) SetExecutionID(executionID int32) {
 	o.ExecutionID = executionID
+}
+
+// WithPutV1RunbooksExecutionsExecutionIDStepsStepID adds the putV1RunbooksExecutionsExecutionIDStepsStepID to the put v1 runbooks executions execution Id steps step Id params
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams) WithPutV1RunbooksExecutionsExecutionIDStepsStepID(putV1RunbooksExecutionsExecutionIDStepsStepID *models.PutV1RunbooksExecutionsExecutionIDStepsStepID) *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams {
+	o.SetPutV1RunbooksExecutionsExecutionIDStepsStepID(putV1RunbooksExecutionsExecutionIDStepsStepID)
+	return o
+}
+
+// SetPutV1RunbooksExecutionsExecutionIDStepsStepID adds the putV1RunbooksExecutionsExecutionIdStepsStepId to the put v1 runbooks executions execution Id steps step Id params
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams) SetPutV1RunbooksExecutionsExecutionIDStepsStepID(putV1RunbooksExecutionsExecutionIDStepsStepID *models.PutV1RunbooksExecutionsExecutionIDStepsStepID) {
+	o.PutV1RunbooksExecutionsExecutionIDStepsStepID = putV1RunbooksExecutionsExecutionIDStepsStepID
 }
 
 // WithStepID adds the stepID to the put v1 runbooks executions execution Id steps step Id params
@@ -170,15 +170,15 @@ func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDParams) WriteToRequest(r r
 		return err
 	}
 	var res []error
-	if o.V1RunbooksExecutionsExecutionIDSteps != nil {
-		if err := r.SetBodyParam(o.V1RunbooksExecutionsExecutionIDSteps); err != nil {
-			return err
-		}
-	}
 
 	// path param execution_id
 	if err := r.SetPathParam("execution_id", swag.FormatInt32(o.ExecutionID)); err != nil {
 		return err
+	}
+	if o.PutV1RunbooksExecutionsExecutionIDStepsStepID != nil {
+		if err := r.SetBodyParam(o.PutV1RunbooksExecutionsExecutionIDStepsStepID); err != nil {
+			return err
+		}
 	}
 
 	// path param step_id

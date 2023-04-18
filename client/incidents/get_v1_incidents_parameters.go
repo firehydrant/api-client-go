@@ -62,13 +62,22 @@ GetV1IncidentsParams contains all the parameters to send to the API endpoint
 */
 type GetV1IncidentsParams struct {
 
+	/* Archived.
+
+	   Return archived incidents
+	*/
+	Archived *bool
+
 	/* AssignedTeams.
 
 	   A comma separated list of IDs for assigned teams
 	*/
 	AssignedTeams *string
 
-	// Conditions.
+	/* Conditions.
+
+	   A JSON string that defines 'logic' and 'user_data'
+	*/
 	Conditions *string
 
 	/* CurrentMilestones.
@@ -79,7 +88,7 @@ type GetV1IncidentsParams struct {
 
 	/* EndDate.
 
-	   The end date to return incidents from
+	   Filters for incidents that started on or before this date
 
 	   Format: date
 	*/
@@ -137,6 +146,22 @@ type GetV1IncidentsParams struct {
 	*/
 	Query *string
 
+	/* ResolvedAtOrAfter.
+
+	   Filters for incidents that were resolved at or after this time. Combine this with the `current_milestones` parameter if you wish to omit incidents that were re-opened and are still active.
+
+	   Format: date-time
+	*/
+	ResolvedAtOrAfter *strfmt.DateTime
+
+	/* ResolvedAtOrBefore.
+
+	   Filters for incidents that were resolved at or before this time. Combine this with the `current_milestones` parameter if you wish to omit incidents that were re-opened and are still active.
+
+	   Format: date-time
+	*/
+	ResolvedAtOrBefore *strfmt.DateTime
+
 	/* SavedSearchID.
 
 	   The id of a previously saved search.
@@ -163,7 +188,7 @@ type GetV1IncidentsParams struct {
 
 	/* StartDate.
 
-	   The start date to return incidents from
+	   Filters for incidents that started on or after this date
 
 	   Format: date
 	*/
@@ -244,6 +269,17 @@ func (o *GetV1IncidentsParams) WithHTTPClient(client *http.Client) *GetV1Inciden
 // SetHTTPClient adds the HTTPClient to the get v1 incidents params
 func (o *GetV1IncidentsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithArchived adds the archived to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithArchived(archived *bool) *GetV1IncidentsParams {
+	o.SetArchived(archived)
+	return o
+}
+
+// SetArchived adds the archived to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetArchived(archived *bool) {
+	o.Archived = archived
 }
 
 // WithAssignedTeams adds the assignedTeams to the get v1 incidents params
@@ -389,6 +425,28 @@ func (o *GetV1IncidentsParams) SetQuery(query *string) {
 	o.Query = query
 }
 
+// WithResolvedAtOrAfter adds the resolvedAtOrAfter to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithResolvedAtOrAfter(resolvedAtOrAfter *strfmt.DateTime) *GetV1IncidentsParams {
+	o.SetResolvedAtOrAfter(resolvedAtOrAfter)
+	return o
+}
+
+// SetResolvedAtOrAfter adds the resolvedAtOrAfter to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetResolvedAtOrAfter(resolvedAtOrAfter *strfmt.DateTime) {
+	o.ResolvedAtOrAfter = resolvedAtOrAfter
+}
+
+// WithResolvedAtOrBefore adds the resolvedAtOrBefore to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithResolvedAtOrBefore(resolvedAtOrBefore *strfmt.DateTime) *GetV1IncidentsParams {
+	o.SetResolvedAtOrBefore(resolvedAtOrBefore)
+	return o
+}
+
+// SetResolvedAtOrBefore adds the resolvedAtOrBefore to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetResolvedAtOrBefore(resolvedAtOrBefore *strfmt.DateTime) {
+	o.ResolvedAtOrBefore = resolvedAtOrBefore
+}
+
 // WithSavedSearchID adds the savedSearchID to the get v1 incidents params
 func (o *GetV1IncidentsParams) WithSavedSearchID(savedSearchID *string) *GetV1IncidentsParams {
 	o.SetSavedSearchID(savedSearchID)
@@ -495,6 +553,23 @@ func (o *GetV1IncidentsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
+
+	if o.Archived != nil {
+
+		// query param archived
+		var qrArchived bool
+
+		if o.Archived != nil {
+			qrArchived = *o.Archived
+		}
+		qArchived := swag.FormatBool(qrArchived)
+		if qArchived != "" {
+
+			if err := r.SetQueryParam("archived", qArchived); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.AssignedTeams != nil {
 
@@ -712,6 +787,40 @@ func (o *GetV1IncidentsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		if qQuery != "" {
 
 			if err := r.SetQueryParam("query", qQuery); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ResolvedAtOrAfter != nil {
+
+		// query param resolved_at_or_after
+		var qrResolvedAtOrAfter strfmt.DateTime
+
+		if o.ResolvedAtOrAfter != nil {
+			qrResolvedAtOrAfter = *o.ResolvedAtOrAfter
+		}
+		qResolvedAtOrAfter := qrResolvedAtOrAfter.String()
+		if qResolvedAtOrAfter != "" {
+
+			if err := r.SetQueryParam("resolved_at_or_after", qResolvedAtOrAfter); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ResolvedAtOrBefore != nil {
+
+		// query param resolved_at_or_before
+		var qrResolvedAtOrBefore strfmt.DateTime
+
+		if o.ResolvedAtOrBefore != nil {
+			qrResolvedAtOrBefore = *o.ResolvedAtOrBefore
+		}
+		qResolvedAtOrBefore := qrResolvedAtOrBefore.String()
+		if qResolvedAtOrBefore != "" {
+
+			if err := r.SetQueryParam("resolved_at_or_before", qResolvedAtOrBefore); err != nil {
 				return err
 			}
 		}

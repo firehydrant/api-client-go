@@ -64,13 +64,13 @@ PatchV1ChecklistTemplatesIDParams contains all the parameters to send to the API
 */
 type PatchV1ChecklistTemplatesIDParams struct {
 
-	// V1ChecklistTemplates.
-	V1ChecklistTemplates *models.PatchV1ChecklistTemplates
-
 	// ID.
 	//
 	// Format: int32
 	ID int32
+
+	// PatchV1ChecklistTemplatesID.
+	PatchV1ChecklistTemplatesID *models.PatchV1ChecklistTemplatesID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *PatchV1ChecklistTemplatesIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1ChecklistTemplates adds the v1ChecklistTemplates to the patch v1 checklist templates Id params
-func (o *PatchV1ChecklistTemplatesIDParams) WithV1ChecklistTemplates(v1ChecklistTemplates *models.PatchV1ChecklistTemplates) *PatchV1ChecklistTemplatesIDParams {
-	o.SetV1ChecklistTemplates(v1ChecklistTemplates)
-	return o
-}
-
-// SetV1ChecklistTemplates adds the v1ChecklistTemplates to the patch v1 checklist templates Id params
-func (o *PatchV1ChecklistTemplatesIDParams) SetV1ChecklistTemplates(v1ChecklistTemplates *models.PatchV1ChecklistTemplates) {
-	o.V1ChecklistTemplates = v1ChecklistTemplates
-}
-
 // WithID adds the id to the patch v1 checklist templates Id params
 func (o *PatchV1ChecklistTemplatesIDParams) WithID(id int32) *PatchV1ChecklistTemplatesIDParams {
 	o.SetID(id)
@@ -147,6 +136,17 @@ func (o *PatchV1ChecklistTemplatesIDParams) SetID(id int32) {
 	o.ID = id
 }
 
+// WithPatchV1ChecklistTemplatesID adds the patchV1ChecklistTemplatesID to the patch v1 checklist templates Id params
+func (o *PatchV1ChecklistTemplatesIDParams) WithPatchV1ChecklistTemplatesID(patchV1ChecklistTemplatesID *models.PatchV1ChecklistTemplatesID) *PatchV1ChecklistTemplatesIDParams {
+	o.SetPatchV1ChecklistTemplatesID(patchV1ChecklistTemplatesID)
+	return o
+}
+
+// SetPatchV1ChecklistTemplatesID adds the patchV1ChecklistTemplatesId to the patch v1 checklist templates Id params
+func (o *PatchV1ChecklistTemplatesIDParams) SetPatchV1ChecklistTemplatesID(patchV1ChecklistTemplatesID *models.PatchV1ChecklistTemplatesID) {
+	o.PatchV1ChecklistTemplatesID = patchV1ChecklistTemplatesID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1ChecklistTemplatesIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -154,15 +154,15 @@ func (o *PatchV1ChecklistTemplatesIDParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 	var res []error
-	if o.V1ChecklistTemplates != nil {
-		if err := r.SetBodyParam(o.V1ChecklistTemplates); err != nil {
-			return err
-		}
-	}
 
 	// path param id
 	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
 		return err
+	}
+	if o.PatchV1ChecklistTemplatesID != nil {
+		if err := r.SetBodyParam(o.PatchV1ChecklistTemplatesID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

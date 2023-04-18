@@ -45,7 +45,7 @@ PostV1TicketingProjectsTicketingProjectIDFieldMapsCreated describes a response w
 Creates field map for a ticketing project
 */
 type PostV1TicketingProjectsTicketingProjectIDFieldMapsCreated struct {
-	Payload *models.ProjectFieldMapEntity
+	Payload *models.TicketingProjectFieldMapEntity
 }
 
 // IsSuccess returns true when this post v1 ticketing projects ticketing project Id field maps created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1TicketingProjectsTicketingProjectIDFieldMapsCreated) String() str
 	return fmt.Sprintf("[POST /v1/ticketing/projects/{ticketing_project_id}/field_maps][%d] postV1TicketingProjectsTicketingProjectIdFieldMapsCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1TicketingProjectsTicketingProjectIDFieldMapsCreated) GetPayload() *models.ProjectFieldMapEntity {
+func (o *PostV1TicketingProjectsTicketingProjectIDFieldMapsCreated) GetPayload() *models.TicketingProjectFieldMapEntity {
 	return o.Payload
 }
 
 func (o *PostV1TicketingProjectsTicketingProjectIDFieldMapsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectFieldMapEntity)
+	o.Payload = new(models.TicketingProjectFieldMapEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

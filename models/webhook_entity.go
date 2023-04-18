@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// WebhookEntity Retrieve a specific webhook
+// WebhookEntity WebhookEntity model
 //
 // swagger:model WebhookEntity
 type WebhookEntity struct {
@@ -24,7 +24,7 @@ type WebhookEntity struct {
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
 	// created by
-	CreatedBy string `json:"created_by,omitempty"`
+	CreatedBy *AuthorEntity `json:"created_by,omitempty"`
 
 	// id
 	ID string `json:"id,omitempty"`
@@ -45,6 +45,10 @@ func (m *WebhookEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCreatedBy(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -70,6 +74,25 @@ func (m *WebhookEntity) validateCreatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *WebhookEntity) validateCreatedBy(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreatedBy) { // not required
+		return nil
+	}
+
+	if m.CreatedBy != nil {
+		if err := m.CreatedBy.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("created_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("created_by")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *WebhookEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
@@ -82,8 +105,33 @@ func (m *WebhookEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this webhook entity based on context it is used
+// ContextValidate validate this webhook entity based on the context it is used
 func (m *WebhookEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCreatedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *WebhookEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CreatedBy != nil {
+		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("created_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("created_by")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

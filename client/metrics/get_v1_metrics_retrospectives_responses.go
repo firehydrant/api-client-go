@@ -45,7 +45,7 @@ GetV1MetricsRetrospectivesOK describes a response with status code 200, with def
 Returns a report with retrospective analytics data
 */
 type GetV1MetricsRetrospectivesOK struct {
-	Payload *models.RetrospectiveEntity
+	Payload *models.MetricsRetrospectiveEntity
 }
 
 // IsSuccess returns true when this get v1 metrics retrospectives o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1MetricsRetrospectivesOK) String() string {
 	return fmt.Sprintf("[GET /v1/metrics/retrospectives][%d] getV1MetricsRetrospectivesOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1MetricsRetrospectivesOK) GetPayload() *models.RetrospectiveEntity {
+func (o *GetV1MetricsRetrospectivesOK) GetPayload() *models.MetricsRetrospectiveEntity {
 	return o.Payload
 }
 
 func (o *GetV1MetricsRetrospectivesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.RetrospectiveEntity)
+	o.Payload = new(models.MetricsRetrospectiveEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

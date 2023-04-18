@@ -63,14 +63,14 @@ PatchV1IntegrationsAwsConnectionsIDParams contains all the parameters to send to
 */
 type PatchV1IntegrationsAwsConnectionsIDParams struct {
 
-	// V1IntegrationsAwsConnections.
-	V1IntegrationsAwsConnections *models.PatchV1IntegrationsAwsConnections
-
 	/* ID.
 
 	   Connection UUID
 	*/
 	ID string
+
+	// PatchV1IntegrationsAwsConnectionsID.
+	PatchV1IntegrationsAwsConnectionsID *models.PatchV1IntegrationsAwsConnectionsID
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *PatchV1IntegrationsAwsConnectionsIDParams) SetHTTPClient(client *http.C
 	o.HTTPClient = client
 }
 
-// WithV1IntegrationsAwsConnections adds the v1IntegrationsAwsConnections to the patch v1 integrations aws connections Id params
-func (o *PatchV1IntegrationsAwsConnectionsIDParams) WithV1IntegrationsAwsConnections(v1IntegrationsAwsConnections *models.PatchV1IntegrationsAwsConnections) *PatchV1IntegrationsAwsConnectionsIDParams {
-	o.SetV1IntegrationsAwsConnections(v1IntegrationsAwsConnections)
-	return o
-}
-
-// SetV1IntegrationsAwsConnections adds the v1IntegrationsAwsConnections to the patch v1 integrations aws connections Id params
-func (o *PatchV1IntegrationsAwsConnectionsIDParams) SetV1IntegrationsAwsConnections(v1IntegrationsAwsConnections *models.PatchV1IntegrationsAwsConnections) {
-	o.V1IntegrationsAwsConnections = v1IntegrationsAwsConnections
-}
-
 // WithID adds the id to the patch v1 integrations aws connections Id params
 func (o *PatchV1IntegrationsAwsConnectionsIDParams) WithID(id string) *PatchV1IntegrationsAwsConnectionsIDParams {
 	o.SetID(id)
@@ -147,6 +136,17 @@ func (o *PatchV1IntegrationsAwsConnectionsIDParams) SetID(id string) {
 	o.ID = id
 }
 
+// WithPatchV1IntegrationsAwsConnectionsID adds the patchV1IntegrationsAwsConnectionsID to the patch v1 integrations aws connections Id params
+func (o *PatchV1IntegrationsAwsConnectionsIDParams) WithPatchV1IntegrationsAwsConnectionsID(patchV1IntegrationsAwsConnectionsID *models.PatchV1IntegrationsAwsConnectionsID) *PatchV1IntegrationsAwsConnectionsIDParams {
+	o.SetPatchV1IntegrationsAwsConnectionsID(patchV1IntegrationsAwsConnectionsID)
+	return o
+}
+
+// SetPatchV1IntegrationsAwsConnectionsID adds the patchV1IntegrationsAwsConnectionsId to the patch v1 integrations aws connections Id params
+func (o *PatchV1IntegrationsAwsConnectionsIDParams) SetPatchV1IntegrationsAwsConnectionsID(patchV1IntegrationsAwsConnectionsID *models.PatchV1IntegrationsAwsConnectionsID) {
+	o.PatchV1IntegrationsAwsConnectionsID = patchV1IntegrationsAwsConnectionsID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1IntegrationsAwsConnectionsIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -154,15 +154,15 @@ func (o *PatchV1IntegrationsAwsConnectionsIDParams) WriteToRequest(r runtime.Cli
 		return err
 	}
 	var res []error
-	if o.V1IntegrationsAwsConnections != nil {
-		if err := r.SetBodyParam(o.V1IntegrationsAwsConnections); err != nil {
-			return err
-		}
-	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
+	}
+	if o.PatchV1IntegrationsAwsConnectionsID != nil {
+		if err := r.SetBodyParam(o.PatchV1IntegrationsAwsConnectionsID); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

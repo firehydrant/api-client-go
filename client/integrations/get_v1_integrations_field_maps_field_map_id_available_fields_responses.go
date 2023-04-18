@@ -45,7 +45,7 @@ GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK describes a response with 
 Get a description of the fields to which data can be mapped
 */
 type GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK struct {
-	Payload *models.MappableFieldEntity
+	Payload *models.FieldMappingMappableFieldEntity
 }
 
 // IsSuccess returns true when this get v1 integrations field maps field map Id available fields o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK) String() string 
 	return fmt.Sprintf("[GET /v1/integrations/field_maps/{field_map_id}/available_fields][%d] getV1IntegrationsFieldMapsFieldMapIdAvailableFieldsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK) GetPayload() *models.MappableFieldEntity {
+func (o *GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK) GetPayload() *models.FieldMappingMappableFieldEntity {
 	return o.Payload
 }
 
 func (o *GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.MappableFieldEntity)
+	o.Payload = new(models.FieldMappingMappableFieldEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

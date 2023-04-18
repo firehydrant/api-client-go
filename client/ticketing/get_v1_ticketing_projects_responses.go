@@ -45,7 +45,7 @@ GetV1TicketingProjectsOK describes a response with status code 200, with default
 List all ticketing projects available to the organization
 */
 type GetV1TicketingProjectsOK struct {
-	Payload *models.ProjectListItemEntity
+	Payload *models.TicketingProjectsProjectListItemEntity
 }
 
 // IsSuccess returns true when this get v1 ticketing projects o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1TicketingProjectsOK) String() string {
 	return fmt.Sprintf("[GET /v1/ticketing/projects][%d] getV1TicketingProjectsOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1TicketingProjectsOK) GetPayload() *models.ProjectListItemEntity {
+func (o *GetV1TicketingProjectsOK) GetPayload() *models.TicketingProjectsProjectListItemEntity {
 	return o.Payload
 }
 
 func (o *GetV1TicketingProjectsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectListItemEntity)
+	o.Payload = new(models.TicketingProjectsProjectListItemEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

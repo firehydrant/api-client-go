@@ -45,7 +45,7 @@ GetV1TicketingTicketsTicketIDOK describes a response with status code 200, with 
 Retrieves a single ticket by ID
 */
 type GetV1TicketingTicketsTicketIDOK struct {
-	Payload *models.TicketEntity
+	Payload *models.TicketingTicketEntity
 }
 
 // IsSuccess returns true when this get v1 ticketing tickets ticket Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1TicketingTicketsTicketIDOK) String() string {
 	return fmt.Sprintf("[GET /v1/ticketing/tickets/{ticket_id}][%d] getV1TicketingTicketsTicketIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1TicketingTicketsTicketIDOK) GetPayload() *models.TicketEntity {
+func (o *GetV1TicketingTicketsTicketIDOK) GetPayload() *models.TicketingTicketEntity {
 	return o.Payload
 }
 
 func (o *GetV1TicketingTicketsTicketIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.TicketEntity)
+	o.Payload = new(models.TicketingTicketEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

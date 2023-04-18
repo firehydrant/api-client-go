@@ -63,8 +63,8 @@ PutV1PostMortemsReportsReportIDReasonsOrderParams contains all the parameters to
 */
 type PutV1PostMortemsReportsReportIDReasonsOrderParams struct {
 
-	// V1PostMortemsReportsReportIDReasonsOrder.
-	V1PostMortemsReportsReportIDReasonsOrder *models.PutV1PostMortemsReportsReportIDReasonsOrder
+	// PutV1PostMortemsReportsReportIDReasonsOrder.
+	PutV1PostMortemsReportsReportIDReasonsOrder *models.PutV1PostMortemsReportsReportIDReasonsOrder
 
 	// ReportID.
 	ReportID string
@@ -122,15 +122,15 @@ func (o *PutV1PostMortemsReportsReportIDReasonsOrderParams) SetHTTPClient(client
 	o.HTTPClient = client
 }
 
-// WithV1PostMortemsReportsReportIDReasonsOrder adds the v1PostMortemsReportsReportIDReasonsOrder to the put v1 post mortems reports report Id reasons order params
-func (o *PutV1PostMortemsReportsReportIDReasonsOrderParams) WithV1PostMortemsReportsReportIDReasonsOrder(v1PostMortemsReportsReportIDReasonsOrder *models.PutV1PostMortemsReportsReportIDReasonsOrder) *PutV1PostMortemsReportsReportIDReasonsOrderParams {
-	o.SetV1PostMortemsReportsReportIDReasonsOrder(v1PostMortemsReportsReportIDReasonsOrder)
+// WithPutV1PostMortemsReportsReportIDReasonsOrder adds the putV1PostMortemsReportsReportIDReasonsOrder to the put v1 post mortems reports report Id reasons order params
+func (o *PutV1PostMortemsReportsReportIDReasonsOrderParams) WithPutV1PostMortemsReportsReportIDReasonsOrder(putV1PostMortemsReportsReportIDReasonsOrder *models.PutV1PostMortemsReportsReportIDReasonsOrder) *PutV1PostMortemsReportsReportIDReasonsOrderParams {
+	o.SetPutV1PostMortemsReportsReportIDReasonsOrder(putV1PostMortemsReportsReportIDReasonsOrder)
 	return o
 }
 
-// SetV1PostMortemsReportsReportIDReasonsOrder adds the v1PostMortemsReportsReportIdReasonsOrder to the put v1 post mortems reports report Id reasons order params
-func (o *PutV1PostMortemsReportsReportIDReasonsOrderParams) SetV1PostMortemsReportsReportIDReasonsOrder(v1PostMortemsReportsReportIDReasonsOrder *models.PutV1PostMortemsReportsReportIDReasonsOrder) {
-	o.V1PostMortemsReportsReportIDReasonsOrder = v1PostMortemsReportsReportIDReasonsOrder
+// SetPutV1PostMortemsReportsReportIDReasonsOrder adds the putV1PostMortemsReportsReportIdReasonsOrder to the put v1 post mortems reports report Id reasons order params
+func (o *PutV1PostMortemsReportsReportIDReasonsOrderParams) SetPutV1PostMortemsReportsReportIDReasonsOrder(putV1PostMortemsReportsReportIDReasonsOrder *models.PutV1PostMortemsReportsReportIDReasonsOrder) {
+	o.PutV1PostMortemsReportsReportIDReasonsOrder = putV1PostMortemsReportsReportIDReasonsOrder
 }
 
 // WithReportID adds the reportID to the put v1 post mortems reports report Id reasons order params
@@ -151,8 +151,8 @@ func (o *PutV1PostMortemsReportsReportIDReasonsOrderParams) WriteToRequest(r run
 		return err
 	}
 	var res []error
-	if o.V1PostMortemsReportsReportIDReasonsOrder != nil {
-		if err := r.SetBodyParam(o.V1PostMortemsReportsReportIDReasonsOrder); err != nil {
+	if o.PutV1PostMortemsReportsReportIDReasonsOrder != nil {
+		if err := r.SetBodyParam(o.PutV1PostMortemsReportsReportIDReasonsOrder); err != nil {
 			return err
 		}
 	}

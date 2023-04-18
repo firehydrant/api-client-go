@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ErrorEntity Creates a checklist template for the organization
+// ErrorEntity ErrorEntity model
 //
 // swagger:model ErrorEntity
 type ErrorEntity struct {
@@ -23,7 +23,7 @@ type ErrorEntity struct {
 	// messages
 	Messages []string `json:"messages"`
 
-	// meta
+	// An object with additional error metadata
 	Meta interface{} `json:"meta,omitempty"`
 }
 

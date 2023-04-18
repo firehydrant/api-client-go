@@ -61,10 +61,7 @@ GetV1ScheduledMaintenancesScheduledMaintenanceIDParams contains all the paramete
 */
 type GetV1ScheduledMaintenancesScheduledMaintenanceIDParams struct {
 
-	/* ScheduledMaintenanceID.
-
-	   scheduled_maintenance UUID
-	*/
+	// ScheduledMaintenanceID.
 	ScheduledMaintenanceID string
 
 	timeout    time.Duration

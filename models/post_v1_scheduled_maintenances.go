@@ -31,7 +31,7 @@ type PostV1ScheduledMaintenances struct {
 	// An array of impact/condition combinations
 	Impacts []*PostV1ScheduledMaintenancesImpactsItems0 `json:"impacts"`
 
-	// A hash of label keys and values
+	// A json object of label keys and values
 	Labels map[string]string `json:"labels,omitempty"`
 
 	// name

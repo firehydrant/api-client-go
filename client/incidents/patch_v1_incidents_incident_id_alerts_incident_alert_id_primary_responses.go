@@ -45,7 +45,7 @@ PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK describes a response wi
 Setting an alert as primary will overwrite milestone times in the FireHydrant incident with times included in the primary alert. Services attached to the primary alert will also be automatically added to the incident.
 */
 type PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK struct {
-	Payload *models.AlertEntity
+	Payload *models.IncidentsAlertEntity
 }
 
 // IsSuccess returns true when this patch v1 incidents incident Id alerts incident alert Id primary o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK) String() stri
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/alerts/{incident_alert_id}/primary][%d] patchV1IncidentsIncidentIdAlertsIncidentAlertIdPrimaryOK  %+v", 200, o.Payload)
 }
 
-func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK) GetPayload() *models.AlertEntity {
+func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK) GetPayload() *models.IncidentsAlertEntity {
 	return o.Payload
 }
 
 func (o *PatchV1IncidentsIncidentIDAlertsIncidentAlertIDPrimaryOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.AlertEntity)
+	o.Payload = new(models.IncidentsAlertEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

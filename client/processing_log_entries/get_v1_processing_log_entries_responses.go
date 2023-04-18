@@ -45,7 +45,7 @@ GetV1ProcessingLogEntriesOK describes a response with status code 200, with defa
 Processing Log Entries for a specific alert
 */
 type GetV1ProcessingLogEntriesOK struct {
-	Payload *models.ProcessingLogEntryEntityPaginated
+	Payload *models.AlertsProcessingLogEntryEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 processing log entries o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1ProcessingLogEntriesOK) String() string {
 	return fmt.Sprintf("[GET /v1/processing_log_entries][%d] getV1ProcessingLogEntriesOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1ProcessingLogEntriesOK) GetPayload() *models.ProcessingLogEntryEntityPaginated {
+func (o *GetV1ProcessingLogEntriesOK) GetPayload() *models.AlertsProcessingLogEntryEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1ProcessingLogEntriesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProcessingLogEntryEntityPaginated)
+	o.Payload = new(models.AlertsProcessingLogEntryEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

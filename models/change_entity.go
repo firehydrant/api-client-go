@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ChangeEntity Update a change entry
+// ChangeEntity ChangeEntity model
 //
 // swagger:model ChangeEntity
 type ChangeEntity struct {
@@ -29,7 +29,7 @@ type ChangeEntity struct {
 	// UUID of the Change
 	ID string `json:"id,omitempty"`
 
-	// A key/value of labels
+	// Arbitrary key/value pairs of labels.
 	Labels interface{} `json:"labels,omitempty"`
 
 	// Description of the Change

@@ -45,7 +45,7 @@ PatchV1IncidentsIncidentIDNotesNoteIDOK describes a response with status code 20
 Updates the body of a note
 */
 type PatchV1IncidentsIncidentIDNotesNoteIDOK struct {
-	Payload *models.NoteEntity
+	Payload *models.EventNoteEntity
 }
 
 // IsSuccess returns true when this patch v1 incidents incident Id notes note Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PatchV1IncidentsIncidentIDNotesNoteIDOK) String() string {
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/notes/{note_id}][%d] patchV1IncidentsIncidentIdNotesNoteIdOK  %+v", 200, o.Payload)
 }
 
-func (o *PatchV1IncidentsIncidentIDNotesNoteIDOK) GetPayload() *models.NoteEntity {
+func (o *PatchV1IncidentsIncidentIDNotesNoteIDOK) GetPayload() *models.EventNoteEntity {
 	return o.Payload
 }
 
 func (o *PatchV1IncidentsIncidentIDNotesNoteIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.NoteEntity)
+	o.Payload = new(models.EventNoteEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

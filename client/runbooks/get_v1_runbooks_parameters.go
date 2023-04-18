@@ -72,7 +72,7 @@ type GetV1RunbooksParams struct {
 
 	   A query to search runbooks by their owners
 	*/
-	Owners []string
+	Owners *string
 
 	// Page.
 	//
@@ -149,13 +149,13 @@ func (o *GetV1RunbooksParams) SetName(name *string) {
 }
 
 // WithOwners adds the owners to the get v1 runbooks params
-func (o *GetV1RunbooksParams) WithOwners(owners []string) *GetV1RunbooksParams {
+func (o *GetV1RunbooksParams) WithOwners(owners *string) *GetV1RunbooksParams {
 	o.SetOwners(owners)
 	return o
 }
 
 // SetOwners adds the owners to the get v1 runbooks params
-func (o *GetV1RunbooksParams) SetOwners(owners []string) {
+func (o *GetV1RunbooksParams) SetOwners(owners *string) {
 	o.Owners = owners
 }
 
@@ -208,12 +208,18 @@ func (o *GetV1RunbooksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 
 	if o.Owners != nil {
 
-		// binding items for owners
-		joinedOwners := o.bindParamOwners(reg)
+		// query param owners
+		var qrOwners string
 
-		// form array param owners
-		if err := r.SetFormParam("owners", joinedOwners...); err != nil {
-			return err
+		if o.Owners != nil {
+			qrOwners = *o.Owners
+		}
+		qOwners := qrOwners
+		if qOwners != "" {
+
+			if err := r.SetQueryParam("owners", qOwners); err != nil {
+				return err
+			}
 		}
 	}
 
@@ -255,21 +261,4 @@ func (o *GetV1RunbooksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
-}
-
-// bindParamGetV1Runbooks binds the parameter owners
-func (o *GetV1RunbooksParams) bindParamOwners(formats strfmt.Registry) []string {
-	ownersIR := o.Owners
-
-	var ownersIC []string
-	for _, ownersIIR := range ownersIR { // explode []string
-
-		ownersIIV := ownersIIR // string as string
-		ownersIC = append(ownersIC, ownersIIV)
-	}
-
-	// items.CollectionFormat: ""
-	ownersIS := swag.JoinByFormat(ownersIC, "")
-
-	return ownersIS
 }

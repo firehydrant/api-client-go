@@ -63,8 +63,8 @@ PostV1PostMortemsReportsReportIDReasonsParams contains all the parameters to sen
 */
 type PostV1PostMortemsReportsReportIDReasonsParams struct {
 
-	// V1PostMortemsReportsReportIDReasons.
-	V1PostMortemsReportsReportIDReasons *models.PostV1PostMortemsReportsReportIDReasons
+	// PostV1PostMortemsReportsReportIDReasons.
+	PostV1PostMortemsReportsReportIDReasons *models.PostV1PostMortemsReportsReportIDReasons
 
 	// ReportID.
 	ReportID string
@@ -122,15 +122,15 @@ func (o *PostV1PostMortemsReportsReportIDReasonsParams) SetHTTPClient(client *ht
 	o.HTTPClient = client
 }
 
-// WithV1PostMortemsReportsReportIDReasons adds the v1PostMortemsReportsReportIDReasons to the post v1 post mortems reports report Id reasons params
-func (o *PostV1PostMortemsReportsReportIDReasonsParams) WithV1PostMortemsReportsReportIDReasons(v1PostMortemsReportsReportIDReasons *models.PostV1PostMortemsReportsReportIDReasons) *PostV1PostMortemsReportsReportIDReasonsParams {
-	o.SetV1PostMortemsReportsReportIDReasons(v1PostMortemsReportsReportIDReasons)
+// WithPostV1PostMortemsReportsReportIDReasons adds the postV1PostMortemsReportsReportIDReasons to the post v1 post mortems reports report Id reasons params
+func (o *PostV1PostMortemsReportsReportIDReasonsParams) WithPostV1PostMortemsReportsReportIDReasons(postV1PostMortemsReportsReportIDReasons *models.PostV1PostMortemsReportsReportIDReasons) *PostV1PostMortemsReportsReportIDReasonsParams {
+	o.SetPostV1PostMortemsReportsReportIDReasons(postV1PostMortemsReportsReportIDReasons)
 	return o
 }
 
-// SetV1PostMortemsReportsReportIDReasons adds the v1PostMortemsReportsReportIdReasons to the post v1 post mortems reports report Id reasons params
-func (o *PostV1PostMortemsReportsReportIDReasonsParams) SetV1PostMortemsReportsReportIDReasons(v1PostMortemsReportsReportIDReasons *models.PostV1PostMortemsReportsReportIDReasons) {
-	o.V1PostMortemsReportsReportIDReasons = v1PostMortemsReportsReportIDReasons
+// SetPostV1PostMortemsReportsReportIDReasons adds the postV1PostMortemsReportsReportIdReasons to the post v1 post mortems reports report Id reasons params
+func (o *PostV1PostMortemsReportsReportIDReasonsParams) SetPostV1PostMortemsReportsReportIDReasons(postV1PostMortemsReportsReportIDReasons *models.PostV1PostMortemsReportsReportIDReasons) {
+	o.PostV1PostMortemsReportsReportIDReasons = postV1PostMortemsReportsReportIDReasons
 }
 
 // WithReportID adds the reportID to the post v1 post mortems reports report Id reasons params
@@ -151,8 +151,8 @@ func (o *PostV1PostMortemsReportsReportIDReasonsParams) WriteToRequest(r runtime
 		return err
 	}
 	var res []error
-	if o.V1PostMortemsReportsReportIDReasons != nil {
-		if err := r.SetBodyParam(o.V1PostMortemsReportsReportIDReasons); err != nil {
+	if o.PostV1PostMortemsReportsReportIDReasons != nil {
+		if err := r.SetBodyParam(o.PostV1PostMortemsReportsReportIDReasons); err != nil {
 			return err
 		}
 	}

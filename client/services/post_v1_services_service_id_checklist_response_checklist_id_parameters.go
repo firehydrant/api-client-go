@@ -64,13 +64,13 @@ PostV1ServicesServiceIDChecklistResponseChecklistIDParams contains all the param
 */
 type PostV1ServicesServiceIDChecklistResponseChecklistIDParams struct {
 
-	// V1ServicesServiceIDChecklistResponse.
-	V1ServicesServiceIDChecklistResponse *models.PostV1ServicesServiceIDChecklistResponse
-
 	// ChecklistID.
 	//
 	// Format: int32
 	ChecklistID int32
+
+	// PostV1ServicesServiceIDChecklistResponseChecklistID.
+	PostV1ServicesServiceIDChecklistResponseChecklistID *models.PostV1ServicesServiceIDChecklistResponseChecklistID
 
 	// ServiceID.
 	//
@@ -130,17 +130,6 @@ func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) SetHTTPClien
 	o.HTTPClient = client
 }
 
-// WithV1ServicesServiceIDChecklistResponse adds the v1ServicesServiceIDChecklistResponse to the post v1 services service Id checklist response checklist Id params
-func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) WithV1ServicesServiceIDChecklistResponse(v1ServicesServiceIDChecklistResponse *models.PostV1ServicesServiceIDChecklistResponse) *PostV1ServicesServiceIDChecklistResponseChecklistIDParams {
-	o.SetV1ServicesServiceIDChecklistResponse(v1ServicesServiceIDChecklistResponse)
-	return o
-}
-
-// SetV1ServicesServiceIDChecklistResponse adds the v1ServicesServiceIdChecklistResponse to the post v1 services service Id checklist response checklist Id params
-func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) SetV1ServicesServiceIDChecklistResponse(v1ServicesServiceIDChecklistResponse *models.PostV1ServicesServiceIDChecklistResponse) {
-	o.V1ServicesServiceIDChecklistResponse = v1ServicesServiceIDChecklistResponse
-}
-
 // WithChecklistID adds the checklistID to the post v1 services service Id checklist response checklist Id params
 func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) WithChecklistID(checklistID int32) *PostV1ServicesServiceIDChecklistResponseChecklistIDParams {
 	o.SetChecklistID(checklistID)
@@ -150,6 +139,17 @@ func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) WithChecklis
 // SetChecklistID adds the checklistId to the post v1 services service Id checklist response checklist Id params
 func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) SetChecklistID(checklistID int32) {
 	o.ChecklistID = checklistID
+}
+
+// WithPostV1ServicesServiceIDChecklistResponseChecklistID adds the postV1ServicesServiceIDChecklistResponseChecklistID to the post v1 services service Id checklist response checklist Id params
+func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) WithPostV1ServicesServiceIDChecklistResponseChecklistID(postV1ServicesServiceIDChecklistResponseChecklistID *models.PostV1ServicesServiceIDChecklistResponseChecklistID) *PostV1ServicesServiceIDChecklistResponseChecklistIDParams {
+	o.SetPostV1ServicesServiceIDChecklistResponseChecklistID(postV1ServicesServiceIDChecklistResponseChecklistID)
+	return o
+}
+
+// SetPostV1ServicesServiceIDChecklistResponseChecklistID adds the postV1ServicesServiceIdChecklistResponseChecklistId to the post v1 services service Id checklist response checklist Id params
+func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) SetPostV1ServicesServiceIDChecklistResponseChecklistID(postV1ServicesServiceIDChecklistResponseChecklistID *models.PostV1ServicesServiceIDChecklistResponseChecklistID) {
+	o.PostV1ServicesServiceIDChecklistResponseChecklistID = postV1ServicesServiceIDChecklistResponseChecklistID
 }
 
 // WithServiceID adds the serviceID to the post v1 services service Id checklist response checklist Id params
@@ -170,15 +170,15 @@ func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) WriteToReque
 		return err
 	}
 	var res []error
-	if o.V1ServicesServiceIDChecklistResponse != nil {
-		if err := r.SetBodyParam(o.V1ServicesServiceIDChecklistResponse); err != nil {
-			return err
-		}
-	}
 
 	// path param checklist_id
 	if err := r.SetPathParam("checklist_id", swag.FormatInt32(o.ChecklistID)); err != nil {
 		return err
+	}
+	if o.PostV1ServicesServiceIDChecklistResponseChecklistID != nil {
+		if err := r.SetBodyParam(o.PostV1ServicesServiceIDChecklistResponseChecklistID); err != nil {
+			return err
+		}
 	}
 
 	// path param service_id

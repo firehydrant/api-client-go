@@ -45,7 +45,7 @@ PostV1IncidentsIncidentIDNotesCreated describes a response with status code 201,
 Create a new note on for an incident. The visibility field on a note determines where it gets posted.
 */
 type PostV1IncidentsIncidentIDNotesCreated struct {
-	Payload *models.NoteEntity
+	Payload *models.EventNoteEntity
 }
 
 // IsSuccess returns true when this post v1 incidents incident Id notes created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1IncidentsIncidentIDNotesCreated) String() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/notes][%d] postV1IncidentsIncidentIdNotesCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1IncidentsIncidentIDNotesCreated) GetPayload() *models.NoteEntity {
+func (o *PostV1IncidentsIncidentIDNotesCreated) GetPayload() *models.EventNoteEntity {
 	return o.Payload
 }
 
 func (o *PostV1IncidentsIncidentIDNotesCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.NoteEntity)
+	o.Payload = new(models.EventNoteEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -64,13 +64,13 @@ PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams contains all the para
 */
 type PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams struct {
 
-	// V1RunbooksExecutionsExecutionIDStepsStepIDVotes.
-	V1RunbooksExecutionsExecutionIDStepsStepIDVotes *models.PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes
-
 	// ExecutionID.
 	//
 	// Format: int32
 	ExecutionID int32
+
+	// PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes.
+	PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes *models.PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes
 
 	// StepID.
 	//
@@ -130,17 +130,6 @@ func (o *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams) SetHTTPClie
 	o.HTTPClient = client
 }
 
-// WithV1RunbooksExecutionsExecutionIDStepsStepIDVotes adds the v1RunbooksExecutionsExecutionIDStepsStepIDVotes to the patch v1 runbooks executions execution Id steps step Id votes params
-func (o *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams) WithV1RunbooksExecutionsExecutionIDStepsStepIDVotes(v1RunbooksExecutionsExecutionIDStepsStepIDVotes *models.PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes) *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams {
-	o.SetV1RunbooksExecutionsExecutionIDStepsStepIDVotes(v1RunbooksExecutionsExecutionIDStepsStepIDVotes)
-	return o
-}
-
-// SetV1RunbooksExecutionsExecutionIDStepsStepIDVotes adds the v1RunbooksExecutionsExecutionIdStepsStepIdVotes to the patch v1 runbooks executions execution Id steps step Id votes params
-func (o *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams) SetV1RunbooksExecutionsExecutionIDStepsStepIDVotes(v1RunbooksExecutionsExecutionIDStepsStepIDVotes *models.PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes) {
-	o.V1RunbooksExecutionsExecutionIDStepsStepIDVotes = v1RunbooksExecutionsExecutionIDStepsStepIDVotes
-}
-
 // WithExecutionID adds the executionID to the patch v1 runbooks executions execution Id steps step Id votes params
 func (o *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams) WithExecutionID(executionID int32) *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams {
 	o.SetExecutionID(executionID)
@@ -150,6 +139,17 @@ func (o *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams) WithExecuti
 // SetExecutionID adds the executionId to the patch v1 runbooks executions execution Id steps step Id votes params
 func (o *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams) SetExecutionID(executionID int32) {
 	o.ExecutionID = executionID
+}
+
+// WithPatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes adds the patchV1RunbooksExecutionsExecutionIDStepsStepIDVotes to the patch v1 runbooks executions execution Id steps step Id votes params
+func (o *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams) WithPatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(patchV1RunbooksExecutionsExecutionIDStepsStepIDVotes *models.PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes) *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams {
+	o.SetPatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(patchV1RunbooksExecutionsExecutionIDStepsStepIDVotes)
+	return o
+}
+
+// SetPatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes adds the patchV1RunbooksExecutionsExecutionIdStepsStepIdVotes to the patch v1 runbooks executions execution Id steps step Id votes params
+func (o *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams) SetPatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(patchV1RunbooksExecutionsExecutionIDStepsStepIDVotes *models.PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes) {
+	o.PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes = patchV1RunbooksExecutionsExecutionIDStepsStepIDVotes
 }
 
 // WithStepID adds the stepID to the patch v1 runbooks executions execution Id steps step Id votes params
@@ -170,15 +170,15 @@ func (o *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams) WriteToRequ
 		return err
 	}
 	var res []error
-	if o.V1RunbooksExecutionsExecutionIDStepsStepIDVotes != nil {
-		if err := r.SetBodyParam(o.V1RunbooksExecutionsExecutionIDStepsStepIDVotes); err != nil {
-			return err
-		}
-	}
 
 	// path param execution_id
 	if err := r.SetPathParam("execution_id", swag.FormatInt32(o.ExecutionID)); err != nil {
 		return err
+	}
+	if o.PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes != nil {
+		if err := r.SetBodyParam(o.PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes); err != nil {
+			return err
+		}
 	}
 
 	// path param step_id

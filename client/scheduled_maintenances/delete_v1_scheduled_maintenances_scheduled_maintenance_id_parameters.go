@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams creates a new DeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams object,
@@ -63,9 +62,7 @@ DeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams contains all the param
 type DeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams struct {
 
 	// ScheduledMaintenanceID.
-	//
-	// Format: int32
-	ScheduledMaintenanceID int32
+	ScheduledMaintenanceID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *DeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams) SetHTTPClien
 }
 
 // WithScheduledMaintenanceID adds the scheduledMaintenanceID to the delete v1 scheduled maintenances scheduled maintenance Id params
-func (o *DeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams) WithScheduledMaintenanceID(scheduledMaintenanceID int32) *DeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams {
+func (o *DeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams) WithScheduledMaintenanceID(scheduledMaintenanceID string) *DeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams {
 	o.SetScheduledMaintenanceID(scheduledMaintenanceID)
 	return o
 }
 
 // SetScheduledMaintenanceID adds the scheduledMaintenanceId to the delete v1 scheduled maintenances scheduled maintenance Id params
-func (o *DeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams) SetScheduledMaintenanceID(scheduledMaintenanceID int32) {
+func (o *DeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams) SetScheduledMaintenanceID(scheduledMaintenanceID string) {
 	o.ScheduledMaintenanceID = scheduledMaintenanceID
 }
 
@@ -140,7 +137,7 @@ func (o *DeleteV1ScheduledMaintenancesScheduledMaintenanceIDParams) WriteToReque
 	var res []error
 
 	// path param scheduled_maintenance_id
-	if err := r.SetPathParam("scheduled_maintenance_id", swag.FormatInt32(o.ScheduledMaintenanceID)); err != nil {
+	if err := r.SetPathParam("scheduled_maintenance_id", o.ScheduledMaintenanceID); err != nil {
 		return err
 	}
 

@@ -45,7 +45,7 @@ PostV1IncidentsIncidentIDRoleAssignmentsCreated describes a response with status
 Assign a role to a user for this incident
 */
 type PostV1IncidentsIncidentIDRoleAssignmentsCreated struct {
-	Payload *models.RoleAssignmentEntity
+	Payload *models.IncidentsRoleAssignmentEntity
 }
 
 // IsSuccess returns true when this post v1 incidents incident Id role assignments created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) String() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/role_assignments][%d] postV1IncidentsIncidentIdRoleAssignmentsCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) GetPayload() *models.RoleAssignmentEntity {
+func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) GetPayload() *models.IncidentsRoleAssignmentEntity {
 	return o.Payload
 }
 
 func (o *PostV1IncidentsIncidentIDRoleAssignmentsCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.RoleAssignmentEntity)
+	o.Payload = new(models.IncidentsRoleAssignmentEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

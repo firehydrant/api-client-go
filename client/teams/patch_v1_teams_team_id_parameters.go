@@ -64,8 +64,8 @@ PatchV1TeamsTeamIDParams contains all the parameters to send to the API endpoint
 */
 type PatchV1TeamsTeamIDParams struct {
 
-	// V1Teams.
-	V1Teams *models.PatchV1Teams
+	// PatchV1TeamsTeamID.
+	PatchV1TeamsTeamID *models.PatchV1TeamsTeamID
 
 	// TeamID.
 	//
@@ -125,15 +125,15 @@ func (o *PatchV1TeamsTeamIDParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithV1Teams adds the v1Teams to the patch v1 teams team Id params
-func (o *PatchV1TeamsTeamIDParams) WithV1Teams(v1Teams *models.PatchV1Teams) *PatchV1TeamsTeamIDParams {
-	o.SetV1Teams(v1Teams)
+// WithPatchV1TeamsTeamID adds the patchV1TeamsTeamID to the patch v1 teams team Id params
+func (o *PatchV1TeamsTeamIDParams) WithPatchV1TeamsTeamID(patchV1TeamsTeamID *models.PatchV1TeamsTeamID) *PatchV1TeamsTeamIDParams {
+	o.SetPatchV1TeamsTeamID(patchV1TeamsTeamID)
 	return o
 }
 
-// SetV1Teams adds the v1Teams to the patch v1 teams team Id params
-func (o *PatchV1TeamsTeamIDParams) SetV1Teams(v1Teams *models.PatchV1Teams) {
-	o.V1Teams = v1Teams
+// SetPatchV1TeamsTeamID adds the patchV1TeamsTeamId to the patch v1 teams team Id params
+func (o *PatchV1TeamsTeamIDParams) SetPatchV1TeamsTeamID(patchV1TeamsTeamID *models.PatchV1TeamsTeamID) {
+	o.PatchV1TeamsTeamID = patchV1TeamsTeamID
 }
 
 // WithTeamID adds the teamID to the patch v1 teams team Id params
@@ -154,8 +154,8 @@ func (o *PatchV1TeamsTeamIDParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-	if o.V1Teams != nil {
-		if err := r.SetBodyParam(o.V1Teams); err != nil {
+	if o.PatchV1TeamsTeamID != nil {
+		if err := r.SetBodyParam(o.PatchV1TeamsTeamID); err != nil {
 			return err
 		}
 	}
