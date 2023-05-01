@@ -62,6 +62,12 @@ GetV1TicketingTicketsParams contains all the parameters to send to the API endpo
 */
 type GetV1TicketingTicketsParams struct {
 
+	/* AssignedUser.
+
+	   Filter tickets assigned to this user id
+	*/
+	AssignedUser *string
+
 	// Page.
 	//
 	// Format: int32
@@ -71,6 +77,12 @@ type GetV1TicketingTicketsParams struct {
 	//
 	// Format: int32
 	PerPage *int32
+
+	/* State.
+
+	   Filter tickets by state
+	*/
+	State *string
 
 	/* TagMatchStrategy.
 
@@ -137,6 +149,17 @@ func (o *GetV1TicketingTicketsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAssignedUser adds the assignedUser to the get v1 ticketing tickets params
+func (o *GetV1TicketingTicketsParams) WithAssignedUser(assignedUser *string) *GetV1TicketingTicketsParams {
+	o.SetAssignedUser(assignedUser)
+	return o
+}
+
+// SetAssignedUser adds the assignedUser to the get v1 ticketing tickets params
+func (o *GetV1TicketingTicketsParams) SetAssignedUser(assignedUser *string) {
+	o.AssignedUser = assignedUser
+}
+
 // WithPage adds the page to the get v1 ticketing tickets params
 func (o *GetV1TicketingTicketsParams) WithPage(page *int32) *GetV1TicketingTicketsParams {
 	o.SetPage(page)
@@ -157,6 +180,17 @@ func (o *GetV1TicketingTicketsParams) WithPerPage(perPage *int32) *GetV1Ticketin
 // SetPerPage adds the perPage to the get v1 ticketing tickets params
 func (o *GetV1TicketingTicketsParams) SetPerPage(perPage *int32) {
 	o.PerPage = perPage
+}
+
+// WithState adds the state to the get v1 ticketing tickets params
+func (o *GetV1TicketingTicketsParams) WithState(state *string) *GetV1TicketingTicketsParams {
+	o.SetState(state)
+	return o
+}
+
+// SetState adds the state to the get v1 ticketing tickets params
+func (o *GetV1TicketingTicketsParams) SetState(state *string) {
+	o.State = state
 }
 
 // WithTagMatchStrategy adds the tagMatchStrategy to the get v1 ticketing tickets params
@@ -189,6 +223,23 @@ func (o *GetV1TicketingTicketsParams) WriteToRequest(r runtime.ClientRequest, re
 	}
 	var res []error
 
+	if o.AssignedUser != nil {
+
+		// query param assigned_user
+		var qrAssignedUser string
+
+		if o.AssignedUser != nil {
+			qrAssignedUser = *o.AssignedUser
+		}
+		qAssignedUser := qrAssignedUser
+		if qAssignedUser != "" {
+
+			if err := r.SetQueryParam("assigned_user", qAssignedUser); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.Page != nil {
 
 		// query param page
@@ -218,6 +269,23 @@ func (o *GetV1TicketingTicketsParams) WriteToRequest(r runtime.ClientRequest, re
 		if qPerPage != "" {
 
 			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.State != nil {
+
+		// query param state
+		var qrState string
+
+		if o.State != nil {
+			qrState = *o.State
+		}
+		qState := qrState
+		if qState != "" {
+
+			if err := r.SetQueryParam("state", qState); err != nil {
 				return err
 			}
 		}

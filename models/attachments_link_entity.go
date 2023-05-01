@@ -26,6 +26,9 @@ type AttachmentsLinkEntity struct {
 	// icon url
 	IconURL string `json:"icon_url,omitempty"`
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// type
 	Type string `json:"type,omitempty"`
 }

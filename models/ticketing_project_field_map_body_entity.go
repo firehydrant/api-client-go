@@ -24,6 +24,9 @@ type TicketingProjectFieldMapBodyEntity struct {
 	// cases
 	Cases []*TicketingProjectFieldMapCasesEntity `json:"cases"`
 
+	// else
+	Else *TicketingProjectFieldMapCasesElseEntity `json:"else,omitempty"`
+
 	// external field
 	ExternalField string `json:"external_field,omitempty"`
 
@@ -43,6 +46,10 @@ func (m *TicketingProjectFieldMapBodyEntity) Validate(formats strfmt.Registry) e
 	var res []error
 
 	if err := m.validateCases(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateElse(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -81,6 +88,25 @@ func (m *TicketingProjectFieldMapBodyEntity) validateCases(formats strfmt.Regist
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *TicketingProjectFieldMapBodyEntity) validateElse(formats strfmt.Registry) error {
+	if swag.IsZero(m.Else) { // not required
+		return nil
+	}
+
+	if m.Else != nil {
+		if err := m.Else.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("else")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("else")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -155,6 +181,10 @@ func (m *TicketingProjectFieldMapBodyEntity) ContextValidate(ctx context.Context
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateElse(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateExternalValue(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -180,6 +210,22 @@ func (m *TicketingProjectFieldMapBodyEntity) contextValidateCases(ctx context.Co
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *TicketingProjectFieldMapBodyEntity) contextValidateElse(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Else != nil {
+		if err := m.Else.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("else")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("else")
+			}
+			return err
+		}
 	}
 
 	return nil

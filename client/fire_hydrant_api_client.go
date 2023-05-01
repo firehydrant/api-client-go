@@ -29,7 +29,6 @@ import (
 	"github.com/firehydrant/api-client-go/client/noauth"
 	"github.com/firehydrant/api-client-go/client/nunc"
 	"github.com/firehydrant/api-client-go/client/nunc_connections"
-	"github.com/firehydrant/api-client-go/client/onboarding"
 	"github.com/firehydrant/api-client-go/client/ping"
 	"github.com/firehydrant/api-client-go/client/post_mortems"
 	"github.com/firehydrant/api-client-go/client/priorities"
@@ -115,7 +114,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Noauth = noauth.New(transport, formats)
 	cli.Nunc = nunc.New(transport, formats)
 	cli.NuncConnections = nunc_connections.New(transport, formats)
-	cli.Onboarding = onboarding.New(transport, formats)
 	cli.Ping = ping.New(transport, formats)
 	cli.PostMortems = post_mortems.New(transport, formats)
 	cli.Priorities = priorities.New(transport, formats)
@@ -220,8 +218,6 @@ type FireHydrantAPI struct {
 
 	NuncConnections nunc_connections.ClientService
 
-	Onboarding onboarding.ClientService
-
 	Ping ping.ClientService
 
 	PostMortems post_mortems.ClientService
@@ -291,7 +287,6 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Noauth.SetTransport(transport)
 	c.Nunc.SetTransport(transport)
 	c.NuncConnections.SetTransport(transport)
-	c.Onboarding.SetTransport(transport)
 	c.Ping.SetTransport(transport)
 	c.PostMortems.SetTransport(transport)
 	c.Priorities.SetTransport(transport)

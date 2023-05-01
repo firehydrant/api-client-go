@@ -30,7 +30,7 @@ type ActorEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// type
-	// Enum: [firehydrant_user firehydrant_bot aws checkly custom_alerts data_export shortcut nunc github giphy google_meet microsoft_teams webex jira_cloud jira_onprem opsgenie pager_duty patchy service_now slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2]
+	// Enum: [firehydrant_user firehydrant_bot alertmanager aws bugsnag checkly custom_alerts data_export datadog shortcut new_relic nunc github giphy google_meet microsoft_teams webex jira_cloud jira_onprem opsgenie pager_duty honeycomb patchy service_now slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2]
 	Type string `json:"type,omitempty"`
 }
 
@@ -52,7 +52,7 @@ var actorEntityTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","aws","checkly","custom_alerts","data_export","shortcut","nunc","github","giphy","google_meet","microsoft_teams","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","patchy","service_now","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","alertmanager","aws","bugsnag","checkly","custom_alerts","data_export","datadog","shortcut","new_relic","nunc","github","giphy","google_meet","microsoft_teams","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","honeycomb","patchy","service_now","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -68,8 +68,14 @@ const (
 	// ActorEntityTypeFirehydrantBot captures enum value "firehydrant_bot"
 	ActorEntityTypeFirehydrantBot string = "firehydrant_bot"
 
+	// ActorEntityTypeAlertmanager captures enum value "alertmanager"
+	ActorEntityTypeAlertmanager string = "alertmanager"
+
 	// ActorEntityTypeAws captures enum value "aws"
 	ActorEntityTypeAws string = "aws"
+
+	// ActorEntityTypeBugsnag captures enum value "bugsnag"
+	ActorEntityTypeBugsnag string = "bugsnag"
 
 	// ActorEntityTypeCheckly captures enum value "checkly"
 	ActorEntityTypeCheckly string = "checkly"
@@ -80,8 +86,14 @@ const (
 	// ActorEntityTypeDataExport captures enum value "data_export"
 	ActorEntityTypeDataExport string = "data_export"
 
+	// ActorEntityTypeDatadog captures enum value "datadog"
+	ActorEntityTypeDatadog string = "datadog"
+
 	// ActorEntityTypeShortcut captures enum value "shortcut"
 	ActorEntityTypeShortcut string = "shortcut"
+
+	// ActorEntityTypeNewRelic captures enum value "new_relic"
+	ActorEntityTypeNewRelic string = "new_relic"
 
 	// ActorEntityTypeNunc captures enum value "nunc"
 	ActorEntityTypeNunc string = "nunc"
@@ -112,6 +124,9 @@ const (
 
 	// ActorEntityTypePagerDuty captures enum value "pager_duty"
 	ActorEntityTypePagerDuty string = "pager_duty"
+
+	// ActorEntityTypeHoneycomb captures enum value "honeycomb"
+	ActorEntityTypeHoneycomb string = "honeycomb"
 
 	// ActorEntityTypePatchy captures enum value "patchy"
 	ActorEntityTypePatchy string = "patchy"

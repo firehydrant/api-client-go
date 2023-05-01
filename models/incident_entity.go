@@ -43,7 +43,7 @@ type IncidentEntity struct {
 	ContextObject *IncidentsContextObjectEntity `json:"context_object,omitempty"`
 
 	// conversations
-	Conversations *ConversationsAPIEntitiesReference `json:"conversations,omitempty"`
+	Conversations []*ConversationsAPIEntitiesReference `json:"conversations"`
 
 	// The time the incident was opened
 	// Format: date-time
@@ -320,15 +320,22 @@ func (m *IncidentEntity) validateConversations(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if m.Conversations != nil {
-		if err := m.Conversations.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("conversations")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("conversations")
-			}
-			return err
+	for i := 0; i < len(m.Conversations); i++ {
+		if swag.IsZero(m.Conversations[i]) { // not required
+			continue
 		}
+
+		if m.Conversations[i] != nil {
+			if err := m.Conversations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conversations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -922,15 +929,19 @@ func (m *IncidentEntity) contextValidateContextObject(ctx context.Context, forma
 
 func (m *IncidentEntity) contextValidateConversations(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Conversations != nil {
-		if err := m.Conversations.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("conversations")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("conversations")
+	for i := 0; i < len(m.Conversations); i++ {
+
+		if m.Conversations[i] != nil {
+			if err := m.Conversations[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conversations" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil

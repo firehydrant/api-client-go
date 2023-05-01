@@ -40,6 +40,9 @@ type TicketingTicketEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
+	// ID of incident that this ticket is related to
+	IncidentID string `json:"incident_id,omitempty"`
+
 	// link
 	Link *AttachmentsLinkEntity `json:"link,omitempty"`
 

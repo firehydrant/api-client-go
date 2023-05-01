@@ -75,6 +75,12 @@ type GetV1IncidentsIncidentIDEventsParams struct {
 	// Format: int32
 	PerPage *int32
 
+	/* Types.
+
+	   A comma separated list of types of events to filter by
+	*/
+	Types *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -161,6 +167,17 @@ func (o *GetV1IncidentsIncidentIDEventsParams) SetPerPage(perPage *int32) {
 	o.PerPage = perPage
 }
 
+// WithTypes adds the types to the get v1 incidents incident Id events params
+func (o *GetV1IncidentsIncidentIDEventsParams) WithTypes(types *string) *GetV1IncidentsIncidentIDEventsParams {
+	o.SetTypes(types)
+	return o
+}
+
+// SetTypes adds the types to the get v1 incidents incident Id events params
+func (o *GetV1IncidentsIncidentIDEventsParams) SetTypes(types *string) {
+	o.Types = types
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1IncidentsIncidentIDEventsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -203,6 +220,23 @@ func (o *GetV1IncidentsIncidentIDEventsParams) WriteToRequest(r runtime.ClientRe
 		if qPerPage != "" {
 
 			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Types != nil {
+
+		// query param types
+		var qrTypes string
+
+		if o.Types != nil {
+			qrTypes = *o.Types
+		}
+		qTypes := qrTypes
+		if qTypes != "" {
+
+			if err := r.SetQueryParam("types", qTypes); err != nil {
 				return err
 			}
 		}

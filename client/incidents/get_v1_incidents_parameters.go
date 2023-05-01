@@ -218,6 +218,22 @@ type GetV1IncidentsParams struct {
 	*/
 	Teams *string
 
+	/* UpdatedAfter.
+
+	   Filters for incidents that were updated after this date
+
+	   Format: date-time
+	*/
+	UpdatedAfter *strfmt.DateTime
+
+	/* UpdatedBefore.
+
+	   Filters for incidents that were updated before this date
+
+	   Format: date-time
+	*/
+	UpdatedBefore *strfmt.DateTime
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -544,6 +560,28 @@ func (o *GetV1IncidentsParams) WithTeams(teams *string) *GetV1IncidentsParams {
 // SetTeams adds the teams to the get v1 incidents params
 func (o *GetV1IncidentsParams) SetTeams(teams *string) {
 	o.Teams = teams
+}
+
+// WithUpdatedAfter adds the updatedAfter to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithUpdatedAfter(updatedAfter *strfmt.DateTime) *GetV1IncidentsParams {
+	o.SetUpdatedAfter(updatedAfter)
+	return o
+}
+
+// SetUpdatedAfter adds the updatedAfter to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetUpdatedAfter(updatedAfter *strfmt.DateTime) {
+	o.UpdatedAfter = updatedAfter
+}
+
+// WithUpdatedBefore adds the updatedBefore to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithUpdatedBefore(updatedBefore *strfmt.DateTime) *GetV1IncidentsParams {
+	o.SetUpdatedBefore(updatedBefore)
+	return o
+}
+
+// SetUpdatedBefore adds the updatedBefore to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetUpdatedBefore(updatedBefore *strfmt.DateTime) {
+	o.UpdatedBefore = updatedBefore
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -974,6 +1012,40 @@ func (o *GetV1IncidentsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		if qTeams != "" {
 
 			if err := r.SetQueryParam("teams", qTeams); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.UpdatedAfter != nil {
+
+		// query param updated_after
+		var qrUpdatedAfter strfmt.DateTime
+
+		if o.UpdatedAfter != nil {
+			qrUpdatedAfter = *o.UpdatedAfter
+		}
+		qUpdatedAfter := qrUpdatedAfter.String()
+		if qUpdatedAfter != "" {
+
+			if err := r.SetQueryParam("updated_after", qUpdatedAfter); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.UpdatedBefore != nil {
+
+		// query param updated_before
+		var qrUpdatedBefore strfmt.DateTime
+
+		if o.UpdatedBefore != nil {
+			qrUpdatedBefore = *o.UpdatedBefore
+		}
+		qUpdatedBefore := qrUpdatedBefore.String()
+		if qUpdatedBefore != "" {
+
+			if err := r.SetQueryParam("updated_before", qUpdatedBefore); err != nil {
 				return err
 			}
 		}
