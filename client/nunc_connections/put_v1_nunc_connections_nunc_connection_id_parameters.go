@@ -62,12 +62,6 @@ PutV1NuncConnectionsNuncConnectionIDParams contains all the parameters to send t
 */
 type PutV1NuncConnectionsNuncConnectionIDParams struct {
 
-	// ButtonBackgroundColor.
-	ButtonBackgroundColor *string
-
-	// ButtonTextColor.
-	ButtonTextColor *string
-
 	// CompanyName.
 	CompanyName *string
 
@@ -77,11 +71,29 @@ type PutV1NuncConnectionsNuncConnectionIDParams struct {
 	// CompanyWebsite.
 	CompanyWebsite *string
 
-	// CoverImage.
-	CoverImage runtime.NamedReadCloser
+	// ComponentsInfrastructureID.
+	ComponentsInfrastructureID []string
 
-	// Favicon.
-	Favicon runtime.NamedReadCloser
+	// ComponentsInfrastructureType.
+	ComponentsInfrastructureType []string
+
+	/* ConditionsConditionID.
+
+	   Severity matrix condition id
+	*/
+	ConditionsConditionID []string
+
+	/* ConditionsNuncCondition.
+
+	   Status page condition to map your severity matrix condition to
+	*/
+	ConditionsNuncCondition []string
+
+	// EnableHistogram.
+	EnableHistogram *bool
+
+	// ExposedFields.
+	ExposedFields []string
 
 	// GreetingBody.
 	GreetingBody *string
@@ -89,19 +101,10 @@ type PutV1NuncConnectionsNuncConnectionIDParams struct {
 	// GreetingTitle.
 	GreetingTitle *string
 
-	// LinkColor.
-	LinkColor *string
-
-	// Logo.
-	Logo runtime.NamedReadCloser
-
 	// NuncConnectionID.
 	//
 	// Format: int32
 	NuncConnectionID int32
-
-	// OpenGraphImage.
-	OpenGraphImage runtime.NamedReadCloser
 
 	// OperationalMessage.
 	OperationalMessage *string
@@ -111,6 +114,14 @@ type PutV1NuncConnectionsNuncConnectionIDParams struct {
 
 	// SecondaryColor.
 	SecondaryColor *string
+
+	// Title.
+	Title *string
+
+	// UIVersion.
+	//
+	// Format: int32
+	UIVersion *int32
 
 	timeout    time.Duration
 	Context    context.Context
@@ -165,28 +176,6 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetHTTPClient(client *http.
 	o.HTTPClient = client
 }
 
-// WithButtonBackgroundColor adds the buttonBackgroundColor to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithButtonBackgroundColor(buttonBackgroundColor *string) *PutV1NuncConnectionsNuncConnectionIDParams {
-	o.SetButtonBackgroundColor(buttonBackgroundColor)
-	return o
-}
-
-// SetButtonBackgroundColor adds the buttonBackgroundColor to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetButtonBackgroundColor(buttonBackgroundColor *string) {
-	o.ButtonBackgroundColor = buttonBackgroundColor
-}
-
-// WithButtonTextColor adds the buttonTextColor to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithButtonTextColor(buttonTextColor *string) *PutV1NuncConnectionsNuncConnectionIDParams {
-	o.SetButtonTextColor(buttonTextColor)
-	return o
-}
-
-// SetButtonTextColor adds the buttonTextColor to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetButtonTextColor(buttonTextColor *string) {
-	o.ButtonTextColor = buttonTextColor
-}
-
 // WithCompanyName adds the companyName to the put v1 nunc connections nunc connection Id params
 func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithCompanyName(companyName *string) *PutV1NuncConnectionsNuncConnectionIDParams {
 	o.SetCompanyName(companyName)
@@ -220,26 +209,70 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetCompanyWebsite(companyWe
 	o.CompanyWebsite = companyWebsite
 }
 
-// WithCoverImage adds the coverImage to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithCoverImage(coverImage runtime.NamedReadCloser) *PutV1NuncConnectionsNuncConnectionIDParams {
-	o.SetCoverImage(coverImage)
+// WithComponentsInfrastructureID adds the componentsInfrastructureID to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithComponentsInfrastructureID(componentsInfrastructureID []string) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetComponentsInfrastructureID(componentsInfrastructureID)
 	return o
 }
 
-// SetCoverImage adds the coverImage to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetCoverImage(coverImage runtime.NamedReadCloser) {
-	o.CoverImage = coverImage
+// SetComponentsInfrastructureID adds the componentsInfrastructureId to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetComponentsInfrastructureID(componentsInfrastructureID []string) {
+	o.ComponentsInfrastructureID = componentsInfrastructureID
 }
 
-// WithFavicon adds the favicon to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithFavicon(favicon runtime.NamedReadCloser) *PutV1NuncConnectionsNuncConnectionIDParams {
-	o.SetFavicon(favicon)
+// WithComponentsInfrastructureType adds the componentsInfrastructureType to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithComponentsInfrastructureType(componentsInfrastructureType []string) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetComponentsInfrastructureType(componentsInfrastructureType)
 	return o
 }
 
-// SetFavicon adds the favicon to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetFavicon(favicon runtime.NamedReadCloser) {
-	o.Favicon = favicon
+// SetComponentsInfrastructureType adds the componentsInfrastructureType to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetComponentsInfrastructureType(componentsInfrastructureType []string) {
+	o.ComponentsInfrastructureType = componentsInfrastructureType
+}
+
+// WithConditionsConditionID adds the conditionsConditionID to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithConditionsConditionID(conditionsConditionID []string) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetConditionsConditionID(conditionsConditionID)
+	return o
+}
+
+// SetConditionsConditionID adds the conditionsConditionId to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetConditionsConditionID(conditionsConditionID []string) {
+	o.ConditionsConditionID = conditionsConditionID
+}
+
+// WithConditionsNuncCondition adds the conditionsNuncCondition to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithConditionsNuncCondition(conditionsNuncCondition []string) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetConditionsNuncCondition(conditionsNuncCondition)
+	return o
+}
+
+// SetConditionsNuncCondition adds the conditionsNuncCondition to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetConditionsNuncCondition(conditionsNuncCondition []string) {
+	o.ConditionsNuncCondition = conditionsNuncCondition
+}
+
+// WithEnableHistogram adds the enableHistogram to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithEnableHistogram(enableHistogram *bool) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetEnableHistogram(enableHistogram)
+	return o
+}
+
+// SetEnableHistogram adds the enableHistogram to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetEnableHistogram(enableHistogram *bool) {
+	o.EnableHistogram = enableHistogram
+}
+
+// WithExposedFields adds the exposedFields to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithExposedFields(exposedFields []string) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetExposedFields(exposedFields)
+	return o
+}
+
+// SetExposedFields adds the exposedFields to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetExposedFields(exposedFields []string) {
+	o.ExposedFields = exposedFields
 }
 
 // WithGreetingBody adds the greetingBody to the put v1 nunc connections nunc connection Id params
@@ -264,28 +297,6 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetGreetingTitle(greetingTi
 	o.GreetingTitle = greetingTitle
 }
 
-// WithLinkColor adds the linkColor to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithLinkColor(linkColor *string) *PutV1NuncConnectionsNuncConnectionIDParams {
-	o.SetLinkColor(linkColor)
-	return o
-}
-
-// SetLinkColor adds the linkColor to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetLinkColor(linkColor *string) {
-	o.LinkColor = linkColor
-}
-
-// WithLogo adds the logo to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithLogo(logo runtime.NamedReadCloser) *PutV1NuncConnectionsNuncConnectionIDParams {
-	o.SetLogo(logo)
-	return o
-}
-
-// SetLogo adds the logo to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetLogo(logo runtime.NamedReadCloser) {
-	o.Logo = logo
-}
-
 // WithNuncConnectionID adds the nuncConnectionID to the put v1 nunc connections nunc connection Id params
 func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithNuncConnectionID(nuncConnectionID int32) *PutV1NuncConnectionsNuncConnectionIDParams {
 	o.SetNuncConnectionID(nuncConnectionID)
@@ -295,17 +306,6 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithNuncConnectionID(nuncCo
 // SetNuncConnectionID adds the nuncConnectionId to the put v1 nunc connections nunc connection Id params
 func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetNuncConnectionID(nuncConnectionID int32) {
 	o.NuncConnectionID = nuncConnectionID
-}
-
-// WithOpenGraphImage adds the openGraphImage to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithOpenGraphImage(openGraphImage runtime.NamedReadCloser) *PutV1NuncConnectionsNuncConnectionIDParams {
-	o.SetOpenGraphImage(openGraphImage)
-	return o
-}
-
-// SetOpenGraphImage adds the openGraphImage to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetOpenGraphImage(openGraphImage runtime.NamedReadCloser) {
-	o.OpenGraphImage = openGraphImage
 }
 
 // WithOperationalMessage adds the operationalMessage to the put v1 nunc connections nunc connection Id params
@@ -341,6 +341,28 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetSecondaryColor(secondary
 	o.SecondaryColor = secondaryColor
 }
 
+// WithTitle adds the title to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithTitle(title *string) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetTitle(title)
+	return o
+}
+
+// SetTitle adds the title to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetTitle(title *string) {
+	o.Title = title
+}
+
+// WithUIVersion adds the uIVersion to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithUIVersion(uIVersion *int32) *PutV1NuncConnectionsNuncConnectionIDParams {
+	o.SetUIVersion(uIVersion)
+	return o
+}
+
+// SetUIVersion adds the uiVersion to the put v1 nunc connections nunc connection Id params
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetUIVersion(uIVersion *int32) {
+	o.UIVersion = uIVersion
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PutV1NuncConnectionsNuncConnectionIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -348,36 +370,6 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) WriteToRequest(r runtime.Cl
 		return err
 	}
 	var res []error
-
-	if o.ButtonBackgroundColor != nil {
-
-		// form param button_background_color
-		var frButtonBackgroundColor string
-		if o.ButtonBackgroundColor != nil {
-			frButtonBackgroundColor = *o.ButtonBackgroundColor
-		}
-		fButtonBackgroundColor := frButtonBackgroundColor
-		if fButtonBackgroundColor != "" {
-			if err := r.SetFormParam("button_background_color", fButtonBackgroundColor); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.ButtonTextColor != nil {
-
-		// form param button_text_color
-		var frButtonTextColor string
-		if o.ButtonTextColor != nil {
-			frButtonTextColor = *o.ButtonTextColor
-		}
-		fButtonTextColor := frButtonTextColor
-		if fButtonTextColor != "" {
-			if err := r.SetFormParam("button_text_color", fButtonTextColor); err != nil {
-				return err
-			}
-		}
-	}
 
 	if o.CompanyName != nil {
 
@@ -424,23 +416,73 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) WriteToRequest(r runtime.Cl
 		}
 	}
 
-	if o.CoverImage != nil {
+	if o.ComponentsInfrastructureID != nil {
 
-		if o.CoverImage != nil {
-			// form file param cover_image
-			if err := r.SetFileParam("cover_image", o.CoverImage); err != nil {
+		// binding items for components[infrastructure_id]
+		joinedComponentsInfrastructureID := o.bindParamComponentsInfrastructureID(reg)
+
+		// form array param components[infrastructure_id]
+		if err := r.SetFormParam("components[infrastructure_id]", joinedComponentsInfrastructureID...); err != nil {
+			return err
+		}
+	}
+
+	if o.ComponentsInfrastructureType != nil {
+
+		// binding items for components[infrastructure_type]
+		joinedComponentsInfrastructureType := o.bindParamComponentsInfrastructureType(reg)
+
+		// form array param components[infrastructure_type]
+		if err := r.SetFormParam("components[infrastructure_type]", joinedComponentsInfrastructureType...); err != nil {
+			return err
+		}
+	}
+
+	if o.ConditionsConditionID != nil {
+
+		// binding items for conditions[condition_id]
+		joinedConditionsConditionID := o.bindParamConditionsConditionID(reg)
+
+		// form array param conditions[condition_id]
+		if err := r.SetFormParam("conditions[condition_id]", joinedConditionsConditionID...); err != nil {
+			return err
+		}
+	}
+
+	if o.ConditionsNuncCondition != nil {
+
+		// binding items for conditions[nunc_condition]
+		joinedConditionsNuncCondition := o.bindParamConditionsNuncCondition(reg)
+
+		// form array param conditions[nunc_condition]
+		if err := r.SetFormParam("conditions[nunc_condition]", joinedConditionsNuncCondition...); err != nil {
+			return err
+		}
+	}
+
+	if o.EnableHistogram != nil {
+
+		// form param enable_histogram
+		var frEnableHistogram bool
+		if o.EnableHistogram != nil {
+			frEnableHistogram = *o.EnableHistogram
+		}
+		fEnableHistogram := swag.FormatBool(frEnableHistogram)
+		if fEnableHistogram != "" {
+			if err := r.SetFormParam("enable_histogram", fEnableHistogram); err != nil {
 				return err
 			}
 		}
 	}
 
-	if o.Favicon != nil {
+	if o.ExposedFields != nil {
 
-		if o.Favicon != nil {
-			// form file param favicon
-			if err := r.SetFileParam("favicon", o.Favicon); err != nil {
-				return err
-			}
+		// binding items for exposed_fields
+		joinedExposedFields := o.bindParamExposedFields(reg)
+
+		// form array param exposed_fields
+		if err := r.SetFormParam("exposed_fields", joinedExposedFields...); err != nil {
+			return err
 		}
 	}
 
@@ -474,44 +516,9 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) WriteToRequest(r runtime.Cl
 		}
 	}
 
-	if o.LinkColor != nil {
-
-		// form param link_color
-		var frLinkColor string
-		if o.LinkColor != nil {
-			frLinkColor = *o.LinkColor
-		}
-		fLinkColor := frLinkColor
-		if fLinkColor != "" {
-			if err := r.SetFormParam("link_color", fLinkColor); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.Logo != nil {
-
-		if o.Logo != nil {
-			// form file param logo
-			if err := r.SetFileParam("logo", o.Logo); err != nil {
-				return err
-			}
-		}
-	}
-
 	// path param nunc_connection_id
 	if err := r.SetPathParam("nunc_connection_id", swag.FormatInt32(o.NuncConnectionID)); err != nil {
 		return err
-	}
-
-	if o.OpenGraphImage != nil {
-
-		if o.OpenGraphImage != nil {
-			// form file param open_graph_image
-			if err := r.SetFileParam("open_graph_image", o.OpenGraphImage); err != nil {
-				return err
-			}
-		}
 	}
 
 	if o.OperationalMessage != nil {
@@ -559,8 +566,123 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) WriteToRequest(r runtime.Cl
 		}
 	}
 
+	if o.Title != nil {
+
+		// form param title
+		var frTitle string
+		if o.Title != nil {
+			frTitle = *o.Title
+		}
+		fTitle := frTitle
+		if fTitle != "" {
+			if err := r.SetFormParam("title", fTitle); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.UIVersion != nil {
+
+		// form param ui_version
+		var frUIVersion int32
+		if o.UIVersion != nil {
+			frUIVersion = *o.UIVersion
+		}
+		fUIVersion := swag.FormatInt32(frUIVersion)
+		if fUIVersion != "" {
+			if err := r.SetFormParam("ui_version", fUIVersion); err != nil {
+				return err
+			}
+		}
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamPutV1NuncConnectionsNuncConnectionID binds the parameter components[infrastructure_id]
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) bindParamComponentsInfrastructureID(formats strfmt.Registry) []string {
+	componentsInfrastructureIDIR := o.ComponentsInfrastructureID
+
+	var componentsInfrastructureIDIC []string
+	for _, componentsInfrastructureIDIIR := range componentsInfrastructureIDIR { // explode []string
+
+		componentsInfrastructureIDIIV := componentsInfrastructureIDIIR // string as string
+		componentsInfrastructureIDIC = append(componentsInfrastructureIDIC, componentsInfrastructureIDIIV)
+	}
+
+	// items.CollectionFormat: ""
+	componentsInfrastructureIDIS := swag.JoinByFormat(componentsInfrastructureIDIC, "")
+
+	return componentsInfrastructureIDIS
+}
+
+// bindParamPutV1NuncConnectionsNuncConnectionID binds the parameter components[infrastructure_type]
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) bindParamComponentsInfrastructureType(formats strfmt.Registry) []string {
+	componentsInfrastructureTypeIR := o.ComponentsInfrastructureType
+
+	var componentsInfrastructureTypeIC []string
+	for _, componentsInfrastructureTypeIIR := range componentsInfrastructureTypeIR { // explode []string
+
+		componentsInfrastructureTypeIIV := componentsInfrastructureTypeIIR // string as string
+		componentsInfrastructureTypeIC = append(componentsInfrastructureTypeIC, componentsInfrastructureTypeIIV)
+	}
+
+	// items.CollectionFormat: ""
+	componentsInfrastructureTypeIS := swag.JoinByFormat(componentsInfrastructureTypeIC, "")
+
+	return componentsInfrastructureTypeIS
+}
+
+// bindParamPutV1NuncConnectionsNuncConnectionID binds the parameter conditions[condition_id]
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) bindParamConditionsConditionID(formats strfmt.Registry) []string {
+	conditionsConditionIDIR := o.ConditionsConditionID
+
+	var conditionsConditionIDIC []string
+	for _, conditionsConditionIDIIR := range conditionsConditionIDIR { // explode []string
+
+		conditionsConditionIDIIV := conditionsConditionIDIIR // string as string
+		conditionsConditionIDIC = append(conditionsConditionIDIC, conditionsConditionIDIIV)
+	}
+
+	// items.CollectionFormat: ""
+	conditionsConditionIDIS := swag.JoinByFormat(conditionsConditionIDIC, "")
+
+	return conditionsConditionIDIS
+}
+
+// bindParamPutV1NuncConnectionsNuncConnectionID binds the parameter conditions[nunc_condition]
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) bindParamConditionsNuncCondition(formats strfmt.Registry) []string {
+	conditionsNuncConditionIR := o.ConditionsNuncCondition
+
+	var conditionsNuncConditionIC []string
+	for _, conditionsNuncConditionIIR := range conditionsNuncConditionIR { // explode []string
+
+		conditionsNuncConditionIIV := conditionsNuncConditionIIR // string as string
+		conditionsNuncConditionIC = append(conditionsNuncConditionIC, conditionsNuncConditionIIV)
+	}
+
+	// items.CollectionFormat: ""
+	conditionsNuncConditionIS := swag.JoinByFormat(conditionsNuncConditionIC, "")
+
+	return conditionsNuncConditionIS
+}
+
+// bindParamPutV1NuncConnectionsNuncConnectionID binds the parameter exposed_fields
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) bindParamExposedFields(formats strfmt.Registry) []string {
+	exposedFieldsIR := o.ExposedFields
+
+	var exposedFieldsIC []string
+	for _, exposedFieldsIIR := range exposedFieldsIR { // explode []string
+
+		exposedFieldsIIV := exposedFieldsIIR // string as string
+		exposedFieldsIC = append(exposedFieldsIC, exposedFieldsIIV)
+	}
+
+	// items.CollectionFormat: ""
+	exposedFieldsIS := swag.JoinByFormat(exposedFieldsIC, "")
+
+	return exposedFieldsIS
 }

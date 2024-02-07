@@ -40,6 +40,9 @@ type RunbooksExecutionStepExecutionEntity struct {
 	// state
 	// Enum: [initial pending scheduled started dismissed completed errored]
 	State string `json:"state,omitempty"`
+
+	// webhook delivery
+	WebhookDelivery *RunbooksWebhookDeliveryEntity `json:"webhook_delivery,omitempty"`
 }
 
 // Validate validates this runbooks execution step execution entity
@@ -59,6 +62,10 @@ func (m *RunbooksExecutionStepExecutionEntity) Validate(formats strfmt.Registry)
 	}
 
 	if err := m.validateState(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateWebhookDelivery(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -168,11 +175,34 @@ func (m *RunbooksExecutionStepExecutionEntity) validateState(formats strfmt.Regi
 	return nil
 }
 
+func (m *RunbooksExecutionStepExecutionEntity) validateWebhookDelivery(formats strfmt.Registry) error {
+	if swag.IsZero(m.WebhookDelivery) { // not required
+		return nil
+	}
+
+	if m.WebhookDelivery != nil {
+		if err := m.WebhookDelivery.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("webhook_delivery")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("webhook_delivery")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this runbooks execution step execution entity based on the context it is used
 func (m *RunbooksExecutionStepExecutionEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidatePerformedBy(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateWebhookDelivery(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -190,6 +220,22 @@ func (m *RunbooksExecutionStepExecutionEntity) contextValidatePerformedBy(ctx co
 				return ve.ValidateName("performed_by")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("performed_by")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *RunbooksExecutionStepExecutionEntity) contextValidateWebhookDelivery(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.WebhookDelivery != nil {
+		if err := m.WebhookDelivery.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("webhook_delivery")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("webhook_delivery")
 			}
 			return err
 		}

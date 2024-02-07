@@ -40,8 +40,14 @@ type TicketingTicketEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
+	// Milestone of incident that this ticket is related to
+	IncidentCurrentMilestone string `json:"incident_current_milestone,omitempty"`
+
 	// ID of incident that this ticket is related to
 	IncidentID string `json:"incident_id,omitempty"`
+
+	// Name of incident that this ticket is related to
+	IncidentName string `json:"incident_name,omitempty"`
 
 	// link
 	Link *AttachmentsLinkEntity `json:"link,omitempty"`
@@ -58,6 +64,9 @@ type TicketingTicketEntity struct {
 
 	// tag list
 	TagList []string `json:"tag_list"`
+
+	// ID of task that this ticket is related to
+	TaskID string `json:"task_id,omitempty"`
 
 	// type
 	// Enum: [incident task follow_up]

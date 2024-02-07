@@ -24,11 +24,17 @@ type PostV1Incidents struct {
 	// List of alert IDs that this incident should be associated to
 	AlertIds []string `json:"alert_ids"`
 
+	// An array of custom fields to set on the incident.
+	CustomFields []*PostV1IncidentsCustomFieldsItems0 `json:"custom_fields"`
+
 	// customer impact summary
 	CustomerImpactSummary string `json:"customer_impact_summary,omitempty"`
 
 	// description
 	Description string `json:"description,omitempty"`
+
+	// external links
+	ExternalLinks string `json:"external_links,omitempty"`
 
 	// An array of impacted infrastructure
 	Impacts []*PostV1IncidentsImpactsItems0 `json:"impacts"`
@@ -75,6 +81,10 @@ type PostV1Incidents struct {
 func (m *PostV1Incidents) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCustomFields(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateImpacts(formats); err != nil {
 		res = append(res, err)
 	}
@@ -90,6 +100,32 @@ func (m *PostV1Incidents) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PostV1Incidents) validateCustomFields(formats strfmt.Registry) error {
+	if swag.IsZero(m.CustomFields) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.CustomFields); i++ {
+		if swag.IsZero(m.CustomFields[i]) { // not required
+			continue
+		}
+
+		if m.CustomFields[i] != nil {
+			if err := m.CustomFields[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("custom_fields" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("custom_fields" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -158,6 +194,10 @@ func (m *PostV1Incidents) validateName(formats strfmt.Registry) error {
 func (m *PostV1Incidents) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateCustomFields(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateImpacts(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -169,6 +209,26 @@ func (m *PostV1Incidents) ContextValidate(ctx context.Context, formats strfmt.Re
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PostV1Incidents) contextValidateCustomFields(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.CustomFields); i++ {
+
+		if m.CustomFields[i] != nil {
+			if err := m.CustomFields[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("custom_fields" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("custom_fields" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -223,6 +283,68 @@ func (m *PostV1Incidents) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PostV1Incidents) UnmarshalBinary(b []byte) error {
 	var res PostV1Incidents
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1IncidentsCustomFieldsItems0 post v1 incidents custom fields items0
+//
+// swagger:model PostV1IncidentsCustomFieldsItems0
+type PostV1IncidentsCustomFieldsItems0 struct {
+
+	// The ID of the custom field you wish to set.
+	// Required: true
+	FieldID *string `json:"field_id"`
+
+	// The value you wish to set on the custom field if the type of the field accepts array values
+	ValueArray []string `json:"value_array"`
+
+	// The value you wish to set on the custom field if the type of the field accepts string values
+	ValueString string `json:"value_string,omitempty"`
+}
+
+// Validate validates this post v1 incidents custom fields items0
+func (m *PostV1IncidentsCustomFieldsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateFieldID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1IncidentsCustomFieldsItems0) validateFieldID(formats strfmt.Registry) error {
+
+	if err := validate.Required("field_id", "body", m.FieldID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this post v1 incidents custom fields items0 based on context it is used
+func (m *PostV1IncidentsCustomFieldsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1IncidentsCustomFieldsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1IncidentsCustomFieldsItems0) UnmarshalBinary(b []byte) error {
+	var res PostV1IncidentsCustomFieldsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

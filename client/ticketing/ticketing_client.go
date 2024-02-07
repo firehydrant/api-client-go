@@ -44,6 +44,8 @@ type ClientService interface {
 
 	GetV1TicketingProjects(params *GetV1TicketingProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsOK, error)
 
+	GetV1TicketingProjectsTicketingProjectID(params *GetV1TicketingProjectsTicketingProjectIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDOK, error)
+
 	GetV1TicketingProjectsTicketingProjectIDConfigurationOptions(params *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK, error)
 
 	GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldID(params *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDOK, error)
@@ -361,6 +363,47 @@ func (a *Client) GetV1TicketingProjects(params *GetV1TicketingProjectsParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1TicketingProjects: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1TicketingProjectsTicketingProjectID retrieves a ticketing projects
+
+Retrieve a single ticketing project by ID
+*/
+func (a *Client) GetV1TicketingProjectsTicketingProjectID(params *GetV1TicketingProjectsTicketingProjectIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TicketingProjectsTicketingProjectIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TicketingProjectsTicketingProjectId",
+		Method:             "GET",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TicketingProjectsTicketingProjectIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TicketingProjectsTicketingProjectIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TicketingProjectsTicketingProjectId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

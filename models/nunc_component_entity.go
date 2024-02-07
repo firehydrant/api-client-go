@@ -17,6 +17,9 @@ import (
 // swagger:model NuncComponentEntity
 type NuncComponentEntity struct {
 
+	// component group id
+	ComponentGroupID string `json:"component_group_id,omitempty"`
+
 	// infrastructure id
 	InfrastructureID string `json:"infrastructure_id,omitempty"`
 

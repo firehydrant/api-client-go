@@ -27,6 +27,9 @@ type TeamEntity struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// functionalities
+	Functionalities []*FunctionalityEntity `json:"functionalities"`
+
 	// id
 	ID string `json:"id,omitempty"`
 
@@ -54,6 +57,9 @@ type TeamEntity struct {
 	// services
 	Services []*ServiceEntity `json:"services"`
 
+	// signals ical url
+	SignalsIcalURL string `json:"signals_ical_url,omitempty"`
+
 	// slug
 	Slug string `json:"slug,omitempty"`
 
@@ -67,6 +73,10 @@ func (m *TeamEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFunctionalities(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -115,6 +125,32 @@ func (m *TeamEntity) validateCreatedAt(formats strfmt.Registry) error {
 
 	if err := validate.FormatOf("created_at", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) validateFunctionalities(formats strfmt.Registry) error {
+	if swag.IsZero(m.Functionalities) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Functionalities); i++ {
+		if swag.IsZero(m.Functionalities[i]) { // not required
+			continue
+		}
+
+		if m.Functionalities[i] != nil {
+			if err := m.Functionalities[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("functionalities" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -318,6 +354,10 @@ func (m *TeamEntity) validateUpdatedAt(formats strfmt.Registry) error {
 func (m *TeamEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateFunctionalities(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateMemberships(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -349,6 +389,26 @@ func (m *TeamEntity) ContextValidate(ctx context.Context, formats strfmt.Registr
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *TeamEntity) contextValidateFunctionalities(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Functionalities); i++ {
+
+		if m.Functionalities[i] != nil {
+			if err := m.Functionalities[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("functionalities" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

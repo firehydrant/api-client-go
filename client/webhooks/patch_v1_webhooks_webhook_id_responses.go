@@ -45,7 +45,7 @@ PatchV1WebhooksWebhookIDOK describes a response with status code 200, with defau
 Update a specific webhook
 */
 type PatchV1WebhooksWebhookIDOK struct {
-	Payload *models.WebhookEntity
+	Payload *models.WebhooksEntitiesWebhookEntity
 }
 
 // IsSuccess returns true when this patch v1 webhooks webhook Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PatchV1WebhooksWebhookIDOK) String() string {
 	return fmt.Sprintf("[PATCH /v1/webhooks/{webhook_id}][%d] patchV1WebhooksWebhookIdOK  %+v", 200, o.Payload)
 }
 
-func (o *PatchV1WebhooksWebhookIDOK) GetPayload() *models.WebhookEntity {
+func (o *PatchV1WebhooksWebhookIDOK) GetPayload() *models.WebhooksEntitiesWebhookEntity {
 	return o.Payload
 }
 
 func (o *PatchV1WebhooksWebhookIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.WebhookEntity)
+	o.Payload = new(models.WebhooksEntitiesWebhookEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

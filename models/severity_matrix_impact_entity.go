@@ -17,6 +17,9 @@ import (
 // swagger:model SeverityMatrix_ImpactEntity
 type SeverityMatrixImpactEntity struct {
 
+	// affects id
+	AffectsID string `json:"affects_id,omitempty"`
+
 	// id
 	ID string `json:"id,omitempty"`
 

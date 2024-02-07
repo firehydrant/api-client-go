@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -36,6 +37,9 @@ type NuncConnectionEntity struct {
 	// company website
 	CompanyWebsite string `json:"company_website,omitempty"`
 
+	// component groups
+	ComponentGroups *NuncComponentGroupEntity `json:"component_groups,omitempty"`
+
 	// components
 	Components *NuncComponentEntity `json:"components,omitempty"`
 
@@ -43,13 +47,22 @@ type NuncConnectionEntity struct {
 	Conditions *NuncConditionEntity `json:"conditions,omitempty"`
 
 	// cover image
-	CoverImage *NuncImageEntity `json:"cover_image,omitempty"`
+	CoverImage *MediaImageEntity `json:"cover_image,omitempty"`
+
+	// dark logo
+	DarkLogo *MediaImageEntity `json:"dark_logo,omitempty"`
 
 	// domain
 	Domain string `json:"domain,omitempty"`
 
+	// enable histogram
+	EnableHistogram bool `json:"enable_histogram,omitempty"`
+
+	// exposed fields
+	ExposedFields string `json:"exposed_fields,omitempty"`
+
 	// favicon
-	Favicon *NuncImageEntity `json:"favicon,omitempty"`
+	Favicon *MediaImageEntity `json:"favicon,omitempty"`
 
 	// greeting body
 	GreetingBody string `json:"greeting_body,omitempty"`
@@ -63,11 +76,14 @@ type NuncConnectionEntity struct {
 	// link color
 	LinkColor string `json:"link_color,omitempty"`
 
+	// List of links attached to this status page.
+	Links []*LinksEntity `json:"links"`
+
 	// logo
-	Logo *NuncImageEntity `json:"logo,omitempty"`
+	Logo *MediaImageEntity `json:"logo,omitempty"`
 
 	// open graph image
-	OpenGraphImage *NuncImageEntity `json:"open_graph_image,omitempty"`
+	OpenGraphImage *MediaImageEntity `json:"open_graph_image,omitempty"`
 
 	// operational message
 	OperationalMessage string `json:"operational_message,omitempty"`
@@ -77,11 +93,21 @@ type NuncConnectionEntity struct {
 
 	// secondary color
 	SecondaryColor string `json:"secondary_color,omitempty"`
+
+	// title
+	Title string `json:"title,omitempty"`
+
+	// ui version
+	UIVersion int32 `json:"ui_version,omitempty"`
 }
 
 // Validate validates this nunc connection entity
 func (m *NuncConnectionEntity) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateComponentGroups(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateComponents(formats); err != nil {
 		res = append(res, err)
@@ -95,7 +121,15 @@ func (m *NuncConnectionEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDarkLogo(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateFavicon(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLinks(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -110,6 +144,25 @@ func (m *NuncConnectionEntity) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NuncConnectionEntity) validateComponentGroups(formats strfmt.Registry) error {
+	if swag.IsZero(m.ComponentGroups) { // not required
+		return nil
+	}
+
+	if m.ComponentGroups != nil {
+		if err := m.ComponentGroups.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("component_groups")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("component_groups")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -170,6 +223,25 @@ func (m *NuncConnectionEntity) validateCoverImage(formats strfmt.Registry) error
 	return nil
 }
 
+func (m *NuncConnectionEntity) validateDarkLogo(formats strfmt.Registry) error {
+	if swag.IsZero(m.DarkLogo) { // not required
+		return nil
+	}
+
+	if m.DarkLogo != nil {
+		if err := m.DarkLogo.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("dark_logo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("dark_logo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *NuncConnectionEntity) validateFavicon(formats strfmt.Registry) error {
 	if swag.IsZero(m.Favicon) { // not required
 		return nil
@@ -184,6 +256,32 @@ func (m *NuncConnectionEntity) validateFavicon(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *NuncConnectionEntity) validateLinks(formats strfmt.Registry) error {
+	if swag.IsZero(m.Links) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Links); i++ {
+		if swag.IsZero(m.Links[i]) { // not required
+			continue
+		}
+
+		if m.Links[i] != nil {
+			if err := m.Links[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("links" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -231,6 +329,10 @@ func (m *NuncConnectionEntity) validateOpenGraphImage(formats strfmt.Registry) e
 func (m *NuncConnectionEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateComponentGroups(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateComponents(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -243,7 +345,15 @@ func (m *NuncConnectionEntity) ContextValidate(ctx context.Context, formats strf
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDarkLogo(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateFavicon(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLinks(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -258,6 +368,22 @@ func (m *NuncConnectionEntity) ContextValidate(ctx context.Context, formats strf
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NuncConnectionEntity) contextValidateComponentGroups(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ComponentGroups != nil {
+		if err := m.ComponentGroups.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("component_groups")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("component_groups")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -309,6 +435,22 @@ func (m *NuncConnectionEntity) contextValidateCoverImage(ctx context.Context, fo
 	return nil
 }
 
+func (m *NuncConnectionEntity) contextValidateDarkLogo(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DarkLogo != nil {
+		if err := m.DarkLogo.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("dark_logo")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("dark_logo")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *NuncConnectionEntity) contextValidateFavicon(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Favicon != nil {
@@ -320,6 +462,26 @@ func (m *NuncConnectionEntity) contextValidateFavicon(ctx context.Context, forma
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *NuncConnectionEntity) contextValidateLinks(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Links); i++ {
+
+		if m.Links[i] != nil {
+			if err := m.Links[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("links" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("links" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

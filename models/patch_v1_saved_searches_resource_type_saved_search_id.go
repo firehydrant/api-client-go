@@ -20,6 +20,9 @@ type PatchV1SavedSearchesResourceTypeSavedSearchID struct {
 	// filter values
 	FilterValues interface{} `json:"filter_values,omitempty"`
 
+	// is private
+	IsPrivate bool `json:"is_private,omitempty"`
+
 	// name
 	Name string `json:"name,omitempty"`
 }

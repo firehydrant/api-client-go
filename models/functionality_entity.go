@@ -21,7 +21,7 @@ import (
 type FunctionalityEntity struct {
 
 	// List of active incident guids
-	ActiveIncidents string `json:"active_incidents,omitempty"`
+	ActiveIncidents []string `json:"active_incidents"`
 
 	// alert on add
 	AlertOnAdd bool `json:"alert_on_add,omitempty"`
@@ -59,9 +59,6 @@ type FunctionalityEntity struct {
 
 	// slug
 	Slug string `json:"slug,omitempty"`
-
-	// summary
-	Summary string `json:"summary,omitempty"`
 
 	// List of teams attached to the functionality
 	Teams []*TeamEntity `json:"teams"`

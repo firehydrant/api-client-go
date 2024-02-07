@@ -20,6 +20,9 @@ import (
 // swagger:model EnvironmentEntryEntity
 type EnvironmentEntryEntity struct {
 
+	// List of active incident guids
+	ActiveIncidents string `json:"active_incidents,omitempty"`
+
 	// The time the environment was created
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
@@ -35,6 +38,13 @@ type EnvironmentEntryEntity struct {
 
 	// Name of the Environment
 	Name string `json:"name,omitempty"`
+
+	// Slug of the Environment
+	Slug string `json:"slug,omitempty"`
+
+	// The time the environment was updated
+	// Format: date-time
+	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
 }
 
 // Validate validates this environment entry entity
@@ -46,6 +56,10 @@ func (m *EnvironmentEntryEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateExternalResources(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdatedAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -88,6 +102,18 @@ func (m *EnvironmentEntryEntity) validateExternalResources(formats strfmt.Regist
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *EnvironmentEntryEntity) validateUpdatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.UpdatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("updated_at", "body", "date-time", m.UpdatedAt.String(), formats); err != nil {
+		return err
 	}
 
 	return nil

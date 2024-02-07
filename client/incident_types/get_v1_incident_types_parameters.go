@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetV1IncidentTypesParams creates a new GetV1IncidentTypesParams object,
@@ -60,6 +61,23 @@ GetV1IncidentTypesParams contains all the parameters to send to the API endpoint
 	Typically these are written to a http.Request.
 */
 type GetV1IncidentTypesParams struct {
+
+	// Page.
+	//
+	// Format: int32
+	Page *int32
+
+	// PerPage.
+	//
+	// Format: int32
+	PerPage *int32
+
+	/* Query.
+
+	   A query to search incident types by their name
+	*/
+	Query *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -113,6 +131,39 @@ func (o *GetV1IncidentTypesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithPage adds the page to the get v1 incident types params
+func (o *GetV1IncidentTypesParams) WithPage(page *int32) *GetV1IncidentTypesParams {
+	o.SetPage(page)
+	return o
+}
+
+// SetPage adds the page to the get v1 incident types params
+func (o *GetV1IncidentTypesParams) SetPage(page *int32) {
+	o.Page = page
+}
+
+// WithPerPage adds the perPage to the get v1 incident types params
+func (o *GetV1IncidentTypesParams) WithPerPage(perPage *int32) *GetV1IncidentTypesParams {
+	o.SetPerPage(perPage)
+	return o
+}
+
+// SetPerPage adds the perPage to the get v1 incident types params
+func (o *GetV1IncidentTypesParams) SetPerPage(perPage *int32) {
+	o.PerPage = perPage
+}
+
+// WithQuery adds the query to the get v1 incident types params
+func (o *GetV1IncidentTypesParams) WithQuery(query *string) *GetV1IncidentTypesParams {
+	o.SetQuery(query)
+	return o
+}
+
+// SetQuery adds the query to the get v1 incident types params
+func (o *GetV1IncidentTypesParams) SetQuery(query *string) {
+	o.Query = query
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1IncidentTypesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -120,6 +171,57 @@ func (o *GetV1IncidentTypesParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
+
+	if o.Page != nil {
+
+		// query param page
+		var qrPage int32
+
+		if o.Page != nil {
+			qrPage = *o.Page
+		}
+		qPage := swag.FormatInt32(qrPage)
+		if qPage != "" {
+
+			if err := r.SetQueryParam("page", qPage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.PerPage != nil {
+
+		// query param per_page
+		var qrPerPage int32
+
+		if o.PerPage != nil {
+			qrPerPage = *o.PerPage
+		}
+		qPerPage := swag.FormatInt32(qrPerPage)
+		if qPerPage != "" {
+
+			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Query != nil {
+
+		// query param query
+		var qrQuery string
+
+		if o.Query != nil {
+			qrQuery = *o.Query
+		}
+		qQuery := qrQuery
+		if qQuery != "" {
+
+			if err := r.SetQueryParam("query", qQuery); err != nil {
+				return err
+			}
+		}
+	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)

@@ -12,30 +12,30 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// NuncImageEntity nunc image entity
+// MediaImageEntity media image entity
 //
-// swagger:model NuncImageEntity
-type NuncImageEntity struct {
+// swagger:model MediaImageEntity
+type MediaImageEntity struct {
 
 	// original url
 	OriginalURL string `json:"original_url,omitempty"`
 
-	// An object with keys that can be of type logo, favicon, cover_image, or open_graph_image
+	// An object with keys that can have different versions of an image
 	VersionsUrls interface{} `json:"versions_urls,omitempty"`
 }
 
-// Validate validates this nunc image entity
-func (m *NuncImageEntity) Validate(formats strfmt.Registry) error {
+// Validate validates this media image entity
+func (m *MediaImageEntity) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this nunc image entity based on context it is used
-func (m *NuncImageEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this media image entity based on context it is used
+func (m *MediaImageEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *NuncImageEntity) MarshalBinary() ([]byte, error) {
+func (m *MediaImageEntity) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -43,8 +43,8 @@ func (m *NuncImageEntity) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *NuncImageEntity) UnmarshalBinary(b []byte) error {
-	var res NuncImageEntity
+func (m *MediaImageEntity) UnmarshalBinary(b []byte) error {
+	var res MediaImageEntity
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

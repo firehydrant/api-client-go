@@ -11,7 +11,7 @@ require (
 	github.com/go-openapi/swag v0.22.3
 	github.com/go-openapi/validate v0.22.0
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
-	go.mongodb.org/mongo-driver v1.11.0 // indirect
+	go.mongodb.org/mongo-driver v1.13.1 // indirect
 	go.opentelemetry.io/otel v1.11.2 // indirect
 	golang.org/x/sys v0.2.0 // indirect
 )

@@ -19,6 +19,9 @@ import (
 // swagger:model SeverityEntity
 type SeverityEntity struct {
 
+	// color
+	Color string `json:"color,omitempty"`
+
 	// created at
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`

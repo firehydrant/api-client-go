@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetV1Alerts(params *GetV1AlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AlertsOK, error)
 
+	GetV1AlertsAlertID(params *GetV1AlertsAlertIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AlertsAlertIDOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -73,6 +75,47 @@ func (a *Client) GetV1Alerts(params *GetV1AlertsParams, authInfo runtime.ClientA
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1Alerts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1AlertsAlertID retrieves a single alert
+
+Retrieve a single alert
+*/
+func (a *Client) GetV1AlertsAlertID(params *GetV1AlertsAlertIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AlertsAlertIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1AlertsAlertIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1AlertsAlertId",
+		Method:             "GET",
+		PathPattern:        "/v1/alerts/{alert_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1AlertsAlertIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1AlertsAlertIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1AlertsAlertId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

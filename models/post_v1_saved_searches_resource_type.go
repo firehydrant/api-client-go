@@ -23,6 +23,9 @@ type PostV1SavedSearchesResourceType struct {
 	// Required: true
 	FilterValues interface{} `json:"filter_values"`
 
+	// is private
+	IsPrivate bool `json:"is_private,omitempty"`
+
 	// name
 	// Required: true
 	Name *string `json:"name"`

@@ -56,6 +56,9 @@ type IncidentEntity struct {
 	// Enum: [started detected acknowledged investigating identified mitigated resolved postmortem_started postmortem_completed closed]
 	CurrentMilestone string `json:"current_milestone,omitempty"`
 
+	// custom fields
+	CustomFields []*CustomFieldsFieldValue `json:"custom_fields"`
+
 	// customer impact summary
 	CustomerImpactSummary string `json:"customer_impact_summary,omitempty"`
 
@@ -64,6 +67,10 @@ type IncidentEntity struct {
 
 	// description
 	Description string `json:"description,omitempty"`
+
+	// The time the incident was archived
+	// Format: date-time
+	DiscardedAt strfmt.DateTime `json:"discarded_at,omitempty"`
 
 	// environments
 	Environments []*SuccinctEntity `json:"environments"`
@@ -140,6 +147,9 @@ type IncidentEntity struct {
 	// severity
 	Severity string `json:"severity,omitempty"`
 
+	// severity color
+	SeverityColor string `json:"severity_color,omitempty"`
+
 	// severity condition
 	SeverityCondition string `json:"severity_condition,omitempty"`
 
@@ -197,6 +207,14 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCurrentMilestone(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCustomFields(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDiscardedAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -432,6 +450,44 @@ func (m *IncidentEntity) validateCurrentMilestone(formats strfmt.Registry) error
 
 	// value enum
 	if err := m.validateCurrentMilestoneEnum("current_milestone", "body", m.CurrentMilestone); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) validateCustomFields(formats strfmt.Registry) error {
+	if swag.IsZero(m.CustomFields) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.CustomFields); i++ {
+		if swag.IsZero(m.CustomFields[i]) { // not required
+			continue
+		}
+
+		if m.CustomFields[i] != nil {
+			if err := m.CustomFields[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("custom_fields" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("custom_fields" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) validateDiscardedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.DiscardedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("discarded_at", "body", "date-time", m.DiscardedAt.String(), formats); err != nil {
 		return err
 	}
 
@@ -825,6 +881,10 @@ func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateCustomFields(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEnvironments(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -958,6 +1018,26 @@ func (m *IncidentEntity) contextValidateCreatedBy(ctx context.Context, formats s
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) contextValidateCustomFields(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.CustomFields); i++ {
+
+		if m.CustomFields[i] != nil {
+			if err := m.CustomFields[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("custom_fields" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("custom_fields" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -18,6 +19,10 @@ import (
 //
 // swagger:model postV1Severities
 type PostV1Severities struct {
+
+	// color
+	// Enum: [red orange yellow blue teal grey]
+	Color string `json:"color,omitempty"`
 
 	// description
 	Description string `json:"description,omitempty"`
@@ -31,6 +36,10 @@ type PostV1Severities struct {
 func (m *PostV1Severities) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateColor(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSlug(formats); err != nil {
 		res = append(res, err)
 	}
@@ -38,6 +47,60 @@ func (m *PostV1Severities) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var postV1SeveritiesTypeColorPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["red","orange","yellow","blue","teal","grey"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		postV1SeveritiesTypeColorPropEnum = append(postV1SeveritiesTypeColorPropEnum, v)
+	}
+}
+
+const (
+
+	// PostV1SeveritiesColorRed captures enum value "red"
+	PostV1SeveritiesColorRed string = "red"
+
+	// PostV1SeveritiesColorOrange captures enum value "orange"
+	PostV1SeveritiesColorOrange string = "orange"
+
+	// PostV1SeveritiesColorYellow captures enum value "yellow"
+	PostV1SeveritiesColorYellow string = "yellow"
+
+	// PostV1SeveritiesColorBlue captures enum value "blue"
+	PostV1SeveritiesColorBlue string = "blue"
+
+	// PostV1SeveritiesColorTeal captures enum value "teal"
+	PostV1SeveritiesColorTeal string = "teal"
+
+	// PostV1SeveritiesColorGrey captures enum value "grey"
+	PostV1SeveritiesColorGrey string = "grey"
+)
+
+// prop value enum
+func (m *PostV1Severities) validateColorEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, postV1SeveritiesTypeColorPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PostV1Severities) validateColor(formats strfmt.Registry) error {
+	if swag.IsZero(m.Color) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateColorEnum("color", "body", m.Color); err != nil {
+		return err
+	}
+
 	return nil
 }
 

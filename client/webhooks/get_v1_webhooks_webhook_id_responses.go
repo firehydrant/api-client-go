@@ -45,7 +45,7 @@ GetV1WebhooksWebhookIDOK describes a response with status code 200, with default
 Retrieve a specific webhook
 */
 type GetV1WebhooksWebhookIDOK struct {
-	Payload *models.WebhookEntity
+	Payload *models.WebhooksEntitiesWebhookEntity
 }
 
 // IsSuccess returns true when this get v1 webhooks webhook Id o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1WebhooksWebhookIDOK) String() string {
 	return fmt.Sprintf("[GET /v1/webhooks/{webhook_id}][%d] getV1WebhooksWebhookIdOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1WebhooksWebhookIDOK) GetPayload() *models.WebhookEntity {
+func (o *GetV1WebhooksWebhookIDOK) GetPayload() *models.WebhooksEntitiesWebhookEntity {
 	return o.Payload
 }
 
 func (o *GetV1WebhooksWebhookIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.WebhookEntity)
+	o.Payload = new(models.WebhooksEntitiesWebhookEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

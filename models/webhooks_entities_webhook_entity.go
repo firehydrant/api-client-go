@@ -14,10 +14,10 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// WebhookEntity WebhookEntity model
+// WebhooksEntitiesWebhookEntity Webhooks_Entities_WebhookEntity model
 //
-// swagger:model WebhookEntity
-type WebhookEntity struct {
+// swagger:model Webhooks_Entities_WebhookEntity
+type WebhooksEntitiesWebhookEntity struct {
 
 	// created at
 	// Format: date-time
@@ -32,6 +32,9 @@ type WebhookEntity struct {
 	// state
 	State string `json:"state,omitempty"`
 
+	// subscriptions
+	Subscriptions string `json:"subscriptions,omitempty"`
+
 	// updated at
 	// Format: date-time
 	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
@@ -40,8 +43,8 @@ type WebhookEntity struct {
 	URL string `json:"url,omitempty"`
 }
 
-// Validate validates this webhook entity
-func (m *WebhookEntity) Validate(formats strfmt.Registry) error {
+// Validate validates this webhooks entities webhook entity
+func (m *WebhooksEntitiesWebhookEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCreatedAt(formats); err != nil {
@@ -62,7 +65,7 @@ func (m *WebhookEntity) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *WebhookEntity) validateCreatedAt(formats strfmt.Registry) error {
+func (m *WebhooksEntitiesWebhookEntity) validateCreatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -74,7 +77,7 @@ func (m *WebhookEntity) validateCreatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *WebhookEntity) validateCreatedBy(formats strfmt.Registry) error {
+func (m *WebhooksEntitiesWebhookEntity) validateCreatedBy(formats strfmt.Registry) error {
 	if swag.IsZero(m.CreatedBy) { // not required
 		return nil
 	}
@@ -93,7 +96,7 @@ func (m *WebhookEntity) validateCreatedBy(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *WebhookEntity) validateUpdatedAt(formats strfmt.Registry) error {
+func (m *WebhooksEntitiesWebhookEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
 	}
@@ -105,8 +108,8 @@ func (m *WebhookEntity) validateUpdatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this webhook entity based on the context it is used
-func (m *WebhookEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this webhooks entities webhook entity based on the context it is used
+func (m *WebhooksEntitiesWebhookEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateCreatedBy(ctx, formats); err != nil {
@@ -119,7 +122,7 @@ func (m *WebhookEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 	return nil
 }
 
-func (m *WebhookEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
+func (m *WebhooksEntitiesWebhookEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CreatedBy != nil {
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
@@ -136,7 +139,7 @@ func (m *WebhookEntity) contextValidateCreatedBy(ctx context.Context, formats st
 }
 
 // MarshalBinary interface implementation
-func (m *WebhookEntity) MarshalBinary() ([]byte, error) {
+func (m *WebhooksEntitiesWebhookEntity) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -144,8 +147,8 @@ func (m *WebhookEntity) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *WebhookEntity) UnmarshalBinary(b []byte) error {
-	var res WebhookEntity
+func (m *WebhooksEntitiesWebhookEntity) UnmarshalBinary(b []byte) error {
+	var res WebhooksEntitiesWebhookEntity
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
