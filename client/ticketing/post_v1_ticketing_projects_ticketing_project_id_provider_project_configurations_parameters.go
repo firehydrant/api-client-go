@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewPostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams creates a new PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams object,
@@ -62,7 +63,9 @@ PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams con
 type PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams struct {
 
 	// TicketingProjectID.
-	TicketingProjectID string
+	//
+	// Format: int32
+	TicketingProjectID int32
 
 	timeout    time.Duration
 	Context    context.Context
@@ -118,13 +121,13 @@ func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsP
 }
 
 // WithTicketingProjectID adds the ticketingProjectID to the post v1 ticketing projects ticketing project Id provider project configurations params
-func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams) WithTicketingProjectID(ticketingProjectID string) *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams {
+func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams) WithTicketingProjectID(ticketingProjectID int32) *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams {
 	o.SetTicketingProjectID(ticketingProjectID)
 	return o
 }
 
 // SetTicketingProjectID adds the ticketingProjectId to the post v1 ticketing projects ticketing project Id provider project configurations params
-func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams) SetTicketingProjectID(ticketingProjectID string) {
+func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams) SetTicketingProjectID(ticketingProjectID int32) {
 	o.TicketingProjectID = ticketingProjectID
 }
 
@@ -137,7 +140,7 @@ func (o *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsP
 	var res []error
 
 	// path param ticketing_project_id
-	if err := r.SetPathParam("ticketing_project_id", o.TicketingProjectID); err != nil {
+	if err := r.SetPathParam("ticketing_project_id", swag.FormatInt32(o.TicketingProjectID)); err != nil {
 		return err
 	}
 

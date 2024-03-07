@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// AlertsAlertEntity alerts alert entity
+// AlertsAlertEntity Alerts_AlertEntity model
 //
 // swagger:model Alerts_AlertEntity
 type AlertsAlertEntity struct {
@@ -36,11 +36,23 @@ type AlertsAlertEntity struct {
 	// environments
 	Environments []*SuccinctEntity `json:"environments"`
 
+	// events
+	Events []*AlertsSirenEventEntity `json:"events"`
+
 	// id
 	ID string `json:"id,omitempty"`
 
+	// incidents
+	Incidents []*PublicAPIV1IncidentsSuccinctEntity `json:"incidents"`
+
+	// integration name
+	IntegrationName string `json:"integration_name,omitempty"`
+
 	// Arbitrary key:value pairs of labels.
 	Labels interface{} `json:"labels,omitempty"`
+
+	// position
+	Position int32 `json:"position,omitempty"`
 
 	// priority
 	Priority string `json:"priority,omitempty"`
@@ -54,6 +66,12 @@ type AlertsAlertEntity struct {
 	// services
 	Services []*SuccinctEntity `json:"services"`
 
+	// signal id
+	SignalID string `json:"signal_id,omitempty"`
+
+	// signal rule
+	SignalRule *SignalsAPIRuleEntity `json:"signal_rule,omitempty"`
+
 	// source icon
 	SourceIcon string `json:"source_icon,omitempty"`
 
@@ -66,6 +84,15 @@ type AlertsAlertEntity struct {
 
 	// summary
 	Summary string `json:"summary,omitempty"`
+
+	// tags
+	Tags []string `json:"tags"`
+
+	// team id
+	TeamID string `json:"team_id,omitempty"`
+
+	// team name
+	TeamName string `json:"team_name,omitempty"`
 }
 
 // Validate validates this alerts alert entity
@@ -80,7 +107,19 @@ func (m *AlertsAlertEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateEvents(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIncidents(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateServices(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSignalRule(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -132,6 +171,58 @@ func (m *AlertsAlertEntity) validateEnvironments(formats strfmt.Registry) error 
 	return nil
 }
 
+func (m *AlertsAlertEntity) validateEvents(formats strfmt.Registry) error {
+	if swag.IsZero(m.Events) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Events); i++ {
+		if swag.IsZero(m.Events[i]) { // not required
+			continue
+		}
+
+		if m.Events[i] != nil {
+			if err := m.Events[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("events" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("events" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AlertsAlertEntity) validateIncidents(formats strfmt.Registry) error {
+	if swag.IsZero(m.Incidents) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Incidents); i++ {
+		if swag.IsZero(m.Incidents[i]) { // not required
+			continue
+		}
+
+		if m.Incidents[i] != nil {
+			if err := m.Incidents[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("incidents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("incidents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *AlertsAlertEntity) validateServices(formats strfmt.Registry) error {
 	if swag.IsZero(m.Services) { // not required
 		return nil
@@ -158,6 +249,25 @@ func (m *AlertsAlertEntity) validateServices(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *AlertsAlertEntity) validateSignalRule(formats strfmt.Registry) error {
+	if swag.IsZero(m.SignalRule) { // not required
+		return nil
+	}
+
+	if m.SignalRule != nil {
+		if err := m.SignalRule.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("signal_rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("signal_rule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *AlertsAlertEntity) validateStartsAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.StartsAt) { // not required
 		return nil
@@ -178,7 +288,19 @@ func (m *AlertsAlertEntity) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateEvents(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateIncidents(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateServices(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSignalRule(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -208,6 +330,46 @@ func (m *AlertsAlertEntity) contextValidateEnvironments(ctx context.Context, for
 	return nil
 }
 
+func (m *AlertsAlertEntity) contextValidateEvents(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Events); i++ {
+
+		if m.Events[i] != nil {
+			if err := m.Events[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("events" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("events" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AlertsAlertEntity) contextValidateIncidents(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Incidents); i++ {
+
+		if m.Incidents[i] != nil {
+			if err := m.Incidents[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("incidents" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("incidents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *AlertsAlertEntity) contextValidateServices(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Services); i++ {
@@ -223,6 +385,22 @@ func (m *AlertsAlertEntity) contextValidateServices(ctx context.Context, formats
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *AlertsAlertEntity) contextValidateSignalRule(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SignalRule != nil {
+		if err := m.SignalRule.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("signal_rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("signal_rule")
+			}
+			return err
+		}
 	}
 
 	return nil

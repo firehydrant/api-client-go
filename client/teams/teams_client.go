@@ -32,13 +32,51 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	DeleteV1TeamsTeamID(params *DeleteV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDOK, error)
 
+	DeleteV1TeamsTeamIDEscalationPoliciesID(params *DeleteV1TeamsTeamIDEscalationPoliciesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDEscalationPoliciesIDNoContent, error)
+
+	DeleteV1TeamsTeamIDOnCallSchedulesScheduleID(params *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDNoContent, error)
+
+	DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID(params *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDNoContent, error)
+
+	DeleteV1TeamsTeamIDSignalRulesID(params *DeleteV1TeamsTeamIDSignalRulesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDSignalRulesIDNoContent, error)
+
 	GetV1Teams(params *GetV1TeamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsOK, error)
 
 	GetV1TeamsTeamID(params *GetV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDOK, error)
 
+	GetV1TeamsTeamIDEscalationPolicies(params *GetV1TeamsTeamIDEscalationPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDEscalationPoliciesOK, error)
+
+	GetV1TeamsTeamIDEscalationPoliciesID(params *GetV1TeamsTeamIDEscalationPoliciesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDEscalationPoliciesIDOK, error)
+
+	GetV1TeamsTeamIDOnCallSchedules(params *GetV1TeamsTeamIDOnCallSchedulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDOnCallSchedulesOK, error)
+
+	GetV1TeamsTeamIDOnCallSchedulesScheduleID(params *GetV1TeamsTeamIDOnCallSchedulesScheduleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDOnCallSchedulesScheduleIDOK, error)
+
+	GetV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID(params *GetV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDOK, error)
+
+	GetV1TeamsTeamIDSignalRules(params *GetV1TeamsTeamIDSignalRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDSignalRulesOK, error)
+
+	GetV1TeamsTeamIDSignalRulesID(params *GetV1TeamsTeamIDSignalRulesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDSignalRulesIDOK, error)
+
 	PatchV1TeamsTeamID(params *PatchV1TeamsTeamIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TeamsTeamIDOK, error)
 
+	PatchV1TeamsTeamIDEscalationPoliciesID(params *PatchV1TeamsTeamIDEscalationPoliciesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TeamsTeamIDEscalationPoliciesIDOK, error)
+
+	PatchV1TeamsTeamIDOnCallSchedulesScheduleID(params *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TeamsTeamIDOnCallSchedulesScheduleIDOK, error)
+
+	PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID(params *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDOK, error)
+
+	PatchV1TeamsTeamIDSignalRulesID(params *PatchV1TeamsTeamIDSignalRulesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TeamsTeamIDSignalRulesIDOK, error)
+
 	PostV1Teams(params *PostV1TeamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TeamsCreated, error)
+
+	PostV1TeamsTeamIDEscalationPolicies(params *PostV1TeamsTeamIDEscalationPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TeamsTeamIDEscalationPoliciesCreated, error)
+
+	PostV1TeamsTeamIDOnCallSchedules(params *PostV1TeamsTeamIDOnCallSchedulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TeamsTeamIDOnCallSchedulesCreated, error)
+
+	PostV1TeamsTeamIDOnCallSchedulesScheduleIDShifts(params *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsCreated, error)
+
+	PostV1TeamsTeamIDSignalRules(params *PostV1TeamsTeamIDSignalRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TeamsTeamIDSignalRulesCreated, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -81,6 +119,170 @@ func (a *Client) DeleteV1TeamsTeamID(params *DeleteV1TeamsTeamIDParams, authInfo
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for deleteV1TeamsTeamId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteV1TeamsTeamIDEscalationPoliciesID deletes an escalation policy
+
+Delete a Signals escalation policy by ID
+*/
+func (a *Client) DeleteV1TeamsTeamIDEscalationPoliciesID(params *DeleteV1TeamsTeamIDEscalationPoliciesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDEscalationPoliciesIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1TeamsTeamIDEscalationPoliciesIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1TeamsTeamIdEscalationPoliciesId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/teams/{team_id}/escalation_policies/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1TeamsTeamIDEscalationPoliciesIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1TeamsTeamIDEscalationPoliciesIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1TeamsTeamIdEscalationPoliciesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteV1TeamsTeamIDOnCallSchedulesScheduleID deletes an on call schedule
+
+Delete a Signals on-call schedule by ID
+*/
+func (a *Client) DeleteV1TeamsTeamIDOnCallSchedulesScheduleID(params *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1TeamsTeamIdOnCallSchedulesScheduleId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/teams/{team_id}/on_call_schedules/{schedule_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1TeamsTeamIdOnCallSchedulesScheduleId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID deletes an on call shift
+
+Delete a Signals on-call shift by ID
+*/
+func (a *Client) DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID(params *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1TeamsTeamIdOnCallSchedulesScheduleIdShiftsId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/teams/{team_id}/on_call_schedules/{schedule_id}/shifts/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1TeamsTeamIdOnCallSchedulesScheduleIdShiftsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteV1TeamsTeamIDSignalRulesID deletes a signals rule
+
+Delete a Signals rule by ID
+*/
+func (a *Client) DeleteV1TeamsTeamIDSignalRulesID(params *DeleteV1TeamsTeamIDSignalRulesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TeamsTeamIDSignalRulesIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1TeamsTeamIDSignalRulesIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1TeamsTeamIdSignalRulesId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/teams/{team_id}/signal_rules/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1TeamsTeamIDSignalRulesIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1TeamsTeamIDSignalRulesIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1TeamsTeamIdSignalRulesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -167,6 +369,293 @@ func (a *Client) GetV1TeamsTeamID(params *GetV1TeamsTeamIDParams, authInfo runti
 }
 
 /*
+GetV1TeamsTeamIDEscalationPolicies lists escalation policies
+
+List all Signals escalation policies for a team.
+*/
+func (a *Client) GetV1TeamsTeamIDEscalationPolicies(params *GetV1TeamsTeamIDEscalationPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDEscalationPoliciesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TeamsTeamIDEscalationPoliciesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TeamsTeamIdEscalationPolicies",
+		Method:             "GET",
+		PathPattern:        "/v1/teams/{team_id}/escalation_policies",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TeamsTeamIDEscalationPoliciesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TeamsTeamIDEscalationPoliciesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TeamsTeamIdEscalationPolicies: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1TeamsTeamIDEscalationPoliciesID gets an escalation policy
+
+Get a Signals escalation policy by ID
+*/
+func (a *Client) GetV1TeamsTeamIDEscalationPoliciesID(params *GetV1TeamsTeamIDEscalationPoliciesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDEscalationPoliciesIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TeamsTeamIDEscalationPoliciesIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TeamsTeamIdEscalationPoliciesId",
+		Method:             "GET",
+		PathPattern:        "/v1/teams/{team_id}/escalation_policies/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TeamsTeamIDEscalationPoliciesIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TeamsTeamIDEscalationPoliciesIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TeamsTeamIdEscalationPoliciesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1TeamsTeamIDOnCallSchedules lists on call schedules
+
+List all Signals on-call schedules for a team.
+*/
+func (a *Client) GetV1TeamsTeamIDOnCallSchedules(params *GetV1TeamsTeamIDOnCallSchedulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDOnCallSchedulesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TeamsTeamIDOnCallSchedulesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TeamsTeamIdOnCallSchedules",
+		Method:             "GET",
+		PathPattern:        "/v1/teams/{team_id}/on_call_schedules",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TeamsTeamIDOnCallSchedulesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TeamsTeamIDOnCallSchedulesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TeamsTeamIdOnCallSchedules: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1TeamsTeamIDOnCallSchedulesScheduleID gets an on call schedule
+
+Get a Signals on-call schedule by ID
+*/
+func (a *Client) GetV1TeamsTeamIDOnCallSchedulesScheduleID(params *GetV1TeamsTeamIDOnCallSchedulesScheduleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDOnCallSchedulesScheduleIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TeamsTeamIDOnCallSchedulesScheduleIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TeamsTeamIdOnCallSchedulesScheduleId",
+		Method:             "GET",
+		PathPattern:        "/v1/teams/{team_id}/on_call_schedules/{schedule_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TeamsTeamIDOnCallSchedulesScheduleIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TeamsTeamIDOnCallSchedulesScheduleIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TeamsTeamIdOnCallSchedulesScheduleId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID gets an on call shift
+
+Get a Signals on-call shift by ID
+*/
+func (a *Client) GetV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID(params *GetV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TeamsTeamIdOnCallSchedulesScheduleIdShiftsId",
+		Method:             "GET",
+		PathPattern:        "/v1/teams/{team_id}/on_call_schedules/{schedule_id}/shifts/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TeamsTeamIdOnCallSchedulesScheduleIdShiftsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1TeamsTeamIDSignalRules lists signals rules
+
+List all Signals rules for a team.
+*/
+func (a *Client) GetV1TeamsTeamIDSignalRules(params *GetV1TeamsTeamIDSignalRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDSignalRulesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TeamsTeamIDSignalRulesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TeamsTeamIdSignalRules",
+		Method:             "GET",
+		PathPattern:        "/v1/teams/{team_id}/signal_rules",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TeamsTeamIDSignalRulesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TeamsTeamIDSignalRulesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TeamsTeamIdSignalRules: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1TeamsTeamIDSignalRulesID gets a signals rule
+
+Get a Signals rule by ID.
+*/
+func (a *Client) GetV1TeamsTeamIDSignalRulesID(params *GetV1TeamsTeamIDSignalRulesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TeamsTeamIDSignalRulesIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TeamsTeamIDSignalRulesIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TeamsTeamIdSignalRulesId",
+		Method:             "GET",
+		PathPattern:        "/v1/teams/{team_id}/signal_rules/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TeamsTeamIDSignalRulesIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TeamsTeamIDSignalRulesIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TeamsTeamIdSignalRulesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 PatchV1TeamsTeamID updates a team
 
 Update a single team from its ID
@@ -208,6 +697,170 @@ func (a *Client) PatchV1TeamsTeamID(params *PatchV1TeamsTeamIDParams, authInfo r
 }
 
 /*
+PatchV1TeamsTeamIDEscalationPoliciesID updates an escalation policy
+
+Update a Signals escalation policy by ID
+*/
+func (a *Client) PatchV1TeamsTeamIDEscalationPoliciesID(params *PatchV1TeamsTeamIDEscalationPoliciesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TeamsTeamIDEscalationPoliciesIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1TeamsTeamIDEscalationPoliciesIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1TeamsTeamIdEscalationPoliciesId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/teams/{team_id}/escalation_policies/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1TeamsTeamIDEscalationPoliciesIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1TeamsTeamIDEscalationPoliciesIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1TeamsTeamIdEscalationPoliciesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1TeamsTeamIDOnCallSchedulesScheduleID updates an on call schedule
+
+Update a Signals on-call schedule by ID
+*/
+func (a *Client) PatchV1TeamsTeamIDOnCallSchedulesScheduleID(params *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TeamsTeamIDOnCallSchedulesScheduleIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1TeamsTeamIDOnCallSchedulesScheduleIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1TeamsTeamIdOnCallSchedulesScheduleId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/teams/{team_id}/on_call_schedules/{schedule_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1TeamsTeamIDOnCallSchedulesScheduleIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1TeamsTeamIDOnCallSchedulesScheduleIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1TeamsTeamIdOnCallSchedulesScheduleId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID updates an on call shift
+
+Update a Signals on-call shift by ID
+*/
+func (a *Client) PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID(params *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1TeamsTeamIdOnCallSchedulesScheduleIdShiftsId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/teams/{team_id}/on_call_schedules/{schedule_id}/shifts/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1TeamsTeamIdOnCallSchedulesScheduleIdShiftsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1TeamsTeamIDSignalRulesID updates a signals rule
+
+Update a Signals rule by ID
+*/
+func (a *Client) PatchV1TeamsTeamIDSignalRulesID(params *PatchV1TeamsTeamIDSignalRulesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TeamsTeamIDSignalRulesIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1TeamsTeamIDSignalRulesIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1TeamsTeamIdSignalRulesId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/teams/{team_id}/signal_rules/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1TeamsTeamIDSignalRulesIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1TeamsTeamIDSignalRulesIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1TeamsTeamIdSignalRulesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 PostV1Teams creates a team
 
 Create a new team
@@ -245,6 +898,170 @@ func (a *Client) PostV1Teams(params *PostV1TeamsParams, authInfo runtime.ClientA
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for postV1Teams: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1TeamsTeamIDEscalationPolicies creates an escalation policy
+
+Create a Signals escalation policy for a team.
+*/
+func (a *Client) PostV1TeamsTeamIDEscalationPolicies(params *PostV1TeamsTeamIDEscalationPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TeamsTeamIDEscalationPoliciesCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1TeamsTeamIDEscalationPoliciesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1TeamsTeamIdEscalationPolicies",
+		Method:             "POST",
+		PathPattern:        "/v1/teams/{team_id}/escalation_policies",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1TeamsTeamIDEscalationPoliciesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1TeamsTeamIDEscalationPoliciesCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1TeamsTeamIdEscalationPolicies: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1TeamsTeamIDOnCallSchedules creates an on call schedule
+
+Create a Signals on-call schedule for a team.
+*/
+func (a *Client) PostV1TeamsTeamIDOnCallSchedules(params *PostV1TeamsTeamIDOnCallSchedulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TeamsTeamIDOnCallSchedulesCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1TeamsTeamIDOnCallSchedulesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1TeamsTeamIdOnCallSchedules",
+		Method:             "POST",
+		PathPattern:        "/v1/teams/{team_id}/on_call_schedules",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1TeamsTeamIDOnCallSchedulesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1TeamsTeamIDOnCallSchedulesCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1TeamsTeamIdOnCallSchedules: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1TeamsTeamIDOnCallSchedulesScheduleIDShifts creates an on call shift
+
+Create a Signals on-call shift in a schedule.
+*/
+func (a *Client) PostV1TeamsTeamIDOnCallSchedulesScheduleIDShifts(params *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1TeamsTeamIdOnCallSchedulesScheduleIdShifts",
+		Method:             "POST",
+		PathPattern:        "/v1/teams/{team_id}/on_call_schedules/{schedule_id}/shifts",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1TeamsTeamIdOnCallSchedulesScheduleIdShifts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1TeamsTeamIDSignalRules creates a signals rule
+
+Create a Signals rule for a team.
+*/
+func (a *Client) PostV1TeamsTeamIDSignalRules(params *PostV1TeamsTeamIDSignalRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TeamsTeamIDSignalRulesCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1TeamsTeamIDSignalRulesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1TeamsTeamIdSignalRules",
+		Method:             "POST",
+		PathPattern:        "/v1/teams/{team_id}/signal_rules",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1TeamsTeamIDSignalRulesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1TeamsTeamIDSignalRulesCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1TeamsTeamIdSignalRules: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

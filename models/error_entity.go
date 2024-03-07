@@ -17,6 +17,9 @@ import (
 // swagger:model ErrorEntity
 type ErrorEntity struct {
 
+	// A stable code on which to match errors
+	Code string `json:"code,omitempty"`
+
 	// detail
 	Detail string `json:"detail,omitempty"`
 

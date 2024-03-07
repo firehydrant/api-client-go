@@ -17,8 +17,14 @@ import (
 // swagger:model Attachments_LinkEntity
 type AttachmentsLinkEntity struct {
 
+	// Link can be deleted
+	Deletable bool `json:"deletable,omitempty"`
+
 	// display text
 	DisplayText string `json:"display_text,omitempty"`
+
+	// Link can be edited
+	Editable bool `json:"editable,omitempty"`
 
 	// href url
 	HrefURL string `json:"href_url,omitempty"`

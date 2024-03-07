@@ -30,7 +30,7 @@ type ActorEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// type
-	// Enum: [firehydrant_user firehydrant_bot alertmanager aws bugsnag checkly custom_alerts data_export datadog shortcut new_relic nunc github giphy google_meet microsoft_teams webex jira_cloud jira_onprem opsgenie pager_duty honeycomb patchy service_now slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2]
+	// Enum: [firehydrant_user firehydrant_bot alertmanager asana aws bugsnag checkly custom_alerts data_export datadog shortcut new_relic nunc github giphy google_meet microsoft_teams webex jira_cloud jira_onprem opsgenie pager_duty honeycomb patchy service_now signals slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2]
 	Type string `json:"type,omitempty"`
 }
 
@@ -52,7 +52,7 @@ var actorEntityTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","alertmanager","aws","bugsnag","checkly","custom_alerts","data_export","datadog","shortcut","new_relic","nunc","github","giphy","google_meet","microsoft_teams","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","honeycomb","patchy","service_now","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","alertmanager","asana","aws","bugsnag","checkly","custom_alerts","data_export","datadog","shortcut","new_relic","nunc","github","giphy","google_meet","microsoft_teams","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","honeycomb","patchy","service_now","signals","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -70,6 +70,9 @@ const (
 
 	// ActorEntityTypeAlertmanager captures enum value "alertmanager"
 	ActorEntityTypeAlertmanager string = "alertmanager"
+
+	// ActorEntityTypeAsana captures enum value "asana"
+	ActorEntityTypeAsana string = "asana"
 
 	// ActorEntityTypeAws captures enum value "aws"
 	ActorEntityTypeAws string = "aws"
@@ -133,6 +136,9 @@ const (
 
 	// ActorEntityTypeServiceNow captures enum value "service_now"
 	ActorEntityTypeServiceNow string = "service_now"
+
+	// ActorEntityTypeSignals captures enum value "signals"
+	ActorEntityTypeSignals string = "signals"
 
 	// ActorEntityTypeSlack captures enum value "slack"
 	ActorEntityTypeSlack string = "slack"

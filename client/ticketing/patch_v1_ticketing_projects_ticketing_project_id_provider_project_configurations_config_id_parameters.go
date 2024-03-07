@@ -68,7 +68,9 @@ type PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConf
 	ConfigID int32
 
 	// TicketingProjectID.
-	TicketingProjectID string
+	//
+	// Format: int32
+	TicketingProjectID int32
 
 	timeout    time.Duration
 	Context    context.Context
@@ -135,13 +137,13 @@ func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations
 }
 
 // WithTicketingProjectID adds the ticketingProjectID to the patch v1 ticketing projects ticketing project Id provider project configurations config Id params
-func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) WithTicketingProjectID(ticketingProjectID string) *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams {
+func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) WithTicketingProjectID(ticketingProjectID int32) *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams {
 	o.SetTicketingProjectID(ticketingProjectID)
 	return o
 }
 
 // SetTicketingProjectID adds the ticketingProjectId to the patch v1 ticketing projects ticketing project Id provider project configurations config Id params
-func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) SetTicketingProjectID(ticketingProjectID string) {
+func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) SetTicketingProjectID(ticketingProjectID int32) {
 	o.TicketingProjectID = ticketingProjectID
 }
 
@@ -159,7 +161,7 @@ func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations
 	}
 
 	// path param ticketing_project_id
-	if err := r.SetPathParam("ticketing_project_id", o.TicketingProjectID); err != nil {
+	if err := r.SetPathParam("ticketing_project_id", swag.FormatInt32(o.TicketingProjectID)); err != nil {
 		return err
 	}
 

@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -26,6 +27,10 @@ type PostV1IncidentsIncidentIDGenericChatMessages struct {
 	// ISO8601 timestamp for when the chat message occurred
 	// Format: date-time
 	OccurredAt strfmt.DateTime `json:"occurred_at,omitempty"`
+
+	// vote direction
+	// Enum: [up down]
+	VoteDirection string `json:"vote_direction,omitempty"`
 }
 
 // Validate validates this post v1 incidents incident Id generic chat messages
@@ -37,6 +42,10 @@ func (m *PostV1IncidentsIncidentIDGenericChatMessages) Validate(formats strfmt.R
 	}
 
 	if err := m.validateOccurredAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVoteDirection(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -61,6 +70,48 @@ func (m *PostV1IncidentsIncidentIDGenericChatMessages) validateOccurredAt(format
 	}
 
 	if err := validate.FormatOf("occurred_at", "body", "date-time", m.OccurredAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var postV1IncidentsIncidentIdGenericChatMessagesTypeVoteDirectionPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["up","down"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		postV1IncidentsIncidentIdGenericChatMessagesTypeVoteDirectionPropEnum = append(postV1IncidentsIncidentIdGenericChatMessagesTypeVoteDirectionPropEnum, v)
+	}
+}
+
+const (
+
+	// PostV1IncidentsIncidentIDGenericChatMessagesVoteDirectionUp captures enum value "up"
+	PostV1IncidentsIncidentIDGenericChatMessagesVoteDirectionUp string = "up"
+
+	// PostV1IncidentsIncidentIDGenericChatMessagesVoteDirectionDown captures enum value "down"
+	PostV1IncidentsIncidentIDGenericChatMessagesVoteDirectionDown string = "down"
+)
+
+// prop value enum
+func (m *PostV1IncidentsIncidentIDGenericChatMessages) validateVoteDirectionEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, postV1IncidentsIncidentIdGenericChatMessagesTypeVoteDirectionPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PostV1IncidentsIncidentIDGenericChatMessages) validateVoteDirection(formats strfmt.Registry) error {
+	if swag.IsZero(m.VoteDirection) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateVoteDirectionEnum("vote_direction", "body", m.VoteDirection); err != nil {
 		return err
 	}
 

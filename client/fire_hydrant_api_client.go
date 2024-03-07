@@ -11,11 +11,14 @@ import (
 	"github.com/go-openapi/strfmt"
 
 	"github.com/firehydrant/api-client-go/client/alerts"
+	"github.com/firehydrant/api-client-go/client/bootstrap"
 	"github.com/firehydrant/api-client-go/client/catalogs"
 	"github.com/firehydrant/api-client-go/client/change_types"
 	"github.com/firehydrant/api-client-go/client/changes"
 	"github.com/firehydrant/api-client-go/client/checklist_templates"
 	"github.com/firehydrant/api-client-go/client/conversations"
+	"github.com/firehydrant/api-client-go/client/current_user"
+	"github.com/firehydrant/api-client-go/client/custom_fields"
 	"github.com/firehydrant/api-client-go/client/entitlements"
 	"github.com/firehydrant/api-client-go/client/environments"
 	"github.com/firehydrant/api-client-go/client/functionalities"
@@ -33,7 +36,6 @@ import (
 	"github.com/firehydrant/api-client-go/client/post_mortems"
 	"github.com/firehydrant/api-client-go/client/priorities"
 	"github.com/firehydrant/api-client-go/client/processing_log_entries"
-	"github.com/firehydrant/api-client-go/client/release_notes"
 	"github.com/firehydrant/api-client-go/client/reports"
 	"github.com/firehydrant/api-client-go/client/runbook_audits"
 	"github.com/firehydrant/api-client-go/client/runbook_templates"
@@ -46,6 +48,8 @@ import (
 	"github.com/firehydrant/api-client-go/client/services"
 	"github.com/firehydrant/api-client-go/client/severities"
 	"github.com/firehydrant/api-client-go/client/severity_matrix"
+	"github.com/firehydrant/api-client-go/client/signals"
+	"github.com/firehydrant/api-client-go/client/status_update_templates"
 	"github.com/firehydrant/api-client-go/client/task_lists"
 	"github.com/firehydrant/api-client-go/client/teams"
 	"github.com/firehydrant/api-client-go/client/ticketing"
@@ -96,11 +100,14 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli := new(FireHydrantAPI)
 	cli.Transport = transport
 	cli.Alerts = alerts.New(transport, formats)
+	cli.Bootstrap = bootstrap.New(transport, formats)
 	cli.Catalogs = catalogs.New(transport, formats)
 	cli.ChangeTypes = change_types.New(transport, formats)
 	cli.Changes = changes.New(transport, formats)
 	cli.ChecklistTemplates = checklist_templates.New(transport, formats)
 	cli.Conversations = conversations.New(transport, formats)
+	cli.CurrentUser = current_user.New(transport, formats)
+	cli.CustomFields = custom_fields.New(transport, formats)
 	cli.Entitlements = entitlements.New(transport, formats)
 	cli.Environments = environments.New(transport, formats)
 	cli.Functionalities = functionalities.New(transport, formats)
@@ -118,7 +125,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.PostMortems = post_mortems.New(transport, formats)
 	cli.Priorities = priorities.New(transport, formats)
 	cli.ProcessingLogEntries = processing_log_entries.New(transport, formats)
-	cli.ReleaseNotes = release_notes.New(transport, formats)
 	cli.Reports = reports.New(transport, formats)
 	cli.RunbookAudits = runbook_audits.New(transport, formats)
 	cli.RunbookTemplates = runbook_templates.New(transport, formats)
@@ -131,6 +137,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Services = services.New(transport, formats)
 	cli.Severities = severities.New(transport, formats)
 	cli.SeverityMatrix = severity_matrix.New(transport, formats)
+	cli.Signals = signals.New(transport, formats)
+	cli.StatusUpdateTemplates = status_update_templates.New(transport, formats)
 	cli.TaskLists = task_lists.New(transport, formats)
 	cli.Teams = teams.New(transport, formats)
 	cli.Ticketing = ticketing.New(transport, formats)
@@ -182,6 +190,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 type FireHydrantAPI struct {
 	Alerts alerts.ClientService
 
+	Bootstrap bootstrap.ClientService
+
 	Catalogs catalogs.ClientService
 
 	ChangeTypes change_types.ClientService
@@ -191,6 +201,10 @@ type FireHydrantAPI struct {
 	ChecklistTemplates checklist_templates.ClientService
 
 	Conversations conversations.ClientService
+
+	CurrentUser current_user.ClientService
+
+	CustomFields custom_fields.ClientService
 
 	Entitlements entitlements.ClientService
 
@@ -226,8 +240,6 @@ type FireHydrantAPI struct {
 
 	ProcessingLogEntries processing_log_entries.ClientService
 
-	ReleaseNotes release_notes.ClientService
-
 	Reports reports.ClientService
 
 	RunbookAudits runbook_audits.ClientService
@@ -252,6 +264,10 @@ type FireHydrantAPI struct {
 
 	SeverityMatrix severity_matrix.ClientService
 
+	Signals signals.ClientService
+
+	StatusUpdateTemplates status_update_templates.ClientService
+
 	TaskLists task_lists.ClientService
 
 	Teams teams.ClientService
@@ -269,11 +285,14 @@ type FireHydrantAPI struct {
 func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.Alerts.SetTransport(transport)
+	c.Bootstrap.SetTransport(transport)
 	c.Catalogs.SetTransport(transport)
 	c.ChangeTypes.SetTransport(transport)
 	c.Changes.SetTransport(transport)
 	c.ChecklistTemplates.SetTransport(transport)
 	c.Conversations.SetTransport(transport)
+	c.CurrentUser.SetTransport(transport)
+	c.CustomFields.SetTransport(transport)
 	c.Entitlements.SetTransport(transport)
 	c.Environments.SetTransport(transport)
 	c.Functionalities.SetTransport(transport)
@@ -291,7 +310,6 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.PostMortems.SetTransport(transport)
 	c.Priorities.SetTransport(transport)
 	c.ProcessingLogEntries.SetTransport(transport)
-	c.ReleaseNotes.SetTransport(transport)
 	c.Reports.SetTransport(transport)
 	c.RunbookAudits.SetTransport(transport)
 	c.RunbookTemplates.SetTransport(transport)
@@ -304,6 +322,8 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Services.SetTransport(transport)
 	c.Severities.SetTransport(transport)
 	c.SeverityMatrix.SetTransport(transport)
+	c.Signals.SetTransport(transport)
+	c.StatusUpdateTemplates.SetTransport(transport)
 	c.TaskLists.SetTransport(transport)
 	c.Teams.SetTransport(transport)
 	c.Ticketing.SetTransport(transport)

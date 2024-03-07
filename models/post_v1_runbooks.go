@@ -24,7 +24,10 @@ type PostV1Runbooks struct {
 	// attachment rule
 	AttachmentRule *PostV1RunbooksAttachmentRule `json:"attachment_rule,omitempty"`
 
-	// description
+	// Whether or not this runbook should be automatically attached to restricted incidents. Note that setting this to `true` will prevent it from being attached to public incidents, even manually. Defaults to `false`.
+	AutoAttachToRestrictedIncidents bool `json:"auto_attach_to_restricted_incidents,omitempty"`
+
+	// A longer description about the Runbook. Supports markdown format
 	Description string `json:"description,omitempty"`
 
 	// name
@@ -37,12 +40,13 @@ type PostV1Runbooks struct {
 	// steps
 	Steps []*PostV1RunbooksStepsItems0 `json:"steps"`
 
-	// summary
+	// Deprecated. Use description
 	Summary string `json:"summary,omitempty"`
 
-	// type
+	// Deprecated, but still required. Please just use 'incident'
+	// Required: true
 	// Enum: [incident general infrastructure incident_role]
-	Type string `json:"type,omitempty"`
+	Type *string `json:"type"`
 }
 
 // Validate validates this post v1 runbooks
@@ -184,12 +188,13 @@ func (m *PostV1Runbooks) validateTypeEnum(path, location string, value string) e
 }
 
 func (m *PostV1Runbooks) validateType(formats strfmt.Registry) error {
-	if swag.IsZero(m.Type) { // not required
-		return nil
+
+	if err := validate.Required("type", "body", m.Type); err != nil {
+		return err
 	}
 
 	// value enum
-	if err := m.validateTypeEnum("type", "body", m.Type); err != nil {
+	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
 		return err
 	}
 

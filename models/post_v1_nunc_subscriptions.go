@@ -22,10 +22,6 @@ type PostV1NuncSubscriptions struct {
 	// email
 	// Required: true
 	Email *string `json:"email"`
-
-	// recaptcha token
-	// Required: true
-	RecaptchaToken *string `json:"recaptcha_token"`
 }
 
 // Validate validates this post v1 nunc subscriptions
@@ -33,10 +29,6 @@ func (m *PostV1NuncSubscriptions) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateEmail(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateRecaptchaToken(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -49,15 +41,6 @@ func (m *PostV1NuncSubscriptions) Validate(formats strfmt.Registry) error {
 func (m *PostV1NuncSubscriptions) validateEmail(formats strfmt.Registry) error {
 
 	if err := validate.Required("email", "body", m.Email); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *PostV1NuncSubscriptions) validateRecaptchaToken(formats strfmt.Registry) error {
-
-	if err := validate.Required("recaptcha_token", "body", m.RecaptchaToken); err != nil {
 		return err
 	}
 

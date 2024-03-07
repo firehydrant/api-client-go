@@ -25,6 +25,9 @@ type PostV1TicketingTickets struct {
 	// project id
 	ProjectID string `json:"project_id,omitempty"`
 
+	// The remote URL for an existing ticket in a supported and configured ticketing integration
+	RemoteURL string `json:"remote_url,omitempty"`
+
 	// state
 	State string `json:"state,omitempty"`
 

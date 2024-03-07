@@ -97,7 +97,7 @@ func (a *Client) DeleteV1ScimV2GroupsID(params *DeleteV1ScimV2GroupsIDParams, au
 /*
 DeleteV1ScimV2UsersID deletes a user using s c i m protocol
 
-SCIM endpoint to delete a User. This endpoint will deactivate a confirmed OrganizationUser record in our system.
+SCIM endpoint to delete a User. This endpoint will deactivate a confirmed User record in our system.
 */
 func (a *Client) DeleteV1ScimV2UsersID(params *DeleteV1ScimV2UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ScimV2UsersIDNoContent, error) {
 	// TODO: Validate the params before sending

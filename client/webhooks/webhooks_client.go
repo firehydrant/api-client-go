@@ -36,6 +36,8 @@ type ClientService interface {
 
 	GetV1WebhooksWebhookID(params *GetV1WebhooksWebhookIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1WebhooksWebhookIDOK, error)
 
+	GetV1WebhooksWebhookIDDeliveries(params *GetV1WebhooksWebhookIDDeliveriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1WebhooksWebhookIDDeliveriesOK, error)
+
 	PatchV1WebhooksWebhookID(params *PatchV1WebhooksWebhookIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1WebhooksWebhookIDOK, error)
 
 	PostV1Webhooks(params *PostV1WebhooksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1WebhooksCreated, error)
@@ -163,6 +165,45 @@ func (a *Client) GetV1WebhooksWebhookID(params *GetV1WebhooksWebhookIDParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1WebhooksWebhookId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1WebhooksWebhookIDDeliveries get v1 webhooks webhook Id deliveries API
+*/
+func (a *Client) GetV1WebhooksWebhookIDDeliveries(params *GetV1WebhooksWebhookIDDeliveriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1WebhooksWebhookIDDeliveriesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1WebhooksWebhookIDDeliveriesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1WebhooksWebhookIdDeliveries",
+		Method:             "GET",
+		PathPattern:        "/v1/webhooks/{webhook_id}/deliveries",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1WebhooksWebhookIDDeliveriesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1WebhooksWebhookIDDeliveriesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1WebhooksWebhookIdDeliveries: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

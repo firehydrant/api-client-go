@@ -21,7 +21,7 @@ import (
 type ServiceEntity struct {
 
 	// List of active incident guids
-	ActiveIncidents []*IncidentEntity `json:"active_incidents"`
+	ActiveIncidents []string `json:"active_incidents"`
 
 	// alert on add
 	AlertOnAdd bool `json:"alert_on_add,omitempty"`
@@ -100,10 +100,6 @@ type ServiceEntity struct {
 func (m *ServiceEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateActiveIncidents(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateChecklists(formats); err != nil {
 		res = append(res, err)
 	}
@@ -151,32 +147,6 @@ func (m *ServiceEntity) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *ServiceEntity) validateActiveIncidents(formats strfmt.Registry) error {
-	if swag.IsZero(m.ActiveIncidents) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.ActiveIncidents); i++ {
-		if swag.IsZero(m.ActiveIncidents[i]) { // not required
-			continue
-		}
-
-		if m.ActiveIncidents[i] != nil {
-			if err := m.ActiveIncidents[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("active_incidents" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("active_incidents" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
 	return nil
 }
 
@@ -407,10 +377,6 @@ func (m *ServiceEntity) validateUpdatedBy(formats strfmt.Registry) error {
 func (m *ServiceEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateActiveIncidents(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateChecklists(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -446,26 +412,6 @@ func (m *ServiceEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *ServiceEntity) contextValidateActiveIncidents(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.ActiveIncidents); i++ {
-
-		if m.ActiveIncidents[i] != nil {
-			if err := m.ActiveIncidents[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("active_incidents" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("active_incidents" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
 	return nil
 }
 

@@ -24,6 +24,9 @@ type PutV1RunbooksRunbookID struct {
 	// attachment rule
 	AttachmentRule *PutV1RunbooksRunbookIDAttachmentRule `json:"attachment_rule,omitempty"`
 
+	// Whether or not this runbook should be automatically attached to restricted incidents. Note that setting this to `true` will prevent it from being attached to public incidents, even manually. Defaults to `false`.
+	AutoAttachToRestrictedIncidents bool `json:"auto_attach_to_restricted_incidents,omitempty"`
+
 	// description
 	Description string `json:"description,omitempty"`
 

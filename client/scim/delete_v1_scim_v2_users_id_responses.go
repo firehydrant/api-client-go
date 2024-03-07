@@ -39,7 +39,7 @@ func NewDeleteV1ScimV2UsersIDNoContent() *DeleteV1ScimV2UsersIDNoContent {
 /*
 DeleteV1ScimV2UsersIDNoContent describes a response with status code 204, with default header values.
 
-SCIM endpoint to delete a User. This endpoint will deactivate a confirmed OrganizationUser record in our system.
+SCIM endpoint to delete a User. This endpoint will deactivate a confirmed User record in our system.
 */
 type DeleteV1ScimV2UsersIDNoContent struct {
 }
