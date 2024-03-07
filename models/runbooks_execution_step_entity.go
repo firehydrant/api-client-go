@@ -46,6 +46,9 @@ type RunbooksExecutionStepEntity struct {
 	// integration name
 	IntegrationName string `json:"integration_name,omitempty"`
 
+	// integration slug
+	IntegrationSlug string `json:"integration_slug,omitempty"`
+
 	// name
 	Name string `json:"name,omitempty"`
 
@@ -58,6 +61,9 @@ type RunbooksExecutionStepEntity struct {
 
 	// ISO8601 formatted duration string
 	RepeatsDuration string `json:"repeats_duration,omitempty"`
+
+	// rule
+	Rule *RulesRuleEntity `json:"rule,omitempty"`
 
 	// step elements
 	StepElements []interface{} `json:"step_elements"`
@@ -72,6 +78,10 @@ func (m *RunbooksExecutionStepEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateRepeatsAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRule(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -112,11 +122,34 @@ func (m *RunbooksExecutionStepEntity) validateRepeatsAt(formats strfmt.Registry)
 	return nil
 }
 
+func (m *RunbooksExecutionStepEntity) validateRule(formats strfmt.Registry) error {
+	if swag.IsZero(m.Rule) { // not required
+		return nil
+	}
+
+	if m.Rule != nil {
+		if err := m.Rule.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("rule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this runbooks execution step entity based on the context it is used
 func (m *RunbooksExecutionStepEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateExecution(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRule(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -134,6 +167,22 @@ func (m *RunbooksExecutionStepEntity) contextValidateExecution(ctx context.Conte
 				return ve.ValidateName("execution")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("execution")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *RunbooksExecutionStepEntity) contextValidateRule(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Rule != nil {
+		if err := m.Rule.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("rule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("rule")
 			}
 			return err
 		}

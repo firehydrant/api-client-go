@@ -84,6 +84,12 @@ type GetV1RunbooksParams struct {
 	// Format: int32
 	PerPage *int32
 
+	/* Sort.
+
+	   Sort runbooks by their updated date. Accepts 'asc', 'desc'
+	*/
+	Sort *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -181,6 +187,17 @@ func (o *GetV1RunbooksParams) SetPerPage(perPage *int32) {
 	o.PerPage = perPage
 }
 
+// WithSort adds the sort to the get v1 runbooks params
+func (o *GetV1RunbooksParams) WithSort(sort *string) *GetV1RunbooksParams {
+	o.SetSort(sort)
+	return o
+}
+
+// SetSort adds the sort to the get v1 runbooks params
+func (o *GetV1RunbooksParams) SetSort(sort *string) {
+	o.Sort = sort
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1RunbooksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -252,6 +269,23 @@ func (o *GetV1RunbooksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		if qPerPage != "" {
 
 			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Sort != nil {
+
+		// query param sort
+		var qrSort string
+
+		if o.Sort != nil {
+			qrSort = *o.Sort
+		}
+		qSort := qrSort
+		if qSort != "" {
+
+			if err := r.SetQueryParam("sort", qSort); err != nil {
 				return err
 			}
 		}

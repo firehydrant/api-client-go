@@ -29,6 +29,12 @@ type PostV1Teams struct {
 	// name
 	// Required: true
 	Name *string `json:"name"`
+
+	// The Slack channel ID that this team is associated with
+	SlackChannelID string `json:"slack_channel_id,omitempty"`
+
+	// slug
+	Slug string `json:"slug,omitempty"`
 }
 
 // Validate validates this post v1 teams

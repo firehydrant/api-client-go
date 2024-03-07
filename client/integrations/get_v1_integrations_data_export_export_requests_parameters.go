@@ -64,7 +64,7 @@ type GetV1IntegrationsDataExportExportRequestsParams struct {
 
 	/* NewerThan.
 
-	   Finds the records that have been created since the date passed in.
+	   Finds the records that have been created since the date passed in. A record is any change to any incident, which may include incidents created prior to the date passed in.
 
 	   Format: date-time
 	*/
@@ -82,7 +82,7 @@ type GetV1IntegrationsDataExportExportRequestsParams struct {
 
 	/* Status.
 
-	   Filters records based on status.
+	   Filters records based on report generation status.
 	*/
 	Status *string
 

@@ -19,6 +19,12 @@ import (
 // swagger:model IncidentTypeEntity_TemplateEntity
 type IncidentTypeEntityTemplateEntity struct {
 
+	// custom fields
+	CustomFields string `json:"custom_fields,omitempty"`
+
+	// customer impact summary
+	CustomerImpactSummary string `json:"customer_impact_summary,omitempty"`
+
 	// description
 	Description string `json:"description,omitempty"`
 

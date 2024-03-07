@@ -45,7 +45,7 @@ PostV1WebhooksCreated describes a response with status code 201, with default he
 Create a new webhook
 */
 type PostV1WebhooksCreated struct {
-	Payload *models.WebhookEntity
+	Payload *models.WebhooksEntitiesWebhookEntity
 }
 
 // IsSuccess returns true when this post v1 webhooks created response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *PostV1WebhooksCreated) String() string {
 	return fmt.Sprintf("[POST /v1/webhooks][%d] postV1WebhooksCreated  %+v", 201, o.Payload)
 }
 
-func (o *PostV1WebhooksCreated) GetPayload() *models.WebhookEntity {
+func (o *PostV1WebhooksCreated) GetPayload() *models.WebhooksEntitiesWebhookEntity {
 	return o.Payload
 }
 
 func (o *PostV1WebhooksCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.WebhookEntity)
+	o.Payload = new(models.WebhooksEntitiesWebhookEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

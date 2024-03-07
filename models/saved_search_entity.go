@@ -29,6 +29,9 @@ type SavedSearchEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
+	// Whether or not this saved search is private
+	IsPrivate bool `json:"is_private,omitempty"`
+
 	// name
 	Name string `json:"name,omitempty"`
 
@@ -38,6 +41,9 @@ type SavedSearchEntity struct {
 	// updated at
 	// Format: date-time
 	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
+
+	// user id
+	UserID string `json:"user_id,omitempty"`
 }
 
 // Validate validates this saved search entity

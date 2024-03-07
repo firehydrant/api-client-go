@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AuthorEntity author entity
+// AuthorEntity AuthorEntity model
 //
 // swagger:model AuthorEntity
 type AuthorEntity struct {

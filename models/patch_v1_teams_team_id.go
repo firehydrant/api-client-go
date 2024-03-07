@@ -28,6 +28,9 @@ type PatchV1TeamsTeamID struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// The Slack channel ID that this team is associated with
+	SlackChannelID string `json:"slack_channel_id,omitempty"`
+
 	// slug
 	Slug string `json:"slug,omitempty"`
 }

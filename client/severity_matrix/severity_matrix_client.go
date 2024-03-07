@@ -38,6 +38,8 @@ type ClientService interface {
 
 	GetV1SeverityMatrixConditions(params *GetV1SeverityMatrixConditionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixConditionsOK, error)
 
+	GetV1SeverityMatrixConditionsConditionID(params *GetV1SeverityMatrixConditionsConditionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixConditionsConditionIDOK, error)
+
 	GetV1SeverityMatrixImpacts(params *GetV1SeverityMatrixImpactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixImpactsOK, error)
 
 	PatchV1SeverityMatrix(params *PatchV1SeverityMatrixParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeverityMatrixOK, error)
@@ -214,6 +216,45 @@ func (a *Client) GetV1SeverityMatrixConditions(params *GetV1SeverityMatrixCondit
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1SeverityMatrixConditions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1SeverityMatrixConditionsConditionID get v1 severity matrix conditions condition Id API
+*/
+func (a *Client) GetV1SeverityMatrixConditionsConditionID(params *GetV1SeverityMatrixConditionsConditionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixConditionsConditionIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1SeverityMatrixConditionsConditionIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1SeverityMatrixConditionsConditionId",
+		Method:             "GET",
+		PathPattern:        "/v1/severity_matrix/conditions/{condition_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1SeverityMatrixConditionsConditionIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1SeverityMatrixConditionsConditionIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1SeverityMatrixConditionsConditionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

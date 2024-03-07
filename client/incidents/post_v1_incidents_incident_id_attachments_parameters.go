@@ -70,6 +70,14 @@ type PostV1IncidentsIncidentIDAttachmentsParams struct {
 	// IncidentID.
 	IncidentID string
 
+	// OccurredAt.
+	//
+	// Format: date-time
+	OccurredAt *strfmt.DateTime
+
+	// VoteDirection.
+	VoteDirection *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -156,6 +164,28 @@ func (o *PostV1IncidentsIncidentIDAttachmentsParams) SetIncidentID(incidentID st
 	o.IncidentID = incidentID
 }
 
+// WithOccurredAt adds the occurredAt to the post v1 incidents incident Id attachments params
+func (o *PostV1IncidentsIncidentIDAttachmentsParams) WithOccurredAt(occurredAt *strfmt.DateTime) *PostV1IncidentsIncidentIDAttachmentsParams {
+	o.SetOccurredAt(occurredAt)
+	return o
+}
+
+// SetOccurredAt adds the occurredAt to the post v1 incidents incident Id attachments params
+func (o *PostV1IncidentsIncidentIDAttachmentsParams) SetOccurredAt(occurredAt *strfmt.DateTime) {
+	o.OccurredAt = occurredAt
+}
+
+// WithVoteDirection adds the voteDirection to the post v1 incidents incident Id attachments params
+func (o *PostV1IncidentsIncidentIDAttachmentsParams) WithVoteDirection(voteDirection *string) *PostV1IncidentsIncidentIDAttachmentsParams {
+	o.SetVoteDirection(voteDirection)
+	return o
+}
+
+// SetVoteDirection adds the voteDirection to the post v1 incidents incident Id attachments params
+func (o *PostV1IncidentsIncidentIDAttachmentsParams) SetVoteDirection(voteDirection *string) {
+	o.VoteDirection = voteDirection
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PostV1IncidentsIncidentIDAttachmentsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -186,6 +216,36 @@ func (o *PostV1IncidentsIncidentIDAttachmentsParams) WriteToRequest(r runtime.Cl
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+
+	if o.OccurredAt != nil {
+
+		// form param occurred_at
+		var frOccurredAt strfmt.DateTime
+		if o.OccurredAt != nil {
+			frOccurredAt = *o.OccurredAt
+		}
+		fOccurredAt := frOccurredAt.String()
+		if fOccurredAt != "" {
+			if err := r.SetFormParam("occurred_at", fOccurredAt); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.VoteDirection != nil {
+
+		// form param vote_direction
+		var frVoteDirection string
+		if o.VoteDirection != nil {
+			frVoteDirection = *o.VoteDirection
+		}
+		fVoteDirection := frVoteDirection
+		if fVoteDirection != "" {
+			if err := r.SetFormParam("vote_direction", fVoteDirection); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

@@ -70,7 +70,7 @@ type GetV1IncidentsParams struct {
 
 	/* AssignedTeams.
 
-	   A comma separated list of IDs for assigned teams
+	   A comma separated list of IDs for assigned teams or 'is_empty' to filter for incidents with no active team assignments
 	*/
 	AssignedTeams *string
 
@@ -79,6 +79,22 @@ type GetV1IncidentsParams struct {
 	   A JSON string that defines 'logic' and 'user_data'
 	*/
 	Conditions *string
+
+	/* CreatedAtOrAfter.
+
+	   Filters for incidents that were created at or after this time
+
+	   Format: date-time
+	*/
+	CreatedAtOrAfter *strfmt.DateTime
+
+	/* CreatedAtOrBefore.
+
+	   Filters for incidents that were created at or before this time
+
+	   Format: date-time
+	*/
+	CreatedAtOrBefore *strfmt.DateTime
 
 	/* CurrentMilestones.
 
@@ -96,7 +112,7 @@ type GetV1IncidentsParams struct {
 
 	/* Environments.
 
-	   A comma separated list of environment IDs
+	   A comma separated list of environment IDs or 'is_empty' to filter for incidents with no impacted environments
 	*/
 	Environments *string
 
@@ -108,7 +124,7 @@ type GetV1IncidentsParams struct {
 
 	/* Functionalities.
 
-	   A comma separated list of functionality IDs
+	   A comma separated list of functionality IDs or 'is_empty' to filter for incidents with no impacted functionalities
 	*/
 	Functionalities *string
 
@@ -127,6 +143,22 @@ type GetV1IncidentsParams struct {
 	//
 	// Format: int32
 	PerPage *int32
+
+	/* PostmortemCompletedAtOrAfter.
+
+	   Filters for incidents that had their postmortem completed at or after this time
+
+	   Format: date-time
+	*/
+	PostmortemCompletedAtOrAfter *strfmt.DateTime
+
+	/* PostmortemCompletedAtOrBefore.
+
+	   Filters for incidents that had their postmortem completed at or before this time
+
+	   Format: date-time
+	*/
+	PostmortemCompletedAtOrBefore *strfmt.DateTime
 
 	/* Priorities.
 
@@ -170,7 +202,7 @@ type GetV1IncidentsParams struct {
 
 	/* Services.
 
-	   A comma separated list of service IDs
+	   A comma separated list of service IDs or 'is_empty' to filter for incidents with no impacted services
 	*/
 	Services *string
 
@@ -320,6 +352,28 @@ func (o *GetV1IncidentsParams) SetConditions(conditions *string) {
 	o.Conditions = conditions
 }
 
+// WithCreatedAtOrAfter adds the createdAtOrAfter to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithCreatedAtOrAfter(createdAtOrAfter *strfmt.DateTime) *GetV1IncidentsParams {
+	o.SetCreatedAtOrAfter(createdAtOrAfter)
+	return o
+}
+
+// SetCreatedAtOrAfter adds the createdAtOrAfter to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetCreatedAtOrAfter(createdAtOrAfter *strfmt.DateTime) {
+	o.CreatedAtOrAfter = createdAtOrAfter
+}
+
+// WithCreatedAtOrBefore adds the createdAtOrBefore to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithCreatedAtOrBefore(createdAtOrBefore *strfmt.DateTime) *GetV1IncidentsParams {
+	o.SetCreatedAtOrBefore(createdAtOrBefore)
+	return o
+}
+
+// SetCreatedAtOrBefore adds the createdAtOrBefore to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetCreatedAtOrBefore(createdAtOrBefore *strfmt.DateTime) {
+	o.CreatedAtOrBefore = createdAtOrBefore
+}
+
 // WithCurrentMilestones adds the currentMilestones to the get v1 incidents params
 func (o *GetV1IncidentsParams) WithCurrentMilestones(currentMilestones *string) *GetV1IncidentsParams {
 	o.SetCurrentMilestones(currentMilestones)
@@ -406,6 +460,28 @@ func (o *GetV1IncidentsParams) WithPerPage(perPage *int32) *GetV1IncidentsParams
 // SetPerPage adds the perPage to the get v1 incidents params
 func (o *GetV1IncidentsParams) SetPerPage(perPage *int32) {
 	o.PerPage = perPage
+}
+
+// WithPostmortemCompletedAtOrAfter adds the postmortemCompletedAtOrAfter to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithPostmortemCompletedAtOrAfter(postmortemCompletedAtOrAfter *strfmt.DateTime) *GetV1IncidentsParams {
+	o.SetPostmortemCompletedAtOrAfter(postmortemCompletedAtOrAfter)
+	return o
+}
+
+// SetPostmortemCompletedAtOrAfter adds the postmortemCompletedAtOrAfter to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetPostmortemCompletedAtOrAfter(postmortemCompletedAtOrAfter *strfmt.DateTime) {
+	o.PostmortemCompletedAtOrAfter = postmortemCompletedAtOrAfter
+}
+
+// WithPostmortemCompletedAtOrBefore adds the postmortemCompletedAtOrBefore to the get v1 incidents params
+func (o *GetV1IncidentsParams) WithPostmortemCompletedAtOrBefore(postmortemCompletedAtOrBefore *strfmt.DateTime) *GetV1IncidentsParams {
+	o.SetPostmortemCompletedAtOrBefore(postmortemCompletedAtOrBefore)
+	return o
+}
+
+// SetPostmortemCompletedAtOrBefore adds the postmortemCompletedAtOrBefore to the get v1 incidents params
+func (o *GetV1IncidentsParams) SetPostmortemCompletedAtOrBefore(postmortemCompletedAtOrBefore *strfmt.DateTime) {
+	o.PostmortemCompletedAtOrBefore = postmortemCompletedAtOrBefore
 }
 
 // WithPriorities adds the priorities to the get v1 incidents params
@@ -643,6 +719,40 @@ func (o *GetV1IncidentsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		}
 	}
 
+	if o.CreatedAtOrAfter != nil {
+
+		// query param created_at_or_after
+		var qrCreatedAtOrAfter strfmt.DateTime
+
+		if o.CreatedAtOrAfter != nil {
+			qrCreatedAtOrAfter = *o.CreatedAtOrAfter
+		}
+		qCreatedAtOrAfter := qrCreatedAtOrAfter.String()
+		if qCreatedAtOrAfter != "" {
+
+			if err := r.SetQueryParam("created_at_or_after", qCreatedAtOrAfter); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.CreatedAtOrBefore != nil {
+
+		// query param created_at_or_before
+		var qrCreatedAtOrBefore strfmt.DateTime
+
+		if o.CreatedAtOrBefore != nil {
+			qrCreatedAtOrBefore = *o.CreatedAtOrBefore
+		}
+		qCreatedAtOrBefore := qrCreatedAtOrBefore.String()
+		if qCreatedAtOrBefore != "" {
+
+			if err := r.SetQueryParam("created_at_or_before", qCreatedAtOrBefore); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.CurrentMilestones != nil {
 
 		// query param current_milestones
@@ -774,6 +884,40 @@ func (o *GetV1IncidentsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		if qPerPage != "" {
 
 			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.PostmortemCompletedAtOrAfter != nil {
+
+		// query param postmortem_completed_at_or_after
+		var qrPostmortemCompletedAtOrAfter strfmt.DateTime
+
+		if o.PostmortemCompletedAtOrAfter != nil {
+			qrPostmortemCompletedAtOrAfter = *o.PostmortemCompletedAtOrAfter
+		}
+		qPostmortemCompletedAtOrAfter := qrPostmortemCompletedAtOrAfter.String()
+		if qPostmortemCompletedAtOrAfter != "" {
+
+			if err := r.SetQueryParam("postmortem_completed_at_or_after", qPostmortemCompletedAtOrAfter); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.PostmortemCompletedAtOrBefore != nil {
+
+		// query param postmortem_completed_at_or_before
+		var qrPostmortemCompletedAtOrBefore strfmt.DateTime
+
+		if o.PostmortemCompletedAtOrBefore != nil {
+			qrPostmortemCompletedAtOrBefore = *o.PostmortemCompletedAtOrBefore
+		}
+		qPostmortemCompletedAtOrBefore := qrPostmortemCompletedAtOrBefore.String()
+		if qPostmortemCompletedAtOrBefore != "" {
+
+			if err := r.SetQueryParam("postmortem_completed_at_or_before", qPostmortemCompletedAtOrBefore); err != nil {
 				return err
 			}
 		}

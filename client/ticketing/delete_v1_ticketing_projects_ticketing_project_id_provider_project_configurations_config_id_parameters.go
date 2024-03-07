@@ -68,7 +68,9 @@ type DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCon
 	ConfigID int32
 
 	// TicketingProjectID.
-	TicketingProjectID string
+	//
+	// Format: int32
+	TicketingProjectID int32
 
 	timeout    time.Duration
 	Context    context.Context
@@ -135,13 +137,13 @@ func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfiguration
 }
 
 // WithTicketingProjectID adds the ticketingProjectID to the delete v1 ticketing projects ticketing project Id provider project configurations config Id params
-func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) WithTicketingProjectID(ticketingProjectID string) *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams {
+func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) WithTicketingProjectID(ticketingProjectID int32) *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams {
 	o.SetTicketingProjectID(ticketingProjectID)
 	return o
 }
 
 // SetTicketingProjectID adds the ticketingProjectId to the delete v1 ticketing projects ticketing project Id provider project configurations config Id params
-func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) SetTicketingProjectID(ticketingProjectID string) {
+func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) SetTicketingProjectID(ticketingProjectID int32) {
 	o.TicketingProjectID = ticketingProjectID
 }
 
@@ -159,7 +161,7 @@ func (o *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfiguration
 	}
 
 	// path param ticketing_project_id
-	if err := r.SetPathParam("ticketing_project_id", o.TicketingProjectID); err != nil {
+	if err := r.SetPathParam("ticketing_project_id", swag.FormatInt32(o.TicketingProjectID)); err != nil {
 		return err
 	}
 

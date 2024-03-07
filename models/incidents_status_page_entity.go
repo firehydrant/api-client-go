@@ -18,6 +18,9 @@ import (
 // swagger:model Incidents_StatusPageEntity
 type IncidentsStatusPageEntity struct {
 
+	// display name
+	DisplayName string `json:"display_name,omitempty"`
+
 	// external id
 	ExternalID string `json:"external_id,omitempty"`
 

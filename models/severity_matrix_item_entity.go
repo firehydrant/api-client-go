@@ -23,6 +23,9 @@ type SeverityMatrixItemEntity struct {
 	// impact id
 	ImpactID string `json:"impact_id,omitempty"`
 
+	// impact type
+	ImpactType string `json:"impact_type,omitempty"`
+
 	// severity
 	Severity string `json:"severity,omitempty"`
 }

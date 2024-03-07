@@ -129,6 +129,9 @@ func (m *PatchV1IncidentTypesID) UnmarshalBinary(b []byte) error {
 // swagger:model PatchV1IncidentTypesIDTemplate
 type PatchV1IncidentTypesIDTemplate struct {
 
+	// customer impact summary
+	CustomerImpactSummary string `json:"customer_impact_summary,omitempty"`
+
 	// description
 	Description string `json:"description,omitempty"`
 

@@ -35,6 +35,9 @@ type MetricsSingleMetricsEntity struct {
 	// mttr
 	Mttr int32 `json:"mttr,omitempty"`
 
+	// name
+	Name string `json:"name,omitempty"`
+
 	// total time
 	TotalTime int32 `json:"total_time,omitempty"`
 }
