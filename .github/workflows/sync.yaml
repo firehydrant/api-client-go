@@ -5,7 +5,7 @@ on:
   # TODO: add periodic + on-demand sync
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
   checks: write
 
@@ -39,11 +39,14 @@ jobs:
       - name: Commit changes
         run: |
           today=$(date -u +'%Y-%m-%d')
+
+          set -x
           git checkout -b "${today}"
           git config --global user.email "noreply@firehydrant.com"
           git config --global user.name "FireHydrant Bot"
           git add .
           git commit -m "Regenerate Swagger code ${today}"
+          git push -u origin "${today}"
           gh pr create \
             --title "Regenerate Swagger code ${today}" \
             --body "Regenerate Swagger code ${today}" \
