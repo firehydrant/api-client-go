@@ -44,17 +44,19 @@ jobs:
       - name: Commit changes
         run: |
           api_server_revision="${{ steps.swagger.outputs.REVISION }}"
+          branch="swagger/${api_server_revision}"
+
           set -x
-          git checkout -b "${api_server_revision}"
+          git checkout -b "${branch}"
           git config --global user.email "44629778+firehydrant-ops@users.noreply.github.com"
           git config --global user.name "FireHydrant Bot"
           git add .
           git commit -m "Regenerate Swagger code ${api_server_revision}"
-          git push -u origin "${api_server_revision}"
+          git push -u origin "${branch}"
           gh pr create \
-            --title "Regenerate Swagger code ${api_server_revision}" \
-            --body "Regenerate Swagger code ${api_server_revision}" \
+            --title "Regenerate Swagger code \`${api_server_revision}\`" \
+            --body "https://github.com/firehydrant/laddertruck/commits/${api_server_revision}" \
             --base main \
-            --head "${api_server_revision}"
+            --head "${branch}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
