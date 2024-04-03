@@ -455,6 +455,11 @@ func (m *TeamEntity) ContextValidate(ctx context.Context, formats strfmt.Registr
 func (m *TeamEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CreatedBy != nil {
+
+		if swag.IsZero(m.CreatedBy) { // not required
+			return nil
+		}
+
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
@@ -473,6 +478,11 @@ func (m *TeamEntity) contextValidateFunctionalities(ctx context.Context, formats
 	for i := 0; i < len(m.Functionalities); i++ {
 
 		if m.Functionalities[i] != nil {
+
+			if swag.IsZero(m.Functionalities[i]) { // not required
+				return nil
+			}
+
 			if err := m.Functionalities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
@@ -493,6 +503,11 @@ func (m *TeamEntity) contextValidateMemberships(ctx context.Context, formats str
 	for i := 0; i < len(m.Memberships); i++ {
 
 		if m.Memberships[i] != nil {
+
+			if swag.IsZero(m.Memberships[i]) { // not required
+				return nil
+			}
+
 			if err := m.Memberships[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("memberships" + "." + strconv.Itoa(i))
@@ -513,6 +528,11 @@ func (m *TeamEntity) contextValidateOwnedChecklistTemplates(ctx context.Context,
 	for i := 0; i < len(m.OwnedChecklistTemplates); i++ {
 
 		if m.OwnedChecklistTemplates[i] != nil {
+
+			if swag.IsZero(m.OwnedChecklistTemplates[i]) { // not required
+				return nil
+			}
+
 			if err := m.OwnedChecklistTemplates[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("owned_checklist_templates" + "." + strconv.Itoa(i))
@@ -533,6 +553,11 @@ func (m *TeamEntity) contextValidateOwnedFunctionalities(ctx context.Context, fo
 	for i := 0; i < len(m.OwnedFunctionalities); i++ {
 
 		if m.OwnedFunctionalities[i] != nil {
+
+			if swag.IsZero(m.OwnedFunctionalities[i]) { // not required
+				return nil
+			}
+
 			if err := m.OwnedFunctionalities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("owned_functionalities" + "." + strconv.Itoa(i))
@@ -553,6 +578,11 @@ func (m *TeamEntity) contextValidateOwnedRunbooks(ctx context.Context, formats s
 	for i := 0; i < len(m.OwnedRunbooks); i++ {
 
 		if m.OwnedRunbooks[i] != nil {
+
+			if swag.IsZero(m.OwnedRunbooks[i]) { // not required
+				return nil
+			}
+
 			if err := m.OwnedRunbooks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("owned_runbooks" + "." + strconv.Itoa(i))
@@ -573,6 +603,11 @@ func (m *TeamEntity) contextValidateOwnedServices(ctx context.Context, formats s
 	for i := 0; i < len(m.OwnedServices); i++ {
 
 		if m.OwnedServices[i] != nil {
+
+			if swag.IsZero(m.OwnedServices[i]) { // not required
+				return nil
+			}
+
 			if err := m.OwnedServices[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("owned_services" + "." + strconv.Itoa(i))
@@ -593,6 +628,11 @@ func (m *TeamEntity) contextValidateRespondingServices(ctx context.Context, form
 	for i := 0; i < len(m.RespondingServices); i++ {
 
 		if m.RespondingServices[i] != nil {
+
+			if swag.IsZero(m.RespondingServices[i]) { // not required
+				return nil
+			}
+
 			if err := m.RespondingServices[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("responding_services" + "." + strconv.Itoa(i))
@@ -613,6 +653,11 @@ func (m *TeamEntity) contextValidateServices(ctx context.Context, formats strfmt
 	for i := 0; i < len(m.Services); i++ {
 
 		if m.Services[i] != nil {
+
+			if swag.IsZero(m.Services[i]) { // not required
+				return nil
+			}
+
 			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
@@ -631,6 +676,11 @@ func (m *TeamEntity) contextValidateServices(ctx context.Context, formats strfmt
 func (m *TeamEntity) contextValidateSlackChannel(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SlackChannel != nil {
+
+		if swag.IsZero(m.SlackChannel) { // not required
+			return nil
+		}
+
 		if err := m.SlackChannel.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("slack_channel")

@@ -42,7 +42,7 @@ func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDReader
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/incidents/{incident_id}/related_change_events/{related_change_event_id}] patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventId", response, response.Code())
 	}
 }
 
@@ -83,6 +83,11 @@ func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) Is
 // IsCode returns true when this patch v1 incidents incident Id related change events related change event Id o k response a status code equal to that given
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the patch v1 incidents incident Id related change events related change event Id o k response
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) Code() int {
+	return 200
 }
 
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK) Error() string {
@@ -148,6 +153,11 @@ func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadReq
 	return code == 400
 }
 
+// Code gets the status code for the patch v1 incidents incident Id related change events related change event Id bad request response
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) Code() int {
+	return 400
+}
+
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /v1/incidents/{incident_id}/related_change_events/{related_change_event_id}][%d] patchV1IncidentsIncidentIdRelatedChangeEventsRelatedChangeEventIdBadRequest  %+v", 400, o.Payload)
 }
@@ -209,6 +219,11 @@ func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConfli
 // IsCode returns true when this patch v1 incidents incident Id related change events related change event Id conflict response a status code equal to that given
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the patch v1 incidents incident Id related change events related change event Id conflict response
+func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) Code() int {
+	return 409
 }
 
 func (o *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDConflict) Error() string {

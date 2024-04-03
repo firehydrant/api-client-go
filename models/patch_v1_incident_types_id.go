@@ -93,6 +93,7 @@ func (m *PatchV1IncidentTypesID) ContextValidate(ctx context.Context, formats st
 func (m *PatchV1IncidentTypesID) contextValidateTemplate(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Template != nil {
+
 		if err := m.Template.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("template")
@@ -219,6 +220,11 @@ func (m *PatchV1IncidentTypesIDTemplate) contextValidateImpacts(ctx context.Cont
 	for i := 0; i < len(m.Impacts); i++ {
 
 		if m.Impacts[i] != nil {
+
+			if swag.IsZero(m.Impacts[i]) { // not required
+				return nil
+			}
+
 			if err := m.Impacts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("template" + "." + "impacts" + "." + strconv.Itoa(i))

@@ -30,7 +30,7 @@ func (o *DeleteV1CustomFieldsDefinitionsFieldIDReader) ReadResponse(response run
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/custom_fields/definitions/{field_id}] deleteV1CustomFieldsDefinitionsFieldId", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *DeleteV1CustomFieldsDefinitionsFieldIDOK) IsServerError() bool {
 // IsCode returns true when this delete v1 custom fields definitions field Id o k response a status code equal to that given
 func (o *DeleteV1CustomFieldsDefinitionsFieldIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete v1 custom fields definitions field Id o k response
+func (o *DeleteV1CustomFieldsDefinitionsFieldIDOK) Code() int {
+	return 200
 }
 
 func (o *DeleteV1CustomFieldsDefinitionsFieldIDOK) Error() string {

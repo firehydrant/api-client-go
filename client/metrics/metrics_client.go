@@ -85,7 +85,9 @@ func (a *Client) GetV1MetricsIncidents(params *GetV1MetricsIncidentsParams, auth
 }
 
 /*
-GetV1MetricsInfraType get v1 metrics infra type API
+GetV1MetricsInfraType lists metrics for a component type
+
+Returns metrics for all components of a given type
 */
 func (a *Client) GetV1MetricsInfraType(params *GetV1MetricsInfraTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsInfraTypeOK, error) {
 	// TODO: Validate the params before sending
@@ -124,9 +126,9 @@ func (a *Client) GetV1MetricsInfraType(params *GetV1MetricsInfraTypeParams, auth
 }
 
 /*
-GetV1MetricsInfraTypeInfraID lists infrastructure metrics
+GetV1MetricsInfraTypeInfraID shows metrics for a component
 
-Return metrics for a specific infrastructure record
+Return metrics for a specific component
 */
 func (a *Client) GetV1MetricsInfraTypeInfraID(params *GetV1MetricsInfraTypeInfraIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsInfraTypeInfraIDOK, error) {
 	// TODO: Validate the params before sending

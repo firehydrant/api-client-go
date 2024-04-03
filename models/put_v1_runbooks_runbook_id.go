@@ -265,6 +265,11 @@ func (m *PutV1RunbooksRunbookID) ContextValidate(ctx context.Context, formats st
 func (m *PutV1RunbooksRunbookID) contextValidateAttachmentRule(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AttachmentRule != nil {
+
+		if swag.IsZero(m.AttachmentRule) { // not required
+			return nil
+		}
+
 		if err := m.AttachmentRule.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("attachment_rule")
@@ -283,6 +288,11 @@ func (m *PutV1RunbooksRunbookID) contextValidateEnvironments(ctx context.Context
 	for i := 0; i < len(m.Environments); i++ {
 
 		if m.Environments[i] != nil {
+
+			if swag.IsZero(m.Environments[i]) { // not required
+				return nil
+			}
+
 			if err := m.Environments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
@@ -301,6 +311,11 @@ func (m *PutV1RunbooksRunbookID) contextValidateEnvironments(ctx context.Context
 func (m *PutV1RunbooksRunbookID) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Owner != nil {
+
+		if swag.IsZero(m.Owner) { // not required
+			return nil
+		}
+
 		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
@@ -319,6 +334,11 @@ func (m *PutV1RunbooksRunbookID) contextValidateServices(ctx context.Context, fo
 	for i := 0; i < len(m.Services); i++ {
 
 		if m.Services[i] != nil {
+
+			if swag.IsZero(m.Services[i]) { // not required
+				return nil
+			}
+
 			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
@@ -339,6 +359,11 @@ func (m *PutV1RunbooksRunbookID) contextValidateSeverities(ctx context.Context, 
 	for i := 0; i < len(m.Severities); i++ {
 
 		if m.Severities[i] != nil {
+
+			if swag.IsZero(m.Severities[i]) { // not required
+				return nil
+			}
+
 			if err := m.Severities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("severities" + "." + strconv.Itoa(i))
@@ -359,6 +384,11 @@ func (m *PutV1RunbooksRunbookID) contextValidateSteps(ctx context.Context, forma
 	for i := 0; i < len(m.Steps); i++ {
 
 		if m.Steps[i] != nil {
+
+			if swag.IsZero(m.Steps[i]) { // not required
+				return nil
+			}
+
 			if err := m.Steps[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("steps" + "." + strconv.Itoa(i))
@@ -695,6 +725,11 @@ func (m *PutV1RunbooksRunbookIDStepsItems0) ContextValidate(ctx context.Context,
 func (m *PutV1RunbooksRunbookIDStepsItems0) contextValidateRule(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Rule != nil {
+
+		if swag.IsZero(m.Rule) { // not required
+			return nil
+		}
+
 		if err := m.Rule.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("rule")

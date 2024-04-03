@@ -199,6 +199,11 @@ func (m *IntegrationsAwsCloudtrailBatchEntity) ContextValidate(ctx context.Conte
 func (m *IntegrationsAwsCloudtrailBatchEntity) contextValidateConnection(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Connection != nil {
+
+		if swag.IsZero(m.Connection) { // not required
+			return nil
+		}
+
 		if err := m.Connection.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("connection")

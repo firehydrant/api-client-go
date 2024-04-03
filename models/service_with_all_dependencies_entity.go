@@ -122,6 +122,11 @@ func (m *ServiceWithAllDependenciesEntity) contextValidateChildServiceDependenci
 	for i := 0; i < len(m.ChildServiceDependencies); i++ {
 
 		if m.ChildServiceDependencies[i] != nil {
+
+			if swag.IsZero(m.ChildServiceDependencies[i]) { // not required
+				return nil
+			}
+
 			if err := m.ChildServiceDependencies[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("child_service_dependencies" + "." + strconv.Itoa(i))
@@ -142,6 +147,11 @@ func (m *ServiceWithAllDependenciesEntity) contextValidateParentServiceDependenc
 	for i := 0; i < len(m.ParentServiceDependencies); i++ {
 
 		if m.ParentServiceDependencies[i] != nil {
+
+			if swag.IsZero(m.ParentServiceDependencies[i]) { // not required
+				return nil
+			}
+
 			if err := m.ParentServiceDependencies[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parent_service_dependencies" + "." + strconv.Itoa(i))

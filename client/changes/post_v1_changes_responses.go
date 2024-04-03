@@ -36,7 +36,7 @@ func (o *PostV1ChangesReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/changes] postV1Changes", response, response.Code())
 	}
 }
 
@@ -77,6 +77,11 @@ func (o *PostV1ChangesCreated) IsServerError() bool {
 // IsCode returns true when this post v1 changes created response a status code equal to that given
 func (o *PostV1ChangesCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the post v1 changes created response
+func (o *PostV1ChangesCreated) Code() int {
+	return 201
 }
 
 func (o *PostV1ChangesCreated) Error() string {
@@ -140,6 +145,11 @@ func (o *PostV1ChangesBadRequest) IsServerError() bool {
 // IsCode returns true when this post v1 changes bad request response a status code equal to that given
 func (o *PostV1ChangesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the post v1 changes bad request response
+func (o *PostV1ChangesBadRequest) Code() int {
+	return 400
 }
 
 func (o *PostV1ChangesBadRequest) Error() string {

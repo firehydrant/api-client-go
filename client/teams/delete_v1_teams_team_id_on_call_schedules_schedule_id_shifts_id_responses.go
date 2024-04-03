@@ -27,7 +27,7 @@ func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDReader) ReadRespons
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/teams/{team_id}/on_call_schedules/{schedule_id}/shifts/{id}] deleteV1TeamsTeamIdOnCallSchedulesScheduleIdShiftsId", response, response.Code())
 	}
 }
 
@@ -67,6 +67,11 @@ func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDNoContent) IsServer
 // IsCode returns true when this delete v1 teams team Id on call schedules schedule Id shifts Id no content response a status code equal to that given
 func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete v1 teams team Id on call schedules schedule Id shifts Id no content response
+func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDNoContent) Error() string {

@@ -350,6 +350,11 @@ func (m *TicketingTicketEntity) contextValidateAssignees(ctx context.Context, fo
 	for i := 0; i < len(m.Assignees); i++ {
 
 		if m.Assignees[i] != nil {
+
+			if swag.IsZero(m.Assignees[i]) { // not required
+				return nil
+			}
+
 			if err := m.Assignees[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("assignees" + "." + strconv.Itoa(i))
@@ -368,6 +373,11 @@ func (m *TicketingTicketEntity) contextValidateAssignees(ctx context.Context, fo
 func (m *TicketingTicketEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CreatedBy != nil {
+
+		if swag.IsZero(m.CreatedBy) { // not required
+			return nil
+		}
+
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
@@ -384,6 +394,11 @@ func (m *TicketingTicketEntity) contextValidateCreatedBy(ctx context.Context, fo
 func (m *TicketingTicketEntity) contextValidateLink(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Link != nil {
+
+		if swag.IsZero(m.Link) { // not required
+			return nil
+		}
+
 		if err := m.Link.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("link")
@@ -400,6 +415,11 @@ func (m *TicketingTicketEntity) contextValidateLink(ctx context.Context, formats
 func (m *TicketingTicketEntity) contextValidatePriority(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Priority != nil {
+
+		if swag.IsZero(m.Priority) { // not required
+			return nil
+		}
+
 		if err := m.Priority.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("priority")

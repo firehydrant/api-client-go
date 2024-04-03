@@ -374,6 +374,11 @@ func (m *NuncConnectionEntity) ContextValidate(ctx context.Context, formats strf
 func (m *NuncConnectionEntity) contextValidateComponentGroups(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ComponentGroups != nil {
+
+		if swag.IsZero(m.ComponentGroups) { // not required
+			return nil
+		}
+
 		if err := m.ComponentGroups.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("component_groups")
@@ -390,6 +395,11 @@ func (m *NuncConnectionEntity) contextValidateComponentGroups(ctx context.Contex
 func (m *NuncConnectionEntity) contextValidateComponents(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Components != nil {
+
+		if swag.IsZero(m.Components) { // not required
+			return nil
+		}
+
 		if err := m.Components.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("components")
@@ -406,6 +416,11 @@ func (m *NuncConnectionEntity) contextValidateComponents(ctx context.Context, fo
 func (m *NuncConnectionEntity) contextValidateConditions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Conditions != nil {
+
+		if swag.IsZero(m.Conditions) { // not required
+			return nil
+		}
+
 		if err := m.Conditions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("conditions")
@@ -422,6 +437,11 @@ func (m *NuncConnectionEntity) contextValidateConditions(ctx context.Context, fo
 func (m *NuncConnectionEntity) contextValidateCoverImage(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CoverImage != nil {
+
+		if swag.IsZero(m.CoverImage) { // not required
+			return nil
+		}
+
 		if err := m.CoverImage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("cover_image")
@@ -438,6 +458,11 @@ func (m *NuncConnectionEntity) contextValidateCoverImage(ctx context.Context, fo
 func (m *NuncConnectionEntity) contextValidateDarkLogo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DarkLogo != nil {
+
+		if swag.IsZero(m.DarkLogo) { // not required
+			return nil
+		}
+
 		if err := m.DarkLogo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("dark_logo")
@@ -454,6 +479,11 @@ func (m *NuncConnectionEntity) contextValidateDarkLogo(ctx context.Context, form
 func (m *NuncConnectionEntity) contextValidateFavicon(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Favicon != nil {
+
+		if swag.IsZero(m.Favicon) { // not required
+			return nil
+		}
+
 		if err := m.Favicon.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("favicon")
@@ -472,6 +502,11 @@ func (m *NuncConnectionEntity) contextValidateLinks(ctx context.Context, formats
 	for i := 0; i < len(m.Links); i++ {
 
 		if m.Links[i] != nil {
+
+			if swag.IsZero(m.Links[i]) { // not required
+				return nil
+			}
+
 			if err := m.Links[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
@@ -490,6 +525,11 @@ func (m *NuncConnectionEntity) contextValidateLinks(ctx context.Context, formats
 func (m *NuncConnectionEntity) contextValidateLogo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Logo != nil {
+
+		if swag.IsZero(m.Logo) { // not required
+			return nil
+		}
+
 		if err := m.Logo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("logo")
@@ -506,6 +546,11 @@ func (m *NuncConnectionEntity) contextValidateLogo(ctx context.Context, formats 
 func (m *NuncConnectionEntity) contextValidateOpenGraphImage(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.OpenGraphImage != nil {
+
+		if swag.IsZero(m.OpenGraphImage) { // not required
+			return nil
+		}
+
 		if err := m.OpenGraphImage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("open_graph_image")

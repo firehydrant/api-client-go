@@ -119,6 +119,11 @@ func (m *IncidentsTeamAssignmentEntity) ContextValidate(ctx context.Context, for
 func (m *IncidentsTeamAssignmentEntity) contextValidateTeam(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Team != nil {
+
+		if swag.IsZero(m.Team) { // not required
+			return nil
+		}
+
 		if err := m.Team.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("team")

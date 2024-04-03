@@ -420,6 +420,11 @@ func (m *ServiceEntity) contextValidateChecklists(ctx context.Context, formats s
 	for i := 0; i < len(m.Checklists); i++ {
 
 		if m.Checklists[i] != nil {
+
+			if swag.IsZero(m.Checklists[i]) { // not required
+				return nil
+			}
+
 			if err := m.Checklists[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("checklists" + "." + strconv.Itoa(i))
@@ -440,6 +445,11 @@ func (m *ServiceEntity) contextValidateExternalResources(ctx context.Context, fo
 	for i := 0; i < len(m.ExternalResources); i++ {
 
 		if m.ExternalResources[i] != nil {
+
+			if swag.IsZero(m.ExternalResources[i]) { // not required
+				return nil
+			}
+
 			if err := m.ExternalResources[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))
@@ -460,6 +470,11 @@ func (m *ServiceEntity) contextValidateFunctionalities(ctx context.Context, form
 	for i := 0; i < len(m.Functionalities); i++ {
 
 		if m.Functionalities[i] != nil {
+
+			if swag.IsZero(m.Functionalities[i]) { // not required
+				return nil
+			}
+
 			if err := m.Functionalities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
@@ -478,6 +493,11 @@ func (m *ServiceEntity) contextValidateFunctionalities(ctx context.Context, form
 func (m *ServiceEntity) contextValidateLastImport(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LastImport != nil {
+
+		if swag.IsZero(m.LastImport) { // not required
+			return nil
+		}
+
 		if err := m.LastImport.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("last_import")
@@ -496,6 +516,11 @@ func (m *ServiceEntity) contextValidateLinks(ctx context.Context, formats strfmt
 	for i := 0; i < len(m.Links); i++ {
 
 		if m.Links[i] != nil {
+
+			if swag.IsZero(m.Links[i]) { // not required
+				return nil
+			}
+
 			if err := m.Links[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
@@ -514,6 +539,11 @@ func (m *ServiceEntity) contextValidateLinks(ctx context.Context, formats strfmt
 func (m *ServiceEntity) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Owner != nil {
+
+		if swag.IsZero(m.Owner) { // not required
+			return nil
+		}
+
 		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
@@ -532,6 +562,11 @@ func (m *ServiceEntity) contextValidateTeams(ctx context.Context, formats strfmt
 	for i := 0; i < len(m.Teams); i++ {
 
 		if m.Teams[i] != nil {
+
+			if swag.IsZero(m.Teams[i]) { // not required
+				return nil
+			}
+
 			if err := m.Teams[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("teams" + "." + strconv.Itoa(i))
@@ -550,6 +585,11 @@ func (m *ServiceEntity) contextValidateTeams(ctx context.Context, formats strfmt
 func (m *ServiceEntity) contextValidateUpdatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.UpdatedBy != nil {
+
+		if swag.IsZero(m.UpdatedBy) { // not required
+			return nil
+		}
+
 		if err := m.UpdatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("updated_by")

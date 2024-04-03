@@ -197,6 +197,11 @@ func (m *IncidentsRoleAssignmentEntity) ContextValidate(ctx context.Context, for
 func (m *IncidentsRoleAssignmentEntity) contextValidateIncidentRole(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.IncidentRole != nil {
+
+		if swag.IsZero(m.IncidentRole) { // not required
+			return nil
+		}
+
 		if err := m.IncidentRole.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("incident_role")
@@ -213,6 +218,11 @@ func (m *IncidentsRoleAssignmentEntity) contextValidateIncidentRole(ctx context.
 func (m *IncidentsRoleAssignmentEntity) contextValidateUser(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.User != nil {
+
+		if swag.IsZero(m.User) { // not required
+			return nil
+		}
+
 		if err := m.User.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("user")

@@ -30,7 +30,7 @@ func (o *PatchV1SeveritiesSeveritySlugReader) ReadResponse(response runtime.Clie
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/severities/{severity_slug}] patchV1SeveritiesSeveritySlug", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *PatchV1SeveritiesSeveritySlugOK) IsServerError() bool {
 // IsCode returns true when this patch v1 severities severity slug o k response a status code equal to that given
 func (o *PatchV1SeveritiesSeveritySlugOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the patch v1 severities severity slug o k response
+func (o *PatchV1SeveritiesSeveritySlugOK) Code() int {
+	return 200
 }
 
 func (o *PatchV1SeveritiesSeveritySlugOK) Error() string {

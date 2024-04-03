@@ -30,7 +30,7 @@ func (o *DeleteV1SeveritiesSeveritySlugReader) ReadResponse(response runtime.Cli
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/severities/{severity_slug}] deleteV1SeveritiesSeveritySlug", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *DeleteV1SeveritiesSeveritySlugOK) IsServerError() bool {
 // IsCode returns true when this delete v1 severities severity slug o k response a status code equal to that given
 func (o *DeleteV1SeveritiesSeveritySlugOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete v1 severities severity slug o k response
+func (o *DeleteV1SeveritiesSeveritySlugOK) Code() int {
+	return 200
 }
 
 func (o *DeleteV1SeveritiesSeveritySlugOK) Error() string {

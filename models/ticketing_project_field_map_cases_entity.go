@@ -75,6 +75,11 @@ func (m *TicketingProjectFieldMapCasesEntity) ContextValidate(ctx context.Contex
 func (m *TicketingProjectFieldMapCasesEntity) contextValidateExternalValue(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ExternalValue != nil {
+
+		if swag.IsZero(m.ExternalValue) { // not required
+			return nil
+		}
+
 		if err := m.ExternalValue.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("external_value")

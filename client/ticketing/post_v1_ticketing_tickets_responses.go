@@ -30,7 +30,7 @@ func (o *PostV1TicketingTicketsReader) ReadResponse(response runtime.ClientRespo
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/ticketing/tickets] postV1TicketingTickets", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *PostV1TicketingTicketsCreated) IsServerError() bool {
 // IsCode returns true when this post v1 ticketing tickets created response a status code equal to that given
 func (o *PostV1TicketingTicketsCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the post v1 ticketing tickets created response
+func (o *PostV1TicketingTicketsCreated) Code() int {
+	return 201
 }
 
 func (o *PostV1TicketingTicketsCreated) Error() string {

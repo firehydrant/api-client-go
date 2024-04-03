@@ -27,7 +27,7 @@ func (o *DeleteV1WebhooksWebhookIDReader) ReadResponse(response runtime.ClientRe
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/webhooks/{webhook_id}] deleteV1WebhooksWebhookId", response, response.Code())
 	}
 }
 
@@ -67,6 +67,11 @@ func (o *DeleteV1WebhooksWebhookIDNoContent) IsServerError() bool {
 // IsCode returns true when this delete v1 webhooks webhook Id no content response a status code equal to that given
 func (o *DeleteV1WebhooksWebhookIDNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete v1 webhooks webhook Id no content response
+func (o *DeleteV1WebhooksWebhookIDNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteV1WebhooksWebhookIDNoContent) Error() string {

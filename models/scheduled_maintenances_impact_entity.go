@@ -108,6 +108,11 @@ func (m *ScheduledMaintenancesImpactEntity) ContextValidate(ctx context.Context,
 func (m *ScheduledMaintenancesImpactEntity) contextValidateCondition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Condition != nil {
+
+		if swag.IsZero(m.Condition) { // not required
+			return nil
+		}
+
 		if err := m.Condition.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("condition")
@@ -124,6 +129,11 @@ func (m *ScheduledMaintenancesImpactEntity) contextValidateCondition(ctx context
 func (m *ScheduledMaintenancesImpactEntity) contextValidateImpact(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Impact != nil {
+
+		if swag.IsZero(m.Impact) { // not required
+			return nil
+		}
+
 		if err := m.Impact.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("impact")

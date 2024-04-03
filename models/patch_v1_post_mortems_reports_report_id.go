@@ -91,6 +91,11 @@ func (m *PatchV1PostMortemsReportsReportID) contextValidateQuestions(ctx context
 	for i := 0; i < len(m.Questions); i++ {
 
 		if m.Questions[i] != nil {
+
+			if swag.IsZero(m.Questions[i]) { // not required
+				return nil
+			}
+
 			if err := m.Questions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("questions" + "." + strconv.Itoa(i))

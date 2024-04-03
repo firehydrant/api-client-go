@@ -30,7 +30,7 @@ func (o *DeleteV1FunctionalitiesFunctionalityIDReader) ReadResponse(response run
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/functionalities/{functionality_id}] deleteV1FunctionalitiesFunctionalityId", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *DeleteV1FunctionalitiesFunctionalityIDOK) IsServerError() bool {
 // IsCode returns true when this delete v1 functionalities functionality Id o k response a status code equal to that given
 func (o *DeleteV1FunctionalitiesFunctionalityIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete v1 functionalities functionality Id o k response
+func (o *DeleteV1FunctionalitiesFunctionalityIDOK) Code() int {
+	return 200
 }
 
 func (o *DeleteV1FunctionalitiesFunctionalityIDOK) Error() string {

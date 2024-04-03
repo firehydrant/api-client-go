@@ -179,6 +179,11 @@ func (m *RunbooksExecutionEntity) ContextValidate(ctx context.Context, formats s
 func (m *RunbooksExecutionEntity) contextValidateExecutedFor(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ExecutedFor != nil {
+
+		if swag.IsZero(m.ExecutedFor) { // not required
+			return nil
+		}
+
 		if err := m.ExecutedFor.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("executed_for")
@@ -195,6 +200,11 @@ func (m *RunbooksExecutionEntity) contextValidateExecutedFor(ctx context.Context
 func (m *RunbooksExecutionEntity) contextValidateRunbook(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Runbook != nil {
+
+		if swag.IsZero(m.Runbook) { // not required
+			return nil
+		}
+
 		if err := m.Runbook.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("runbook")
@@ -211,6 +221,11 @@ func (m *RunbooksExecutionEntity) contextValidateRunbook(ctx context.Context, fo
 func (m *RunbooksExecutionEntity) contextValidateSteps(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Steps != nil {
+
+		if swag.IsZero(m.Steps) { // not required
+			return nil
+		}
+
 		if err := m.Steps.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("steps")

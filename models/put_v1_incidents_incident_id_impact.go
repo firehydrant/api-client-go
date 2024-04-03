@@ -126,6 +126,11 @@ func (m *PutV1IncidentsIncidentIDImpact) contextValidateImpact(ctx context.Conte
 	for i := 0; i < len(m.Impact); i++ {
 
 		if m.Impact[i] != nil {
+
+			if swag.IsZero(m.Impact[i]) { // not required
+				return nil
+			}
+
 			if err := m.Impact[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("impact" + "." + strconv.Itoa(i))
@@ -146,6 +151,11 @@ func (m *PutV1IncidentsIncidentIDImpact) contextValidateStatusPages(ctx context.
 	for i := 0; i < len(m.StatusPages); i++ {
 
 		if m.StatusPages[i] != nil {
+
+			if swag.IsZero(m.StatusPages[i]) { // not required
+				return nil
+			}
+
 			if err := m.StatusPages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))

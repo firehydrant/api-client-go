@@ -30,7 +30,7 @@ func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDReader) ReadResponse(respo
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/saved_searches/{resource_type}/{saved_search_id}] patchV1SavedSearchesResourceTypeSavedSearchId", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDOK) IsServerError() bool {
 // IsCode returns true when this patch v1 saved searches resource type saved search Id o k response a status code equal to that given
 func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the patch v1 saved searches resource type saved search Id o k response
+func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDOK) Code() int {
+	return 200
 }
 
 func (o *PatchV1SavedSearchesResourceTypeSavedSearchIDOK) Error() string {

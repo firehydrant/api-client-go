@@ -75,6 +75,11 @@ func (m *RulesRuleEntity) ContextValidate(ctx context.Context, formats strfmt.Re
 func (m *RulesRuleEntity) contextValidateUserData(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.UserData != nil {
+
+		if swag.IsZero(m.UserData) { // not required
+			return nil
+		}
+
 		if err := m.UserData.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("user_data")

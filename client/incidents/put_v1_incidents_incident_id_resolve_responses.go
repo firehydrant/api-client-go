@@ -30,7 +30,7 @@ func (o *PutV1IncidentsIncidentIDResolveReader) ReadResponse(response runtime.Cl
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/incidents/{incident_id}/resolve] putV1IncidentsIncidentIdResolve", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *PutV1IncidentsIncidentIDResolveOK) IsServerError() bool {
 // IsCode returns true when this put v1 incidents incident Id resolve o k response a status code equal to that given
 func (o *PutV1IncidentsIncidentIDResolveOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the put v1 incidents incident Id resolve o k response
+func (o *PutV1IncidentsIncidentIDResolveOK) Code() int {
+	return 200
 }
 
 func (o *PutV1IncidentsIncidentIDResolveOK) Error() string {

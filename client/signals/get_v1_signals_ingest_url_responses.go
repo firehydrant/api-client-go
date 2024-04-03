@@ -7,9 +7,12 @@ package signals
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1SignalsIngestURLReader is a Reader for the GetV1SignalsIngestURL structure.
@@ -27,7 +30,7 @@ func (o *GetV1SignalsIngestURLReader) ReadResponse(response runtime.ClientRespon
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/signals/ingest_url] getV1SignalsIngestUrl", response, response.Code())
 	}
 }
 
@@ -39,9 +42,10 @@ func NewGetV1SignalsIngestURLOK() *GetV1SignalsIngestURLOK {
 /*
 GetV1SignalsIngestURLOK describes a response with status code 200, with default header values.
 
-get IngestURL(s)
+Retrieve the url for ingesting signals for your organization
 */
 type GetV1SignalsIngestURLOK struct {
+	Payload *models.SignalsAPIIngestKeyEntity
 }
 
 // IsSuccess returns true when this get v1 signals ingest Url o k response has a 2xx status code
@@ -69,15 +73,31 @@ func (o *GetV1SignalsIngestURLOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the get v1 signals ingest Url o k response
+func (o *GetV1SignalsIngestURLOK) Code() int {
+	return 200
+}
+
 func (o *GetV1SignalsIngestURLOK) Error() string {
-	return fmt.Sprintf("[GET /v1/signals/ingest_url][%d] getV1SignalsIngestUrlOK ", 200)
+	return fmt.Sprintf("[GET /v1/signals/ingest_url][%d] getV1SignalsIngestUrlOK  %+v", 200, o.Payload)
 }
 
 func (o *GetV1SignalsIngestURLOK) String() string {
-	return fmt.Sprintf("[GET /v1/signals/ingest_url][%d] getV1SignalsIngestUrlOK ", 200)
+	return fmt.Sprintf("[GET /v1/signals/ingest_url][%d] getV1SignalsIngestUrlOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1SignalsIngestURLOK) GetPayload() *models.SignalsAPIIngestKeyEntity {
+	return o.Payload
 }
 
 func (o *GetV1SignalsIngestURLOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.SignalsAPIIngestKeyEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

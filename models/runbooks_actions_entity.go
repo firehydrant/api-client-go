@@ -22,6 +22,9 @@ type RunbooksActionsEntity struct {
 	// automatable
 	Automatable bool `json:"automatable,omitempty"`
 
+	// category
+	Category string `json:"category,omitempty"`
+
 	// config
 	Config *RunbooksActionConfigEntity `json:"config,omitempty"`
 
@@ -46,6 +49,9 @@ type RunbooksActionsEntity struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// prerequisites
+	Prerequisites interface{} `json:"prerequisites,omitempty"`
 
 	// repeatable
 	Repeatable bool `json:"repeatable,omitempty"`
@@ -170,6 +176,11 @@ func (m *RunbooksActionsEntity) ContextValidate(ctx context.Context, formats str
 func (m *RunbooksActionsEntity) contextValidateConfig(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Config != nil {
+
+		if swag.IsZero(m.Config) { // not required
+			return nil
+		}
+
 		if err := m.Config.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("config")
@@ -186,6 +197,11 @@ func (m *RunbooksActionsEntity) contextValidateConfig(ctx context.Context, forma
 func (m *RunbooksActionsEntity) contextValidateIntegration(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Integration != nil {
+
+		if swag.IsZero(m.Integration) { // not required
+			return nil
+		}
+
 		if err := m.Integration.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("integration")

@@ -185,6 +185,11 @@ func (m *SignalsAPIRuleEntity) ContextValidate(ctx context.Context, formats strf
 func (m *SignalsAPIRuleEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CreatedBy != nil {
+
+		if swag.IsZero(m.CreatedBy) { // not required
+			return nil
+		}
+
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
@@ -201,6 +206,11 @@ func (m *SignalsAPIRuleEntity) contextValidateCreatedBy(ctx context.Context, for
 func (m *SignalsAPIRuleEntity) contextValidateIncidentType(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.IncidentType != nil {
+
+		if swag.IsZero(m.IncidentType) { // not required
+			return nil
+		}
+
 		if err := m.IncidentType.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("incident_type")
@@ -217,6 +227,11 @@ func (m *SignalsAPIRuleEntity) contextValidateIncidentType(ctx context.Context, 
 func (m *SignalsAPIRuleEntity) contextValidateTarget(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Target != nil {
+
+		if swag.IsZero(m.Target) { // not required
+			return nil
+		}
+
 		if err := m.Target.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("target")

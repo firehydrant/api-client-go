@@ -230,6 +230,11 @@ func (m *IncidentEventEntity) ContextValidate(ctx context.Context, formats strfm
 func (m *IncidentEventEntity) contextValidateAuthor(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Author != nil {
+
+		if swag.IsZero(m.Author) { // not required
+			return nil
+		}
+
 		if err := m.Author.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("author")
@@ -248,6 +253,11 @@ func (m *IncidentEventEntity) contextValidateConversations(ctx context.Context, 
 	for i := 0; i < len(m.Conversations); i++ {
 
 		if m.Conversations[i] != nil {
+
+			if swag.IsZero(m.Conversations[i]) { // not required
+				return nil
+			}
+
 			if err := m.Conversations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
@@ -266,6 +276,11 @@ func (m *IncidentEventEntity) contextValidateConversations(ctx context.Context, 
 func (m *IncidentEventEntity) contextValidateVotes(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Votes != nil {
+
+		if swag.IsZero(m.Votes) { // not required
+			return nil
+		}
+
 		if err := m.Votes.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("votes")

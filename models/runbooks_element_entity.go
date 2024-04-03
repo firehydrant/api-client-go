@@ -198,6 +198,11 @@ func (m *RunbooksElementEntity) ContextValidate(ctx context.Context, formats str
 func (m *RunbooksElementEntity) contextValidateDynamicSelect(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DynamicSelect != nil {
+
+		if swag.IsZero(m.DynamicSelect) { // not required
+			return nil
+		}
+
 		if err := m.DynamicSelect.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("dynamic_select")
@@ -214,6 +219,11 @@ func (m *RunbooksElementEntity) contextValidateDynamicSelect(ctx context.Context
 func (m *RunbooksElementEntity) contextValidateInput(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Input != nil {
+
+		if swag.IsZero(m.Input) { // not required
+			return nil
+		}
+
 		if err := m.Input.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("input")
@@ -230,6 +240,11 @@ func (m *RunbooksElementEntity) contextValidateInput(ctx context.Context, format
 func (m *RunbooksElementEntity) contextValidateMarkdown(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Markdown != nil {
+
+		if swag.IsZero(m.Markdown) { // not required
+			return nil
+		}
+
 		if err := m.Markdown.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("markdown")
@@ -246,6 +261,11 @@ func (m *RunbooksElementEntity) contextValidateMarkdown(ctx context.Context, for
 func (m *RunbooksElementEntity) contextValidatePlainText(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PlainText != nil {
+
+		if swag.IsZero(m.PlainText) { // not required
+			return nil
+		}
+
 		if err := m.PlainText.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("plain_text")
@@ -262,6 +282,11 @@ func (m *RunbooksElementEntity) contextValidatePlainText(ctx context.Context, fo
 func (m *RunbooksElementEntity) contextValidateTextarea(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Textarea != nil {
+
+		if swag.IsZero(m.Textarea) { // not required
+			return nil
+		}
+
 		if err := m.Textarea.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("textarea")

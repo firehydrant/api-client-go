@@ -30,7 +30,7 @@ func (o *DeleteV1ServicesServiceIDReader) ReadResponse(response runtime.ClientRe
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/services/{service_id}] deleteV1ServicesServiceId", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *DeleteV1ServicesServiceIDOK) IsServerError() bool {
 // IsCode returns true when this delete v1 services service Id o k response a status code equal to that given
 func (o *DeleteV1ServicesServiceIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete v1 services service Id o k response
+func (o *DeleteV1ServicesServiceIDOK) Code() int {
+	return 200
 }
 
 func (o *DeleteV1ServicesServiceIDOK) Error() string {

@@ -37,6 +37,9 @@ type PostMortemsQuestionEntity struct {
 	// kind
 	Kind string `json:"kind,omitempty"`
 
+	// question type id
+	QuestionTypeID string `json:"question_type_id,omitempty"`
+
 	// title
 	Title string `json:"title,omitempty"`
 
@@ -103,6 +106,11 @@ func (m *PostMortemsQuestionEntity) contextValidateConversations(ctx context.Con
 	for i := 0; i < len(m.Conversations); i++ {
 
 		if m.Conversations[i] != nil {
+
+			if swag.IsZero(m.Conversations[i]) { // not required
+				return nil
+			}
+
 			if err := m.Conversations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))

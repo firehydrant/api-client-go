@@ -128,6 +128,11 @@ func (m *RunbooksElementDynamicSelectEntity) ContextValidate(ctx context.Context
 func (m *RunbooksElementDynamicSelectEntity) contextValidateDefaultValue(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DefaultValue != nil {
+
+		if swag.IsZero(m.DefaultValue) { // not required
+			return nil
+		}
+
 		if err := m.DefaultValue.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("default_value")
@@ -146,6 +151,11 @@ func (m *RunbooksElementDynamicSelectEntity) contextValidateOptions(ctx context.
 	for i := 0; i < len(m.Options); i++ {
 
 		if m.Options[i] != nil {
+
+			if swag.IsZero(m.Options[i]) { // not required
+				return nil
+			}
+
 			if err := m.Options[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("options" + "." + strconv.Itoa(i))

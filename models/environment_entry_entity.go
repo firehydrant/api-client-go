@@ -138,6 +138,11 @@ func (m *EnvironmentEntryEntity) contextValidateExternalResources(ctx context.Co
 	for i := 0; i < len(m.ExternalResources); i++ {
 
 		if m.ExternalResources[i] != nil {
+
+			if swag.IsZero(m.ExternalResources[i]) { // not required
+				return nil
+			}
+
 			if err := m.ExternalResources[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))

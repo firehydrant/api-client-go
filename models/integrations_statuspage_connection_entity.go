@@ -111,6 +111,11 @@ func (m *IntegrationsStatuspageConnectionEntity) ContextValidate(ctx context.Con
 func (m *IntegrationsStatuspageConnectionEntity) contextValidateConditions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Conditions != nil {
+
+		if swag.IsZero(m.Conditions) { // not required
+			return nil
+		}
+
 		if err := m.Conditions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("conditions")
@@ -127,6 +132,11 @@ func (m *IntegrationsStatuspageConnectionEntity) contextValidateConditions(ctx c
 func (m *IntegrationsStatuspageConnectionEntity) contextValidateSeverities(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Severities != nil {
+
+		if swag.IsZero(m.Severities) { // not required
+			return nil
+		}
+
 		if err := m.Severities.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("severities")

@@ -146,6 +146,11 @@ func (m *EventNoteEntity) contextValidateConversations(ctx context.Context, form
 	for i := 0; i < len(m.Conversations); i++ {
 
 		if m.Conversations[i] != nil {
+
+			if swag.IsZero(m.Conversations[i]) { // not required
+				return nil
+			}
+
 			if err := m.Conversations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
@@ -166,6 +171,11 @@ func (m *EventNoteEntity) contextValidateStatusPages(ctx context.Context, format
 	for i := 0; i < len(m.StatusPages); i++ {
 
 		if m.StatusPages[i] != nil {
+
+			if swag.IsZero(m.StatusPages[i]) { // not required
+				return nil
+			}
+
 			if err := m.StatusPages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))

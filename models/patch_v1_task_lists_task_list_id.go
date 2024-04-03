@@ -89,6 +89,11 @@ func (m *PatchV1TaskListsTaskListID) contextValidateTaskListItems(ctx context.Co
 	for i := 0; i < len(m.TaskListItems); i++ {
 
 		if m.TaskListItems[i] != nil {
+
+			if swag.IsZero(m.TaskListItems[i]) { // not required
+				return nil
+			}
+
 			if err := m.TaskListItems[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("task_list_items" + "." + strconv.Itoa(i))

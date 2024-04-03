@@ -215,6 +215,11 @@ func (m *RunbooksExecutionStepExecutionEntity) ContextValidate(ctx context.Conte
 func (m *RunbooksExecutionStepExecutionEntity) contextValidatePerformedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PerformedBy != nil {
+
+		if swag.IsZero(m.PerformedBy) { // not required
+			return nil
+		}
+
 		if err := m.PerformedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("performed_by")
@@ -231,6 +236,11 @@ func (m *RunbooksExecutionStepExecutionEntity) contextValidatePerformedBy(ctx co
 func (m *RunbooksExecutionStepExecutionEntity) contextValidateWebhookDelivery(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.WebhookDelivery != nil {
+
+		if swag.IsZero(m.WebhookDelivery) { // not required
+			return nil
+		}
+
 		if err := m.WebhookDelivery.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("webhook_delivery")

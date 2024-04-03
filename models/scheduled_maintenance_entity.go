@@ -245,6 +245,11 @@ func (m *ScheduledMaintenanceEntity) contextValidateImpacts(ctx context.Context,
 	for i := 0; i < len(m.Impacts); i++ {
 
 		if m.Impacts[i] != nil {
+
+			if swag.IsZero(m.Impacts[i]) { // not required
+				return nil
+			}
+
 			if err := m.Impacts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
@@ -263,6 +268,11 @@ func (m *ScheduledMaintenanceEntity) contextValidateImpacts(ctx context.Context,
 func (m *ScheduledMaintenanceEntity) contextValidateIncident(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Incident != nil {
+
+		if swag.IsZero(m.Incident) { // not required
+			return nil
+		}
+
 		if err := m.Incident.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("incident")
@@ -281,6 +291,11 @@ func (m *ScheduledMaintenanceEntity) contextValidateStatusPages(ctx context.Cont
 	for i := 0; i < len(m.StatusPages); i++ {
 
 		if m.StatusPages[i] != nil {
+
+			if swag.IsZero(m.StatusPages[i]) { // not required
+				return nil
+			}
+
 			if err := m.StatusPages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))

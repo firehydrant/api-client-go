@@ -27,7 +27,7 @@ func (o *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDReader) ReadResponse(r
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/nunc_connections/{nunc_connection_id}/links/{link_id}] patchV1NuncConnectionsNuncConnectionIdLinksLinkId", response, response.Code())
 	}
 }
 
@@ -67,6 +67,11 @@ func (o *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDOK) IsServerError() bo
 // IsCode returns true when this patch v1 nunc connections nunc connection Id links link Id o k response a status code equal to that given
 func (o *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the patch v1 nunc connections nunc connection Id links link Id o k response
+func (o *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDOK) Code() int {
+	return 200
 }
 
 func (o *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDOK) Error() string {

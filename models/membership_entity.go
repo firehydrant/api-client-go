@@ -132,6 +132,11 @@ func (m *MembershipEntity) ContextValidate(ctx context.Context, formats strfmt.R
 func (m *MembershipEntity) contextValidateDefaultIncidentRole(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DefaultIncidentRole != nil {
+
+		if swag.IsZero(m.DefaultIncidentRole) { // not required
+			return nil
+		}
+
 		if err := m.DefaultIncidentRole.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("default_incident_role")
@@ -148,6 +153,11 @@ func (m *MembershipEntity) contextValidateDefaultIncidentRole(ctx context.Contex
 func (m *MembershipEntity) contextValidateSchedule(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Schedule != nil {
+
+		if swag.IsZero(m.Schedule) { // not required
+			return nil
+		}
+
 		if err := m.Schedule.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("schedule")
@@ -164,6 +174,11 @@ func (m *MembershipEntity) contextValidateSchedule(ctx context.Context, formats 
 func (m *MembershipEntity) contextValidateUser(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.User != nil {
+
+		if swag.IsZero(m.User) { // not required
+			return nil
+		}
+
 		if err := m.User.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("user")

@@ -123,6 +123,11 @@ func (m *PatchV1IntegrationsStatuspageConnectionsConnectionID) contextValidateCo
 	for i := 0; i < len(m.Conditions); i++ {
 
 		if m.Conditions[i] != nil {
+
+			if swag.IsZero(m.Conditions[i]) { // not required
+				return nil
+			}
+
 			if err := m.Conditions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("conditions" + "." + strconv.Itoa(i))
@@ -143,6 +148,11 @@ func (m *PatchV1IntegrationsStatuspageConnectionsConnectionID) contextValidateSe
 	for i := 0; i < len(m.Severities); i++ {
 
 		if m.Severities[i] != nil {
+
+			if swag.IsZero(m.Severities[i]) { // not required
+				return nil
+			}
+
 			if err := m.Severities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("severities" + "." + strconv.Itoa(i))

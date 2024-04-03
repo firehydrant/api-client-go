@@ -132,6 +132,11 @@ func (m *TicketingProjectsProjectListItemEntity) ContextValidate(ctx context.Con
 func (m *TicketingProjectsProjectListItemEntity) contextValidateConfig(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Config != nil {
+
+		if swag.IsZero(m.Config) { // not required
+			return nil
+		}
+
 		if err := m.Config.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("config")
@@ -148,6 +153,11 @@ func (m *TicketingProjectsProjectListItemEntity) contextValidateConfig(ctx conte
 func (m *TicketingProjectsProjectListItemEntity) contextValidateFieldMap(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.FieldMap != nil {
+
+		if swag.IsZero(m.FieldMap) { // not required
+			return nil
+		}
+
 		if err := m.FieldMap.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("field_map")

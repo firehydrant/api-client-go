@@ -152,6 +152,11 @@ func (m *TaskListEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 func (m *TaskListEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CreatedBy != nil {
+
+		if swag.IsZero(m.CreatedBy) { // not required
+			return nil
+		}
+
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
@@ -168,6 +173,11 @@ func (m *TaskListEntity) contextValidateCreatedBy(ctx context.Context, formats s
 func (m *TaskListEntity) contextValidateTaskListItems(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.TaskListItems != nil {
+
+		if swag.IsZero(m.TaskListItems) { // not required
+			return nil
+		}
+
 		if err := m.TaskListItems.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("task_list_items")

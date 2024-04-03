@@ -198,6 +198,11 @@ func (m *IncidentsImpactEntity) ContextValidate(ctx context.Context, formats str
 func (m *IncidentsImpactEntity) contextValidateCondition(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Condition != nil {
+
+		if swag.IsZero(m.Condition) { // not required
+			return nil
+		}
+
 		if err := m.Condition.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("condition")
@@ -216,6 +221,11 @@ func (m *IncidentsImpactEntity) contextValidateConversations(ctx context.Context
 	for i := 0; i < len(m.Conversations); i++ {
 
 		if m.Conversations[i] != nil {
+
+			if swag.IsZero(m.Conversations[i]) { // not required
+				return nil
+			}
+
 			if err := m.Conversations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
@@ -234,6 +244,11 @@ func (m *IncidentsImpactEntity) contextValidateConversations(ctx context.Context
 func (m *IncidentsImpactEntity) contextValidateImpact(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Impact != nil {
+
+		if swag.IsZero(m.Impact) { // not required
+			return nil
+		}
+
 		if err := m.Impact.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("impact")

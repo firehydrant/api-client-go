@@ -145,6 +145,11 @@ func (m *PostV1ChecklistTemplates) contextValidateChecks(ctx context.Context, fo
 	for i := 0; i < len(m.Checks); i++ {
 
 		if m.Checks[i] != nil {
+
+			if swag.IsZero(m.Checks[i]) { // not required
+				return nil
+			}
+
 			if err := m.Checks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("checks" + "." + strconv.Itoa(i))
@@ -165,6 +170,11 @@ func (m *PostV1ChecklistTemplates) contextValidateConnectedServices(ctx context.
 	for i := 0; i < len(m.ConnectedServices); i++ {
 
 		if m.ConnectedServices[i] != nil {
+
+			if swag.IsZero(m.ConnectedServices[i]) { // not required
+				return nil
+			}
+
 			if err := m.ConnectedServices[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("connected_services" + "." + strconv.Itoa(i))

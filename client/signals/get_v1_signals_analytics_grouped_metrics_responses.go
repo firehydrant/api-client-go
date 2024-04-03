@@ -27,7 +27,7 @@ func (o *GetV1SignalsAnalyticsGroupedMetricsReader) ReadResponse(response runtim
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/signals/analytics/grouped_metrics] getV1SignalsAnalyticsGroupedMetrics", response, response.Code())
 	}
 }
 
@@ -67,6 +67,11 @@ func (o *GetV1SignalsAnalyticsGroupedMetricsOK) IsServerError() bool {
 // IsCode returns true when this get v1 signals analytics grouped metrics o k response a status code equal to that given
 func (o *GetV1SignalsAnalyticsGroupedMetricsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get v1 signals analytics grouped metrics o k response
+func (o *GetV1SignalsAnalyticsGroupedMetricsOK) Code() int {
+	return 200
 }
 
 func (o *GetV1SignalsAnalyticsGroupedMetricsOK) Error() string {

@@ -30,7 +30,7 @@ func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDReader) ReadResponse(r
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/post_mortems/reports/{report_id}/reasons/{reason_id}] deleteV1PostMortemsReportsReportIdReasonsReasonId", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) IsServerError() bo
 // IsCode returns true when this delete v1 post mortems reports report Id reasons reason Id o k response a status code equal to that given
 func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the delete v1 post mortems reports report Id reasons reason Id o k response
+func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) Code() int {
+	return 200
 }
 
 func (o *DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK) Error() string {

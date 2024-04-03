@@ -161,6 +161,11 @@ func (m *PostMortemsPostMortemReportEntity) ContextValidate(ctx context.Context,
 func (m *PostMortemsPostMortemReportEntity) contextValidateIncident(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Incident != nil {
+
+		if swag.IsZero(m.Incident) { // not required
+			return nil
+		}
+
 		if err := m.Incident.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("incident")
@@ -177,6 +182,11 @@ func (m *PostMortemsPostMortemReportEntity) contextValidateIncident(ctx context.
 func (m *PostMortemsPostMortemReportEntity) contextValidateQuestions(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Questions != nil {
+
+		if swag.IsZero(m.Questions) { // not required
+			return nil
+		}
+
 		if err := m.Questions.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("questions")

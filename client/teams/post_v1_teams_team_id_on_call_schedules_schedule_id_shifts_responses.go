@@ -27,7 +27,7 @@ func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsReader) ReadResponse(re
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/teams/{team_id}/on_call_schedules/{schedule_id}/shifts] postV1TeamsTeamIdOnCallSchedulesScheduleIdShifts", response, response.Code())
 	}
 }
 
@@ -67,6 +67,11 @@ func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsCreated) IsServerError(
 // IsCode returns true when this post v1 teams team Id on call schedules schedule Id shifts created response a status code equal to that given
 func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the post v1 teams team Id on call schedules schedule Id shifts created response
+func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsCreated) Code() int {
+	return 201
 }
 
 func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsCreated) Error() string {

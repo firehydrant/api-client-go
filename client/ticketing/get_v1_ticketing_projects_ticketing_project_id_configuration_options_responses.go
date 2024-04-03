@@ -27,7 +27,7 @@ func (o *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsReader) Rea
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/ticketing/projects/{ticketing_project_id}/configuration_options] getV1TicketingProjectsTicketingProjectIdConfigurationOptions", response, response.Code())
 	}
 }
 
@@ -67,6 +67,11 @@ func (o *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK) IsServe
 // IsCode returns true when this get v1 ticketing projects ticketing project Id configuration options o k response a status code equal to that given
 func (o *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get v1 ticketing projects ticketing project Id configuration options o k response
+func (o *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK) Code() int {
+	return 200
 }
 
 func (o *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK) Error() string {
