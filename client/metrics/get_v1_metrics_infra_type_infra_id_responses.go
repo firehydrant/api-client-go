@@ -42,7 +42,7 @@ func NewGetV1MetricsInfraTypeInfraIDOK() *GetV1MetricsInfraTypeInfraIDOK {
 /*
 GetV1MetricsInfraTypeInfraIDOK describes a response with status code 200, with default header values.
 
-Return metrics for a specific infrastructure record
+Return metrics for a specific component
 */
 type GetV1MetricsInfraTypeInfraIDOK struct {
 	Payload *models.MetricsSingleMetricsEntity

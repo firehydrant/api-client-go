@@ -17,28 +17,28 @@ import (
 // swagger:model Metrics_SingleMetricsEntity
 type MetricsSingleMetricsEntity struct {
 
-	// count
+	// Number of incidents in this time period for this component
 	Count int32 `json:"count,omitempty"`
 
-	// id
+	// The UUID of the component
 	ID string `json:"id,omitempty"`
 
-	// mtta
+	// Mean Time To Acknowledgement (seconds) for all incidents for this component in this time period
 	Mtta int32 `json:"mtta,omitempty"`
 
-	// mttd
+	// Mean Time To Detection (seconds) for all incidents for this component in this time period
 	Mttd int32 `json:"mttd,omitempty"`
 
-	// mttm
+	// Mean Time To Mitigation (seconds) for all incidents for this component in this time period
 	Mttm int32 `json:"mttm,omitempty"`
 
-	// mttr
+	// Mean Time To Resolution (seconds) for all incidents for this component in this time period
 	Mttr int32 `json:"mttr,omitempty"`
 
-	// name
+	// The name of the component
 	Name string `json:"name,omitempty"`
 
-	// total time
+	// Total time (seconds) the component was impacted (MTTR x Incident Count)
 	TotalTime int32 `json:"total_time,omitempty"`
 }
 

@@ -62,6 +62,12 @@ GetV1RunbooksActionsParams contains all the parameters to send to the API endpoi
 */
 type GetV1RunbooksActionsParams struct {
 
+	/* Lite.
+
+	   Boolean to determine whether to return a slimified version of the action object's integration
+	*/
+	Lite *bool
+
 	// Page.
 	//
 	// Format: int32
@@ -131,6 +137,17 @@ func (o *GetV1RunbooksActionsParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithLite adds the lite to the get v1 runbooks actions params
+func (o *GetV1RunbooksActionsParams) WithLite(lite *bool) *GetV1RunbooksActionsParams {
+	o.SetLite(lite)
+	return o
+}
+
+// SetLite adds the lite to the get v1 runbooks actions params
+func (o *GetV1RunbooksActionsParams) SetLite(lite *bool) {
+	o.Lite = lite
+}
+
 // WithPage adds the page to the get v1 runbooks actions params
 func (o *GetV1RunbooksActionsParams) WithPage(page *int32) *GetV1RunbooksActionsParams {
 	o.SetPage(page)
@@ -171,6 +188,23 @@ func (o *GetV1RunbooksActionsParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
+
+	if o.Lite != nil {
+
+		// query param lite
+		var qrLite bool
+
+		if o.Lite != nil {
+			qrLite = *o.Lite
+		}
+		qLite := swag.FormatBool(qrLite)
+		if qLite != "" {
+
+			if err := r.SetQueryParam("lite", qLite); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Page != nil {
 

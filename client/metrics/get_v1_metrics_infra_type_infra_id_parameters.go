@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1MetricsInfraTypeInfraIDParams creates a new GetV1MetricsInfraTypeInfraIDParams object,
@@ -70,15 +69,14 @@ type GetV1MetricsInfraTypeInfraIDParams struct {
 	*/
 	EndDate *strfmt.Date
 
-	// InfraID.
-	//
-	// Format: int32
-	InfraID int32
+	/* InfraID.
+
+	   Component UUID
+	*/
+	InfraID string
 
 	// InfraType.
-	//
-	// Format: int32
-	InfraType int32
+	InfraType string
 
 	/* StartDate.
 
@@ -153,24 +151,24 @@ func (o *GetV1MetricsInfraTypeInfraIDParams) SetEndDate(endDate *strfmt.Date) {
 }
 
 // WithInfraID adds the infraID to the get v1 metrics infra type infra Id params
-func (o *GetV1MetricsInfraTypeInfraIDParams) WithInfraID(infraID int32) *GetV1MetricsInfraTypeInfraIDParams {
+func (o *GetV1MetricsInfraTypeInfraIDParams) WithInfraID(infraID string) *GetV1MetricsInfraTypeInfraIDParams {
 	o.SetInfraID(infraID)
 	return o
 }
 
 // SetInfraID adds the infraId to the get v1 metrics infra type infra Id params
-func (o *GetV1MetricsInfraTypeInfraIDParams) SetInfraID(infraID int32) {
+func (o *GetV1MetricsInfraTypeInfraIDParams) SetInfraID(infraID string) {
 	o.InfraID = infraID
 }
 
 // WithInfraType adds the infraType to the get v1 metrics infra type infra Id params
-func (o *GetV1MetricsInfraTypeInfraIDParams) WithInfraType(infraType int32) *GetV1MetricsInfraTypeInfraIDParams {
+func (o *GetV1MetricsInfraTypeInfraIDParams) WithInfraType(infraType string) *GetV1MetricsInfraTypeInfraIDParams {
 	o.SetInfraType(infraType)
 	return o
 }
 
 // SetInfraType adds the infraType to the get v1 metrics infra type infra Id params
-func (o *GetV1MetricsInfraTypeInfraIDParams) SetInfraType(infraType int32) {
+func (o *GetV1MetricsInfraTypeInfraIDParams) SetInfraType(infraType string) {
 	o.InfraType = infraType
 }
 
@@ -211,12 +209,12 @@ func (o *GetV1MetricsInfraTypeInfraIDParams) WriteToRequest(r runtime.ClientRequ
 	}
 
 	// path param infra_id
-	if err := r.SetPathParam("infra_id", swag.FormatInt32(o.InfraID)); err != nil {
+	if err := r.SetPathParam("infra_id", o.InfraID); err != nil {
 		return err
 	}
 
 	// path param infra_type
-	if err := r.SetPathParam("infra_type", swag.FormatInt32(o.InfraType)); err != nil {
+	if err := r.SetPathParam("infra_type", o.InfraType); err != nil {
 		return err
 	}
 
