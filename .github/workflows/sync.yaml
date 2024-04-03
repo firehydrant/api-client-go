@@ -39,9 +39,10 @@ jobs:
       - name: Commit changes
         run: |
           today=$(date -u +'%Y-%m-%d')
+          git checkout -b "${today}"
           git config --global user.email "noreply@firehydrant.com"
           git config --global user.name "FireHydrant Bot"
           git add .
           git commit -m "Regenerate Swagger code ${today}"
-          git push -u origin "${today}"
+          git push -u origin HEAD
           gh pr create --title "Regenerate Swagger code ${today}" --body "Regenerate Swagger code ${today}" --base main
