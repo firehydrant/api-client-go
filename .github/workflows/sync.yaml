@@ -33,25 +33,28 @@ jobs:
           echo "$(pwd)/bin" >> $GITHUB_PATH
 
       - name: Regenerate Swagger code
+        id: swagger
         run: |
+          REVISION=$(curl -s https://app.firehydrant.io/infra/health | jq -r .revision)
+          set -x
+          echo "REVISION=${REVISION}" >> "$GITHUB_OUTPUT"
           bin/update-swagger-doc.sh
           bin/regenerate.sh
 
       - name: Commit changes
         run: |
-          today=$(date -u +'%Y-%m-%d')
-
+          api_server_revision="${{ steps.swagger.outputs.REVISION }}"
           set -x
-          git checkout -b "${today}"
+          git checkout -b "${api_server_revision}"
           git config --global user.email "44629778+firehydrant-ops@users.noreply.github.com"
           git config --global user.name "FireHydrant Bot"
           git add .
-          git commit -m "Regenerate Swagger code ${today}"
-          git push -u origin "${today}"
+          git commit -m "Regenerate Swagger code ${api_server_revision}"
+          git push -u origin "${api_server_revision}"
           gh pr create \
-            --title "Regenerate Swagger code ${today}" \
-            --body "Regenerate Swagger code ${today}" \
+            --title "Regenerate Swagger code ${api_server_revision}" \
+            --body "Regenerate Swagger code ${api_server_revision}" \
             --base main \
-            --head "${today}"
+            --head "${api_server_revision}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
