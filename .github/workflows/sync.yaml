@@ -26,6 +26,11 @@ jobs:
       - name: Go version
         run: go version
 
+      - name: Binary dependencies
+        run: |
+          bin/deps.sh
+          echo "$(pwd)/bin" >> $GITHUB_PATH
+
       - name: Regenerate Swagger code
         run: |
           bin/update-swagger-doc.sh
