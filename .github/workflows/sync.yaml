@@ -26,9 +26,9 @@ jobs:
       - name: Go version
         run: go version
 
-      - name: Binary dependencies
+      - name: Install Swagger binary
         run: |
-          bin/deps.sh
+          bin/deps.sh github.com/go-swagger/go-swagger/cmd/swagger
           echo "$(pwd)/bin" >> $GITHUB_PATH
 
       - name: Regenerate Swagger code
