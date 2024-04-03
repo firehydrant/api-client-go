@@ -1,8 +1,9 @@
 name: Sync
 
 on:
-  pull_request:
-  # TODO: add periodic + on-demand sync
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
 
 permissions:
   contents: write
