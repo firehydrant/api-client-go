@@ -44,7 +44,11 @@ jobs:
           git config --global user.name "FireHydrant Bot"
           git add .
           git commit -m "Regenerate Swagger code ${today}"
-          git push -u origin HEAD
-          gh pr create --title "Regenerate Swagger code ${today}" --body "Regenerate Swagger code ${today}" --base main
+          gh pr create \
+            --title "Regenerate Swagger code ${today}" \
+            --body "Regenerate Swagger code ${today}" \
+            --base main \
+            --head "${today}" \
+            --reviewer firehydrant/open-source-maintainers
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
