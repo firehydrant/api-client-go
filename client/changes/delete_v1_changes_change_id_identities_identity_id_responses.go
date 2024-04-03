@@ -36,7 +36,7 @@ func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDReader) ReadResponse(respons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/changes/{change_id}/identities/{identity_id}] deleteV1ChangesChangeIdIdentitiesIdentityId", response, response.Code())
 	}
 }
 
@@ -76,6 +76,11 @@ func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent) IsServerError() b
 // IsCode returns true when this delete v1 changes change Id identities identity Id no content response a status code equal to that given
 func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete v1 changes change Id identities identity Id no content response
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent) Error() string {
@@ -128,6 +133,11 @@ func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsServerError() 
 // IsCode returns true when this delete v1 changes change Id identities identity Id bad request response a status code equal to that given
 func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the delete v1 changes change Id identities identity Id bad request response
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) Code() int {
+	return 400
 }
 
 func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDBadRequest) Error() string {

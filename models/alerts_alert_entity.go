@@ -318,6 +318,11 @@ func (m *AlertsAlertEntity) contextValidateEnvironments(ctx context.Context, for
 	for i := 0; i < len(m.Environments); i++ {
 
 		if m.Environments[i] != nil {
+
+			if swag.IsZero(m.Environments[i]) { // not required
+				return nil
+			}
+
 			if err := m.Environments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
@@ -338,6 +343,11 @@ func (m *AlertsAlertEntity) contextValidateEvents(ctx context.Context, formats s
 	for i := 0; i < len(m.Events); i++ {
 
 		if m.Events[i] != nil {
+
+			if swag.IsZero(m.Events[i]) { // not required
+				return nil
+			}
+
 			if err := m.Events[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("events" + "." + strconv.Itoa(i))
@@ -358,6 +368,11 @@ func (m *AlertsAlertEntity) contextValidateIncidents(ctx context.Context, format
 	for i := 0; i < len(m.Incidents); i++ {
 
 		if m.Incidents[i] != nil {
+
+			if swag.IsZero(m.Incidents[i]) { // not required
+				return nil
+			}
+
 			if err := m.Incidents[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("incidents" + "." + strconv.Itoa(i))
@@ -378,6 +393,11 @@ func (m *AlertsAlertEntity) contextValidateServices(ctx context.Context, formats
 	for i := 0; i < len(m.Services); i++ {
 
 		if m.Services[i] != nil {
+
+			if swag.IsZero(m.Services[i]) { // not required
+				return nil
+			}
+
 			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
@@ -396,6 +416,11 @@ func (m *AlertsAlertEntity) contextValidateServices(ctx context.Context, formats
 func (m *AlertsAlertEntity) contextValidateSignalRule(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SignalRule != nil {
+
+		if swag.IsZero(m.SignalRule) { // not required
+			return nil
+		}
+
 		if err := m.SignalRule.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("signal_rule")

@@ -149,6 +149,11 @@ func (m *IncidentTypeEntity) ContextValidate(ctx context.Context, formats strfmt
 func (m *IncidentTypeEntity) contextValidateTemplate(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Template != nil {
+
+		if swag.IsZero(m.Template) { // not required
+			return nil
+		}
+
 		if err := m.Template.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("template")
@@ -165,6 +170,11 @@ func (m *IncidentTypeEntity) contextValidateTemplate(ctx context.Context, format
 func (m *IncidentTypeEntity) contextValidateTemplateValues(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.TemplateValues != nil {
+
+		if swag.IsZero(m.TemplateValues) { // not required
+			return nil
+		}
+
 		if err := m.TemplateValues.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("template_values")

@@ -36,7 +36,7 @@ func (o *PostV1IncidentsIncidentIDImpactTypeReader) ReadResponse(response runtim
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/incidents/{incident_id}/impact/{type}] postV1IncidentsIncidentIdImpactType", response, response.Code())
 	}
 }
 
@@ -77,6 +77,11 @@ func (o *PostV1IncidentsIncidentIDImpactTypeCreated) IsServerError() bool {
 // IsCode returns true when this post v1 incidents incident Id impact type created response a status code equal to that given
 func (o *PostV1IncidentsIncidentIDImpactTypeCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the post v1 incidents incident Id impact type created response
+func (o *PostV1IncidentsIncidentIDImpactTypeCreated) Code() int {
+	return 201
 }
 
 func (o *PostV1IncidentsIncidentIDImpactTypeCreated) Error() string {
@@ -140,6 +145,11 @@ func (o *PostV1IncidentsIncidentIDImpactTypeBadRequest) IsServerError() bool {
 // IsCode returns true when this post v1 incidents incident Id impact type bad request response a status code equal to that given
 func (o *PostV1IncidentsIncidentIDImpactTypeBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the post v1 incidents incident Id impact type bad request response
+func (o *PostV1IncidentsIncidentIDImpactTypeBadRequest) Code() int {
+	return 400
 }
 
 func (o *PostV1IncidentsIncidentIDImpactTypeBadRequest) Error() string {

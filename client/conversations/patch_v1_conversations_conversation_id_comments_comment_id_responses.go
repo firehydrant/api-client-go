@@ -27,7 +27,7 @@ func (o *PatchV1ConversationsConversationIDCommentsCommentIDReader) ReadResponse
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/conversations/{conversation_id}/comments/{comment_id}] patchV1ConversationsConversationIdCommentsCommentId", response, response.Code())
 	}
 }
 
@@ -67,6 +67,11 @@ func (o *PatchV1ConversationsConversationIDCommentsCommentIDOK) IsServerError() 
 // IsCode returns true when this patch v1 conversations conversation Id comments comment Id o k response a status code equal to that given
 func (o *PatchV1ConversationsConversationIDCommentsCommentIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the patch v1 conversations conversation Id comments comment Id o k response
+func (o *PatchV1ConversationsConversationIDCommentsCommentIDOK) Code() int {
+	return 200
 }
 
 func (o *PatchV1ConversationsConversationIDCommentsCommentIDOK) Error() string {

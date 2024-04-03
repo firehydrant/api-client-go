@@ -226,6 +226,11 @@ func (m *PostV1Runbooks) ContextValidate(ctx context.Context, formats strfmt.Reg
 func (m *PostV1Runbooks) contextValidateAttachmentRule(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AttachmentRule != nil {
+
+		if swag.IsZero(m.AttachmentRule) { // not required
+			return nil
+		}
+
 		if err := m.AttachmentRule.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("attachment_rule")
@@ -242,6 +247,11 @@ func (m *PostV1Runbooks) contextValidateAttachmentRule(ctx context.Context, form
 func (m *PostV1Runbooks) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Owner != nil {
+
+		if swag.IsZero(m.Owner) { // not required
+			return nil
+		}
+
 		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
@@ -260,6 +270,11 @@ func (m *PostV1Runbooks) contextValidateSteps(ctx context.Context, formats strfm
 	for i := 0; i < len(m.Steps); i++ {
 
 		if m.Steps[i] != nil {
+
+			if swag.IsZero(m.Steps[i]) { // not required
+				return nil
+			}
+
 			if err := m.Steps[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("steps" + "." + strconv.Itoa(i))
@@ -501,6 +516,11 @@ func (m *PostV1RunbooksStepsItems0) ContextValidate(ctx context.Context, formats
 func (m *PostV1RunbooksStepsItems0) contextValidateRule(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Rule != nil {
+
+		if swag.IsZero(m.Rule) { // not required
+			return nil
+		}
+
 		if err := m.Rule.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("rule")

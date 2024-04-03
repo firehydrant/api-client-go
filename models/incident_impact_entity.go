@@ -78,6 +78,11 @@ func (m *IncidentImpactEntity) ContextValidate(ctx context.Context, formats strf
 func (m *IncidentImpactEntity) contextValidateInfrastructure(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Infrastructure != nil {
+
+		if swag.IsZero(m.Infrastructure) { // not required
+			return nil
+		}
+
 		if err := m.Infrastructure.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("infrastructure")

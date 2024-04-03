@@ -30,7 +30,7 @@ func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeReader) ReadResponse(resp
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/nunc_connections/{nunc_connection_id}/images/{type}] putV1NuncConnectionsNuncConnectionIdImagesType", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeOK) IsServerError() bool 
 // IsCode returns true when this put v1 nunc connections nunc connection Id images type o k response a status code equal to that given
 func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the put v1 nunc connections nunc connection Id images type o k response
+func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeOK) Code() int {
+	return 200
 }
 
 func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeOK) Error() string {

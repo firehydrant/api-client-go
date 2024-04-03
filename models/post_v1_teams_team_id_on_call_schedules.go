@@ -162,6 +162,11 @@ func (m *PostV1TeamsTeamIDOnCallSchedules) contextValidateRestrictions(ctx conte
 	for i := 0; i < len(m.Restrictions); i++ {
 
 		if m.Restrictions[i] != nil {
+
+			if swag.IsZero(m.Restrictions[i]) { // not required
+				return nil
+			}
+
 			if err := m.Restrictions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("restrictions" + "." + strconv.Itoa(i))
@@ -180,6 +185,7 @@ func (m *PostV1TeamsTeamIDOnCallSchedules) contextValidateRestrictions(ctx conte
 func (m *PostV1TeamsTeamIDOnCallSchedules) contextValidateStrategy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Strategy != nil {
+
 		if err := m.Strategy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("strategy")

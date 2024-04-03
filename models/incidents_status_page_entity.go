@@ -87,6 +87,11 @@ func (m *IncidentsStatusPageEntity) ContextValidate(ctx context.Context, formats
 func (m *IncidentsStatusPageEntity) contextValidateIntegration(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Integration != nil {
+
+		if swag.IsZero(m.Integration) { // not required
+			return nil
+		}
+
 		if err := m.Integration.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("integration")

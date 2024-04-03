@@ -233,6 +233,11 @@ func (m *PostV1ChangesEvents) contextValidateAttachments(ctx context.Context, fo
 	for i := 0; i < len(m.Attachments); i++ {
 
 		if m.Attachments[i] != nil {
+
+			if swag.IsZero(m.Attachments[i]) { // not required
+				return nil
+			}
+
 			if err := m.Attachments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("attachments" + "." + strconv.Itoa(i))
@@ -253,6 +258,11 @@ func (m *PostV1ChangesEvents) contextValidateAuthors(ctx context.Context, format
 	for i := 0; i < len(m.Authors); i++ {
 
 		if m.Authors[i] != nil {
+
+			if swag.IsZero(m.Authors[i]) { // not required
+				return nil
+			}
+
 			if err := m.Authors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("authors" + "." + strconv.Itoa(i))
@@ -273,6 +283,11 @@ func (m *PostV1ChangesEvents) contextValidateChangeIdentities(ctx context.Contex
 	for i := 0; i < len(m.ChangeIdentities); i++ {
 
 		if m.ChangeIdentities[i] != nil {
+
+			if swag.IsZero(m.ChangeIdentities[i]) { // not required
+				return nil
+			}
+
 			if err := m.ChangeIdentities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("change_identities" + "." + strconv.Itoa(i))

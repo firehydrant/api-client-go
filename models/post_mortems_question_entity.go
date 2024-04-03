@@ -106,6 +106,11 @@ func (m *PostMortemsQuestionEntity) contextValidateConversations(ctx context.Con
 	for i := 0; i < len(m.Conversations); i++ {
 
 		if m.Conversations[i] != nil {
+
+			if swag.IsZero(m.Conversations[i]) { // not required
+				return nil
+			}
+
 			if err := m.Conversations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))

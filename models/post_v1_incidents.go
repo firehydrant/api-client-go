@@ -217,6 +217,11 @@ func (m *PostV1Incidents) contextValidateCustomFields(ctx context.Context, forma
 	for i := 0; i < len(m.CustomFields); i++ {
 
 		if m.CustomFields[i] != nil {
+
+			if swag.IsZero(m.CustomFields[i]) { // not required
+				return nil
+			}
+
 			if err := m.CustomFields[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("custom_fields" + "." + strconv.Itoa(i))
@@ -237,6 +242,11 @@ func (m *PostV1Incidents) contextValidateImpacts(ctx context.Context, formats st
 	for i := 0; i < len(m.Impacts); i++ {
 
 		if m.Impacts[i] != nil {
+
+			if swag.IsZero(m.Impacts[i]) { // not required
+				return nil
+			}
+
 			if err := m.Impacts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
@@ -257,6 +267,11 @@ func (m *PostV1Incidents) contextValidateMilestones(ctx context.Context, formats
 	for i := 0; i < len(m.Milestones); i++ {
 
 		if m.Milestones[i] != nil {
+
+			if swag.IsZero(m.Milestones[i]) { // not required
+				return nil
+			}
+
 			if err := m.Milestones[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("milestones" + "." + strconv.Itoa(i))

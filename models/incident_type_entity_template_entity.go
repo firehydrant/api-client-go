@@ -115,6 +115,11 @@ func (m *IncidentTypeEntityTemplateEntity) contextValidateImpacts(ctx context.Co
 	for i := 0; i < len(m.Impacts); i++ {
 
 		if m.Impacts[i] != nil {
+
+			if swag.IsZero(m.Impacts[i]) { // not required
+				return nil
+			}
+
 			if err := m.Impacts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))

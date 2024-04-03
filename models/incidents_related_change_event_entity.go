@@ -209,6 +209,11 @@ func (m *IncidentsRelatedChangeEventEntity) ContextValidate(ctx context.Context,
 func (m *IncidentsRelatedChangeEventEntity) contextValidateChangeEvent(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ChangeEvent != nil {
+
+		if swag.IsZero(m.ChangeEvent) { // not required
+			return nil
+		}
+
 		if err := m.ChangeEvent.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("change_event")
@@ -225,6 +230,11 @@ func (m *IncidentsRelatedChangeEventEntity) contextValidateChangeEvent(ctx conte
 func (m *IncidentsRelatedChangeEventEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CreatedBy != nil {
+
+		if swag.IsZero(m.CreatedBy) { // not required
+			return nil
+		}
+
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")

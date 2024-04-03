@@ -137,6 +137,11 @@ func (m *IntegrationsConnectionEntity) ContextValidate(ctx context.Context, form
 func (m *IntegrationsConnectionEntity) contextValidateDefaultAuthorizedActor(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DefaultAuthorizedActor != nil {
+
+		if swag.IsZero(m.DefaultAuthorizedActor) { // not required
+			return nil
+		}
+
 		if err := m.DefaultAuthorizedActor.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("default_authorized_actor")

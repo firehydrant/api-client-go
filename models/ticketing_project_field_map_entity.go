@@ -94,6 +94,11 @@ func (m *TicketingProjectFieldMapEntity) contextValidateBody(ctx context.Context
 	for i := 0; i < len(m.Body); i++ {
 
 		if m.Body[i] != nil {
+
+			if swag.IsZero(m.Body[i]) { // not required
+				return nil
+			}
+
 			if err := m.Body[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("body" + "." + strconv.Itoa(i))

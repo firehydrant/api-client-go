@@ -190,6 +190,11 @@ func (m *PostV1ScheduledMaintenances) contextValidateImpacts(ctx context.Context
 	for i := 0; i < len(m.Impacts); i++ {
 
 		if m.Impacts[i] != nil {
+
+			if swag.IsZero(m.Impacts[i]) { // not required
+				return nil
+			}
+
 			if err := m.Impacts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
@@ -210,6 +215,11 @@ func (m *PostV1ScheduledMaintenances) contextValidateStatusPages(ctx context.Con
 	for i := 0; i < len(m.StatusPages); i++ {
 
 		if m.StatusPages[i] != nil {
+
+			if swag.IsZero(m.StatusPages[i]) { // not required
+				return nil
+			}
+
 			if err := m.StatusPages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))

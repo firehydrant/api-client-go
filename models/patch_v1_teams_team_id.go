@@ -94,6 +94,11 @@ func (m *PatchV1TeamsTeamID) contextValidateMemberships(ctx context.Context, for
 	for i := 0; i < len(m.Memberships); i++ {
 
 		if m.Memberships[i] != nil {
+
+			if swag.IsZero(m.Memberships[i]) { // not required
+				return nil
+			}
+
 			if err := m.Memberships[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("memberships" + "." + strconv.Itoa(i))

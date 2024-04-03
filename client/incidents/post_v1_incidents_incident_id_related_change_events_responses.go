@@ -42,7 +42,7 @@ func (o *PostV1IncidentsIncidentIDRelatedChangeEventsReader) ReadResponse(respon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/incidents/{incident_id}/related_change_events] postV1IncidentsIncidentIdRelatedChangeEvents", response, response.Code())
 	}
 }
 
@@ -83,6 +83,11 @@ func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) IsServerError() bo
 // IsCode returns true when this post v1 incidents incident Id related change events created response a status code equal to that given
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the post v1 incidents incident Id related change events created response
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) Code() int {
+	return 201
 }
 
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsCreated) Error() string {
@@ -148,6 +153,11 @@ func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) IsCode(code int
 	return code == 400
 }
 
+// Code gets the status code for the post v1 incidents incident Id related change events bad request response
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) Code() int {
+	return 400
+}
+
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /v1/incidents/{incident_id}/related_change_events][%d] postV1IncidentsIncidentIdRelatedChangeEventsBadRequest  %+v", 400, o.Payload)
 }
@@ -209,6 +219,11 @@ func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) IsServerError() b
 // IsCode returns true when this post v1 incidents incident Id related change events conflict response a status code equal to that given
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the post v1 incidents incident Id related change events conflict response
+func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) Code() int {
+	return 409
 }
 
 func (o *PostV1IncidentsIncidentIDRelatedChangeEventsConflict) Error() string {

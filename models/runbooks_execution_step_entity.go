@@ -162,6 +162,11 @@ func (m *RunbooksExecutionStepEntity) ContextValidate(ctx context.Context, forma
 func (m *RunbooksExecutionStepEntity) contextValidateExecution(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Execution != nil {
+
+		if swag.IsZero(m.Execution) { // not required
+			return nil
+		}
+
 		if err := m.Execution.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("execution")
@@ -178,6 +183,11 @@ func (m *RunbooksExecutionStepEntity) contextValidateExecution(ctx context.Conte
 func (m *RunbooksExecutionStepEntity) contextValidateRule(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Rule != nil {
+
+		if swag.IsZero(m.Rule) { // not required
+			return nil
+		}
+
 		if err := m.Rule.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("rule")

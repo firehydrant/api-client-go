@@ -125,6 +125,11 @@ func (m *WebhooksEntitiesWebhookEntity) ContextValidate(ctx context.Context, for
 func (m *WebhooksEntitiesWebhookEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CreatedBy != nil {
+
+		if swag.IsZero(m.CreatedBy) { // not required
+			return nil
+		}
+
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")

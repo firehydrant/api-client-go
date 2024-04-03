@@ -124,6 +124,11 @@ func (m *PatchV1TeamsTeamIDEscalationPoliciesID) ContextValidate(ctx context.Con
 func (m *PatchV1TeamsTeamIDEscalationPoliciesID) contextValidateHandoffStep(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.HandoffStep != nil {
+
+		if swag.IsZero(m.HandoffStep) { // not required
+			return nil
+		}
+
 		if err := m.HandoffStep.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("handoff_step")
@@ -142,6 +147,11 @@ func (m *PatchV1TeamsTeamIDEscalationPoliciesID) contextValidateSteps(ctx contex
 	for i := 0; i < len(m.Steps); i++ {
 
 		if m.Steps[i] != nil {
+
+			if swag.IsZero(m.Steps[i]) { // not required
+				return nil
+			}
+
 			if err := m.Steps[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("steps" + "." + strconv.Itoa(i))
@@ -368,6 +378,11 @@ func (m *PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0) contextValidateTarge
 	for i := 0; i < len(m.Targets); i++ {
 
 		if m.Targets[i] != nil {
+
+			if swag.IsZero(m.Targets[i]) { // not required
+				return nil
+			}
+
 			if err := m.Targets[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("targets" + "." + strconv.Itoa(i))

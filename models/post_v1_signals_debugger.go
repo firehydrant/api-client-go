@@ -102,6 +102,11 @@ func (m *PostV1SignalsDebugger) contextValidateSignals(ctx context.Context, form
 	for i := 0; i < len(m.Signals); i++ {
 
 		if m.Signals[i] != nil {
+
+			if swag.IsZero(m.Signals[i]) { // not required
+				return nil
+			}
+
 			if err := m.Signals[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("signals" + "." + strconv.Itoa(i))
@@ -249,6 +254,11 @@ func (m *PostV1SignalsDebuggerSignalsItems0) contextValidateImages(ctx context.C
 	for i := 0; i < len(m.Images); i++ {
 
 		if m.Images[i] != nil {
+
+			if swag.IsZero(m.Images[i]) { // not required
+				return nil
+			}
+
 			if err := m.Images[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("images" + "." + strconv.Itoa(i))
@@ -269,6 +279,11 @@ func (m *PostV1SignalsDebuggerSignalsItems0) contextValidateLinks(ctx context.Co
 	for i := 0; i < len(m.Links); i++ {
 
 		if m.Links[i] != nil {
+
+			if swag.IsZero(m.Links[i]) { // not required
+				return nil
+			}
+
 			if err := m.Links[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))

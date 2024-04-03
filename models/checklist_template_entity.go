@@ -182,6 +182,11 @@ func (m *ChecklistTemplateEntity) contextValidateChecks(ctx context.Context, for
 	for i := 0; i < len(m.Checks); i++ {
 
 		if m.Checks[i] != nil {
+
+			if swag.IsZero(m.Checks[i]) { // not required
+				return nil
+			}
+
 			if err := m.Checks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("checks" + "." + strconv.Itoa(i))
@@ -202,6 +207,11 @@ func (m *ChecklistTemplateEntity) contextValidateConnectedServices(ctx context.C
 	for i := 0; i < len(m.ConnectedServices); i++ {
 
 		if m.ConnectedServices[i] != nil {
+
+			if swag.IsZero(m.ConnectedServices[i]) { // not required
+				return nil
+			}
+
 			if err := m.ConnectedServices[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("connected_services" + "." + strconv.Itoa(i))
@@ -220,6 +230,11 @@ func (m *ChecklistTemplateEntity) contextValidateConnectedServices(ctx context.C
 func (m *ChecklistTemplateEntity) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Owner != nil {
+
+		if swag.IsZero(m.Owner) { // not required
+			return nil
+		}
+
 		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")

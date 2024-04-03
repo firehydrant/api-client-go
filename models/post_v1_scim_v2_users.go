@@ -140,6 +140,11 @@ func (m *PostV1ScimV2Users) contextValidateEmails(ctx context.Context, formats s
 	for i := 0; i < len(m.Emails); i++ {
 
 		if m.Emails[i] != nil {
+
+			if swag.IsZero(m.Emails[i]) { // not required
+				return nil
+			}
+
 			if err := m.Emails[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("emails" + "." + strconv.Itoa(i))
@@ -158,6 +163,7 @@ func (m *PostV1ScimV2Users) contextValidateEmails(ctx context.Context, formats s
 func (m *PostV1ScimV2Users) contextValidateName(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Name != nil {
+
 		if err := m.Name.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("name")

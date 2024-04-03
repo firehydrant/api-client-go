@@ -30,7 +30,7 @@ func (o *GetV1SeveritiesReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/severities] getV1Severities", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *GetV1SeveritiesOK) IsServerError() bool {
 // IsCode returns true when this get v1 severities o k response a status code equal to that given
 func (o *GetV1SeveritiesOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get v1 severities o k response
+func (o *GetV1SeveritiesOK) Code() int {
+	return 200
 }
 
 func (o *GetV1SeveritiesOK) Error() string {

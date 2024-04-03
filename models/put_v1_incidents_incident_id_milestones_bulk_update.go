@@ -136,6 +136,11 @@ func (m *PutV1IncidentsIncidentIDMilestonesBulkUpdate) contextValidateMilestones
 	for i := 0; i < len(m.Milestones); i++ {
 
 		if m.Milestones[i] != nil {
+
+			if swag.IsZero(m.Milestones[i]) { // not required
+				return nil
+			}
+
 			if err := m.Milestones[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("milestones" + "." + strconv.Itoa(i))

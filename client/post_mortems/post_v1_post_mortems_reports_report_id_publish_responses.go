@@ -36,7 +36,7 @@ func (o *PostV1PostMortemsReportsReportIDPublishReader) ReadResponse(response ru
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/post_mortems/reports/{report_id}/publish] postV1PostMortemsReportsReportIdPublish", response, response.Code())
 	}
 }
 
@@ -77,6 +77,11 @@ func (o *PostV1PostMortemsReportsReportIDPublishCreated) IsServerError() bool {
 // IsCode returns true when this post v1 post mortems reports report Id publish created response a status code equal to that given
 func (o *PostV1PostMortemsReportsReportIDPublishCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the post v1 post mortems reports report Id publish created response
+func (o *PostV1PostMortemsReportsReportIDPublishCreated) Code() int {
+	return 201
 }
 
 func (o *PostV1PostMortemsReportsReportIDPublishCreated) Error() string {
@@ -140,6 +145,11 @@ func (o *PostV1PostMortemsReportsReportIDPublishBadRequest) IsServerError() bool
 // IsCode returns true when this post v1 post mortems reports report Id publish bad request response a status code equal to that given
 func (o *PostV1PostMortemsReportsReportIDPublishBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the post v1 post mortems reports report Id publish bad request response
+func (o *PostV1PostMortemsReportsReportIDPublishBadRequest) Code() int {
+	return 400
 }
 
 func (o *PostV1PostMortemsReportsReportIDPublishBadRequest) Error() string {

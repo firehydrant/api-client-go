@@ -27,7 +27,7 @@ func (o *DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapIDReader) ReadRe
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/ticketing/projects/{ticketing_project_id}/field_maps/{map_id}] deleteV1TicketingProjectsTicketingProjectIdFieldMapsMapId", response, response.Code())
 	}
 }
 
@@ -67,6 +67,11 @@ func (o *DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapIDNoContent) IsS
 // IsCode returns true when this delete v1 ticketing projects ticketing project Id field maps map Id no content response a status code equal to that given
 func (o *DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapIDNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete v1 ticketing projects ticketing project Id field maps map Id no content response
+func (o *DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapIDNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapIDNoContent) Error() string {

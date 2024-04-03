@@ -30,7 +30,7 @@ func (o *GetV1CustomFieldsDefinitionsReader) ReadResponse(response runtime.Clien
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/custom_fields/definitions] getV1CustomFieldsDefinitions", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *GetV1CustomFieldsDefinitionsOK) IsServerError() bool {
 // IsCode returns true when this get v1 custom fields definitions o k response a status code equal to that given
 func (o *GetV1CustomFieldsDefinitionsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get v1 custom fields definitions o k response
+func (o *GetV1CustomFieldsDefinitionsOK) Code() int {
+	return 200
 }
 
 func (o *GetV1CustomFieldsDefinitionsOK) Error() string {

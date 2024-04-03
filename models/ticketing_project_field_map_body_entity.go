@@ -200,6 +200,11 @@ func (m *TicketingProjectFieldMapBodyEntity) contextValidateCases(ctx context.Co
 	for i := 0; i < len(m.Cases); i++ {
 
 		if m.Cases[i] != nil {
+
+			if swag.IsZero(m.Cases[i]) { // not required
+				return nil
+			}
+
 			if err := m.Cases[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("cases" + "." + strconv.Itoa(i))
@@ -218,6 +223,11 @@ func (m *TicketingProjectFieldMapBodyEntity) contextValidateCases(ctx context.Co
 func (m *TicketingProjectFieldMapBodyEntity) contextValidateElse(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Else != nil {
+
+		if swag.IsZero(m.Else) { // not required
+			return nil
+		}
+
 		if err := m.Else.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("else")
@@ -234,6 +244,11 @@ func (m *TicketingProjectFieldMapBodyEntity) contextValidateElse(ctx context.Con
 func (m *TicketingProjectFieldMapBodyEntity) contextValidateExternalValue(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ExternalValue != nil {
+
+		if swag.IsZero(m.ExternalValue) { // not required
+			return nil
+		}
+
 		if err := m.ExternalValue.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("external_value")

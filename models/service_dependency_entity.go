@@ -149,6 +149,11 @@ func (m *ServiceDependencyEntity) ContextValidate(ctx context.Context, formats s
 func (m *ServiceDependencyEntity) contextValidateConnectedService(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ConnectedService != nil {
+
+		if swag.IsZero(m.ConnectedService) { // not required
+			return nil
+		}
+
 		if err := m.ConnectedService.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("connected_service")
@@ -165,6 +170,11 @@ func (m *ServiceDependencyEntity) contextValidateConnectedService(ctx context.Co
 func (m *ServiceDependencyEntity) contextValidateService(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Service != nil {
+
+		if swag.IsZero(m.Service) { // not required
+			return nil
+		}
+
 		if err := m.Service.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("service")

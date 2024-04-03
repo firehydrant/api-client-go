@@ -122,6 +122,11 @@ func (m *ServiceChildDependencyEntity) ContextValidate(ctx context.Context, form
 func (m *ServiceChildDependencyEntity) contextValidateService(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Service != nil {
+
+		if swag.IsZero(m.Service) { // not required
+			return nil
+		}
+
 		if err := m.Service.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("service")

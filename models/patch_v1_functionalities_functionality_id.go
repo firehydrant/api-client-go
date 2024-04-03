@@ -251,6 +251,11 @@ func (m *PatchV1FunctionalitiesFunctionalityID) contextValidateExternalResources
 	for i := 0; i < len(m.ExternalResources); i++ {
 
 		if m.ExternalResources[i] != nil {
+
+			if swag.IsZero(m.ExternalResources[i]) { // not required
+				return nil
+			}
+
 			if err := m.ExternalResources[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("external_resources" + "." + strconv.Itoa(i))
@@ -271,6 +276,11 @@ func (m *PatchV1FunctionalitiesFunctionalityID) contextValidateLinks(ctx context
 	for i := 0; i < len(m.Links); i++ {
 
 		if m.Links[i] != nil {
+
+			if swag.IsZero(m.Links[i]) { // not required
+				return nil
+			}
+
 			if err := m.Links[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("links" + "." + strconv.Itoa(i))
@@ -289,6 +299,11 @@ func (m *PatchV1FunctionalitiesFunctionalityID) contextValidateLinks(ctx context
 func (m *PatchV1FunctionalitiesFunctionalityID) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Owner != nil {
+
+		if swag.IsZero(m.Owner) { // not required
+			return nil
+		}
+
 		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
@@ -307,6 +322,11 @@ func (m *PatchV1FunctionalitiesFunctionalityID) contextValidateServices(ctx cont
 	for i := 0; i < len(m.Services); i++ {
 
 		if m.Services[i] != nil {
+
+			if swag.IsZero(m.Services[i]) { // not required
+				return nil
+			}
+
 			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
@@ -327,6 +347,11 @@ func (m *PatchV1FunctionalitiesFunctionalityID) contextValidateTeams(ctx context
 	for i := 0; i < len(m.Teams); i++ {
 
 		if m.Teams[i] != nil {
+
+			if swag.IsZero(m.Teams[i]) { // not required
+				return nil
+			}
+
 			if err := m.Teams[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("teams" + "." + strconv.Itoa(i))

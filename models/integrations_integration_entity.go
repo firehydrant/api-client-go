@@ -150,6 +150,11 @@ func (m *IntegrationsIntegrationEntity) ContextValidate(ctx context.Context, for
 func (m *IntegrationsIntegrationEntity) contextValidateConnections(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Connections != nil {
+
+		if swag.IsZero(m.Connections) { // not required
+			return nil
+		}
+
 		if err := m.Connections.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("connections")
@@ -166,6 +171,11 @@ func (m *IntegrationsIntegrationEntity) contextValidateConnections(ctx context.C
 func (m *IntegrationsIntegrationEntity) contextValidateLogo(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Logo != nil {
+
+		if swag.IsZero(m.Logo) { // not required
+			return nil
+		}
+
 		if err := m.Logo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("logo")

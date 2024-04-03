@@ -174,6 +174,11 @@ func (m *PostV1IncidentsIncidentIDNotes) contextValidateStatusPages(ctx context.
 	for i := 0; i < len(m.StatusPages); i++ {
 
 		if m.StatusPages[i] != nil {
+
+			if swag.IsZero(m.StatusPages[i]) { // not required
+				return nil
+			}
+
 			if err := m.StatusPages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))

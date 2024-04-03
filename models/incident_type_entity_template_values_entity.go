@@ -196,6 +196,11 @@ func (m *IncidentTypeEntityTemplateValuesEntity) contextValidateEnvironments(ctx
 	for i := 0; i < len(m.Environments); i++ {
 
 		if m.Environments[i] != nil {
+
+			if swag.IsZero(m.Environments[i]) { // not required
+				return nil
+			}
+
 			if err := m.Environments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
@@ -216,6 +221,11 @@ func (m *IncidentTypeEntityTemplateValuesEntity) contextValidateFunctionalities(
 	for i := 0; i < len(m.Functionalities); i++ {
 
 		if m.Functionalities[i] != nil {
+
+			if swag.IsZero(m.Functionalities[i]) { // not required
+				return nil
+			}
+
 			if err := m.Functionalities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
@@ -236,6 +246,11 @@ func (m *IncidentTypeEntityTemplateValuesEntity) contextValidateServices(ctx con
 	for i := 0; i < len(m.Services); i++ {
 
 		if m.Services[i] != nil {
+
+			if swag.IsZero(m.Services[i]) { // not required
+				return nil
+			}
+
 			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
@@ -256,6 +271,11 @@ func (m *IncidentTypeEntityTemplateValuesEntity) contextValidateTeams(ctx contex
 	for i := 0; i < len(m.Teams); i++ {
 
 		if m.Teams[i] != nil {
+
+			if swag.IsZero(m.Teams[i]) { // not required
+				return nil
+			}
+
 			if err := m.Teams[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("teams" + "." + strconv.Itoa(i))

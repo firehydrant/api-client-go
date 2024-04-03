@@ -30,7 +30,7 @@ func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateReader) ReadResponse(respon
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /v1/incidents/{incident_id}/milestones/bulk_update] putV1IncidentsIncidentIdMilestonesBulkUpdate", response, response.Code())
 	}
 }
 
@@ -75,6 +75,11 @@ func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) IsServerError() bool {
 // IsCode returns true when this put v1 incidents incident Id milestones bulk update o k response a status code equal to that given
 func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the put v1 incidents incident Id milestones bulk update o k response
+func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) Code() int {
+	return 200
 }
 
 func (o *PutV1IncidentsIncidentIDMilestonesBulkUpdateOK) Error() string {

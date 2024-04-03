@@ -287,6 +287,11 @@ func (m *RunbookEntity) ContextValidate(ctx context.Context, formats strfmt.Regi
 func (m *RunbookEntity) contextValidateAttachmentRule(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AttachmentRule != nil {
+
+		if swag.IsZero(m.AttachmentRule) { // not required
+			return nil
+		}
+
 		if err := m.AttachmentRule.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("attachment_rule")
@@ -303,6 +308,11 @@ func (m *RunbookEntity) contextValidateAttachmentRule(ctx context.Context, forma
 func (m *RunbookEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CreatedBy != nil {
+
+		if swag.IsZero(m.CreatedBy) { // not required
+			return nil
+		}
+
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
@@ -319,6 +329,11 @@ func (m *RunbookEntity) contextValidateCreatedBy(ctx context.Context, formats st
 func (m *RunbookEntity) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Owner != nil {
+
+		if swag.IsZero(m.Owner) { // not required
+			return nil
+		}
+
 		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
@@ -335,6 +350,11 @@ func (m *RunbookEntity) contextValidateOwner(ctx context.Context, formats strfmt
 func (m *RunbookEntity) contextValidateSteps(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Steps != nil {
+
+		if swag.IsZero(m.Steps) { // not required
+			return nil
+		}
+
 		if err := m.Steps.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("steps")
@@ -351,6 +371,11 @@ func (m *RunbookEntity) contextValidateSteps(ctx context.Context, formats strfmt
 func (m *RunbookEntity) contextValidateUpdatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.UpdatedBy != nil {
+
+		if swag.IsZero(m.UpdatedBy) { // not required
+			return nil
+		}
+
 		if err := m.UpdatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("updated_by")
@@ -367,6 +392,11 @@ func (m *RunbookEntity) contextValidateUpdatedBy(ctx context.Context, formats st
 func (m *RunbookEntity) contextValidateVotes(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Votes != nil {
+
+		if swag.IsZero(m.Votes) { // not required
+			return nil
+		}
+
 		if err := m.Votes.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("votes")

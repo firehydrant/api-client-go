@@ -30,7 +30,7 @@ func (o *PatchV1PostMortemsReportsReportIDReader) ReadResponse(response runtime.
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/post_mortems/reports/{report_id}] patchV1PostMortemsReportsReportId", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *PatchV1PostMortemsReportsReportIDOK) IsServerError() bool {
 // IsCode returns true when this patch v1 post mortems reports report Id o k response a status code equal to that given
 func (o *PatchV1PostMortemsReportsReportIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the patch v1 post mortems reports report Id o k response
+func (o *PatchV1PostMortemsReportsReportIDOK) Code() int {
+	return 200
 }
 
 func (o *PatchV1PostMortemsReportsReportIDOK) Error() string {

@@ -27,7 +27,7 @@ func (o *DeleteV1ScimV2UsersIDReader) ReadResponse(response runtime.ClientRespon
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /v1/scim/v2/Users/{id}] deleteV1ScimV2UsersId", response, response.Code())
 	}
 }
 
@@ -67,6 +67,11 @@ func (o *DeleteV1ScimV2UsersIDNoContent) IsServerError() bool {
 // IsCode returns true when this delete v1 scim v2 users Id no content response a status code equal to that given
 func (o *DeleteV1ScimV2UsersIDNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the delete v1 scim v2 users Id no content response
+func (o *DeleteV1ScimV2UsersIDNoContent) Code() int {
+	return 204
 }
 
 func (o *DeleteV1ScimV2UsersIDNoContent) Error() string {

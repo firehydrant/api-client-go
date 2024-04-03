@@ -36,7 +36,7 @@ func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDReader) ReadResponse(response
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/changes/{change_id}/identities/{identity_id}] patchV1ChangesChangeIdIdentitiesIdentityId", response, response.Code())
 	}
 }
 
@@ -77,6 +77,11 @@ func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDOK) IsServerError() bool {
 // IsCode returns true when this patch v1 changes change Id identities identity Id o k response a status code equal to that given
 func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the patch v1 changes change Id identities identity Id o k response
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDOK) Code() int {
+	return 200
 }
 
 func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDOK) Error() string {
@@ -140,6 +145,11 @@ func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsServerError() b
 // IsCode returns true when this patch v1 changes change Id identities identity Id bad request response a status code equal to that given
 func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the patch v1 changes change Id identities identity Id bad request response
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest) Code() int {
+	return 400
 }
 
 func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDBadRequest) Error() string {

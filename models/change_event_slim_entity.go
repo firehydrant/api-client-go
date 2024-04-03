@@ -258,6 +258,11 @@ func (m *ChangeEventSlimEntity) contextValidateAuthors(ctx context.Context, form
 	for i := 0; i < len(m.Authors); i++ {
 
 		if m.Authors[i] != nil {
+
+			if swag.IsZero(m.Authors[i]) { // not required
+				return nil
+			}
+
 			if err := m.Authors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("authors" + "." + strconv.Itoa(i))
@@ -278,6 +283,11 @@ func (m *ChangeEventSlimEntity) contextValidateEnvironments(ctx context.Context,
 	for i := 0; i < len(m.Environments); i++ {
 
 		if m.Environments[i] != nil {
+
+			if swag.IsZero(m.Environments[i]) { // not required
+				return nil
+			}
+
 			if err := m.Environments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
@@ -298,6 +308,11 @@ func (m *ChangeEventSlimEntity) contextValidateServices(ctx context.Context, for
 	for i := 0; i < len(m.Services); i++ {
 
 		if m.Services[i] != nil {
+
+			if swag.IsZero(m.Services[i]) { // not required
+				return nil
+			}
+
 			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))

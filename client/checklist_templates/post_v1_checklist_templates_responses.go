@@ -36,7 +36,7 @@ func (o *PostV1ChecklistTemplatesReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /v1/checklist_templates] postV1ChecklistTemplates", response, response.Code())
 	}
 }
 
@@ -77,6 +77,11 @@ func (o *PostV1ChecklistTemplatesCreated) IsServerError() bool {
 // IsCode returns true when this post v1 checklist templates created response a status code equal to that given
 func (o *PostV1ChecklistTemplatesCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the post v1 checklist templates created response
+func (o *PostV1ChecklistTemplatesCreated) Code() int {
+	return 201
 }
 
 func (o *PostV1ChecklistTemplatesCreated) Error() string {
@@ -140,6 +145,11 @@ func (o *PostV1ChecklistTemplatesBadRequest) IsServerError() bool {
 // IsCode returns true when this post v1 checklist templates bad request response a status code equal to that given
 func (o *PostV1ChecklistTemplatesBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the post v1 checklist templates bad request response
+func (o *PostV1ChecklistTemplatesBadRequest) Code() int {
+	return 400
 }
 
 func (o *PostV1ChecklistTemplatesBadRequest) Error() string {

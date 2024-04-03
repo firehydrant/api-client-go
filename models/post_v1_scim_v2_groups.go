@@ -102,6 +102,11 @@ func (m *PostV1ScimV2Groups) contextValidateMembers(ctx context.Context, formats
 	for i := 0; i < len(m.Members); i++ {
 
 		if m.Members[i] != nil {
+
+			if swag.IsZero(m.Members[i]) { // not required
+				return nil
+			}
+
 			if err := m.Members[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("members" + "." + strconv.Itoa(i))

@@ -956,6 +956,11 @@ func (m *IncidentEntity) contextValidateConferenceBridges(ctx context.Context, f
 	for i := 0; i < len(m.ConferenceBridges); i++ {
 
 		if m.ConferenceBridges[i] != nil {
+
+			if swag.IsZero(m.ConferenceBridges[i]) { // not required
+				return nil
+			}
+
 			if err := m.ConferenceBridges[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("conference_bridges" + "." + strconv.Itoa(i))
@@ -974,6 +979,11 @@ func (m *IncidentEntity) contextValidateConferenceBridges(ctx context.Context, f
 func (m *IncidentEntity) contextValidateContextObject(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ContextObject != nil {
+
+		if swag.IsZero(m.ContextObject) { // not required
+			return nil
+		}
+
 		if err := m.ContextObject.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("context_object")
@@ -992,6 +1002,11 @@ func (m *IncidentEntity) contextValidateConversations(ctx context.Context, forma
 	for i := 0; i < len(m.Conversations); i++ {
 
 		if m.Conversations[i] != nil {
+
+			if swag.IsZero(m.Conversations[i]) { // not required
+				return nil
+			}
+
 			if err := m.Conversations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
@@ -1010,6 +1025,11 @@ func (m *IncidentEntity) contextValidateConversations(ctx context.Context, forma
 func (m *IncidentEntity) contextValidateCreatedBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CreatedBy != nil {
+
+		if swag.IsZero(m.CreatedBy) { // not required
+			return nil
+		}
+
 		if err := m.CreatedBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("created_by")
@@ -1028,6 +1048,11 @@ func (m *IncidentEntity) contextValidateCustomFields(ctx context.Context, format
 	for i := 0; i < len(m.CustomFields); i++ {
 
 		if m.CustomFields[i] != nil {
+
+			if swag.IsZero(m.CustomFields[i]) { // not required
+				return nil
+			}
+
 			if err := m.CustomFields[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("custom_fields" + "." + strconv.Itoa(i))
@@ -1048,6 +1073,11 @@ func (m *IncidentEntity) contextValidateEnvironments(ctx context.Context, format
 	for i := 0; i < len(m.Environments); i++ {
 
 		if m.Environments[i] != nil {
+
+			if swag.IsZero(m.Environments[i]) { // not required
+				return nil
+			}
+
 			if err := m.Environments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
@@ -1068,6 +1098,11 @@ func (m *IncidentEntity) contextValidateFunctionalities(ctx context.Context, for
 	for i := 0; i < len(m.Functionalities); i++ {
 
 		if m.Functionalities[i] != nil {
+
+			if swag.IsZero(m.Functionalities[i]) { // not required
+				return nil
+			}
+
 			if err := m.Functionalities[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("functionalities" + "." + strconv.Itoa(i))
@@ -1088,6 +1123,11 @@ func (m *IncidentEntity) contextValidateImpacts(ctx context.Context, formats str
 	for i := 0; i < len(m.Impacts); i++ {
 
 		if m.Impacts[i] != nil {
+
+			if swag.IsZero(m.Impacts[i]) { // not required
+				return nil
+			}
+
 			if err := m.Impacts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("impacts" + "." + strconv.Itoa(i))
@@ -1108,6 +1148,11 @@ func (m *IncidentEntity) contextValidateIncidentChannels(ctx context.Context, fo
 	for i := 0; i < len(m.IncidentChannels); i++ {
 
 		if m.IncidentChannels[i] != nil {
+
+			if swag.IsZero(m.IncidentChannels[i]) { // not required
+				return nil
+			}
+
 			if err := m.IncidentChannels[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("incident_channels" + "." + strconv.Itoa(i))
@@ -1128,6 +1173,11 @@ func (m *IncidentEntity) contextValidateIncidentTickets(ctx context.Context, for
 	for i := 0; i < len(m.IncidentTickets); i++ {
 
 		if m.IncidentTickets[i] != nil {
+
+			if swag.IsZero(m.IncidentTickets[i]) { // not required
+				return nil
+			}
+
 			if err := m.IncidentTickets[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("incident_tickets" + "." + strconv.Itoa(i))
@@ -1146,6 +1196,11 @@ func (m *IncidentEntity) contextValidateIncidentTickets(ctx context.Context, for
 func (m *IncidentEntity) contextValidateLastNote(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.LastNote != nil {
+
+		if swag.IsZero(m.LastNote) { // not required
+			return nil
+		}
+
 		if err := m.LastNote.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("last_note")
@@ -1164,6 +1219,11 @@ func (m *IncidentEntity) contextValidateMilestones(ctx context.Context, formats 
 	for i := 0; i < len(m.Milestones); i++ {
 
 		if m.Milestones[i] != nil {
+
+			if swag.IsZero(m.Milestones[i]) { // not required
+				return nil
+			}
+
 			if err := m.Milestones[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("milestones" + "." + strconv.Itoa(i))
@@ -1182,6 +1242,11 @@ func (m *IncidentEntity) contextValidateMilestones(ctx context.Context, formats 
 func (m *IncidentEntity) contextValidateOrganization(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Organization != nil {
+
+		if swag.IsZero(m.Organization) { // not required
+			return nil
+		}
+
 		if err := m.Organization.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("organization")
@@ -1200,6 +1265,11 @@ func (m *IncidentEntity) contextValidateRoleAssignments(ctx context.Context, for
 	for i := 0; i < len(m.RoleAssignments); i++ {
 
 		if m.RoleAssignments[i] != nil {
+
+			if swag.IsZero(m.RoleAssignments[i]) { // not required
+				return nil
+			}
+
 			if err := m.RoleAssignments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("role_assignments" + "." + strconv.Itoa(i))
@@ -1220,6 +1290,11 @@ func (m *IncidentEntity) contextValidateServices(ctx context.Context, formats st
 	for i := 0; i < len(m.Services); i++ {
 
 		if m.Services[i] != nil {
+
+			if swag.IsZero(m.Services[i]) { // not required
+				return nil
+			}
+
 			if err := m.Services[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("services" + "." + strconv.Itoa(i))
@@ -1238,6 +1313,11 @@ func (m *IncidentEntity) contextValidateServices(ctx context.Context, formats st
 func (m *IncidentEntity) contextValidateSeverityConditionObject(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SeverityConditionObject != nil {
+
+		if swag.IsZero(m.SeverityConditionObject) { // not required
+			return nil
+		}
+
 		if err := m.SeverityConditionObject.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("severity_condition_object")
@@ -1254,6 +1334,11 @@ func (m *IncidentEntity) contextValidateSeverityConditionObject(ctx context.Cont
 func (m *IncidentEntity) contextValidateSeverityImpactObject(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SeverityImpactObject != nil {
+
+		if swag.IsZero(m.SeverityImpactObject) { // not required
+			return nil
+		}
+
 		if err := m.SeverityImpactObject.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("severity_impact_object")
@@ -1272,6 +1357,11 @@ func (m *IncidentEntity) contextValidateStatusPages(ctx context.Context, formats
 	for i := 0; i < len(m.StatusPages); i++ {
 
 		if m.StatusPages[i] != nil {
+
+			if swag.IsZero(m.StatusPages[i]) { // not required
+				return nil
+			}
+
 			if err := m.StatusPages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("status_pages" + "." + strconv.Itoa(i))
@@ -1292,6 +1382,11 @@ func (m *IncidentEntity) contextValidateTeamAssignments(ctx context.Context, for
 	for i := 0; i < len(m.TeamAssignments); i++ {
 
 		if m.TeamAssignments[i] != nil {
+
+			if swag.IsZero(m.TeamAssignments[i]) { // not required
+				return nil
+			}
+
 			if err := m.TeamAssignments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("team_assignments" + "." + strconv.Itoa(i))
@@ -1310,6 +1405,11 @@ func (m *IncidentEntity) contextValidateTeamAssignments(ctx context.Context, for
 func (m *IncidentEntity) contextValidateTicket(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Ticket != nil {
+
+		if swag.IsZero(m.Ticket) { // not required
+			return nil
+		}
+
 		if err := m.Ticket.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ticket")

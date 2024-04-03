@@ -30,7 +30,7 @@ func (o *GetV1MetricsInfraTypeInfraIDReader) ReadResponse(response runtime.Clien
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /v1/metrics/{infra_type}/{infra_id}] getV1MetricsInfraTypeInfraId", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *GetV1MetricsInfraTypeInfraIDOK) IsServerError() bool {
 // IsCode returns true when this get v1 metrics infra type infra Id o k response a status code equal to that given
 func (o *GetV1MetricsInfraTypeInfraIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the get v1 metrics infra type infra Id o k response
+func (o *GetV1MetricsInfraTypeInfraIDOK) Code() int {
+	return 200
 }
 
 func (o *GetV1MetricsInfraTypeInfraIDOK) Error() string {

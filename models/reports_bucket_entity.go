@@ -85,6 +85,11 @@ func (m *ReportsBucketEntity) contextValidatePoints(ctx context.Context, formats
 	for i := 0; i < len(m.Points); i++ {
 
 		if m.Points[i] != nil {
+
+			if swag.IsZero(m.Points[i]) { // not required
+				return nil
+			}
+
 			if err := m.Points[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("points" + "." + strconv.Itoa(i))

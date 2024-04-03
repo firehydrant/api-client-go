@@ -30,7 +30,7 @@ func (o *PatchV1SeverityMatrixImpactsImpactIDReader) ReadResponse(response runti
 		}
 		return result, nil
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /v1/severity_matrix/impacts/{impact_id}] patchV1SeverityMatrixImpactsImpactId", response, response.Code())
 	}
 }
 
@@ -71,6 +71,11 @@ func (o *PatchV1SeverityMatrixImpactsImpactIDOK) IsServerError() bool {
 // IsCode returns true when this patch v1 severity matrix impacts impact Id o k response a status code equal to that given
 func (o *PatchV1SeverityMatrixImpactsImpactIDOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the patch v1 severity matrix impacts impact Id o k response
+func (o *PatchV1SeverityMatrixImpactsImpactIDOK) Code() int {
+	return 200
 }
 
 func (o *PatchV1SeverityMatrixImpactsImpactIDOK) Error() string {

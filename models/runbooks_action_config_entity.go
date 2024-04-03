@@ -75,6 +75,11 @@ func (m *RunbooksActionConfigEntity) ContextValidate(ctx context.Context, format
 func (m *RunbooksActionConfigEntity) contextValidateElements(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Elements != nil {
+
+		if swag.IsZero(m.Elements) { // not required
+			return nil
+		}
+
 		if err := m.Elements.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("elements")

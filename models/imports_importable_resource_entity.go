@@ -163,6 +163,11 @@ func (m *ImportsImportableResourceEntity) contextValidateImportErrors(ctx contex
 	for i := 0; i < len(m.ImportErrors); i++ {
 
 		if m.ImportErrors[i] != nil {
+
+			if swag.IsZero(m.ImportErrors[i]) { // not required
+				return nil
+			}
+
 			if err := m.ImportErrors[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("import_errors" + "." + strconv.Itoa(i))
