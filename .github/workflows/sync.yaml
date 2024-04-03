@@ -48,7 +48,6 @@ jobs:
             --title "Regenerate Swagger code ${today}" \
             --body "Regenerate Swagger code ${today}" \
             --base main \
-            --head "${today}" \
-            --reviewer firehydrant/open-source-maintainers
+            --head "${today}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
