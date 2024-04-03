@@ -1,1 +1,6 @@
 swagger_doc.json
+
+# Exclude Go-installed binaries.
+bin/*
+# But include custom shell scripts.
+!bin/*.sh

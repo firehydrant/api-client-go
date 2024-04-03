@@ -1,0 +1,56 @@
+name: Sync
+
+on:
+  pull_request:
+  # TODO: add periodic + on-demand sync
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.22.x
+          cache-dependency-path: |
+             ./go.sum
+             _tools/go.sum
+
+      - name: Go version
+        run: go version
+
+      - name: Install Swagger binary
+        run: |
+          bin/deps.sh github.com/go-swagger/go-swagger/cmd/swagger
+          echo "$(pwd)/bin" >> $GITHUB_PATH
+
+      - name: Regenerate Swagger code
+        run: |
+          bin/update-swagger-doc.sh
+          bin/regenerate.sh
+
+      - name: Commit changes
+        run: |
+          today=$(date -u +'%Y-%m-%d')
+
+          set -x
+          git checkout -b "${today}"
+          git config --global user.email "noreply@firehydrant.com"
+          git config --global user.name "FireHydrant Bot"
+          git add .
+          git commit -m "Regenerate Swagger code ${today}"
+          git push -u origin "${today}"
+          gh pr create \
+            --title "Regenerate Swagger code ${today}" \
+            --body "Regenerate Swagger code ${today}" \
+            --base main \
+            --head "${today}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
