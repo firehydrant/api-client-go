@@ -7,9 +7,12 @@ package metrics
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1MetricsInfraTypeReader is a Reader for the GetV1MetricsInfraType structure.
@@ -39,9 +42,10 @@ func NewGetV1MetricsInfraTypeOK() *GetV1MetricsInfraTypeOK {
 /*
 GetV1MetricsInfraTypeOK describes a response with status code 200, with default header values.
 
-get Metric(s)
+Returns metrics for all components of a given type
 */
 type GetV1MetricsInfraTypeOK struct {
+	Payload *models.MetricsSingleMetricsEntity
 }
 
 // IsSuccess returns true when this get v1 metrics infra type o k response has a 2xx status code
@@ -70,14 +74,25 @@ func (o *GetV1MetricsInfraTypeOK) IsCode(code int) bool {
 }
 
 func (o *GetV1MetricsInfraTypeOK) Error() string {
-	return fmt.Sprintf("[GET /v1/metrics/{infra_type}][%d] getV1MetricsInfraTypeOK ", 200)
+	return fmt.Sprintf("[GET /v1/metrics/{infra_type}][%d] getV1MetricsInfraTypeOK  %+v", 200, o.Payload)
 }
 
 func (o *GetV1MetricsInfraTypeOK) String() string {
-	return fmt.Sprintf("[GET /v1/metrics/{infra_type}][%d] getV1MetricsInfraTypeOK ", 200)
+	return fmt.Sprintf("[GET /v1/metrics/{infra_type}][%d] getV1MetricsInfraTypeOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1MetricsInfraTypeOK) GetPayload() *models.MetricsSingleMetricsEntity {
+	return o.Payload
 }
 
 func (o *GetV1MetricsInfraTypeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.MetricsSingleMetricsEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
