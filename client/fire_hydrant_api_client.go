@@ -10,6 +10,7 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
+	"github.com/firehydrant/api-client-go/client/ai"
 	"github.com/firehydrant/api-client-go/client/alerts"
 	"github.com/firehydrant/api-client-go/client/bootstrap"
 	"github.com/firehydrant/api-client-go/client/catalogs"
@@ -99,6 +100,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 
 	cli := new(FireHydrantAPI)
 	cli.Transport = transport
+	cli.Ai = ai.New(transport, formats)
 	cli.Alerts = alerts.New(transport, formats)
 	cli.Bootstrap = bootstrap.New(transport, formats)
 	cli.Catalogs = catalogs.New(transport, formats)
@@ -188,6 +190,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 
 // FireHydrantAPI is a client for fire hydrant API
 type FireHydrantAPI struct {
+	Ai ai.ClientService
+
 	Alerts alerts.ClientService
 
 	Bootstrap bootstrap.ClientService
@@ -284,6 +288,7 @@ type FireHydrantAPI struct {
 // SetTransport changes the transport on the client and all its subresources
 func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
+	c.Ai.SetTransport(transport)
 	c.Alerts.SetTransport(transport)
 	c.Bootstrap.SetTransport(transport)
 	c.Catalogs.SetTransport(transport)

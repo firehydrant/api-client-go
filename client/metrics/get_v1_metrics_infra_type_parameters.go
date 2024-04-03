@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1MetricsInfraTypeParams creates a new GetV1MetricsInfraTypeParams object,
@@ -71,9 +70,7 @@ type GetV1MetricsInfraTypeParams struct {
 	EndDate *strfmt.Date
 
 	// InfraType.
-	//
-	// Format: int32
-	InfraType int32
+	InfraType string
 
 	/* StartDate.
 
@@ -148,13 +145,13 @@ func (o *GetV1MetricsInfraTypeParams) SetEndDate(endDate *strfmt.Date) {
 }
 
 // WithInfraType adds the infraType to the get v1 metrics infra type params
-func (o *GetV1MetricsInfraTypeParams) WithInfraType(infraType int32) *GetV1MetricsInfraTypeParams {
+func (o *GetV1MetricsInfraTypeParams) WithInfraType(infraType string) *GetV1MetricsInfraTypeParams {
 	o.SetInfraType(infraType)
 	return o
 }
 
 // SetInfraType adds the infraType to the get v1 metrics infra type params
-func (o *GetV1MetricsInfraTypeParams) SetInfraType(infraType int32) {
+func (o *GetV1MetricsInfraTypeParams) SetInfraType(infraType string) {
 	o.InfraType = infraType
 }
 
@@ -195,7 +192,7 @@ func (o *GetV1MetricsInfraTypeParams) WriteToRequest(r runtime.ClientRequest, re
 	}
 
 	// path param infra_type
-	if err := r.SetPathParam("infra_type", swag.FormatInt32(o.InfraType)); err != nil {
+	if err := r.SetPathParam("infra_type", o.InfraType); err != nil {
 		return err
 	}
 

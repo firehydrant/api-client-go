@@ -50,6 +50,8 @@ type ClientService interface {
 
 	DeleteV1IncidentsIncidentIDTeamAssignmentsTeamAssignmentID(params *DeleteV1IncidentsIncidentIDTeamAssignmentsTeamAssignmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDTeamAssignmentsTeamAssignmentIDNoContent, error)
 
+	DeleteV1IncidentsIncidentIDTranscriptTranscriptID(params *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent, error)
+
 	GetV1Incidents(params *GetV1IncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsOK, error)
 
 	GetV1IncidentsIncidentID(params *GetV1IncidentsIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDOK, error)
@@ -81,6 +83,8 @@ type ClientService interface {
 	GetV1IncidentsIncidentIDTasks(params *GetV1IncidentsIncidentIDTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTasksOK, error)
 
 	GetV1IncidentsIncidentIDTasksTaskID(params *GetV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTasksTaskIDOK, error)
+
+	GetV1IncidentsIncidentIDTranscript(params *GetV1IncidentsIncidentIDTranscriptParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTranscriptOK, error)
 
 	GetV1IncidentsIncidentIDUsersUserID(params *GetV1IncidentsIncidentIDUsersUserIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDUsersUserIDOK, error)
 
@@ -548,6 +552,45 @@ func (a *Client) DeleteV1IncidentsIncidentIDTeamAssignmentsTeamAssignmentID(para
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentsIncidentIdTeamAssignmentsTeamAssignmentId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteV1IncidentsIncidentIDTranscriptTranscriptID delete v1 incidents incident Id transcript transcript Id API
+*/
+func (a *Client) DeleteV1IncidentsIncidentIDTranscriptTranscriptID(params *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1IncidentsIncidentIDTranscriptTranscriptIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1IncidentsIncidentIdTranscriptTranscriptId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/incidents/{incident_id}/transcript/{transcript_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1IncidentsIncidentIDTranscriptTranscriptIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentsIncidentIdTranscriptTranscriptId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1202,6 +1245,47 @@ func (a *Client) GetV1IncidentsIncidentIDTasksTaskID(params *GetV1IncidentsIncid
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdTasksTaskId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IncidentsIncidentIDTranscript lists all of the messages in the incident s transcript
+
+Retrieve the transcript for a specific incident
+*/
+func (a *Client) GetV1IncidentsIncidentIDTranscript(params *GetV1IncidentsIncidentIDTranscriptParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTranscriptOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IncidentsIncidentIDTranscriptParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IncidentsIncidentIdTranscript",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/transcript",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IncidentsIncidentIDTranscriptReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IncidentsIncidentIDTranscriptOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdTranscript: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

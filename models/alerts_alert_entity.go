@@ -48,6 +48,9 @@ type AlertsAlertEntity struct {
 	// integration name
 	IntegrationName string `json:"integration_name,omitempty"`
 
+	// is expired
+	IsExpired bool `json:"is_expired,omitempty"`
+
 	// Arbitrary key:value pairs of labels.
 	Labels interface{} `json:"labels,omitempty"`
 

@@ -37,6 +37,9 @@ type PostMortemsQuestionEntity struct {
 	// kind
 	Kind string `json:"kind,omitempty"`
 
+	// question type id
+	QuestionTypeID string `json:"question_type_id,omitempty"`
+
 	// title
 	Title string `json:"title,omitempty"`
 
