@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	GetV1SignalsAnalyticsGroupedMetrics(params *GetV1SignalsAnalyticsGroupedMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsGroupedMetricsOK, error)
 
+	GetV1SignalsAnalyticsMttx(params *GetV1SignalsAnalyticsMttxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsMttxOK, error)
+
 	GetV1SignalsAnalyticsTimeseries(params *GetV1SignalsAnalyticsTimeseriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsTimeseriesOK, error)
 
 	GetV1SignalsIngestURL(params *GetV1SignalsIngestURLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsIngestURLOK, error)
@@ -85,6 +87,47 @@ func (a *Client) GetV1SignalsAnalyticsGroupedMetrics(params *GetV1SignalsAnalyti
 }
 
 /*
+GetV1SignalsAnalyticsMttx gets m t t x metrics for signals alerts
+
+Get mean-time-to-acknowledged (MTTA) and mean-time-to-resolved (MTTR) metrics for Signals alerts
+*/
+func (a *Client) GetV1SignalsAnalyticsMttx(params *GetV1SignalsAnalyticsMttxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsMttxOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1SignalsAnalyticsMttxParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1SignalsAnalyticsMttx",
+		Method:             "GET",
+		PathPattern:        "/v1/signals/analytics/mttx",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1SignalsAnalyticsMttxReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1SignalsAnalyticsMttxOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1SignalsAnalyticsMttx: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 GetV1SignalsAnalyticsTimeseries generates timeseries alert metrics
 
 Generate a timeseries-based report of metrics for Signals alerts
@@ -126,7 +169,9 @@ func (a *Client) GetV1SignalsAnalyticsTimeseries(params *GetV1SignalsAnalyticsTi
 }
 
 /*
-GetV1SignalsIngestURL get v1 signals ingest Url API
+GetV1SignalsIngestURL retrieves the url for ingesting signals
+
+Retrieve the url for ingesting signals for your organization
 */
 func (a *Client) GetV1SignalsIngestURL(params *GetV1SignalsIngestURLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsIngestURLOK, error) {
 	// TODO: Validate the params before sending

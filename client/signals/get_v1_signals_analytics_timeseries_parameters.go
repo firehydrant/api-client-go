@@ -75,24 +75,6 @@ type GetV1SignalsAnalyticsTimeseriesParams struct {
 	*/
 	EndDate *strfmt.DateTime
 
-	/* Environments.
-
-	   A comma separated list of environment IDs
-	*/
-	Environments *string
-
-	/* Services.
-
-	   A comma separated list of service IDs
-	*/
-	Services *string
-
-	/* SignalRules.
-
-	   A comma separated list of signal rule IDs
-	*/
-	SignalRules *string
-
 	/* StartDate.
 
 	   The start date to return metrics from
@@ -100,12 +82,6 @@ type GetV1SignalsAnalyticsTimeseriesParams struct {
 	   Format: date-time
 	*/
 	StartDate *strfmt.DateTime
-
-	/* Teams.
-
-	   A comma separated list of team IDs
-	*/
-	Teams *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -182,39 +158,6 @@ func (o *GetV1SignalsAnalyticsTimeseriesParams) SetEndDate(endDate *strfmt.DateT
 	o.EndDate = endDate
 }
 
-// WithEnvironments adds the environments to the get v1 signals analytics timeseries params
-func (o *GetV1SignalsAnalyticsTimeseriesParams) WithEnvironments(environments *string) *GetV1SignalsAnalyticsTimeseriesParams {
-	o.SetEnvironments(environments)
-	return o
-}
-
-// SetEnvironments adds the environments to the get v1 signals analytics timeseries params
-func (o *GetV1SignalsAnalyticsTimeseriesParams) SetEnvironments(environments *string) {
-	o.Environments = environments
-}
-
-// WithServices adds the services to the get v1 signals analytics timeseries params
-func (o *GetV1SignalsAnalyticsTimeseriesParams) WithServices(services *string) *GetV1SignalsAnalyticsTimeseriesParams {
-	o.SetServices(services)
-	return o
-}
-
-// SetServices adds the services to the get v1 signals analytics timeseries params
-func (o *GetV1SignalsAnalyticsTimeseriesParams) SetServices(services *string) {
-	o.Services = services
-}
-
-// WithSignalRules adds the signalRules to the get v1 signals analytics timeseries params
-func (o *GetV1SignalsAnalyticsTimeseriesParams) WithSignalRules(signalRules *string) *GetV1SignalsAnalyticsTimeseriesParams {
-	o.SetSignalRules(signalRules)
-	return o
-}
-
-// SetSignalRules adds the signalRules to the get v1 signals analytics timeseries params
-func (o *GetV1SignalsAnalyticsTimeseriesParams) SetSignalRules(signalRules *string) {
-	o.SignalRules = signalRules
-}
-
 // WithStartDate adds the startDate to the get v1 signals analytics timeseries params
 func (o *GetV1SignalsAnalyticsTimeseriesParams) WithStartDate(startDate *strfmt.DateTime) *GetV1SignalsAnalyticsTimeseriesParams {
 	o.SetStartDate(startDate)
@@ -224,17 +167,6 @@ func (o *GetV1SignalsAnalyticsTimeseriesParams) WithStartDate(startDate *strfmt.
 // SetStartDate adds the startDate to the get v1 signals analytics timeseries params
 func (o *GetV1SignalsAnalyticsTimeseriesParams) SetStartDate(startDate *strfmt.DateTime) {
 	o.StartDate = startDate
-}
-
-// WithTeams adds the teams to the get v1 signals analytics timeseries params
-func (o *GetV1SignalsAnalyticsTimeseriesParams) WithTeams(teams *string) *GetV1SignalsAnalyticsTimeseriesParams {
-	o.SetTeams(teams)
-	return o
-}
-
-// SetTeams adds the teams to the get v1 signals analytics timeseries params
-func (o *GetV1SignalsAnalyticsTimeseriesParams) SetTeams(teams *string) {
-	o.Teams = teams
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -279,57 +211,6 @@ func (o *GetV1SignalsAnalyticsTimeseriesParams) WriteToRequest(r runtime.ClientR
 		}
 	}
 
-	if o.Environments != nil {
-
-		// query param environments
-		var qrEnvironments string
-
-		if o.Environments != nil {
-			qrEnvironments = *o.Environments
-		}
-		qEnvironments := qrEnvironments
-		if qEnvironments != "" {
-
-			if err := r.SetQueryParam("environments", qEnvironments); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.Services != nil {
-
-		// query param services
-		var qrServices string
-
-		if o.Services != nil {
-			qrServices = *o.Services
-		}
-		qServices := qrServices
-		if qServices != "" {
-
-			if err := r.SetQueryParam("services", qServices); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.SignalRules != nil {
-
-		// query param signal_rules
-		var qrSignalRules string
-
-		if o.SignalRules != nil {
-			qrSignalRules = *o.SignalRules
-		}
-		qSignalRules := qrSignalRules
-		if qSignalRules != "" {
-
-			if err := r.SetQueryParam("signal_rules", qSignalRules); err != nil {
-				return err
-			}
-		}
-	}
-
 	if o.StartDate != nil {
 
 		// query param start_date
@@ -342,23 +223,6 @@ func (o *GetV1SignalsAnalyticsTimeseriesParams) WriteToRequest(r runtime.ClientR
 		if qStartDate != "" {
 
 			if err := r.SetQueryParam("start_date", qStartDate); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.Teams != nil {
-
-		// query param teams
-		var qrTeams string
-
-		if o.Teams != nil {
-			qrTeams = *o.Teams
-		}
-		qTeams := qrTeams
-		if qTeams != "" {
-
-			if err := r.SetQueryParam("teams", qTeams); err != nil {
 				return err
 			}
 		}

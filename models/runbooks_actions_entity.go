@@ -22,6 +22,9 @@ type RunbooksActionsEntity struct {
 	// automatable
 	Automatable bool `json:"automatable,omitempty"`
 
+	// category
+	Category string `json:"category,omitempty"`
+
 	// config
 	Config *RunbooksActionConfigEntity `json:"config,omitempty"`
 
@@ -46,6 +49,9 @@ type RunbooksActionsEntity struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// prerequisites
+	Prerequisites interface{} `json:"prerequisites,omitempty"`
 
 	// repeatable
 	Repeatable bool `json:"repeatable,omitempty"`
