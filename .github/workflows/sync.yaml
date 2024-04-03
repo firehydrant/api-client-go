@@ -46,3 +46,5 @@ jobs:
           git commit -m "Regenerate Swagger code ${today}"
           git push -u origin HEAD
           gh pr create --title "Regenerate Swagger code ${today}" --body "Regenerate Swagger code ${today}" --base main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
