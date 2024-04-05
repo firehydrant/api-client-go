@@ -68,6 +68,12 @@ type GetV1AlertsParams struct {
 	*/
 	Environments *string
 
+	/* Functionalities.
+
+	   A comma separated list of functionality IDs
+	*/
+	Functionalities *string
+
 	// Page.
 	//
 	// Format: int32
@@ -89,6 +95,18 @@ type GetV1AlertsParams struct {
 	   A comma separated list of service IDs
 	*/
 	Services *string
+
+	/* SignalRules.
+
+	   A comma separated list of signals rule IDs
+	*/
+	SignalRules *string
+
+	/* Teams.
+
+	   A comma separated list of team IDs
+	*/
+	Teams *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -154,6 +172,17 @@ func (o *GetV1AlertsParams) SetEnvironments(environments *string) {
 	o.Environments = environments
 }
 
+// WithFunctionalities adds the functionalities to the get v1 alerts params
+func (o *GetV1AlertsParams) WithFunctionalities(functionalities *string) *GetV1AlertsParams {
+	o.SetFunctionalities(functionalities)
+	return o
+}
+
+// SetFunctionalities adds the functionalities to the get v1 alerts params
+func (o *GetV1AlertsParams) SetFunctionalities(functionalities *string) {
+	o.Functionalities = functionalities
+}
+
 // WithPage adds the page to the get v1 alerts params
 func (o *GetV1AlertsParams) WithPage(page *int32) *GetV1AlertsParams {
 	o.SetPage(page)
@@ -198,6 +227,28 @@ func (o *GetV1AlertsParams) SetServices(services *string) {
 	o.Services = services
 }
 
+// WithSignalRules adds the signalRules to the get v1 alerts params
+func (o *GetV1AlertsParams) WithSignalRules(signalRules *string) *GetV1AlertsParams {
+	o.SetSignalRules(signalRules)
+	return o
+}
+
+// SetSignalRules adds the signalRules to the get v1 alerts params
+func (o *GetV1AlertsParams) SetSignalRules(signalRules *string) {
+	o.SignalRules = signalRules
+}
+
+// WithTeams adds the teams to the get v1 alerts params
+func (o *GetV1AlertsParams) WithTeams(teams *string) *GetV1AlertsParams {
+	o.SetTeams(teams)
+	return o
+}
+
+// SetTeams adds the teams to the get v1 alerts params
+func (o *GetV1AlertsParams) SetTeams(teams *string) {
+	o.Teams = teams
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1AlertsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -218,6 +269,23 @@ func (o *GetV1AlertsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		if qEnvironments != "" {
 
 			if err := r.SetQueryParam("environments", qEnvironments); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Functionalities != nil {
+
+		// query param functionalities
+		var qrFunctionalities string
+
+		if o.Functionalities != nil {
+			qrFunctionalities = *o.Functionalities
+		}
+		qFunctionalities := qrFunctionalities
+		if qFunctionalities != "" {
+
+			if err := r.SetQueryParam("functionalities", qFunctionalities); err != nil {
 				return err
 			}
 		}
@@ -286,6 +354,40 @@ func (o *GetV1AlertsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		if qServices != "" {
 
 			if err := r.SetQueryParam("services", qServices); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SignalRules != nil {
+
+		// query param signal_rules
+		var qrSignalRules string
+
+		if o.SignalRules != nil {
+			qrSignalRules = *o.SignalRules
+		}
+		qSignalRules := qrSignalRules
+		if qSignalRules != "" {
+
+			if err := r.SetQueryParam("signal_rules", qSignalRules); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Teams != nil {
+
+		// query param teams
+		var qrTeams string
+
+		if o.Teams != nil {
+			qrTeams = *o.Teams
+		}
+		qTeams := qrTeams
+		if qTeams != "" {
+
+			if err := r.SetQueryParam("teams", qTeams); err != nil {
 				return err
 			}
 		}
