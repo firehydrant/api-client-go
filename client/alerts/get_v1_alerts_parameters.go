@@ -102,6 +102,18 @@ type GetV1AlertsParams struct {
 	*/
 	SignalRules *string
 
+	/* TagMatchStrategy.
+
+	   The strategy to match tags. `any` will return alerts that have at least one of the supplied tags, `match_all` will return only alerts that have all of the supplied tags, and `exclude` will only return alerts that have none of the supplied tags
+	*/
+	TagMatchStrategy *string
+
+	/* Tags.
+
+	   A comma separated list of tags
+	*/
+	Tags *string
+
 	/* Teams.
 
 	   A comma separated list of team IDs
@@ -238,6 +250,28 @@ func (o *GetV1AlertsParams) SetSignalRules(signalRules *string) {
 	o.SignalRules = signalRules
 }
 
+// WithTagMatchStrategy adds the tagMatchStrategy to the get v1 alerts params
+func (o *GetV1AlertsParams) WithTagMatchStrategy(tagMatchStrategy *string) *GetV1AlertsParams {
+	o.SetTagMatchStrategy(tagMatchStrategy)
+	return o
+}
+
+// SetTagMatchStrategy adds the tagMatchStrategy to the get v1 alerts params
+func (o *GetV1AlertsParams) SetTagMatchStrategy(tagMatchStrategy *string) {
+	o.TagMatchStrategy = tagMatchStrategy
+}
+
+// WithTags adds the tags to the get v1 alerts params
+func (o *GetV1AlertsParams) WithTags(tags *string) *GetV1AlertsParams {
+	o.SetTags(tags)
+	return o
+}
+
+// SetTags adds the tags to the get v1 alerts params
+func (o *GetV1AlertsParams) SetTags(tags *string) {
+	o.Tags = tags
+}
+
 // WithTeams adds the teams to the get v1 alerts params
 func (o *GetV1AlertsParams) WithTeams(teams *string) *GetV1AlertsParams {
 	o.SetTeams(teams)
@@ -371,6 +405,40 @@ func (o *GetV1AlertsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		if qSignalRules != "" {
 
 			if err := r.SetQueryParam("signal_rules", qSignalRules); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.TagMatchStrategy != nil {
+
+		// query param tag_match_strategy
+		var qrTagMatchStrategy string
+
+		if o.TagMatchStrategy != nil {
+			qrTagMatchStrategy = *o.TagMatchStrategy
+		}
+		qTagMatchStrategy := qrTagMatchStrategy
+		if qTagMatchStrategy != "" {
+
+			if err := r.SetQueryParam("tag_match_strategy", qTagMatchStrategy); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Tags != nil {
+
+		// query param tags
+		var qrTags string
+
+		if o.Tags != nil {
+			qrTags = *o.Tags
+		}
+		qTags := qrTags
+		if qTags != "" {
+
+			if err := r.SetQueryParam("tags", qTags); err != nil {
 				return err
 			}
 		}
