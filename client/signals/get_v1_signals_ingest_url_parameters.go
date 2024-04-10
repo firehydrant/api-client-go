@@ -61,11 +61,29 @@ GetV1SignalsIngestURLParams contains all the parameters to send to the API endpo
 */
 type GetV1SignalsIngestURLParams struct {
 
+	/* EscalationPolicyID.
+
+	   Escalation policy ID to send signals to directly. `team_id` is required if this is provided.
+	*/
+	EscalationPolicyID *string
+
+	/* OnCallScheduleID.
+
+	   On-call schedule ID to send signals to directly. `team_id` is required if this is provided.
+	*/
+	OnCallScheduleID *string
+
 	/* TeamID.
 
 	   Team ID to send signals to directly
 	*/
 	TeamID *string
+
+	/* UserID.
+
+	   User ID to send signals to directly
+	*/
+	UserID *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -120,6 +138,28 @@ func (o *GetV1SignalsIngestURLParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithEscalationPolicyID adds the escalationPolicyID to the get v1 signals ingest Url params
+func (o *GetV1SignalsIngestURLParams) WithEscalationPolicyID(escalationPolicyID *string) *GetV1SignalsIngestURLParams {
+	o.SetEscalationPolicyID(escalationPolicyID)
+	return o
+}
+
+// SetEscalationPolicyID adds the escalationPolicyId to the get v1 signals ingest Url params
+func (o *GetV1SignalsIngestURLParams) SetEscalationPolicyID(escalationPolicyID *string) {
+	o.EscalationPolicyID = escalationPolicyID
+}
+
+// WithOnCallScheduleID adds the onCallScheduleID to the get v1 signals ingest Url params
+func (o *GetV1SignalsIngestURLParams) WithOnCallScheduleID(onCallScheduleID *string) *GetV1SignalsIngestURLParams {
+	o.SetOnCallScheduleID(onCallScheduleID)
+	return o
+}
+
+// SetOnCallScheduleID adds the onCallScheduleId to the get v1 signals ingest Url params
+func (o *GetV1SignalsIngestURLParams) SetOnCallScheduleID(onCallScheduleID *string) {
+	o.OnCallScheduleID = onCallScheduleID
+}
+
 // WithTeamID adds the teamID to the get v1 signals ingest Url params
 func (o *GetV1SignalsIngestURLParams) WithTeamID(teamID *string) *GetV1SignalsIngestURLParams {
 	o.SetTeamID(teamID)
@@ -131,6 +171,17 @@ func (o *GetV1SignalsIngestURLParams) SetTeamID(teamID *string) {
 	o.TeamID = teamID
 }
 
+// WithUserID adds the userID to the get v1 signals ingest Url params
+func (o *GetV1SignalsIngestURLParams) WithUserID(userID *string) *GetV1SignalsIngestURLParams {
+	o.SetUserID(userID)
+	return o
+}
+
+// SetUserID adds the userId to the get v1 signals ingest Url params
+func (o *GetV1SignalsIngestURLParams) SetUserID(userID *string) {
+	o.UserID = userID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *GetV1SignalsIngestURLParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -138,6 +189,40 @@ func (o *GetV1SignalsIngestURLParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
+
+	if o.EscalationPolicyID != nil {
+
+		// query param escalation_policy_id
+		var qrEscalationPolicyID string
+
+		if o.EscalationPolicyID != nil {
+			qrEscalationPolicyID = *o.EscalationPolicyID
+		}
+		qEscalationPolicyID := qrEscalationPolicyID
+		if qEscalationPolicyID != "" {
+
+			if err := r.SetQueryParam("escalation_policy_id", qEscalationPolicyID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.OnCallScheduleID != nil {
+
+		// query param on_call_schedule_id
+		var qrOnCallScheduleID string
+
+		if o.OnCallScheduleID != nil {
+			qrOnCallScheduleID = *o.OnCallScheduleID
+		}
+		qOnCallScheduleID := qrOnCallScheduleID
+		if qOnCallScheduleID != "" {
+
+			if err := r.SetQueryParam("on_call_schedule_id", qOnCallScheduleID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.TeamID != nil {
 
@@ -151,6 +236,23 @@ func (o *GetV1SignalsIngestURLParams) WriteToRequest(r runtime.ClientRequest, re
 		if qTeamID != "" {
 
 			if err := r.SetQueryParam("team_id", qTeamID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.UserID != nil {
+
+		// query param user_id
+		var qrUserID string
+
+		if o.UserID != nil {
+			qrUserID = *o.UserID
+		}
+		qUserID := qrUserID
+		if qUserID != "" {
+
+			if err := r.SetQueryParam("user_id", qUserID); err != nil {
 				return err
 			}
 		}
