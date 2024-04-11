@@ -22,6 +22,7 @@ import (
 	"github.com/firehydrant/api-client-go/client/custom_fields"
 	"github.com/firehydrant/api-client-go/client/entitlements"
 	"github.com/firehydrant/api-client-go/client/environments"
+	"github.com/firehydrant/api-client-go/client/form_configurations"
 	"github.com/firehydrant/api-client-go/client/functionalities"
 	"github.com/firehydrant/api-client-go/client/incident_roles"
 	"github.com/firehydrant/api-client-go/client/incident_tags"
@@ -112,6 +113,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.CustomFields = custom_fields.New(transport, formats)
 	cli.Entitlements = entitlements.New(transport, formats)
 	cli.Environments = environments.New(transport, formats)
+	cli.FormConfigurations = form_configurations.New(transport, formats)
 	cli.Functionalities = functionalities.New(transport, formats)
 	cli.IncidentRoles = incident_roles.New(transport, formats)
 	cli.IncidentTags = incident_tags.New(transport, formats)
@@ -214,6 +216,8 @@ type FireHydrantAPI struct {
 
 	Environments environments.ClientService
 
+	FormConfigurations form_configurations.ClientService
+
 	Functionalities functionalities.ClientService
 
 	IncidentRoles incident_roles.ClientService
@@ -300,6 +304,7 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.CustomFields.SetTransport(transport)
 	c.Entitlements.SetTransport(transport)
 	c.Environments.SetTransport(transport)
+	c.FormConfigurations.SetTransport(transport)
 	c.Functionalities.SetTransport(transport)
 	c.IncidentRoles.SetTransport(transport)
 	c.IncidentTags.SetTransport(transport)
