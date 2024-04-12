@@ -78,6 +78,8 @@ type ClientService interface {
 
 	GetV1IncidentsIncidentIDRoleAssignments(params *GetV1IncidentsIncidentIDRoleAssignmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRoleAssignmentsOK, error)
 
+	GetV1IncidentsIncidentIDSimilar(params *GetV1IncidentsIncidentIDSimilarParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDSimilarOK, error)
+
 	GetV1IncidentsIncidentIDStatusPages(params *GetV1IncidentsIncidentIDStatusPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDStatusPagesOK, error)
 
 	GetV1IncidentsIncidentIDTasks(params *GetV1IncidentsIncidentIDTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTasksOK, error)
@@ -1122,6 +1124,45 @@ func (a *Client) GetV1IncidentsIncidentIDRoleAssignments(params *GetV1IncidentsI
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdRoleAssignments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IncidentsIncidentIDSimilar get v1 incidents incident Id similar API
+*/
+func (a *Client) GetV1IncidentsIncidentIDSimilar(params *GetV1IncidentsIncidentIDSimilarParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDSimilarOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IncidentsIncidentIDSimilarParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IncidentsIncidentIdSimilar",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/similar",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IncidentsIncidentIDSimilarReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IncidentsIncidentIDSimilarOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdSimilar: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
