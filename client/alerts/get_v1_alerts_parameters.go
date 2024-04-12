@@ -64,13 +64,13 @@ type GetV1AlertsParams struct {
 
 	/* Environments.
 
-	   A comma separated list of environment IDs
+	   A comma separated list of environment IDs. This currently only works for Signals alerts.
 	*/
 	Environments *string
 
 	/* Functionalities.
 
-	   A comma separated list of functionality IDs
+	   A comma separated list of functionality IDs. This currently only works for Signals alerts.
 	*/
 	Functionalities *string
 
@@ -92,33 +92,39 @@ type GetV1AlertsParams struct {
 
 	/* Services.
 
-	   A comma separated list of service IDs
+	   A comma separated list of service IDs. This currently only works for Signals alerts.
 	*/
 	Services *string
 
 	/* SignalRules.
 
-	   A comma separated list of signals rule IDs
+	   A comma separated list of signals rule IDs. This currently only works for Signals alerts.
 	*/
 	SignalRules *string
 
 	/* TagMatchStrategy.
 
-	   The strategy to match tags. `any` will return alerts that have at least one of the supplied tags, `match_all` will return only alerts that have all of the supplied tags, and `exclude` will only return alerts that have none of the supplied tags
+	   The strategy to match tags. `any` will return alerts that have at least one of the supplied tags, `match_all` will return only alerts that have all of the supplied tags, and `exclude` will only return alerts that have none of the supplied tags. This currently only works for Signals alerts.
 	*/
 	TagMatchStrategy *string
 
 	/* Tags.
 
-	   A comma separated list of tags
+	   A comma separated list of tags. This currently only works for Signals alerts.
 	*/
 	Tags *string
 
 	/* Teams.
 
-	   A comma separated list of team IDs
+	   A comma separated list of team IDs. This currently only works for Signals alerts.
 	*/
 	Teams *string
+
+	/* Users.
+
+	   A comma separated list of user IDs. This currently only works for Signals alerts.
+	*/
+	Users *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -281,6 +287,17 @@ func (o *GetV1AlertsParams) WithTeams(teams *string) *GetV1AlertsParams {
 // SetTeams adds the teams to the get v1 alerts params
 func (o *GetV1AlertsParams) SetTeams(teams *string) {
 	o.Teams = teams
+}
+
+// WithUsers adds the users to the get v1 alerts params
+func (o *GetV1AlertsParams) WithUsers(users *string) *GetV1AlertsParams {
+	o.SetUsers(users)
+	return o
+}
+
+// SetUsers adds the users to the get v1 alerts params
+func (o *GetV1AlertsParams) SetUsers(users *string) {
+	o.Users = users
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -456,6 +473,23 @@ func (o *GetV1AlertsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		if qTeams != "" {
 
 			if err := r.SetQueryParam("teams", qTeams); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Users != nil {
+
+		// query param users
+		var qrUsers string
+
+		if o.Users != nil {
+			qrUsers = *o.Users
+		}
+		qUsers := qrUsers
+		if qUsers != "" {
+
+			if err := r.SetQueryParam("users", qUsers); err != nil {
 				return err
 			}
 		}
