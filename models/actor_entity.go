@@ -30,7 +30,7 @@ type ActorEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// type
-	// Enum: [firehydrant_user firehydrant_bot alertmanager asana aws bugsnag checkly custom_alerts data_export datadog shortcut new_relic nunc github giphy google_meet microsoft_teams webex jira_cloud jira_onprem opsgenie pager_duty honeycomb patchy service_now signals slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2]
+	// Enum: [firehydrant_user firehydrant_bot alertmanager asana aws bugsnag checkly custom_alerts data_export datadog shortcut new_relic nunc github giphy google_meet microsoft_teams microsoft_teams_v2 webex jira_cloud jira_onprem opsgenie pager_duty honeycomb patchy service_now signals slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2]
 	Type string `json:"type,omitempty"`
 }
 
@@ -52,7 +52,7 @@ var actorEntityTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","alertmanager","asana","aws","bugsnag","checkly","custom_alerts","data_export","datadog","shortcut","new_relic","nunc","github","giphy","google_meet","microsoft_teams","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","honeycomb","patchy","service_now","signals","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","alertmanager","asana","aws","bugsnag","checkly","custom_alerts","data_export","datadog","shortcut","new_relic","nunc","github","giphy","google_meet","microsoft_teams","microsoft_teams_v2","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","honeycomb","patchy","service_now","signals","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -112,6 +112,9 @@ const (
 
 	// ActorEntityTypeMicrosoftTeams captures enum value "microsoft_teams"
 	ActorEntityTypeMicrosoftTeams string = "microsoft_teams"
+
+	// ActorEntityTypeMicrosoftTeamsV2 captures enum value "microsoft_teams_v2"
+	ActorEntityTypeMicrosoftTeamsV2 string = "microsoft_teams_v2"
 
 	// ActorEntityTypeWebex captures enum value "webex"
 	ActorEntityTypeWebex string = "webex"
