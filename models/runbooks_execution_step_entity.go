@@ -52,6 +52,9 @@ type RunbooksExecutionStepEntity struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// repeatable
+	Repeatable bool `json:"repeatable,omitempty"`
+
 	// repeats
 	Repeats bool `json:"repeats,omitempty"`
 
