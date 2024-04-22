@@ -30,11 +30,56 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	GetV1AiPreferences(params *GetV1AiPreferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AiPreferencesOK, error)
+
 	GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoted(params *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedOK, error)
+
+	PatchV1AiPreferences(params *PatchV1AiPreferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1AiPreferencesOK, error)
 
 	PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVote(params *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+GetV1AiPreferences preferences
+
+Retrieves the current AI preferences
+*/
+func (a *Client) GetV1AiPreferences(params *GetV1AiPreferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AiPreferencesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1AiPreferencesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1AiPreferences",
+		Method:             "GET",
+		PathPattern:        "/v1/ai/preferences",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1AiPreferencesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1AiPreferencesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1AiPreferences: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -73,6 +118,47 @@ func (a *Client) GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoted(param
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1AiSummarizeIncidentIncidentIdGeneratedSummaryIdVoted: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1AiPreferences updates preferences
+
+Updates the AI preferences
+*/
+func (a *Client) PatchV1AiPreferences(params *PatchV1AiPreferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1AiPreferencesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1AiPreferencesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1AiPreferences",
+		Method:             "PATCH",
+		PathPattern:        "/v1/ai/preferences",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1AiPreferencesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1AiPreferencesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1AiPreferences: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
