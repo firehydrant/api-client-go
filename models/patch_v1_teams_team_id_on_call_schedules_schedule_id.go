@@ -42,6 +42,9 @@ type PatchV1TeamsTeamIDOnCallSchedulesScheduleID struct {
 	// A list of objects that restrict the schedule to speccific on-call periods.
 	Restrictions []*PatchV1TeamsTeamIDOnCallSchedulesScheduleIDRestrictionsItems0 `json:"restrictions"`
 
+	// The ID of a Slack user group for syncing purposes. If provided, we will automatically sync whoever is on call to the user group in Slack.
+	SlackUserGroupID string `json:"slack_user_group_id,omitempty"`
+
 	// strategy
 	Strategy *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDStrategy `json:"strategy,omitempty"`
 

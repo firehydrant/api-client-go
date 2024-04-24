@@ -37,6 +37,9 @@ type PostV1TeamsTeamIDOnCallSchedules struct {
 	// A list of objects that restrict the schedule to speccific on-call periods.
 	Restrictions []*PostV1TeamsTeamIDOnCallSchedulesRestrictionsItems0 `json:"restrictions"`
 
+	// The ID of a Slack user group for syncing purposes. If provided, we will automatically sync whoever is on call to the user group in Slack.
+	SlackUserGroupID string `json:"slack_user_group_id,omitempty"`
+
 	// An ISO8601 time string specifying when the schedule's first shift should start. This value is only used if the schedule's strategy is "custom".
 	StartTime string `json:"start_time,omitempty"`
 
