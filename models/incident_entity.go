@@ -24,6 +24,9 @@ type IncidentEntity struct {
 	// active
 	Active bool `json:"active,omitempty"`
 
+	// ai incident summary
+	AiIncidentSummary string `json:"ai_incident_summary,omitempty"`
+
 	// channel id
 	ChannelID string `json:"channel_id,omitempty"`
 

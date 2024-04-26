@@ -517,7 +517,7 @@ func (a *Client) PostV1NuncConnections(params *PostV1NuncConnectionsParams, auth
 }
 
 /*
-PostV1NuncConnectionsNuncConnectionIDComponentGroups updates a component group to be displayed on a fire hydrant status page
+PostV1NuncConnectionsNuncConnectionIDComponentGroups adds a component group to be displayed on a fire hydrant status page
 
 Add a component group to be displayed on a FireHydrant status page
 */
