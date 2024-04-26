@@ -76,6 +76,8 @@ type ClientService interface {
 
 	GetV1IncidentsIncidentIDRelatedChangeEvents(params *GetV1IncidentsIncidentIDRelatedChangeEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRelatedChangeEventsOK, error)
 
+	GetV1IncidentsIncidentIDRelationships(params *GetV1IncidentsIncidentIDRelationshipsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRelationshipsOK, error)
+
 	GetV1IncidentsIncidentIDRoleAssignments(params *GetV1IncidentsIncidentIDRoleAssignmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRoleAssignmentsOK, error)
 
 	GetV1IncidentsIncidentIDSimilar(params *GetV1IncidentsIncidentIDSimilarParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDSimilarOK, error)
@@ -1083,6 +1085,47 @@ func (a *Client) GetV1IncidentsIncidentIDRelatedChangeEvents(params *GetV1Incide
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdRelatedChangeEvents: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IncidentsIncidentIDRelationships lists any parent child relationships for an incident
+
+List any parent/child relationships for an incident
+*/
+func (a *Client) GetV1IncidentsIncidentIDRelationships(params *GetV1IncidentsIncidentIDRelationshipsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRelationshipsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IncidentsIncidentIDRelationshipsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IncidentsIncidentIdRelationships",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/relationships",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IncidentsIncidentIDRelationshipsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IncidentsIncidentIDRelationshipsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdRelationships: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
