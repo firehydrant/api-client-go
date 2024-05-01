@@ -37,6 +37,9 @@ type RunbooksExecutionStepEntity struct {
 	// execution
 	Execution *RunbooksExecutionStepExecutionEntity `json:"execution,omitempty"`
 
+	// has been rerun
+	HasBeenRerun bool `json:"has_been_rerun,omitempty"`
+
 	// has been retried
 	HasBeenRetried bool `json:"has_been_retried,omitempty"`
 

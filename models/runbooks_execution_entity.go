@@ -32,6 +32,9 @@ type RunbooksExecutionEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
+	// is closed
+	IsClosed bool `json:"is_closed,omitempty"`
+
 	// runbook
 	Runbook *SlimRunbookEntity `json:"runbook,omitempty"`
 
