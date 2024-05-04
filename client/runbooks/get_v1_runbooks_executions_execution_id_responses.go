@@ -7,9 +7,12 @@ package runbooks
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1RunbooksExecutionsExecutionIDReader is a Reader for the GetV1RunbooksExecutionsExecutionID structure.
@@ -39,9 +42,10 @@ func NewGetV1RunbooksExecutionsExecutionIDOK() *GetV1RunbooksExecutionsExecution
 /*
 GetV1RunbooksExecutionsExecutionIDOK describes a response with status code 200, with default header values.
 
-get Execution(s)
+Retrieve a runbook execution by ID
 */
 type GetV1RunbooksExecutionsExecutionIDOK struct {
+	Payload *models.RunbooksExecutionEntity
 }
 
 // IsSuccess returns true when this get v1 runbooks executions execution Id o k response has a 2xx status code
@@ -70,14 +74,25 @@ func (o *GetV1RunbooksExecutionsExecutionIDOK) IsCode(code int) bool {
 }
 
 func (o *GetV1RunbooksExecutionsExecutionIDOK) Error() string {
-	return fmt.Sprintf("[GET /v1/runbooks/executions/{execution_id}][%d] getV1RunbooksExecutionsExecutionIdOK ", 200)
+	return fmt.Sprintf("[GET /v1/runbooks/executions/{execution_id}][%d] getV1RunbooksExecutionsExecutionIdOK  %+v", 200, o.Payload)
 }
 
 func (o *GetV1RunbooksExecutionsExecutionIDOK) String() string {
-	return fmt.Sprintf("[GET /v1/runbooks/executions/{execution_id}][%d] getV1RunbooksExecutionsExecutionIdOK ", 200)
+	return fmt.Sprintf("[GET /v1/runbooks/executions/{execution_id}][%d] getV1RunbooksExecutionsExecutionIdOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1RunbooksExecutionsExecutionIDOK) GetPayload() *models.RunbooksExecutionEntity {
+	return o.Payload
 }
 
 func (o *GetV1RunbooksExecutionsExecutionIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.RunbooksExecutionEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
