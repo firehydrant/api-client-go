@@ -38,6 +38,12 @@ type RunbooksExecutionEntity struct {
 	// status
 	Status string `json:"status,omitempty"`
 
+	// status reason
+	StatusReason string `json:"status_reason,omitempty"`
+
+	// status reason message
+	StatusReasonMessage string `json:"status_reason_message,omitempty"`
+
 	// steps
 	Steps *RunbooksExecutionStepEntity `json:"steps,omitempty"`
 

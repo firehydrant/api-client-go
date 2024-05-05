@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1RunbooksExecutionsExecutionIDParams creates a new DeleteV1RunbooksExecutionsExecutionIDParams object,
@@ -61,11 +62,16 @@ DeleteV1RunbooksExecutionsExecutionIDParams contains all the parameters to send 
 */
 type DeleteV1RunbooksExecutionsExecutionIDParams struct {
 
-	/* ExecutionID.
+	// ExecutionID.
+	//
+	// Format: int32
+	ExecutionID int32
 
-	   ID of a Runbook execution
+	/* Reason.
+
+	   The reason for terminating the runbook execution
 	*/
-	ExecutionID string
+	Reason string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,14 +127,25 @@ func (o *DeleteV1RunbooksExecutionsExecutionIDParams) SetHTTPClient(client *http
 }
 
 // WithExecutionID adds the executionID to the delete v1 runbooks executions execution Id params
-func (o *DeleteV1RunbooksExecutionsExecutionIDParams) WithExecutionID(executionID string) *DeleteV1RunbooksExecutionsExecutionIDParams {
+func (o *DeleteV1RunbooksExecutionsExecutionIDParams) WithExecutionID(executionID int32) *DeleteV1RunbooksExecutionsExecutionIDParams {
 	o.SetExecutionID(executionID)
 	return o
 }
 
 // SetExecutionID adds the executionId to the delete v1 runbooks executions execution Id params
-func (o *DeleteV1RunbooksExecutionsExecutionIDParams) SetExecutionID(executionID string) {
+func (o *DeleteV1RunbooksExecutionsExecutionIDParams) SetExecutionID(executionID int32) {
 	o.ExecutionID = executionID
+}
+
+// WithReason adds the reason to the delete v1 runbooks executions execution Id params
+func (o *DeleteV1RunbooksExecutionsExecutionIDParams) WithReason(reason string) *DeleteV1RunbooksExecutionsExecutionIDParams {
+	o.SetReason(reason)
+	return o
+}
+
+// SetReason adds the reason to the delete v1 runbooks executions execution Id params
+func (o *DeleteV1RunbooksExecutionsExecutionIDParams) SetReason(reason string) {
+	o.Reason = reason
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -140,8 +157,18 @@ func (o *DeleteV1RunbooksExecutionsExecutionIDParams) WriteToRequest(r runtime.C
 	var res []error
 
 	// path param execution_id
-	if err := r.SetPathParam("execution_id", o.ExecutionID); err != nil {
+	if err := r.SetPathParam("execution_id", swag.FormatInt32(o.ExecutionID)); err != nil {
 		return err
+	}
+
+	// query param reason
+	qrReason := o.Reason
+	qReason := qrReason
+	if qReason != "" {
+
+		if err := r.SetQueryParam("reason", qReason); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

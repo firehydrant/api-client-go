@@ -70,9 +70,9 @@ type ClientService interface {
 }
 
 /*
-DeleteV1RunbooksExecutionsExecutionID deletes a runbook execution
+DeleteV1RunbooksExecutionsExecutionID terminates a runbook execution
 
-Deletes a runbook execution. Must be done before the execution has started.
+Terminates a runbook execution, preventing any further steps from being executed
 */
 func (a *Client) DeleteV1RunbooksExecutionsExecutionID(params *DeleteV1RunbooksExecutionsExecutionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1RunbooksExecutionsExecutionIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -275,7 +275,9 @@ func (a *Client) GetV1RunbooksExecutions(params *GetV1RunbooksExecutionsParams, 
 }
 
 /*
-GetV1RunbooksExecutionsExecutionID get v1 runbooks executions execution Id API
+GetV1RunbooksExecutionsExecutionID retrieves a runbook execution
+
+Retrieve a runbook execution by ID
 */
 func (a *Client) GetV1RunbooksExecutionsExecutionID(params *GetV1RunbooksExecutionsExecutionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDOK, error) {
 	// TODO: Validate the params before sending

@@ -39,7 +39,7 @@ func NewDeleteV1RunbooksExecutionsExecutionIDNoContent() *DeleteV1RunbooksExecut
 /*
 DeleteV1RunbooksExecutionsExecutionIDNoContent describes a response with status code 204, with default header values.
 
-Deletes a runbook execution. Must be done before the execution has started.
+Terminates a runbook execution, preventing any further steps from being executed
 */
 type DeleteV1RunbooksExecutionsExecutionIDNoContent struct {
 }
