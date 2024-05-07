@@ -58,6 +58,8 @@ type ClientService interface {
 
 	GetV1IntegrationsMicrosoftTeamsV2Channels(params *GetV1IntegrationsMicrosoftTeamsV2ChannelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsMicrosoftTeamsV2ChannelsOK, error)
 
+	GetV1IntegrationsMicrosoftTeamsV2OnCall(params *GetV1IntegrationsMicrosoftTeamsV2OnCallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsMicrosoftTeamsV2OnCallOK, error)
+
 	GetV1IntegrationsSlackConnectionsConnectionIDWorkspaces(params *GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesOK, error)
 
 	GetV1IntegrationsSlackUsergroups(params *GetV1IntegrationsSlackUsergroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackUsergroupsOK, error)
@@ -650,6 +652,45 @@ func (a *Client) GetV1IntegrationsMicrosoftTeamsV2Channels(params *GetV1Integrat
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsMicrosoftTeamsV2Channels: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IntegrationsMicrosoftTeamsV2OnCall get v1 integrations microsoft teams v2 on call API
+*/
+func (a *Client) GetV1IntegrationsMicrosoftTeamsV2OnCall(params *GetV1IntegrationsMicrosoftTeamsV2OnCallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsMicrosoftTeamsV2OnCallOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IntegrationsMicrosoftTeamsV2OnCallParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IntegrationsMicrosoftTeamsV2OnCall",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/microsoft_teams_v2/on_call",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IntegrationsMicrosoftTeamsV2OnCallReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IntegrationsMicrosoftTeamsV2OnCallOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsMicrosoftTeamsV2OnCall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

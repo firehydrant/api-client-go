@@ -45,7 +45,7 @@ GetV1MetricsInfraTypeOK describes a response with status code 200, with default 
 Returns metrics for all components of a given type
 */
 type GetV1MetricsInfraTypeOK struct {
-	Payload *models.MetricsSingleMetricsEntity
+	Payload *models.MetricsInfrastructureListEntity
 }
 
 // IsSuccess returns true when this get v1 metrics infra type o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1MetricsInfraTypeOK) String() string {
 	return fmt.Sprintf("[GET /v1/metrics/{infra_type}][%d] getV1MetricsInfraTypeOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1MetricsInfraTypeOK) GetPayload() *models.MetricsSingleMetricsEntity {
+func (o *GetV1MetricsInfraTypeOK) GetPayload() *models.MetricsInfrastructureListEntity {
 	return o.Payload
 }
 
 func (o *GetV1MetricsInfraTypeOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.MetricsSingleMetricsEntity)
+	o.Payload = new(models.MetricsInfrastructureListEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
