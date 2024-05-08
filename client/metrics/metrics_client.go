@@ -36,6 +36,8 @@ type ClientService interface {
 
 	GetV1MetricsInfraTypeInfraID(params *GetV1MetricsInfraTypeInfraIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsInfraTypeInfraIDOK, error)
 
+	GetV1MetricsMttx(params *GetV1MetricsMttxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsMttxOK, error)
+
 	GetV1MetricsRetrospectives(params *GetV1MetricsRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsRetrospectivesOK, error)
 
 	GetV1MetricsUserInvolvements(params *GetV1MetricsUserInvolvementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsUserInvolvementsOK, error)
@@ -163,6 +165,45 @@ func (a *Client) GetV1MetricsInfraTypeInfraID(params *GetV1MetricsInfraTypeInfra
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1MetricsInfraTypeInfraId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1MetricsMttx Fetch infrastructure metrics based on custom query
+*/
+func (a *Client) GetV1MetricsMttx(params *GetV1MetricsMttxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsMttxOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1MetricsMttxParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1MetricsMttx",
+		Method:             "GET",
+		PathPattern:        "/v1/metrics/mttx",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1MetricsMttxReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1MetricsMttxOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1MetricsMttx: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
