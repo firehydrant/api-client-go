@@ -22,6 +22,9 @@ type PostV1TicketingTickets struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// priority id
+	PriorityID string `json:"priority_id,omitempty"`
+
 	// project id
 	ProjectID string `json:"project_id,omitempty"`
 

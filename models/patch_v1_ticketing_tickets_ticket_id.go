@@ -20,6 +20,9 @@ type PatchV1TicketingTicketsTicketID struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// priority id
+	PriorityID string `json:"priority_id,omitempty"`
+
 	// state
 	State string `json:"state,omitempty"`
 

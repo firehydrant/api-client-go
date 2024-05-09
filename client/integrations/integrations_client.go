@@ -88,6 +88,8 @@ type ClientService interface {
 
 	PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsConnectionsSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsConnectionsSlugCreated, error)
 
+	PostV1IntegrationsMicrosoftTeamsV2Author(params *PostV1IntegrationsMicrosoftTeamsV2AuthorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsMicrosoftTeamsV2AuthorCreated, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -1249,6 +1251,45 @@ func (a *Client) PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsCon
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for postV1IntegrationsConnectionsSlug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1IntegrationsMicrosoftTeamsV2Author post v1 integrations microsoft teams v2 author API
+*/
+func (a *Client) PostV1IntegrationsMicrosoftTeamsV2Author(params *PostV1IntegrationsMicrosoftTeamsV2AuthorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsMicrosoftTeamsV2AuthorCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1IntegrationsMicrosoftTeamsV2AuthorParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1IntegrationsMicrosoftTeamsV2Author",
+		Method:             "POST",
+		PathPattern:        "/v1/integrations/microsoft_teams_v2/author",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1IntegrationsMicrosoftTeamsV2AuthorReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1IntegrationsMicrosoftTeamsV2AuthorCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1IntegrationsMicrosoftTeamsV2Author: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
