@@ -27,6 +27,9 @@ type PostV1Severities struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// position
+	Position int32 `json:"position,omitempty"`
+
 	// slug
 	// Required: true
 	Slug *string `json:"slug"`
