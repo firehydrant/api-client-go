@@ -56,9 +56,7 @@ type ClientService interface {
 
 	GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegrationIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsIntegrationIDOK, error)
 
-	GetV1IntegrationsMicrosoftTeamsV2Channels(params *GetV1IntegrationsMicrosoftTeamsV2ChannelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsMicrosoftTeamsV2ChannelsOK, error)
-
-	GetV1IntegrationsMicrosoftTeamsV2OnCall(params *GetV1IntegrationsMicrosoftTeamsV2OnCallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsMicrosoftTeamsV2OnCallOK, error)
+	GetV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesStatus(params *GetV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesStatusOK, error)
 
 	GetV1IntegrationsSlackConnectionsConnectionIDWorkspaces(params *GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesOK, error)
 
@@ -83,6 +81,8 @@ type ClientService interface {
 	PatchV1IntegrationsConnectionsSlugConnectionIDRefresh(params *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK, error)
 
 	PatchV1IntegrationsFieldMapsFieldMapID(params *PatchV1IntegrationsFieldMapsFieldMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsFieldMapsFieldMapIDOK, error)
+
+	PatchV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotes(params *PatchV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesOK, error)
 
 	PatchV1IntegrationsStatuspageConnectionsConnectionID(params *PatchV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsStatuspageConnectionsConnectionIDOK, error)
 
@@ -617,22 +617,24 @@ func (a *Client) GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegra
 }
 
 /*
-GetV1IntegrationsMicrosoftTeamsV2Channels get v1 integrations microsoft teams v2 channels API
+GetV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesStatus returns the current vote counts for an object
+
+Returns the current vote counts for an object
 */
-func (a *Client) GetV1IntegrationsMicrosoftTeamsV2Channels(params *GetV1IntegrationsMicrosoftTeamsV2ChannelsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsMicrosoftTeamsV2ChannelsOK, error) {
+func (a *Client) GetV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesStatus(params *GetV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesStatusOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1IntegrationsMicrosoftTeamsV2ChannelsParams()
+		params = NewGetV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesStatusParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsMicrosoftTeamsV2Channels",
+		ID:                 "getV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIdMessagesMessageIdVotesStatus",
 		Method:             "GET",
-		PathPattern:        "/v1/integrations/microsoft_teams_v2/channels",
+		PathPattern:        "/v1/integrations/microsoft_teams_v2/channels/{ms_channel_id}/messages/{message_id}/votes/status",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1IntegrationsMicrosoftTeamsV2ChannelsReader{formats: a.formats},
+		Reader:             &GetV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesStatusReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -645,52 +647,13 @@ func (a *Client) GetV1IntegrationsMicrosoftTeamsV2Channels(params *GetV1Integrat
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1IntegrationsMicrosoftTeamsV2ChannelsOK)
+	success, ok := result.(*GetV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesStatusOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsMicrosoftTeamsV2Channels: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsMicrosoftTeamsV2OnCall get v1 integrations microsoft teams v2 on call API
-*/
-func (a *Client) GetV1IntegrationsMicrosoftTeamsV2OnCall(params *GetV1IntegrationsMicrosoftTeamsV2OnCallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsMicrosoftTeamsV2OnCallOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsMicrosoftTeamsV2OnCallParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsMicrosoftTeamsV2OnCall",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/microsoft_teams_v2/on_call",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsMicrosoftTeamsV2OnCallReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsMicrosoftTeamsV2OnCallOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsMicrosoftTeamsV2OnCall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIdMessagesMessageIdVotesStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1169,6 +1132,47 @@ func (a *Client) PatchV1IntegrationsFieldMapsFieldMapID(params *PatchV1Integrati
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsFieldMapsFieldMapId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotes updates the votes on an object
+
+Allows for upvoting or downvoting an event
+*/
+func (a *Client) PatchV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotes(params *PatchV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIdMessagesMessageIdVotes",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/microsoft_teams_v2/channels/{ms_channel_id}/messages/{message_id}/votes",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIDMessagesMessageIDVotesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsMicrosoftTeamsV2ChannelsMsChannelIdMessagesMessageIdVotes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
