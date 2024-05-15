@@ -29,6 +29,9 @@ type RunbooksExecutionEntity struct {
 	// executed for
 	ExecutedFor *RunbooksExecutionEntityExecutedForEntity `json:"executed_for,omitempty"`
 
+	// has been rerun
+	HasBeenRerun bool `json:"has_been_rerun,omitempty"`
+
 	// id
 	ID string `json:"id,omitempty"`
 

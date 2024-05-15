@@ -7,9 +7,12 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PatchV1SeveritiesSeveritySlug Update a specific severity
@@ -17,8 +20,15 @@ import (
 // swagger:model patchV1SeveritiesSeveritySlug
 type PatchV1SeveritiesSeveritySlug struct {
 
+	// color
+	// Enum: [red orange yellow blue teal grey]
+	Color string `json:"color,omitempty"`
+
 	// description
 	Description string `json:"description,omitempty"`
+
+	// position
+	Position int32 `json:"position,omitempty"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`
@@ -26,6 +36,69 @@ type PatchV1SeveritiesSeveritySlug struct {
 
 // Validate validates this patch v1 severities severity slug
 func (m *PatchV1SeveritiesSeveritySlug) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateColor(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+var patchV1SeveritiesSeveritySlugTypeColorPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["red","orange","yellow","blue","teal","grey"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		patchV1SeveritiesSeveritySlugTypeColorPropEnum = append(patchV1SeveritiesSeveritySlugTypeColorPropEnum, v)
+	}
+}
+
+const (
+
+	// PatchV1SeveritiesSeveritySlugColorRed captures enum value "red"
+	PatchV1SeveritiesSeveritySlugColorRed string = "red"
+
+	// PatchV1SeveritiesSeveritySlugColorOrange captures enum value "orange"
+	PatchV1SeveritiesSeveritySlugColorOrange string = "orange"
+
+	// PatchV1SeveritiesSeveritySlugColorYellow captures enum value "yellow"
+	PatchV1SeveritiesSeveritySlugColorYellow string = "yellow"
+
+	// PatchV1SeveritiesSeveritySlugColorBlue captures enum value "blue"
+	PatchV1SeveritiesSeveritySlugColorBlue string = "blue"
+
+	// PatchV1SeveritiesSeveritySlugColorTeal captures enum value "teal"
+	PatchV1SeveritiesSeveritySlugColorTeal string = "teal"
+
+	// PatchV1SeveritiesSeveritySlugColorGrey captures enum value "grey"
+	PatchV1SeveritiesSeveritySlugColorGrey string = "grey"
+)
+
+// prop value enum
+func (m *PatchV1SeveritiesSeveritySlug) validateColorEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, patchV1SeveritiesSeveritySlugTypeColorPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PatchV1SeveritiesSeveritySlug) validateColor(formats strfmt.Registry) error {
+	if swag.IsZero(m.Color) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateColorEnum("color", "body", m.Color); err != nil {
+		return err
+	}
+
 	return nil
 }
 
