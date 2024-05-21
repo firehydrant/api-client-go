@@ -30,7 +30,7 @@ type ActorEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// type
-	// Enum: [firehydrant_user firehydrant_bot alertmanager asana aws bugsnag checkly custom_alerts data_export datadog shortcut new_relic nunc github giphy google_meet microsoft_teams microsoft_teams_v2 webex jira_cloud jira_onprem opsgenie pager_duty honeycomb patchy service_now signals slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2 linear]
+	// Enum: [firehydrant_user firehydrant_bot alertmanager asana aws bugsnag checkly custom_alerts data_export datadog shortcut new_relic nunc github giphy google_meet google_calendar microsoft_teams microsoft_teams_v2 webex jira_cloud jira_onprem opsgenie pager_duty honeycomb patchy service_now signals slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2 linear]
 	Type string `json:"type,omitempty"`
 }
 
@@ -52,7 +52,7 @@ var actorEntityTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","alertmanager","asana","aws","bugsnag","checkly","custom_alerts","data_export","datadog","shortcut","new_relic","nunc","github","giphy","google_meet","microsoft_teams","microsoft_teams_v2","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","honeycomb","patchy","service_now","signals","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2","linear"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","alertmanager","asana","aws","bugsnag","checkly","custom_alerts","data_export","datadog","shortcut","new_relic","nunc","github","giphy","google_meet","google_calendar","microsoft_teams","microsoft_teams_v2","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","honeycomb","patchy","service_now","signals","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2","linear"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -109,6 +109,9 @@ const (
 
 	// ActorEntityTypeGoogleMeet captures enum value "google_meet"
 	ActorEntityTypeGoogleMeet string = "google_meet"
+
+	// ActorEntityTypeGoogleCalendar captures enum value "google_calendar"
+	ActorEntityTypeGoogleCalendar string = "google_calendar"
 
 	// ActorEntityTypeMicrosoftTeams captures enum value "microsoft_teams"
 	ActorEntityTypeMicrosoftTeams string = "microsoft_teams"

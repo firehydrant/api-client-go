@@ -50,6 +50,9 @@ type PutV1RunbooksRunbookID struct {
 
 	// summary
 	Summary string `json:"summary,omitempty"`
+
+	// Whether or not this runbook is a tutorial runbook
+	Tutorial bool `json:"tutorial,omitempty"`
 }
 
 // Validate validates this put v1 runbooks runbook Id

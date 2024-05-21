@@ -139,7 +139,7 @@ type IncidentEntity struct {
 	ReportID string `json:"report_id,omitempty"`
 
 	// A list of objects attached to this item. Can be one of: LinkEntity, CustomerSupportIssueEntity, or GenericAttachmentEntity
-	RetroExports []string `json:"retro_exports"`
+	RetroExports []interface{} `json:"retro_exports"`
 
 	// role assignments
 	RoleAssignments []*IncidentsRoleAssignmentEntity `json:"role_assignments"`
