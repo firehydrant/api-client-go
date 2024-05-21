@@ -43,6 +43,9 @@ type PostV1Runbooks struct {
 	// Deprecated. Use description
 	Summary string `json:"summary,omitempty"`
 
+	// Whether or not this runbook is a tutorial runbook
+	Tutorial bool `json:"tutorial,omitempty"`
+
 	// Deprecated, but still required. Please just use 'incident'
 	// Required: true
 	// Enum: [incident general infrastructure incident_role]

@@ -56,6 +56,9 @@ type RunbookEntity struct {
 	// summary
 	Summary string `json:"summary,omitempty"`
 
+	// tutorial
+	Tutorial bool `json:"tutorial,omitempty"`
+
 	// type
 	Type string `json:"type,omitempty"`
 
