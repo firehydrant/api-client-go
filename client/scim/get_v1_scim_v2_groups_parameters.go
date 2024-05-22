@@ -67,6 +67,14 @@ type GetV1ScimV2GroupsParams struct {
 	// Format: int32
 	Count *int32
 
+	/* Filter.
+
+	   This is a string used to query groups by displayName.
+	      Proper example syntax for this would be `?filter=displayName eq "My Team Name"`.
+	      Currently we only support the `eq` operator
+	*/
+	Filter *string
+
 	// StartIndex.
 	//
 	// Format: int32
@@ -136,6 +144,17 @@ func (o *GetV1ScimV2GroupsParams) SetCount(count *int32) {
 	o.Count = count
 }
 
+// WithFilter adds the filter to the get v1 scim v2 groups params
+func (o *GetV1ScimV2GroupsParams) WithFilter(filter *string) *GetV1ScimV2GroupsParams {
+	o.SetFilter(filter)
+	return o
+}
+
+// SetFilter adds the filter to the get v1 scim v2 groups params
+func (o *GetV1ScimV2GroupsParams) SetFilter(filter *string) {
+	o.Filter = filter
+}
+
 // WithStartIndex adds the startIndex to the get v1 scim v2 groups params
 func (o *GetV1ScimV2GroupsParams) WithStartIndex(startIndex *int32) *GetV1ScimV2GroupsParams {
 	o.SetStartIndex(startIndex)
@@ -167,6 +186,23 @@ func (o *GetV1ScimV2GroupsParams) WriteToRequest(r runtime.ClientRequest, reg st
 		if qCount != "" {
 
 			if err := r.SetQueryParam("count", qCount); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Filter != nil {
+
+		// query param filter
+		var qrFilter string
+
+		if o.Filter != nil {
+			qrFilter = *o.Filter
+		}
+		qFilter := qrFilter
+		if qFilter != "" {
+
+			if err := r.SetQueryParam("filter", qFilter); err != nil {
 				return err
 			}
 		}
