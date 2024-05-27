@@ -56,6 +56,9 @@ type RunbooksActionsEntity struct {
 	// repeatable
 	Repeatable bool `json:"repeatable,omitempty"`
 
+	// rerunnable
+	Rerunnable bool `json:"rerunnable,omitempty"`
+
 	// slug
 	Slug string `json:"slug,omitempty"`
 

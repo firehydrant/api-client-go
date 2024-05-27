@@ -68,7 +68,7 @@ type PatchV1ServicesServiceID struct {
 	RemoveRemainingTeams bool `json:"remove_remaining_teams,omitempty"`
 
 	// Integer representing service tier
-	// Enum: [1 2 3 4 5]
+	// Enum: [0 1 2 3 4 5]
 	ServiceTier int32 `json:"service_tier,omitempty"`
 
 	// An array of teams to attach to this service.
@@ -240,7 +240,7 @@ var patchV1ServicesServiceIdTypeServiceTierPropEnum []interface{}
 
 func init() {
 	var res []int32
-	if err := json.Unmarshal([]byte(`[1,2,3,4,5]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`[0,1,2,3,4,5]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
