@@ -50,7 +50,7 @@ type PostV1Services struct {
 	Owner *PostV1ServicesOwner `json:"owner,omitempty"`
 
 	// Integer representing service tier. Lower values represent higher criticality. If not specified the default value will be 5.
-	// Enum: [1 2 3 4 5]
+	// Enum: [0 1 2 3 4 5]
 	ServiceTier int32 `json:"service_tier,omitempty"`
 
 	// An array of teams to attach to this service.
@@ -205,7 +205,7 @@ var postV1ServicesTypeServiceTierPropEnum []interface{}
 
 func init() {
 	var res []int32
-	if err := json.Unmarshal([]byte(`[1,2,3,4,5]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`[0,1,2,3,4,5]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

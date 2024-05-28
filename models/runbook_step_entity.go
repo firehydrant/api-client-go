@@ -48,6 +48,9 @@ type RunbookStepEntity struct {
 	// Format: date-time
 	RepeatsDuration strfmt.DateTime `json:"repeats_duration,omitempty"`
 
+	// reruns
+	Reruns bool `json:"reruns,omitempty"`
+
 	// rule
 	Rule *RulesRuleEntity `json:"rule,omitempty"`
 
