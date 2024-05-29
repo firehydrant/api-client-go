@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -68,14 +67,9 @@ type PatchV1TeamsTeamIDOnCallSchedulesScheduleIDParams struct {
 	PatchV1TeamsTeamIDOnCallSchedulesScheduleID *models.PatchV1TeamsTeamIDOnCallSchedulesScheduleID
 
 	// ScheduleID.
-	//
-	// Format: int32
-	ScheduleID int32
+	ScheduleID string
 
-	/* TeamID.
-
-	   The ID of the team for which you want to manage Signals on-call schedules.
-	*/
+	// TeamID.
 	TeamID string
 
 	timeout    time.Duration
@@ -143,13 +137,13 @@ func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDParams) SetPatchV1TeamsTeamI
 }
 
 // WithScheduleID adds the scheduleID to the patch v1 teams team Id on call schedules schedule Id params
-func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDParams) WithScheduleID(scheduleID int32) *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDParams {
+func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDParams) WithScheduleID(scheduleID string) *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDParams {
 	o.SetScheduleID(scheduleID)
 	return o
 }
 
 // SetScheduleID adds the scheduleId to the patch v1 teams team Id on call schedules schedule Id params
-func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDParams) SetScheduleID(scheduleID int32) {
+func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDParams) SetScheduleID(scheduleID string) {
 	o.ScheduleID = scheduleID
 }
 
@@ -178,7 +172,7 @@ func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDParams) WriteToRequest(r run
 	}
 
 	// path param schedule_id
-	if err := r.SetPathParam("schedule_id", swag.FormatInt32(o.ScheduleID)); err != nil {
+	if err := r.SetPathParam("schedule_id", o.ScheduleID); err != nil {
 		return err
 	}
 

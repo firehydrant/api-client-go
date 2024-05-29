@@ -66,10 +66,7 @@ type PostV1TeamsTeamIDOnCallSchedulesParams struct {
 	// PostV1TeamsTeamIDOnCallSchedules.
 	PostV1TeamsTeamIDOnCallSchedules *models.PostV1TeamsTeamIDOnCallSchedules
 
-	/* TeamID.
-
-	   The ID of the team for which you want to manage Signals on-call schedules.
-	*/
+	// TeamID.
 	TeamID string
 
 	timeout    time.Duration

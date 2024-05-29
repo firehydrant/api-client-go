@@ -61,16 +61,10 @@ GetV1TeamsTeamIDSignalRulesIDParams contains all the parameters to send to the A
 */
 type GetV1TeamsTeamIDSignalRulesIDParams struct {
 
-	/* ID.
-
-	   The ID of the rule you want to manage.
-	*/
+	// ID.
 	ID string
 
-	/* TeamID.
-
-	   The ID of the team for which you want to manage Signals rules.
-	*/
+	// TeamID.
 	TeamID string
 
 	timeout    time.Duration

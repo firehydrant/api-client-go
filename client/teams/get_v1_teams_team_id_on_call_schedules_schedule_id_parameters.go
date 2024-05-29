@@ -61,16 +61,10 @@ GetV1TeamsTeamIDOnCallSchedulesScheduleIDParams contains all the parameters to s
 */
 type GetV1TeamsTeamIDOnCallSchedulesScheduleIDParams struct {
 
-	/* ScheduleID.
-
-	   The ID of the on-call schedule you want to manage.
-	*/
+	// ScheduleID.
 	ScheduleID string
 
-	/* TeamID.
-
-	   The ID of the team for which you want to manage Signals on-call schedules.
-	*/
+	// TeamID.
 	TeamID string
 
 	timeout    time.Duration

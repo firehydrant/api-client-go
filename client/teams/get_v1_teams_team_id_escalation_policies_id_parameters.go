@@ -61,16 +61,10 @@ GetV1TeamsTeamIDEscalationPoliciesIDParams contains all the parameters to send t
 */
 type GetV1TeamsTeamIDEscalationPoliciesIDParams struct {
 
-	/* ID.
-
-	   The ID of the escalation policy you want to manage.
-	*/
+	// ID.
 	ID string
 
-	/* TeamID.
-
-	   The ID of the team for which you want to manage Signals escalation policies.
-	*/
+	// TeamID.
 	TeamID string
 
 	timeout    time.Duration

@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -65,22 +64,16 @@ PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams contains all the param
 type PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams struct {
 
 	// ID.
-	//
-	// Format: int32
-	ID int32
+	ID string
 
 	// PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID.
 	PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID *models.PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID
 
 	// ScheduleID.
-	//
-	// Format: int32
-	ScheduleID int32
+	ScheduleID string
 
 	// TeamID.
-	//
-	// Format: int32
-	TeamID int32
+	TeamID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -136,13 +129,13 @@ func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetHTTPClien
 }
 
 // WithID adds the id to the patch v1 teams team Id on call schedules schedule Id shifts Id params
-func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WithID(id int32) *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams {
+func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WithID(id string) *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the patch v1 teams team Id on call schedules schedule Id shifts Id params
-func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetID(id int32) {
+func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetID(id string) {
 	o.ID = id
 }
 
@@ -158,24 +151,24 @@ func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetPatchV1Te
 }
 
 // WithScheduleID adds the scheduleID to the patch v1 teams team Id on call schedules schedule Id shifts Id params
-func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WithScheduleID(scheduleID int32) *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams {
+func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WithScheduleID(scheduleID string) *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams {
 	o.SetScheduleID(scheduleID)
 	return o
 }
 
 // SetScheduleID adds the scheduleId to the patch v1 teams team Id on call schedules schedule Id shifts Id params
-func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetScheduleID(scheduleID int32) {
+func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetScheduleID(scheduleID string) {
 	o.ScheduleID = scheduleID
 }
 
 // WithTeamID adds the teamID to the patch v1 teams team Id on call schedules schedule Id shifts Id params
-func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WithTeamID(teamID int32) *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams {
+func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WithTeamID(teamID string) *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams {
 	o.SetTeamID(teamID)
 	return o
 }
 
 // SetTeamID adds the teamId to the patch v1 teams team Id on call schedules schedule Id shifts Id params
-func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetTeamID(teamID int32) {
+func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetTeamID(teamID string) {
 	o.TeamID = teamID
 }
 
@@ -188,7 +181,7 @@ func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WriteToReque
 	var res []error
 
 	// path param id
-	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 	if o.PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsID != nil {
@@ -198,12 +191,12 @@ func (o *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WriteToReque
 	}
 
 	// path param schedule_id
-	if err := r.SetPathParam("schedule_id", swag.FormatInt32(o.ScheduleID)); err != nil {
+	if err := r.SetPathParam("schedule_id", o.ScheduleID); err != nil {
 		return err
 	}
 
 	// path param team_id
-	if err := r.SetPathParam("team_id", swag.FormatInt32(o.TeamID)); err != nil {
+	if err := r.SetPathParam("team_id", o.TeamID); err != nil {
 		return err
 	}
 

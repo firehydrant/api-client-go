@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1TeamsTeamIDEscalationPoliciesIDParams creates a new DeleteV1TeamsTeamIDEscalationPoliciesIDParams object,
@@ -63,14 +62,9 @@ DeleteV1TeamsTeamIDEscalationPoliciesIDParams contains all the parameters to sen
 type DeleteV1TeamsTeamIDEscalationPoliciesIDParams struct {
 
 	// ID.
-	//
-	// Format: int32
-	ID int32
+	ID string
 
-	/* TeamID.
-
-	   The ID of the team for which you want to manage Signals escalation policies.
-	*/
+	// TeamID.
 	TeamID string
 
 	timeout    time.Duration
@@ -127,13 +121,13 @@ func (o *DeleteV1TeamsTeamIDEscalationPoliciesIDParams) SetHTTPClient(client *ht
 }
 
 // WithID adds the id to the delete v1 teams team Id escalation policies Id params
-func (o *DeleteV1TeamsTeamIDEscalationPoliciesIDParams) WithID(id int32) *DeleteV1TeamsTeamIDEscalationPoliciesIDParams {
+func (o *DeleteV1TeamsTeamIDEscalationPoliciesIDParams) WithID(id string) *DeleteV1TeamsTeamIDEscalationPoliciesIDParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the delete v1 teams team Id escalation policies Id params
-func (o *DeleteV1TeamsTeamIDEscalationPoliciesIDParams) SetID(id int32) {
+func (o *DeleteV1TeamsTeamIDEscalationPoliciesIDParams) SetID(id string) {
 	o.ID = id
 }
 
@@ -157,7 +151,7 @@ func (o *DeleteV1TeamsTeamIDEscalationPoliciesIDParams) WriteToRequest(r runtime
 	var res []error
 
 	// path param id
-	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

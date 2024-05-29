@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -68,14 +67,10 @@ type PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams struct {
 	PostV1TeamsTeamIDOnCallSchedulesScheduleIDShifts *models.PostV1TeamsTeamIDOnCallSchedulesScheduleIDShifts
 
 	// ScheduleID.
-	//
-	// Format: int32
-	ScheduleID int32
+	ScheduleID string
 
 	// TeamID.
-	//
-	// Format: int32
-	TeamID int32
+	TeamID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -142,24 +137,24 @@ func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams) SetPostV1TeamsT
 }
 
 // WithScheduleID adds the scheduleID to the post v1 teams team Id on call schedules schedule Id shifts params
-func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams) WithScheduleID(scheduleID int32) *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams {
+func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams) WithScheduleID(scheduleID string) *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams {
 	o.SetScheduleID(scheduleID)
 	return o
 }
 
 // SetScheduleID adds the scheduleId to the post v1 teams team Id on call schedules schedule Id shifts params
-func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams) SetScheduleID(scheduleID int32) {
+func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams) SetScheduleID(scheduleID string) {
 	o.ScheduleID = scheduleID
 }
 
 // WithTeamID adds the teamID to the post v1 teams team Id on call schedules schedule Id shifts params
-func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams) WithTeamID(teamID int32) *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams {
+func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams) WithTeamID(teamID string) *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams {
 	o.SetTeamID(teamID)
 	return o
 }
 
 // SetTeamID adds the teamId to the post v1 teams team Id on call schedules schedule Id shifts params
-func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams) SetTeamID(teamID int32) {
+func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams) SetTeamID(teamID string) {
 	o.TeamID = teamID
 }
 
@@ -177,12 +172,12 @@ func (o *PostV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsParams) WriteToRequest(
 	}
 
 	// path param schedule_id
-	if err := r.SetPathParam("schedule_id", swag.FormatInt32(o.ScheduleID)); err != nil {
+	if err := r.SetPathParam("schedule_id", o.ScheduleID); err != nil {
 		return err
 	}
 
 	// path param team_id
-	if err := r.SetPathParam("team_id", swag.FormatInt32(o.TeamID)); err != nil {
+	if err := r.SetPathParam("team_id", o.TeamID); err != nil {
 		return err
 	}
 

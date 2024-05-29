@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams creates a new DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams object,
@@ -63,19 +62,13 @@ DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams contains all the para
 type DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams struct {
 
 	// ID.
-	//
-	// Format: int32
-	ID int32
+	ID string
 
 	// ScheduleID.
-	//
-	// Format: int32
-	ScheduleID int32
+	ScheduleID string
 
 	// TeamID.
-	//
-	// Format: int32
-	TeamID int32
+	TeamID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -131,35 +124,35 @@ func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetHTTPClie
 }
 
 // WithID adds the id to the delete v1 teams team Id on call schedules schedule Id shifts Id params
-func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WithID(id int32) *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams {
+func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WithID(id string) *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the delete v1 teams team Id on call schedules schedule Id shifts Id params
-func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetID(id int32) {
+func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetID(id string) {
 	o.ID = id
 }
 
 // WithScheduleID adds the scheduleID to the delete v1 teams team Id on call schedules schedule Id shifts Id params
-func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WithScheduleID(scheduleID int32) *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams {
+func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WithScheduleID(scheduleID string) *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams {
 	o.SetScheduleID(scheduleID)
 	return o
 }
 
 // SetScheduleID adds the scheduleId to the delete v1 teams team Id on call schedules schedule Id shifts Id params
-func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetScheduleID(scheduleID int32) {
+func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetScheduleID(scheduleID string) {
 	o.ScheduleID = scheduleID
 }
 
 // WithTeamID adds the teamID to the delete v1 teams team Id on call schedules schedule Id shifts Id params
-func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WithTeamID(teamID int32) *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams {
+func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WithTeamID(teamID string) *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams {
 	o.SetTeamID(teamID)
 	return o
 }
 
 // SetTeamID adds the teamId to the delete v1 teams team Id on call schedules schedule Id shifts Id params
-func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetTeamID(teamID int32) {
+func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) SetTeamID(teamID string) {
 	o.TeamID = teamID
 }
 
@@ -172,17 +165,17 @@ func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDShiftsIDParams) WriteToRequ
 	var res []error
 
 	// path param id
-	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 
 	// path param schedule_id
-	if err := r.SetPathParam("schedule_id", swag.FormatInt32(o.ScheduleID)); err != nil {
+	if err := r.SetPathParam("schedule_id", o.ScheduleID); err != nil {
 		return err
 	}
 
 	// path param team_id
-	if err := r.SetPathParam("team_id", swag.FormatInt32(o.TeamID)); err != nil {
+	if err := r.SetPathParam("team_id", o.TeamID); err != nil {
 		return err
 	}
 

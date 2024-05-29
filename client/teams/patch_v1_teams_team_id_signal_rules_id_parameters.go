@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -65,17 +64,12 @@ PatchV1TeamsTeamIDSignalRulesIDParams contains all the parameters to send to the
 type PatchV1TeamsTeamIDSignalRulesIDParams struct {
 
 	// ID.
-	//
-	// Format: int32
-	ID int32
+	ID string
 
 	// PatchV1TeamsTeamIDSignalRulesID.
 	PatchV1TeamsTeamIDSignalRulesID *models.PatchV1TeamsTeamIDSignalRulesID
 
-	/* TeamID.
-
-	   The ID of the team for which you want to manage Signals rules.
-	*/
+	// TeamID.
 	TeamID string
 
 	timeout    time.Duration
@@ -132,13 +126,13 @@ func (o *PatchV1TeamsTeamIDSignalRulesIDParams) SetHTTPClient(client *http.Clien
 }
 
 // WithID adds the id to the patch v1 teams team Id signal rules Id params
-func (o *PatchV1TeamsTeamIDSignalRulesIDParams) WithID(id int32) *PatchV1TeamsTeamIDSignalRulesIDParams {
+func (o *PatchV1TeamsTeamIDSignalRulesIDParams) WithID(id string) *PatchV1TeamsTeamIDSignalRulesIDParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the patch v1 teams team Id signal rules Id params
-func (o *PatchV1TeamsTeamIDSignalRulesIDParams) SetID(id int32) {
+func (o *PatchV1TeamsTeamIDSignalRulesIDParams) SetID(id string) {
 	o.ID = id
 }
 
@@ -173,7 +167,7 @@ func (o *PatchV1TeamsTeamIDSignalRulesIDParams) WriteToRequest(r runtime.ClientR
 	var res []error
 
 	// path param id
-	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 	if o.PatchV1TeamsTeamIDSignalRulesID != nil {
