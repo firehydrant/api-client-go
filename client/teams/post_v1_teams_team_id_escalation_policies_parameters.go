@@ -66,10 +66,7 @@ type PostV1TeamsTeamIDEscalationPoliciesParams struct {
 	// PostV1TeamsTeamIDEscalationPolicies.
 	PostV1TeamsTeamIDEscalationPolicies *models.PostV1TeamsTeamIDEscalationPolicies
 
-	/* TeamID.
-
-	   The ID of the team for which you want to manage Signals escalation policies.
-	*/
+	// TeamID.
 	TeamID string
 
 	timeout    time.Duration

@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewGetV1TeamsTeamIDEscalationPoliciesParams creates a new GetV1TeamsTeamIDEscalationPoliciesParams object,
@@ -61,10 +62,23 @@ GetV1TeamsTeamIDEscalationPoliciesParams contains all the parameters to send to 
 */
 type GetV1TeamsTeamIDEscalationPoliciesParams struct {
 
-	/* TeamID.
+	// Page.
+	//
+	// Format: int32
+	Page *int32
 
-	   The ID of the team for which you want to manage Signals escalation policies.
+	// PerPage.
+	//
+	// Format: int32
+	PerPage *int32
+
+	/* Query.
+
+	   A query string for searching through the list of escalation policies.
 	*/
+	Query *string
+
+	// TeamID.
 	TeamID string
 
 	timeout    time.Duration
@@ -120,6 +134,39 @@ func (o *GetV1TeamsTeamIDEscalationPoliciesParams) SetHTTPClient(client *http.Cl
 	o.HTTPClient = client
 }
 
+// WithPage adds the page to the get v1 teams team Id escalation policies params
+func (o *GetV1TeamsTeamIDEscalationPoliciesParams) WithPage(page *int32) *GetV1TeamsTeamIDEscalationPoliciesParams {
+	o.SetPage(page)
+	return o
+}
+
+// SetPage adds the page to the get v1 teams team Id escalation policies params
+func (o *GetV1TeamsTeamIDEscalationPoliciesParams) SetPage(page *int32) {
+	o.Page = page
+}
+
+// WithPerPage adds the perPage to the get v1 teams team Id escalation policies params
+func (o *GetV1TeamsTeamIDEscalationPoliciesParams) WithPerPage(perPage *int32) *GetV1TeamsTeamIDEscalationPoliciesParams {
+	o.SetPerPage(perPage)
+	return o
+}
+
+// SetPerPage adds the perPage to the get v1 teams team Id escalation policies params
+func (o *GetV1TeamsTeamIDEscalationPoliciesParams) SetPerPage(perPage *int32) {
+	o.PerPage = perPage
+}
+
+// WithQuery adds the query to the get v1 teams team Id escalation policies params
+func (o *GetV1TeamsTeamIDEscalationPoliciesParams) WithQuery(query *string) *GetV1TeamsTeamIDEscalationPoliciesParams {
+	o.SetQuery(query)
+	return o
+}
+
+// SetQuery adds the query to the get v1 teams team Id escalation policies params
+func (o *GetV1TeamsTeamIDEscalationPoliciesParams) SetQuery(query *string) {
+	o.Query = query
+}
+
 // WithTeamID adds the teamID to the get v1 teams team Id escalation policies params
 func (o *GetV1TeamsTeamIDEscalationPoliciesParams) WithTeamID(teamID string) *GetV1TeamsTeamIDEscalationPoliciesParams {
 	o.SetTeamID(teamID)
@@ -138,6 +185,57 @@ func (o *GetV1TeamsTeamIDEscalationPoliciesParams) WriteToRequest(r runtime.Clie
 		return err
 	}
 	var res []error
+
+	if o.Page != nil {
+
+		// query param page
+		var qrPage int32
+
+		if o.Page != nil {
+			qrPage = *o.Page
+		}
+		qPage := swag.FormatInt32(qrPage)
+		if qPage != "" {
+
+			if err := r.SetQueryParam("page", qPage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.PerPage != nil {
+
+		// query param per_page
+		var qrPerPage int32
+
+		if o.PerPage != nil {
+			qrPerPage = *o.PerPage
+		}
+		qPerPage := swag.FormatInt32(qrPerPage)
+		if qPerPage != "" {
+
+			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Query != nil {
+
+		// query param query
+		var qrQuery string
+
+		if o.Query != nil {
+			qrQuery = *o.Query
+		}
+		qQuery := qrQuery
+		if qQuery != "" {
+
+			if err := r.SetQueryParam("query", qQuery); err != nil {
+				return err
+			}
+		}
+	}
 
 	// path param team_id
 	if err := r.SetPathParam("team_id", o.TeamID); err != nil {

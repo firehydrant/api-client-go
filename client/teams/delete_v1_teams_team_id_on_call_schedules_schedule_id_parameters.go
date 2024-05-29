@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams creates a new DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams object,
@@ -63,14 +62,9 @@ DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams contains all the parameters t
 type DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams struct {
 
 	// ScheduleID.
-	//
-	// Format: int32
-	ScheduleID int32
+	ScheduleID string
 
-	/* TeamID.
-
-	   The ID of the team for which you want to manage Signals on-call schedules.
-	*/
+	// TeamID.
 	TeamID string
 
 	timeout    time.Duration
@@ -127,13 +121,13 @@ func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams) SetHTTPClient(clien
 }
 
 // WithScheduleID adds the scheduleID to the delete v1 teams team Id on call schedules schedule Id params
-func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams) WithScheduleID(scheduleID int32) *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams {
+func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams) WithScheduleID(scheduleID string) *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams {
 	o.SetScheduleID(scheduleID)
 	return o
 }
 
 // SetScheduleID adds the scheduleId to the delete v1 teams team Id on call schedules schedule Id params
-func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams) SetScheduleID(scheduleID int32) {
+func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams) SetScheduleID(scheduleID string) {
 	o.ScheduleID = scheduleID
 }
 
@@ -157,7 +151,7 @@ func (o *DeleteV1TeamsTeamIDOnCallSchedulesScheduleIDParams) WriteToRequest(r ru
 	var res []error
 
 	// path param schedule_id
-	if err := r.SetPathParam("schedule_id", swag.FormatInt32(o.ScheduleID)); err != nil {
+	if err := r.SetPathParam("schedule_id", o.ScheduleID); err != nil {
 		return err
 	}
 

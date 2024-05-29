@@ -66,10 +66,7 @@ type PostV1TeamsTeamIDSignalRulesParams struct {
 	// PostV1TeamsTeamIDSignalRules.
 	PostV1TeamsTeamIDSignalRules *models.PostV1TeamsTeamIDSignalRules
 
-	/* TeamID.
-
-	   The ID of the team for which you want to manage Signals rules.
-	*/
+	// TeamID.
 	TeamID string
 
 	timeout    time.Duration

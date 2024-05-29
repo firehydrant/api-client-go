@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1TeamsTeamIDSignalRulesIDParams creates a new DeleteV1TeamsTeamIDSignalRulesIDParams object,
@@ -63,14 +62,9 @@ DeleteV1TeamsTeamIDSignalRulesIDParams contains all the parameters to send to th
 type DeleteV1TeamsTeamIDSignalRulesIDParams struct {
 
 	// ID.
-	//
-	// Format: int32
-	ID int32
+	ID string
 
-	/* TeamID.
-
-	   The ID of the team for which you want to manage Signals rules.
-	*/
+	// TeamID.
 	TeamID string
 
 	timeout    time.Duration
@@ -127,13 +121,13 @@ func (o *DeleteV1TeamsTeamIDSignalRulesIDParams) SetHTTPClient(client *http.Clie
 }
 
 // WithID adds the id to the delete v1 teams team Id signal rules Id params
-func (o *DeleteV1TeamsTeamIDSignalRulesIDParams) WithID(id int32) *DeleteV1TeamsTeamIDSignalRulesIDParams {
+func (o *DeleteV1TeamsTeamIDSignalRulesIDParams) WithID(id string) *DeleteV1TeamsTeamIDSignalRulesIDParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the delete v1 teams team Id signal rules Id params
-func (o *DeleteV1TeamsTeamIDSignalRulesIDParams) SetID(id int32) {
+func (o *DeleteV1TeamsTeamIDSignalRulesIDParams) SetID(id string) {
 	o.ID = id
 }
 
@@ -157,7 +151,7 @@ func (o *DeleteV1TeamsTeamIDSignalRulesIDParams) WriteToRequest(r runtime.Client
 	var res []error
 
 	// path param id
-	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 
