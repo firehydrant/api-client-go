@@ -30,19 +30,70 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	DeleteV1SignalsEmailTargetsID(params *DeleteV1SignalsEmailTargetsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SignalsEmailTargetsIDNoContent, error)
+
 	GetV1SignalsAnalyticsGroupedMetrics(params *GetV1SignalsAnalyticsGroupedMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsGroupedMetricsOK, error)
 
 	GetV1SignalsAnalyticsMttx(params *GetV1SignalsAnalyticsMttxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsMttxOK, error)
 
 	GetV1SignalsAnalyticsTimeseries(params *GetV1SignalsAnalyticsTimeseriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsTimeseriesOK, error)
 
+	GetV1SignalsEmailTargets(params *GetV1SignalsEmailTargetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsEmailTargetsOK, error)
+
+	GetV1SignalsEmailTargetsID(params *GetV1SignalsEmailTargetsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsEmailTargetsIDOK, error)
+
 	GetV1SignalsIngestURL(params *GetV1SignalsIngestURLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsIngestURLOK, error)
 
 	GetV1SignalsTransposers(params *GetV1SignalsTransposersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsTransposersOK, error)
 
+	PatchV1SignalsEmailTargetsID(params *PatchV1SignalsEmailTargetsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SignalsEmailTargetsIDOK, error)
+
 	PostV1SignalsDebugger(params *PostV1SignalsDebuggerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SignalsDebuggerCreated, error)
 
+	PostV1SignalsEmailTargets(params *PostV1SignalsEmailTargetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SignalsEmailTargetsCreated, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+DeleteV1SignalsEmailTargetsID deletes an email target
+
+Delete a Signals email target by ID
+*/
+func (a *Client) DeleteV1SignalsEmailTargetsID(params *DeleteV1SignalsEmailTargetsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SignalsEmailTargetsIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1SignalsEmailTargetsIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1SignalsEmailTargetsId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/signals/email_targets/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1SignalsEmailTargetsIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1SignalsEmailTargetsIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1SignalsEmailTargetsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -169,6 +220,88 @@ func (a *Client) GetV1SignalsAnalyticsTimeseries(params *GetV1SignalsAnalyticsTi
 }
 
 /*
+GetV1SignalsEmailTargets lists email targets
+
+List all Signals email targets for a team.
+*/
+func (a *Client) GetV1SignalsEmailTargets(params *GetV1SignalsEmailTargetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsEmailTargetsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1SignalsEmailTargetsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1SignalsEmailTargets",
+		Method:             "GET",
+		PathPattern:        "/v1/signals/email_targets",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1SignalsEmailTargetsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1SignalsEmailTargetsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1SignalsEmailTargets: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1SignalsEmailTargetsID gets an email target
+
+Get a Signals email target by ID
+*/
+func (a *Client) GetV1SignalsEmailTargetsID(params *GetV1SignalsEmailTargetsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsEmailTargetsIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1SignalsEmailTargetsIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1SignalsEmailTargetsId",
+		Method:             "GET",
+		PathPattern:        "/v1/signals/email_targets/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1SignalsEmailTargetsIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1SignalsEmailTargetsIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1SignalsEmailTargetsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 GetV1SignalsIngestURL retrieves the url for ingesting signals
 
 Retrieve the url for ingesting signals for your organization
@@ -249,6 +382,47 @@ func (a *Client) GetV1SignalsTransposers(params *GetV1SignalsTransposersParams, 
 }
 
 /*
+PatchV1SignalsEmailTargetsID updates an email target
+
+Update a Signals email target by ID
+*/
+func (a *Client) PatchV1SignalsEmailTargetsID(params *PatchV1SignalsEmailTargetsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SignalsEmailTargetsIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1SignalsEmailTargetsIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1SignalsEmailTargetsId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/signals/email_targets/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1SignalsEmailTargetsIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1SignalsEmailTargetsIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1SignalsEmailTargetsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 PostV1SignalsDebugger post v1 signals debugger API
 */
 func (a *Client) PostV1SignalsDebugger(params *PostV1SignalsDebuggerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SignalsDebuggerCreated, error) {
@@ -284,6 +458,47 @@ func (a *Client) PostV1SignalsDebugger(params *PostV1SignalsDebuggerParams, auth
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for postV1SignalsDebugger: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1SignalsEmailTargets creates an email target
+
+Create a Signals email target for a team.
+*/
+func (a *Client) PostV1SignalsEmailTargets(params *PostV1SignalsEmailTargetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SignalsEmailTargetsCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1SignalsEmailTargetsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1SignalsEmailTargets",
+		Method:             "POST",
+		PathPattern:        "/v1/signals/email_targets",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1SignalsEmailTargetsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1SignalsEmailTargetsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1SignalsEmailTargets: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

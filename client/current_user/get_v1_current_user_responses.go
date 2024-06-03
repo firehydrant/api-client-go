@@ -45,7 +45,7 @@ GetV1CurrentUserOK describes a response with status code 200, with default heade
 Retrieve the current user
 */
 type GetV1CurrentUserOK struct {
-	Payload *models.AuthorEntity
+	Payload *models.CurrentUserEntity
 }
 
 // IsSuccess returns true when this get v1 current user o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1CurrentUserOK) String() string {
 	return fmt.Sprintf("[GET /v1/current_user][%d] getV1CurrentUserOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1CurrentUserOK) GetPayload() *models.AuthorEntity {
+func (o *GetV1CurrentUserOK) GetPayload() *models.CurrentUserEntity {
 	return o.Payload
 }
 
 func (o *GetV1CurrentUserOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.AuthorEntity)
+	o.Payload = new(models.CurrentUserEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
