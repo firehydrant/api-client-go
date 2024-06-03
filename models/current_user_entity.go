@@ -12,10 +12,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AuthorEntity author entity
+// CurrentUserEntity CurrentUserEntity model
 //
-// swagger:model AuthorEntity
-type AuthorEntity struct {
+// swagger:model CurrentUserEntity
+type CurrentUserEntity struct {
 
 	// email
 	Email string `json:"email,omitempty"`
@@ -26,22 +26,25 @@ type AuthorEntity struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// role
+	Role string `json:"role,omitempty"`
+
 	// source
 	Source string `json:"source,omitempty"`
 }
 
-// Validate validates this author entity
-func (m *AuthorEntity) Validate(formats strfmt.Registry) error {
+// Validate validates this current user entity
+func (m *CurrentUserEntity) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this author entity based on context it is used
-func (m *AuthorEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this current user entity based on context it is used
+func (m *CurrentUserEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *AuthorEntity) MarshalBinary() ([]byte, error) {
+func (m *CurrentUserEntity) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -49,8 +52,8 @@ func (m *AuthorEntity) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *AuthorEntity) UnmarshalBinary(b []byte) error {
-	var res AuthorEntity
+func (m *CurrentUserEntity) UnmarshalBinary(b []byte) error {
+	var res CurrentUserEntity
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
