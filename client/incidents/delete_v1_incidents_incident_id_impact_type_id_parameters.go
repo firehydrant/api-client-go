@@ -61,10 +61,7 @@ DeleteV1IncidentsIncidentIDImpactTypeIDParams contains all the parameters to sen
 */
 type DeleteV1IncidentsIncidentIDImpactTypeIDParams struct {
 
-	/* ID.
-
-	   The ID of the impact (Note: Not the ID of the infrastructure model (Eg: Environment ID)
-	*/
+	// ID.
 	ID string
 
 	// IncidentID.

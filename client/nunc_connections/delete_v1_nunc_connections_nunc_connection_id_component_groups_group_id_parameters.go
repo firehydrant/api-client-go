@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams creates a new DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams object,
@@ -66,9 +65,7 @@ type DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams struct 
 	GroupID string
 
 	// NuncConnectionID.
-	//
-	// Format: int32
-	NuncConnectionID int32
+	NuncConnectionID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -135,13 +132,13 @@ func (o *DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) Se
 }
 
 // WithNuncConnectionID adds the nuncConnectionID to the delete v1 nunc connections nunc connection Id component groups group Id params
-func (o *DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) WithNuncConnectionID(nuncConnectionID int32) *DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams {
+func (o *DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) WithNuncConnectionID(nuncConnectionID string) *DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams {
 	o.SetNuncConnectionID(nuncConnectionID)
 	return o
 }
 
 // SetNuncConnectionID adds the nuncConnectionId to the delete v1 nunc connections nunc connection Id component groups group Id params
-func (o *DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) SetNuncConnectionID(nuncConnectionID int32) {
+func (o *DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) SetNuncConnectionID(nuncConnectionID string) {
 	o.NuncConnectionID = nuncConnectionID
 }
 
@@ -159,7 +156,7 @@ func (o *DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) Wr
 	}
 
 	// path param nunc_connection_id
-	if err := r.SetPathParam("nunc_connection_id", swag.FormatInt32(o.NuncConnectionID)); err != nil {
+	if err := r.SetPathParam("nunc_connection_id", o.NuncConnectionID); err != nil {
 		return err
 	}
 

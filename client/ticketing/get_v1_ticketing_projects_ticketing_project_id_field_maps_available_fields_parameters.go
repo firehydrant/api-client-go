@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams creates a new GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams object,
@@ -63,9 +62,7 @@ GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams contains 
 type GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams struct {
 
 	// TicketingProjectID.
-	//
-	// Format: int32
-	TicketingProjectID int32
+	TicketingProjectID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams)
 }
 
 // WithTicketingProjectID adds the ticketingProjectID to the get v1 ticketing projects ticketing project Id field maps available fields params
-func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams) WithTicketingProjectID(ticketingProjectID int32) *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams {
+func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams) WithTicketingProjectID(ticketingProjectID string) *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams {
 	o.SetTicketingProjectID(ticketingProjectID)
 	return o
 }
 
 // SetTicketingProjectID adds the ticketingProjectId to the get v1 ticketing projects ticketing project Id field maps available fields params
-func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams) SetTicketingProjectID(ticketingProjectID int32) {
+func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams) SetTicketingProjectID(ticketingProjectID string) {
 	o.TicketingProjectID = ticketingProjectID
 }
 
@@ -140,7 +137,7 @@ func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams)
 	var res []error
 
 	// path param ticketing_project_id
-	if err := r.SetPathParam("ticketing_project_id", swag.FormatInt32(o.TicketingProjectID)); err != nil {
+	if err := r.SetPathParam("ticketing_project_id", o.TicketingProjectID); err != nil {
 		return err
 	}
 

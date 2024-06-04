@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1FunctionalitiesFunctionalityIDServicesParams creates a new GetV1FunctionalitiesFunctionalityIDServicesParams object,
@@ -63,9 +62,7 @@ GetV1FunctionalitiesFunctionalityIDServicesParams contains all the parameters to
 type GetV1FunctionalitiesFunctionalityIDServicesParams struct {
 
 	// FunctionalityID.
-	//
-	// Format: int32
-	FunctionalityID int32
+	FunctionalityID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *GetV1FunctionalitiesFunctionalityIDServicesParams) SetHTTPClient(client
 }
 
 // WithFunctionalityID adds the functionalityID to the get v1 functionalities functionality Id services params
-func (o *GetV1FunctionalitiesFunctionalityIDServicesParams) WithFunctionalityID(functionalityID int32) *GetV1FunctionalitiesFunctionalityIDServicesParams {
+func (o *GetV1FunctionalitiesFunctionalityIDServicesParams) WithFunctionalityID(functionalityID string) *GetV1FunctionalitiesFunctionalityIDServicesParams {
 	o.SetFunctionalityID(functionalityID)
 	return o
 }
 
 // SetFunctionalityID adds the functionalityId to the get v1 functionalities functionality Id services params
-func (o *GetV1FunctionalitiesFunctionalityIDServicesParams) SetFunctionalityID(functionalityID int32) {
+func (o *GetV1FunctionalitiesFunctionalityIDServicesParams) SetFunctionalityID(functionalityID string) {
 	o.FunctionalityID = functionalityID
 }
 
@@ -140,7 +137,7 @@ func (o *GetV1FunctionalitiesFunctionalityIDServicesParams) WriteToRequest(r run
 	var res []error
 
 	// path param functionality_id
-	if err := r.SetPathParam("functionality_id", swag.FormatInt32(o.FunctionalityID)); err != nil {
+	if err := r.SetPathParam("functionality_id", o.FunctionalityID); err != nil {
 		return err
 	}
 

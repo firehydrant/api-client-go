@@ -63,9 +63,7 @@ GetV1UsersIDServicesParams contains all the parameters to send to the API endpoi
 type GetV1UsersIDServicesParams struct {
 
 	// ID.
-	//
-	// Format: int32
-	ID int32
+	ID string
 
 	// Page.
 	//
@@ -131,13 +129,13 @@ func (o *GetV1UsersIDServicesParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithID adds the id to the get v1 users Id services params
-func (o *GetV1UsersIDServicesParams) WithID(id int32) *GetV1UsersIDServicesParams {
+func (o *GetV1UsersIDServicesParams) WithID(id string) *GetV1UsersIDServicesParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get v1 users Id services params
-func (o *GetV1UsersIDServicesParams) SetID(id int32) {
+func (o *GetV1UsersIDServicesParams) SetID(id string) {
 	o.ID = id
 }
 
@@ -172,7 +170,7 @@ func (o *GetV1UsersIDServicesParams) WriteToRequest(r runtime.ClientRequest, reg
 	var res []error
 
 	// path param id
-	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

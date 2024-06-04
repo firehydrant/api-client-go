@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -68,9 +67,7 @@ type PatchV1ServicesServiceIDParams struct {
 	PatchV1ServicesServiceID *models.PatchV1ServicesServiceID
 
 	// ServiceID.
-	//
-	// Format: int32
-	ServiceID int32
+	ServiceID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -137,13 +134,13 @@ func (o *PatchV1ServicesServiceIDParams) SetPatchV1ServicesServiceID(patchV1Serv
 }
 
 // WithServiceID adds the serviceID to the patch v1 services service Id params
-func (o *PatchV1ServicesServiceIDParams) WithServiceID(serviceID int32) *PatchV1ServicesServiceIDParams {
+func (o *PatchV1ServicesServiceIDParams) WithServiceID(serviceID string) *PatchV1ServicesServiceIDParams {
 	o.SetServiceID(serviceID)
 	return o
 }
 
 // SetServiceID adds the serviceId to the patch v1 services service Id params
-func (o *PatchV1ServicesServiceIDParams) SetServiceID(serviceID int32) {
+func (o *PatchV1ServicesServiceIDParams) SetServiceID(serviceID string) {
 	o.ServiceID = serviceID
 }
 
@@ -161,7 +158,7 @@ func (o *PatchV1ServicesServiceIDParams) WriteToRequest(r runtime.ClientRequest,
 	}
 
 	// path param service_id
-	if err := r.SetPathParam("service_id", swag.FormatInt32(o.ServiceID)); err != nil {
+	if err := r.SetPathParam("service_id", o.ServiceID); err != nil {
 		return err
 	}
 

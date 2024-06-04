@@ -102,9 +102,7 @@ type PutV1NuncConnectionsNuncConnectionIDParams struct {
 	GreetingTitle *string
 
 	// NuncConnectionID.
-	//
-	// Format: int32
-	NuncConnectionID int32
+	NuncConnectionID string
 
 	// OperationalMessage.
 	OperationalMessage *string
@@ -298,13 +296,13 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetGreetingTitle(greetingTi
 }
 
 // WithNuncConnectionID adds the nuncConnectionID to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithNuncConnectionID(nuncConnectionID int32) *PutV1NuncConnectionsNuncConnectionIDParams {
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) WithNuncConnectionID(nuncConnectionID string) *PutV1NuncConnectionsNuncConnectionIDParams {
 	o.SetNuncConnectionID(nuncConnectionID)
 	return o
 }
 
 // SetNuncConnectionID adds the nuncConnectionId to the put v1 nunc connections nunc connection Id params
-func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetNuncConnectionID(nuncConnectionID int32) {
+func (o *PutV1NuncConnectionsNuncConnectionIDParams) SetNuncConnectionID(nuncConnectionID string) {
 	o.NuncConnectionID = nuncConnectionID
 }
 
@@ -517,7 +515,7 @@ func (o *PutV1NuncConnectionsNuncConnectionIDParams) WriteToRequest(r runtime.Cl
 	}
 
 	// path param nunc_connection_id
-	if err := r.SetPathParam("nunc_connection_id", swag.FormatInt32(o.NuncConnectionID)); err != nil {
+	if err := r.SetPathParam("nunc_connection_id", o.NuncConnectionID); err != nil {
 		return err
 	}
 

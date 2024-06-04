@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1TicketingPrioritiesIDParams creates a new DeleteV1TicketingPrioritiesIDParams object,
@@ -63,9 +62,7 @@ DeleteV1TicketingPrioritiesIDParams contains all the parameters to send to the A
 type DeleteV1TicketingPrioritiesIDParams struct {
 
 	// ID.
-	//
-	// Format: int32
-	ID int32
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *DeleteV1TicketingPrioritiesIDParams) SetHTTPClient(client *http.Client)
 }
 
 // WithID adds the id to the delete v1 ticketing priorities Id params
-func (o *DeleteV1TicketingPrioritiesIDParams) WithID(id int32) *DeleteV1TicketingPrioritiesIDParams {
+func (o *DeleteV1TicketingPrioritiesIDParams) WithID(id string) *DeleteV1TicketingPrioritiesIDParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the delete v1 ticketing priorities Id params
-func (o *DeleteV1TicketingPrioritiesIDParams) SetID(id int32) {
+func (o *DeleteV1TicketingPrioritiesIDParams) SetID(id string) {
 	o.ID = id
 }
 
@@ -140,7 +137,7 @@ func (o *DeleteV1TicketingPrioritiesIDParams) WriteToRequest(r runtime.ClientReq
 	var res []error
 
 	// path param id
-	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

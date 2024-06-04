@@ -61,10 +61,7 @@ GetV1IntegrationsAwsConnectionsIDParams contains all the parameters to send to t
 */
 type GetV1IntegrationsAwsConnectionsIDParams struct {
 
-	/* ID.
-
-	   Connection UUID
-	*/
+	// ID.
 	ID string
 
 	timeout    time.Duration

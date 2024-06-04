@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1SeverityMatrixConditionsConditionIDParams creates a new GetV1SeverityMatrixConditionsConditionIDParams object,
@@ -63,9 +62,7 @@ GetV1SeverityMatrixConditionsConditionIDParams contains all the parameters to se
 type GetV1SeverityMatrixConditionsConditionIDParams struct {
 
 	// ConditionID.
-	//
-	// Format: int32
-	ConditionID int32
+	ConditionID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *GetV1SeverityMatrixConditionsConditionIDParams) SetHTTPClient(client *h
 }
 
 // WithConditionID adds the conditionID to the get v1 severity matrix conditions condition Id params
-func (o *GetV1SeverityMatrixConditionsConditionIDParams) WithConditionID(conditionID int32) *GetV1SeverityMatrixConditionsConditionIDParams {
+func (o *GetV1SeverityMatrixConditionsConditionIDParams) WithConditionID(conditionID string) *GetV1SeverityMatrixConditionsConditionIDParams {
 	o.SetConditionID(conditionID)
 	return o
 }
 
 // SetConditionID adds the conditionId to the get v1 severity matrix conditions condition Id params
-func (o *GetV1SeverityMatrixConditionsConditionIDParams) SetConditionID(conditionID int32) {
+func (o *GetV1SeverityMatrixConditionsConditionIDParams) SetConditionID(conditionID string) {
 	o.ConditionID = conditionID
 }
 
@@ -140,7 +137,7 @@ func (o *GetV1SeverityMatrixConditionsConditionIDParams) WriteToRequest(r runtim
 	var res []error
 
 	// path param condition_id
-	if err := r.SetPathParam("condition_id", swag.FormatInt32(o.ConditionID)); err != nil {
+	if err := r.SetPathParam("condition_id", o.ConditionID); err != nil {
 		return err
 	}
 

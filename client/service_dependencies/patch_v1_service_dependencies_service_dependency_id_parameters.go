@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -68,9 +67,7 @@ type PatchV1ServiceDependenciesServiceDependencyIDParams struct {
 	PatchV1ServiceDependenciesServiceDependencyID *models.PatchV1ServiceDependenciesServiceDependencyID
 
 	// ServiceDependencyID.
-	//
-	// Format: int32
-	ServiceDependencyID int32
+	ServiceDependencyID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -137,13 +134,13 @@ func (o *PatchV1ServiceDependenciesServiceDependencyIDParams) SetPatchV1ServiceD
 }
 
 // WithServiceDependencyID adds the serviceDependencyID to the patch v1 service dependencies service dependency Id params
-func (o *PatchV1ServiceDependenciesServiceDependencyIDParams) WithServiceDependencyID(serviceDependencyID int32) *PatchV1ServiceDependenciesServiceDependencyIDParams {
+func (o *PatchV1ServiceDependenciesServiceDependencyIDParams) WithServiceDependencyID(serviceDependencyID string) *PatchV1ServiceDependenciesServiceDependencyIDParams {
 	o.SetServiceDependencyID(serviceDependencyID)
 	return o
 }
 
 // SetServiceDependencyID adds the serviceDependencyId to the patch v1 service dependencies service dependency Id params
-func (o *PatchV1ServiceDependenciesServiceDependencyIDParams) SetServiceDependencyID(serviceDependencyID int32) {
+func (o *PatchV1ServiceDependenciesServiceDependencyIDParams) SetServiceDependencyID(serviceDependencyID string) {
 	o.ServiceDependencyID = serviceDependencyID
 }
 
@@ -161,7 +158,7 @@ func (o *PatchV1ServiceDependenciesServiceDependencyIDParams) WriteToRequest(r r
 	}
 
 	// path param service_dependency_id
-	if err := r.SetPathParam("service_dependency_id", swag.FormatInt32(o.ServiceDependencyID)); err != nil {
+	if err := r.SetPathParam("service_dependency_id", o.ServiceDependencyID); err != nil {
 		return err
 	}
 

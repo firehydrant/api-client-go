@@ -63,9 +63,7 @@ GetV1ChangesChangeIDIdentitiesParams contains all the parameters to send to the 
 type GetV1ChangesChangeIDIdentitiesParams struct {
 
 	// ChangeID.
-	//
-	// Format: int32
-	ChangeID int32
+	ChangeID string
 
 	// Page.
 	//
@@ -131,13 +129,13 @@ func (o *GetV1ChangesChangeIDIdentitiesParams) SetHTTPClient(client *http.Client
 }
 
 // WithChangeID adds the changeID to the get v1 changes change Id identities params
-func (o *GetV1ChangesChangeIDIdentitiesParams) WithChangeID(changeID int32) *GetV1ChangesChangeIDIdentitiesParams {
+func (o *GetV1ChangesChangeIDIdentitiesParams) WithChangeID(changeID string) *GetV1ChangesChangeIDIdentitiesParams {
 	o.SetChangeID(changeID)
 	return o
 }
 
 // SetChangeID adds the changeId to the get v1 changes change Id identities params
-func (o *GetV1ChangesChangeIDIdentitiesParams) SetChangeID(changeID int32) {
+func (o *GetV1ChangesChangeIDIdentitiesParams) SetChangeID(changeID string) {
 	o.ChangeID = changeID
 }
 
@@ -172,7 +170,7 @@ func (o *GetV1ChangesChangeIDIdentitiesParams) WriteToRequest(r runtime.ClientRe
 	var res []error
 
 	// path param change_id
-	if err := r.SetPathParam("change_id", swag.FormatInt32(o.ChangeID)); err != nil {
+	if err := r.SetPathParam("change_id", o.ChangeID); err != nil {
 		return err
 	}
 

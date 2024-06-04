@@ -63,19 +63,13 @@ GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams contains all the 
 type GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams struct {
 
 	// ActionSlug.
-	//
-	// Format: int32
-	ActionSlug int32
+	ActionSlug string
 
 	// Field.
-	//
-	// Format: int32
-	Field int32
+	Field string
 
 	// IntegrationSlug.
-	//
-	// Format: int32
-	IntegrationSlug int32
+	IntegrationSlug string
 
 	/* PerPage.
 
@@ -151,35 +145,35 @@ func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) SetHTTP
 }
 
 // WithActionSlug adds the actionSlug to the get v1 runbooks select options integration slug action slug field params
-func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) WithActionSlug(actionSlug int32) *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams {
+func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) WithActionSlug(actionSlug string) *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams {
 	o.SetActionSlug(actionSlug)
 	return o
 }
 
 // SetActionSlug adds the actionSlug to the get v1 runbooks select options integration slug action slug field params
-func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) SetActionSlug(actionSlug int32) {
+func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) SetActionSlug(actionSlug string) {
 	o.ActionSlug = actionSlug
 }
 
 // WithField adds the field to the get v1 runbooks select options integration slug action slug field params
-func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) WithField(field int32) *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams {
+func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) WithField(field string) *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams {
 	o.SetField(field)
 	return o
 }
 
 // SetField adds the field to the get v1 runbooks select options integration slug action slug field params
-func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) SetField(field int32) {
+func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) SetField(field string) {
 	o.Field = field
 }
 
 // WithIntegrationSlug adds the integrationSlug to the get v1 runbooks select options integration slug action slug field params
-func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) WithIntegrationSlug(integrationSlug int32) *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams {
+func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) WithIntegrationSlug(integrationSlug string) *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams {
 	o.SetIntegrationSlug(integrationSlug)
 	return o
 }
 
 // SetIntegrationSlug adds the integrationSlug to the get v1 runbooks select options integration slug action slug field params
-func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) SetIntegrationSlug(integrationSlug int32) {
+func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) SetIntegrationSlug(integrationSlug string) {
 	o.IntegrationSlug = integrationSlug
 }
 
@@ -225,17 +219,17 @@ func (o *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams) WriteTo
 	var res []error
 
 	// path param action_slug
-	if err := r.SetPathParam("action_slug", swag.FormatInt32(o.ActionSlug)); err != nil {
+	if err := r.SetPathParam("action_slug", o.ActionSlug); err != nil {
 		return err
 	}
 
 	// path param field
-	if err := r.SetPathParam("field", swag.FormatInt32(o.Field)); err != nil {
+	if err := r.SetPathParam("field", o.Field); err != nil {
 		return err
 	}
 
 	// path param integration_slug
-	if err := r.SetPathParam("integration_slug", swag.FormatInt32(o.IntegrationSlug)); err != nil {
+	if err := r.SetPathParam("integration_slug", o.IntegrationSlug); err != nil {
 		return err
 	}
 

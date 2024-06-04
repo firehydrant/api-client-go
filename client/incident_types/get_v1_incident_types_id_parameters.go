@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1IncidentTypesIDParams creates a new GetV1IncidentTypesIDParams object,
@@ -63,9 +62,7 @@ GetV1IncidentTypesIDParams contains all the parameters to send to the API endpoi
 type GetV1IncidentTypesIDParams struct {
 
 	// ID.
-	//
-	// Format: int32
-	ID int32
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *GetV1IncidentTypesIDParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithID adds the id to the get v1 incident types Id params
-func (o *GetV1IncidentTypesIDParams) WithID(id int32) *GetV1IncidentTypesIDParams {
+func (o *GetV1IncidentTypesIDParams) WithID(id string) *GetV1IncidentTypesIDParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the get v1 incident types Id params
-func (o *GetV1IncidentTypesIDParams) SetID(id int32) {
+func (o *GetV1IncidentTypesIDParams) SetID(id string) {
 	o.ID = id
 }
 
@@ -140,7 +137,7 @@ func (o *GetV1IncidentTypesIDParams) WriteToRequest(r runtime.ClientRequest, reg
 	var res []error
 
 	// path param id
-	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

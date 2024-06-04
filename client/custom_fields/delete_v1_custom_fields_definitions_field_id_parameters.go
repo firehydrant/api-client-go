@@ -61,10 +61,7 @@ DeleteV1CustomFieldsDefinitionsFieldIDParams contains all the parameters to send
 */
 type DeleteV1CustomFieldsDefinitionsFieldIDParams struct {
 
-	/* FieldID.
-
-	   Field ID of custom field definition
-	*/
+	// FieldID.
 	FieldID string
 
 	timeout    time.Duration

@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPostV1TicketingProjectsTicketingProjectIDFieldMapsParams creates a new PostV1TicketingProjectsTicketingProjectIDFieldMapsParams object,
@@ -63,9 +62,7 @@ PostV1TicketingProjectsTicketingProjectIDFieldMapsParams contains all the parame
 type PostV1TicketingProjectsTicketingProjectIDFieldMapsParams struct {
 
 	// TicketingProjectID.
-	//
-	// Format: int32
-	TicketingProjectID int32
+	TicketingProjectID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *PostV1TicketingProjectsTicketingProjectIDFieldMapsParams) SetHTTPClient
 }
 
 // WithTicketingProjectID adds the ticketingProjectID to the post v1 ticketing projects ticketing project Id field maps params
-func (o *PostV1TicketingProjectsTicketingProjectIDFieldMapsParams) WithTicketingProjectID(ticketingProjectID int32) *PostV1TicketingProjectsTicketingProjectIDFieldMapsParams {
+func (o *PostV1TicketingProjectsTicketingProjectIDFieldMapsParams) WithTicketingProjectID(ticketingProjectID string) *PostV1TicketingProjectsTicketingProjectIDFieldMapsParams {
 	o.SetTicketingProjectID(ticketingProjectID)
 	return o
 }
 
 // SetTicketingProjectID adds the ticketingProjectId to the post v1 ticketing projects ticketing project Id field maps params
-func (o *PostV1TicketingProjectsTicketingProjectIDFieldMapsParams) SetTicketingProjectID(ticketingProjectID int32) {
+func (o *PostV1TicketingProjectsTicketingProjectIDFieldMapsParams) SetTicketingProjectID(ticketingProjectID string) {
 	o.TicketingProjectID = ticketingProjectID
 }
 
@@ -140,7 +137,7 @@ func (o *PostV1TicketingProjectsTicketingProjectIDFieldMapsParams) WriteToReques
 	var res []error
 
 	// path param ticketing_project_id
-	if err := r.SetPathParam("ticketing_project_id", swag.FormatInt32(o.TicketingProjectID)); err != nil {
+	if err := r.SetPathParam("ticketing_project_id", o.TicketingProjectID); err != nil {
 		return err
 	}
 

@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams creates a new PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams object,
@@ -66,14 +65,10 @@ type PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams struct {
 	Direction string
 
 	// GeneratedSummaryID.
-	//
-	// Format: int32
-	GeneratedSummaryID int32
+	GeneratedSummaryID string
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -140,24 +135,24 @@ func (o *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams) SetDire
 }
 
 // WithGeneratedSummaryID adds the generatedSummaryID to the put v1 ai summarize incident incident Id generated summary Id vote params
-func (o *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams) WithGeneratedSummaryID(generatedSummaryID int32) *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams {
+func (o *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams) WithGeneratedSummaryID(generatedSummaryID string) *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams {
 	o.SetGeneratedSummaryID(generatedSummaryID)
 	return o
 }
 
 // SetGeneratedSummaryID adds the generatedSummaryId to the put v1 ai summarize incident incident Id generated summary Id vote params
-func (o *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams) SetGeneratedSummaryID(generatedSummaryID int32) {
+func (o *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams) SetGeneratedSummaryID(generatedSummaryID string) {
 	o.GeneratedSummaryID = generatedSummaryID
 }
 
 // WithIncidentID adds the incidentID to the put v1 ai summarize incident incident Id generated summary Id vote params
-func (o *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams) WithIncidentID(incidentID int32) *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams {
+func (o *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams) WithIncidentID(incidentID string) *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the put v1 ai summarize incident incident Id generated summary Id vote params
-func (o *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams) SetIncidentID(incidentID int32) {
+func (o *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -179,12 +174,12 @@ func (o *PutV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVoteParams) WriteTo
 	}
 
 	// path param generated_summary_id
-	if err := r.SetPathParam("generated_summary_id", swag.FormatInt32(o.GeneratedSummaryID)); err != nil {
+	if err := r.SetPathParam("generated_summary_id", o.GeneratedSummaryID); err != nil {
 		return err
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

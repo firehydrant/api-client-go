@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPostV1NuncConnectionsNuncConnectionIDComponentGroupsParams creates a new PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams object,
@@ -63,9 +62,7 @@ PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams contains all the para
 type PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams struct {
 
 	// NuncConnectionID.
-	//
-	// Format: int32
-	NuncConnectionID int32
+	NuncConnectionID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) SetHTTPClie
 }
 
 // WithNuncConnectionID adds the nuncConnectionID to the post v1 nunc connections nunc connection Id component groups params
-func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) WithNuncConnectionID(nuncConnectionID int32) *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams {
+func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) WithNuncConnectionID(nuncConnectionID string) *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams {
 	o.SetNuncConnectionID(nuncConnectionID)
 	return o
 }
 
 // SetNuncConnectionID adds the nuncConnectionId to the post v1 nunc connections nunc connection Id component groups params
-func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) SetNuncConnectionID(nuncConnectionID int32) {
+func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) SetNuncConnectionID(nuncConnectionID string) {
 	o.NuncConnectionID = nuncConnectionID
 }
 
@@ -140,7 +137,7 @@ func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) WriteToRequ
 	var res []error
 
 	// path param nunc_connection_id
-	if err := r.SetPathParam("nunc_connection_id", swag.FormatInt32(o.NuncConnectionID)); err != nil {
+	if err := r.SetPathParam("nunc_connection_id", o.NuncConnectionID); err != nil {
 		return err
 	}
 

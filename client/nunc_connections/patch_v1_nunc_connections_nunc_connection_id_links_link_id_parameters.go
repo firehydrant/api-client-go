@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -68,9 +67,7 @@ type PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDParams struct {
 	LinkID string
 
 	// NuncConnectionID.
-	//
-	// Format: int32
-	NuncConnectionID int32
+	NuncConnectionID string
 
 	// PatchV1NuncConnectionsNuncConnectionIDLinksLinkID.
 	PatchV1NuncConnectionsNuncConnectionIDLinksLinkID *models.PatchV1NuncConnectionsNuncConnectionIDLinksLinkID
@@ -140,13 +137,13 @@ func (o *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDParams) SetLinkID(link
 }
 
 // WithNuncConnectionID adds the nuncConnectionID to the patch v1 nunc connections nunc connection Id links link Id params
-func (o *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDParams) WithNuncConnectionID(nuncConnectionID int32) *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDParams {
+func (o *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDParams) WithNuncConnectionID(nuncConnectionID string) *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDParams {
 	o.SetNuncConnectionID(nuncConnectionID)
 	return o
 }
 
 // SetNuncConnectionID adds the nuncConnectionId to the patch v1 nunc connections nunc connection Id links link Id params
-func (o *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDParams) SetNuncConnectionID(nuncConnectionID int32) {
+func (o *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDParams) SetNuncConnectionID(nuncConnectionID string) {
 	o.NuncConnectionID = nuncConnectionID
 }
 
@@ -175,7 +172,7 @@ func (o *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDParams) WriteToRequest
 	}
 
 	// path param nunc_connection_id
-	if err := r.SetPathParam("nunc_connection_id", swag.FormatInt32(o.NuncConnectionID)); err != nil {
+	if err := r.SetPathParam("nunc_connection_id", o.NuncConnectionID); err != nil {
 		return err
 	}
 	if o.PatchV1NuncConnectionsNuncConnectionIDLinksLinkID != nil {

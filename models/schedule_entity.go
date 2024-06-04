@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ScheduleEntity ScheduleEntity model
+// ScheduleEntity schedule entity
 //
 // swagger:model ScheduleEntity
 type ScheduleEntity struct {

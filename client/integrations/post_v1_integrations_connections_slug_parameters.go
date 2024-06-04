@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPostV1IntegrationsConnectionsSlugParams creates a new PostV1IntegrationsConnectionsSlugParams object,
@@ -63,9 +62,7 @@ PostV1IntegrationsConnectionsSlugParams contains all the parameters to send to t
 type PostV1IntegrationsConnectionsSlugParams struct {
 
 	// Slug.
-	//
-	// Format: int32
-	Slug int32
+	Slug string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *PostV1IntegrationsConnectionsSlugParams) SetHTTPClient(client *http.Cli
 }
 
 // WithSlug adds the slug to the post v1 integrations connections slug params
-func (o *PostV1IntegrationsConnectionsSlugParams) WithSlug(slug int32) *PostV1IntegrationsConnectionsSlugParams {
+func (o *PostV1IntegrationsConnectionsSlugParams) WithSlug(slug string) *PostV1IntegrationsConnectionsSlugParams {
 	o.SetSlug(slug)
 	return o
 }
 
 // SetSlug adds the slug to the post v1 integrations connections slug params
-func (o *PostV1IntegrationsConnectionsSlugParams) SetSlug(slug int32) {
+func (o *PostV1IntegrationsConnectionsSlugParams) SetSlug(slug string) {
 	o.Slug = slug
 }
 
@@ -140,7 +137,7 @@ func (o *PostV1IntegrationsConnectionsSlugParams) WriteToRequest(r runtime.Clien
 	var res []error
 
 	// path param slug
-	if err := r.SetPathParam("slug", swag.FormatInt32(o.Slug)); err != nil {
+	if err := r.SetPathParam("slug", o.Slug); err != nil {
 		return err
 	}
 

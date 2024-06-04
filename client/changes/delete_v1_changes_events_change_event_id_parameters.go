@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1ChangesEventsChangeEventIDParams creates a new DeleteV1ChangesEventsChangeEventIDParams object,
@@ -63,9 +62,7 @@ DeleteV1ChangesEventsChangeEventIDParams contains all the parameters to send to 
 type DeleteV1ChangesEventsChangeEventIDParams struct {
 
 	// ChangeEventID.
-	//
-	// Format: int32
-	ChangeEventID int32
+	ChangeEventID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *DeleteV1ChangesEventsChangeEventIDParams) SetHTTPClient(client *http.Cl
 }
 
 // WithChangeEventID adds the changeEventID to the delete v1 changes events change event Id params
-func (o *DeleteV1ChangesEventsChangeEventIDParams) WithChangeEventID(changeEventID int32) *DeleteV1ChangesEventsChangeEventIDParams {
+func (o *DeleteV1ChangesEventsChangeEventIDParams) WithChangeEventID(changeEventID string) *DeleteV1ChangesEventsChangeEventIDParams {
 	o.SetChangeEventID(changeEventID)
 	return o
 }
 
 // SetChangeEventID adds the changeEventId to the delete v1 changes events change event Id params
-func (o *DeleteV1ChangesEventsChangeEventIDParams) SetChangeEventID(changeEventID int32) {
+func (o *DeleteV1ChangesEventsChangeEventIDParams) SetChangeEventID(changeEventID string) {
 	o.ChangeEventID = changeEventID
 }
 
@@ -140,7 +137,7 @@ func (o *DeleteV1ChangesEventsChangeEventIDParams) WriteToRequest(r runtime.Clie
 	var res []error
 
 	// path param change_event_id
-	if err := r.SetPathParam("change_event_id", swag.FormatInt32(o.ChangeEventID)); err != nil {
+	if err := r.SetPathParam("change_event_id", o.ChangeEventID); err != nil {
 		return err
 	}
 

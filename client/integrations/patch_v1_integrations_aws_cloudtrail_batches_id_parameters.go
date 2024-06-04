@@ -63,10 +63,7 @@ PatchV1IntegrationsAwsCloudtrailBatchesIDParams contains all the parameters to s
 */
 type PatchV1IntegrationsAwsCloudtrailBatchesIDParams struct {
 
-	/* ID.
-
-	   Connection UUID
-	*/
+	// ID.
 	ID string
 
 	// PatchV1IntegrationsAwsCloudtrailBatchesID.

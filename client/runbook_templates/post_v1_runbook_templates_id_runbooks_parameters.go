@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPostV1RunbookTemplatesIDRunbooksParams creates a new PostV1RunbookTemplatesIDRunbooksParams object,
@@ -63,9 +62,7 @@ PostV1RunbookTemplatesIDRunbooksParams contains all the parameters to send to th
 type PostV1RunbookTemplatesIDRunbooksParams struct {
 
 	// ID.
-	//
-	// Format: int32
-	ID int32
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *PostV1RunbookTemplatesIDRunbooksParams) SetHTTPClient(client *http.Clie
 }
 
 // WithID adds the id to the post v1 runbook templates Id runbooks params
-func (o *PostV1RunbookTemplatesIDRunbooksParams) WithID(id int32) *PostV1RunbookTemplatesIDRunbooksParams {
+func (o *PostV1RunbookTemplatesIDRunbooksParams) WithID(id string) *PostV1RunbookTemplatesIDRunbooksParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the post v1 runbook templates Id runbooks params
-func (o *PostV1RunbookTemplatesIDRunbooksParams) SetID(id int32) {
+func (o *PostV1RunbookTemplatesIDRunbooksParams) SetID(id string) {
 	o.ID = id
 }
 
@@ -140,7 +137,7 @@ func (o *PostV1RunbookTemplatesIDRunbooksParams) WriteToRequest(r runtime.Client
 	var res []error
 
 	// path param id
-	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

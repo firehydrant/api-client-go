@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams creates a new DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams object,
@@ -63,9 +62,7 @@ DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams contains all the param
 type DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams struct {
 
 	// StatusUpdateTemplateID.
-	//
-	// Format: int32
-	StatusUpdateTemplateID int32
+	StatusUpdateTemplateID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams) SetHTTPClien
 }
 
 // WithStatusUpdateTemplateID adds the statusUpdateTemplateID to the delete v1 status update templates status update template Id params
-func (o *DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams) WithStatusUpdateTemplateID(statusUpdateTemplateID int32) *DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams {
+func (o *DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams) WithStatusUpdateTemplateID(statusUpdateTemplateID string) *DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams {
 	o.SetStatusUpdateTemplateID(statusUpdateTemplateID)
 	return o
 }
 
 // SetStatusUpdateTemplateID adds the statusUpdateTemplateId to the delete v1 status update templates status update template Id params
-func (o *DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams) SetStatusUpdateTemplateID(statusUpdateTemplateID int32) {
+func (o *DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams) SetStatusUpdateTemplateID(statusUpdateTemplateID string) {
 	o.StatusUpdateTemplateID = statusUpdateTemplateID
 }
 
@@ -140,7 +137,7 @@ func (o *DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams) WriteToReque
 	var res []error
 
 	// path param status_update_template_id
-	if err := r.SetPathParam("status_update_template_id", swag.FormatInt32(o.StatusUpdateTemplateID)); err != nil {
+	if err := r.SetPathParam("status_update_template_id", o.StatusUpdateTemplateID); err != nil {
 		return err
 	}
 

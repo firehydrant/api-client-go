@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -65,9 +64,7 @@ PatchV1ChecklistTemplatesIDParams contains all the parameters to send to the API
 type PatchV1ChecklistTemplatesIDParams struct {
 
 	// ID.
-	//
-	// Format: int32
-	ID int32
+	ID string
 
 	// PatchV1ChecklistTemplatesID.
 	PatchV1ChecklistTemplatesID *models.PatchV1ChecklistTemplatesID
@@ -126,13 +123,13 @@ func (o *PatchV1ChecklistTemplatesIDParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithID adds the id to the patch v1 checklist templates Id params
-func (o *PatchV1ChecklistTemplatesIDParams) WithID(id int32) *PatchV1ChecklistTemplatesIDParams {
+func (o *PatchV1ChecklistTemplatesIDParams) WithID(id string) *PatchV1ChecklistTemplatesIDParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the patch v1 checklist templates Id params
-func (o *PatchV1ChecklistTemplatesIDParams) SetID(id int32) {
+func (o *PatchV1ChecklistTemplatesIDParams) SetID(id string) {
 	o.ID = id
 }
 
@@ -156,7 +153,7 @@ func (o *PatchV1ChecklistTemplatesIDParams) WriteToRequest(r runtime.ClientReque
 	var res []error
 
 	// path param id
-	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 	if o.PatchV1ChecklistTemplatesID != nil {

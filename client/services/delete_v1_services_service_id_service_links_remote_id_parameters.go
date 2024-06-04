@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1ServicesServiceIDServiceLinksRemoteIDParams creates a new DeleteV1ServicesServiceIDServiceLinksRemoteIDParams object,
@@ -72,9 +71,7 @@ type DeleteV1ServicesServiceIDServiceLinksRemoteIDParams struct {
 	RemoteID string
 
 	// ServiceID.
-	//
-	// Format: int32
-	ServiceID int32
+	ServiceID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -141,13 +138,13 @@ func (o *DeleteV1ServicesServiceIDServiceLinksRemoteIDParams) SetRemoteID(remote
 }
 
 // WithServiceID adds the serviceID to the delete v1 services service Id service links remote Id params
-func (o *DeleteV1ServicesServiceIDServiceLinksRemoteIDParams) WithServiceID(serviceID int32) *DeleteV1ServicesServiceIDServiceLinksRemoteIDParams {
+func (o *DeleteV1ServicesServiceIDServiceLinksRemoteIDParams) WithServiceID(serviceID string) *DeleteV1ServicesServiceIDServiceLinksRemoteIDParams {
 	o.SetServiceID(serviceID)
 	return o
 }
 
 // SetServiceID adds the serviceId to the delete v1 services service Id service links remote Id params
-func (o *DeleteV1ServicesServiceIDServiceLinksRemoteIDParams) SetServiceID(serviceID int32) {
+func (o *DeleteV1ServicesServiceIDServiceLinksRemoteIDParams) SetServiceID(serviceID string) {
 	o.ServiceID = serviceID
 }
 
@@ -165,7 +162,7 @@ func (o *DeleteV1ServicesServiceIDServiceLinksRemoteIDParams) WriteToRequest(r r
 	}
 
 	// path param service_id
-	if err := r.SetPathParam("service_id", swag.FormatInt32(o.ServiceID)); err != nil {
+	if err := r.SetPathParam("service_id", o.ServiceID); err != nil {
 		return err
 	}
 

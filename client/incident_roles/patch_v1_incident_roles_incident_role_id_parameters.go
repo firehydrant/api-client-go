@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -65,9 +64,7 @@ PatchV1IncidentRolesIncidentRoleIDParams contains all the parameters to send to 
 type PatchV1IncidentRolesIncidentRoleIDParams struct {
 
 	// IncidentRoleID.
-	//
-	// Format: int32
-	IncidentRoleID int32
+	IncidentRoleID string
 
 	// PatchV1IncidentRolesIncidentRoleID.
 	PatchV1IncidentRolesIncidentRoleID *models.PatchV1IncidentRolesIncidentRoleID
@@ -126,13 +123,13 @@ func (o *PatchV1IncidentRolesIncidentRoleIDParams) SetHTTPClient(client *http.Cl
 }
 
 // WithIncidentRoleID adds the incidentRoleID to the patch v1 incident roles incident role Id params
-func (o *PatchV1IncidentRolesIncidentRoleIDParams) WithIncidentRoleID(incidentRoleID int32) *PatchV1IncidentRolesIncidentRoleIDParams {
+func (o *PatchV1IncidentRolesIncidentRoleIDParams) WithIncidentRoleID(incidentRoleID string) *PatchV1IncidentRolesIncidentRoleIDParams {
 	o.SetIncidentRoleID(incidentRoleID)
 	return o
 }
 
 // SetIncidentRoleID adds the incidentRoleId to the patch v1 incident roles incident role Id params
-func (o *PatchV1IncidentRolesIncidentRoleIDParams) SetIncidentRoleID(incidentRoleID int32) {
+func (o *PatchV1IncidentRolesIncidentRoleIDParams) SetIncidentRoleID(incidentRoleID string) {
 	o.IncidentRoleID = incidentRoleID
 }
 
@@ -156,7 +153,7 @@ func (o *PatchV1IncidentRolesIncidentRoleIDParams) WriteToRequest(r runtime.Clie
 	var res []error
 
 	// path param incident_role_id
-	if err := r.SetPathParam("incident_role_id", swag.FormatInt32(o.IncidentRoleID)); err != nil {
+	if err := r.SetPathParam("incident_role_id", o.IncidentRoleID); err != nil {
 		return err
 	}
 	if o.PatchV1IncidentRolesIncidentRoleID != nil {

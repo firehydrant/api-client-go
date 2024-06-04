@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -65,9 +64,7 @@ PatchV1ChangesChangeIDIdentitiesIdentityIDParams contains all the parameters to 
 type PatchV1ChangesChangeIDIdentitiesIdentityIDParams struct {
 
 	// ChangeID.
-	//
-	// Format: int32
-	ChangeID int32
+	ChangeID string
 
 	// IdentityID.
 	IdentityID string
@@ -129,13 +126,13 @@ func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) SetHTTPClient(client 
 }
 
 // WithChangeID adds the changeID to the patch v1 changes change Id identities identity Id params
-func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) WithChangeID(changeID int32) *PatchV1ChangesChangeIDIdentitiesIdentityIDParams {
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) WithChangeID(changeID string) *PatchV1ChangesChangeIDIdentitiesIdentityIDParams {
 	o.SetChangeID(changeID)
 	return o
 }
 
 // SetChangeID adds the changeId to the patch v1 changes change Id identities identity Id params
-func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) SetChangeID(changeID int32) {
+func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) SetChangeID(changeID string) {
 	o.ChangeID = changeID
 }
 
@@ -170,7 +167,7 @@ func (o *PatchV1ChangesChangeIDIdentitiesIdentityIDParams) WriteToRequest(r runt
 	var res []error
 
 	// path param change_id
-	if err := r.SetPathParam("change_id", swag.FormatInt32(o.ChangeID)); err != nil {
+	if err := r.SetPathParam("change_id", o.ChangeID); err != nil {
 		return err
 	}
 

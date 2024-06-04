@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1ChangesChangeIDIdentitiesIdentityIDParams creates a new DeleteV1ChangesChangeIDIdentitiesIdentityIDParams object,
@@ -63,14 +62,10 @@ DeleteV1ChangesChangeIDIdentitiesIdentityIDParams contains all the parameters to
 type DeleteV1ChangesChangeIDIdentitiesIdentityIDParams struct {
 
 	// ChangeID.
-	//
-	// Format: int32
-	ChangeID int32
+	ChangeID string
 
 	// IdentityID.
-	//
-	// Format: int32
-	IdentityID int32
+	IdentityID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,24 +121,24 @@ func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams) SetHTTPClient(client
 }
 
 // WithChangeID adds the changeID to the delete v1 changes change Id identities identity Id params
-func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams) WithChangeID(changeID int32) *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams {
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams) WithChangeID(changeID string) *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams {
 	o.SetChangeID(changeID)
 	return o
 }
 
 // SetChangeID adds the changeId to the delete v1 changes change Id identities identity Id params
-func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams) SetChangeID(changeID int32) {
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams) SetChangeID(changeID string) {
 	o.ChangeID = changeID
 }
 
 // WithIdentityID adds the identityID to the delete v1 changes change Id identities identity Id params
-func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams) WithIdentityID(identityID int32) *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams {
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams) WithIdentityID(identityID string) *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams {
 	o.SetIdentityID(identityID)
 	return o
 }
 
 // SetIdentityID adds the identityId to the delete v1 changes change Id identities identity Id params
-func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams) SetIdentityID(identityID int32) {
+func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams) SetIdentityID(identityID string) {
 	o.IdentityID = identityID
 }
 
@@ -156,12 +151,12 @@ func (o *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams) WriteToRequest(r run
 	var res []error
 
 	// path param change_id
-	if err := r.SetPathParam("change_id", swag.FormatInt32(o.ChangeID)); err != nil {
+	if err := r.SetPathParam("change_id", o.ChangeID); err != nil {
 		return err
 	}
 
 	// path param identity_id
-	if err := r.SetPathParam("identity_id", swag.FormatInt32(o.IdentityID)); err != nil {
+	if err := r.SetPathParam("identity_id", o.IdentityID); err != nil {
 		return err
 	}
 

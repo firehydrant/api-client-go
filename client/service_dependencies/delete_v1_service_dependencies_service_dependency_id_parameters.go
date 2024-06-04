@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1ServiceDependenciesServiceDependencyIDParams creates a new DeleteV1ServiceDependenciesServiceDependencyIDParams object,
@@ -63,9 +62,7 @@ DeleteV1ServiceDependenciesServiceDependencyIDParams contains all the parameters
 type DeleteV1ServiceDependenciesServiceDependencyIDParams struct {
 
 	// ServiceDependencyID.
-	//
-	// Format: int32
-	ServiceDependencyID int32
+	ServiceDependencyID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *DeleteV1ServiceDependenciesServiceDependencyIDParams) SetHTTPClient(cli
 }
 
 // WithServiceDependencyID adds the serviceDependencyID to the delete v1 service dependencies service dependency Id params
-func (o *DeleteV1ServiceDependenciesServiceDependencyIDParams) WithServiceDependencyID(serviceDependencyID int32) *DeleteV1ServiceDependenciesServiceDependencyIDParams {
+func (o *DeleteV1ServiceDependenciesServiceDependencyIDParams) WithServiceDependencyID(serviceDependencyID string) *DeleteV1ServiceDependenciesServiceDependencyIDParams {
 	o.SetServiceDependencyID(serviceDependencyID)
 	return o
 }
 
 // SetServiceDependencyID adds the serviceDependencyId to the delete v1 service dependencies service dependency Id params
-func (o *DeleteV1ServiceDependenciesServiceDependencyIDParams) SetServiceDependencyID(serviceDependencyID int32) {
+func (o *DeleteV1ServiceDependenciesServiceDependencyIDParams) SetServiceDependencyID(serviceDependencyID string) {
 	o.ServiceDependencyID = serviceDependencyID
 }
 
@@ -140,7 +137,7 @@ func (o *DeleteV1ServiceDependenciesServiceDependencyIDParams) WriteToRequest(r 
 	var res []error
 
 	// path param service_dependency_id
-	if err := r.SetPathParam("service_dependency_id", swag.FormatInt32(o.ServiceDependencyID)); err != nil {
+	if err := r.SetPathParam("service_dependency_id", o.ServiceDependencyID); err != nil {
 		return err
 	}
 
