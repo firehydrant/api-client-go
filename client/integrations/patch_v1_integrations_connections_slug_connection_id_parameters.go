@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPatchV1IntegrationsConnectionsSlugConnectionIDParams creates a new PatchV1IntegrationsConnectionsSlugConnectionIDParams object,
@@ -63,14 +62,10 @@ PatchV1IntegrationsConnectionsSlugConnectionIDParams contains all the parameters
 type PatchV1IntegrationsConnectionsSlugConnectionIDParams struct {
 
 	// ConnectionID.
-	//
-	// Format: int32
-	ConnectionID int32
+	ConnectionID string
 
 	// Slug.
-	//
-	// Format: int32
-	Slug int32
+	Slug string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,24 +121,24 @@ func (o *PatchV1IntegrationsConnectionsSlugConnectionIDParams) SetHTTPClient(cli
 }
 
 // WithConnectionID adds the connectionID to the patch v1 integrations connections slug connection Id params
-func (o *PatchV1IntegrationsConnectionsSlugConnectionIDParams) WithConnectionID(connectionID int32) *PatchV1IntegrationsConnectionsSlugConnectionIDParams {
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDParams) WithConnectionID(connectionID string) *PatchV1IntegrationsConnectionsSlugConnectionIDParams {
 	o.SetConnectionID(connectionID)
 	return o
 }
 
 // SetConnectionID adds the connectionId to the patch v1 integrations connections slug connection Id params
-func (o *PatchV1IntegrationsConnectionsSlugConnectionIDParams) SetConnectionID(connectionID int32) {
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDParams) SetConnectionID(connectionID string) {
 	o.ConnectionID = connectionID
 }
 
 // WithSlug adds the slug to the patch v1 integrations connections slug connection Id params
-func (o *PatchV1IntegrationsConnectionsSlugConnectionIDParams) WithSlug(slug int32) *PatchV1IntegrationsConnectionsSlugConnectionIDParams {
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDParams) WithSlug(slug string) *PatchV1IntegrationsConnectionsSlugConnectionIDParams {
 	o.SetSlug(slug)
 	return o
 }
 
 // SetSlug adds the slug to the patch v1 integrations connections slug connection Id params
-func (o *PatchV1IntegrationsConnectionsSlugConnectionIDParams) SetSlug(slug int32) {
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDParams) SetSlug(slug string) {
 	o.Slug = slug
 }
 
@@ -156,12 +151,12 @@ func (o *PatchV1IntegrationsConnectionsSlugConnectionIDParams) WriteToRequest(r 
 	var res []error
 
 	// path param connection_id
-	if err := r.SetPathParam("connection_id", swag.FormatInt32(o.ConnectionID)); err != nil {
+	if err := r.SetPathParam("connection_id", o.ConnectionID); err != nil {
 		return err
 	}
 
 	// path param slug
-	if err := r.SetPathParam("slug", swag.FormatInt32(o.Slug)); err != nil {
+	if err := r.SetPathParam("slug", o.Slug); err != nil {
 		return err
 	}
 

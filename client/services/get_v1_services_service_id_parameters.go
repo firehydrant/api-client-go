@@ -61,10 +61,7 @@ GetV1ServicesServiceIDParams contains all the parameters to send to the API endp
 */
 type GetV1ServicesServiceIDParams struct {
 
-	/* ServiceID.
-
-	   Service UUID
-	*/
+	// ServiceID.
 	ServiceID string
 
 	timeout    time.Duration

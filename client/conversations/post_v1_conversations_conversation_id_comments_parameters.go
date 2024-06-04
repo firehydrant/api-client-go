@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -65,9 +64,7 @@ PostV1ConversationsConversationIDCommentsParams contains all the parameters to s
 type PostV1ConversationsConversationIDCommentsParams struct {
 
 	// ConversationID.
-	//
-	// Format: int32
-	ConversationID int32
+	ConversationID string
 
 	// PostV1ConversationsConversationIDComments.
 	PostV1ConversationsConversationIDComments *models.PostV1ConversationsConversationIDComments
@@ -126,13 +123,13 @@ func (o *PostV1ConversationsConversationIDCommentsParams) SetHTTPClient(client *
 }
 
 // WithConversationID adds the conversationID to the post v1 conversations conversation Id comments params
-func (o *PostV1ConversationsConversationIDCommentsParams) WithConversationID(conversationID int32) *PostV1ConversationsConversationIDCommentsParams {
+func (o *PostV1ConversationsConversationIDCommentsParams) WithConversationID(conversationID string) *PostV1ConversationsConversationIDCommentsParams {
 	o.SetConversationID(conversationID)
 	return o
 }
 
 // SetConversationID adds the conversationId to the post v1 conversations conversation Id comments params
-func (o *PostV1ConversationsConversationIDCommentsParams) SetConversationID(conversationID int32) {
+func (o *PostV1ConversationsConversationIDCommentsParams) SetConversationID(conversationID string) {
 	o.ConversationID = conversationID
 }
 
@@ -156,7 +153,7 @@ func (o *PostV1ConversationsConversationIDCommentsParams) WriteToRequest(r runti
 	var res []error
 
 	// path param conversation_id
-	if err := r.SetPathParam("conversation_id", swag.FormatInt32(o.ConversationID)); err != nil {
+	if err := r.SetPathParam("conversation_id", o.ConversationID); err != nil {
 		return err
 	}
 	if o.PostV1ConversationsConversationIDComments != nil {

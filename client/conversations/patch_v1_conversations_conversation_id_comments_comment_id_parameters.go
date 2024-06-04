@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -65,14 +64,10 @@ PatchV1ConversationsConversationIDCommentsCommentIDParams contains all the param
 type PatchV1ConversationsConversationIDCommentsCommentIDParams struct {
 
 	// CommentID.
-	//
-	// Format: int32
-	CommentID int32
+	CommentID string
 
 	// ConversationID.
-	//
-	// Format: int32
-	ConversationID int32
+	ConversationID string
 
 	// PatchV1ConversationsConversationIDCommentsCommentID.
 	PatchV1ConversationsConversationIDCommentsCommentID *models.PatchV1ConversationsConversationIDCommentsCommentID
@@ -131,24 +126,24 @@ func (o *PatchV1ConversationsConversationIDCommentsCommentIDParams) SetHTTPClien
 }
 
 // WithCommentID adds the commentID to the patch v1 conversations conversation Id comments comment Id params
-func (o *PatchV1ConversationsConversationIDCommentsCommentIDParams) WithCommentID(commentID int32) *PatchV1ConversationsConversationIDCommentsCommentIDParams {
+func (o *PatchV1ConversationsConversationIDCommentsCommentIDParams) WithCommentID(commentID string) *PatchV1ConversationsConversationIDCommentsCommentIDParams {
 	o.SetCommentID(commentID)
 	return o
 }
 
 // SetCommentID adds the commentId to the patch v1 conversations conversation Id comments comment Id params
-func (o *PatchV1ConversationsConversationIDCommentsCommentIDParams) SetCommentID(commentID int32) {
+func (o *PatchV1ConversationsConversationIDCommentsCommentIDParams) SetCommentID(commentID string) {
 	o.CommentID = commentID
 }
 
 // WithConversationID adds the conversationID to the patch v1 conversations conversation Id comments comment Id params
-func (o *PatchV1ConversationsConversationIDCommentsCommentIDParams) WithConversationID(conversationID int32) *PatchV1ConversationsConversationIDCommentsCommentIDParams {
+func (o *PatchV1ConversationsConversationIDCommentsCommentIDParams) WithConversationID(conversationID string) *PatchV1ConversationsConversationIDCommentsCommentIDParams {
 	o.SetConversationID(conversationID)
 	return o
 }
 
 // SetConversationID adds the conversationId to the patch v1 conversations conversation Id comments comment Id params
-func (o *PatchV1ConversationsConversationIDCommentsCommentIDParams) SetConversationID(conversationID int32) {
+func (o *PatchV1ConversationsConversationIDCommentsCommentIDParams) SetConversationID(conversationID string) {
 	o.ConversationID = conversationID
 }
 
@@ -172,12 +167,12 @@ func (o *PatchV1ConversationsConversationIDCommentsCommentIDParams) WriteToReque
 	var res []error
 
 	// path param comment_id
-	if err := r.SetPathParam("comment_id", swag.FormatInt32(o.CommentID)); err != nil {
+	if err := r.SetPathParam("comment_id", o.CommentID); err != nil {
 		return err
 	}
 
 	// path param conversation_id
-	if err := r.SetPathParam("conversation_id", swag.FormatInt32(o.ConversationID)); err != nil {
+	if err := r.SetPathParam("conversation_id", o.ConversationID); err != nil {
 		return err
 	}
 	if o.PatchV1ConversationsConversationIDCommentsCommentID != nil {

@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -65,9 +64,7 @@ PatchV1IncidentTypesIDParams contains all the parameters to send to the API endp
 type PatchV1IncidentTypesIDParams struct {
 
 	// ID.
-	//
-	// Format: int32
-	ID int32
+	ID string
 
 	// PatchV1IncidentTypesID.
 	PatchV1IncidentTypesID *models.PatchV1IncidentTypesID
@@ -126,13 +123,13 @@ func (o *PatchV1IncidentTypesIDParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithID adds the id to the patch v1 incident types Id params
-func (o *PatchV1IncidentTypesIDParams) WithID(id int32) *PatchV1IncidentTypesIDParams {
+func (o *PatchV1IncidentTypesIDParams) WithID(id string) *PatchV1IncidentTypesIDParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the patch v1 incident types Id params
-func (o *PatchV1IncidentTypesIDParams) SetID(id int32) {
+func (o *PatchV1IncidentTypesIDParams) SetID(id string) {
 	o.ID = id
 }
 
@@ -156,7 +153,7 @@ func (o *PatchV1IncidentTypesIDParams) WriteToRequest(r runtime.ClientRequest, r
 	var res []error
 
 	// path param id
-	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 	if o.PatchV1IncidentTypesID != nil {

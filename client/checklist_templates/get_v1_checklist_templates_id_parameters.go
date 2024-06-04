@@ -61,10 +61,7 @@ GetV1ChecklistTemplatesIDParams contains all the parameters to send to the API e
 */
 type GetV1ChecklistTemplatesIDParams struct {
 
-	/* ID.
-
-	   Checklist Template UUID
-	*/
+	// ID.
 	ID string
 
 	timeout    time.Duration

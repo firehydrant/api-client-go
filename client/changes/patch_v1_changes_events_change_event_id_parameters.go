@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -65,9 +64,7 @@ PatchV1ChangesEventsChangeEventIDParams contains all the parameters to send to t
 type PatchV1ChangesEventsChangeEventIDParams struct {
 
 	// ChangeEventID.
-	//
-	// Format: int32
-	ChangeEventID int32
+	ChangeEventID string
 
 	// PatchV1ChangesEventsChangeEventID.
 	PatchV1ChangesEventsChangeEventID *models.PatchV1ChangesEventsChangeEventID
@@ -126,13 +123,13 @@ func (o *PatchV1ChangesEventsChangeEventIDParams) SetHTTPClient(client *http.Cli
 }
 
 // WithChangeEventID adds the changeEventID to the patch v1 changes events change event Id params
-func (o *PatchV1ChangesEventsChangeEventIDParams) WithChangeEventID(changeEventID int32) *PatchV1ChangesEventsChangeEventIDParams {
+func (o *PatchV1ChangesEventsChangeEventIDParams) WithChangeEventID(changeEventID string) *PatchV1ChangesEventsChangeEventIDParams {
 	o.SetChangeEventID(changeEventID)
 	return o
 }
 
 // SetChangeEventID adds the changeEventId to the patch v1 changes events change event Id params
-func (o *PatchV1ChangesEventsChangeEventIDParams) SetChangeEventID(changeEventID int32) {
+func (o *PatchV1ChangesEventsChangeEventIDParams) SetChangeEventID(changeEventID string) {
 	o.ChangeEventID = changeEventID
 }
 
@@ -156,7 +153,7 @@ func (o *PatchV1ChangesEventsChangeEventIDParams) WriteToRequest(r runtime.Clien
 	var res []error
 
 	// path param change_event_id
-	if err := r.SetPathParam("change_event_id", swag.FormatInt32(o.ChangeEventID)); err != nil {
+	if err := r.SetPathParam("change_event_id", o.ChangeEventID); err != nil {
 		return err
 	}
 	if o.PatchV1ChangesEventsChangeEventID != nil {

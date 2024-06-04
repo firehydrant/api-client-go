@@ -45,7 +45,7 @@ GetV1SchedulesOK describes a response with status code 200, with default header 
 List all known schedules in FireHydrant as pulled from external sources
 */
 type GetV1SchedulesOK struct {
-	Payload *models.ScheduleEntity
+	Payload *models.ScheduleEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 schedules o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1SchedulesOK) String() string {
 	return fmt.Sprintf("[GET /v1/schedules][%d] getV1SchedulesOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1SchedulesOK) GetPayload() *models.ScheduleEntity {
+func (o *GetV1SchedulesOK) GetPayload() *models.ScheduleEntityPaginated {
 	return o.Payload
 }
 
 func (o *GetV1SchedulesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ScheduleEntity)
+	o.Payload = new(models.ScheduleEntityPaginated)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

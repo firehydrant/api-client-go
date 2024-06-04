@@ -61,10 +61,7 @@ DeleteV1WebhooksWebhookIDParams contains all the parameters to send to the API e
 */
 type DeleteV1WebhooksWebhookIDParams struct {
 
-	/* WebhookID.
-
-	   ID of a webhook
-	*/
+	// WebhookID.
 	WebhookID string
 
 	timeout    time.Duration

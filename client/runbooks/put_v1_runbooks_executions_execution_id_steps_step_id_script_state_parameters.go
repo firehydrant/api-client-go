@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams creates a new PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams object,
@@ -63,19 +62,13 @@ PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams contains all the 
 type PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams struct {
 
 	// ExecutionID.
-	//
-	// Format: int32
-	ExecutionID int32
+	ExecutionID string
 
 	// State.
-	//
-	// Format: int32
-	State int32
+	State string
 
 	// StepID.
-	//
-	// Format: int32
-	StepID int32
+	StepID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -131,35 +124,35 @@ func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) SetHTTP
 }
 
 // WithExecutionID adds the executionID to the put v1 runbooks executions execution Id steps step Id script state params
-func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) WithExecutionID(executionID int32) *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams {
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) WithExecutionID(executionID string) *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams {
 	o.SetExecutionID(executionID)
 	return o
 }
 
 // SetExecutionID adds the executionId to the put v1 runbooks executions execution Id steps step Id script state params
-func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) SetExecutionID(executionID int32) {
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) SetExecutionID(executionID string) {
 	o.ExecutionID = executionID
 }
 
 // WithState adds the state to the put v1 runbooks executions execution Id steps step Id script state params
-func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) WithState(state int32) *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams {
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) WithState(state string) *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams {
 	o.SetState(state)
 	return o
 }
 
 // SetState adds the state to the put v1 runbooks executions execution Id steps step Id script state params
-func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) SetState(state int32) {
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) SetState(state string) {
 	o.State = state
 }
 
 // WithStepID adds the stepID to the put v1 runbooks executions execution Id steps step Id script state params
-func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) WithStepID(stepID int32) *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams {
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) WithStepID(stepID string) *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams {
 	o.SetStepID(stepID)
 	return o
 }
 
 // SetStepID adds the stepId to the put v1 runbooks executions execution Id steps step Id script state params
-func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) SetStepID(stepID int32) {
+func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) SetStepID(stepID string) {
 	o.StepID = stepID
 }
 
@@ -172,17 +165,17 @@ func (o *PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptStateParams) WriteTo
 	var res []error
 
 	// path param execution_id
-	if err := r.SetPathParam("execution_id", swag.FormatInt32(o.ExecutionID)); err != nil {
+	if err := r.SetPathParam("execution_id", o.ExecutionID); err != nil {
 		return err
 	}
 
 	// path param state
-	if err := r.SetPathParam("state", swag.FormatInt32(o.State)); err != nil {
+	if err := r.SetPathParam("state", o.State); err != nil {
 		return err
 	}
 
 	// path param step_id
-	if err := r.SetPathParam("step_id", swag.FormatInt32(o.StepID)); err != nil {
+	if err := r.SetPathParam("step_id", o.StepID); err != nil {
 		return err
 	}
 

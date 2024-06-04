@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -68,9 +67,7 @@ type PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDParams struct {
 	PatchV1StatusUpdateTemplatesStatusUpdateTemplateID *models.PatchV1StatusUpdateTemplatesStatusUpdateTemplateID
 
 	// StatusUpdateTemplateID.
-	//
-	// Format: int32
-	StatusUpdateTemplateID int32
+	StatusUpdateTemplateID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -137,13 +134,13 @@ func (o *PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDParams) SetPatchV1Sta
 }
 
 // WithStatusUpdateTemplateID adds the statusUpdateTemplateID to the patch v1 status update templates status update template Id params
-func (o *PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDParams) WithStatusUpdateTemplateID(statusUpdateTemplateID int32) *PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDParams {
+func (o *PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDParams) WithStatusUpdateTemplateID(statusUpdateTemplateID string) *PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDParams {
 	o.SetStatusUpdateTemplateID(statusUpdateTemplateID)
 	return o
 }
 
 // SetStatusUpdateTemplateID adds the statusUpdateTemplateId to the patch v1 status update templates status update template Id params
-func (o *PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDParams) SetStatusUpdateTemplateID(statusUpdateTemplateID int32) {
+func (o *PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDParams) SetStatusUpdateTemplateID(statusUpdateTemplateID string) {
 	o.StatusUpdateTemplateID = statusUpdateTemplateID
 }
 
@@ -161,7 +158,7 @@ func (o *PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDParams) WriteToReques
 	}
 
 	// path param status_update_template_id
-	if err := r.SetPathParam("status_update_template_id", swag.FormatInt32(o.StatusUpdateTemplateID)); err != nil {
+	if err := r.SetPathParam("status_update_template_id", o.StatusUpdateTemplateID); err != nil {
 		return err
 	}
 

@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams creates a new PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams object,
@@ -72,9 +71,7 @@ type PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams struct {
 	Name *string
 
 	// NuncConnectionID.
-	//
-	// Format: int32
-	NuncConnectionID int32
+	NuncConnectionID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -163,13 +160,13 @@ func (o *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) Set
 }
 
 // WithNuncConnectionID adds the nuncConnectionID to the patch v1 nunc connections nunc connection Id component groups group Id params
-func (o *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) WithNuncConnectionID(nuncConnectionID int32) *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams {
+func (o *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) WithNuncConnectionID(nuncConnectionID string) *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams {
 	o.SetNuncConnectionID(nuncConnectionID)
 	return o
 }
 
 // SetNuncConnectionID adds the nuncConnectionId to the patch v1 nunc connections nunc connection Id component groups group Id params
-func (o *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) SetNuncConnectionID(nuncConnectionID int32) {
+func (o *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) SetNuncConnectionID(nuncConnectionID string) {
 	o.NuncConnectionID = nuncConnectionID
 }
 
@@ -217,7 +214,7 @@ func (o *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) Wri
 	}
 
 	// path param nunc_connection_id
-	if err := r.SetPathParam("nunc_connection_id", swag.FormatInt32(o.NuncConnectionID)); err != nil {
+	if err := r.SetPathParam("nunc_connection_id", o.NuncConnectionID); err != nil {
 		return err
 	}
 

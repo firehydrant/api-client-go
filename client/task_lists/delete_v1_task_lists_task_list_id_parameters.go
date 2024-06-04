@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1TaskListsTaskListIDParams creates a new DeleteV1TaskListsTaskListIDParams object,
@@ -63,9 +62,7 @@ DeleteV1TaskListsTaskListIDParams contains all the parameters to send to the API
 type DeleteV1TaskListsTaskListIDParams struct {
 
 	// TaskListID.
-	//
-	// Format: int32
-	TaskListID int32
+	TaskListID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *DeleteV1TaskListsTaskListIDParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithTaskListID adds the taskListID to the delete v1 task lists task list Id params
-func (o *DeleteV1TaskListsTaskListIDParams) WithTaskListID(taskListID int32) *DeleteV1TaskListsTaskListIDParams {
+func (o *DeleteV1TaskListsTaskListIDParams) WithTaskListID(taskListID string) *DeleteV1TaskListsTaskListIDParams {
 	o.SetTaskListID(taskListID)
 	return o
 }
 
 // SetTaskListID adds the taskListId to the delete v1 task lists task list Id params
-func (o *DeleteV1TaskListsTaskListIDParams) SetTaskListID(taskListID int32) {
+func (o *DeleteV1TaskListsTaskListIDParams) SetTaskListID(taskListID string) {
 	o.TaskListID = taskListID
 }
 
@@ -140,7 +137,7 @@ func (o *DeleteV1TaskListsTaskListIDParams) WriteToRequest(r runtime.ClientReque
 	var res []error
 
 	// path param task_list_id
-	if err := r.SetPathParam("task_list_id", swag.FormatInt32(o.TaskListID)); err != nil {
+	if err := r.SetPathParam("task_list_id", o.TaskListID); err != nil {
 		return err
 	}
 

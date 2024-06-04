@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams creates a new PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams object,
@@ -63,14 +62,10 @@ PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDP
 type PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams struct {
 
 	// ConfigID.
-	//
-	// Format: int32
-	ConfigID int32
+	ConfigID string
 
 	// TicketingProjectID.
-	//
-	// Format: int32
-	TicketingProjectID int32
+	TicketingProjectID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,24 +121,24 @@ func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations
 }
 
 // WithConfigID adds the configID to the patch v1 ticketing projects ticketing project Id provider project configurations config Id params
-func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) WithConfigID(configID int32) *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams {
+func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) WithConfigID(configID string) *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams {
 	o.SetConfigID(configID)
 	return o
 }
 
 // SetConfigID adds the configId to the patch v1 ticketing projects ticketing project Id provider project configurations config Id params
-func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) SetConfigID(configID int32) {
+func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) SetConfigID(configID string) {
 	o.ConfigID = configID
 }
 
 // WithTicketingProjectID adds the ticketingProjectID to the patch v1 ticketing projects ticketing project Id provider project configurations config Id params
-func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) WithTicketingProjectID(ticketingProjectID int32) *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams {
+func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) WithTicketingProjectID(ticketingProjectID string) *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams {
 	o.SetTicketingProjectID(ticketingProjectID)
 	return o
 }
 
 // SetTicketingProjectID adds the ticketingProjectId to the patch v1 ticketing projects ticketing project Id provider project configurations config Id params
-func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) SetTicketingProjectID(ticketingProjectID int32) {
+func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams) SetTicketingProjectID(ticketingProjectID string) {
 	o.TicketingProjectID = ticketingProjectID
 }
 
@@ -156,12 +151,12 @@ func (o *PatchV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations
 	var res []error
 
 	// path param config_id
-	if err := r.SetPathParam("config_id", swag.FormatInt32(o.ConfigID)); err != nil {
+	if err := r.SetPathParam("config_id", o.ConfigID); err != nil {
 		return err
 	}
 
 	// path param ticketing_project_id
-	if err := r.SetPathParam("ticketing_project_id", swag.FormatInt32(o.TicketingProjectID)); err != nil {
+	if err := r.SetPathParam("ticketing_project_id", o.TicketingProjectID); err != nil {
 		return err
 	}
 

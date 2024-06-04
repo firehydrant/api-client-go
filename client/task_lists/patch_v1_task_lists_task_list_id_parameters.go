@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -68,9 +67,7 @@ type PatchV1TaskListsTaskListIDParams struct {
 	PatchV1TaskListsTaskListID *models.PatchV1TaskListsTaskListID
 
 	// TaskListID.
-	//
-	// Format: int32
-	TaskListID int32
+	TaskListID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -137,13 +134,13 @@ func (o *PatchV1TaskListsTaskListIDParams) SetPatchV1TaskListsTaskListID(patchV1
 }
 
 // WithTaskListID adds the taskListID to the patch v1 task lists task list Id params
-func (o *PatchV1TaskListsTaskListIDParams) WithTaskListID(taskListID int32) *PatchV1TaskListsTaskListIDParams {
+func (o *PatchV1TaskListsTaskListIDParams) WithTaskListID(taskListID string) *PatchV1TaskListsTaskListIDParams {
 	o.SetTaskListID(taskListID)
 	return o
 }
 
 // SetTaskListID adds the taskListId to the patch v1 task lists task list Id params
-func (o *PatchV1TaskListsTaskListIDParams) SetTaskListID(taskListID int32) {
+func (o *PatchV1TaskListsTaskListIDParams) SetTaskListID(taskListID string) {
 	o.TaskListID = taskListID
 }
 
@@ -161,7 +158,7 @@ func (o *PatchV1TaskListsTaskListIDParams) WriteToRequest(r runtime.ClientReques
 	}
 
 	// path param task_list_id
-	if err := r.SetPathParam("task_list_id", swag.FormatInt32(o.TaskListID)); err != nil {
+	if err := r.SetPathParam("task_list_id", o.TaskListID); err != nil {
 		return err
 	}
 

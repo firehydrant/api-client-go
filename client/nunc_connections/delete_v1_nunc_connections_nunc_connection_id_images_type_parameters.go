@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams creates a new DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams object,
@@ -63,14 +62,10 @@ DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams contains all the paramet
 type DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams struct {
 
 	// NuncConnectionID.
-	//
-	// Format: int32
-	NuncConnectionID int32
+	NuncConnectionID string
 
 	// Type.
-	//
-	// Format: int32
-	Type int32
+	Type string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,24 +121,24 @@ func (o *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams) SetHTTPClient(
 }
 
 // WithNuncConnectionID adds the nuncConnectionID to the delete v1 nunc connections nunc connection Id images type params
-func (o *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams) WithNuncConnectionID(nuncConnectionID int32) *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams {
+func (o *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams) WithNuncConnectionID(nuncConnectionID string) *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams {
 	o.SetNuncConnectionID(nuncConnectionID)
 	return o
 }
 
 // SetNuncConnectionID adds the nuncConnectionId to the delete v1 nunc connections nunc connection Id images type params
-func (o *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams) SetNuncConnectionID(nuncConnectionID int32) {
+func (o *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams) SetNuncConnectionID(nuncConnectionID string) {
 	o.NuncConnectionID = nuncConnectionID
 }
 
 // WithType adds the typeVar to the delete v1 nunc connections nunc connection Id images type params
-func (o *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams) WithType(typeVar int32) *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams {
+func (o *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams) WithType(typeVar string) *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams {
 	o.SetType(typeVar)
 	return o
 }
 
 // SetType adds the type to the delete v1 nunc connections nunc connection Id images type params
-func (o *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams) SetType(typeVar int32) {
+func (o *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams) SetType(typeVar string) {
 	o.Type = typeVar
 }
 
@@ -156,12 +151,12 @@ func (o *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams) WriteToRequest
 	var res []error
 
 	// path param nunc_connection_id
-	if err := r.SetPathParam("nunc_connection_id", swag.FormatInt32(o.NuncConnectionID)); err != nil {
+	if err := r.SetPathParam("nunc_connection_id", o.NuncConnectionID); err != nil {
 		return err
 	}
 
 	// path param type
-	if err := r.SetPathParam("type", swag.FormatInt32(o.Type)); err != nil {
+	if err := r.SetPathParam("type", o.Type); err != nil {
 		return err
 	}
 

@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -68,9 +67,7 @@ type PutV1RunbooksRunbookIDParams struct {
 	PutV1RunbooksRunbookID *models.PutV1RunbooksRunbookID
 
 	// RunbookID.
-	//
-	// Format: int32
-	RunbookID int32
+	RunbookID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -137,13 +134,13 @@ func (o *PutV1RunbooksRunbookIDParams) SetPutV1RunbooksRunbookID(putV1RunbooksRu
 }
 
 // WithRunbookID adds the runbookID to the put v1 runbooks runbook Id params
-func (o *PutV1RunbooksRunbookIDParams) WithRunbookID(runbookID int32) *PutV1RunbooksRunbookIDParams {
+func (o *PutV1RunbooksRunbookIDParams) WithRunbookID(runbookID string) *PutV1RunbooksRunbookIDParams {
 	o.SetRunbookID(runbookID)
 	return o
 }
 
 // SetRunbookID adds the runbookId to the put v1 runbooks runbook Id params
-func (o *PutV1RunbooksRunbookIDParams) SetRunbookID(runbookID int32) {
+func (o *PutV1RunbooksRunbookIDParams) SetRunbookID(runbookID string) {
 	o.RunbookID = runbookID
 }
 
@@ -161,7 +158,7 @@ func (o *PutV1RunbooksRunbookIDParams) WriteToRequest(r runtime.ClientRequest, r
 	}
 
 	// path param runbook_id
-	if err := r.SetPathParam("runbook_id", swag.FormatInt32(o.RunbookID)); err != nil {
+	if err := r.SetPathParam("runbook_id", o.RunbookID); err != nil {
 		return err
 	}
 

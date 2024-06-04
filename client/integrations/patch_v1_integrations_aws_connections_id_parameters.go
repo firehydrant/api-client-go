@@ -63,10 +63,7 @@ PatchV1IntegrationsAwsConnectionsIDParams contains all the parameters to send to
 */
 type PatchV1IntegrationsAwsConnectionsIDParams struct {
 
-	/* ID.
-
-	   Connection UUID
-	*/
+	// ID.
 	ID string
 
 	// PatchV1IntegrationsAwsConnectionsID.

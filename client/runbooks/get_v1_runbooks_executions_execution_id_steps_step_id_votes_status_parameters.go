@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams creates a new GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams object,
@@ -63,14 +62,10 @@ GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams contains all the 
 type GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams struct {
 
 	// ExecutionID.
-	//
-	// Format: int32
-	ExecutionID int32
+	ExecutionID string
 
 	// StepID.
-	//
-	// Format: int32
-	StepID int32
+	StepID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,24 +121,24 @@ func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams) SetHTTP
 }
 
 // WithExecutionID adds the executionID to the get v1 runbooks executions execution Id steps step Id votes status params
-func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams) WithExecutionID(executionID int32) *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams {
+func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams) WithExecutionID(executionID string) *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams {
 	o.SetExecutionID(executionID)
 	return o
 }
 
 // SetExecutionID adds the executionId to the get v1 runbooks executions execution Id steps step Id votes status params
-func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams) SetExecutionID(executionID int32) {
+func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams) SetExecutionID(executionID string) {
 	o.ExecutionID = executionID
 }
 
 // WithStepID adds the stepID to the get v1 runbooks executions execution Id steps step Id votes status params
-func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams) WithStepID(stepID int32) *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams {
+func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams) WithStepID(stepID string) *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams {
 	o.SetStepID(stepID)
 	return o
 }
 
 // SetStepID adds the stepId to the get v1 runbooks executions execution Id steps step Id votes status params
-func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams) SetStepID(stepID int32) {
+func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams) SetStepID(stepID string) {
 	o.StepID = stepID
 }
 
@@ -156,12 +151,12 @@ func (o *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams) WriteTo
 	var res []error
 
 	// path param execution_id
-	if err := r.SetPathParam("execution_id", swag.FormatInt32(o.ExecutionID)); err != nil {
+	if err := r.SetPathParam("execution_id", o.ExecutionID); err != nil {
 		return err
 	}
 
 	// path param step_id
-	if err := r.SetPathParam("step_id", swag.FormatInt32(o.StepID)); err != nil {
+	if err := r.SetPathParam("step_id", o.StepID); err != nil {
 		return err
 	}
 

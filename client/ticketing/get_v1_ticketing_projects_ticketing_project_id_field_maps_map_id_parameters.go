@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams creates a new GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams object,
@@ -63,14 +62,10 @@ GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams contains all the pa
 type GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams struct {
 
 	// MapID.
-	//
-	// Format: int32
-	MapID int32
+	MapID string
 
 	// TicketingProjectID.
-	//
-	// Format: int32
-	TicketingProjectID int32
+	TicketingProjectID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,24 +121,24 @@ func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams) SetHTTPCl
 }
 
 // WithMapID adds the mapID to the get v1 ticketing projects ticketing project Id field maps map Id params
-func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams) WithMapID(mapID int32) *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams {
+func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams) WithMapID(mapID string) *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams {
 	o.SetMapID(mapID)
 	return o
 }
 
 // SetMapID adds the mapId to the get v1 ticketing projects ticketing project Id field maps map Id params
-func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams) SetMapID(mapID int32) {
+func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams) SetMapID(mapID string) {
 	o.MapID = mapID
 }
 
 // WithTicketingProjectID adds the ticketingProjectID to the get v1 ticketing projects ticketing project Id field maps map Id params
-func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams) WithTicketingProjectID(ticketingProjectID int32) *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams {
+func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams) WithTicketingProjectID(ticketingProjectID string) *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams {
 	o.SetTicketingProjectID(ticketingProjectID)
 	return o
 }
 
 // SetTicketingProjectID adds the ticketingProjectId to the get v1 ticketing projects ticketing project Id field maps map Id params
-func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams) SetTicketingProjectID(ticketingProjectID int32) {
+func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams) SetTicketingProjectID(ticketingProjectID string) {
 	o.TicketingProjectID = ticketingProjectID
 }
 
@@ -156,12 +151,12 @@ func (o *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams) WriteToRe
 	var res []error
 
 	// path param map_id
-	if err := r.SetPathParam("map_id", swag.FormatInt32(o.MapID)); err != nil {
+	if err := r.SetPathParam("map_id", o.MapID); err != nil {
 		return err
 	}
 
 	// path param ticketing_project_id
-	if err := r.SetPathParam("ticketing_project_id", swag.FormatInt32(o.TicketingProjectID)); err != nil {
+	if err := r.SetPathParam("ticketing_project_id", o.TicketingProjectID); err != nil {
 		return err
 	}
 

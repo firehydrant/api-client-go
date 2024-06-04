@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams creates a new DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams object,
@@ -66,9 +65,7 @@ type DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams struct {
 	LinkID string
 
 	// NuncConnectionID.
-	//
-	// Format: int32
-	NuncConnectionID int32
+	NuncConnectionID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -135,13 +132,13 @@ func (o *DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams) SetLinkID(lin
 }
 
 // WithNuncConnectionID adds the nuncConnectionID to the delete v1 nunc connections nunc connection Id links link Id params
-func (o *DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams) WithNuncConnectionID(nuncConnectionID int32) *DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams {
+func (o *DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams) WithNuncConnectionID(nuncConnectionID string) *DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams {
 	o.SetNuncConnectionID(nuncConnectionID)
 	return o
 }
 
 // SetNuncConnectionID adds the nuncConnectionId to the delete v1 nunc connections nunc connection Id links link Id params
-func (o *DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams) SetNuncConnectionID(nuncConnectionID int32) {
+func (o *DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams) SetNuncConnectionID(nuncConnectionID string) {
 	o.NuncConnectionID = nuncConnectionID
 }
 
@@ -159,7 +156,7 @@ func (o *DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams) WriteToReques
 	}
 
 	// path param nunc_connection_id
-	if err := r.SetPathParam("nunc_connection_id", swag.FormatInt32(o.NuncConnectionID)); err != nil {
+	if err := r.SetPathParam("nunc_connection_id", o.NuncConnectionID); err != nil {
 		return err
 	}
 

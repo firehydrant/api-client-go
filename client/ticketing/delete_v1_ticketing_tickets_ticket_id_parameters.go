@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1TicketingTicketsTicketIDParams creates a new DeleteV1TicketingTicketsTicketIDParams object,
@@ -63,9 +62,7 @@ DeleteV1TicketingTicketsTicketIDParams contains all the parameters to send to th
 type DeleteV1TicketingTicketsTicketIDParams struct {
 
 	// TicketID.
-	//
-	// Format: int32
-	TicketID int32
+	TicketID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *DeleteV1TicketingTicketsTicketIDParams) SetHTTPClient(client *http.Clie
 }
 
 // WithTicketID adds the ticketID to the delete v1 ticketing tickets ticket Id params
-func (o *DeleteV1TicketingTicketsTicketIDParams) WithTicketID(ticketID int32) *DeleteV1TicketingTicketsTicketIDParams {
+func (o *DeleteV1TicketingTicketsTicketIDParams) WithTicketID(ticketID string) *DeleteV1TicketingTicketsTicketIDParams {
 	o.SetTicketID(ticketID)
 	return o
 }
 
 // SetTicketID adds the ticketId to the delete v1 ticketing tickets ticket Id params
-func (o *DeleteV1TicketingTicketsTicketIDParams) SetTicketID(ticketID int32) {
+func (o *DeleteV1TicketingTicketsTicketIDParams) SetTicketID(ticketID string) {
 	o.TicketID = ticketID
 }
 
@@ -140,7 +137,7 @@ func (o *DeleteV1TicketingTicketsTicketIDParams) WriteToRequest(r runtime.Client
 	var res []error
 
 	// path param ticket_id
-	if err := r.SetPathParam("ticket_id", swag.FormatInt32(o.TicketID)); err != nil {
+	if err := r.SetPathParam("ticket_id", o.TicketID); err != nil {
 		return err
 	}
 

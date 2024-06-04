@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1ServicesServiceIDAvailableDownstreamDependenciesParams creates a new GetV1ServicesServiceIDAvailableDownstreamDependenciesParams object,
@@ -63,9 +62,7 @@ GetV1ServicesServiceIDAvailableDownstreamDependenciesParams contains all the par
 type GetV1ServicesServiceIDAvailableDownstreamDependenciesParams struct {
 
 	// ServiceID.
-	//
-	// Format: int32
-	ServiceID int32
+	ServiceID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *GetV1ServicesServiceIDAvailableDownstreamDependenciesParams) SetHTTPCli
 }
 
 // WithServiceID adds the serviceID to the get v1 services service Id available downstream dependencies params
-func (o *GetV1ServicesServiceIDAvailableDownstreamDependenciesParams) WithServiceID(serviceID int32) *GetV1ServicesServiceIDAvailableDownstreamDependenciesParams {
+func (o *GetV1ServicesServiceIDAvailableDownstreamDependenciesParams) WithServiceID(serviceID string) *GetV1ServicesServiceIDAvailableDownstreamDependenciesParams {
 	o.SetServiceID(serviceID)
 	return o
 }
 
 // SetServiceID adds the serviceId to the get v1 services service Id available downstream dependencies params
-func (o *GetV1ServicesServiceIDAvailableDownstreamDependenciesParams) SetServiceID(serviceID int32) {
+func (o *GetV1ServicesServiceIDAvailableDownstreamDependenciesParams) SetServiceID(serviceID string) {
 	o.ServiceID = serviceID
 }
 
@@ -140,7 +137,7 @@ func (o *GetV1ServicesServiceIDAvailableDownstreamDependenciesParams) WriteToReq
 	var res []error
 
 	// path param service_id
-	if err := r.SetPathParam("service_id", swag.FormatInt32(o.ServiceID)); err != nil {
+	if err := r.SetPathParam("service_id", o.ServiceID); err != nil {
 		return err
 	}
 

@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1CatalogsCatalogIDRefreshParams creates a new GetV1CatalogsCatalogIDRefreshParams object,
@@ -63,9 +62,7 @@ GetV1CatalogsCatalogIDRefreshParams contains all the parameters to send to the A
 type GetV1CatalogsCatalogIDRefreshParams struct {
 
 	// CatalogID.
-	//
-	// Format: int32
-	CatalogID int32
+	CatalogID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *GetV1CatalogsCatalogIDRefreshParams) SetHTTPClient(client *http.Client)
 }
 
 // WithCatalogID adds the catalogID to the get v1 catalogs catalog Id refresh params
-func (o *GetV1CatalogsCatalogIDRefreshParams) WithCatalogID(catalogID int32) *GetV1CatalogsCatalogIDRefreshParams {
+func (o *GetV1CatalogsCatalogIDRefreshParams) WithCatalogID(catalogID string) *GetV1CatalogsCatalogIDRefreshParams {
 	o.SetCatalogID(catalogID)
 	return o
 }
 
 // SetCatalogID adds the catalogId to the get v1 catalogs catalog Id refresh params
-func (o *GetV1CatalogsCatalogIDRefreshParams) SetCatalogID(catalogID int32) {
+func (o *GetV1CatalogsCatalogIDRefreshParams) SetCatalogID(catalogID string) {
 	o.CatalogID = catalogID
 }
 
@@ -140,7 +137,7 @@ func (o *GetV1CatalogsCatalogIDRefreshParams) WriteToRequest(r runtime.ClientReq
 	var res []error
 
 	// path param catalog_id
-	if err := r.SetPathParam("catalog_id", swag.FormatInt32(o.CatalogID)); err != nil {
+	if err := r.SetPathParam("catalog_id", o.CatalogID); err != nil {
 		return err
 	}
 

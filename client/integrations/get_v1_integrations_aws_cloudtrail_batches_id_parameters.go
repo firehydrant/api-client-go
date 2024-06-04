@@ -61,10 +61,7 @@ GetV1IntegrationsAwsCloudtrailBatchesIDParams contains all the parameters to sen
 */
 type GetV1IntegrationsAwsCloudtrailBatchesIDParams struct {
 
-	/* ID.
-
-	   Batch UUID
-	*/
+	// ID.
 	ID string
 
 	timeout    time.Duration

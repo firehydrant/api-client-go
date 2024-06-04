@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1RunbooksRunbookIDParams creates a new DeleteV1RunbooksRunbookIDParams object,
@@ -63,9 +62,7 @@ DeleteV1RunbooksRunbookIDParams contains all the parameters to send to the API e
 type DeleteV1RunbooksRunbookIDParams struct {
 
 	// RunbookID.
-	//
-	// Format: int32
-	RunbookID int32
+	RunbookID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *DeleteV1RunbooksRunbookIDParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithRunbookID adds the runbookID to the delete v1 runbooks runbook Id params
-func (o *DeleteV1RunbooksRunbookIDParams) WithRunbookID(runbookID int32) *DeleteV1RunbooksRunbookIDParams {
+func (o *DeleteV1RunbooksRunbookIDParams) WithRunbookID(runbookID string) *DeleteV1RunbooksRunbookIDParams {
 	o.SetRunbookID(runbookID)
 	return o
 }
 
 // SetRunbookID adds the runbookId to the delete v1 runbooks runbook Id params
-func (o *DeleteV1RunbooksRunbookIDParams) SetRunbookID(runbookID int32) {
+func (o *DeleteV1RunbooksRunbookIDParams) SetRunbookID(runbookID string) {
 	o.RunbookID = runbookID
 }
 
@@ -140,7 +137,7 @@ func (o *DeleteV1RunbooksRunbookIDParams) WriteToRequest(r runtime.ClientRequest
 	var res []error
 
 	// path param runbook_id
-	if err := r.SetPathParam("runbook_id", swag.FormatInt32(o.RunbookID)); err != nil {
+	if err := r.SetPathParam("runbook_id", o.RunbookID); err != nil {
 		return err
 	}
 

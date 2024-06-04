@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1ConversationsConversationIDCommentsCommentIDReactionsParams creates a new GetV1ConversationsConversationIDCommentsCommentIDReactionsParams object,
@@ -63,14 +62,10 @@ GetV1ConversationsConversationIDCommentsCommentIDReactionsParams contains all th
 type GetV1ConversationsConversationIDCommentsCommentIDReactionsParams struct {
 
 	// CommentID.
-	//
-	// Format: int32
-	CommentID int32
+	CommentID string
 
 	// ConversationID.
-	//
-	// Format: int32
-	ConversationID int32
+	ConversationID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,24 +121,24 @@ func (o *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams) SetHT
 }
 
 // WithCommentID adds the commentID to the get v1 conversations conversation Id comments comment Id reactions params
-func (o *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams) WithCommentID(commentID int32) *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams {
+func (o *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams) WithCommentID(commentID string) *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams {
 	o.SetCommentID(commentID)
 	return o
 }
 
 // SetCommentID adds the commentId to the get v1 conversations conversation Id comments comment Id reactions params
-func (o *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams) SetCommentID(commentID int32) {
+func (o *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams) SetCommentID(commentID string) {
 	o.CommentID = commentID
 }
 
 // WithConversationID adds the conversationID to the get v1 conversations conversation Id comments comment Id reactions params
-func (o *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams) WithConversationID(conversationID int32) *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams {
+func (o *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams) WithConversationID(conversationID string) *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams {
 	o.SetConversationID(conversationID)
 	return o
 }
 
 // SetConversationID adds the conversationId to the get v1 conversations conversation Id comments comment Id reactions params
-func (o *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams) SetConversationID(conversationID int32) {
+func (o *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams) SetConversationID(conversationID string) {
 	o.ConversationID = conversationID
 }
 
@@ -156,12 +151,12 @@ func (o *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams) Write
 	var res []error
 
 	// path param comment_id
-	if err := r.SetPathParam("comment_id", swag.FormatInt32(o.CommentID)); err != nil {
+	if err := r.SetPathParam("comment_id", o.CommentID); err != nil {
 		return err
 	}
 
 	// path param conversation_id
-	if err := r.SetPathParam("conversation_id", swag.FormatInt32(o.ConversationID)); err != nil {
+	if err := r.SetPathParam("conversation_id", o.ConversationID); err != nil {
 		return err
 	}
 

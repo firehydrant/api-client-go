@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -68,9 +67,7 @@ type PatchV1TeamsTeamIDParams struct {
 	PatchV1TeamsTeamID *models.PatchV1TeamsTeamID
 
 	// TeamID.
-	//
-	// Format: int32
-	TeamID int32
+	TeamID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -137,13 +134,13 @@ func (o *PatchV1TeamsTeamIDParams) SetPatchV1TeamsTeamID(patchV1TeamsTeamID *mod
 }
 
 // WithTeamID adds the teamID to the patch v1 teams team Id params
-func (o *PatchV1TeamsTeamIDParams) WithTeamID(teamID int32) *PatchV1TeamsTeamIDParams {
+func (o *PatchV1TeamsTeamIDParams) WithTeamID(teamID string) *PatchV1TeamsTeamIDParams {
 	o.SetTeamID(teamID)
 	return o
 }
 
 // SetTeamID adds the teamId to the patch v1 teams team Id params
-func (o *PatchV1TeamsTeamIDParams) SetTeamID(teamID int32) {
+func (o *PatchV1TeamsTeamIDParams) SetTeamID(teamID string) {
 	o.TeamID = teamID
 }
 
@@ -161,7 +158,7 @@ func (o *PatchV1TeamsTeamIDParams) WriteToRequest(r runtime.ClientRequest, reg s
 	}
 
 	// path param team_id
-	if err := r.SetPathParam("team_id", swag.FormatInt32(o.TeamID)); err != nil {
+	if err := r.SetPathParam("team_id", o.TeamID); err != nil {
 		return err
 	}
 

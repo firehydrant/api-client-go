@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -68,9 +67,7 @@ type PatchV1TicketingTicketsTicketIDParams struct {
 	PatchV1TicketingTicketsTicketID *models.PatchV1TicketingTicketsTicketID
 
 	// TicketID.
-	//
-	// Format: int32
-	TicketID int32
+	TicketID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -137,13 +134,13 @@ func (o *PatchV1TicketingTicketsTicketIDParams) SetPatchV1TicketingTicketsTicket
 }
 
 // WithTicketID adds the ticketID to the patch v1 ticketing tickets ticket Id params
-func (o *PatchV1TicketingTicketsTicketIDParams) WithTicketID(ticketID int32) *PatchV1TicketingTicketsTicketIDParams {
+func (o *PatchV1TicketingTicketsTicketIDParams) WithTicketID(ticketID string) *PatchV1TicketingTicketsTicketIDParams {
 	o.SetTicketID(ticketID)
 	return o
 }
 
 // SetTicketID adds the ticketId to the patch v1 ticketing tickets ticket Id params
-func (o *PatchV1TicketingTicketsTicketIDParams) SetTicketID(ticketID int32) {
+func (o *PatchV1TicketingTicketsTicketIDParams) SetTicketID(ticketID string) {
 	o.TicketID = ticketID
 }
 
@@ -161,7 +158,7 @@ func (o *PatchV1TicketingTicketsTicketIDParams) WriteToRequest(r runtime.ClientR
 	}
 
 	// path param ticket_id
-	if err := r.SetPathParam("ticket_id", swag.FormatInt32(o.TicketID)); err != nil {
+	if err := r.SetPathParam("ticket_id", o.TicketID); err != nil {
 		return err
 	}
 

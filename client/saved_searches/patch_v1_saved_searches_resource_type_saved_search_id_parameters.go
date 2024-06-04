@@ -69,10 +69,7 @@ type PatchV1SavedSearchesResourceTypeSavedSearchIDParams struct {
 	// ResourceType.
 	ResourceType string
 
-	/* SavedSearchID.
-
-	   ID of a saved search
-	*/
+	// SavedSearchID.
 	SavedSearchID string
 
 	timeout    time.Duration

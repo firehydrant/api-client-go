@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -65,9 +64,7 @@ PatchV1FunctionalitiesFunctionalityIDParams contains all the parameters to send 
 type PatchV1FunctionalitiesFunctionalityIDParams struct {
 
 	// FunctionalityID.
-	//
-	// Format: int32
-	FunctionalityID int32
+	FunctionalityID string
 
 	// PatchV1FunctionalitiesFunctionalityID.
 	PatchV1FunctionalitiesFunctionalityID *models.PatchV1FunctionalitiesFunctionalityID
@@ -126,13 +123,13 @@ func (o *PatchV1FunctionalitiesFunctionalityIDParams) SetHTTPClient(client *http
 }
 
 // WithFunctionalityID adds the functionalityID to the patch v1 functionalities functionality Id params
-func (o *PatchV1FunctionalitiesFunctionalityIDParams) WithFunctionalityID(functionalityID int32) *PatchV1FunctionalitiesFunctionalityIDParams {
+func (o *PatchV1FunctionalitiesFunctionalityIDParams) WithFunctionalityID(functionalityID string) *PatchV1FunctionalitiesFunctionalityIDParams {
 	o.SetFunctionalityID(functionalityID)
 	return o
 }
 
 // SetFunctionalityID adds the functionalityId to the patch v1 functionalities functionality Id params
-func (o *PatchV1FunctionalitiesFunctionalityIDParams) SetFunctionalityID(functionalityID int32) {
+func (o *PatchV1FunctionalitiesFunctionalityIDParams) SetFunctionalityID(functionalityID string) {
 	o.FunctionalityID = functionalityID
 }
 
@@ -156,7 +153,7 @@ func (o *PatchV1FunctionalitiesFunctionalityIDParams) WriteToRequest(r runtime.C
 	var res []error
 
 	// path param functionality_id
-	if err := r.SetPathParam("functionality_id", swag.FormatInt32(o.FunctionalityID)); err != nil {
+	if err := r.SetPathParam("functionality_id", o.FunctionalityID); err != nil {
 		return err
 	}
 	if o.PatchV1FunctionalitiesFunctionalityID != nil {

@@ -61,10 +61,7 @@ GetV1RunbookTemplatesIDParams contains all the parameters to send to the API end
 */
 type GetV1RunbookTemplatesIDParams struct {
 
-	/* ID.
-
-	   UUID of the Runbook template
-	*/
+	// ID.
 	ID string
 
 	timeout    time.Duration

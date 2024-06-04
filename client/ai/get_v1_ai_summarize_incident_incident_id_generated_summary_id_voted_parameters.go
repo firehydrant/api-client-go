@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams creates a new GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams object,
@@ -63,14 +62,10 @@ GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams contains all the
 type GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams struct {
 
 	// GeneratedSummaryID.
-	//
-	// Format: int32
-	GeneratedSummaryID int32
+	GeneratedSummaryID string
 
 	// IncidentID.
-	//
-	// Format: int32
-	IncidentID int32
+	IncidentID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,24 +121,24 @@ func (o *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams) SetHTT
 }
 
 // WithGeneratedSummaryID adds the generatedSummaryID to the get v1 ai summarize incident incident Id generated summary Id voted params
-func (o *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams) WithGeneratedSummaryID(generatedSummaryID int32) *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams {
+func (o *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams) WithGeneratedSummaryID(generatedSummaryID string) *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams {
 	o.SetGeneratedSummaryID(generatedSummaryID)
 	return o
 }
 
 // SetGeneratedSummaryID adds the generatedSummaryId to the get v1 ai summarize incident incident Id generated summary Id voted params
-func (o *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams) SetGeneratedSummaryID(generatedSummaryID int32) {
+func (o *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams) SetGeneratedSummaryID(generatedSummaryID string) {
 	o.GeneratedSummaryID = generatedSummaryID
 }
 
 // WithIncidentID adds the incidentID to the get v1 ai summarize incident incident Id generated summary Id voted params
-func (o *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams) WithIncidentID(incidentID int32) *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams {
+func (o *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams) WithIncidentID(incidentID string) *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams {
 	o.SetIncidentID(incidentID)
 	return o
 }
 
 // SetIncidentID adds the incidentId to the get v1 ai summarize incident incident Id generated summary Id voted params
-func (o *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams) SetIncidentID(incidentID int32) {
+func (o *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams) SetIncidentID(incidentID string) {
 	o.IncidentID = incidentID
 }
 
@@ -156,12 +151,12 @@ func (o *GetV1AiSummarizeIncidentIncidentIDGeneratedSummaryIDVotedParams) WriteT
 	var res []error
 
 	// path param generated_summary_id
-	if err := r.SetPathParam("generated_summary_id", swag.FormatInt32(o.GeneratedSummaryID)); err != nil {
+	if err := r.SetPathParam("generated_summary_id", o.GeneratedSummaryID); err != nil {
 		return err
 	}
 
 	// path param incident_id
-	if err := r.SetPathParam("incident_id", swag.FormatInt32(o.IncidentID)); err != nil {
+	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
 	}
 

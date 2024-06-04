@@ -61,10 +61,7 @@ GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParams contains all the 
 */
 type GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParams struct {
 
-	/* ID.
-
-	   Connection UUID
-	*/
+	// ID.
 	ID string
 
 	/* Keyword.

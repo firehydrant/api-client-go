@@ -69,9 +69,7 @@ type GetV1ServicesServiceIDDependenciesParams struct {
 	Flatten *bool
 
 	// ServiceID.
-	//
-	// Format: int32
-	ServiceID int32
+	ServiceID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -138,13 +136,13 @@ func (o *GetV1ServicesServiceIDDependenciesParams) SetFlatten(flatten *bool) {
 }
 
 // WithServiceID adds the serviceID to the get v1 services service Id dependencies params
-func (o *GetV1ServicesServiceIDDependenciesParams) WithServiceID(serviceID int32) *GetV1ServicesServiceIDDependenciesParams {
+func (o *GetV1ServicesServiceIDDependenciesParams) WithServiceID(serviceID string) *GetV1ServicesServiceIDDependenciesParams {
 	o.SetServiceID(serviceID)
 	return o
 }
 
 // SetServiceID adds the serviceId to the get v1 services service Id dependencies params
-func (o *GetV1ServicesServiceIDDependenciesParams) SetServiceID(serviceID int32) {
+func (o *GetV1ServicesServiceIDDependenciesParams) SetServiceID(serviceID string) {
 	o.ServiceID = serviceID
 }
 
@@ -174,7 +172,7 @@ func (o *GetV1ServicesServiceIDDependenciesParams) WriteToRequest(r runtime.Clie
 	}
 
 	// path param service_id
-	if err := r.SetPathParam("service_id", swag.FormatInt32(o.ServiceID)); err != nil {
+	if err := r.SetPathParam("service_id", o.ServiceID); err != nil {
 		return err
 	}
 

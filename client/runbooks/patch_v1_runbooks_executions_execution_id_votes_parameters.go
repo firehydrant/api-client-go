@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -65,9 +64,7 @@ PatchV1RunbooksExecutionsExecutionIDVotesParams contains all the parameters to s
 type PatchV1RunbooksExecutionsExecutionIDVotesParams struct {
 
 	// ExecutionID.
-	//
-	// Format: int32
-	ExecutionID int32
+	ExecutionID string
 
 	// PatchV1RunbooksExecutionsExecutionIDVotes.
 	PatchV1RunbooksExecutionsExecutionIDVotes *models.PatchV1RunbooksExecutionsExecutionIDVotes
@@ -126,13 +123,13 @@ func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) SetHTTPClient(client *
 }
 
 // WithExecutionID adds the executionID to the patch v1 runbooks executions execution Id votes params
-func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) WithExecutionID(executionID int32) *PatchV1RunbooksExecutionsExecutionIDVotesParams {
+func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) WithExecutionID(executionID string) *PatchV1RunbooksExecutionsExecutionIDVotesParams {
 	o.SetExecutionID(executionID)
 	return o
 }
 
 // SetExecutionID adds the executionId to the patch v1 runbooks executions execution Id votes params
-func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) SetExecutionID(executionID int32) {
+func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) SetExecutionID(executionID string) {
 	o.ExecutionID = executionID
 }
 
@@ -156,7 +153,7 @@ func (o *PatchV1RunbooksExecutionsExecutionIDVotesParams) WriteToRequest(r runti
 	var res []error
 
 	// path param execution_id
-	if err := r.SetPathParam("execution_id", swag.FormatInt32(o.ExecutionID)); err != nil {
+	if err := r.SetPathParam("execution_id", o.ExecutionID); err != nil {
 		return err
 	}
 	if o.PatchV1RunbooksExecutionsExecutionIDVotes != nil {

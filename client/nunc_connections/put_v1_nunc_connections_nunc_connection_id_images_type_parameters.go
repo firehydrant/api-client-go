@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPutV1NuncConnectionsNuncConnectionIDImagesTypeParams creates a new PutV1NuncConnectionsNuncConnectionIDImagesTypeParams object,
@@ -66,14 +65,10 @@ type PutV1NuncConnectionsNuncConnectionIDImagesTypeParams struct {
 	File runtime.NamedReadCloser
 
 	// NuncConnectionID.
-	//
-	// Format: int32
-	NuncConnectionID int32
+	NuncConnectionID string
 
 	// Type.
-	//
-	// Format: int32
-	Type int32
+	Type string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -140,24 +135,24 @@ func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams) SetFile(file runt
 }
 
 // WithNuncConnectionID adds the nuncConnectionID to the put v1 nunc connections nunc connection Id images type params
-func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams) WithNuncConnectionID(nuncConnectionID int32) *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams {
+func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams) WithNuncConnectionID(nuncConnectionID string) *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams {
 	o.SetNuncConnectionID(nuncConnectionID)
 	return o
 }
 
 // SetNuncConnectionID adds the nuncConnectionId to the put v1 nunc connections nunc connection Id images type params
-func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams) SetNuncConnectionID(nuncConnectionID int32) {
+func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams) SetNuncConnectionID(nuncConnectionID string) {
 	o.NuncConnectionID = nuncConnectionID
 }
 
 // WithType adds the typeVar to the put v1 nunc connections nunc connection Id images type params
-func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams) WithType(typeVar int32) *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams {
+func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams) WithType(typeVar string) *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams {
 	o.SetType(typeVar)
 	return o
 }
 
 // SetType adds the type to the put v1 nunc connections nunc connection Id images type params
-func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams) SetType(typeVar int32) {
+func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams) SetType(typeVar string) {
 	o.Type = typeVar
 }
 
@@ -180,12 +175,12 @@ func (o *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams) WriteToRequest(r 
 	}
 
 	// path param nunc_connection_id
-	if err := r.SetPathParam("nunc_connection_id", swag.FormatInt32(o.NuncConnectionID)); err != nil {
+	if err := r.SetPathParam("nunc_connection_id", o.NuncConnectionID); err != nil {
 		return err
 	}
 
 	// path param type
-	if err := r.SetPathParam("type", swag.FormatInt32(o.Type)); err != nil {
+	if err := r.SetPathParam("type", o.Type); err != nil {
 		return err
 	}
 

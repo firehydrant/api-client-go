@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1RunbooksExecutionsExecutionIDParams creates a new GetV1RunbooksExecutionsExecutionIDParams object,
@@ -63,9 +62,7 @@ GetV1RunbooksExecutionsExecutionIDParams contains all the parameters to send to 
 type GetV1RunbooksExecutionsExecutionIDParams struct {
 
 	// ExecutionID.
-	//
-	// Format: int32
-	ExecutionID int32
+	ExecutionID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *GetV1RunbooksExecutionsExecutionIDParams) SetHTTPClient(client *http.Cl
 }
 
 // WithExecutionID adds the executionID to the get v1 runbooks executions execution Id params
-func (o *GetV1RunbooksExecutionsExecutionIDParams) WithExecutionID(executionID int32) *GetV1RunbooksExecutionsExecutionIDParams {
+func (o *GetV1RunbooksExecutionsExecutionIDParams) WithExecutionID(executionID string) *GetV1RunbooksExecutionsExecutionIDParams {
 	o.SetExecutionID(executionID)
 	return o
 }
 
 // SetExecutionID adds the executionId to the get v1 runbooks executions execution Id params
-func (o *GetV1RunbooksExecutionsExecutionIDParams) SetExecutionID(executionID int32) {
+func (o *GetV1RunbooksExecutionsExecutionIDParams) SetExecutionID(executionID string) {
 	o.ExecutionID = executionID
 }
 
@@ -140,7 +137,7 @@ func (o *GetV1RunbooksExecutionsExecutionIDParams) WriteToRequest(r runtime.Clie
 	var res []error
 
 	// path param execution_id
-	if err := r.SetPathParam("execution_id", swag.FormatInt32(o.ExecutionID)); err != nil {
+	if err := r.SetPathParam("execution_id", o.ExecutionID); err != nil {
 		return err
 	}
 

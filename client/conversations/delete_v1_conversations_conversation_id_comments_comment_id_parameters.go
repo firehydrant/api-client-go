@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1ConversationsConversationIDCommentsCommentIDParams creates a new DeleteV1ConversationsConversationIDCommentsCommentIDParams object,
@@ -63,14 +62,10 @@ DeleteV1ConversationsConversationIDCommentsCommentIDParams contains all the para
 type DeleteV1ConversationsConversationIDCommentsCommentIDParams struct {
 
 	// CommentID.
-	//
-	// Format: int32
-	CommentID int32
+	CommentID string
 
 	// ConversationID.
-	//
-	// Format: int32
-	ConversationID int32
+	ConversationID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -126,24 +121,24 @@ func (o *DeleteV1ConversationsConversationIDCommentsCommentIDParams) SetHTTPClie
 }
 
 // WithCommentID adds the commentID to the delete v1 conversations conversation Id comments comment Id params
-func (o *DeleteV1ConversationsConversationIDCommentsCommentIDParams) WithCommentID(commentID int32) *DeleteV1ConversationsConversationIDCommentsCommentIDParams {
+func (o *DeleteV1ConversationsConversationIDCommentsCommentIDParams) WithCommentID(commentID string) *DeleteV1ConversationsConversationIDCommentsCommentIDParams {
 	o.SetCommentID(commentID)
 	return o
 }
 
 // SetCommentID adds the commentId to the delete v1 conversations conversation Id comments comment Id params
-func (o *DeleteV1ConversationsConversationIDCommentsCommentIDParams) SetCommentID(commentID int32) {
+func (o *DeleteV1ConversationsConversationIDCommentsCommentIDParams) SetCommentID(commentID string) {
 	o.CommentID = commentID
 }
 
 // WithConversationID adds the conversationID to the delete v1 conversations conversation Id comments comment Id params
-func (o *DeleteV1ConversationsConversationIDCommentsCommentIDParams) WithConversationID(conversationID int32) *DeleteV1ConversationsConversationIDCommentsCommentIDParams {
+func (o *DeleteV1ConversationsConversationIDCommentsCommentIDParams) WithConversationID(conversationID string) *DeleteV1ConversationsConversationIDCommentsCommentIDParams {
 	o.SetConversationID(conversationID)
 	return o
 }
 
 // SetConversationID adds the conversationId to the delete v1 conversations conversation Id comments comment Id params
-func (o *DeleteV1ConversationsConversationIDCommentsCommentIDParams) SetConversationID(conversationID int32) {
+func (o *DeleteV1ConversationsConversationIDCommentsCommentIDParams) SetConversationID(conversationID string) {
 	o.ConversationID = conversationID
 }
 
@@ -156,12 +151,12 @@ func (o *DeleteV1ConversationsConversationIDCommentsCommentIDParams) WriteToRequ
 	var res []error
 
 	// path param comment_id
-	if err := r.SetPathParam("comment_id", swag.FormatInt32(o.CommentID)); err != nil {
+	if err := r.SetPathParam("comment_id", o.CommentID); err != nil {
 		return err
 	}
 
 	// path param conversation_id
-	if err := r.SetPathParam("conversation_id", swag.FormatInt32(o.ConversationID)); err != nil {
+	if err := r.SetPathParam("conversation_id", o.ConversationID); err != nil {
 		return err
 	}
 

@@ -61,10 +61,7 @@ GetV1IntegrationsDataExportExportRequestsExportRequestIDParams contains all the 
 */
 type GetV1IntegrationsDataExportExportRequestsExportRequestIDParams struct {
 
-	/* ExportRequestID.
-
-	   Export request UUID
-	*/
+	// ExportRequestID.
 	ExportRequestID string
 
 	timeout    time.Duration

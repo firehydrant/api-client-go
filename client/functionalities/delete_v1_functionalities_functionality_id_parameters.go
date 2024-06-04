@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1FunctionalitiesFunctionalityIDParams creates a new DeleteV1FunctionalitiesFunctionalityIDParams object,
@@ -63,9 +62,7 @@ DeleteV1FunctionalitiesFunctionalityIDParams contains all the parameters to send
 type DeleteV1FunctionalitiesFunctionalityIDParams struct {
 
 	// FunctionalityID.
-	//
-	// Format: int32
-	FunctionalityID int32
+	FunctionalityID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *DeleteV1FunctionalitiesFunctionalityIDParams) SetHTTPClient(client *htt
 }
 
 // WithFunctionalityID adds the functionalityID to the delete v1 functionalities functionality Id params
-func (o *DeleteV1FunctionalitiesFunctionalityIDParams) WithFunctionalityID(functionalityID int32) *DeleteV1FunctionalitiesFunctionalityIDParams {
+func (o *DeleteV1FunctionalitiesFunctionalityIDParams) WithFunctionalityID(functionalityID string) *DeleteV1FunctionalitiesFunctionalityIDParams {
 	o.SetFunctionalityID(functionalityID)
 	return o
 }
 
 // SetFunctionalityID adds the functionalityId to the delete v1 functionalities functionality Id params
-func (o *DeleteV1FunctionalitiesFunctionalityIDParams) SetFunctionalityID(functionalityID int32) {
+func (o *DeleteV1FunctionalitiesFunctionalityIDParams) SetFunctionalityID(functionalityID string) {
 	o.FunctionalityID = functionalityID
 }
 
@@ -140,7 +137,7 @@ func (o *DeleteV1FunctionalitiesFunctionalityIDParams) WriteToRequest(r runtime.
 	var res []error
 
 	// path param functionality_id
-	if err := r.SetPathParam("functionality_id", swag.FormatInt32(o.FunctionalityID)); err != nil {
+	if err := r.SetPathParam("functionality_id", o.FunctionalityID); err != nil {
 		return err
 	}
 

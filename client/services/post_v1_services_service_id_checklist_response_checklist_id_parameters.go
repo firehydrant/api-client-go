@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/firehydrant/api-client-go/models"
 )
@@ -65,17 +64,13 @@ PostV1ServicesServiceIDChecklistResponseChecklistIDParams contains all the param
 type PostV1ServicesServiceIDChecklistResponseChecklistIDParams struct {
 
 	// ChecklistID.
-	//
-	// Format: int32
-	ChecklistID int32
+	ChecklistID string
 
 	// PostV1ServicesServiceIDChecklistResponseChecklistID.
 	PostV1ServicesServiceIDChecklistResponseChecklistID *models.PostV1ServicesServiceIDChecklistResponseChecklistID
 
 	// ServiceID.
-	//
-	// Format: int32
-	ServiceID int32
+	ServiceID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -131,13 +126,13 @@ func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) SetHTTPClien
 }
 
 // WithChecklistID adds the checklistID to the post v1 services service Id checklist response checklist Id params
-func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) WithChecklistID(checklistID int32) *PostV1ServicesServiceIDChecklistResponseChecklistIDParams {
+func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) WithChecklistID(checklistID string) *PostV1ServicesServiceIDChecklistResponseChecklistIDParams {
 	o.SetChecklistID(checklistID)
 	return o
 }
 
 // SetChecklistID adds the checklistId to the post v1 services service Id checklist response checklist Id params
-func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) SetChecklistID(checklistID int32) {
+func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) SetChecklistID(checklistID string) {
 	o.ChecklistID = checklistID
 }
 
@@ -153,13 +148,13 @@ func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) SetPostV1Ser
 }
 
 // WithServiceID adds the serviceID to the post v1 services service Id checklist response checklist Id params
-func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) WithServiceID(serviceID int32) *PostV1ServicesServiceIDChecklistResponseChecklistIDParams {
+func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) WithServiceID(serviceID string) *PostV1ServicesServiceIDChecklistResponseChecklistIDParams {
 	o.SetServiceID(serviceID)
 	return o
 }
 
 // SetServiceID adds the serviceId to the post v1 services service Id checklist response checklist Id params
-func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) SetServiceID(serviceID int32) {
+func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) SetServiceID(serviceID string) {
 	o.ServiceID = serviceID
 }
 
@@ -172,7 +167,7 @@ func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) WriteToReque
 	var res []error
 
 	// path param checklist_id
-	if err := r.SetPathParam("checklist_id", swag.FormatInt32(o.ChecklistID)); err != nil {
+	if err := r.SetPathParam("checklist_id", o.ChecklistID); err != nil {
 		return err
 	}
 	if o.PostV1ServicesServiceIDChecklistResponseChecklistID != nil {
@@ -182,7 +177,7 @@ func (o *PostV1ServicesServiceIDChecklistResponseChecklistIDParams) WriteToReque
 	}
 
 	// path param service_id
-	if err := r.SetPathParam("service_id", swag.FormatInt32(o.ServiceID)); err != nil {
+	if err := r.SetPathParam("service_id", o.ServiceID); err != nil {
 		return err
 	}
 

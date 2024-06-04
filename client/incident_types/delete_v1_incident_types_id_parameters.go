@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1IncidentTypesIDParams creates a new DeleteV1IncidentTypesIDParams object,
@@ -63,9 +62,7 @@ DeleteV1IncidentTypesIDParams contains all the parameters to send to the API end
 type DeleteV1IncidentTypesIDParams struct {
 
 	// ID.
-	//
-	// Format: int32
-	ID int32
+	ID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *DeleteV1IncidentTypesIDParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithID adds the id to the delete v1 incident types Id params
-func (o *DeleteV1IncidentTypesIDParams) WithID(id int32) *DeleteV1IncidentTypesIDParams {
+func (o *DeleteV1IncidentTypesIDParams) WithID(id string) *DeleteV1IncidentTypesIDParams {
 	o.SetID(id)
 	return o
 }
 
 // SetID adds the id to the delete v1 incident types Id params
-func (o *DeleteV1IncidentTypesIDParams) SetID(id int32) {
+func (o *DeleteV1IncidentTypesIDParams) SetID(id string) {
 	o.ID = id
 }
 
@@ -140,7 +137,7 @@ func (o *DeleteV1IncidentTypesIDParams) WriteToRequest(r runtime.ClientRequest, 
 	var res []error
 
 	// path param id
-	if err := r.SetPathParam("id", swag.FormatInt32(o.ID)); err != nil {
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 

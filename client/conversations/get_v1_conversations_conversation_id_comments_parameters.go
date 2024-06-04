@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewGetV1ConversationsConversationIDCommentsParams creates a new GetV1ConversationsConversationIDCommentsParams object,
@@ -79,9 +78,7 @@ type GetV1ConversationsConversationIDCommentsParams struct {
 	Before *strfmt.DateTime
 
 	// ConversationID.
-	//
-	// Format: int32
-	ConversationID int32
+	ConversationID string
 
 	/* Sort.
 
@@ -178,13 +175,13 @@ func (o *GetV1ConversationsConversationIDCommentsParams) SetBefore(before *strfm
 }
 
 // WithConversationID adds the conversationID to the get v1 conversations conversation Id comments params
-func (o *GetV1ConversationsConversationIDCommentsParams) WithConversationID(conversationID int32) *GetV1ConversationsConversationIDCommentsParams {
+func (o *GetV1ConversationsConversationIDCommentsParams) WithConversationID(conversationID string) *GetV1ConversationsConversationIDCommentsParams {
 	o.SetConversationID(conversationID)
 	return o
 }
 
 // SetConversationID adds the conversationId to the get v1 conversations conversation Id comments params
-func (o *GetV1ConversationsConversationIDCommentsParams) SetConversationID(conversationID int32) {
+func (o *GetV1ConversationsConversationIDCommentsParams) SetConversationID(conversationID string) {
 	o.ConversationID = conversationID
 }
 
@@ -242,7 +239,7 @@ func (o *GetV1ConversationsConversationIDCommentsParams) WriteToRequest(r runtim
 	}
 
 	// path param conversation_id
-	if err := r.SetPathParam("conversation_id", swag.FormatInt32(o.ConversationID)); err != nil {
+	if err := r.SetPathParam("conversation_id", o.ConversationID); err != nil {
 		return err
 	}
 

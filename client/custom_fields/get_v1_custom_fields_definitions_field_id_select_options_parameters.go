@@ -68,10 +68,7 @@ type GetV1CustomFieldsDefinitionsFieldIDSelectOptionsParams struct {
 	*/
 	AllVersions *bool
 
-	/* FieldID.
-
-	   Field ID of custom field definition
-	*/
+	// FieldID.
 	FieldID string
 
 	/* Query.

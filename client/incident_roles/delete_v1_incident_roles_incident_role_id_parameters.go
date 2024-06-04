@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewDeleteV1IncidentRolesIncidentRoleIDParams creates a new DeleteV1IncidentRolesIncidentRoleIDParams object,
@@ -63,9 +62,7 @@ DeleteV1IncidentRolesIncidentRoleIDParams contains all the parameters to send to
 type DeleteV1IncidentRolesIncidentRoleIDParams struct {
 
 	// IncidentRoleID.
-	//
-	// Format: int32
-	IncidentRoleID int32
+	IncidentRoleID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,13 +118,13 @@ func (o *DeleteV1IncidentRolesIncidentRoleIDParams) SetHTTPClient(client *http.C
 }
 
 // WithIncidentRoleID adds the incidentRoleID to the delete v1 incident roles incident role Id params
-func (o *DeleteV1IncidentRolesIncidentRoleIDParams) WithIncidentRoleID(incidentRoleID int32) *DeleteV1IncidentRolesIncidentRoleIDParams {
+func (o *DeleteV1IncidentRolesIncidentRoleIDParams) WithIncidentRoleID(incidentRoleID string) *DeleteV1IncidentRolesIncidentRoleIDParams {
 	o.SetIncidentRoleID(incidentRoleID)
 	return o
 }
 
 // SetIncidentRoleID adds the incidentRoleId to the delete v1 incident roles incident role Id params
-func (o *DeleteV1IncidentRolesIncidentRoleIDParams) SetIncidentRoleID(incidentRoleID int32) {
+func (o *DeleteV1IncidentRolesIncidentRoleIDParams) SetIncidentRoleID(incidentRoleID string) {
 	o.IncidentRoleID = incidentRoleID
 }
 
@@ -140,7 +137,7 @@ func (o *DeleteV1IncidentRolesIncidentRoleIDParams) WriteToRequest(r runtime.Cli
 	var res []error
 
 	// path param incident_role_id
-	if err := r.SetPathParam("incident_role_id", swag.FormatInt32(o.IncidentRoleID)); err != nil {
+	if err := r.SetPathParam("incident_role_id", o.IncidentRoleID); err != nil {
 		return err
 	}
 

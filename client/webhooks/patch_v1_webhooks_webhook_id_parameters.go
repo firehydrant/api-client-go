@@ -66,10 +66,7 @@ type PatchV1WebhooksWebhookIDParams struct {
 	// PatchV1WebhooksWebhookID.
 	PatchV1WebhooksWebhookID *models.PatchV1WebhooksWebhookID
 
-	/* WebhookID.
-
-	   ID of a webhook
-	*/
+	// WebhookID.
 	WebhookID string
 
 	timeout    time.Duration
