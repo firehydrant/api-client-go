@@ -20,6 +20,9 @@ import (
 // swagger:model postV1SignalsEmailTargets
 type PostV1SignalsEmailTargets struct {
 
+	// A list of email addresses that are allowed to send events to the target. Must be exact match.
+	AllowedSenders []string `json:"allowed_senders"`
+
 	// A detailed description of the email target.
 	Description string `json:"description,omitempty"`
 
