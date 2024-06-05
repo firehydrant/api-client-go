@@ -20,6 +20,9 @@ import (
 // swagger:model patchV1SignalsEmailTargetsId
 type PatchV1SignalsEmailTargetsID struct {
 
+	// A list of email addresses that are allowed to send events to the target. Must be exact match.
+	AllowedSenders []string `json:"allowed_senders"`
+
 	// A detailed description of the email target.
 	Description string `json:"description,omitempty"`
 
