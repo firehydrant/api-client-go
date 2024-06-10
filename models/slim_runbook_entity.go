@@ -22,6 +22,9 @@ type SlimRunbookEntity struct {
 	// attachment rule
 	AttachmentRule *RulesRuleEntity `json:"attachment_rule,omitempty"`
 
+	// categories the runbook applies to
+	Categories string `json:"categories,omitempty"`
+
 	// created at
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`

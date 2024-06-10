@@ -22,6 +22,9 @@ type PostMortemsPostMortemReportEntity struct {
 	// additional details
 	AdditionalDetails []string `json:"additional_details"`
 
+	// calendar events
+	CalendarEvents *CalendarsEventEntity `json:"calendar_events,omitempty"`
+
 	// created at
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
@@ -56,6 +59,10 @@ type PostMortemsPostMortemReportEntity struct {
 func (m *PostMortemsPostMortemReportEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCalendarEvents(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
 	}
@@ -75,6 +82,25 @@ func (m *PostMortemsPostMortemReportEntity) Validate(formats strfmt.Registry) er
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PostMortemsPostMortemReportEntity) validateCalendarEvents(formats strfmt.Registry) error {
+	if swag.IsZero(m.CalendarEvents) { // not required
+		return nil
+	}
+
+	if m.CalendarEvents != nil {
+		if err := m.CalendarEvents.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("calendar_events")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("calendar_events")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -144,6 +170,10 @@ func (m *PostMortemsPostMortemReportEntity) validateUpdatedAt(formats strfmt.Reg
 func (m *PostMortemsPostMortemReportEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateCalendarEvents(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateIncident(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -155,6 +185,22 @@ func (m *PostMortemsPostMortemReportEntity) ContextValidate(ctx context.Context,
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PostMortemsPostMortemReportEntity) contextValidateCalendarEvents(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CalendarEvents != nil {
+		if err := m.CalendarEvents.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("calendar_events")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("calendar_events")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

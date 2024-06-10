@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewPostV1NuncConnectionsNuncConnectionIDComponentGroupsParams creates a new PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams object,
@@ -61,8 +62,19 @@ PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams contains all the para
 */
 type PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams struct {
 
+	// ComponentGroupID.
+	ComponentGroupID *string
+
+	// Name.
+	Name string
+
 	// NuncConnectionID.
 	NuncConnectionID string
+
+	// Position.
+	//
+	// Format: int32
+	Position *int32
 
 	timeout    time.Duration
 	Context    context.Context
@@ -117,6 +129,28 @@ func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) SetHTTPClie
 	o.HTTPClient = client
 }
 
+// WithComponentGroupID adds the componentGroupID to the post v1 nunc connections nunc connection Id component groups params
+func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) WithComponentGroupID(componentGroupID *string) *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams {
+	o.SetComponentGroupID(componentGroupID)
+	return o
+}
+
+// SetComponentGroupID adds the componentGroupId to the post v1 nunc connections nunc connection Id component groups params
+func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) SetComponentGroupID(componentGroupID *string) {
+	o.ComponentGroupID = componentGroupID
+}
+
+// WithName adds the name to the post v1 nunc connections nunc connection Id component groups params
+func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) WithName(name string) *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams {
+	o.SetName(name)
+	return o
+}
+
+// SetName adds the name to the post v1 nunc connections nunc connection Id component groups params
+func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) SetName(name string) {
+	o.Name = name
+}
+
 // WithNuncConnectionID adds the nuncConnectionID to the post v1 nunc connections nunc connection Id component groups params
 func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) WithNuncConnectionID(nuncConnectionID string) *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams {
 	o.SetNuncConnectionID(nuncConnectionID)
@@ -128,6 +162,17 @@ func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) SetNuncConn
 	o.NuncConnectionID = nuncConnectionID
 }
 
+// WithPosition adds the position to the post v1 nunc connections nunc connection Id component groups params
+func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) WithPosition(position *int32) *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams {
+	o.SetPosition(position)
+	return o
+}
+
+// SetPosition adds the position to the post v1 nunc connections nunc connection Id component groups params
+func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) SetPosition(position *int32) {
+	o.Position = position
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -136,9 +181,48 @@ func (o *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams) WriteToRequ
 	}
 	var res []error
 
+	if o.ComponentGroupID != nil {
+
+		// form param component_group_id
+		var frComponentGroupID string
+		if o.ComponentGroupID != nil {
+			frComponentGroupID = *o.ComponentGroupID
+		}
+		fComponentGroupID := frComponentGroupID
+		if fComponentGroupID != "" {
+			if err := r.SetFormParam("component_group_id", fComponentGroupID); err != nil {
+				return err
+			}
+		}
+	}
+
+	// form param name
+	frName := o.Name
+	fName := frName
+	if fName != "" {
+		if err := r.SetFormParam("name", fName); err != nil {
+			return err
+		}
+	}
+
 	// path param nunc_connection_id
 	if err := r.SetPathParam("nunc_connection_id", o.NuncConnectionID); err != nil {
 		return err
+	}
+
+	if o.Position != nil {
+
+		// form param position
+		var frPosition int32
+		if o.Position != nil {
+			frPosition = *o.Position
+		}
+		fPosition := swag.FormatInt32(frPosition)
+		if fPosition != "" {
+			if err := r.SetFormParam("position", fPosition); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {
