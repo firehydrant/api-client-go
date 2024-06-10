@@ -25,6 +25,9 @@ type NuncComponentGroupEntity struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// position
+	Position int32 `json:"position,omitempty"`
 }
 
 // Validate validates this nunc component group entity

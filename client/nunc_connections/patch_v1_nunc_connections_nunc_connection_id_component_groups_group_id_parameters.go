@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewPatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams creates a new PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams object,
@@ -72,6 +73,11 @@ type PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams struct {
 
 	// NuncConnectionID.
 	NuncConnectionID string
+
+	// Position.
+	//
+	// Format: int32
+	Position *int32
 
 	timeout    time.Duration
 	Context    context.Context
@@ -170,6 +176,17 @@ func (o *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) Set
 	o.NuncConnectionID = nuncConnectionID
 }
 
+// WithPosition adds the position to the patch v1 nunc connections nunc connection Id component groups group Id params
+func (o *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) WithPosition(position *int32) *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams {
+	o.SetPosition(position)
+	return o
+}
+
+// SetPosition adds the position to the patch v1 nunc connections nunc connection Id component groups group Id params
+func (o *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) SetPosition(position *int32) {
+	o.Position = position
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -216,6 +233,21 @@ func (o *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams) Wri
 	// path param nunc_connection_id
 	if err := r.SetPathParam("nunc_connection_id", o.NuncConnectionID); err != nil {
 		return err
+	}
+
+	if o.Position != nil {
+
+		// form param position
+		var frPosition int32
+		if o.Position != nil {
+			frPosition = *o.Position
+		}
+		fPosition := swag.FormatInt32(frPosition)
+		if fPosition != "" {
+			if err := r.SetFormParam("position", fPosition); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

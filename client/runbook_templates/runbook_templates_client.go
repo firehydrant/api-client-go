@@ -81,7 +81,7 @@ func (a *Client) GetV1RunbookTemplates(params *GetV1RunbookTemplatesParams, auth
 }
 
 /*
-GetV1RunbookTemplatesID retrieves a runbook templete
+GetV1RunbookTemplatesID retrieves a runbook template
 
 Retrieve a single runbook template
 */
