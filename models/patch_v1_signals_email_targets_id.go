@@ -32,6 +32,13 @@ type PatchV1SignalsEmailTargetsID struct {
 	// The email target's name.
 	Name string `json:"name,omitempty"`
 
+	// Whether or not all rules must match, or if only one rule must match.
+	// Enum: [all any]
+	RuleMatchingStrategy string `json:"rule_matching_strategy,omitempty"`
+
+	// A list of CEL expressions that should be evaluated and matched to determine if the target should be notified.
+	Rules []string `json:"rules"`
+
 	// The email address that will be listening to events.
 	Slug string `json:"slug,omitempty"`
 
@@ -46,6 +53,10 @@ type PatchV1SignalsEmailTargetsID struct {
 func (m *PatchV1SignalsEmailTargetsID) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateRuleMatchingStrategy(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTarget(formats); err != nil {
 		res = append(res, err)
 	}
@@ -53,6 +64,48 @@ func (m *PatchV1SignalsEmailTargetsID) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var patchV1SignalsEmailTargetsIdTypeRuleMatchingStrategyPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["all","any"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		patchV1SignalsEmailTargetsIdTypeRuleMatchingStrategyPropEnum = append(patchV1SignalsEmailTargetsIdTypeRuleMatchingStrategyPropEnum, v)
+	}
+}
+
+const (
+
+	// PatchV1SignalsEmailTargetsIDRuleMatchingStrategyAll captures enum value "all"
+	PatchV1SignalsEmailTargetsIDRuleMatchingStrategyAll string = "all"
+
+	// PatchV1SignalsEmailTargetsIDRuleMatchingStrategyAny captures enum value "any"
+	PatchV1SignalsEmailTargetsIDRuleMatchingStrategyAny string = "any"
+)
+
+// prop value enum
+func (m *PatchV1SignalsEmailTargetsID) validateRuleMatchingStrategyEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, patchV1SignalsEmailTargetsIdTypeRuleMatchingStrategyPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PatchV1SignalsEmailTargetsID) validateRuleMatchingStrategy(formats strfmt.Registry) error {
+	if swag.IsZero(m.RuleMatchingStrategy) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateRuleMatchingStrategyEnum("rule_matching_strategy", "body", m.RuleMatchingStrategy); err != nil {
+		return err
+	}
+
 	return nil
 }
 
