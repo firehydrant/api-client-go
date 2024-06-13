@@ -39,6 +39,9 @@ type TeamEntity struct {
 	// memberships
 	Memberships []*MembershipEntity `json:"memberships"`
 
+	// ms teams channel
+	MsTeamsChannel *IntegrationsMicrosoftTeamsV2ChannelEntity `json:"ms_teams_channel,omitempty"`
+
 	// name
 	Name string `json:"name,omitempty"`
 
@@ -91,6 +94,10 @@ func (m *TeamEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMemberships(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMsTeamsChannel(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -210,6 +217,25 @@ func (m *TeamEntity) validateMemberships(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) validateMsTeamsChannel(formats strfmt.Registry) error {
+	if swag.IsZero(m.MsTeamsChannel) { // not required
+		return nil
+	}
+
+	if m.MsTeamsChannel != nil {
+		if err := m.MsTeamsChannel.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ms_teams_channel")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ms_teams_channel")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -418,6 +444,10 @@ func (m *TeamEntity) ContextValidate(ctx context.Context, formats strfmt.Registr
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateMsTeamsChannel(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateOwnedChecklistTemplates(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -503,6 +533,22 @@ func (m *TeamEntity) contextValidateMemberships(ctx context.Context, formats str
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *TeamEntity) contextValidateMsTeamsChannel(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MsTeamsChannel != nil {
+		if err := m.MsTeamsChannel.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ms_teams_channel")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ms_teams_channel")
+			}
+			return err
+		}
 	}
 
 	return nil
