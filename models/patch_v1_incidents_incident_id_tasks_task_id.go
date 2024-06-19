@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PatchV1IncidentsIncidentIDTasksTaskID Update a task's attributes
@@ -23,6 +25,10 @@ type PatchV1IncidentsIncidentIDTasksTaskID struct {
 	// A description of what the task is for.
 	Description string `json:"description,omitempty"`
 
+	// The due date of the task.
+	// Format: date-time
+	DueAt strfmt.DateTime `json:"due_at,omitempty"`
+
 	// The state of the task. One of: open, in_progress, cancelled, done
 	State string `json:"state,omitempty"`
 
@@ -32,6 +38,27 @@ type PatchV1IncidentsIncidentIDTasksTaskID struct {
 
 // Validate validates this patch v1 incidents incident Id tasks task Id
 func (m *PatchV1IncidentsIncidentIDTasksTaskID) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateDueAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PatchV1IncidentsIncidentIDTasksTaskID) validateDueAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.DueAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("due_at", "body", "date-time", m.DueAt.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 
