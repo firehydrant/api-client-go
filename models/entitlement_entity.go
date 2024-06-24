@@ -42,7 +42,7 @@ type EntitlementEntity struct {
 	Slug string `json:"slug,omitempty"`
 
 	// tier
-	// Enum: [free essentials enterprise]
+	// Enum: [free essentials enterprise signals_only]
 	Tier string `json:"tier,omitempty"`
 }
 
@@ -64,7 +64,7 @@ var entitlementEntityTypeTierPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["free","essentials","enterprise"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["free","essentials","enterprise","signals_only"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -82,6 +82,9 @@ const (
 
 	// EntitlementEntityTierEnterprise captures enum value "enterprise"
 	EntitlementEntityTierEnterprise string = "enterprise"
+
+	// EntitlementEntityTierSignalsOnly captures enum value "signals_only"
+	EntitlementEntityTierSignalsOnly string = "signals_only"
 )
 
 // prop value enum

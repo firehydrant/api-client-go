@@ -37,6 +37,10 @@ type TicketingTicketEntity struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// due at
+	// Format: date-time
+	DueAt strfmt.DateTime `json:"due_at,omitempty"`
+
 	// id
 	ID string `json:"id,omitempty"`
 
@@ -90,6 +94,10 @@ func (m *TicketingTicketEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCreatedBy(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDueAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -171,6 +179,18 @@ func (m *TicketingTicketEntity) validateCreatedBy(formats strfmt.Registry) error
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *TicketingTicketEntity) validateDueAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.DueAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("due_at", "body", "date-time", m.DueAt.String(), formats); err != nil {
+		return err
 	}
 
 	return nil
