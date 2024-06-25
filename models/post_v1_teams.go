@@ -26,6 +26,9 @@ type PostV1Teams struct {
 	// memberships
 	Memberships []*PostV1TeamsMembershipsItems0 `json:"memberships"`
 
+	// ms teams channel
+	MsTeamsChannel *PostV1TeamsMsTeamsChannel `json:"ms_teams_channel,omitempty"`
+
 	// name
 	// Required: true
 	Name *string `json:"name"`
@@ -42,6 +45,10 @@ func (m *PostV1Teams) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateMemberships(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMsTeamsChannel(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -81,6 +88,25 @@ func (m *PostV1Teams) validateMemberships(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *PostV1Teams) validateMsTeamsChannel(formats strfmt.Registry) error {
+	if swag.IsZero(m.MsTeamsChannel) { // not required
+		return nil
+	}
+
+	if m.MsTeamsChannel != nil {
+		if err := m.MsTeamsChannel.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ms_teams_channel")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ms_teams_channel")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *PostV1Teams) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
@@ -95,6 +121,10 @@ func (m *PostV1Teams) ContextValidate(ctx context.Context, formats strfmt.Regist
 	var res []error
 
 	if err := m.contextValidateMemberships(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMsTeamsChannel(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -119,6 +149,22 @@ func (m *PostV1Teams) contextValidateMemberships(ctx context.Context, formats st
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *PostV1Teams) contextValidateMsTeamsChannel(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MsTeamsChannel != nil {
+		if err := m.MsTeamsChannel.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ms_teams_channel")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ms_teams_channel")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -178,6 +224,79 @@ func (m *PostV1TeamsMembershipsItems0) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PostV1TeamsMembershipsItems0) UnmarshalBinary(b []byte) error {
 	var res PostV1TeamsMembershipsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1TeamsMsTeamsChannel MS Teams channel identity for channel associated with this team
+//
+// swagger:model PostV1TeamsMsTeamsChannel
+type PostV1TeamsMsTeamsChannel struct {
+
+	// channel id
+	// Required: true
+	ChannelID *string `json:"channel_id"`
+
+	// ms team id
+	// Required: true
+	MsTeamID *string `json:"ms_team_id"`
+}
+
+// Validate validates this post v1 teams ms teams channel
+func (m *PostV1TeamsMsTeamsChannel) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateChannelID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMsTeamID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1TeamsMsTeamsChannel) validateChannelID(formats strfmt.Registry) error {
+
+	if err := validate.Required("ms_teams_channel"+"."+"channel_id", "body", m.ChannelID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PostV1TeamsMsTeamsChannel) validateMsTeamID(formats strfmt.Registry) error {
+
+	if err := validate.Required("ms_teams_channel"+"."+"ms_team_id", "body", m.MsTeamID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this post v1 teams ms teams channel based on context it is used
+func (m *PostV1TeamsMsTeamsChannel) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1TeamsMsTeamsChannel) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1TeamsMsTeamsChannel) UnmarshalBinary(b []byte) error {
+	var res PostV1TeamsMsTeamsChannel
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
