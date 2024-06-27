@@ -29,6 +29,10 @@ type PatchV1TeamsTeamIDSignalRulesID struct {
 	// The rule's name.
 	Name string `json:"name,omitempty"`
 
+	// A notification priority that will be set on the resulting alert (default: HIGH)
+	// Enum: [HIGH MEDIUM LOW ]
+	NotificationPriorityOverride string `json:"notification_priority_override,omitempty"`
+
 	// The ID of the target that the rule will notify when matched.
 	TargetID string `json:"target_id,omitempty"`
 
@@ -41,6 +45,10 @@ type PatchV1TeamsTeamIDSignalRulesID struct {
 func (m *PatchV1TeamsTeamIDSignalRulesID) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateNotificationPriorityOverride(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTargetType(formats); err != nil {
 		res = append(res, err)
 	}
@@ -48,6 +56,54 @@ func (m *PatchV1TeamsTeamIDSignalRulesID) Validate(formats strfmt.Registry) erro
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var patchV1TeamsTeamIdSignalRulesIdTypeNotificationPriorityOverridePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["HIGH","MEDIUM","LOW",""]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		patchV1TeamsTeamIdSignalRulesIdTypeNotificationPriorityOverridePropEnum = append(patchV1TeamsTeamIdSignalRulesIdTypeNotificationPriorityOverridePropEnum, v)
+	}
+}
+
+const (
+
+	// PatchV1TeamsTeamIDSignalRulesIDNotificationPriorityOverrideHIGH captures enum value "HIGH"
+	PatchV1TeamsTeamIDSignalRulesIDNotificationPriorityOverrideHIGH string = "HIGH"
+
+	// PatchV1TeamsTeamIDSignalRulesIDNotificationPriorityOverrideMEDIUM captures enum value "MEDIUM"
+	PatchV1TeamsTeamIDSignalRulesIDNotificationPriorityOverrideMEDIUM string = "MEDIUM"
+
+	// PatchV1TeamsTeamIDSignalRulesIDNotificationPriorityOverrideLOW captures enum value "LOW"
+	PatchV1TeamsTeamIDSignalRulesIDNotificationPriorityOverrideLOW string = "LOW"
+
+	// PatchV1TeamsTeamIDSignalRulesIDNotificationPriorityOverrideEmpty captures enum value ""
+	PatchV1TeamsTeamIDSignalRulesIDNotificationPriorityOverrideEmpty string = ""
+)
+
+// prop value enum
+func (m *PatchV1TeamsTeamIDSignalRulesID) validateNotificationPriorityOverrideEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, patchV1TeamsTeamIdSignalRulesIdTypeNotificationPriorityOverridePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PatchV1TeamsTeamIDSignalRulesID) validateNotificationPriorityOverride(formats strfmt.Registry) error {
+	if swag.IsZero(m.NotificationPriorityOverride) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateNotificationPriorityOverrideEnum("notification_priority_override", "body", m.NotificationPriorityOverride); err != nil {
+		return err
+	}
+
 	return nil
 }
 

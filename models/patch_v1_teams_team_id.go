@@ -12,6 +12,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PatchV1TeamsTeamID Update a single team from its ID
@@ -24,6 +25,9 @@ type PatchV1TeamsTeamID struct {
 
 	// memberships
 	Memberships []*PatchV1TeamsTeamIDMembershipsItems0 `json:"memberships"`
+
+	// ms teams channel
+	MsTeamsChannel *PatchV1TeamsTeamIDMsTeamsChannel `json:"ms_teams_channel,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
@@ -40,6 +44,10 @@ func (m *PatchV1TeamsTeamID) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateMemberships(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMsTeamsChannel(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -75,11 +83,34 @@ func (m *PatchV1TeamsTeamID) validateMemberships(formats strfmt.Registry) error 
 	return nil
 }
 
+func (m *PatchV1TeamsTeamID) validateMsTeamsChannel(formats strfmt.Registry) error {
+	if swag.IsZero(m.MsTeamsChannel) { // not required
+		return nil
+	}
+
+	if m.MsTeamsChannel != nil {
+		if err := m.MsTeamsChannel.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ms_teams_channel")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ms_teams_channel")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this patch v1 teams team Id based on the context it is used
 func (m *PatchV1TeamsTeamID) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateMemberships(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMsTeamsChannel(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -104,6 +135,22 @@ func (m *PatchV1TeamsTeamID) contextValidateMemberships(ctx context.Context, for
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *PatchV1TeamsTeamID) contextValidateMsTeamsChannel(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MsTeamsChannel != nil {
+		if err := m.MsTeamsChannel.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("ms_teams_channel")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("ms_teams_channel")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -163,6 +210,79 @@ func (m *PatchV1TeamsTeamIDMembershipsItems0) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PatchV1TeamsTeamIDMembershipsItems0) UnmarshalBinary(b []byte) error {
 	var res PatchV1TeamsTeamIDMembershipsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PatchV1TeamsTeamIDMsTeamsChannel MS Teams channel identity for channel associated with this team
+//
+// swagger:model PatchV1TeamsTeamIDMsTeamsChannel
+type PatchV1TeamsTeamIDMsTeamsChannel struct {
+
+	// channel id
+	// Required: true
+	ChannelID *string `json:"channel_id"`
+
+	// ms team id
+	// Required: true
+	MsTeamID *string `json:"ms_team_id"`
+}
+
+// Validate validates this patch v1 teams team ID ms teams channel
+func (m *PatchV1TeamsTeamIDMsTeamsChannel) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateChannelID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMsTeamID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PatchV1TeamsTeamIDMsTeamsChannel) validateChannelID(formats strfmt.Registry) error {
+
+	if err := validate.Required("ms_teams_channel"+"."+"channel_id", "body", m.ChannelID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PatchV1TeamsTeamIDMsTeamsChannel) validateMsTeamID(formats strfmt.Registry) error {
+
+	if err := validate.Required("ms_teams_channel"+"."+"ms_team_id", "body", m.MsTeamID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this patch v1 teams team ID ms teams channel based on context it is used
+func (m *PatchV1TeamsTeamIDMsTeamsChannel) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PatchV1TeamsTeamIDMsTeamsChannel) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PatchV1TeamsTeamIDMsTeamsChannel) UnmarshalBinary(b []byte) error {
+	var res PatchV1TeamsTeamIDMsTeamsChannel
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
