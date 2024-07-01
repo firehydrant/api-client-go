@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -38,6 +39,10 @@ type SignalsAPIRuleEntity struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// notification priority override
+	// Enum: [HIGH MEDIUM LOW]
+	NotificationPriorityOverride string `json:"notification_priority_override,omitempty"`
+
 	// target
 	Target *SignalsAPITargetEntity `json:"target,omitempty"`
 
@@ -62,6 +67,10 @@ func (m *SignalsAPIRuleEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateIncidentType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNotificationPriorityOverride(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -124,6 +133,51 @@ func (m *SignalsAPIRuleEntity) validateIncidentType(formats strfmt.Registry) err
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var signalsApiRuleEntityTypeNotificationPriorityOverridePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["HIGH","MEDIUM","LOW"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		signalsApiRuleEntityTypeNotificationPriorityOverridePropEnum = append(signalsApiRuleEntityTypeNotificationPriorityOverridePropEnum, v)
+	}
+}
+
+const (
+
+	// SignalsAPIRuleEntityNotificationPriorityOverrideHIGH captures enum value "HIGH"
+	SignalsAPIRuleEntityNotificationPriorityOverrideHIGH string = "HIGH"
+
+	// SignalsAPIRuleEntityNotificationPriorityOverrideMEDIUM captures enum value "MEDIUM"
+	SignalsAPIRuleEntityNotificationPriorityOverrideMEDIUM string = "MEDIUM"
+
+	// SignalsAPIRuleEntityNotificationPriorityOverrideLOW captures enum value "LOW"
+	SignalsAPIRuleEntityNotificationPriorityOverrideLOW string = "LOW"
+)
+
+// prop value enum
+func (m *SignalsAPIRuleEntity) validateNotificationPriorityOverrideEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, signalsApiRuleEntityTypeNotificationPriorityOverridePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *SignalsAPIRuleEntity) validateNotificationPriorityOverride(formats strfmt.Registry) error {
+	if swag.IsZero(m.NotificationPriorityOverride) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateNotificationPriorityOverrideEnum("notification_priority_override", "body", m.NotificationPriorityOverride); err != nil {
+		return err
 	}
 
 	return nil
