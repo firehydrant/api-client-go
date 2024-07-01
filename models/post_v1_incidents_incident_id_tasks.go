@@ -25,6 +25,10 @@ type PostV1IncidentsIncidentIDTasks struct {
 	// A description of what the task is for.
 	Description string `json:"description,omitempty"`
 
+	// The due date of the task.
+	// Format: date-time
+	DueAt strfmt.DateTime `json:"due_at,omitempty"`
+
 	// The state of the task. One of: open, in_progress, cancelled, done
 	State string `json:"state,omitempty"`
 
@@ -37,6 +41,10 @@ type PostV1IncidentsIncidentIDTasks struct {
 func (m *PostV1IncidentsIncidentIDTasks) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDueAt(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTitle(formats); err != nil {
 		res = append(res, err)
 	}
@@ -44,6 +52,18 @@ func (m *PostV1IncidentsIncidentIDTasks) Validate(formats strfmt.Registry) error
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PostV1IncidentsIncidentIDTasks) validateDueAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.DueAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("due_at", "body", "date-time", m.DueAt.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 
