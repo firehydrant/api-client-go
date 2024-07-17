@@ -2442,11 +2442,13 @@ func (a *Client) PutV1IncidentsIncidentIDLinksLinkID(params *PutV1IncidentsIncid
 /*
 	PutV1IncidentsIncidentIDMilestonesBulkUpdate updates milestone times
 
-	Update milestone times in bulk for a given incident. All milestone times for an incident
+	Update milestone times in bulk for a given incident. All milestone
 
-must occur in chronological order (%{milestones}). If the result of this request would
-cause any milestone(s) to appear out of place, a 422 response will instead be returned.
-This includes milestones not explicitly submitted or updated in this request.
+times for an incident must occur in chronological order
+corresponding to the configured order of milestones. If the result
+of this request would cause any milestone(s) to appear out of place,
+a 422 response will instead be returned. This includes milestones
+not explicitly submitted or updated in this request.
 */
 func (a *Client) PutV1IncidentsIncidentIDMilestonesBulkUpdate(params *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDMilestonesBulkUpdateOK, error) {
 	// TODO: Validate the params before sending

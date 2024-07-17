@@ -150,22 +150,6 @@ type GetV1MetricsMttxParams struct {
 	// Format: int32
 	PerPage *int32
 
-	/* PostmortemCompletedAtOrAfter.
-
-	   Filters for incidents that had their postmortem completed at or after this time
-
-	   Format: date-time
-	*/
-	PostmortemCompletedAtOrAfter *strfmt.DateTime
-
-	/* PostmortemCompletedAtOrBefore.
-
-	   Filters for incidents that had their postmortem completed at or before this time
-
-	   Format: date-time
-	*/
-	PostmortemCompletedAtOrBefore *strfmt.DateTime
-
 	/* Priorities.
 
 	   A text value of priority
@@ -491,28 +475,6 @@ func (o *GetV1MetricsMttxParams) WithPerPage(perPage *int32) *GetV1MetricsMttxPa
 // SetPerPage adds the perPage to the get v1 metrics mttx params
 func (o *GetV1MetricsMttxParams) SetPerPage(perPage *int32) {
 	o.PerPage = perPage
-}
-
-// WithPostmortemCompletedAtOrAfter adds the postmortemCompletedAtOrAfter to the get v1 metrics mttx params
-func (o *GetV1MetricsMttxParams) WithPostmortemCompletedAtOrAfter(postmortemCompletedAtOrAfter *strfmt.DateTime) *GetV1MetricsMttxParams {
-	o.SetPostmortemCompletedAtOrAfter(postmortemCompletedAtOrAfter)
-	return o
-}
-
-// SetPostmortemCompletedAtOrAfter adds the postmortemCompletedAtOrAfter to the get v1 metrics mttx params
-func (o *GetV1MetricsMttxParams) SetPostmortemCompletedAtOrAfter(postmortemCompletedAtOrAfter *strfmt.DateTime) {
-	o.PostmortemCompletedAtOrAfter = postmortemCompletedAtOrAfter
-}
-
-// WithPostmortemCompletedAtOrBefore adds the postmortemCompletedAtOrBefore to the get v1 metrics mttx params
-func (o *GetV1MetricsMttxParams) WithPostmortemCompletedAtOrBefore(postmortemCompletedAtOrBefore *strfmt.DateTime) *GetV1MetricsMttxParams {
-	o.SetPostmortemCompletedAtOrBefore(postmortemCompletedAtOrBefore)
-	return o
-}
-
-// SetPostmortemCompletedAtOrBefore adds the postmortemCompletedAtOrBefore to the get v1 metrics mttx params
-func (o *GetV1MetricsMttxParams) SetPostmortemCompletedAtOrBefore(postmortemCompletedAtOrBefore *strfmt.DateTime) {
-	o.PostmortemCompletedAtOrBefore = postmortemCompletedAtOrBefore
 }
 
 // WithPriorities adds the priorities to the get v1 metrics mttx params
@@ -947,40 +909,6 @@ func (o *GetV1MetricsMttxParams) WriteToRequest(r runtime.ClientRequest, reg str
 		if qPerPage != "" {
 
 			if err := r.SetQueryParam("per_page", qPerPage); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.PostmortemCompletedAtOrAfter != nil {
-
-		// query param postmortem_completed_at_or_after
-		var qrPostmortemCompletedAtOrAfter strfmt.DateTime
-
-		if o.PostmortemCompletedAtOrAfter != nil {
-			qrPostmortemCompletedAtOrAfter = *o.PostmortemCompletedAtOrAfter
-		}
-		qPostmortemCompletedAtOrAfter := qrPostmortemCompletedAtOrAfter.String()
-		if qPostmortemCompletedAtOrAfter != "" {
-
-			if err := r.SetQueryParam("postmortem_completed_at_or_after", qPostmortemCompletedAtOrAfter); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.PostmortemCompletedAtOrBefore != nil {
-
-		// query param postmortem_completed_at_or_before
-		var qrPostmortemCompletedAtOrBefore strfmt.DateTime
-
-		if o.PostmortemCompletedAtOrBefore != nil {
-			qrPostmortemCompletedAtOrBefore = *o.PostmortemCompletedAtOrBefore
-		}
-		qPostmortemCompletedAtOrBefore := qrPostmortemCompletedAtOrBefore.String()
-		if qPostmortemCompletedAtOrBefore != "" {
-
-			if err := r.SetQueryParam("postmortem_completed_at_or_before", qPostmortemCompletedAtOrBefore); err != nil {
 				return err
 			}
 		}
