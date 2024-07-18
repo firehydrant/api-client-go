@@ -7,7 +7,6 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -55,8 +54,7 @@ type IncidentEntity struct {
 	// created by
 	CreatedBy *AuthorEntity `json:"created_by,omitempty"`
 
-	// current milestone
-	// Enum: [started detected acknowledged investigating identified mitigated resolved postmortem_started postmortem_completed closed]
+	// The type/slug of the current milestone. Will be one of the currently configured milestones for the given incident.
 	CurrentMilestone string `json:"current_milestone,omitempty"`
 
 	// custom fields
@@ -206,10 +204,6 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCreatedBy(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateCurrentMilestone(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -388,72 +382,6 @@ func (m *IncidentEntity) validateCreatedBy(formats strfmt.Registry) error {
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-var incidentEntityTypeCurrentMilestonePropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["started","detected","acknowledged","investigating","identified","mitigated","resolved","postmortem_started","postmortem_completed","closed"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		incidentEntityTypeCurrentMilestonePropEnum = append(incidentEntityTypeCurrentMilestonePropEnum, v)
-	}
-}
-
-const (
-
-	// IncidentEntityCurrentMilestoneStarted captures enum value "started"
-	IncidentEntityCurrentMilestoneStarted string = "started"
-
-	// IncidentEntityCurrentMilestoneDetected captures enum value "detected"
-	IncidentEntityCurrentMilestoneDetected string = "detected"
-
-	// IncidentEntityCurrentMilestoneAcknowledged captures enum value "acknowledged"
-	IncidentEntityCurrentMilestoneAcknowledged string = "acknowledged"
-
-	// IncidentEntityCurrentMilestoneInvestigating captures enum value "investigating"
-	IncidentEntityCurrentMilestoneInvestigating string = "investigating"
-
-	// IncidentEntityCurrentMilestoneIdentified captures enum value "identified"
-	IncidentEntityCurrentMilestoneIdentified string = "identified"
-
-	// IncidentEntityCurrentMilestoneMitigated captures enum value "mitigated"
-	IncidentEntityCurrentMilestoneMitigated string = "mitigated"
-
-	// IncidentEntityCurrentMilestoneResolved captures enum value "resolved"
-	IncidentEntityCurrentMilestoneResolved string = "resolved"
-
-	// IncidentEntityCurrentMilestonePostmortemStarted captures enum value "postmortem_started"
-	IncidentEntityCurrentMilestonePostmortemStarted string = "postmortem_started"
-
-	// IncidentEntityCurrentMilestonePostmortemCompleted captures enum value "postmortem_completed"
-	IncidentEntityCurrentMilestonePostmortemCompleted string = "postmortem_completed"
-
-	// IncidentEntityCurrentMilestoneClosed captures enum value "closed"
-	IncidentEntityCurrentMilestoneClosed string = "closed"
-)
-
-// prop value enum
-func (m *IncidentEntity) validateCurrentMilestoneEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, incidentEntityTypeCurrentMilestonePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *IncidentEntity) validateCurrentMilestone(formats strfmt.Registry) error {
-	if swag.IsZero(m.CurrentMilestone) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateCurrentMilestoneEnum("current_milestone", "body", m.CurrentMilestone); err != nil {
-		return err
 	}
 
 	return nil
