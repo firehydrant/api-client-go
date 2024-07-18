@@ -7,7 +7,6 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -452,9 +451,8 @@ type PostV1IncidentsMilestonesItems0 struct {
 	// Format: date-time
 	OccurredAt *strfmt.DateTime `json:"occurred_at"`
 
-	// type
+	// The type/slug of the milestone. Must be one of the currently configured milestones.
 	// Required: true
-	// Enum: [started detected acknowledged investigating identified mitigated resolved postmortem_started postmortem_completed closed]
 	Type *string `json:"type"`
 }
 
@@ -489,67 +487,9 @@ func (m *PostV1IncidentsMilestonesItems0) validateOccurredAt(formats strfmt.Regi
 	return nil
 }
 
-var postV1IncidentsMilestonesItems0TypeTypePropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["started","detected","acknowledged","investigating","identified","mitigated","resolved","postmortem_started","postmortem_completed","closed"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		postV1IncidentsMilestonesItems0TypeTypePropEnum = append(postV1IncidentsMilestonesItems0TypeTypePropEnum, v)
-	}
-}
-
-const (
-
-	// PostV1IncidentsMilestonesItems0TypeStarted captures enum value "started"
-	PostV1IncidentsMilestonesItems0TypeStarted string = "started"
-
-	// PostV1IncidentsMilestonesItems0TypeDetected captures enum value "detected"
-	PostV1IncidentsMilestonesItems0TypeDetected string = "detected"
-
-	// PostV1IncidentsMilestonesItems0TypeAcknowledged captures enum value "acknowledged"
-	PostV1IncidentsMilestonesItems0TypeAcknowledged string = "acknowledged"
-
-	// PostV1IncidentsMilestonesItems0TypeInvestigating captures enum value "investigating"
-	PostV1IncidentsMilestonesItems0TypeInvestigating string = "investigating"
-
-	// PostV1IncidentsMilestonesItems0TypeIdentified captures enum value "identified"
-	PostV1IncidentsMilestonesItems0TypeIdentified string = "identified"
-
-	// PostV1IncidentsMilestonesItems0TypeMitigated captures enum value "mitigated"
-	PostV1IncidentsMilestonesItems0TypeMitigated string = "mitigated"
-
-	// PostV1IncidentsMilestonesItems0TypeResolved captures enum value "resolved"
-	PostV1IncidentsMilestonesItems0TypeResolved string = "resolved"
-
-	// PostV1IncidentsMilestonesItems0TypePostmortemStarted captures enum value "postmortem_started"
-	PostV1IncidentsMilestonesItems0TypePostmortemStarted string = "postmortem_started"
-
-	// PostV1IncidentsMilestonesItems0TypePostmortemCompleted captures enum value "postmortem_completed"
-	PostV1IncidentsMilestonesItems0TypePostmortemCompleted string = "postmortem_completed"
-
-	// PostV1IncidentsMilestonesItems0TypeClosed captures enum value "closed"
-	PostV1IncidentsMilestonesItems0TypeClosed string = "closed"
-)
-
-// prop value enum
-func (m *PostV1IncidentsMilestonesItems0) validateTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, postV1IncidentsMilestonesItems0TypeTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *PostV1IncidentsMilestonesItems0) validateType(formats strfmt.Registry) error {
 
 	if err := validate.Required("type", "body", m.Type); err != nil {
-		return err
-	}
-
-	// value enum
-	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
 		return err
 	}
 
