@@ -40,7 +40,6 @@ import (
 	"github.com/firehydrant/api-client-go/client/processing_log_entries"
 	"github.com/firehydrant/api-client-go/client/reports"
 	"github.com/firehydrant/api-client-go/client/runbook_audits"
-	"github.com/firehydrant/api-client-go/client/runbook_templates"
 	"github.com/firehydrant/api-client-go/client/runbooks"
 	"github.com/firehydrant/api-client-go/client/saved_searches"
 	"github.com/firehydrant/api-client-go/client/scheduled_maintenances"
@@ -131,7 +130,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.ProcessingLogEntries = processing_log_entries.New(transport, formats)
 	cli.Reports = reports.New(transport, formats)
 	cli.RunbookAudits = runbook_audits.New(transport, formats)
-	cli.RunbookTemplates = runbook_templates.New(transport, formats)
 	cli.Runbooks = runbooks.New(transport, formats)
 	cli.SavedSearches = saved_searches.New(transport, formats)
 	cli.ScheduledMaintenances = scheduled_maintenances.New(transport, formats)
@@ -252,8 +250,6 @@ type FireHydrantAPI struct {
 
 	RunbookAudits runbook_audits.ClientService
 
-	RunbookTemplates runbook_templates.ClientService
-
 	Runbooks runbooks.ClientService
 
 	SavedSearches saved_searches.ClientService
@@ -322,7 +318,6 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.ProcessingLogEntries.SetTransport(transport)
 	c.Reports.SetTransport(transport)
 	c.RunbookAudits.SetTransport(transport)
-	c.RunbookTemplates.SetTransport(transport)
 	c.Runbooks.SetTransport(transport)
 	c.SavedSearches.SetTransport(transport)
 	c.ScheduledMaintenances.SetTransport(transport)
