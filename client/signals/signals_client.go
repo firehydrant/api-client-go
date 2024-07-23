@@ -42,6 +42,8 @@ type ClientService interface {
 
 	GetV1SignalsEmailTargetsID(params *GetV1SignalsEmailTargetsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsEmailTargetsIDOK, error)
 
+	GetV1SignalsEventSources(params *GetV1SignalsEventSourcesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsEventSourcesOK, error)
+
 	GetV1SignalsIngestURL(params *GetV1SignalsIngestURLParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsIngestURLOK, error)
 
 	GetV1SignalsTransposers(params *GetV1SignalsTransposersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsTransposersOK, error)
@@ -298,6 +300,45 @@ func (a *Client) GetV1SignalsEmailTargetsID(params *GetV1SignalsEmailTargetsIDPa
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1SignalsEmailTargetsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1SignalsEventSources get v1 signals event sources API
+*/
+func (a *Client) GetV1SignalsEventSources(params *GetV1SignalsEventSourcesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsEventSourcesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1SignalsEventSourcesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1SignalsEventSources",
+		Method:             "GET",
+		PathPattern:        "/v1/signals/event_sources",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1SignalsEventSourcesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1SignalsEventSourcesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1SignalsEventSources: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
