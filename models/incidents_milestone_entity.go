@@ -20,9 +20,10 @@ import (
 type IncidentsMilestoneEntity struct {
 
 	// created at
-	CreatedAt string `json:"created_at,omitempty"`
+	// Format: date-time
+	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
 
-	// ISO 8601 Duration Format
+	// How long the incident spent in this milestones, in ISO 8601 Duration Format. This will be null if the milestone is the incident's current milestone.
 	Duration string `json:"duration,omitempty"`
 
 	// id
@@ -32,18 +33,27 @@ type IncidentsMilestoneEntity struct {
 	// Format: date-time
 	OccurredAt strfmt.DateTime `json:"occurred_at,omitempty"`
 
-	// The type/slug of the milestone. Will be one of the currently configured milestones for the given incident.
+	// The milestone's type. This will be one of the currently configured milestones for the given incident.
 	Type string `json:"type,omitempty"`
 
 	// updated at
-	UpdatedAt string `json:"updated_at,omitempty"`
+	// Format: date-time
+	UpdatedAt strfmt.DateTime `json:"updated_at,omitempty"`
 }
 
 // Validate validates this incidents milestone entity
 func (m *IncidentsMilestoneEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateOccurredAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdatedAt(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -53,12 +63,36 @@ func (m *IncidentsMilestoneEntity) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IncidentsMilestoneEntity) validateCreatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("created_at", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *IncidentsMilestoneEntity) validateOccurredAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.OccurredAt) { // not required
 		return nil
 	}
 
 	if err := validate.FormatOf("occurred_at", "body", "date-time", m.OccurredAt.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *IncidentsMilestoneEntity) validateUpdatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.UpdatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("updated_at", "body", "date-time", m.UpdatedAt.String(), formats); err != nil {
 		return err
 	}
 
