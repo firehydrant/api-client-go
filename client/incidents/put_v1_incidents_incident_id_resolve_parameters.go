@@ -64,6 +64,12 @@ type PutV1IncidentsIncidentIDResolveParams struct {
 	// IncidentID.
 	IncidentID string
 
+	/* Milestone.
+
+	   The slug of any milestone in the post-incident or closed phase to set on the incident (and its children, if `resolve_children` os set). Must be one of the configured milestones available on this incident.
+	*/
+	Milestone *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -128,6 +134,17 @@ func (o *PutV1IncidentsIncidentIDResolveParams) SetIncidentID(incidentID string)
 	o.IncidentID = incidentID
 }
 
+// WithMilestone adds the milestone to the put v1 incidents incident Id resolve params
+func (o *PutV1IncidentsIncidentIDResolveParams) WithMilestone(milestone *string) *PutV1IncidentsIncidentIDResolveParams {
+	o.SetMilestone(milestone)
+	return o
+}
+
+// SetMilestone adds the milestone to the put v1 incidents incident Id resolve params
+func (o *PutV1IncidentsIncidentIDResolveParams) SetMilestone(milestone *string) {
+	o.Milestone = milestone
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *PutV1IncidentsIncidentIDResolveParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -139,6 +156,21 @@ func (o *PutV1IncidentsIncidentIDResolveParams) WriteToRequest(r runtime.ClientR
 	// path param incident_id
 	if err := r.SetPathParam("incident_id", o.IncidentID); err != nil {
 		return err
+	}
+
+	if o.Milestone != nil {
+
+		// form param milestone
+		var frMilestone string
+		if o.Milestone != nil {
+			frMilestone = *o.Milestone
+		}
+		fMilestone := frMilestone
+		if fMilestone != "" {
+			if err := r.SetFormParam("milestone", fMilestone); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {
