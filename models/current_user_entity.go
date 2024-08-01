@@ -17,6 +17,9 @@ import (
 // swagger:model CurrentUserEntity
 type CurrentUserEntity struct {
 
+	// account id
+	AccountID int32 `json:"account_id,omitempty"`
+
 	// email
 	Email string `json:"email,omitempty"`
 
@@ -25,6 +28,9 @@ type CurrentUserEntity struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// organization id
+	OrganizationID string `json:"organization_id,omitempty"`
 
 	// role
 	Role string `json:"role,omitempty"`
