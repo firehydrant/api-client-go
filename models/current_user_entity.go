@@ -32,6 +32,9 @@ type CurrentUserEntity struct {
 	// organization id
 	OrganizationID string `json:"organization_id,omitempty"`
 
+	// organization name
+	OrganizationName string `json:"organization_name,omitempty"`
+
 	// role
 	Role string `json:"role,omitempty"`
 
