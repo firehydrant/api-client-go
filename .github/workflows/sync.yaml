@@ -40,11 +40,15 @@ jobs:
           echo "REVISION=${REVISION}" >> "$GITHUB_OUTPUT"
           bin/update-swagger-doc.sh
           bin/regenerate.sh
+          echo "API_MD5=$(md5sum swagger_doc.json | awk '{print $1}')" >> "$GITHUB_OUTPUT"
 
       - name: Commit changes
         run: |
           api_server_revision="${{ steps.swagger.outputs.REVISION }}"
-          branch="swagger/${api_server_revision}"
+          api_md5="${{ steps.swagger.outputs.API_MD5 }}"
+
+          # Use MD5 of Swagger document as branch name to avoid duplicate PRs
+          branch="swagger/${api_md5}"
 
           set -x
           # If remote branch exists, just terminate early.
