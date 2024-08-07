@@ -48,10 +48,6 @@ type ClientService interface {
 
 	GetV1IntegrationsConnections(params *GetV1IntegrationsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConnectionsOK, error)
 
-	GetV1IntegrationsDataExportExportRequests(params *GetV1IntegrationsDataExportExportRequestsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsDataExportExportRequestsOK, error)
-
-	GetV1IntegrationsDataExportExportRequestsExportRequestID(params *GetV1IntegrationsDataExportExportRequestsExportRequestIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsDataExportExportRequestsExportRequestIDOK, error)
-
 	GetV1IntegrationsFieldMapsFieldMapIDAvailableFields(params *GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK, error)
 
 	GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegrationIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsIntegrationIDOK, error)
@@ -447,88 +443,6 @@ func (a *Client) GetV1IntegrationsConnections(params *GetV1IntegrationsConnectio
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsConnections: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsDataExportExportRequests lists export requests
-
-Lists export requests for data exporting
-*/
-func (a *Client) GetV1IntegrationsDataExportExportRequests(params *GetV1IntegrationsDataExportExportRequestsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsDataExportExportRequestsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsDataExportExportRequestsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsDataExportExportRequests",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/data_export/export_requests",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsDataExportExportRequestsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsDataExportExportRequestsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsDataExportExportRequests: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsDataExportExportRequestsExportRequestID retrieves a single export requests
-
-Retrieves a single export request for data exporting
-*/
-func (a *Client) GetV1IntegrationsDataExportExportRequestsExportRequestID(params *GetV1IntegrationsDataExportExportRequestsExportRequestIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsDataExportExportRequestsExportRequestIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsDataExportExportRequestsExportRequestIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsDataExportExportRequestsExportRequestId",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/data_export/export_requests/{export_request_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsDataExportExportRequestsExportRequestIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsDataExportExportRequestsExportRequestIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsDataExportExportRequestsExportRequestId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

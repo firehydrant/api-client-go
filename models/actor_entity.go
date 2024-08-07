@@ -30,7 +30,7 @@ type ActorEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// type
-	// Enum: [firehydrant_user firehydrant_bot alertmanager asana aws bugsnag checkly custom_alerts data_export datadog shortcut new_relic nunc github giphy google_meet google_calendar microsoft_teams microsoft_teams_v2 webex jira_cloud jira_onprem opsgenie pager_duty honeycomb patchy service_now signals slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2 linear]
+	// Enum: [firehydrant_user firehydrant_bot alertmanager asana aws bugsnag checkly custom_alerts datadog shortcut new_relic nunc github giphy google_meet google_calendar microsoft_teams microsoft_teams_v2 webex jira_cloud jira_onprem opsgenie pager_duty honeycomb patchy service_now signals slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2 linear]
 	Type string `json:"type,omitempty"`
 }
 
@@ -52,7 +52,7 @@ var actorEntityTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","alertmanager","asana","aws","bugsnag","checkly","custom_alerts","data_export","datadog","shortcut","new_relic","nunc","github","giphy","google_meet","google_calendar","microsoft_teams","microsoft_teams_v2","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","honeycomb","patchy","service_now","signals","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2","linear"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","alertmanager","asana","aws","bugsnag","checkly","custom_alerts","datadog","shortcut","new_relic","nunc","github","giphy","google_meet","google_calendar","microsoft_teams","microsoft_teams_v2","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","honeycomb","patchy","service_now","signals","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2","linear"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -85,9 +85,6 @@ const (
 
 	// ActorEntityTypeCustomAlerts captures enum value "custom_alerts"
 	ActorEntityTypeCustomAlerts string = "custom_alerts"
-
-	// ActorEntityTypeDataExport captures enum value "data_export"
-	ActorEntityTypeDataExport string = "data_export"
 
 	// ActorEntityTypeDatadog captures enum value "datadog"
 	ActorEntityTypeDatadog string = "datadog"
