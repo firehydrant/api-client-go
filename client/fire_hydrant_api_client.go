@@ -30,6 +30,7 @@ import (
 	"github.com/firehydrant/api-client-go/client/incidents"
 	"github.com/firehydrant/api-client-go/client/infrastructures"
 	"github.com/firehydrant/api-client-go/client/integrations"
+	"github.com/firehydrant/api-client-go/client/lifecycles"
 	"github.com/firehydrant/api-client-go/client/metrics"
 	"github.com/firehydrant/api-client-go/client/noauth"
 	"github.com/firehydrant/api-client-go/client/nunc"
@@ -120,6 +121,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Incidents = incidents.New(transport, formats)
 	cli.Infrastructures = infrastructures.New(transport, formats)
 	cli.Integrations = integrations.New(transport, formats)
+	cli.Lifecycles = lifecycles.New(transport, formats)
 	cli.Metrics = metrics.New(transport, formats)
 	cli.Noauth = noauth.New(transport, formats)
 	cli.Nunc = nunc.New(transport, formats)
@@ -230,6 +232,8 @@ type FireHydrantAPI struct {
 
 	Integrations integrations.ClientService
 
+	Lifecycles lifecycles.ClientService
+
 	Metrics metrics.ClientService
 
 	Noauth noauth.ClientService
@@ -308,6 +312,7 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Incidents.SetTransport(transport)
 	c.Infrastructures.SetTransport(transport)
 	c.Integrations.SetTransport(transport)
+	c.Lifecycles.SetTransport(transport)
 	c.Metrics.SetTransport(transport)
 	c.Noauth.SetTransport(transport)
 	c.Nunc.SetTransport(transport)
