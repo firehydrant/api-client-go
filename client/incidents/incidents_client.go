@@ -138,6 +138,8 @@ type ClientService interface {
 
 	PostV1IncidentsIncidentIDUnarchive(params *PostV1IncidentsIncidentIDUnarchiveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDUnarchiveCreated, error)
 
+	PutV1IncidentsIncidentIDClose(params *PutV1IncidentsIncidentIDCloseParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDCloseOK, error)
+
 	PutV1IncidentsIncidentIDImpact(params *PutV1IncidentsIncidentIDImpactParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDImpactOK, error)
 
 	PutV1IncidentsIncidentIDLinksLinkID(params *PutV1IncidentsIncidentIDLinksLinkIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDLinksLinkIDOK, error)
@@ -2354,6 +2356,47 @@ func (a *Client) PostV1IncidentsIncidentIDUnarchive(params *PostV1IncidentsIncid
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdUnarchive: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PutV1IncidentsIncidentIDClose closes an incident
+
+Closes an incident and optionally close all children
+*/
+func (a *Client) PutV1IncidentsIncidentIDClose(params *PutV1IncidentsIncidentIDCloseParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDCloseOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutV1IncidentsIncidentIDCloseParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "putV1IncidentsIncidentIdClose",
+		Method:             "PUT",
+		PathPattern:        "/v1/incidents/{incident_id}/close",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutV1IncidentsIncidentIDCloseReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutV1IncidentsIncidentIDCloseOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for putV1IncidentsIncidentIdClose: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
