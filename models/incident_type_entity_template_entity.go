@@ -31,6 +31,9 @@ type IncidentTypeEntityTemplateEntity struct {
 	// impacts
 	Impacts []*IncidentTypeEntityTemplateImpactEntity `json:"impacts"`
 
+	// incident name
+	IncidentName string `json:"incident_name,omitempty"`
+
 	// Arbitrary key:value pairs of labels for your incidents.
 	Labels interface{} `json:"labels,omitempty"`
 
