@@ -66,6 +66,9 @@ type PostV1Incidents struct {
 	// severity impact id
 	SeverityImpactID string `json:"severity_impact_id,omitempty"`
 
+	// If true, the incident type values will not be copied to the incident. This is useful when creating an incident from an incident type, but you want to set the values manually.
+	SkipIncidentTypeValues *bool `json:"skip_incident_type_values,omitempty"`
+
 	// summary
 	Summary string `json:"summary,omitempty"`
 
