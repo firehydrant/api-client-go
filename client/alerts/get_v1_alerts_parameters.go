@@ -102,6 +102,12 @@ type GetV1AlertsParams struct {
 	*/
 	SignalRules *string
 
+	/* Statuses.
+
+	   A comma separated list of statuses to filter by. Valid statuses are: opened, acknowledged, resolved, ignored, or expired
+	*/
+	Statuses *string
+
 	/* TagMatchStrategy.
 
 	   The strategy to match tags. `any` will return alerts that have at least one of the supplied tags, `match_all` will return only alerts that have all of the supplied tags, and `exclude` will only return alerts that have none of the supplied tags. This currently only works for Signals alerts.
@@ -254,6 +260,17 @@ func (o *GetV1AlertsParams) WithSignalRules(signalRules *string) *GetV1AlertsPar
 // SetSignalRules adds the signalRules to the get v1 alerts params
 func (o *GetV1AlertsParams) SetSignalRules(signalRules *string) {
 	o.SignalRules = signalRules
+}
+
+// WithStatuses adds the statuses to the get v1 alerts params
+func (o *GetV1AlertsParams) WithStatuses(statuses *string) *GetV1AlertsParams {
+	o.SetStatuses(statuses)
+	return o
+}
+
+// SetStatuses adds the statuses to the get v1 alerts params
+func (o *GetV1AlertsParams) SetStatuses(statuses *string) {
+	o.Statuses = statuses
 }
 
 // WithTagMatchStrategy adds the tagMatchStrategy to the get v1 alerts params
@@ -422,6 +439,23 @@ func (o *GetV1AlertsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		if qSignalRules != "" {
 
 			if err := r.SetQueryParam("signal_rules", qSignalRules); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Statuses != nil {
+
+		// query param statuses
+		var qrStatuses string
+
+		if o.Statuses != nil {
+			qrStatuses = *o.Statuses
+		}
+		qStatuses := qrStatuses
+		if qStatuses != "" {
+
+			if err := r.SetQueryParam("statuses", qStatuses); err != nil {
 				return err
 			}
 		}

@@ -134,6 +134,12 @@ type GetV1MetricsMttxParams struct {
 	// GroupBy.
 	GroupBy []string
 
+	/* Measurements.
+
+	   Comma-separated list of measurements to include in the response
+	*/
+	Measurements *string
+
 	/* Name.
 
 	   A query to search incidents by their name
@@ -442,6 +448,17 @@ func (o *GetV1MetricsMttxParams) WithGroupBy(groupBy []string) *GetV1MetricsMttx
 // SetGroupBy adds the groupBy to the get v1 metrics mttx params
 func (o *GetV1MetricsMttxParams) SetGroupBy(groupBy []string) {
 	o.GroupBy = groupBy
+}
+
+// WithMeasurements adds the measurements to the get v1 metrics mttx params
+func (o *GetV1MetricsMttxParams) WithMeasurements(measurements *string) *GetV1MetricsMttxParams {
+	o.SetMeasurements(measurements)
+	return o
+}
+
+// SetMeasurements adds the measurements to the get v1 metrics mttx params
+func (o *GetV1MetricsMttxParams) SetMeasurements(measurements *string) {
+	o.Measurements = measurements
 }
 
 // WithName adds the name to the get v1 metrics mttx params
@@ -860,6 +877,23 @@ func (o *GetV1MetricsMttxParams) WriteToRequest(r runtime.ClientRequest, reg str
 		// form array param group_by
 		if err := r.SetFormParam("group_by", joinedGroupBy...); err != nil {
 			return err
+		}
+	}
+
+	if o.Measurements != nil {
+
+		// query param measurements
+		var qrMeasurements string
+
+		if o.Measurements != nil {
+			qrMeasurements = *o.Measurements
+		}
+		qMeasurements := qrMeasurements
+		if qMeasurements != "" {
+
+			if err := r.SetQueryParam("measurements", qMeasurements); err != nil {
+				return err
+			}
 		}
 	}
 
