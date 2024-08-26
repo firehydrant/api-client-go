@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDNoContent, error)
+
 	DeleteV1IntegrationsStatuspageConnectionsConnectionID(params *DeleteV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsStatuspageConnectionsConnectionIDOK, error)
 
 	GetV1Integrations(params *GetV1IntegrationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsOK, error)
@@ -51,6 +53,10 @@ type ClientService interface {
 	GetV1IntegrationsFieldMapsFieldMapIDAvailableFields(params *GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK, error)
 
 	GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegrationIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsIntegrationIDOK, error)
+
+	GetV1IntegrationsSlackConnectionsConnectionIDEmojiActions(params *GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsOK, error)
+
+	GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK, error)
 
 	GetV1IntegrationsSlackConnectionsConnectionIDWorkspaces(params *GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesOK, error)
 
@@ -76,11 +82,56 @@ type ClientService interface {
 
 	PatchV1IntegrationsFieldMapsFieldMapID(params *PatchV1IntegrationsFieldMapsFieldMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsFieldMapsFieldMapIDOK, error)
 
+	PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK, error)
+
 	PatchV1IntegrationsStatuspageConnectionsConnectionID(params *PatchV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsStatuspageConnectionsConnectionIDOK, error)
 
 	PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsConnectionsSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsConnectionsSlugCreated, error)
 
+	PostV1IntegrationsSlackConnectionsConnectionIDEmojiActions(params *PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsCreated, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID deletes a slack emoji action
+
+Deletes a slack emoji action
+*/
+func (a *Client) DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1IntegrationsSlackConnectionsConnectionIdEmojiActionsEmojiActionId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions/{emoji_action_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1IntegrationsSlackConnectionsConnectionIdEmojiActionsEmojiActionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -523,6 +574,88 @@ func (a *Client) GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegra
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsIntegrationId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IntegrationsSlackConnectionsConnectionIDEmojiActions lists all slack emoji actions
+
+Lists all slack emoji actions
+*/
+func (a *Client) GetV1IntegrationsSlackConnectionsConnectionIDEmojiActions(params *GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IntegrationsSlackConnectionsConnectionIdEmojiActions",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsSlackConnectionsConnectionIdEmojiActions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID retrieves a slack emoji action
+
+Retrieves a slack emoji action
+*/
+func (a *Client) GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IntegrationsSlackConnectionsConnectionIdEmojiActionsEmojiActionId",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions/{emoji_action_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsSlackConnectionsConnectionIdEmojiActionsEmojiActionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1005,6 +1138,47 @@ func (a *Client) PatchV1IntegrationsFieldMapsFieldMapID(params *PatchV1Integrati
 }
 
 /*
+PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID updates a slack emoji action
+
+Updates a slack emoji action
+*/
+func (a *Client) PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1IntegrationsSlackConnectionsConnectionIdEmojiActionsEmojiActionId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions/{emoji_action_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsSlackConnectionsConnectionIdEmojiActionsEmojiActionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 PatchV1IntegrationsStatuspageConnectionsConnectionID updates a statuspage connection
 
 Update the given Statuspage integration connection.
@@ -1081,6 +1255,47 @@ func (a *Client) PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsCon
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for postV1IntegrationsConnectionsSlug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1IntegrationsSlackConnectionsConnectionIDEmojiActions creates a new slack emoji action
+
+Creates a new slack emoji action
+*/
+func (a *Client) PostV1IntegrationsSlackConnectionsConnectionIDEmojiActions(params *PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1IntegrationsSlackConnectionsConnectionIdEmojiActions",
+		Method:             "POST",
+		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1IntegrationsSlackConnectionsConnectionIdEmojiActions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
