@@ -50,6 +50,7 @@ import (
 	"github.com/firehydrant/api-client-go/client/severities"
 	"github.com/firehydrant/api-client-go/client/severity_matrix"
 	"github.com/firehydrant/api-client-go/client/signals"
+	"github.com/firehydrant/api-client-go/client/signals_on_call"
 	"github.com/firehydrant/api-client-go/client/status_update_templates"
 	"github.com/firehydrant/api-client-go/client/task_lists"
 	"github.com/firehydrant/api-client-go/client/teams"
@@ -140,6 +141,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Severities = severities.New(transport, formats)
 	cli.SeverityMatrix = severity_matrix.New(transport, formats)
 	cli.Signals = signals.New(transport, formats)
+	cli.SignalsOnCall = signals_on_call.New(transport, formats)
 	cli.StatusUpdateTemplates = status_update_templates.New(transport, formats)
 	cli.TaskLists = task_lists.New(transport, formats)
 	cli.Teams = teams.New(transport, formats)
@@ -270,6 +272,8 @@ type FireHydrantAPI struct {
 
 	Signals signals.ClientService
 
+	SignalsOnCall signals_on_call.ClientService
+
 	StatusUpdateTemplates status_update_templates.ClientService
 
 	TaskLists task_lists.ClientService
@@ -328,6 +332,7 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Severities.SetTransport(transport)
 	c.SeverityMatrix.SetTransport(transport)
 	c.Signals.SetTransport(transport)
+	c.SignalsOnCall.SetTransport(transport)
 	c.StatusUpdateTemplates.SetTransport(transport)
 	c.TaskLists.SetTransport(transport)
 	c.Teams.SetTransport(transport)

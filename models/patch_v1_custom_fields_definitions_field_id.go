@@ -28,6 +28,9 @@ type PatchV1CustomFieldsDefinitionsFieldID struct {
 
 	// required
 	Required bool `json:"required,omitempty"`
+
+	// An optional milestone ID to specify when the field should become required, if `required` is set to `true`. If not provided, required fields are always required.
+	RequiredAtMilestoneID string `json:"required_at_milestone_id,omitempty"`
 }
 
 // Validate validates this patch v1 custom fields definitions field Id
