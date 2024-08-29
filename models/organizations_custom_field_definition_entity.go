@@ -35,6 +35,9 @@ type OrganizationsCustomFieldDefinitionEntity struct {
 	// required
 	Required bool `json:"required,omitempty"`
 
+	// The milestone at which this field is required, if `required` is set to `true`. When null, a required field is always required.
+	RequiredAtMilestoneID string `json:"required_at_milestone_id,omitempty"`
+
 	// slug
 	Slug string `json:"slug,omitempty"`
 }

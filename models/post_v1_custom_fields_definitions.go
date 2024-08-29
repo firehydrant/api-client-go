@@ -36,6 +36,9 @@ type PostV1CustomFieldsDefinitions struct {
 	// required
 	// Required: true
 	Required *bool `json:"required"`
+
+	// An optional milestone ID to specify when the field should become required, if `required` is set to `true`. If not provided, required fields are always required.
+	RequiredAtMilestoneID string `json:"required_at_milestone_id,omitempty"`
 }
 
 // Validate validates this post v1 custom fields definitions
