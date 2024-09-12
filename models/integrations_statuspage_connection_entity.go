@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -19,10 +20,13 @@ import (
 type IntegrationsStatuspageConnectionEntity struct {
 
 	// conditions
-	Conditions *IntegrationsStatuspageConditionEntity `json:"conditions,omitempty"`
+	Conditions []*IntegrationsStatuspageConditionEntity `json:"conditions"`
 
 	// id
 	ID string `json:"id,omitempty"`
+
+	// milestone mappings
+	MilestoneMappings []*IntegrationsStatuspageMilestoneMappingEntity `json:"milestone_mappings"`
 
 	// page id
 	PageID string `json:"page_id,omitempty"`
@@ -31,7 +35,7 @@ type IntegrationsStatuspageConnectionEntity struct {
 	PageName string `json:"page_name,omitempty"`
 
 	// severities
-	Severities *IntegrationsStatuspageSeverityEntity `json:"severities,omitempty"`
+	Severities []*IntegrationsStatuspageSeverityEntity `json:"severities"`
 }
 
 // Validate validates this integrations statuspage connection entity
@@ -39,6 +43,10 @@ func (m *IntegrationsStatuspageConnectionEntity) Validate(formats strfmt.Registr
 	var res []error
 
 	if err := m.validateConditions(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMilestoneMappings(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -57,15 +65,48 @@ func (m *IntegrationsStatuspageConnectionEntity) validateConditions(formats strf
 		return nil
 	}
 
-	if m.Conditions != nil {
-		if err := m.Conditions.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("conditions")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("conditions")
-			}
-			return err
+	for i := 0; i < len(m.Conditions); i++ {
+		if swag.IsZero(m.Conditions[i]) { // not required
+			continue
 		}
+
+		if m.Conditions[i] != nil {
+			if err := m.Conditions[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conditions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conditions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IntegrationsStatuspageConnectionEntity) validateMilestoneMappings(formats strfmt.Registry) error {
+	if swag.IsZero(m.MilestoneMappings) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.MilestoneMappings); i++ {
+		if swag.IsZero(m.MilestoneMappings[i]) { // not required
+			continue
+		}
+
+		if m.MilestoneMappings[i] != nil {
+			if err := m.MilestoneMappings[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("milestone_mappings" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("milestone_mappings" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -76,15 +117,22 @@ func (m *IntegrationsStatuspageConnectionEntity) validateSeverities(formats strf
 		return nil
 	}
 
-	if m.Severities != nil {
-		if err := m.Severities.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("severities")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("severities")
-			}
-			return err
+	for i := 0; i < len(m.Severities); i++ {
+		if swag.IsZero(m.Severities[i]) { // not required
+			continue
 		}
+
+		if m.Severities[i] != nil {
+			if err := m.Severities[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("severities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("severities" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -95,6 +143,10 @@ func (m *IntegrationsStatuspageConnectionEntity) ContextValidate(ctx context.Con
 	var res []error
 
 	if err := m.contextValidateConditions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMilestoneMappings(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -110,15 +162,39 @@ func (m *IntegrationsStatuspageConnectionEntity) ContextValidate(ctx context.Con
 
 func (m *IntegrationsStatuspageConnectionEntity) contextValidateConditions(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Conditions != nil {
-		if err := m.Conditions.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("conditions")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("conditions")
+	for i := 0; i < len(m.Conditions); i++ {
+
+		if m.Conditions[i] != nil {
+			if err := m.Conditions[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conditions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conditions" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
+	}
+
+	return nil
+}
+
+func (m *IntegrationsStatuspageConnectionEntity) contextValidateMilestoneMappings(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.MilestoneMappings); i++ {
+
+		if m.MilestoneMappings[i] != nil {
+			if err := m.MilestoneMappings[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("milestone_mappings" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("milestone_mappings" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -126,15 +202,19 @@ func (m *IntegrationsStatuspageConnectionEntity) contextValidateConditions(ctx c
 
 func (m *IntegrationsStatuspageConnectionEntity) contextValidateSeverities(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Severities != nil {
-		if err := m.Severities.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("severities")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("severities")
+	for i := 0; i < len(m.Severities); i++ {
+
+		if m.Severities[i] != nil {
+			if err := m.Severities[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("severities" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("severities" + "." + strconv.Itoa(i))
+				}
+				return err
 			}
-			return err
 		}
+
 	}
 
 	return nil

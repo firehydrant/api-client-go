@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -23,6 +24,9 @@ type PatchV1IntegrationsStatuspageConnectionsConnectionID struct {
 	// conditions
 	Conditions []*PatchV1IntegrationsStatuspageConnectionsConnectionIDConditionsItems0 `json:"conditions"`
 
+	// milestone mappings
+	MilestoneMappings []*PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0 `json:"milestone_mappings"`
+
 	// page id
 	PageID string `json:"page_id,omitempty"`
 
@@ -35,6 +39,10 @@ func (m *PatchV1IntegrationsStatuspageConnectionsConnectionID) Validate(formats 
 	var res []error
 
 	if err := m.validateConditions(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMilestoneMappings(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -64,6 +72,32 @@ func (m *PatchV1IntegrationsStatuspageConnectionsConnectionID) validateCondition
 					return ve.ValidateName("conditions" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("conditions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PatchV1IntegrationsStatuspageConnectionsConnectionID) validateMilestoneMappings(formats strfmt.Registry) error {
+	if swag.IsZero(m.MilestoneMappings) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.MilestoneMappings); i++ {
+		if swag.IsZero(m.MilestoneMappings[i]) { // not required
+			continue
+		}
+
+		if m.MilestoneMappings[i] != nil {
+			if err := m.MilestoneMappings[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("milestone_mappings" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("milestone_mappings" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -108,6 +142,10 @@ func (m *PatchV1IntegrationsStatuspageConnectionsConnectionID) ContextValidate(c
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateMilestoneMappings(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateSeverities(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -128,6 +166,26 @@ func (m *PatchV1IntegrationsStatuspageConnectionsConnectionID) contextValidateCo
 					return ve.ValidateName("conditions" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("conditions" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *PatchV1IntegrationsStatuspageConnectionsConnectionID) contextValidateMilestoneMappings(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.MilestoneMappings); i++ {
+
+		if m.MilestoneMappings[i] != nil {
+			if err := m.MilestoneMappings[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("milestone_mappings" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("milestone_mappings" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -242,6 +300,120 @@ func (m *PatchV1IntegrationsStatuspageConnectionsConnectionIDConditionsItems0) M
 // UnmarshalBinary interface implementation
 func (m *PatchV1IntegrationsStatuspageConnectionsConnectionIDConditionsItems0) UnmarshalBinary(b []byte) error {
 	var res PatchV1IntegrationsStatuspageConnectionsConnectionIDConditionsItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0 patch v1 integrations statuspage connections connection ID milestone mappings items0
+//
+// swagger:model PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0
+type PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0 struct {
+
+	// FireHydrant milestone id
+	// Required: true
+	MilestoneID *string `json:"milestone_id"`
+
+	// Statuspage.io status
+	// Required: true
+	// Enum: [investigating identified monitoring resolved]
+	Status *string `json:"status"`
+}
+
+// Validate validates this patch v1 integrations statuspage connections connection ID milestone mappings items0
+func (m *PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateMilestoneID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0) validateMilestoneID(formats strfmt.Registry) error {
+
+	if err := validate.Required("milestone_id", "body", m.MilestoneID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var patchV1IntegrationsStatuspageConnectionsConnectionIdMilestoneMappingsItems0TypeStatusPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["investigating","identified","monitoring","resolved"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		patchV1IntegrationsStatuspageConnectionsConnectionIdMilestoneMappingsItems0TypeStatusPropEnum = append(patchV1IntegrationsStatuspageConnectionsConnectionIdMilestoneMappingsItems0TypeStatusPropEnum, v)
+	}
+}
+
+const (
+
+	// PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0StatusInvestigating captures enum value "investigating"
+	PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0StatusInvestigating string = "investigating"
+
+	// PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0StatusIdentified captures enum value "identified"
+	PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0StatusIdentified string = "identified"
+
+	// PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0StatusMonitoring captures enum value "monitoring"
+	PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0StatusMonitoring string = "monitoring"
+
+	// PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0StatusResolved captures enum value "resolved"
+	PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0StatusResolved string = "resolved"
+)
+
+// prop value enum
+func (m *PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0) validateStatusEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, patchV1IntegrationsStatuspageConnectionsConnectionIdMilestoneMappingsItems0TypeStatusPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0) validateStatus(formats strfmt.Registry) error {
+
+	if err := validate.Required("status", "body", m.Status); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateStatusEnum("status", "body", *m.Status); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this patch v1 integrations statuspage connections connection ID milestone mappings items0 based on context it is used
+func (m *PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0) UnmarshalBinary(b []byte) error {
+	var res PatchV1IntegrationsStatuspageConnectionsConnectionIDMilestoneMappingsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
