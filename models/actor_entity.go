@@ -30,7 +30,7 @@ type ActorEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// type
-	// Enum: [firehydrant_user firehydrant_bot alertmanager asana aws bugsnag checkly custom_alerts datadog shortcut new_relic nunc github giphy google_meet google_calendar microsoft_teams microsoft_teams_v2 webex jira_cloud jira_onprem opsgenie pager_duty honeycomb patchy service_now signals slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2 linear]
+	// Enum: [firehydrant_user firehydrant_bot alertmanager asana aws bugsnag checkly custom_alerts datadog shortcut new_relic nunc github giphy google_meet google_calendar microsoft_teams microsoft_teams_v2 webex jira_cloud jira_onprem opsgenie pager_duty honeycomb patchy service_now signals slack statuspage victorops zendesk zoom confluence_cloud google_docs zoom_v2 linear cortex]
 	Type string `json:"type,omitempty"`
 }
 
@@ -52,7 +52,7 @@ var actorEntityTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","alertmanager","asana","aws","bugsnag","checkly","custom_alerts","datadog","shortcut","new_relic","nunc","github","giphy","google_meet","google_calendar","microsoft_teams","microsoft_teams_v2","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","honeycomb","patchy","service_now","signals","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2","linear"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["firehydrant_user","firehydrant_bot","alertmanager","asana","aws","bugsnag","checkly","custom_alerts","datadog","shortcut","new_relic","nunc","github","giphy","google_meet","google_calendar","microsoft_teams","microsoft_teams_v2","webex","jira_cloud","jira_onprem","opsgenie","pager_duty","honeycomb","patchy","service_now","signals","slack","statuspage","victorops","zendesk","zoom","confluence_cloud","google_docs","zoom_v2","linear","cortex"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -169,6 +169,9 @@ const (
 
 	// ActorEntityTypeLinear captures enum value "linear"
 	ActorEntityTypeLinear string = "linear"
+
+	// ActorEntityTypeCortex captures enum value "cortex"
+	ActorEntityTypeCortex string = "cortex"
 )
 
 // prop value enum
