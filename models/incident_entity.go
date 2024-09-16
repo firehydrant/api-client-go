@@ -76,6 +76,9 @@ type IncidentEntity struct {
 	// environments
 	Environments []*SuccinctEntity `json:"environments"`
 
+	// field requirements
+	FieldRequirements []*IncidentEntityFieldRequirementEntity `json:"field_requirements"`
+
 	// functionalities
 	Functionalities []*SuccinctEntity `json:"functionalities"`
 
@@ -216,6 +219,10 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateEnvironments(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFieldRequirements(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -441,6 +448,32 @@ func (m *IncidentEntity) validateEnvironments(formats strfmt.Registry) error {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) validateFieldRequirements(formats strfmt.Registry) error {
+	if swag.IsZero(m.FieldRequirements) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.FieldRequirements); i++ {
+		if swag.IsZero(m.FieldRequirements[i]) { // not required
+			continue
+		}
+
+		if m.FieldRequirements[i] != nil {
+			if err := m.FieldRequirements[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("field_requirements" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("field_requirements" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -820,6 +853,10 @@ func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateFieldRequirements(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateFunctionalities(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -984,6 +1021,26 @@ func (m *IncidentEntity) contextValidateEnvironments(ctx context.Context, format
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) contextValidateFieldRequirements(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.FieldRequirements); i++ {
+
+		if m.FieldRequirements[i] != nil {
+			if err := m.FieldRequirements[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("field_requirements" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("field_requirements" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
