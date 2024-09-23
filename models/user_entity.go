@@ -32,6 +32,9 @@ type UserEntity struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// signals enabled notification types
+	SignalsEnabledNotificationTypes []string `json:"signals_enabled_notification_types"`
+
 	// slack linked
 	SlackLinked bool `json:"slack_linked?,omitempty"`
 

@@ -113,11 +113,23 @@ type GetV1SignalsAnalyticsGroupedMetricsParams struct {
 	*/
 	StartDate *strfmt.DateTime
 
+	/* Tags.
+
+	   A comma separated list of tags
+	*/
+	Tags *string
+
 	/* Teams.
 
 	   A comma separated list of team IDs
 	*/
 	Teams *string
+
+	/* Users.
+
+	   A comma separated list of user IDs
+	*/
+	Users *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -260,6 +272,17 @@ func (o *GetV1SignalsAnalyticsGroupedMetricsParams) SetStartDate(startDate *strf
 	o.StartDate = startDate
 }
 
+// WithTags adds the tags to the get v1 signals analytics grouped metrics params
+func (o *GetV1SignalsAnalyticsGroupedMetricsParams) WithTags(tags *string) *GetV1SignalsAnalyticsGroupedMetricsParams {
+	o.SetTags(tags)
+	return o
+}
+
+// SetTags adds the tags to the get v1 signals analytics grouped metrics params
+func (o *GetV1SignalsAnalyticsGroupedMetricsParams) SetTags(tags *string) {
+	o.Tags = tags
+}
+
 // WithTeams adds the teams to the get v1 signals analytics grouped metrics params
 func (o *GetV1SignalsAnalyticsGroupedMetricsParams) WithTeams(teams *string) *GetV1SignalsAnalyticsGroupedMetricsParams {
 	o.SetTeams(teams)
@@ -269,6 +292,17 @@ func (o *GetV1SignalsAnalyticsGroupedMetricsParams) WithTeams(teams *string) *Ge
 // SetTeams adds the teams to the get v1 signals analytics grouped metrics params
 func (o *GetV1SignalsAnalyticsGroupedMetricsParams) SetTeams(teams *string) {
 	o.Teams = teams
+}
+
+// WithUsers adds the users to the get v1 signals analytics grouped metrics params
+func (o *GetV1SignalsAnalyticsGroupedMetricsParams) WithUsers(users *string) *GetV1SignalsAnalyticsGroupedMetricsParams {
+	o.SetUsers(users)
+	return o
+}
+
+// SetUsers adds the users to the get v1 signals analytics grouped metrics params
+func (o *GetV1SignalsAnalyticsGroupedMetricsParams) SetUsers(users *string) {
+	o.Users = users
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -415,6 +449,23 @@ func (o *GetV1SignalsAnalyticsGroupedMetricsParams) WriteToRequest(r runtime.Cli
 		}
 	}
 
+	if o.Tags != nil {
+
+		// query param tags
+		var qrTags string
+
+		if o.Tags != nil {
+			qrTags = *o.Tags
+		}
+		qTags := qrTags
+		if qTags != "" {
+
+			if err := r.SetQueryParam("tags", qTags); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.Teams != nil {
 
 		// query param teams
@@ -427,6 +478,23 @@ func (o *GetV1SignalsAnalyticsGroupedMetricsParams) WriteToRequest(r runtime.Cli
 		if qTeams != "" {
 
 			if err := r.SetQueryParam("teams", qTeams); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Users != nil {
+
+		// query param users
+		var qrUsers string
+
+		if o.Users != nil {
+			qrUsers = *o.Users
+		}
+		qUsers := qrUsers
+		if qUsers != "" {
+
+			if err := r.SetQueryParam("users", qUsers); err != nil {
 				return err
 			}
 		}
