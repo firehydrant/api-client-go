@@ -102,6 +102,8 @@ type ClientService interface {
 
 	PatchV1IncidentsIncidentIDGenericChatMessagesMessageID(params *PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDGenericChatMessagesMessageIDOK, error)
 
+	PatchV1IncidentsIncidentIDImpact(params *PatchV1IncidentsIncidentIDImpactParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDImpactOK, error)
+
 	PatchV1IncidentsIncidentIDNotesNoteID(params *PatchV1IncidentsIncidentIDNotesNoteIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDNotesNoteIDOK, error)
 
 	PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID(params *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK, error)
@@ -1622,6 +1624,54 @@ func (a *Client) PatchV1IncidentsIncidentIDGenericChatMessagesMessageID(params *
 }
 
 /*
+	PatchV1IncidentsIncidentIDImpact creates a status update for an incident
+
+	Allows updating an incident's impacted infrastructure, with the option to
+
+move the incident into a different milestone and provide a note to update
+the incident timeline and any attached status pages. If this method is
+requested with the PUT verb, impacts will be completely replaced with the
+information in the request body, even if not provided (effectively clearing
+all impacts). If this method is requested with the PATCH verb, the provided
+impacts will be added or updated, but no impacts will be removed.
+*/
+func (a *Client) PatchV1IncidentsIncidentIDImpact(params *PatchV1IncidentsIncidentIDImpactParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDImpactOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1IncidentsIncidentIDImpactParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1IncidentsIncidentIdImpact",
+		Method:             "PATCH",
+		PathPattern:        "/v1/incidents/{incident_id}/impact",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1IncidentsIncidentIDImpactReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1IncidentsIncidentIDImpactOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IncidentsIncidentIdImpact: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 PatchV1IncidentsIncidentIDNotesNoteID updates a note
 
 Updates the body of a note
@@ -2401,9 +2451,16 @@ func (a *Client) PutV1IncidentsIncidentIDClose(params *PutV1IncidentsIncidentIDC
 }
 
 /*
-PutV1IncidentsIncidentIDImpact creates a status update for an incident
+	PutV1IncidentsIncidentIDImpact creates a status update for an incident
 
-Updates an incident with new impact, milestone, and accompanying note. You can publish these events to a status page or multiple status pages. This can also be used to change the impact currently on an incident.
+	Allows updating an incident's impacted infrastructure, with the option to
+
+move the incident into a different milestone and provide a note to update
+the incident timeline and any attached status pages. If this method is
+requested with the PUT verb, impacts will be completely replaced with the
+information in the request body, even if not provided (effectively clearing
+all impacts). If this method is requested with the PATCH verb, the provided
+impacts will be added or updated, but no impacts will be removed.
 */
 func (a *Client) PutV1IncidentsIncidentIDImpact(params *PutV1IncidentsIncidentIDImpactParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDImpactOK, error) {
 	// TODO: Validate the params before sending
