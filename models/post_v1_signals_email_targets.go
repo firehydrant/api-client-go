@@ -204,7 +204,7 @@ type PostV1SignalsEmailTargetsTarget struct {
 
 	// The type of target that the inbound email will notify when matched.
 	// Required: true
-	// Enum: [Team EscalationPolicy OnCallSchedule User SlackChannel]
+	// Enum: [Team EntireTeam EscalationPolicy OnCallSchedule User SlackChannel]
 	Type *string `json:"type"`
 }
 
@@ -239,7 +239,7 @@ var postV1SignalsEmailTargetsTargetTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["Team","EscalationPolicy","OnCallSchedule","User","SlackChannel"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["Team","EntireTeam","EscalationPolicy","OnCallSchedule","User","SlackChannel"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -251,6 +251,9 @@ const (
 
 	// PostV1SignalsEmailTargetsTargetTypeTeam captures enum value "Team"
 	PostV1SignalsEmailTargetsTargetTypeTeam string = "Team"
+
+	// PostV1SignalsEmailTargetsTargetTypeEntireTeam captures enum value "EntireTeam"
+	PostV1SignalsEmailTargetsTargetTypeEntireTeam string = "EntireTeam"
 
 	// PostV1SignalsEmailTargetsTargetTypeEscalationPolicy captures enum value "EscalationPolicy"
 	PostV1SignalsEmailTargetsTargetTypeEscalationPolicy string = "EscalationPolicy"

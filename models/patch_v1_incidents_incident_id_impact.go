@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PutV1IncidentsIncidentIDImpact Allows updating an incident's impacted infrastructure, with the option to
+// PatchV1IncidentsIncidentIDImpact Allows updating an incident's impacted infrastructure, with the option to
 // move the incident into a different milestone and provide a note to update
 // the incident timeline and any attached status pages. If this method is
 // requested with the PUT verb, impacts will be completely replaced with the
@@ -23,11 +23,11 @@ import (
 // all impacts). If this method is requested with the PATCH verb, the provided
 // impacts will be added or updated, but no impacts will be removed.
 //
-// swagger:model putV1IncidentsIncidentIdImpact
-type PutV1IncidentsIncidentIDImpact struct {
+// swagger:model patchV1IncidentsIncidentIdImpact
+type PatchV1IncidentsIncidentIDImpact struct {
 
 	// impact
-	Impact []*PutV1IncidentsIncidentIDImpactImpactItems0 `json:"impact"`
+	Impact []*PatchV1IncidentsIncidentIDImpactImpactItems0 `json:"impact"`
 
 	// milestone
 	Milestone string `json:"milestone,omitempty"`
@@ -36,11 +36,11 @@ type PutV1IncidentsIncidentIDImpact struct {
 	Note string `json:"note,omitempty"`
 
 	// status pages
-	StatusPages []*PutV1IncidentsIncidentIDImpactStatusPagesItems0 `json:"status_pages"`
+	StatusPages []*PatchV1IncidentsIncidentIDImpactStatusPagesItems0 `json:"status_pages"`
 }
 
-// Validate validates this put v1 incidents incident Id impact
-func (m *PutV1IncidentsIncidentIDImpact) Validate(formats strfmt.Registry) error {
+// Validate validates this patch v1 incidents incident Id impact
+func (m *PatchV1IncidentsIncidentIDImpact) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateImpact(formats); err != nil {
@@ -57,7 +57,7 @@ func (m *PutV1IncidentsIncidentIDImpact) Validate(formats strfmt.Registry) error
 	return nil
 }
 
-func (m *PutV1IncidentsIncidentIDImpact) validateImpact(formats strfmt.Registry) error {
+func (m *PatchV1IncidentsIncidentIDImpact) validateImpact(formats strfmt.Registry) error {
 	if swag.IsZero(m.Impact) { // not required
 		return nil
 	}
@@ -83,7 +83,7 @@ func (m *PutV1IncidentsIncidentIDImpact) validateImpact(formats strfmt.Registry)
 	return nil
 }
 
-func (m *PutV1IncidentsIncidentIDImpact) validateStatusPages(formats strfmt.Registry) error {
+func (m *PatchV1IncidentsIncidentIDImpact) validateStatusPages(formats strfmt.Registry) error {
 	if swag.IsZero(m.StatusPages) { // not required
 		return nil
 	}
@@ -109,8 +109,8 @@ func (m *PutV1IncidentsIncidentIDImpact) validateStatusPages(formats strfmt.Regi
 	return nil
 }
 
-// ContextValidate validate this put v1 incidents incident Id impact based on the context it is used
-func (m *PutV1IncidentsIncidentIDImpact) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this patch v1 incidents incident Id impact based on the context it is used
+func (m *PatchV1IncidentsIncidentIDImpact) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateImpact(ctx, formats); err != nil {
@@ -127,7 +127,7 @@ func (m *PutV1IncidentsIncidentIDImpact) ContextValidate(ctx context.Context, fo
 	return nil
 }
 
-func (m *PutV1IncidentsIncidentIDImpact) contextValidateImpact(ctx context.Context, formats strfmt.Registry) error {
+func (m *PatchV1IncidentsIncidentIDImpact) contextValidateImpact(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Impact); i++ {
 
@@ -147,7 +147,7 @@ func (m *PutV1IncidentsIncidentIDImpact) contextValidateImpact(ctx context.Conte
 	return nil
 }
 
-func (m *PutV1IncidentsIncidentIDImpact) contextValidateStatusPages(ctx context.Context, formats strfmt.Registry) error {
+func (m *PatchV1IncidentsIncidentIDImpact) contextValidateStatusPages(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.StatusPages); i++ {
 
@@ -168,7 +168,7 @@ func (m *PutV1IncidentsIncidentIDImpact) contextValidateStatusPages(ctx context.
 }
 
 // MarshalBinary interface implementation
-func (m *PutV1IncidentsIncidentIDImpact) MarshalBinary() ([]byte, error) {
+func (m *PatchV1IncidentsIncidentIDImpact) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -176,8 +176,8 @@ func (m *PutV1IncidentsIncidentIDImpact) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *PutV1IncidentsIncidentIDImpact) UnmarshalBinary(b []byte) error {
-	var res PutV1IncidentsIncidentIDImpact
+func (m *PatchV1IncidentsIncidentIDImpact) UnmarshalBinary(b []byte) error {
+	var res PatchV1IncidentsIncidentIDImpact
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -185,10 +185,10 @@ func (m *PutV1IncidentsIncidentIDImpact) UnmarshalBinary(b []byte) error {
 	return nil
 }
 
-// PutV1IncidentsIncidentIDImpactImpactItems0 put v1 incidents incident ID impact impact items0
+// PatchV1IncidentsIncidentIDImpactImpactItems0 patch v1 incidents incident ID impact impact items0
 //
-// swagger:model PutV1IncidentsIncidentIDImpactImpactItems0
-type PutV1IncidentsIncidentIDImpactImpactItems0 struct {
+// swagger:model PatchV1IncidentsIncidentIDImpactImpactItems0
+type PatchV1IncidentsIncidentIDImpactImpactItems0 struct {
 
 	// condition id
 	// Required: true
@@ -199,8 +199,8 @@ type PutV1IncidentsIncidentIDImpactImpactItems0 struct {
 	ID *string `json:"id"`
 }
 
-// Validate validates this put v1 incidents incident ID impact impact items0
-func (m *PutV1IncidentsIncidentIDImpactImpactItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this patch v1 incidents incident ID impact impact items0
+func (m *PatchV1IncidentsIncidentIDImpactImpactItems0) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateConditionID(formats); err != nil {
@@ -217,7 +217,7 @@ func (m *PutV1IncidentsIncidentIDImpactImpactItems0) Validate(formats strfmt.Reg
 	return nil
 }
 
-func (m *PutV1IncidentsIncidentIDImpactImpactItems0) validateConditionID(formats strfmt.Registry) error {
+func (m *PatchV1IncidentsIncidentIDImpactImpactItems0) validateConditionID(formats strfmt.Registry) error {
 
 	if err := validate.Required("condition_id", "body", m.ConditionID); err != nil {
 		return err
@@ -226,7 +226,7 @@ func (m *PutV1IncidentsIncidentIDImpactImpactItems0) validateConditionID(formats
 	return nil
 }
 
-func (m *PutV1IncidentsIncidentIDImpactImpactItems0) validateID(formats strfmt.Registry) error {
+func (m *PatchV1IncidentsIncidentIDImpactImpactItems0) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
 		return err
@@ -235,13 +235,13 @@ func (m *PutV1IncidentsIncidentIDImpactImpactItems0) validateID(formats strfmt.R
 	return nil
 }
 
-// ContextValidate validates this put v1 incidents incident ID impact impact items0 based on context it is used
-func (m *PutV1IncidentsIncidentIDImpactImpactItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this patch v1 incidents incident ID impact impact items0 based on context it is used
+func (m *PatchV1IncidentsIncidentIDImpactImpactItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *PutV1IncidentsIncidentIDImpactImpactItems0) MarshalBinary() ([]byte, error) {
+func (m *PatchV1IncidentsIncidentIDImpactImpactItems0) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -249,8 +249,8 @@ func (m *PutV1IncidentsIncidentIDImpactImpactItems0) MarshalBinary() ([]byte, er
 }
 
 // UnmarshalBinary interface implementation
-func (m *PutV1IncidentsIncidentIDImpactImpactItems0) UnmarshalBinary(b []byte) error {
-	var res PutV1IncidentsIncidentIDImpactImpactItems0
+func (m *PatchV1IncidentsIncidentIDImpactImpactItems0) UnmarshalBinary(b []byte) error {
+	var res PatchV1IncidentsIncidentIDImpactImpactItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -258,10 +258,10 @@ func (m *PutV1IncidentsIncidentIDImpactImpactItems0) UnmarshalBinary(b []byte) e
 	return nil
 }
 
-// PutV1IncidentsIncidentIDImpactStatusPagesItems0 put v1 incidents incident ID impact status pages items0
+// PatchV1IncidentsIncidentIDImpactStatusPagesItems0 patch v1 incidents incident ID impact status pages items0
 //
-// swagger:model PutV1IncidentsIncidentIDImpactStatusPagesItems0
-type PutV1IncidentsIncidentIDImpactStatusPagesItems0 struct {
+// swagger:model PatchV1IncidentsIncidentIDImpactStatusPagesItems0
+type PatchV1IncidentsIncidentIDImpactStatusPagesItems0 struct {
 
 	// id
 	// Required: true
@@ -272,8 +272,8 @@ type PutV1IncidentsIncidentIDImpactStatusPagesItems0 struct {
 	IntegrationSlug *string `json:"integration_slug"`
 }
 
-// Validate validates this put v1 incidents incident ID impact status pages items0
-func (m *PutV1IncidentsIncidentIDImpactStatusPagesItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this patch v1 incidents incident ID impact status pages items0
+func (m *PatchV1IncidentsIncidentIDImpactStatusPagesItems0) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateID(formats); err != nil {
@@ -290,7 +290,7 @@ func (m *PutV1IncidentsIncidentIDImpactStatusPagesItems0) Validate(formats strfm
 	return nil
 }
 
-func (m *PutV1IncidentsIncidentIDImpactStatusPagesItems0) validateID(formats strfmt.Registry) error {
+func (m *PatchV1IncidentsIncidentIDImpactStatusPagesItems0) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
 		return err
@@ -299,7 +299,7 @@ func (m *PutV1IncidentsIncidentIDImpactStatusPagesItems0) validateID(formats str
 	return nil
 }
 
-func (m *PutV1IncidentsIncidentIDImpactStatusPagesItems0) validateIntegrationSlug(formats strfmt.Registry) error {
+func (m *PatchV1IncidentsIncidentIDImpactStatusPagesItems0) validateIntegrationSlug(formats strfmt.Registry) error {
 
 	if err := validate.Required("integration_slug", "body", m.IntegrationSlug); err != nil {
 		return err
@@ -308,13 +308,13 @@ func (m *PutV1IncidentsIncidentIDImpactStatusPagesItems0) validateIntegrationSlu
 	return nil
 }
 
-// ContextValidate validates this put v1 incidents incident ID impact status pages items0 based on context it is used
-func (m *PutV1IncidentsIncidentIDImpactStatusPagesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this patch v1 incidents incident ID impact status pages items0 based on context it is used
+func (m *PatchV1IncidentsIncidentIDImpactStatusPagesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *PutV1IncidentsIncidentIDImpactStatusPagesItems0) MarshalBinary() ([]byte, error) {
+func (m *PatchV1IncidentsIncidentIDImpactStatusPagesItems0) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -322,8 +322,8 @@ func (m *PutV1IncidentsIncidentIDImpactStatusPagesItems0) MarshalBinary() ([]byt
 }
 
 // UnmarshalBinary interface implementation
-func (m *PutV1IncidentsIncidentIDImpactStatusPagesItems0) UnmarshalBinary(b []byte) error {
-	var res PutV1IncidentsIncidentIDImpactStatusPagesItems0
+func (m *PatchV1IncidentsIncidentIDImpactStatusPagesItems0) UnmarshalBinary(b []byte) error {
+	var res PatchV1IncidentsIncidentIDImpactStatusPagesItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

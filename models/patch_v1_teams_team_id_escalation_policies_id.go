@@ -412,7 +412,7 @@ type PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0TargetsItems0 struct {
 
 	// The type of target that the step will notify.
 	// Required: true
-	// Enum: [OnCallSchedule User SlackChannel]
+	// Enum: [OnCallSchedule User SlackChannel EntireTeam]
 	Type *string `json:"type"`
 }
 
@@ -447,7 +447,7 @@ var patchV1TeamsTeamIdEscalationPoliciesIdStepsItems0TargetsItems0TypeTypePropEn
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["OnCallSchedule","User","SlackChannel"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["OnCallSchedule","User","SlackChannel","EntireTeam"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -465,6 +465,9 @@ const (
 
 	// PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0TargetsItems0TypeSlackChannel captures enum value "SlackChannel"
 	PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0TargetsItems0TypeSlackChannel string = "SlackChannel"
+
+	// PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0TargetsItems0TypeEntireTeam captures enum value "EntireTeam"
+	PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0TargetsItems0TypeEntireTeam string = "EntireTeam"
 )
 
 // prop value enum

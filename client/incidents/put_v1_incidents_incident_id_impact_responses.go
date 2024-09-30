@@ -40,12 +40,19 @@ func NewPutV1IncidentsIncidentIDImpactOK() *PutV1IncidentsIncidentIDImpactOK {
 }
 
 /*
-PutV1IncidentsIncidentIDImpactOK describes a response with status code 200, with default header values.
+	PutV1IncidentsIncidentIDImpactOK describes a response with status code 200, with default header values.
 
-Updates an incident with new impact, milestone, and accompanying note. You can publish these events to a status page or multiple status pages. This can also be used to change the impact currently on an incident.
+	Allows updating an incident's impacted infrastructure, with the option to
+
+move the incident into a different milestone and provide a note to update
+the incident timeline and any attached status pages. If this method is
+requested with the PUT verb, impacts will be completely replaced with the
+information in the request body, even if not provided (effectively clearing
+all impacts). If this method is requested with the PATCH verb, the provided
+impacts will be added or updated, but no impacts will be removed.
 */
 type PutV1IncidentsIncidentIDImpactOK struct {
-	Payload *models.IncidentImpactEntity
+	Payload *models.IncidentEntity
 }
 
 // IsSuccess returns true when this put v1 incidents incident Id impact o k response has a 2xx status code
@@ -81,13 +88,13 @@ func (o *PutV1IncidentsIncidentIDImpactOK) String() string {
 	return fmt.Sprintf("[PUT /v1/incidents/{incident_id}/impact][%d] putV1IncidentsIncidentIdImpactOK  %+v", 200, o.Payload)
 }
 
-func (o *PutV1IncidentsIncidentIDImpactOK) GetPayload() *models.IncidentImpactEntity {
+func (o *PutV1IncidentsIncidentIDImpactOK) GetPayload() *models.IncidentEntity {
 	return o.Payload
 }
 
 func (o *PutV1IncidentsIncidentIDImpactOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.IncidentImpactEntity)
+	o.Payload = new(models.IncidentEntity)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
