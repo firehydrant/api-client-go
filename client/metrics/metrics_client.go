@@ -36,6 +36,8 @@ type ClientService interface {
 
 	GetV1MetricsInfraTypeInfraID(params *GetV1MetricsInfraTypeInfraIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsInfraTypeInfraIDOK, error)
 
+	GetV1MetricsMilestoneFunnel(params *GetV1MetricsMilestoneFunnelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsMilestoneFunnelOK, error)
+
 	GetV1MetricsMttx(params *GetV1MetricsMttxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsMttxOK, error)
 
 	GetV1MetricsRetrospectives(params *GetV1MetricsRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsRetrospectivesOK, error)
@@ -165,6 +167,47 @@ func (a *Client) GetV1MetricsInfraTypeInfraID(params *GetV1MetricsInfraTypeInfra
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1MetricsInfraTypeInfraId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1MetricsMilestoneFunnel lists funnel metrics
+
+Returns a report with time bucketed milestone data
+*/
+func (a *Client) GetV1MetricsMilestoneFunnel(params *GetV1MetricsMilestoneFunnelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsMilestoneFunnelOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1MetricsMilestoneFunnelParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1MetricsMilestoneFunnel",
+		Method:             "GET",
+		PathPattern:        "/v1/metrics/milestone_funnel",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1MetricsMilestoneFunnelReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1MetricsMilestoneFunnelOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1MetricsMilestoneFunnel: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
