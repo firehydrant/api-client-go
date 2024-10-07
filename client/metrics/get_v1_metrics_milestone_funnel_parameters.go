@@ -118,7 +118,7 @@ type GetV1MetricsMilestoneFunnelParams struct {
 
 	/* ExcludedInfrastructureIds.
 
-	   A comma separated list of infrastucture IDs. Returns incidents that do not have the following infrastructure ids associated with them.
+	   A comma separated list of infrastructure IDs. Returns incidents that do not have the following infrastructure ids associated with them.
 	*/
 	ExcludedInfrastructureIds *string
 
@@ -130,6 +130,12 @@ type GetV1MetricsMilestoneFunnelParams struct {
 
 	// GroupBy.
 	GroupBy []string
+
+	/* IncidentTypeID.
+
+	   A comma separated list of incident type IDs
+	*/
+	IncidentTypeID *string
 
 	/* Name.
 
@@ -415,6 +421,17 @@ func (o *GetV1MetricsMilestoneFunnelParams) WithGroupBy(groupBy []string) *GetV1
 // SetGroupBy adds the groupBy to the get v1 metrics milestone funnel params
 func (o *GetV1MetricsMilestoneFunnelParams) SetGroupBy(groupBy []string) {
 	o.GroupBy = groupBy
+}
+
+// WithIncidentTypeID adds the incidentTypeID to the get v1 metrics milestone funnel params
+func (o *GetV1MetricsMilestoneFunnelParams) WithIncidentTypeID(incidentTypeID *string) *GetV1MetricsMilestoneFunnelParams {
+	o.SetIncidentTypeID(incidentTypeID)
+	return o
+}
+
+// SetIncidentTypeID adds the incidentTypeId to the get v1 metrics milestone funnel params
+func (o *GetV1MetricsMilestoneFunnelParams) SetIncidentTypeID(incidentTypeID *string) {
+	o.IncidentTypeID = incidentTypeID
 }
 
 // WithName adds the name to the get v1 metrics milestone funnel params
@@ -790,6 +807,23 @@ func (o *GetV1MetricsMilestoneFunnelParams) WriteToRequest(r runtime.ClientReque
 		// form array param group_by
 		if err := r.SetFormParam("group_by", joinedGroupBy...); err != nil {
 			return err
+		}
+	}
+
+	if o.IncidentTypeID != nil {
+
+		// query param incident_type_id
+		var qrIncidentTypeID string
+
+		if o.IncidentTypeID != nil {
+			qrIncidentTypeID = *o.IncidentTypeID
+		}
+		qIncidentTypeID := qrIncidentTypeID
+		if qIncidentTypeID != "" {
+
+			if err := r.SetQueryParam("incident_type_id", qIncidentTypeID); err != nil {
+				return err
+			}
 		}
 	}
 

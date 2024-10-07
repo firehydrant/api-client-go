@@ -121,7 +121,7 @@ type GetV1MetricsMttxParams struct {
 
 	/* ExcludedInfrastructureIds.
 
-	   A comma separated list of infrastucture IDs. Returns incidents that do not have the following infrastructure ids associated with them.
+	   A comma separated list of infrastructure IDs. Returns incidents that do not have the following infrastructure ids associated with them.
 	*/
 	ExcludedInfrastructureIds *string
 
@@ -133,6 +133,12 @@ type GetV1MetricsMttxParams struct {
 
 	// GroupBy.
 	GroupBy []string
+
+	/* IncidentTypeID.
+
+	   A comma separated list of incident type IDs
+	*/
+	IncidentTypeID *string
 
 	/* Measurements.
 
@@ -448,6 +454,17 @@ func (o *GetV1MetricsMttxParams) WithGroupBy(groupBy []string) *GetV1MetricsMttx
 // SetGroupBy adds the groupBy to the get v1 metrics mttx params
 func (o *GetV1MetricsMttxParams) SetGroupBy(groupBy []string) {
 	o.GroupBy = groupBy
+}
+
+// WithIncidentTypeID adds the incidentTypeID to the get v1 metrics mttx params
+func (o *GetV1MetricsMttxParams) WithIncidentTypeID(incidentTypeID *string) *GetV1MetricsMttxParams {
+	o.SetIncidentTypeID(incidentTypeID)
+	return o
+}
+
+// SetIncidentTypeID adds the incidentTypeId to the get v1 metrics mttx params
+func (o *GetV1MetricsMttxParams) SetIncidentTypeID(incidentTypeID *string) {
+	o.IncidentTypeID = incidentTypeID
 }
 
 // WithMeasurements adds the measurements to the get v1 metrics mttx params
@@ -877,6 +894,23 @@ func (o *GetV1MetricsMttxParams) WriteToRequest(r runtime.ClientRequest, reg str
 		// form array param group_by
 		if err := r.SetFormParam("group_by", joinedGroupBy...); err != nil {
 			return err
+		}
+	}
+
+	if o.IncidentTypeID != nil {
+
+		// query param incident_type_id
+		var qrIncidentTypeID string
+
+		if o.IncidentTypeID != nil {
+			qrIncidentTypeID = *o.IncidentTypeID
+		}
+		qIncidentTypeID := qrIncidentTypeID
+		if qIncidentTypeID != "" {
+
+			if err := r.SetQueryParam("incident_type_id", qIncidentTypeID); err != nil {
+				return err
+			}
 		}
 	}
 

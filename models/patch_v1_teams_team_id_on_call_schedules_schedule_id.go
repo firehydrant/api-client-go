@@ -33,8 +33,11 @@ type PatchV1TeamsTeamIDOnCallSchedulesScheduleID struct {
 	//
 	EffectiveAt string `json:"effective_at,omitempty"`
 
-	// A list of user IDs that should be added to the on-call schedule rotation. If not provided, shifts will need to be assigned manually.
+	// This parameter is deprecated; use `members` instead.
 	MemberIds []string `json:"member_ids"`
+
+	// An ordered list of objects that specify members of the on-call schedule's rotation.
+	Members []*PatchV1TeamsTeamIDOnCallSchedulesScheduleIDMembersItems0 `json:"members"`
 
 	// The on-call schedule's name.
 	Name string `json:"name,omitempty"`
@@ -56,6 +59,10 @@ type PatchV1TeamsTeamIDOnCallSchedulesScheduleID struct {
 func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleID) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateMembers(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateRestrictions(formats); err != nil {
 		res = append(res, err)
 	}
@@ -67,6 +74,32 @@ func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleID) Validate(formats strfmt.Re
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleID) validateMembers(formats strfmt.Registry) error {
+	if swag.IsZero(m.Members) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Members); i++ {
+		if swag.IsZero(m.Members[i]) { // not required
+			continue
+		}
+
+		if m.Members[i] != nil {
+			if err := m.Members[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("members" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("members" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -119,6 +152,10 @@ func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleID) validateStrategy(formats s
 func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleID) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateMembers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateRestrictions(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -130,6 +167,26 @@ func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleID) ContextValidate(ctx contex
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleID) contextValidateMembers(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Members); i++ {
+
+		if m.Members[i] != nil {
+			if err := m.Members[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("members" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("members" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -180,6 +237,46 @@ func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleID) MarshalBinary() ([]byte, e
 // UnmarshalBinary interface implementation
 func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleID) UnmarshalBinary(b []byte) error {
 	var res PatchV1TeamsTeamIDOnCallSchedulesScheduleID
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PatchV1TeamsTeamIDOnCallSchedulesScheduleIDMembersItems0 patch v1 teams team ID on call schedules schedule ID members items0
+//
+// swagger:model PatchV1TeamsTeamIDOnCallSchedulesScheduleIDMembersItems0
+type PatchV1TeamsTeamIDOnCallSchedulesScheduleIDMembersItems0 struct {
+
+	// The ID of a user who should be added to the schedule's rotation. You can add a user to the schedule
+	// multiple times to construct more complex rotations, and you can specify a `null` user ID to create
+	// unassigned slots in the rotation.
+	//
+	UserID string `json:"user_id,omitempty"`
+}
+
+// Validate validates this patch v1 teams team ID on call schedules schedule ID members items0
+func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDMembersItems0) Validate(formats strfmt.Registry) error {
+	return nil
+}
+
+// ContextValidate validates this patch v1 teams team ID on call schedules schedule ID members items0 based on context it is used
+func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDMembersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDMembersItems0) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PatchV1TeamsTeamIDOnCallSchedulesScheduleIDMembersItems0) UnmarshalBinary(b []byte) error {
+	var res PatchV1TeamsTeamIDOnCallSchedulesScheduleIDMembersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
