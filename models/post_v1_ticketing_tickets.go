@@ -28,6 +28,9 @@ type PostV1TicketingTickets struct {
 	// project id
 	ProjectID string `json:"project_id,omitempty"`
 
+	// Which incident this ticket is related to, in the format of 'incident/UUID'
+	RelatedTo string `json:"related_to,omitempty"`
+
 	// The remote URL for an existing ticket in a supported and configured ticketing integration
 	RemoteURL string `json:"remote_url,omitempty"`
 
