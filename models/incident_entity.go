@@ -106,7 +106,13 @@ type IncidentEntity struct {
 	// last update
 	LastUpdate string `json:"last_update,omitempty"`
 
-	// milestones
+	// lifecycle measurements
+	LifecycleMeasurements []*IncidentsLifecycleMeasurementEntity `json:"lifecycle_measurements"`
+
+	// lifecycle phases
+	LifecyclePhases []*IncidentsLifecyclePhaseEntity `json:"lifecycle_phases"`
+
+	// DEPRECATED: Please use lifecycle phases instead
 	Milestones []*IncidentsMilestoneEntity `json:"milestones"`
 
 	// monetary impact
@@ -243,6 +249,14 @@ func (m *IncidentEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLastNote(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLifecycleMeasurements(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLifecyclePhases(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -607,6 +621,58 @@ func (m *IncidentEntity) validateLastNote(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *IncidentEntity) validateLifecycleMeasurements(formats strfmt.Registry) error {
+	if swag.IsZero(m.LifecycleMeasurements) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.LifecycleMeasurements); i++ {
+		if swag.IsZero(m.LifecycleMeasurements[i]) { // not required
+			continue
+		}
+
+		if m.LifecycleMeasurements[i] != nil {
+			if err := m.LifecycleMeasurements[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("lifecycle_measurements" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("lifecycle_measurements" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) validateLifecyclePhases(formats strfmt.Registry) error {
+	if swag.IsZero(m.LifecyclePhases) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.LifecyclePhases); i++ {
+		if swag.IsZero(m.LifecyclePhases[i]) { // not required
+			continue
+		}
+
+		if m.LifecyclePhases[i] != nil {
+			if err := m.LifecyclePhases[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("lifecycle_phases" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("lifecycle_phases" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *IncidentEntity) validateMilestones(formats strfmt.Registry) error {
 	if swag.IsZero(m.Milestones) { // not required
 		return nil
@@ -877,6 +943,14 @@ func (m *IncidentEntity) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateLifecycleMeasurements(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLifecyclePhases(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateMilestones(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1142,6 +1216,46 @@ func (m *IncidentEntity) contextValidateLastNote(ctx context.Context, formats st
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) contextValidateLifecycleMeasurements(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.LifecycleMeasurements); i++ {
+
+		if m.LifecycleMeasurements[i] != nil {
+			if err := m.LifecycleMeasurements[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("lifecycle_measurements" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("lifecycle_measurements" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *IncidentEntity) contextValidateLifecyclePhases(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.LifecyclePhases); i++ {
+
+		if m.LifecyclePhases[i] != nil {
+			if err := m.LifecyclePhases[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("lifecycle_phases" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("lifecycle_phases" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
