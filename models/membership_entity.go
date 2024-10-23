@@ -24,6 +24,9 @@ type MembershipEntity struct {
 	// schedule
 	Schedule *ScheduleEntity `json:"schedule,omitempty"`
 
+	// signals on call schedule
+	SignalsOnCallSchedule *SuccinctEntity `json:"signals_on_call_schedule,omitempty"`
+
 	// user
 	User *UserEntity `json:"user,omitempty"`
 }
@@ -37,6 +40,10 @@ func (m *MembershipEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSchedule(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSignalsOnCallSchedule(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -88,6 +95,25 @@ func (m *MembershipEntity) validateSchedule(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *MembershipEntity) validateSignalsOnCallSchedule(formats strfmt.Registry) error {
+	if swag.IsZero(m.SignalsOnCallSchedule) { // not required
+		return nil
+	}
+
+	if m.SignalsOnCallSchedule != nil {
+		if err := m.SignalsOnCallSchedule.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("signals_on_call_schedule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("signals_on_call_schedule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *MembershipEntity) validateUser(formats strfmt.Registry) error {
 	if swag.IsZero(m.User) { // not required
 		return nil
@@ -116,6 +142,10 @@ func (m *MembershipEntity) ContextValidate(ctx context.Context, formats strfmt.R
 	}
 
 	if err := m.contextValidateSchedule(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSignalsOnCallSchedule(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -153,6 +183,22 @@ func (m *MembershipEntity) contextValidateSchedule(ctx context.Context, formats 
 				return ve.ValidateName("schedule")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("schedule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *MembershipEntity) contextValidateSignalsOnCallSchedule(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SignalsOnCallSchedule != nil {
+		if err := m.SignalsOnCallSchedule.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("signals_on_call_schedule")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("signals_on_call_schedule")
 			}
 			return err
 		}

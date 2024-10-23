@@ -42,6 +42,8 @@ type ClientService interface {
 
 	GetV1ScimV2UsersID(params *GetV1ScimV2UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ScimV2UsersIDOK, error)
 
+	PatchV1ScimV2UsersID(params *PatchV1ScimV2UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ScimV2UsersIDOK, error)
+
 	PostV1ScimV2Groups(params *PostV1ScimV2GroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ScimV2GroupsCreated, error)
 
 	PostV1ScimV2Users(params *PostV1ScimV2UsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ScimV2UsersCreated, error)
@@ -296,6 +298,47 @@ func (a *Client) GetV1ScimV2UsersID(params *GetV1ScimV2UsersIDParams, authInfo r
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1ScimV2UsersId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1ScimV2UsersID updates a user using s c i m protocol
+
+PATCH SCIM endpoint to update a User. This endpoint is used to update a resource's attributes.
+*/
+func (a *Client) PatchV1ScimV2UsersID(params *PatchV1ScimV2UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ScimV2UsersIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1ScimV2UsersIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1ScimV2UsersId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/scim/v2/Users/{id}",
+		ProducesMediaTypes: []string{"application/scim+json"},
+		ConsumesMediaTypes: []string{"application/scim+json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1ScimV2UsersIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1ScimV2UsersIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1ScimV2UsersId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
