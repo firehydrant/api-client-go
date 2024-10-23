@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// UserEntity user entity
+// UserEntity UserEntity model
 //
 // swagger:model UserEntity
 type UserEntity struct {
