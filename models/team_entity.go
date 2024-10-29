@@ -36,6 +36,9 @@ type TeamEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
+	// in support hours
+	InSupportHours bool `json:"in_support_hours,omitempty"`
+
 	// memberships
 	Memberships []*MembershipEntity `json:"memberships"`
 
