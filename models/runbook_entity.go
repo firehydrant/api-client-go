@@ -48,7 +48,7 @@ type RunbookEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// Team that owns the runbook
-	Owner *TeamEntity `json:"owner,omitempty"`
+	Owner *TeamEntityLite `json:"owner,omitempty"`
 
 	// runbook template id
 	RunbookTemplateID string `json:"runbook_template_id,omitempty"`

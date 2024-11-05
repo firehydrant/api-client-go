@@ -52,7 +52,7 @@ type FunctionalityEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// Team that owns the functionality
-	Owner *TeamEntity `json:"owner,omitempty"`
+	Owner *TeamEntityLite `json:"owner,omitempty"`
 
 	// Services this functionality provides
 	Services []*ServiceEntity `json:"services"`
@@ -61,7 +61,7 @@ type FunctionalityEntity struct {
 	Slug string `json:"slug,omitempty"`
 
 	// List of teams attached to the functionality
-	Teams []*TeamEntity `json:"teams"`
+	Teams []*TeamEntityLite `json:"teams"`
 
 	// updated at
 	// Format: date-time
