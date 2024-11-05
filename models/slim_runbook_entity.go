@@ -39,7 +39,7 @@ type SlimRunbookEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// Team that owns the runbook
-	Owner *TeamEntity `json:"owner,omitempty"`
+	Owner *TeamEntityLite `json:"owner,omitempty"`
 
 	// summary
 	Summary string `json:"summary,omitempty"`

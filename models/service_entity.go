@@ -73,7 +73,7 @@ type ServiceEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// Team that owns the service
-	Owner *TeamEntity `json:"owner,omitempty"`
+	Owner *TeamEntityLite `json:"owner,omitempty"`
 
 	// service checklist updated at
 	// Format: date-time
@@ -86,7 +86,7 @@ type ServiceEntity struct {
 	Slug string `json:"slug,omitempty"`
 
 	// List of teams attached to the service
-	Teams []*TeamEntity `json:"teams"`
+	Teams []*TeamEntityLite `json:"teams"`
 
 	// updated at
 	// Format: date-time

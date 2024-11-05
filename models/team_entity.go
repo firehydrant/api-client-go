@@ -31,7 +31,7 @@ type TeamEntity struct {
 	Description string `json:"description,omitempty"`
 
 	// functionalities
-	Functionalities []*FunctionalityEntity `json:"functionalities"`
+	Functionalities []*FunctionalityEntityLite `json:"functionalities"`
 
 	// id
 	ID string `json:"id,omitempty"`
@@ -52,7 +52,7 @@ type TeamEntity struct {
 	OwnedChecklistTemplates []*ChecklistTemplateEntity `json:"owned_checklist_templates"`
 
 	// owned functionalities
-	OwnedFunctionalities []*FunctionalityEntity `json:"owned_functionalities"`
+	OwnedFunctionalities []*FunctionalityEntityLite `json:"owned_functionalities"`
 
 	// owned runbooks
 	OwnedRunbooks []*SlimRunbookEntity `json:"owned_runbooks"`
