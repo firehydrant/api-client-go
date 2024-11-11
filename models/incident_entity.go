@@ -186,7 +186,7 @@ type IncidentEntity struct {
 	TagList []string `json:"tag_list"`
 
 	// team assignments
-	TeamAssignments []*IncidentsTeamAssignmentEntity `json:"team_assignments"`
+	TeamAssignments []*IncidentsTeamAssignmentEntityLite `json:"team_assignments"`
 
 	// ticket
 	Ticket *TicketingTicketEntity `json:"ticket,omitempty"`

@@ -45,7 +45,7 @@ GetV1ServicesServiceIDAvailableDownstreamDependenciesOK describes a response wit
 Retrieves all services that are available to be downstream dependencies
 */
 type GetV1ServicesServiceIDAvailableDownstreamDependenciesOK struct {
-	Payload *models.ServiceEntity
+	Payload *models.ServiceEntityLite
 }
 
 // IsSuccess returns true when this get v1 services service Id available downstream dependencies o k response has a 2xx status code
@@ -81,13 +81,13 @@ func (o *GetV1ServicesServiceIDAvailableDownstreamDependenciesOK) String() strin
 	return fmt.Sprintf("[GET /v1/services/{service_id}/available_downstream_dependencies][%d] getV1ServicesServiceIdAvailableDownstreamDependenciesOK  %+v", 200, o.Payload)
 }
 
-func (o *GetV1ServicesServiceIDAvailableDownstreamDependenciesOK) GetPayload() *models.ServiceEntity {
+func (o *GetV1ServicesServiceIDAvailableDownstreamDependenciesOK) GetPayload() *models.ServiceEntityLite {
 	return o.Payload
 }
 
 func (o *GetV1ServicesServiceIDAvailableDownstreamDependenciesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ServiceEntity)
+	o.Payload = new(models.ServiceEntityLite)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

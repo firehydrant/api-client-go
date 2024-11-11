@@ -55,7 +55,7 @@ type FunctionalityEntity struct {
 	Owner *TeamEntityLite `json:"owner,omitempty"`
 
 	// Services this functionality provides
-	Services []*ServiceEntity `json:"services"`
+	Services []*ServiceEntityLite `json:"services"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`

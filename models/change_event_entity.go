@@ -62,7 +62,7 @@ type ChangeEventEntity struct {
 	RelatedChanges []*ChangeEntity `json:"related_changes"`
 
 	// services
-	Services []*ServiceEntity `json:"services"`
+	Services []*ServiceEntityLite `json:"services"`
 
 	// starts at
 	// Format: date-time

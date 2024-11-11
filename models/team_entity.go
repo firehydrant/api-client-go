@@ -58,13 +58,13 @@ type TeamEntity struct {
 	OwnedRunbooks []*SlimRunbookEntity `json:"owned_runbooks"`
 
 	// owned services
-	OwnedServices []*ServiceEntity `json:"owned_services"`
+	OwnedServices []*ServiceEntityLite `json:"owned_services"`
 
 	// responding services
-	RespondingServices []*ServiceEntity `json:"responding_services"`
+	RespondingServices []*ServiceEntityLite `json:"responding_services"`
 
 	// services
-	Services []*ServiceEntity `json:"services"`
+	Services []*ServiceEntityLite `json:"services"`
 
 	// signals ical url
 	SignalsIcalURL string `json:"signals_ical_url,omitempty"`

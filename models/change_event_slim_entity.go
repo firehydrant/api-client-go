@@ -53,7 +53,7 @@ type ChangeEventSlimEntity struct {
 	Labels interface{} `json:"labels,omitempty"`
 
 	// services
-	Services []*ServiceEntity `json:"services"`
+	Services []*ServiceEntityLite `json:"services"`
 
 	// starts at
 	// Format: date-time
