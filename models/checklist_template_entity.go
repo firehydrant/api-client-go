@@ -24,7 +24,7 @@ type ChecklistTemplateEntity struct {
 	Checks []*ChecklistCheckEntity `json:"checks"`
 
 	// List of services that use this checklist
-	ConnectedServices []*ServiceEntity `json:"connected_services"`
+	ConnectedServices []*ServiceEntityChecklist `json:"connected_services"`
 
 	// created at
 	CreatedAt string `json:"created_at,omitempty"`
@@ -39,7 +39,7 @@ type ChecklistTemplateEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// Team that owns the checklist template
-	Owner *TeamEntity `json:"owner,omitempty"`
+	Owner *TeamEntityLite `json:"owner,omitempty"`
 
 	// updated at
 	// Format: date-time
