@@ -68,6 +68,18 @@ type GetV1RunbooksParams struct {
 	*/
 	Name *string
 
+	/* OrderBy.
+
+	   Sort runbooks by their updated date or name. Accepts 'updated_at', 'name', and 'created_at'.
+	*/
+	OrderBy *string
+
+	/* OrderDirection.
+
+	   Allows assigning a direction to how the specified `order_by` parameter is sorted. This parameter must be paired with `order_by` and does nothing on its own.
+	*/
+	OrderDirection *string
+
 	/* Owners.
 
 	   A query to search runbooks by their owners
@@ -86,7 +98,7 @@ type GetV1RunbooksParams struct {
 
 	/* Sort.
 
-	   Sort runbooks by their updated date. Accepts 'asc', 'desc'
+	   Sort runbooks by their updated date. Accepts 'asc', 'desc'. This parameter is deprecated in favor of 'order_by' and 'order_direction'.
 	*/
 	Sort *string
 
@@ -154,6 +166,28 @@ func (o *GetV1RunbooksParams) SetName(name *string) {
 	o.Name = name
 }
 
+// WithOrderBy adds the orderBy to the get v1 runbooks params
+func (o *GetV1RunbooksParams) WithOrderBy(orderBy *string) *GetV1RunbooksParams {
+	o.SetOrderBy(orderBy)
+	return o
+}
+
+// SetOrderBy adds the orderBy to the get v1 runbooks params
+func (o *GetV1RunbooksParams) SetOrderBy(orderBy *string) {
+	o.OrderBy = orderBy
+}
+
+// WithOrderDirection adds the orderDirection to the get v1 runbooks params
+func (o *GetV1RunbooksParams) WithOrderDirection(orderDirection *string) *GetV1RunbooksParams {
+	o.SetOrderDirection(orderDirection)
+	return o
+}
+
+// SetOrderDirection adds the orderDirection to the get v1 runbooks params
+func (o *GetV1RunbooksParams) SetOrderDirection(orderDirection *string) {
+	o.OrderDirection = orderDirection
+}
+
 // WithOwners adds the owners to the get v1 runbooks params
 func (o *GetV1RunbooksParams) WithOwners(owners *string) *GetV1RunbooksParams {
 	o.SetOwners(owners)
@@ -218,6 +252,40 @@ func (o *GetV1RunbooksParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		if qName != "" {
 
 			if err := r.SetQueryParam("name", qName); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.OrderBy != nil {
+
+		// query param order_by
+		var qrOrderBy string
+
+		if o.OrderBy != nil {
+			qrOrderBy = *o.OrderBy
+		}
+		qOrderBy := qrOrderBy
+		if qOrderBy != "" {
+
+			if err := r.SetQueryParam("order_by", qOrderBy); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.OrderDirection != nil {
+
+		// query param order_direction
+		var qrOrderDirection string
+
+		if o.OrderDirection != nil {
+			qrOrderDirection = *o.OrderDirection
+		}
+		qOrderDirection := qrOrderDirection
+		if qOrderDirection != "" {
+
+			if err := r.SetQueryParam("order_direction", qOrderDirection); err != nil {
 				return err
 			}
 		}
