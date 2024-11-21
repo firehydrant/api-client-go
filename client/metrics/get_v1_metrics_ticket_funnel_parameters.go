@@ -74,6 +74,22 @@ type GetV1MetricsTicketFunnelParams struct {
 	*/
 	AssignedTeams *string
 
+	/* ClosedAtOrAfter.
+
+	   Filters for incidents that were closed at or after this time
+
+	   Format: date-time
+	*/
+	ClosedAtOrAfter *strfmt.DateTime
+
+	/* ClosedAtOrBefore.
+
+	   Filters for incidents that were closed at or before this time
+
+	   Format: date-time
+	*/
+	ClosedAtOrBefore *strfmt.DateTime
+
 	/* Conditions.
 
 	   A JSON string that defines 'logic' and 'user_data'
@@ -322,6 +338,28 @@ func (o *GetV1MetricsTicketFunnelParams) WithAssignedTeams(assignedTeams *string
 // SetAssignedTeams adds the assignedTeams to the get v1 metrics ticket funnel params
 func (o *GetV1MetricsTicketFunnelParams) SetAssignedTeams(assignedTeams *string) {
 	o.AssignedTeams = assignedTeams
+}
+
+// WithClosedAtOrAfter adds the closedAtOrAfter to the get v1 metrics ticket funnel params
+func (o *GetV1MetricsTicketFunnelParams) WithClosedAtOrAfter(closedAtOrAfter *strfmt.DateTime) *GetV1MetricsTicketFunnelParams {
+	o.SetClosedAtOrAfter(closedAtOrAfter)
+	return o
+}
+
+// SetClosedAtOrAfter adds the closedAtOrAfter to the get v1 metrics ticket funnel params
+func (o *GetV1MetricsTicketFunnelParams) SetClosedAtOrAfter(closedAtOrAfter *strfmt.DateTime) {
+	o.ClosedAtOrAfter = closedAtOrAfter
+}
+
+// WithClosedAtOrBefore adds the closedAtOrBefore to the get v1 metrics ticket funnel params
+func (o *GetV1MetricsTicketFunnelParams) WithClosedAtOrBefore(closedAtOrBefore *strfmt.DateTime) *GetV1MetricsTicketFunnelParams {
+	o.SetClosedAtOrBefore(closedAtOrBefore)
+	return o
+}
+
+// SetClosedAtOrBefore adds the closedAtOrBefore to the get v1 metrics ticket funnel params
+func (o *GetV1MetricsTicketFunnelParams) SetClosedAtOrBefore(closedAtOrBefore *strfmt.DateTime) {
+	o.ClosedAtOrBefore = closedAtOrBefore
 }
 
 // WithConditions adds the conditions to the get v1 metrics ticket funnel params
@@ -658,6 +696,40 @@ func (o *GetV1MetricsTicketFunnelParams) WriteToRequest(r runtime.ClientRequest,
 		if qAssignedTeams != "" {
 
 			if err := r.SetQueryParam("assigned_teams", qAssignedTeams); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ClosedAtOrAfter != nil {
+
+		// query param closed_at_or_after
+		var qrClosedAtOrAfter strfmt.DateTime
+
+		if o.ClosedAtOrAfter != nil {
+			qrClosedAtOrAfter = *o.ClosedAtOrAfter
+		}
+		qClosedAtOrAfter := qrClosedAtOrAfter.String()
+		if qClosedAtOrAfter != "" {
+
+			if err := r.SetQueryParam("closed_at_or_after", qClosedAtOrAfter); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ClosedAtOrBefore != nil {
+
+		// query param closed_at_or_before
+		var qrClosedAtOrBefore strfmt.DateTime
+
+		if o.ClosedAtOrBefore != nil {
+			qrClosedAtOrBefore = *o.ClosedAtOrBefore
+		}
+		qClosedAtOrBefore := qrClosedAtOrBefore.String()
+		if qClosedAtOrBefore != "" {
+
+			if err := r.SetQueryParam("closed_at_or_before", qClosedAtOrBefore); err != nil {
 				return err
 			}
 		}
