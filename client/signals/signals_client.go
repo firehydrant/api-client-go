@@ -38,6 +38,8 @@ type ClientService interface {
 
 	GetV1SignalsAnalyticsMttx(params *GetV1SignalsAnalyticsMttxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsMttxOK, error)
 
+	GetV1SignalsAnalyticsShiftsExport(params *GetV1SignalsAnalyticsShiftsExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsShiftsExportOK, error)
+
 	GetV1SignalsAnalyticsTimeseries(params *GetV1SignalsAnalyticsTimeseriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsTimeseriesOK, error)
 
 	GetV1SignalsEmailTargets(params *GetV1SignalsEmailTargetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsEmailTargetsOK, error)
@@ -228,6 +230,45 @@ func (a *Client) GetV1SignalsAnalyticsMttx(params *GetV1SignalsAnalyticsMttxPara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1SignalsAnalyticsMttx: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1SignalsAnalyticsShiftsExport Export oncall hours report for given users within a time period
+*/
+func (a *Client) GetV1SignalsAnalyticsShiftsExport(params *GetV1SignalsAnalyticsShiftsExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsShiftsExportOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1SignalsAnalyticsShiftsExportParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1SignalsAnalyticsShiftsExport",
+		Method:             "GET",
+		PathPattern:        "/v1/signals/analytics/shifts/export",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1SignalsAnalyticsShiftsExportReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1SignalsAnalyticsShiftsExportOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1SignalsAnalyticsShiftsExport: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -140,6 +140,9 @@ func (m *PostV1SignalsDebugger) UnmarshalBinary(b []byte) error {
 // swagger:model PostV1SignalsDebuggerSignalsItems0
 type PostV1SignalsDebuggerSignalsItems0 struct {
 
+	// annotations
+	Annotations interface{} `json:"annotations,omitempty"`
+
 	// body
 	Body string `json:"body,omitempty"`
 
