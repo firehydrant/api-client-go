@@ -288,6 +288,10 @@ func (m *PatchV1TeamsTeamIDEscalationPoliciesIDHandoffStep) UnmarshalBinary(b []
 // swagger:model PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0
 type PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0 struct {
 
+	// The round robin configuration for the step. One of 'unspecified', 'round_robin_by_alert', or 'round_robin_by_escalation_policy'.
+	// Enum: [unspecified round_robin_by_alert round_robin_by_escalation_policy]
+	DistributionType string `json:"distribution_type,omitempty"`
+
 	// A list of targets that the step will notify. You can specify up to 15 targets per step.
 	Targets []*PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0TargetsItems0 `json:"targets"`
 
@@ -300,6 +304,10 @@ type PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0 struct {
 func (m *PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDistributionType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTargets(formats); err != nil {
 		res = append(res, err)
 	}
@@ -311,6 +319,51 @@ func (m *PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0) Validate(formats str
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var patchV1TeamsTeamIdEscalationPoliciesIdStepsItems0TypeDistributionTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["unspecified","round_robin_by_alert","round_robin_by_escalation_policy"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		patchV1TeamsTeamIdEscalationPoliciesIdStepsItems0TypeDistributionTypePropEnum = append(patchV1TeamsTeamIdEscalationPoliciesIdStepsItems0TypeDistributionTypePropEnum, v)
+	}
+}
+
+const (
+
+	// PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0DistributionTypeUnspecified captures enum value "unspecified"
+	PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0DistributionTypeUnspecified string = "unspecified"
+
+	// PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0DistributionTypeRoundRobinByAlert captures enum value "round_robin_by_alert"
+	PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0DistributionTypeRoundRobinByAlert string = "round_robin_by_alert"
+
+	// PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0DistributionTypeRoundRobinByEscalationPolicy captures enum value "round_robin_by_escalation_policy"
+	PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0DistributionTypeRoundRobinByEscalationPolicy string = "round_robin_by_escalation_policy"
+)
+
+// prop value enum
+func (m *PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0) validateDistributionTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, patchV1TeamsTeamIdEscalationPoliciesIdStepsItems0TypeDistributionTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PatchV1TeamsTeamIDEscalationPoliciesIDStepsItems0) validateDistributionType(formats strfmt.Registry) error {
+	if swag.IsZero(m.DistributionType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateDistributionTypeEnum("distribution_type", "body", m.DistributionType); err != nil {
+		return err
+	}
+
 	return nil
 }
 
