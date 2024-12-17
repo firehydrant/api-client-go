@@ -19,6 +19,9 @@ import (
 // swagger:model ExternalResourceEntity
 type ExternalResourceEntity struct {
 
+	// connection full favicon url
+	ConnectionFullFaviconURL string `json:"connection_full_favicon_url,omitempty"`
+
 	// connection id
 	ConnectionID string `json:"connection_id,omitempty"`
 
