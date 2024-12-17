@@ -104,7 +104,7 @@ type GetV1AlertsParams struct {
 
 	/* Statuses.
 
-	   A comma separated list of statuses to filter by. Valid statuses are: opened, acknowledged, resolved, ignored, or expired
+	   A comma separated list of statuses to filter by. Valid statuses are: opened, acknowledged, resolved, ignored, expired, or linked
 	*/
 	Statuses *string
 
