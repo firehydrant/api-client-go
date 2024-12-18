@@ -146,6 +146,9 @@ type PostV1SignalsDebuggerSignalsItems0 struct {
 	// body
 	Body string `json:"body,omitempty"`
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// images
 	Images []*PostV1SignalsDebuggerSignalsItems0ImagesItems0 `json:"images"`
 
@@ -154,6 +157,9 @@ type PostV1SignalsDebuggerSignalsItems0 struct {
 
 	// links
 	Links []*PostV1SignalsDebuggerSignalsItems0LinksItems0 `json:"links"`
+
+	// organization id
+	OrganizationID string `json:"organization_id,omitempty"`
 
 	// summary
 	Summary string `json:"summary,omitempty"`
