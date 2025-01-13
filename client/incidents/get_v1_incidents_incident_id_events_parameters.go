@@ -77,7 +77,29 @@ type GetV1IncidentsIncidentIDEventsParams struct {
 
 	/* Types.
 
-	   A comma separated list of types of events to filter by
+	    A comma separated list of types of events to filter by. Possible values are:
+	- `add_task_list`: Task list was added
+	- `alert_event`: Someone was paged or took action on a linked alert
+	- `alert_linked`: An alert was linked to the incident
+	- `bulk_milestone_update`: When a milestone change occurs with no other changes
+	- `bulk_update`: When an incident note/update is posted or when impacted components are updated. If other changes occur together with either of these changes (e.g., milestone change), they are all bundled together into a bulk_update
+	- `change_type`: Updates to associated change events
+	- `chat_message`: Any chat message event in a linked chat app like Slack or MS Teams
+	- `children_changed`: When adding or updating child related incidents
+	- `external_link`: When an external link is added or updated
+	- `general_update`: Currently only describes Runbook stoppage events
+	- `generic_chat_message`: When an event or message is manually added to the timeline via the web UI or API
+	- `incident_attachment`: When attachments or files are added to the timeline
+	- `generic_resource_change`: Any changes to individual fields within the incident, including custom fields
+	- `incident_restriction`: When an incident is converted to private
+	- `incident_status`: Only used when an incident starts and changes to an `active` state
+	- `note`: When a message is posted to a status page directly and not via `/fh update`
+	- `role_update`: Any updates to assigned roles
+	- `runbook_attachment`: Any updates to a runbook
+	- `runbook_step_execution_update`: Any Runbook step events
+	- `task_update`: Task update events
+	- `team_assignment`: Team assignment events
+	- `ticket_update`: Updates to incident and follow-up tickets
 	*/
 	Types *string
 

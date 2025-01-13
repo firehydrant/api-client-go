@@ -163,6 +163,9 @@ type PostV1SignalsDebuggerSignalsItems0 struct {
 
 	// summary
 	Summary string `json:"summary,omitempty"`
+
+	// tags
+	Tags []string `json:"tags"`
 }
 
 // Validate validates this post v1 signals debugger signals items0
