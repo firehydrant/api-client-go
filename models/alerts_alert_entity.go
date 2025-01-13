@@ -20,6 +20,9 @@ import (
 // swagger:model Alerts_AlertEntity
 type AlertsAlertEntity struct {
 
+	// child alerts
+	ChildAlerts []*AlertsSirenAlertEntity `json:"child_alerts"`
+
 	// description
 	Description string `json:"description,omitempty"`
 
@@ -53,6 +56,9 @@ type AlertsAlertEntity struct {
 
 	// Arbitrary key:value pairs of labels.
 	Labels interface{} `json:"labels,omitempty"`
+
+	// parent alerts
+	ParentAlerts []*AlertsSirenAlertEntity `json:"parent_alerts"`
 
 	// position
 	Position int32 `json:"position,omitempty"`
@@ -102,6 +108,10 @@ type AlertsAlertEntity struct {
 func (m *AlertsAlertEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateChildAlerts(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateEndsAt(formats); err != nil {
 		res = append(res, err)
 	}
@@ -115,6 +125,10 @@ func (m *AlertsAlertEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateIncidents(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateParentAlerts(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -133,6 +147,32 @@ func (m *AlertsAlertEntity) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *AlertsAlertEntity) validateChildAlerts(formats strfmt.Registry) error {
+	if swag.IsZero(m.ChildAlerts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ChildAlerts); i++ {
+		if swag.IsZero(m.ChildAlerts[i]) { // not required
+			continue
+		}
+
+		if m.ChildAlerts[i] != nil {
+			if err := m.ChildAlerts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("child_alerts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("child_alerts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -226,6 +266,32 @@ func (m *AlertsAlertEntity) validateIncidents(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *AlertsAlertEntity) validateParentAlerts(formats strfmt.Registry) error {
+	if swag.IsZero(m.ParentAlerts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ParentAlerts); i++ {
+		if swag.IsZero(m.ParentAlerts[i]) { // not required
+			continue
+		}
+
+		if m.ParentAlerts[i] != nil {
+			if err := m.ParentAlerts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("parent_alerts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("parent_alerts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *AlertsAlertEntity) validateServices(formats strfmt.Registry) error {
 	if swag.IsZero(m.Services) { // not required
 		return nil
@@ -287,6 +353,10 @@ func (m *AlertsAlertEntity) validateStartsAt(formats strfmt.Registry) error {
 func (m *AlertsAlertEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateChildAlerts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEnvironments(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -296,6 +366,10 @@ func (m *AlertsAlertEntity) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateIncidents(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateParentAlerts(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -310,6 +384,26 @@ func (m *AlertsAlertEntity) ContextValidate(ctx context.Context, formats strfmt.
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *AlertsAlertEntity) contextValidateChildAlerts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ChildAlerts); i++ {
+
+		if m.ChildAlerts[i] != nil {
+			if err := m.ChildAlerts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("child_alerts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("child_alerts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -363,6 +457,26 @@ func (m *AlertsAlertEntity) contextValidateIncidents(ctx context.Context, format
 					return ve.ValidateName("incidents" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("incidents" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AlertsAlertEntity) contextValidateParentAlerts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ParentAlerts); i++ {
+
+		if m.ParentAlerts[i] != nil {
+			if err := m.ParentAlerts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("parent_alerts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("parent_alerts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
