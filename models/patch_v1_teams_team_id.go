@@ -32,7 +32,8 @@ type PatchV1TeamsTeamID struct {
 	// name
 	Name string `json:"name,omitempty"`
 
-	// The Slack channel ID that this team is associated with
+	// The Slack channel ID associated with this team. This may be the reference in FireHydrant's system (i.e. UUID) or the ID value from Slack (e.g. C1234567890).
+	//
 	SlackChannelID string `json:"slack_channel_id,omitempty"`
 
 	// slug

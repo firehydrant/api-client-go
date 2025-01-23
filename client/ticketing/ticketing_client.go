@@ -34,6 +34,8 @@ type ClientService interface {
 
 	DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapID(params *DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapIDNoContent, error)
 
+	DeleteV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapID(params *DeleteV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDNoContent, error)
+
 	DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error)
 
 	DeleteV1TicketingTicketsTicketID(params *DeleteV1TicketingTicketsTicketIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TicketingTicketsTicketIDNoContent, error)
@@ -53,6 +55,12 @@ type ClientService interface {
 	GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFields(params *GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFieldsOK, error)
 
 	GetV1TicketingProjectsTicketingProjectIDFieldMapsMapID(params *GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDFieldMapsMapIDOK, error)
+
+	GetV1TicketingProjectsTicketingProjectIDInboundFieldMaps(params *GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsOK, error)
+
+	GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailableFields(params *GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailableFieldsOK, error)
+
+	GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapID(params *GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDOK, error)
 
 	GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID(params *GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigIDOK, error)
 
@@ -74,9 +82,13 @@ type ClientService interface {
 
 	PostV1TicketingProjectsTicketingProjectIDFieldMaps(params *PostV1TicketingProjectsTicketingProjectIDFieldMapsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TicketingProjectsTicketingProjectIDFieldMapsCreated, error)
 
+	PostV1TicketingProjectsTicketingProjectIDInboundFieldMaps(params *PostV1TicketingProjectsTicketingProjectIDInboundFieldMapsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TicketingProjectsTicketingProjectIDInboundFieldMapsCreated, error)
+
 	PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations(params *PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsCreated, error)
 
 	PostV1TicketingTickets(params *PostV1TicketingTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TicketingTicketsCreated, error)
+
+	PutV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapID(params *PutV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -160,6 +172,47 @@ func (a *Client) DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapID(param
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for deleteV1TicketingProjectsTicketingProjectIdFieldMapsMapId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapID archives inbound field map for a ticketing project
+
+Archive inbound field map for a ticketing project
+*/
+func (a *Client) DeleteV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapID(params *DeleteV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1TicketingProjectsTicketingProjectIdInboundFieldMapsMapId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/inbound_field_maps/{map_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1TicketingProjectsTicketingProjectIdInboundFieldMapsMapId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -564,6 +617,127 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDFieldMapsMapID(params *
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1TicketingProjectsTicketingProjectIdFieldMapsMapId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1TicketingProjectsTicketingProjectIDInboundFieldMaps get v1 ticketing projects ticketing project Id inbound field maps API
+*/
+func (a *Client) GetV1TicketingProjectsTicketingProjectIDInboundFieldMaps(params *GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TicketingProjectsTicketingProjectIDInboundFieldMapsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TicketingProjectsTicketingProjectIdInboundFieldMaps",
+		Method:             "GET",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/inbound_field_maps",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TicketingProjectsTicketingProjectIdInboundFieldMaps: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailableFields gets the fields that can be mapped for this project
+
+Returns metadata for the fields that are available for inbound field mapping.
+*/
+func (a *Client) GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailableFields(params *GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailableFieldsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailableFieldsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TicketingProjectsTicketingProjectIdInboundFieldMapsAvailableFields",
+		Method:             "GET",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/inbound_field_maps/available_fields",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailableFieldsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailableFieldsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TicketingProjectsTicketingProjectIdInboundFieldMapsAvailableFields: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapID retrieves inbound field map for a ticketing project
+
+Retrieve inbound field map for a ticketing project
+*/
+func (a *Client) GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapID(params *GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1TicketingProjectsTicketingProjectIdInboundFieldMapsMapId",
+		Method:             "GET",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/inbound_field_maps/{map_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1TicketingProjectsTicketingProjectIdInboundFieldMapsMapId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -978,6 +1152,47 @@ func (a *Client) PostV1TicketingProjectsTicketingProjectIDFieldMaps(params *Post
 }
 
 /*
+PostV1TicketingProjectsTicketingProjectIDInboundFieldMaps creates inbound field map for a ticketing project
+
+Creates inbound field map for a ticketing project
+*/
+func (a *Client) PostV1TicketingProjectsTicketingProjectIDInboundFieldMaps(params *PostV1TicketingProjectsTicketingProjectIDInboundFieldMapsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TicketingProjectsTicketingProjectIDInboundFieldMapsCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1TicketingProjectsTicketingProjectIDInboundFieldMapsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1TicketingProjectsTicketingProjectIdInboundFieldMaps",
+		Method:             "POST",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/inbound_field_maps",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1TicketingProjectsTicketingProjectIDInboundFieldMapsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1TicketingProjectsTicketingProjectIDInboundFieldMapsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1TicketingProjectsTicketingProjectIdInboundFieldMaps: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations creates configuration for a ticketing project
 
 Creates configuration for a ticketing project
@@ -1056,6 +1271,47 @@ func (a *Client) PostV1TicketingTickets(params *PostV1TicketingTicketsParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for postV1TicketingTickets: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PutV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapID updates inbound field map for a ticketing project
+
+Update inbound field map for a ticketing project
+*/
+func (a *Client) PutV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapID(params *PutV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "putV1TicketingProjectsTicketingProjectIdInboundFieldMapsMapId",
+		Method:             "PUT",
+		PathPattern:        "/v1/ticketing/projects/{ticketing_project_id}/inbound_field_maps/{map_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for putV1TicketingProjectsTicketingProjectIdInboundFieldMapsMapId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
