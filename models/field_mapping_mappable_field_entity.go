@@ -18,7 +18,7 @@ import (
 type FieldMappingMappableFieldEntity struct {
 
 	// The allowed values of the field
-	AllowedValues string `json:"allowed_values,omitempty"`
+	AllowedValues []string `json:"allowed_values"`
 
 	// Short, inline documentation for the present field
 	HelpText string `json:"help_text,omitempty"`

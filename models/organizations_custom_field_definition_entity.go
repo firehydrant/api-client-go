@@ -30,7 +30,7 @@ type OrganizationsCustomFieldDefinitionEntity struct {
 	FieldType string `json:"field_type,omitempty"`
 
 	// permissible values
-	PermissibleValues string `json:"permissible_values,omitempty"`
+	PermissibleValues []string `json:"permissible_values"`
 
 	// required
 	Required bool `json:"required,omitempty"`

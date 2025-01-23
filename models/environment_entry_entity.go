@@ -21,7 +21,7 @@ import (
 type EnvironmentEntryEntity struct {
 
 	// List of active incident guids
-	ActiveIncidents string `json:"active_incidents,omitempty"`
+	ActiveIncidents []string `json:"active_incidents"`
 
 	// The time the environment was created
 	// Format: date-time

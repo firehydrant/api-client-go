@@ -59,7 +59,7 @@ type NuncConnectionEntity struct {
 	EnableHistogram bool `json:"enable_histogram,omitempty"`
 
 	// exposed fields
-	ExposedFields string `json:"exposed_fields,omitempty"`
+	ExposedFields []string `json:"exposed_fields"`
 
 	// favicon
 	Favicon *MediaImageEntity `json:"favicon,omitempty"`
