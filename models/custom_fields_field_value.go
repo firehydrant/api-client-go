@@ -36,7 +36,7 @@ type CustomFieldsFieldValue struct {
 	Value string `json:"value,omitempty"`
 
 	// value array
-	ValueArray string `json:"value_array,omitempty"`
+	ValueArray []string `json:"value_array"`
 
 	// value string
 	ValueString string `json:"value_string,omitempty"`

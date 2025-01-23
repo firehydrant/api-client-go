@@ -26,7 +26,7 @@ type RunbookEntity struct {
 	AutoAttachToRestrictedIncidents bool `json:"auto_attach_to_restricted_incidents,omitempty"`
 
 	// categories the runbook applies to
-	Categories string `json:"categories,omitempty"`
+	Categories []string `json:"categories"`
 
 	// created at
 	// Format: date-time

@@ -18,7 +18,7 @@ import (
 type TicketingFieldMapsMappableFieldEntity struct {
 
 	// The allowed values of the field
-	AllowedValues string `json:"allowed_values,omitempty"`
+	AllowedValues []string `json:"allowed_values"`
 
 	// The human-readable name of the field
 	Label string `json:"label,omitempty"`
