@@ -62,6 +62,12 @@ PatchV1LifecyclesMilestonesMilestoneIDParams contains all the parameters to send
 */
 type PatchV1LifecyclesMilestonesMilestoneIDParams struct {
 
+	/* AutoAssignTimestampOnCreate.
+
+	   The setting for auto-assigning the milestone's timestamp during incident declaration
+	*/
+	AutoAssignTimestampOnCreate *string
+
 	/* Description.
 
 	   A long-form description of the milestone's purpose
@@ -150,6 +156,17 @@ func (o *PatchV1LifecyclesMilestonesMilestoneIDParams) SetHTTPClient(client *htt
 	o.HTTPClient = client
 }
 
+// WithAutoAssignTimestampOnCreate adds the autoAssignTimestampOnCreate to the patch v1 lifecycles milestones milestone Id params
+func (o *PatchV1LifecyclesMilestonesMilestoneIDParams) WithAutoAssignTimestampOnCreate(autoAssignTimestampOnCreate *string) *PatchV1LifecyclesMilestonesMilestoneIDParams {
+	o.SetAutoAssignTimestampOnCreate(autoAssignTimestampOnCreate)
+	return o
+}
+
+// SetAutoAssignTimestampOnCreate adds the autoAssignTimestampOnCreate to the patch v1 lifecycles milestones milestone Id params
+func (o *PatchV1LifecyclesMilestonesMilestoneIDParams) SetAutoAssignTimestampOnCreate(autoAssignTimestampOnCreate *string) {
+	o.AutoAssignTimestampOnCreate = autoAssignTimestampOnCreate
+}
+
 // WithDescription adds the description to the patch v1 lifecycles milestones milestone Id params
 func (o *PatchV1LifecyclesMilestonesMilestoneIDParams) WithDescription(description *string) *PatchV1LifecyclesMilestonesMilestoneIDParams {
 	o.SetDescription(description)
@@ -223,6 +240,21 @@ func (o *PatchV1LifecyclesMilestonesMilestoneIDParams) WriteToRequest(r runtime.
 		return err
 	}
 	var res []error
+
+	if o.AutoAssignTimestampOnCreate != nil {
+
+		// form param auto_assign_timestamp_on_create
+		var frAutoAssignTimestampOnCreate string
+		if o.AutoAssignTimestampOnCreate != nil {
+			frAutoAssignTimestampOnCreate = *o.AutoAssignTimestampOnCreate
+		}
+		fAutoAssignTimestampOnCreate := frAutoAssignTimestampOnCreate
+		if fAutoAssignTimestampOnCreate != "" {
+			if err := r.SetFormParam("auto_assign_timestamp_on_create", fAutoAssignTimestampOnCreate); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Description != nil {
 

@@ -19,6 +19,9 @@ import (
 // swagger:model Lifecycles_MilestoneEntity
 type LifecyclesMilestoneEntity struct {
 
+	// auto assign timestamp on create
+	AutoAssignTimestampOnCreate string `json:"auto_assign_timestamp_on_create,omitempty"`
+
 	// created at
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
