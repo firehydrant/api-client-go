@@ -81,6 +81,9 @@ type AlertsAlertEntity struct {
 	// signal rule
 	SignalRule *SignalsAPIRuleEntity `json:"signal_rule,omitempty"`
 
+	// signal target
+	SignalTarget *SignalsAPITargetEntity `json:"signal_target,omitempty"`
+
 	// source icon
 	SourceIcon string `json:"source_icon,omitempty"`
 
@@ -137,6 +140,10 @@ func (m *AlertsAlertEntity) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSignalRule(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSignalTarget(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -337,6 +344,25 @@ func (m *AlertsAlertEntity) validateSignalRule(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *AlertsAlertEntity) validateSignalTarget(formats strfmt.Registry) error {
+	if swag.IsZero(m.SignalTarget) { // not required
+		return nil
+	}
+
+	if m.SignalTarget != nil {
+		if err := m.SignalTarget.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("signal_target")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("signal_target")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *AlertsAlertEntity) validateStartsAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.StartsAt) { // not required
 		return nil
@@ -378,6 +404,10 @@ func (m *AlertsAlertEntity) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateSignalRule(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSignalTarget(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -515,6 +545,22 @@ func (m *AlertsAlertEntity) contextValidateSignalRule(ctx context.Context, forma
 				return ve.ValidateName("signal_rule")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("signal_rule")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *AlertsAlertEntity) contextValidateSignalTarget(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SignalTarget != nil {
+		if err := m.SignalTarget.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("signal_target")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("signal_target")
 			}
 			return err
 		}
