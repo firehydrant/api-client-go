@@ -31,8 +31,8 @@ type PostV1ScimV2Users struct {
 	// This attribute is intended to be used as a means to set, replace, or compare (i.e., filter for equality) a password
 	Password string `json:"password,omitempty"`
 
-	// Roles for the User. Options are owner, member or collaborator
-	Roles []string `json:"roles"`
+	// Roles for the User. Options are owner, member, collaborator, or viewer. Roles may be specified as strings or SCIM role objects.
+	Roles interface{} `json:"roles,omitempty"`
 
 	// A service provider's unique identifier for the user
 	// Required: true

@@ -20,6 +20,10 @@ import (
 // swagger:model patchV1TeamsTeamIdSignalRulesId
 type PatchV1TeamsTeamIDSignalRulesID struct {
 
+	// Determines when an incident should be created when this rule is matched
+	// Enum: [WHEN_UNSPECIFIED WHEN_ALWAYS]
+	CreateIncidentConditionWhen string `json:"create_incident_condition_when,omitempty"`
+
 	// The CEL expression that defines the rule.
 	Expression string `json:"expression,omitempty"`
 
@@ -45,6 +49,10 @@ type PatchV1TeamsTeamIDSignalRulesID struct {
 func (m *PatchV1TeamsTeamIDSignalRulesID) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCreateIncidentConditionWhen(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateNotificationPriorityOverride(formats); err != nil {
 		res = append(res, err)
 	}
@@ -56,6 +64,48 @@ func (m *PatchV1TeamsTeamIDSignalRulesID) Validate(formats strfmt.Registry) erro
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var patchV1TeamsTeamIdSignalRulesIdTypeCreateIncidentConditionWhenPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["WHEN_UNSPECIFIED","WHEN_ALWAYS"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		patchV1TeamsTeamIdSignalRulesIdTypeCreateIncidentConditionWhenPropEnum = append(patchV1TeamsTeamIdSignalRulesIdTypeCreateIncidentConditionWhenPropEnum, v)
+	}
+}
+
+const (
+
+	// PatchV1TeamsTeamIDSignalRulesIDCreateIncidentConditionWhenWHENUNSPECIFIED captures enum value "WHEN_UNSPECIFIED"
+	PatchV1TeamsTeamIDSignalRulesIDCreateIncidentConditionWhenWHENUNSPECIFIED string = "WHEN_UNSPECIFIED"
+
+	// PatchV1TeamsTeamIDSignalRulesIDCreateIncidentConditionWhenWHENALWAYS captures enum value "WHEN_ALWAYS"
+	PatchV1TeamsTeamIDSignalRulesIDCreateIncidentConditionWhenWHENALWAYS string = "WHEN_ALWAYS"
+)
+
+// prop value enum
+func (m *PatchV1TeamsTeamIDSignalRulesID) validateCreateIncidentConditionWhenEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, patchV1TeamsTeamIdSignalRulesIdTypeCreateIncidentConditionWhenPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PatchV1TeamsTeamIDSignalRulesID) validateCreateIncidentConditionWhen(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreateIncidentConditionWhen) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateCreateIncidentConditionWhenEnum("create_incident_condition_when", "body", m.CreateIncidentConditionWhen); err != nil {
+		return err
+	}
+
 	return nil
 }
 
