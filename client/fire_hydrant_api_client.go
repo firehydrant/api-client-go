@@ -12,6 +12,7 @@ import (
 
 	"github.com/firehydrant/api-client-go/client/ai"
 	"github.com/firehydrant/api-client-go/client/alerts"
+	"github.com/firehydrant/api-client-go/client/audiences"
 	"github.com/firehydrant/api-client-go/client/bootstrap"
 	"github.com/firehydrant/api-client-go/client/catalogs"
 	"github.com/firehydrant/api-client-go/client/change_types"
@@ -104,6 +105,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Transport = transport
 	cli.Ai = ai.New(transport, formats)
 	cli.Alerts = alerts.New(transport, formats)
+	cli.Audiences = audiences.New(transport, formats)
 	cli.Bootstrap = bootstrap.New(transport, formats)
 	cli.Catalogs = catalogs.New(transport, formats)
 	cli.ChangeTypes = change_types.New(transport, formats)
@@ -197,6 +199,8 @@ type FireHydrantAPI struct {
 	Ai ai.ClientService
 
 	Alerts alerts.ClientService
+
+	Audiences audiences.ClientService
 
 	Bootstrap bootstrap.ClientService
 
@@ -298,6 +302,7 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.Ai.SetTransport(transport)
 	c.Alerts.SetTransport(transport)
+	c.Audiences.SetTransport(transport)
 	c.Bootstrap.SetTransport(transport)
 	c.Catalogs.SetTransport(transport)
 	c.ChangeTypes.SetTransport(transport)
