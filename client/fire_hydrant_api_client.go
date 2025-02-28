@@ -12,6 +12,7 @@ import (
 
 	"github.com/firehydrant/api-client-go/client/ai"
 	"github.com/firehydrant/api-client-go/client/alerts"
+	"github.com/firehydrant/api-client-go/client/audiences"
 	"github.com/firehydrant/api-client-go/client/bootstrap"
 	"github.com/firehydrant/api-client-go/client/catalogs"
 	"github.com/firehydrant/api-client-go/client/change_types"
@@ -40,6 +41,7 @@ import (
 	"github.com/firehydrant/api-client-go/client/priorities"
 	"github.com/firehydrant/api-client-go/client/processing_log_entries"
 	"github.com/firehydrant/api-client-go/client/reports"
+	"github.com/firehydrant/api-client-go/client/retrospective_templates"
 	"github.com/firehydrant/api-client-go/client/runbook_audits"
 	"github.com/firehydrant/api-client-go/client/runbooks"
 	"github.com/firehydrant/api-client-go/client/saved_searches"
@@ -104,6 +106,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Transport = transport
 	cli.Ai = ai.New(transport, formats)
 	cli.Alerts = alerts.New(transport, formats)
+	cli.Audiences = audiences.New(transport, formats)
 	cli.Bootstrap = bootstrap.New(transport, formats)
 	cli.Catalogs = catalogs.New(transport, formats)
 	cli.ChangeTypes = change_types.New(transport, formats)
@@ -132,6 +135,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Priorities = priorities.New(transport, formats)
 	cli.ProcessingLogEntries = processing_log_entries.New(transport, formats)
 	cli.Reports = reports.New(transport, formats)
+	cli.RetrospectiveTemplates = retrospective_templates.New(transport, formats)
 	cli.RunbookAudits = runbook_audits.New(transport, formats)
 	cli.Runbooks = runbooks.New(transport, formats)
 	cli.SavedSearches = saved_searches.New(transport, formats)
@@ -198,6 +202,8 @@ type FireHydrantAPI struct {
 
 	Alerts alerts.ClientService
 
+	Audiences audiences.ClientService
+
 	Bootstrap bootstrap.ClientService
 
 	Catalogs catalogs.ClientService
@@ -254,6 +260,8 @@ type FireHydrantAPI struct {
 
 	Reports reports.ClientService
 
+	RetrospectiveTemplates retrospective_templates.ClientService
+
 	RunbookAudits runbook_audits.ClientService
 
 	Runbooks runbooks.ClientService
@@ -298,6 +306,7 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.Ai.SetTransport(transport)
 	c.Alerts.SetTransport(transport)
+	c.Audiences.SetTransport(transport)
 	c.Bootstrap.SetTransport(transport)
 	c.Catalogs.SetTransport(transport)
 	c.ChangeTypes.SetTransport(transport)
@@ -326,6 +335,7 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Priorities.SetTransport(transport)
 	c.ProcessingLogEntries.SetTransport(transport)
 	c.Reports.SetTransport(transport)
+	c.RetrospectiveTemplates.SetTransport(transport)
 	c.RunbookAudits.SetTransport(transport)
 	c.Runbooks.SetTransport(transport)
 	c.SavedSearches.SetTransport(transport)

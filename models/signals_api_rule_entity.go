@@ -20,6 +20,10 @@ import (
 // swagger:model Signals_API_RuleEntity
 type SignalsAPIRuleEntity struct {
 
+	// create incident condition when
+	// Enum: [WHEN_UNSPECIFIED WHEN_ALWAYS]
+	CreateIncidentConditionWhen string `json:"create_incident_condition_when,omitempty"`
+
 	// created at
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
@@ -58,6 +62,10 @@ type SignalsAPIRuleEntity struct {
 func (m *SignalsAPIRuleEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateCreateIncidentConditionWhen(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
 	}
@@ -85,6 +93,48 @@ func (m *SignalsAPIRuleEntity) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var signalsApiRuleEntityTypeCreateIncidentConditionWhenPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["WHEN_UNSPECIFIED","WHEN_ALWAYS"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		signalsApiRuleEntityTypeCreateIncidentConditionWhenPropEnum = append(signalsApiRuleEntityTypeCreateIncidentConditionWhenPropEnum, v)
+	}
+}
+
+const (
+
+	// SignalsAPIRuleEntityCreateIncidentConditionWhenWHENUNSPECIFIED captures enum value "WHEN_UNSPECIFIED"
+	SignalsAPIRuleEntityCreateIncidentConditionWhenWHENUNSPECIFIED string = "WHEN_UNSPECIFIED"
+
+	// SignalsAPIRuleEntityCreateIncidentConditionWhenWHENALWAYS captures enum value "WHEN_ALWAYS"
+	SignalsAPIRuleEntityCreateIncidentConditionWhenWHENALWAYS string = "WHEN_ALWAYS"
+)
+
+// prop value enum
+func (m *SignalsAPIRuleEntity) validateCreateIncidentConditionWhenEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, signalsApiRuleEntityTypeCreateIncidentConditionWhenPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *SignalsAPIRuleEntity) validateCreateIncidentConditionWhen(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreateIncidentConditionWhen) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateCreateIncidentConditionWhenEnum("create_incident_condition_when", "body", m.CreateIncidentConditionWhen); err != nil {
+		return err
+	}
+
 	return nil
 }
 
