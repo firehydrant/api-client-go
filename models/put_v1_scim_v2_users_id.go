@@ -29,8 +29,8 @@ type PutV1ScimV2UsersID struct {
 	// name
 	Name *PutV1ScimV2UsersIDName `json:"name,omitempty"`
 
-	// Roles for the User
-	Roles []string `json:"roles"`
+	// Roles for the User. Options are owner, member, collaborator, or viewer. Roles may be specified as strings or SCIM role objects.
+	Roles interface{} `json:"roles,omitempty"`
 
 	// A service provider's unique identifier for the user
 	UserName string `json:"userName,omitempty"`

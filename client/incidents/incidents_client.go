@@ -42,6 +42,8 @@ type ClientService interface {
 
 	DeleteV1IncidentsIncidentIDLinksLinkID(params *DeleteV1IncidentsIncidentIDLinksLinkIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDLinksLinkIDNoContent, error)
 
+	DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputs(params *DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsOK, error)
+
 	DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentID(params *DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDRoleAssignmentsRoleAssignmentIDOK, error)
 
 	DeleteV1IncidentsIncidentIDStatusPagesStatusPageID(params *DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent, error)
@@ -78,6 +80,10 @@ type ClientService interface {
 
 	GetV1IncidentsIncidentIDRelationships(params *GetV1IncidentsIncidentIDRelationshipsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRelationshipsOK, error)
 
+	GetV1IncidentsIncidentIDRetrospectives(params *GetV1IncidentsIncidentIDRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRetrospectivesOK, error)
+
+	GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldID(params *GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDOK, error)
+
 	GetV1IncidentsIncidentIDRoleAssignments(params *GetV1IncidentsIncidentIDRoleAssignmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRoleAssignmentsOK, error)
 
 	GetV1IncidentsIncidentIDSimilar(params *GetV1IncidentsIncidentIDSimilarParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDSimilarOK, error)
@@ -108,6 +114,12 @@ type ClientService interface {
 
 	PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventID(params *PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEventIDOK, error)
 
+	PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveID(params *PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDOK, error)
+
+	PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFields(params *PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsOK, error)
+
+	PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldID(params *PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDOK, error)
+
 	PatchV1IncidentsIncidentIDTasksTaskID(params *PatchV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDTasksTaskIDOK, error)
 
 	PostV1Incidents(params *PostV1IncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsCreated, error)
@@ -125,6 +137,14 @@ type ClientService interface {
 	PostV1IncidentsIncidentIDNotes(params *PostV1IncidentsIncidentIDNotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDNotesCreated, error)
 
 	PostV1IncidentsIncidentIDRelatedChangeEvents(params *PostV1IncidentsIncidentIDRelatedChangeEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRelatedChangeEventsCreated, error)
+
+	PostV1IncidentsIncidentIDRetrospectives(params *PostV1IncidentsIncidentIDRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesCreated, error)
+
+	PostV1IncidentsIncidentIDRetrospectivesExport(params *PostV1IncidentsIncidentIDRetrospectivesExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesExportCreated, error)
+
+	PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputs(params *PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsCreated, error)
+
+	PostV1IncidentsIncidentIDRetrospectivesShare(params *PostV1IncidentsIncidentIDRetrospectivesShareParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesShareCreated, error)
 
 	PostV1IncidentsIncidentIDRoleAssignments(params *PostV1IncidentsIncidentIDRoleAssignmentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRoleAssignmentsCreated, error)
 
@@ -396,6 +416,47 @@ func (a *Client) DeleteV1IncidentsIncidentIDLinksLinkID(params *DeleteV1Incident
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentsIncidentIdLinksLinkId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputs removes a dynamic input from a retrospective s dynamic input group field
+
+Delete a dynamic input on a dynamic input group
+*/
+func (a *Client) DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputs(params *DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldIdInputs",
+		Method:             "DELETE",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields/{field_id}/inputs",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldIdInputs: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1134,6 +1195,88 @@ func (a *Client) GetV1IncidentsIncidentIDRelationships(params *GetV1IncidentsInc
 }
 
 /*
+GetV1IncidentsIncidentIDRetrospectives alls attached retrospectives for an incident
+
+Retrieve retrospectives attached to an incident
+*/
+func (a *Client) GetV1IncidentsIncidentIDRetrospectives(params *GetV1IncidentsIncidentIDRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRetrospectivesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IncidentsIncidentIDRetrospectivesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IncidentsIncidentIdRetrospectives",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IncidentsIncidentIDRetrospectivesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IncidentsIncidentIDRetrospectivesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdRetrospectives: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldID retrieves a retrospective field
+
+Retrieve a field on an incident retrospective
+*/
+func (a *Client) GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldID(params *GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldId",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields/{field_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 GetV1IncidentsIncidentIDRoleAssignments lists all assignees
 
 Retrieve a list of all of the current role assignments for the incident
@@ -1754,6 +1897,129 @@ func (a *Client) PatchV1IncidentsIncidentIDRelatedChangeEventsRelatedChangeEvent
 }
 
 /*
+PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveID updates a retrospective on the incident
+
+Update a retrospective attached to an incident
+*/
+func (a *Client) PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveID(params *PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1IncidentsIncidentIdRetrospectivesRetrospectiveId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IncidentsIncidentIdRetrospectivesRetrospectiveId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFields appends a new incident retrospective field to an incident retrospective
+
+Add a new field to an incident retrospective
+*/
+func (a *Client) PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFields(params *PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFields",
+		Method:             "PATCH",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFields: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldID updates the value on a retrospective field
+
+Update retrospective field value
+*/
+func (a *Client) PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldID(params *PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields/{field_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 PatchV1IncidentsIncidentIDTasksTaskID updates a task
 
 Update a task's attributes
@@ -2119,6 +2385,166 @@ func (a *Client) PostV1IncidentsIncidentIDRelatedChangeEvents(params *PostV1Inci
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdRelatedChangeEvents: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1IncidentsIncidentIDRetrospectives creates a new retrospective on the incident using the template
+
+Create a new retrospective for an incident
+*/
+func (a *Client) PostV1IncidentsIncidentIDRetrospectives(params *PostV1IncidentsIncidentIDRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1IncidentsIncidentIDRetrospectivesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1IncidentsIncidentIdRetrospectives",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1IncidentsIncidentIDRetrospectivesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1IncidentsIncidentIDRetrospectivesCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdRetrospectives: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1IncidentsIncidentIDRetrospectivesExport Export incident's retrospective(s) using their templates
+*/
+func (a *Client) PostV1IncidentsIncidentIDRetrospectivesExport(params *PostV1IncidentsIncidentIDRetrospectivesExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesExportCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1IncidentsIncidentIDRetrospectivesExportParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1IncidentsIncidentIdRetrospectivesExport",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/export",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1IncidentsIncidentIDRetrospectivesExportReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1IncidentsIncidentIDRetrospectivesExportCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdRetrospectivesExport: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputs adds a new dynamic input field to a retrospective s dynamic input group field
+
+Add a new dynamic input field to a dynamic input group
+*/
+func (a *Client) PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputs(params *PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldIdInputs",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields/{field_id}/inputs",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldIdInputs: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1IncidentsIncidentIDRetrospectivesShare Share incident retrospectives with users or teams
+*/
+func (a *Client) PostV1IncidentsIncidentIDRetrospectivesShare(params *PostV1IncidentsIncidentIDRetrospectivesShareParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesShareCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1IncidentsIncidentIDRetrospectivesShareParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1IncidentsIncidentIdRetrospectivesShare",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/share",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1IncidentsIncidentIDRetrospectivesShareReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1IncidentsIncidentIDRetrospectivesShareCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdRetrospectivesShare: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
