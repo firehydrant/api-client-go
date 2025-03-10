@@ -44,6 +44,15 @@ type PostMortemsPostMortemReportEntity struct {
 	// questions
 	Questions *PostMortemsQuestionEntity `json:"questions,omitempty"`
 
+	// retrospective id
+	RetrospectiveID string `json:"retrospective_id,omitempty"`
+
+	// retrospective note
+	RetrospectiveNote string `json:"retrospective_note,omitempty"`
+
+	// retrospective shim
+	RetrospectiveShim bool `json:"retrospective_shim,omitempty"`
+
 	// summary
 	Summary string `json:"summary,omitempty"`
 
