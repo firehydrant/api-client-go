@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AudiencesEntitiesDetailEntity Audiences_Entities_DetailEntity model
+// AudiencesEntitiesDetailEntity audiences entities detail entity
 //
 // swagger:model Audiences_Entities_DetailEntity
 type AudiencesEntitiesDetailEntity struct {

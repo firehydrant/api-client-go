@@ -34,8 +34,14 @@ type PostV1TeamsTeamIDEscalationPolicies struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// prioritized settings
+	PrioritizedSettings *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings `json:"prioritized_settings,omitempty"`
+
 	// The number of times that the escalation policy should repeat before an alert is dropped.
 	Repetitions int32 `json:"repetitions,omitempty"`
+
+	// The strategy for handling steps in the escalation policy. Can be "static" or "dynamic_by_priority".
+	StepStrategy string `json:"step_strategy,omitempty"`
 
 	// A list of steps that define how an alert should escalate through the policy.
 	// Required: true
@@ -51,6 +57,10 @@ func (m *PostV1TeamsTeamIDEscalationPolicies) Validate(formats strfmt.Registry) 
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrioritizedSettings(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -92,6 +102,25 @@ func (m *PostV1TeamsTeamIDEscalationPolicies) validateName(formats strfmt.Regist
 	return nil
 }
 
+func (m *PostV1TeamsTeamIDEscalationPolicies) validatePrioritizedSettings(formats strfmt.Registry) error {
+	if swag.IsZero(m.PrioritizedSettings) { // not required
+		return nil
+	}
+
+	if m.PrioritizedSettings != nil {
+		if err := m.PrioritizedSettings.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *PostV1TeamsTeamIDEscalationPolicies) validateSteps(formats strfmt.Registry) error {
 
 	if err := validate.Required("steps", "body", m.Steps); err != nil {
@@ -127,6 +156,10 @@ func (m *PostV1TeamsTeamIDEscalationPolicies) ContextValidate(ctx context.Contex
 		res = append(res, err)
 	}
 
+	if err := m.contextValidatePrioritizedSettings(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateSteps(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -145,6 +178,22 @@ func (m *PostV1TeamsTeamIDEscalationPolicies) contextValidateHandoffStep(ctx con
 				return ve.ValidateName("handoff_step")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("handoff_step")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPolicies) contextValidatePrioritizedSettings(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.PrioritizedSettings != nil {
+		if err := m.PrioritizedSettings.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings")
 			}
 			return err
 		}
@@ -299,6 +348,791 @@ func (m *PostV1TeamsTeamIDEscalationPoliciesHandoffStep) UnmarshalBinary(b []byt
 	return nil
 }
 
+// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings Priority-specific settings for dynamic escalation policies
+//
+// swagger:model PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings
+type PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings struct {
+
+	// high
+	High *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHigh `json:"high,omitempty"`
+
+	// low
+	Low *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLow `json:"low,omitempty"`
+
+	// medium
+	Medium *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMedium `json:"medium,omitempty"`
+}
+
+// Validate validates this post v1 teams team ID escalation policies prioritized settings
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateHigh(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLow(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMedium(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings) validateHigh(formats strfmt.Registry) error {
+	if swag.IsZero(m.High) { // not required
+		return nil
+	}
+
+	if m.High != nil {
+		if err := m.High.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings" + "." + "high")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings" + "." + "high")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings) validateLow(formats strfmt.Registry) error {
+	if swag.IsZero(m.Low) { // not required
+		return nil
+	}
+
+	if m.Low != nil {
+		if err := m.Low.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings" + "." + "low")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings" + "." + "low")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings) validateMedium(formats strfmt.Registry) error {
+	if swag.IsZero(m.Medium) { // not required
+		return nil
+	}
+
+	if m.Medium != nil {
+		if err := m.Medium.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings" + "." + "medium")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings" + "." + "medium")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post v1 teams team ID escalation policies prioritized settings based on the context it is used
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateHigh(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLow(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMedium(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings) contextValidateHigh(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.High != nil {
+		if err := m.High.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings" + "." + "high")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings" + "." + "high")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings) contextValidateLow(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Low != nil {
+		if err := m.Low.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings" + "." + "low")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings" + "." + "low")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings) contextValidateMedium(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Medium != nil {
+		if err := m.Medium.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings" + "." + "medium")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings" + "." + "medium")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings) UnmarshalBinary(b []byte) error {
+	var res PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettings
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHigh Settings for HIGH priority alerts
+//
+// swagger:model PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHigh
+type PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHigh struct {
+
+	// handoff step
+	HandoffStep *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStep `json:"handoff_step,omitempty"`
+
+	// Number of repetitions for HIGH priority alerts
+	Repetitions int32 `json:"repetitions,omitempty"`
+}
+
+// Validate validates this post v1 teams team ID escalation policies prioritized settings high
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHigh) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateHandoffStep(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHigh) validateHandoffStep(formats strfmt.Registry) error {
+	if swag.IsZero(m.HandoffStep) { // not required
+		return nil
+	}
+
+	if m.HandoffStep != nil {
+		if err := m.HandoffStep.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings" + "." + "high" + "." + "handoff_step")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings" + "." + "high" + "." + "handoff_step")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post v1 teams team ID escalation policies prioritized settings high based on the context it is used
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHigh) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateHandoffStep(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHigh) contextValidateHandoffStep(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HandoffStep != nil {
+		if err := m.HandoffStep.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings" + "." + "high" + "." + "handoff_step")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings" + "." + "high" + "." + "handoff_step")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHigh) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHigh) UnmarshalBinary(b []byte) error {
+	var res PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHigh
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStep Handoff step for HIGH priority alerts
+//
+// swagger:model PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStep
+type PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStep struct {
+
+	// target id
+	// Required: true
+	TargetID *string `json:"target_id"`
+
+	// target type
+	// Required: true
+	// Enum: [EscalationPolicy Team]
+	TargetType *string `json:"target_type"`
+}
+
+// Validate validates this post v1 teams team ID escalation policies prioritized settings high handoff step
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStep) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateTargetID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTargetType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStep) validateTargetID(formats strfmt.Registry) error {
+
+	if err := validate.Required("prioritized_settings"+"."+"high"+"."+"handoff_step"+"."+"target_id", "body", m.TargetID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var postV1TeamsTeamIdEscalationPoliciesPrioritizedSettingsHighHandoffStepTypeTargetTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["EscalationPolicy","Team"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		postV1TeamsTeamIdEscalationPoliciesPrioritizedSettingsHighHandoffStepTypeTargetTypePropEnum = append(postV1TeamsTeamIdEscalationPoliciesPrioritizedSettingsHighHandoffStepTypeTargetTypePropEnum, v)
+	}
+}
+
+const (
+
+	// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStepTargetTypeEscalationPolicy captures enum value "EscalationPolicy"
+	PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStepTargetTypeEscalationPolicy string = "EscalationPolicy"
+
+	// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStepTargetTypeTeam captures enum value "Team"
+	PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStepTargetTypeTeam string = "Team"
+)
+
+// prop value enum
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStep) validateTargetTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, postV1TeamsTeamIdEscalationPoliciesPrioritizedSettingsHighHandoffStepTypeTargetTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStep) validateTargetType(formats strfmt.Registry) error {
+
+	if err := validate.Required("prioritized_settings"+"."+"high"+"."+"handoff_step"+"."+"target_type", "body", m.TargetType); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateTargetTypeEnum("prioritized_settings"+"."+"high"+"."+"handoff_step"+"."+"target_type", "body", *m.TargetType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this post v1 teams team ID escalation policies prioritized settings high handoff step based on context it is used
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStep) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStep) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStep) UnmarshalBinary(b []byte) error {
+	var res PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsHighHandoffStep
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLow Settings for LOW priority alerts
+//
+// swagger:model PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLow
+type PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLow struct {
+
+	// handoff step
+	HandoffStep *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStep `json:"handoff_step,omitempty"`
+
+	// Number of repetitions for LOW priority alerts
+	Repetitions int32 `json:"repetitions,omitempty"`
+}
+
+// Validate validates this post v1 teams team ID escalation policies prioritized settings low
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLow) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateHandoffStep(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLow) validateHandoffStep(formats strfmt.Registry) error {
+	if swag.IsZero(m.HandoffStep) { // not required
+		return nil
+	}
+
+	if m.HandoffStep != nil {
+		if err := m.HandoffStep.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings" + "." + "low" + "." + "handoff_step")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings" + "." + "low" + "." + "handoff_step")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post v1 teams team ID escalation policies prioritized settings low based on the context it is used
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLow) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateHandoffStep(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLow) contextValidateHandoffStep(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HandoffStep != nil {
+		if err := m.HandoffStep.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings" + "." + "low" + "." + "handoff_step")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings" + "." + "low" + "." + "handoff_step")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLow) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLow) UnmarshalBinary(b []byte) error {
+	var res PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLow
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStep Handoff step for LOW priority alerts
+//
+// swagger:model PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStep
+type PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStep struct {
+
+	// target id
+	// Required: true
+	TargetID *string `json:"target_id"`
+
+	// target type
+	// Required: true
+	// Enum: [EscalationPolicy Team]
+	TargetType *string `json:"target_type"`
+}
+
+// Validate validates this post v1 teams team ID escalation policies prioritized settings low handoff step
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStep) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateTargetID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTargetType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStep) validateTargetID(formats strfmt.Registry) error {
+
+	if err := validate.Required("prioritized_settings"+"."+"low"+"."+"handoff_step"+"."+"target_id", "body", m.TargetID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var postV1TeamsTeamIdEscalationPoliciesPrioritizedSettingsLowHandoffStepTypeTargetTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["EscalationPolicy","Team"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		postV1TeamsTeamIdEscalationPoliciesPrioritizedSettingsLowHandoffStepTypeTargetTypePropEnum = append(postV1TeamsTeamIdEscalationPoliciesPrioritizedSettingsLowHandoffStepTypeTargetTypePropEnum, v)
+	}
+}
+
+const (
+
+	// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStepTargetTypeEscalationPolicy captures enum value "EscalationPolicy"
+	PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStepTargetTypeEscalationPolicy string = "EscalationPolicy"
+
+	// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStepTargetTypeTeam captures enum value "Team"
+	PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStepTargetTypeTeam string = "Team"
+)
+
+// prop value enum
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStep) validateTargetTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, postV1TeamsTeamIdEscalationPoliciesPrioritizedSettingsLowHandoffStepTypeTargetTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStep) validateTargetType(formats strfmt.Registry) error {
+
+	if err := validate.Required("prioritized_settings"+"."+"low"+"."+"handoff_step"+"."+"target_type", "body", m.TargetType); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateTargetTypeEnum("prioritized_settings"+"."+"low"+"."+"handoff_step"+"."+"target_type", "body", *m.TargetType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this post v1 teams team ID escalation policies prioritized settings low handoff step based on context it is used
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStep) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStep) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStep) UnmarshalBinary(b []byte) error {
+	var res PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsLowHandoffStep
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMedium Settings for MEDIUM priority alerts
+//
+// swagger:model PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMedium
+type PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMedium struct {
+
+	// handoff step
+	HandoffStep *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStep `json:"handoff_step,omitempty"`
+
+	// Number of repetitions for MEDIUM priority alerts
+	Repetitions int32 `json:"repetitions,omitempty"`
+}
+
+// Validate validates this post v1 teams team ID escalation policies prioritized settings medium
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMedium) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateHandoffStep(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMedium) validateHandoffStep(formats strfmt.Registry) error {
+	if swag.IsZero(m.HandoffStep) { // not required
+		return nil
+	}
+
+	if m.HandoffStep != nil {
+		if err := m.HandoffStep.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings" + "." + "medium" + "." + "handoff_step")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings" + "." + "medium" + "." + "handoff_step")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this post v1 teams team ID escalation policies prioritized settings medium based on the context it is used
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMedium) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateHandoffStep(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMedium) contextValidateHandoffStep(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.HandoffStep != nil {
+		if err := m.HandoffStep.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("prioritized_settings" + "." + "medium" + "." + "handoff_step")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("prioritized_settings" + "." + "medium" + "." + "handoff_step")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMedium) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMedium) UnmarshalBinary(b []byte) error {
+	var res PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMedium
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
+// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStep Handoff step for MEDIUM priority alerts
+//
+// swagger:model PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStep
+type PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStep struct {
+
+	// target id
+	// Required: true
+	TargetID *string `json:"target_id"`
+
+	// target type
+	// Required: true
+	// Enum: [EscalationPolicy Team]
+	TargetType *string `json:"target_type"`
+}
+
+// Validate validates this post v1 teams team ID escalation policies prioritized settings medium handoff step
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStep) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateTargetID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTargetType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStep) validateTargetID(formats strfmt.Registry) error {
+
+	if err := validate.Required("prioritized_settings"+"."+"medium"+"."+"handoff_step"+"."+"target_id", "body", m.TargetID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var postV1TeamsTeamIdEscalationPoliciesPrioritizedSettingsMediumHandoffStepTypeTargetTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["EscalationPolicy","Team"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		postV1TeamsTeamIdEscalationPoliciesPrioritizedSettingsMediumHandoffStepTypeTargetTypePropEnum = append(postV1TeamsTeamIdEscalationPoliciesPrioritizedSettingsMediumHandoffStepTypeTargetTypePropEnum, v)
+	}
+}
+
+const (
+
+	// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStepTargetTypeEscalationPolicy captures enum value "EscalationPolicy"
+	PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStepTargetTypeEscalationPolicy string = "EscalationPolicy"
+
+	// PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStepTargetTypeTeam captures enum value "Team"
+	PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStepTargetTypeTeam string = "Team"
+)
+
+// prop value enum
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStep) validateTargetTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, postV1TeamsTeamIdEscalationPoliciesPrioritizedSettingsMediumHandoffStepTypeTargetTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStep) validateTargetType(formats strfmt.Registry) error {
+
+	if err := validate.Required("prioritized_settings"+"."+"medium"+"."+"handoff_step"+"."+"target_type", "body", m.TargetType); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateTargetTypeEnum("prioritized_settings"+"."+"medium"+"."+"handoff_step"+"."+"target_type", "body", *m.TargetType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this post v1 teams team ID escalation policies prioritized settings medium handoff step based on context it is used
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStep) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStep) MarshalBinary() ([]byte, error) {
+	if m == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(m)
+}
+
+// UnmarshalBinary interface implementation
+func (m *PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStep) UnmarshalBinary(b []byte) error {
+	var res PostV1TeamsTeamIDEscalationPoliciesPrioritizedSettingsMediumHandoffStep
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*m = res
+	return nil
+}
+
 // PostV1TeamsTeamIDEscalationPoliciesStepsItems0 post v1 teams team ID escalation policies steps items0
 //
 // swagger:model PostV1TeamsTeamIDEscalationPoliciesStepsItems0
@@ -307,6 +1141,9 @@ type PostV1TeamsTeamIDEscalationPoliciesStepsItems0 struct {
 	// The round robin configuration for the step. One of 'unspecified', 'round_robin_by_alert', or 'round_robin_by_escalation_policy'.
 	// Enum: [unspecified round_robin_by_alert round_robin_by_escalation_policy]
 	DistributionType string `json:"distribution_type,omitempty"`
+
+	// A list of priorities (HIGH, MEDIUM, LOW) to which the step applies when using a dynamic escalation policy.
+	Priorities []string `json:"priorities"`
 
 	// A list of targets that the step will notify. You can specify up to 15 targets per step.
 	// Required: true

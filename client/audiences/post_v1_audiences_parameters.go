@@ -74,11 +74,23 @@ type PostV1AudiencesParams struct {
 	*/
 	Description string
 
-	/* Details.
+	/* DetailsPrompt.
 
-	   List of incident detail questions (1-10 items, max 255 chars each)
+	   The prompt to display when collecting this detail
 	*/
-	Details []string
+	DetailsPrompt []string
+
+	/* DetailsQuestion.
+
+	   The incident detail question (max 255 characters)
+	*/
+	DetailsQuestion []string
+
+	/* DetailsSlug.
+
+	   Optional unique identifier for this detail
+	*/
+	DetailsSlug []string
 
 	/* Name.
 
@@ -172,15 +184,37 @@ func (o *PostV1AudiencesParams) SetDescription(description string) {
 	o.Description = description
 }
 
-// WithDetails adds the details to the post v1 audiences params
-func (o *PostV1AudiencesParams) WithDetails(details []string) *PostV1AudiencesParams {
-	o.SetDetails(details)
+// WithDetailsPrompt adds the detailsPrompt to the post v1 audiences params
+func (o *PostV1AudiencesParams) WithDetailsPrompt(detailsPrompt []string) *PostV1AudiencesParams {
+	o.SetDetailsPrompt(detailsPrompt)
 	return o
 }
 
-// SetDetails adds the details to the post v1 audiences params
-func (o *PostV1AudiencesParams) SetDetails(details []string) {
-	o.Details = details
+// SetDetailsPrompt adds the detailsPrompt to the post v1 audiences params
+func (o *PostV1AudiencesParams) SetDetailsPrompt(detailsPrompt []string) {
+	o.DetailsPrompt = detailsPrompt
+}
+
+// WithDetailsQuestion adds the detailsQuestion to the post v1 audiences params
+func (o *PostV1AudiencesParams) WithDetailsQuestion(detailsQuestion []string) *PostV1AudiencesParams {
+	o.SetDetailsQuestion(detailsQuestion)
+	return o
+}
+
+// SetDetailsQuestion adds the detailsQuestion to the post v1 audiences params
+func (o *PostV1AudiencesParams) SetDetailsQuestion(detailsQuestion []string) {
+	o.DetailsQuestion = detailsQuestion
+}
+
+// WithDetailsSlug adds the detailsSlug to the post v1 audiences params
+func (o *PostV1AudiencesParams) WithDetailsSlug(detailsSlug []string) *PostV1AudiencesParams {
+	o.SetDetailsSlug(detailsSlug)
+	return o
+}
+
+// SetDetailsSlug adds the detailsSlug to the post v1 audiences params
+func (o *PostV1AudiencesParams) SetDetailsSlug(detailsSlug []string) {
+	o.DetailsSlug = detailsSlug
 }
 
 // WithName adds the name to the post v1 audiences params
@@ -226,13 +260,35 @@ func (o *PostV1AudiencesParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		}
 	}
 
-	if o.Details != nil {
+	if o.DetailsPrompt != nil {
 
-		// binding items for details
-		joinedDetails := o.bindParamDetails(reg)
+		// binding items for details[prompt]
+		joinedDetailsPrompt := o.bindParamDetailsPrompt(reg)
 
-		// form array param details
-		if err := r.SetFormParam("details", joinedDetails...); err != nil {
+		// form array param details[prompt]
+		if err := r.SetFormParam("details[prompt]", joinedDetailsPrompt...); err != nil {
+			return err
+		}
+	}
+
+	if o.DetailsQuestion != nil {
+
+		// binding items for details[question]
+		joinedDetailsQuestion := o.bindParamDetailsQuestion(reg)
+
+		// form array param details[question]
+		if err := r.SetFormParam("details[question]", joinedDetailsQuestion...); err != nil {
+			return err
+		}
+	}
+
+	if o.DetailsSlug != nil {
+
+		// binding items for details[slug]
+		joinedDetailsSlug := o.bindParamDetailsSlug(reg)
+
+		// form array param details[slug]
+		if err := r.SetFormParam("details[slug]", joinedDetailsSlug...); err != nil {
 			return err
 		}
 	}
@@ -252,19 +308,53 @@ func (o *PostV1AudiencesParams) WriteToRequest(r runtime.ClientRequest, reg strf
 	return nil
 }
 
-// bindParamPostV1Audiences binds the parameter details
-func (o *PostV1AudiencesParams) bindParamDetails(formats strfmt.Registry) []string {
-	detailsIR := o.Details
+// bindParamPostV1Audiences binds the parameter details[prompt]
+func (o *PostV1AudiencesParams) bindParamDetailsPrompt(formats strfmt.Registry) []string {
+	detailsPromptIR := o.DetailsPrompt
 
-	var detailsIC []string
-	for _, detailsIIR := range detailsIR { // explode []string
+	var detailsPromptIC []string
+	for _, detailsPromptIIR := range detailsPromptIR { // explode []string
 
-		detailsIIV := detailsIIR // string as string
-		detailsIC = append(detailsIC, detailsIIV)
+		detailsPromptIIV := detailsPromptIIR // string as string
+		detailsPromptIC = append(detailsPromptIC, detailsPromptIIV)
 	}
 
 	// items.CollectionFormat: ""
-	detailsIS := swag.JoinByFormat(detailsIC, "")
+	detailsPromptIS := swag.JoinByFormat(detailsPromptIC, "")
 
-	return detailsIS
+	return detailsPromptIS
+}
+
+// bindParamPostV1Audiences binds the parameter details[question]
+func (o *PostV1AudiencesParams) bindParamDetailsQuestion(formats strfmt.Registry) []string {
+	detailsQuestionIR := o.DetailsQuestion
+
+	var detailsQuestionIC []string
+	for _, detailsQuestionIIR := range detailsQuestionIR { // explode []string
+
+		detailsQuestionIIV := detailsQuestionIIR // string as string
+		detailsQuestionIC = append(detailsQuestionIC, detailsQuestionIIV)
+	}
+
+	// items.CollectionFormat: ""
+	detailsQuestionIS := swag.JoinByFormat(detailsQuestionIC, "")
+
+	return detailsQuestionIS
+}
+
+// bindParamPostV1Audiences binds the parameter details[slug]
+func (o *PostV1AudiencesParams) bindParamDetailsSlug(formats strfmt.Registry) []string {
+	detailsSlugIR := o.DetailsSlug
+
+	var detailsSlugIC []string
+	for _, detailsSlugIIR := range detailsSlugIR { // explode []string
+
+		detailsSlugIIV := detailsSlugIIR // string as string
+		detailsSlugIC = append(detailsSlugIC, detailsSlugIIV)
+	}
+
+	// items.CollectionFormat: ""
+	detailsSlugIS := swag.JoinByFormat(detailsSlugIC, "")
+
+	return detailsSlugIS
 }
