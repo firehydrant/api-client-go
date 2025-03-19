@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewPostV1AudiencesAudienceIDSummariesIncidentIDParams creates a new PostV1AudiencesAudienceIDSummariesIncidentIDParams object,
@@ -67,6 +68,14 @@ type PostV1AudiencesAudienceIDSummariesIncidentIDParams struct {
 	*/
 	AudienceID string
 
+	/* ForceRegenerate.
+
+	   Whether to force regeneration of the summary
+
+	   Default: true
+	*/
+	ForceRegenerate *bool
+
 	/* IncidentID.
 
 	   Unique identifier of the incident to summarize
@@ -90,7 +99,18 @@ func (o *PostV1AudiencesAudienceIDSummariesIncidentIDParams) WithDefaults() *Pos
 //
 // All values with no default are reset to their zero value.
 func (o *PostV1AudiencesAudienceIDSummariesIncidentIDParams) SetDefaults() {
-	// no default values defined for this parameter
+	var (
+		forceRegenerateDefault = bool(true)
+	)
+
+	val := PostV1AudiencesAudienceIDSummariesIncidentIDParams{
+		ForceRegenerate: &forceRegenerateDefault,
+	}
+
+	val.timeout = o.timeout
+	val.Context = o.Context
+	val.HTTPClient = o.HTTPClient
+	*o = val
 }
 
 // WithTimeout adds the timeout to the post v1 audiences audience Id summaries incident Id params
@@ -137,6 +157,17 @@ func (o *PostV1AudiencesAudienceIDSummariesIncidentIDParams) SetAudienceID(audie
 	o.AudienceID = audienceID
 }
 
+// WithForceRegenerate adds the forceRegenerate to the post v1 audiences audience Id summaries incident Id params
+func (o *PostV1AudiencesAudienceIDSummariesIncidentIDParams) WithForceRegenerate(forceRegenerate *bool) *PostV1AudiencesAudienceIDSummariesIncidentIDParams {
+	o.SetForceRegenerate(forceRegenerate)
+	return o
+}
+
+// SetForceRegenerate adds the forceRegenerate to the post v1 audiences audience Id summaries incident Id params
+func (o *PostV1AudiencesAudienceIDSummariesIncidentIDParams) SetForceRegenerate(forceRegenerate *bool) {
+	o.ForceRegenerate = forceRegenerate
+}
+
 // WithIncidentID adds the incidentID to the post v1 audiences audience Id summaries incident Id params
 func (o *PostV1AudiencesAudienceIDSummariesIncidentIDParams) WithIncidentID(incidentID string) *PostV1AudiencesAudienceIDSummariesIncidentIDParams {
 	o.SetIncidentID(incidentID)
@@ -159,6 +190,21 @@ func (o *PostV1AudiencesAudienceIDSummariesIncidentIDParams) WriteToRequest(r ru
 	// path param audience_id
 	if err := r.SetPathParam("audience_id", o.AudienceID); err != nil {
 		return err
+	}
+
+	if o.ForceRegenerate != nil {
+
+		// form param force_regenerate
+		var frForceRegenerate bool
+		if o.ForceRegenerate != nil {
+			frForceRegenerate = *o.ForceRegenerate
+		}
+		fForceRegenerate := swag.FormatBool(frForceRegenerate)
+		if fForceRegenerate != "" {
+			if err := r.SetFormParam("force_regenerate", fForceRegenerate); err != nil {
+				return err
+			}
+		}
 	}
 
 	// path param incident_id

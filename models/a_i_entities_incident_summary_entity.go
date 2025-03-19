@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AIEntitiesIncidentSummaryEntity AI_Entities_IncidentSummaryEntity model
@@ -26,6 +28,10 @@ type AIEntitiesIncidentSummaryEntity struct {
 	// id
 	ID string `json:"id,omitempty"`
 
+	// incident updated at
+	// Format: date-time
+	IncidentUpdatedAt strfmt.DateTime `json:"incident_updated_at,omitempty"`
+
 	// source hash
 	SourceHash string `json:"source_hash,omitempty"`
 
@@ -35,6 +41,27 @@ type AIEntitiesIncidentSummaryEntity struct {
 
 // Validate validates this a i entities incident summary entity
 func (m *AIEntitiesIncidentSummaryEntity) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateIncidentUpdatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AIEntitiesIncidentSummaryEntity) validateIncidentUpdatedAt(formats strfmt.Registry) error {
+	if swag.IsZero(m.IncidentUpdatedAt) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("incident_updated_at", "body", "date-time", m.IncidentUpdatedAt.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

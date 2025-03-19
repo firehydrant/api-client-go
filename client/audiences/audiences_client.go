@@ -32,8 +32,6 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	DeleteV1AudiencesAudienceID(params *DeleteV1AudiencesAudienceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1AudiencesAudienceIDOK, error)
 
-	DeleteV1AudiencesAudienceIDDetailsDetailID(params *DeleteV1AudiencesAudienceIDDetailsDetailIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1AudiencesAudienceIDDetailsDetailIDNoContent, error)
-
 	GetV1Audiences(params *GetV1AudiencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesOK, error)
 
 	GetV1AudiencesAudienceID(params *GetV1AudiencesAudienceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesAudienceIDOK, error)
@@ -46,13 +44,9 @@ type ClientService interface {
 
 	PatchV1AudiencesAudienceID(params *PatchV1AudiencesAudienceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1AudiencesAudienceIDOK, error)
 
-	PatchV1AudiencesAudienceIDDetailsDetailID(params *PatchV1AudiencesAudienceIDDetailsDetailIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1AudiencesAudienceIDDetailsDetailIDOK, error)
-
 	PatchV1AudiencesAudienceIDRestore(params *PatchV1AudiencesAudienceIDRestoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1AudiencesAudienceIDRestoreOK, error)
 
 	PostV1Audiences(params *PostV1AudiencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1AudiencesCreated, error)
-
-	PostV1AudiencesAudienceIDDetails(params *PostV1AudiencesAudienceIDDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1AudiencesAudienceIDDetailsCreated, error)
 
 	PostV1AudiencesAudienceIDSummariesIncidentID(params *PostV1AudiencesAudienceIDSummariesIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1AudiencesAudienceIDSummariesIncidentIDCreated, error)
 
@@ -99,47 +93,6 @@ func (a *Client) DeleteV1AudiencesAudienceID(params *DeleteV1AudiencesAudienceID
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for deleteV1AudiencesAudienceId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1AudiencesAudienceIDDetailsDetailID deletes incident detail
-
-Delete an incident detail
-*/
-func (a *Client) DeleteV1AudiencesAudienceIDDetailsDetailID(params *DeleteV1AudiencesAudienceIDDetailsDetailIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1AudiencesAudienceIDDetailsDetailIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1AudiencesAudienceIDDetailsDetailIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1AudiencesAudienceIdDetailsDetailId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/audiences/{audience_id}/details/{detail_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1AudiencesAudienceIDDetailsDetailIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1AudiencesAudienceIDDetailsDetailIDNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1AudiencesAudienceIdDetailsDetailId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -388,47 +341,6 @@ func (a *Client) PatchV1AudiencesAudienceID(params *PatchV1AudiencesAudienceIDPa
 }
 
 /*
-PatchV1AudiencesAudienceIDDetailsDetailID updates incident detail
-
-Update an existing incident detail
-*/
-func (a *Client) PatchV1AudiencesAudienceIDDetailsDetailID(params *PatchV1AudiencesAudienceIDDetailsDetailIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1AudiencesAudienceIDDetailsDetailIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1AudiencesAudienceIDDetailsDetailIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1AudiencesAudienceIdDetailsDetailId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/audiences/{audience_id}/details/{detail_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1AudiencesAudienceIDDetailsDetailIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1AudiencesAudienceIDDetailsDetailIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1AudiencesAudienceIdDetailsDetailId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
 PatchV1AudiencesAudienceIDRestore restores audience
 
 Restore a previously archived audience
@@ -507,47 +419,6 @@ func (a *Client) PostV1Audiences(params *PostV1AudiencesParams, authInfo runtime
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for postV1Audiences: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1AudiencesAudienceIDDetails creates incident detail
-
-Create a new incident detail for an audience
-*/
-func (a *Client) PostV1AudiencesAudienceIDDetails(params *PostV1AudiencesAudienceIDDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1AudiencesAudienceIDDetailsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1AudiencesAudienceIDDetailsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1AudiencesAudienceIdDetails",
-		Method:             "POST",
-		PathPattern:        "/v1/audiences/{audience_id}/details",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1AudiencesAudienceIDDetailsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1AudiencesAudienceIDDetailsCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1AudiencesAudienceIdDetails: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
