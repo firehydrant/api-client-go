@@ -86,6 +86,30 @@ type PatchV1AudiencesAudienceIDParams struct {
 	*/
 	Description *string
 
+	/* DetailsPosition.
+
+	   Position of the question in the list (1-based indexing)
+	*/
+	DetailsPosition []int32
+
+	/* DetailsPrompt.
+
+	   The prompt to display when collecting this detail
+	*/
+	DetailsPrompt []string
+
+	/* DetailsQuestion.
+
+	   The incident detail question (max 255 characters)
+	*/
+	DetailsQuestion []string
+
+	/* DetailsSlug.
+
+	   Optional unique identifier for this detail
+	*/
+	DetailsSlug []string
+
 	/* Name.
 
 	   Name of the audience (max 255 characters)
@@ -189,6 +213,50 @@ func (o *PatchV1AudiencesAudienceIDParams) SetDescription(description *string) {
 	o.Description = description
 }
 
+// WithDetailsPosition adds the detailsPosition to the patch v1 audiences audience Id params
+func (o *PatchV1AudiencesAudienceIDParams) WithDetailsPosition(detailsPosition []int32) *PatchV1AudiencesAudienceIDParams {
+	o.SetDetailsPosition(detailsPosition)
+	return o
+}
+
+// SetDetailsPosition adds the detailsPosition to the patch v1 audiences audience Id params
+func (o *PatchV1AudiencesAudienceIDParams) SetDetailsPosition(detailsPosition []int32) {
+	o.DetailsPosition = detailsPosition
+}
+
+// WithDetailsPrompt adds the detailsPrompt to the patch v1 audiences audience Id params
+func (o *PatchV1AudiencesAudienceIDParams) WithDetailsPrompt(detailsPrompt []string) *PatchV1AudiencesAudienceIDParams {
+	o.SetDetailsPrompt(detailsPrompt)
+	return o
+}
+
+// SetDetailsPrompt adds the detailsPrompt to the patch v1 audiences audience Id params
+func (o *PatchV1AudiencesAudienceIDParams) SetDetailsPrompt(detailsPrompt []string) {
+	o.DetailsPrompt = detailsPrompt
+}
+
+// WithDetailsQuestion adds the detailsQuestion to the patch v1 audiences audience Id params
+func (o *PatchV1AudiencesAudienceIDParams) WithDetailsQuestion(detailsQuestion []string) *PatchV1AudiencesAudienceIDParams {
+	o.SetDetailsQuestion(detailsQuestion)
+	return o
+}
+
+// SetDetailsQuestion adds the detailsQuestion to the patch v1 audiences audience Id params
+func (o *PatchV1AudiencesAudienceIDParams) SetDetailsQuestion(detailsQuestion []string) {
+	o.DetailsQuestion = detailsQuestion
+}
+
+// WithDetailsSlug adds the detailsSlug to the patch v1 audiences audience Id params
+func (o *PatchV1AudiencesAudienceIDParams) WithDetailsSlug(detailsSlug []string) *PatchV1AudiencesAudienceIDParams {
+	o.SetDetailsSlug(detailsSlug)
+	return o
+}
+
+// SetDetailsSlug adds the detailsSlug to the patch v1 audiences audience Id params
+func (o *PatchV1AudiencesAudienceIDParams) SetDetailsSlug(detailsSlug []string) {
+	o.DetailsSlug = detailsSlug
+}
+
 // WithName adds the name to the patch v1 audiences audience Id params
 func (o *PatchV1AudiencesAudienceIDParams) WithName(name *string) *PatchV1AudiencesAudienceIDParams {
 	o.SetName(name)
@@ -258,6 +326,50 @@ func (o *PatchV1AudiencesAudienceIDParams) WriteToRequest(r runtime.ClientReques
 		}
 	}
 
+	if o.DetailsPosition != nil {
+
+		// binding items for details[position]
+		joinedDetailsPosition := o.bindParamDetailsPosition(reg)
+
+		// form array param details[position]
+		if err := r.SetFormParam("details[position]", joinedDetailsPosition...); err != nil {
+			return err
+		}
+	}
+
+	if o.DetailsPrompt != nil {
+
+		// binding items for details[prompt]
+		joinedDetailsPrompt := o.bindParamDetailsPrompt(reg)
+
+		// form array param details[prompt]
+		if err := r.SetFormParam("details[prompt]", joinedDetailsPrompt...); err != nil {
+			return err
+		}
+	}
+
+	if o.DetailsQuestion != nil {
+
+		// binding items for details[question]
+		joinedDetailsQuestion := o.bindParamDetailsQuestion(reg)
+
+		// form array param details[question]
+		if err := r.SetFormParam("details[question]", joinedDetailsQuestion...); err != nil {
+			return err
+		}
+	}
+
+	if o.DetailsSlug != nil {
+
+		// binding items for details[slug]
+		joinedDetailsSlug := o.bindParamDetailsSlug(reg)
+
+		// form array param details[slug]
+		if err := r.SetFormParam("details[slug]", joinedDetailsSlug...); err != nil {
+			return err
+		}
+	}
+
 	if o.Name != nil {
 
 		// form param name
@@ -277,4 +389,72 @@ func (o *PatchV1AudiencesAudienceIDParams) WriteToRequest(r runtime.ClientReques
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
+}
+
+// bindParamPatchV1AudiencesAudienceID binds the parameter details[position]
+func (o *PatchV1AudiencesAudienceIDParams) bindParamDetailsPosition(formats strfmt.Registry) []string {
+	detailsPositionIR := o.DetailsPosition
+
+	var detailsPositionIC []string
+	for _, detailsPositionIIR := range detailsPositionIR { // explode []int32
+
+		detailsPositionIIV := swag.FormatInt32(detailsPositionIIR) // int32 as string
+		detailsPositionIC = append(detailsPositionIC, detailsPositionIIV)
+	}
+
+	// items.CollectionFormat: ""
+	detailsPositionIS := swag.JoinByFormat(detailsPositionIC, "")
+
+	return detailsPositionIS
+}
+
+// bindParamPatchV1AudiencesAudienceID binds the parameter details[prompt]
+func (o *PatchV1AudiencesAudienceIDParams) bindParamDetailsPrompt(formats strfmt.Registry) []string {
+	detailsPromptIR := o.DetailsPrompt
+
+	var detailsPromptIC []string
+	for _, detailsPromptIIR := range detailsPromptIR { // explode []string
+
+		detailsPromptIIV := detailsPromptIIR // string as string
+		detailsPromptIC = append(detailsPromptIC, detailsPromptIIV)
+	}
+
+	// items.CollectionFormat: ""
+	detailsPromptIS := swag.JoinByFormat(detailsPromptIC, "")
+
+	return detailsPromptIS
+}
+
+// bindParamPatchV1AudiencesAudienceID binds the parameter details[question]
+func (o *PatchV1AudiencesAudienceIDParams) bindParamDetailsQuestion(formats strfmt.Registry) []string {
+	detailsQuestionIR := o.DetailsQuestion
+
+	var detailsQuestionIC []string
+	for _, detailsQuestionIIR := range detailsQuestionIR { // explode []string
+
+		detailsQuestionIIV := detailsQuestionIIR // string as string
+		detailsQuestionIC = append(detailsQuestionIC, detailsQuestionIIV)
+	}
+
+	// items.CollectionFormat: ""
+	detailsQuestionIS := swag.JoinByFormat(detailsQuestionIC, "")
+
+	return detailsQuestionIS
+}
+
+// bindParamPatchV1AudiencesAudienceID binds the parameter details[slug]
+func (o *PatchV1AudiencesAudienceIDParams) bindParamDetailsSlug(formats strfmt.Registry) []string {
+	detailsSlugIR := o.DetailsSlug
+
+	var detailsSlugIC []string
+	for _, detailsSlugIIR := range detailsSlugIR { // explode []string
+
+		detailsSlugIIV := detailsSlugIIR // string as string
+		detailsSlugIC = append(detailsSlugIC, detailsSlugIIV)
+	}
+
+	// items.CollectionFormat: ""
+	detailsSlugIS := swag.JoinByFormat(detailsSlugIC, "")
+
+	return detailsSlugIS
 }

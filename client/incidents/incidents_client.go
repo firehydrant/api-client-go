@@ -64,6 +64,10 @@ type ClientService interface {
 
 	GetV1IncidentsIncidentIDChannel(params *GetV1IncidentsIncidentIDChannelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDChannelOK, error)
 
+	GetV1IncidentsIncidentIDConferenceBridges(params *GetV1IncidentsIncidentIDConferenceBridgesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDConferenceBridgesOK, error)
+
+	GetV1IncidentsIncidentIDConferenceBridgesIDTranslationsLanguageCode(params *GetV1IncidentsIncidentIDConferenceBridgesIDTranslationsLanguageCodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDConferenceBridgesIDTranslationsLanguageCodeOK, error)
+
 	GetV1IncidentsIncidentIDEvents(params *GetV1IncidentsIncidentIDEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDEventsOK, error)
 
 	GetV1IncidentsIncidentIDEventsEventID(params *GetV1IncidentsIncidentIDEventsEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDEventsEventIDOK, error)
@@ -169,6 +173,8 @@ type ClientService interface {
 	PutV1IncidentsIncidentIDMilestonesBulkUpdate(params *PutV1IncidentsIncidentIDMilestonesBulkUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDMilestonesBulkUpdateOK, error)
 
 	PutV1IncidentsIncidentIDResolve(params *PutV1IncidentsIncidentIDResolveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDResolveOK, error)
+
+	PutV1IncidentsIncidentIDTranscriptAttribution(params *PutV1IncidentsIncidentIDTranscriptAttributionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDTranscriptAttributionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -863,6 +869,88 @@ func (a *Client) GetV1IncidentsIncidentIDChannel(params *GetV1IncidentsIncidentI
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdChannel: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IncidentsIncidentIDConferenceBridges retrieves all conference bridges for an incident
+
+Retrieve all conference bridges for an incident
+*/
+func (a *Client) GetV1IncidentsIncidentIDConferenceBridges(params *GetV1IncidentsIncidentIDConferenceBridgesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDConferenceBridgesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IncidentsIncidentIDConferenceBridgesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IncidentsIncidentIdConferenceBridges",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/conference_bridges",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IncidentsIncidentIDConferenceBridgesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IncidentsIncidentIDConferenceBridgesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdConferenceBridges: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IncidentsIncidentIDConferenceBridgesIDTranslationsLanguageCode retrieves the translations for a specific conference bridge
+
+Retrieve the translations for a specific conference bridge
+*/
+func (a *Client) GetV1IncidentsIncidentIDConferenceBridgesIDTranslationsLanguageCode(params *GetV1IncidentsIncidentIDConferenceBridgesIDTranslationsLanguageCodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDConferenceBridgesIDTranslationsLanguageCodeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IncidentsIncidentIDConferenceBridgesIDTranslationsLanguageCodeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IncidentsIncidentIdConferenceBridgesIdTranslationsLanguageCode",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/conference_bridges/{id}/translations/{language_code}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IncidentsIncidentIDConferenceBridgesIDTranslationsLanguageCodeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IncidentsIncidentIDConferenceBridgesIDTranslationsLanguageCodeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdConferenceBridgesIdTranslationsLanguageCode: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -3050,6 +3138,47 @@ func (a *Client) PutV1IncidentsIncidentIDResolve(params *PutV1IncidentsIncidentI
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for putV1IncidentsIncidentIdResolve: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PutV1IncidentsIncidentIDTranscriptAttribution updates the attribution of a transcript
+
+Update the attribution of a transcript
+*/
+func (a *Client) PutV1IncidentsIncidentIDTranscriptAttribution(params *PutV1IncidentsIncidentIDTranscriptAttributionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1IncidentsIncidentIDTranscriptAttributionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPutV1IncidentsIncidentIDTranscriptAttributionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "putV1IncidentsIncidentIdTranscriptAttribution",
+		Method:             "PUT",
+		PathPattern:        "/v1/incidents/{incident_id}/transcript/attribution",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PutV1IncidentsIncidentIDTranscriptAttributionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PutV1IncidentsIncidentIDTranscriptAttributionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for putV1IncidentsIncidentIdTranscriptAttribution: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

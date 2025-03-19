@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// IncidentsConferenceBridgeEntity incidents conference bridge entity
+// IncidentsConferenceBridgeEntity Incidents_ConferenceBridgeEntity model
 //
 // swagger:model Incidents_ConferenceBridgeEntity
 type IncidentsConferenceBridgeEntity struct {
@@ -20,8 +20,14 @@ type IncidentsConferenceBridgeEntity struct {
 	// A list of objects attached to this item. Can be one of: LinkEntity, CustomerSupportIssueEntity, or GenericAttachmentEntity
 	Attachments []interface{} `json:"attachments"`
 
+	// has translated transcripts
+	HasTranslatedTranscripts bool `json:"has_translated_transcripts,omitempty"`
+
 	// id
 	ID string `json:"id,omitempty"`
+
+	// A list of language codes that have translated transcripts for this conference bridge
+	LanguageCodes []string `json:"language_codes"`
 }
 
 // Validate validates this incidents conference bridge entity

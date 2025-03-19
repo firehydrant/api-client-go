@@ -19,6 +19,9 @@ import (
 // swagger:model PublicAPI_V1_Incidents_TranscriptEntity
 type PublicAPIV1IncidentsTranscriptEntity struct {
 
+	// The author of the transcript entry
+	Author *AuthorEntity `json:"author,omitempty"`
+
 	// The time the transcript entry was created
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"created_at,omitempty"`
@@ -47,6 +50,10 @@ type PublicAPIV1IncidentsTranscriptEntity struct {
 func (m *PublicAPIV1IncidentsTranscriptEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAuthor(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCreatedAt(formats); err != nil {
 		res = append(res, err)
 	}
@@ -58,6 +65,25 @@ func (m *PublicAPIV1IncidentsTranscriptEntity) Validate(formats strfmt.Registry)
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *PublicAPIV1IncidentsTranscriptEntity) validateAuthor(formats strfmt.Registry) error {
+	if swag.IsZero(m.Author) { // not required
+		return nil
+	}
+
+	if m.Author != nil {
+		if err := m.Author.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("author")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("author")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -85,8 +111,33 @@ func (m *PublicAPIV1IncidentsTranscriptEntity) validateUpdatedAt(formats strfmt.
 	return nil
 }
 
-// ContextValidate validates this public API v1 incidents transcript entity based on context it is used
+// ContextValidate validate this public API v1 incidents transcript entity based on the context it is used
 func (m *PublicAPIV1IncidentsTranscriptEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAuthor(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *PublicAPIV1IncidentsTranscriptEntity) contextValidateAuthor(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Author != nil {
+		if err := m.Author.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("author")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("author")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
