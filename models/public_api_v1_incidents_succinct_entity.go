@@ -24,7 +24,7 @@ type PublicAPIV1IncidentsSuccinctEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// number
-	Number string `json:"number,omitempty"`
+	Number int32 `json:"number,omitempty"`
 }
 
 // Validate validates this public API v1 incidents succinct entity

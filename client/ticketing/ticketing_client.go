@@ -135,7 +135,7 @@ func (a *Client) DeleteV1TicketingPrioritiesID(params *DeleteV1TicketingPrioriti
 }
 
 /*
-DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapID archives field map for a ticketing project
+DeleteV1TicketingProjectsTicketingProjectIDFieldMapsMapID archives a field map for a ticketing project
 
 Archive field map for a ticketing project
 */
@@ -217,7 +217,7 @@ func (a *Client) DeleteV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapI
 }
 
 /*
-DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID archives configuration for a ticketing project
+DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID archives a ticketing project configuration
 
 Archive configuration for a ticketing project
 */
@@ -258,7 +258,9 @@ func (a *Client) DeleteV1TicketingProjectsTicketingProjectIDProviderProjectConfi
 }
 
 /*
-DeleteV1TicketingTicketsTicketID delete v1 ticketing tickets ticket Id API
+DeleteV1TicketingTicketsTicketID archives a ticket
+
+Archive a ticket
 */
 func (a *Client) DeleteV1TicketingTicketsTicketID(params *DeleteV1TicketingTicketsTicketIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TicketingTicketsTicketIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -297,7 +299,7 @@ func (a *Client) DeleteV1TicketingTicketsTicketID(params *DeleteV1TicketingTicke
 }
 
 /*
-GetV1TicketingPriorities lists all ticketing priorities
+GetV1TicketingPriorities lists ticketing priorities
 
 List all ticketing priorities available to the organization
 */
@@ -338,7 +340,7 @@ func (a *Client) GetV1TicketingPriorities(params *GetV1TicketingPrioritiesParams
 }
 
 /*
-GetV1TicketingPrioritiesID retrieves a ticketing priority
+GetV1TicketingPrioritiesID gets a ticketing priority
 
 Retrieve a single ticketing priority by ID
 */
@@ -379,7 +381,7 @@ func (a *Client) GetV1TicketingPrioritiesID(params *GetV1TicketingPrioritiesIDPa
 }
 
 /*
-GetV1TicketingProjects lists all ticketing projects
+GetV1TicketingProjects lists ticketing projects
 
 List all ticketing projects available to the organization
 */
@@ -420,7 +422,7 @@ func (a *Client) GetV1TicketingProjects(params *GetV1TicketingProjectsParams, au
 }
 
 /*
-GetV1TicketingProjectsTicketingProjectID retrieves a ticketing projects
+GetV1TicketingProjectsTicketingProjectID gets a ticketing project
 
 Retrieve a single ticketing project by ID
 */
@@ -461,7 +463,9 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectID(params *GetV1Ticketing
 }
 
 /*
-GetV1TicketingProjectsTicketingProjectIDConfigurationOptions get v1 ticketing projects ticketing project Id configuration options API
+GetV1TicketingProjectsTicketingProjectIDConfigurationOptions lists configuration options for a ticketing project
+
+List all configuration options for a ticketing project
 */
 func (a *Client) GetV1TicketingProjectsTicketingProjectIDConfigurationOptions(params *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK, error) {
 	// TODO: Validate the params before sending
@@ -500,7 +504,9 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDConfigurationOptions(pa
 }
 
 /*
-GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldID get v1 ticketing projects ticketing project Id configuration options options for field Id API
+GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldID lists a field s configuration options for a ticketing project
+
+List a field's configuration options for a ticketing project
 */
 func (a *Client) GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldID(params *GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOptionsForFieldIDOK, error) {
 	// TODO: Validate the params before sending
@@ -539,7 +545,7 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOpt
 }
 
 /*
-GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFields gets the fields that can be mapped for this project
+GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableFields lists available fields for ticket field mapping
 
 Returns metadata for the fields that are available for field mapping.
 */
@@ -580,7 +586,7 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDFieldMapsAvailableField
 }
 
 /*
-GetV1TicketingProjectsTicketingProjectIDFieldMapsMapID retrieves field map for a ticketing project
+GetV1TicketingProjectsTicketingProjectIDFieldMapsMapID gets a field map for a ticketing project
 
 Retrieve field map for a ticketing project
 */
@@ -621,7 +627,9 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDFieldMapsMapID(params *
 }
 
 /*
-GetV1TicketingProjectsTicketingProjectIDInboundFieldMaps get v1 ticketing projects ticketing project Id inbound field maps API
+GetV1TicketingProjectsTicketingProjectIDInboundFieldMaps lists inbound field maps for a ticketing project
+
+List all inbound field maps for a ticketing project
 */
 func (a *Client) GetV1TicketingProjectsTicketingProjectIDInboundFieldMaps(params *GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsOK, error) {
 	// TODO: Validate the params before sending
@@ -660,7 +668,7 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDInboundFieldMaps(params
 }
 
 /*
-GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailableFields gets the fields that can be mapped for this project
+GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailableFields lists available fields for ticket field mapping
 
 Returns metadata for the fields that are available for inbound field mapping.
 */
@@ -701,7 +709,7 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsAvailab
 }
 
 /*
-GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapID retrieves inbound field map for a ticketing project
+GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapID gets inbound field map for a ticketing project
 
 Retrieve inbound field map for a ticketing project
 */
@@ -742,7 +750,7 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsMapID(p
 }
 
 /*
-GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID retrieves configuration for a ticketing project
+GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigurationsConfigID gets configuration for a ticketing project
 
 Retrieve configuration for a ticketing project
 */
@@ -783,7 +791,7 @@ func (a *Client) GetV1TicketingProjectsTicketingProjectIDProviderProjectConfigur
 }
 
 /*
-GetV1TicketingTicketTags lists all ticket tags
+GetV1TicketingTicketTags lists ticket tags
 
 List all of the ticket tags in the organization
 */
@@ -824,7 +832,7 @@ func (a *Client) GetV1TicketingTicketTags(params *GetV1TicketingTicketTagsParams
 }
 
 /*
-GetV1TicketingTickets lists all tickets
+GetV1TicketingTickets lists tickets
 
 List all of the tickets that have been added to the organiation
 */
@@ -865,7 +873,7 @@ func (a *Client) GetV1TicketingTickets(params *GetV1TicketingTicketsParams, auth
 }
 
 /*
-GetV1TicketingTicketsTicketID retrieves a single ticket
+GetV1TicketingTicketsTicketID gets a ticket
 
 Retrieves a single ticket by ID
 */
@@ -947,7 +955,7 @@ func (a *Client) PatchV1TicketingPrioritiesID(params *PatchV1TicketingPriorities
 }
 
 /*
-PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapID updates field map for a ticketing project
+PatchV1TicketingProjectsTicketingProjectIDFieldMapsMapID updates a field map for a ticketing project
 
 Update field map for a ticketing project
 */
@@ -1111,7 +1119,7 @@ func (a *Client) PostV1TicketingPriorities(params *PostV1TicketingPrioritiesPara
 }
 
 /*
-PostV1TicketingProjectsTicketingProjectIDFieldMaps creates field map for a ticketing project
+PostV1TicketingProjectsTicketingProjectIDFieldMaps creates a field mapping for a ticketing project
 
 Creates field map for a ticketing project
 */
@@ -1193,7 +1201,7 @@ func (a *Client) PostV1TicketingProjectsTicketingProjectIDInboundFieldMaps(param
 }
 
 /*
-PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations creates configuration for a ticketing project
+PostV1TicketingProjectsTicketingProjectIDProviderProjectConfigurations creates a ticketing project configuration
 
 Creates configuration for a ticketing project
 */

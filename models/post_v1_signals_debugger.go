@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1SignalsDebugger post v1 signals debugger
+// PostV1SignalsDebugger Debug Signals expressions
 //
 // swagger:model postV1SignalsDebugger
 type PostV1SignalsDebugger struct {

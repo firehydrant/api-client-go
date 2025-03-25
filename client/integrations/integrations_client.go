@@ -72,6 +72,8 @@ type ClientService interface {
 
 	GetV1IntegrationsStatuspageConnectionsConnectionIDPages(params *GetV1IntegrationsStatuspageConnectionsConnectionIDPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsConnectionIDPagesOK, error)
 
+	GetV1IntegrationsZendeskConnectionIDTicketsSearch(params *GetV1IntegrationsZendeskConnectionIDTicketsSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsZendeskConnectionIDTicketsSearchOK, error)
+
 	GetV1IntegrationsZendeskSearch(params *GetV1IntegrationsZendeskSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsZendeskSearchOK, error)
 
 	PatchV1IntegrationsAwsCloudtrailBatchesID(params *PatchV1IntegrationsAwsCloudtrailBatchesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAwsCloudtrailBatchesIDOK, error)
@@ -98,7 +100,7 @@ type ClientService interface {
 /*
 DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID deletes a slack emoji action
 
-Deletes a slack emoji action
+Deletes a Slack emoji action
 */
 func (a *Client) DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -178,7 +180,9 @@ func (a *Client) DeleteV1IntegrationsStatuspageConnectionsConnectionID(params *D
 }
 
 /*
-GetV1Integrations get v1 integrations API
+GetV1Integrations lists integrations
+
+Lists the available and configured integrations
 */
 func (a *Client) GetV1Integrations(params *GetV1IntegrationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsOK, error) {
 	// TODO: Validate the params before sending
@@ -258,7 +262,7 @@ func (a *Client) GetV1IntegrationsAwsCloudtrailBatches(params *GetV1Integrations
 }
 
 /*
-GetV1IntegrationsAwsCloudtrailBatchesID retrieves a cloud trail batch
+GetV1IntegrationsAwsCloudtrailBatchesID gets a cloud trail batch
 
 Retrieve a single CloudTrail batch.
 */
@@ -299,7 +303,9 @@ func (a *Client) GetV1IntegrationsAwsCloudtrailBatchesID(params *GetV1Integratio
 }
 
 /*
-GetV1IntegrationsAwsCloudtrailBatchesIDEvents get v1 integrations aws cloudtrail batches Id events API
+GetV1IntegrationsAwsCloudtrailBatchesIDEvents lists events for an a w s cloud trail batch
+
+List events for an AWS CloudTrail batch
 */
 func (a *Client) GetV1IntegrationsAwsCloudtrailBatchesIDEvents(params *GetV1IntegrationsAwsCloudtrailBatchesIDEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK, error) {
 	// TODO: Validate the params before sending
@@ -379,7 +385,7 @@ func (a *Client) GetV1IntegrationsAwsConnections(params *GetV1IntegrationsAwsCon
 }
 
 /*
-GetV1IntegrationsAwsConnectionsID retrieves an a w s connection
+GetV1IntegrationsAwsConnectionsID gets an a w s connection
 
 Retrieves the information about the AWS connection.
 */
@@ -420,7 +426,7 @@ func (a *Client) GetV1IntegrationsAwsConnectionsID(params *GetV1IntegrationsAwsC
 }
 
 /*
-GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch lists available space keys
+GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch lists confluence spaces
 
 Lists available space keys for the Confluence integration connection.
 */
@@ -461,7 +467,9 @@ func (a *Client) GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch(params
 }
 
 /*
-GetV1IntegrationsConnections get v1 integrations connections API
+GetV1IntegrationsConnections lists integration connections
+
+List available integration connections
 */
 func (a *Client) GetV1IntegrationsConnections(params *GetV1IntegrationsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConnectionsOK, error) {
 	// TODO: Validate the params before sending
@@ -500,7 +508,7 @@ func (a *Client) GetV1IntegrationsConnections(params *GetV1IntegrationsConnectio
 }
 
 /*
-GetV1IntegrationsFieldMapsFieldMapIDAvailableFields gets mappable fields
+GetV1IntegrationsFieldMapsFieldMapIDAvailableFields lists available fields for field mapping
 
 Get a description of the fields to which data can be mapped
 */
@@ -541,7 +549,9 @@ func (a *Client) GetV1IntegrationsFieldMapsFieldMapIDAvailableFields(params *Get
 }
 
 /*
-GetV1IntegrationsIntegrationID Retrieve a single integration
+GetV1IntegrationsIntegrationID gets an integration
+
+Retrieve a single integration
 */
 func (a *Client) GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegrationIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsIntegrationIDOK, error) {
 	// TODO: Validate the params before sending
@@ -580,9 +590,9 @@ func (a *Client) GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegra
 }
 
 /*
-GetV1IntegrationsSlackConnectionsConnectionIDEmojiActions lists all slack emoji actions
+GetV1IntegrationsSlackConnectionsConnectionIDEmojiActions lists slack emoji actions
 
-Lists all slack emoji actions
+Lists Slack emoji actions
 */
 func (a *Client) GetV1IntegrationsSlackConnectionsConnectionIDEmojiActions(params *GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsOK, error) {
 	// TODO: Validate the params before sending
@@ -621,9 +631,9 @@ func (a *Client) GetV1IntegrationsSlackConnectionsConnectionIDEmojiActions(param
 }
 
 /*
-GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID retrieves a slack emoji action
+GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID gets a slack emoji action
 
-Retrieves a slack emoji action
+Retrieves a Slack emoji action
 */
 func (a *Client) GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK, error) {
 	// TODO: Validate the params before sending
@@ -662,7 +672,9 @@ func (a *Client) GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiA
 }
 
 /*
-GetV1IntegrationsSlackConnectionsConnectionIDWorkspaces get v1 integrations slack connections connection Id workspaces API
+GetV1IntegrationsSlackConnectionsConnectionIDWorkspaces lists slack workspaces
+
+Lists all Slack workspaces
 */
 func (a *Client) GetV1IntegrationsSlackConnectionsConnectionIDWorkspaces(params *GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesOK, error) {
 	// TODO: Validate the params before sending
@@ -701,7 +713,9 @@ func (a *Client) GetV1IntegrationsSlackConnectionsConnectionIDWorkspaces(params 
 }
 
 /*
-GetV1IntegrationsSlackUsergroups get v1 integrations slack usergroups API
+GetV1IntegrationsSlackUsergroups lists slack user groups
+
+Lists all Slack user groups
 */
 func (a *Client) GetV1IntegrationsSlackUsergroups(params *GetV1IntegrationsSlackUsergroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackUsergroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -740,7 +754,9 @@ func (a *Client) GetV1IntegrationsSlackUsergroups(params *GetV1IntegrationsSlack
 }
 
 /*
-GetV1IntegrationsStatuses get v1 integrations statuses API
+GetV1IntegrationsStatuses gets integration connection status
+
+Retrieve overall integration connection status
 */
 func (a *Client) GetV1IntegrationsStatuses(params *GetV1IntegrationsStatusesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatusesOK, error) {
 	// TODO: Validate the params before sending
@@ -779,7 +795,9 @@ func (a *Client) GetV1IntegrationsStatuses(params *GetV1IntegrationsStatusesPara
 }
 
 /*
-GetV1IntegrationsStatusesSlug get v1 integrations statuses slug API
+GetV1IntegrationsStatusesSlug gets an integration connection status
+
+Retrieve a single integration connection status
 */
 func (a *Client) GetV1IntegrationsStatusesSlug(params *GetV1IntegrationsStatusesSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatusesSlugOK, error) {
 	// TODO: Validate the params before sending
@@ -859,7 +877,7 @@ func (a *Client) GetV1IntegrationsStatuspageConnections(params *GetV1Integration
 }
 
 /*
-GetV1IntegrationsStatuspageConnectionsConnectionID retrieves a statuspage connection
+GetV1IntegrationsStatuspageConnectionsConnectionID gets a statuspage connection
 
 Retrieve the information about the Statuspage connection.
 */
@@ -900,7 +918,9 @@ func (a *Client) GetV1IntegrationsStatuspageConnectionsConnectionID(params *GetV
 }
 
 /*
-GetV1IntegrationsStatuspageConnectionsConnectionIDPages get v1 integrations statuspage connections connection Id pages API
+GetV1IntegrationsStatuspageConnectionsConnectionIDPages lists status page pages for a connection
+
+Lists available page IDs for the Statuspage integration connection.
 */
 func (a *Client) GetV1IntegrationsStatuspageConnectionsConnectionIDPages(params *GetV1IntegrationsStatuspageConnectionsConnectionIDPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsConnectionIDPagesOK, error) {
 	// TODO: Validate the params before sending
@@ -939,7 +959,50 @@ func (a *Client) GetV1IntegrationsStatuspageConnectionsConnectionIDPages(params 
 }
 
 /*
-GetV1IntegrationsZendeskSearch get v1 integrations zendesk search API
+GetV1IntegrationsZendeskConnectionIDTicketsSearch searches for zendesk tickets
+
+Search for Zendesk tickets
+*/
+func (a *Client) GetV1IntegrationsZendeskConnectionIDTicketsSearch(params *GetV1IntegrationsZendeskConnectionIDTicketsSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsZendeskConnectionIDTicketsSearchOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IntegrationsZendeskConnectionIDTicketsSearchParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IntegrationsZendeskConnectionIdTicketsSearch",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/zendesk/{connection_id}/tickets/search",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IntegrationsZendeskConnectionIDTicketsSearchReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IntegrationsZendeskConnectionIDTicketsSearchOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsZendeskConnectionIdTicketsSearch: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1IntegrationsZendeskSearch searches for zendesk tickets
+
+Search for Zendesk tickets
 */
 func (a *Client) GetV1IntegrationsZendeskSearch(params *GetV1IntegrationsZendeskSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsZendeskSearchOK, error) {
 	// TODO: Validate the params before sending
@@ -1060,7 +1123,9 @@ func (a *Client) PatchV1IntegrationsAwsConnectionsID(params *PatchV1Integrations
 }
 
 /*
-PatchV1IntegrationsConnectionsSlugConnectionID patch v1 integrations connections slug connection Id API
+PatchV1IntegrationsConnectionsSlugConnectionID updates an integration connection
+
+Update the integration connection with the provided data
 */
 func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionID(params *PatchV1IntegrationsConnectionsSlugConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDOK, error) {
 	// TODO: Validate the params before sending
@@ -1099,7 +1164,9 @@ func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionID(params *PatchV1I
 }
 
 /*
-PatchV1IntegrationsConnectionsSlugConnectionIDRefresh patch v1 integrations connections slug connection Id refresh API
+PatchV1IntegrationsConnectionsSlugConnectionIDRefresh refreshes an integration connection
+
+Refresh the integration connection with the provided data
 */
 func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionIDRefresh(params *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK, error) {
 	// TODO: Validate the params before sending
@@ -1138,9 +1205,9 @@ func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionIDRefresh(params *P
 }
 
 /*
-PatchV1IntegrationsFieldMapsFieldMapID updates field map
+PatchV1IntegrationsFieldMapsFieldMapID updates field mapping
 
-Update field map
+Update field mapping
 */
 func (a *Client) PatchV1IntegrationsFieldMapsFieldMapID(params *PatchV1IntegrationsFieldMapsFieldMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsFieldMapsFieldMapIDOK, error) {
 	// TODO: Validate the params before sending
@@ -1181,7 +1248,7 @@ func (a *Client) PatchV1IntegrationsFieldMapsFieldMapID(params *PatchV1Integrati
 /*
 PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID updates a slack emoji action
 
-Updates a slack emoji action
+Updates a Slack emoji action
 */
 func (a *Client) PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK, error) {
 	// TODO: Validate the params before sending
@@ -1261,7 +1328,9 @@ func (a *Client) PatchV1IntegrationsStatuspageConnectionsConnectionID(params *Pa
 }
 
 /*
-PostV1IntegrationsConnectionsSlug post v1 integrations connections slug API
+PostV1IntegrationsConnectionsSlug creates a new integration connection
+
+Create a new integration connection
 */
 func (a *Client) PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsConnectionsSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsConnectionsSlugCreated, error) {
 	// TODO: Validate the params before sending
@@ -1302,7 +1371,7 @@ func (a *Client) PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsCon
 /*
 PostV1IntegrationsSlackConnectionsConnectionIDEmojiActions creates a new slack emoji action
 
-Creates a new slack emoji action
+Creates a new Slack emoji action
 */
 func (a *Client) PostV1IntegrationsSlackConnectionsConnectionIDEmojiActions(params *PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsCreated, error) {
 	// TODO: Validate the params before sending
