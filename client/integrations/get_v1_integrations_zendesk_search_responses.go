@@ -39,7 +39,7 @@ func NewGetV1IntegrationsZendeskSearchOK() *GetV1IntegrationsZendeskSearchOK {
 /*
 GetV1IntegrationsZendeskSearchOK describes a response with status code 200, with default header values.
 
-get Search(s)
+Search for Zendesk tickets
 */
 type GetV1IntegrationsZendeskSearchOK struct {
 }

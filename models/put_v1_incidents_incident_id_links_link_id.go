@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PutV1IncidentsIncidentIDLinksLinkID Updates the external incident link attributes
+// PutV1IncidentsIncidentIDLinksLinkID Update the external incident link attributes
 //
 // swagger:model putV1IncidentsIncidentIdLinksLinkId
 type PutV1IncidentsIncidentIDLinksLinkID struct {

@@ -34,6 +34,8 @@ type ClientService interface {
 
 	DeleteV1RunbooksRunbookID(params *DeleteV1RunbooksRunbookIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1RunbooksRunbookIDOK, error)
 
+	GetV1RunbookAudits(params *GetV1RunbookAuditsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbookAuditsOK, error)
+
 	GetV1Runbooks(params *GetV1RunbooksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksOK, error)
 
 	GetV1RunbooksActions(params *GetV1RunbooksActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksActionsOK, error)
@@ -44,17 +46,9 @@ type ClientService interface {
 
 	GetV1RunbooksExecutionsExecutionIDStepsStepIDScript(params *GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDStepsStepIDScriptOK, error)
 
-	GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusOK, error)
-
-	GetV1RunbooksExecutionsExecutionIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDVotesStatusOK, error)
-
 	GetV1RunbooksRunbookID(params *GetV1RunbooksRunbookIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksRunbookIDOK, error)
 
 	GetV1RunbooksSelectOptionsIntegrationSlugActionSlugField(params *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK, error)
-
-	PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(params *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK, error)
-
-	PatchV1RunbooksExecutionsExecutionIDVotes(params *PatchV1RunbooksExecutionsExecutionIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDVotesOK, error)
 
 	PostV1Runbooks(params *PostV1RunbooksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1RunbooksCreated, error)
 
@@ -152,6 +146,47 @@ func (a *Client) DeleteV1RunbooksRunbookID(params *DeleteV1RunbooksRunbookIDPara
 }
 
 /*
+GetV1RunbookAudits lists runbook audits
+
+Please contact support to enable audit logging for your account.
+*/
+func (a *Client) GetV1RunbookAudits(params *GetV1RunbookAuditsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbookAuditsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1RunbookAuditsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1RunbookAudits",
+		Method:             "GET",
+		PathPattern:        "/v1/runbook_audits",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1RunbookAuditsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1RunbookAuditsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1RunbookAudits: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 GetV1Runbooks lists runbooks
 
 Lists all available runbooks.
@@ -193,9 +228,9 @@ func (a *Client) GetV1Runbooks(params *GetV1RunbooksParams, authInfo runtime.Cli
 }
 
 /*
-GetV1RunbooksActions lists all runbook actions
+GetV1RunbooksActions lists runbook actions
 
-List all Runbook actions available through your connected integrations
+List all runbook actions available through your connected integrations
 */
 func (a *Client) GetV1RunbooksActions(params *GetV1RunbooksActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksActionsOK, error) {
 	// TODO: Validate the params before sending
@@ -234,9 +269,9 @@ func (a *Client) GetV1RunbooksActions(params *GetV1RunbooksActionsParams, authIn
 }
 
 /*
-GetV1RunbooksExecutions lists all executions of runbooks
+GetV1RunbooksExecutions lists runbook executions
 
-List all Runbook executions across all Runbooks
+List all runbook executions across all runbooks
 */
 func (a *Client) GetV1RunbooksExecutions(params *GetV1RunbooksExecutionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsOK, error) {
 	// TODO: Validate the params before sending
@@ -275,7 +310,7 @@ func (a *Client) GetV1RunbooksExecutions(params *GetV1RunbooksExecutionsParams, 
 }
 
 /*
-GetV1RunbooksExecutionsExecutionID retrieves a runbook execution
+GetV1RunbooksExecutionsExecutionID gets a runbook execution
 
 Retrieve a runbook execution by ID
 */
@@ -316,7 +351,7 @@ func (a *Client) GetV1RunbooksExecutionsExecutionID(params *GetV1RunbooksExecuti
 }
 
 /*
-GetV1RunbooksExecutionsExecutionIDStepsStepIDScript retrieves the bash script from a script step
+GetV1RunbooksExecutionsExecutionIDStepsStepIDScript gets a step s bash script
 
 Retrieves the bash script from a "script" step.
 */
@@ -357,89 +392,7 @@ func (a *Client) GetV1RunbooksExecutionsExecutionIDStepsStepIDScript(params *Get
 }
 
 /*
-GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus returns the current vote counts for an object
-
-Returns the current vote counts for an object
-*/
-func (a *Client) GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1RunbooksExecutionsExecutionIdStepsStepIdVotesStatus",
-		Method:             "GET",
-		PathPattern:        "/v1/runbooks/executions/{execution_id}/steps/{step_id}/votes/status",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1RunbooksExecutionsExecutionIdStepsStepIdVotesStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1RunbooksExecutionsExecutionIDVotesStatus returns the current vote counts for an object
-
-Returns the current vote counts for an object
-*/
-func (a *Client) GetV1RunbooksExecutionsExecutionIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDVotesStatusOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1RunbooksExecutionsExecutionIDVotesStatusParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1RunbooksExecutionsExecutionIdVotesStatus",
-		Method:             "GET",
-		PathPattern:        "/v1/runbooks/executions/{execution_id}/votes/status",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1RunbooksExecutionsExecutionIDVotesStatusReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1RunbooksExecutionsExecutionIDVotesStatusOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1RunbooksExecutionsExecutionIdVotesStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1RunbooksRunbookID retrieves a runbook
+GetV1RunbooksRunbookID gets a runbook
 
 Get a runbook and all its configuration
 */
@@ -480,7 +433,9 @@ func (a *Client) GetV1RunbooksRunbookID(params *GetV1RunbooksRunbookIDParams, au
 }
 
 /*
-GetV1RunbooksSelectOptionsIntegrationSlugActionSlugField get v1 runbooks select options integration slug action slug field API
+GetV1RunbooksSelectOptionsIntegrationSlugActionSlugField lists select options for a runbook integration action field
+
+List select options for a runbook integration action field
 */
 func (a *Client) GetV1RunbooksSelectOptionsIntegrationSlugActionSlugField(params *GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK, error) {
 	// TODO: Validate the params before sending
@@ -515,88 +470,6 @@ func (a *Client) GetV1RunbooksSelectOptionsIntegrationSlugActionSlugField(params
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1RunbooksSelectOptionsIntegrationSlugActionSlugField: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes updates the votes on an object
-
-Allows for upvoting or downvoting an event
-*/
-func (a *Client) PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(params *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1RunbooksExecutionsExecutionIdStepsStepIdVotes",
-		Method:             "PATCH",
-		PathPattern:        "/v1/runbooks/executions/{execution_id}/steps/{step_id}/votes",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1RunbooksExecutionsExecutionIdStepsStepIdVotes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1RunbooksExecutionsExecutionIDVotes updates the votes on an object
-
-Allows for upvoting or downvoting an event
-*/
-func (a *Client) PatchV1RunbooksExecutionsExecutionIDVotes(params *PatchV1RunbooksExecutionsExecutionIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDVotesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1RunbooksExecutionsExecutionIDVotesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1RunbooksExecutionsExecutionIdVotes",
-		Method:             "PATCH",
-		PathPattern:        "/v1/runbooks/executions/{execution_id}/votes",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1RunbooksExecutionsExecutionIDVotesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1RunbooksExecutionsExecutionIDVotesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1RunbooksExecutionsExecutionIdVotes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -724,7 +597,7 @@ func (a *Client) PutV1RunbooksExecutionsExecutionIDStepsStepID(params *PutV1Runb
 }
 
 /*
-PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptState updates the execution s step
+PutV1RunbooksExecutionsExecutionIDStepsStepIDScriptState updates a script step s execution status
 
 Updates the execution's step.
 */

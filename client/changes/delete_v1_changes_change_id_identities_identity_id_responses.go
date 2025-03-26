@@ -48,7 +48,7 @@ func NewDeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent() *DeleteV1ChangesC
 /*
 DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent describes a response with status code 204, with default header values.
 
-Delete an identity
+Delete an identity from the change entry
 */
 type DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent struct {
 }

@@ -7,9 +7,12 @@ package ticketing
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsReader is a Reader for the GetV1TicketingProjectsTicketingProjectIDInboundFieldMaps structure.
@@ -39,9 +42,10 @@ func NewGetV1TicketingProjectsTicketingProjectIDInboundFieldMapsOK() *GetV1Ticke
 /*
 GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsOK describes a response with status code 200, with default header values.
 
-get InboundFieldMap(s)
+List all inbound field maps for a ticketing project
 */
 type GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsOK struct {
+	Payload *models.TicketingProjectInboundFieldMapEntity
 }
 
 // IsSuccess returns true when this get v1 ticketing projects ticketing project Id inbound field maps o k response has a 2xx status code
@@ -70,14 +74,25 @@ func (o *GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsOK) IsCode(code
 }
 
 func (o *GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsOK) Error() string {
-	return fmt.Sprintf("[GET /v1/ticketing/projects/{ticketing_project_id}/inbound_field_maps][%d] getV1TicketingProjectsTicketingProjectIdInboundFieldMapsOK ", 200)
+	return fmt.Sprintf("[GET /v1/ticketing/projects/{ticketing_project_id}/inbound_field_maps][%d] getV1TicketingProjectsTicketingProjectIdInboundFieldMapsOK  %+v", 200, o.Payload)
 }
 
 func (o *GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsOK) String() string {
-	return fmt.Sprintf("[GET /v1/ticketing/projects/{ticketing_project_id}/inbound_field_maps][%d] getV1TicketingProjectsTicketingProjectIdInboundFieldMapsOK ", 200)
+	return fmt.Sprintf("[GET /v1/ticketing/projects/{ticketing_project_id}/inbound_field_maps][%d] getV1TicketingProjectsTicketingProjectIdInboundFieldMapsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsOK) GetPayload() *models.TicketingProjectInboundFieldMapEntity {
+	return o.Payload
 }
 
 func (o *GetV1TicketingProjectsTicketingProjectIDInboundFieldMapsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.TicketingProjectInboundFieldMapEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

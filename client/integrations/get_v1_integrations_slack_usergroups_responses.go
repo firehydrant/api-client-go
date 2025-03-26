@@ -7,9 +7,12 @@ package integrations
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1IntegrationsSlackUsergroupsReader is a Reader for the GetV1IntegrationsSlackUsergroups structure.
@@ -39,9 +42,10 @@ func NewGetV1IntegrationsSlackUsergroupsOK() *GetV1IntegrationsSlackUsergroupsOK
 /*
 GetV1IntegrationsSlackUsergroupsOK describes a response with status code 200, with default header values.
 
-get Usergroup(s)
+Lists all Slack user groups
 */
 type GetV1IntegrationsSlackUsergroupsOK struct {
+	Payload *models.IntegrationsSlackUsergroupEntity
 }
 
 // IsSuccess returns true when this get v1 integrations slack usergroups o k response has a 2xx status code
@@ -70,14 +74,25 @@ func (o *GetV1IntegrationsSlackUsergroupsOK) IsCode(code int) bool {
 }
 
 func (o *GetV1IntegrationsSlackUsergroupsOK) Error() string {
-	return fmt.Sprintf("[GET /v1/integrations/slack/usergroups][%d] getV1IntegrationsSlackUsergroupsOK ", 200)
+	return fmt.Sprintf("[GET /v1/integrations/slack/usergroups][%d] getV1IntegrationsSlackUsergroupsOK  %+v", 200, o.Payload)
 }
 
 func (o *GetV1IntegrationsSlackUsergroupsOK) String() string {
-	return fmt.Sprintf("[GET /v1/integrations/slack/usergroups][%d] getV1IntegrationsSlackUsergroupsOK ", 200)
+	return fmt.Sprintf("[GET /v1/integrations/slack/usergroups][%d] getV1IntegrationsSlackUsergroupsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1IntegrationsSlackUsergroupsOK) GetPayload() *models.IntegrationsSlackUsergroupEntity {
+	return o.Payload
 }
 
 func (o *GetV1IntegrationsSlackUsergroupsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.IntegrationsSlackUsergroupEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

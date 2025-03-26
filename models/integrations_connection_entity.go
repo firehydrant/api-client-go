@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// IntegrationsConnectionEntity integrations connection entity
+// IntegrationsConnectionEntity Integrations_ConnectionEntity model
 //
 // swagger:model Integrations_ConnectionEntity
 type IntegrationsConnectionEntity struct {

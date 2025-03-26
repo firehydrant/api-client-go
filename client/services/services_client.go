@@ -30,9 +30,17 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	DeleteV1ServiceDependenciesServiceDependencyID(params *DeleteV1ServiceDependenciesServiceDependencyIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ServiceDependenciesServiceDependencyIDOK, error)
+
 	DeleteV1ServicesServiceID(params *DeleteV1ServicesServiceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ServicesServiceIDOK, error)
 
 	DeleteV1ServicesServiceIDServiceLinksRemoteID(params *DeleteV1ServicesServiceIDServiceLinksRemoteIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ServicesServiceIDServiceLinksRemoteIDNoContent, error)
+
+	GetV1CatalogsCatalogIDRefresh(params *GetV1CatalogsCatalogIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1CatalogsCatalogIDRefreshOK, error)
+
+	GetV1Infrastructures(params *GetV1InfrastructuresParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1InfrastructuresOK, error)
+
+	GetV1ServiceDependenciesServiceDependencyID(params *GetV1ServiceDependenciesServiceDependencyIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServiceDependenciesServiceDependencyIDOK, error)
 
 	GetV1Services(params *GetV1ServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesOK, error)
 
@@ -44,7 +52,15 @@ type ClientService interface {
 
 	GetV1ServicesServiceIDDependencies(params *GetV1ServicesServiceIDDependenciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServicesServiceIDDependenciesOK, error)
 
+	GetV1UsersIDServices(params *GetV1UsersIDServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1UsersIDServicesOK, error)
+
+	PatchV1ServiceDependenciesServiceDependencyID(params *PatchV1ServiceDependenciesServiceDependencyIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ServiceDependenciesServiceDependencyIDOK, error)
+
 	PatchV1ServicesServiceID(params *PatchV1ServicesServiceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ServicesServiceIDOK, error)
+
+	PostV1CatalogsCatalogIDIngest(params *PostV1CatalogsCatalogIDIngestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1CatalogsCatalogIDIngestCreated, error)
+
+	PostV1ServiceDependencies(params *PostV1ServiceDependenciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServiceDependenciesCreated, error)
 
 	PostV1Services(params *PostV1ServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesCreated, error)
 
@@ -53,6 +69,47 @@ type ClientService interface {
 	PostV1ServicesServiceLinks(params *PostV1ServicesServiceLinksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServicesServiceLinksCreated, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+DeleteV1ServiceDependenciesServiceDependencyID deletes a service dependency
+
+Deletes a single service dependency
+*/
+func (a *Client) DeleteV1ServiceDependenciesServiceDependencyID(params *DeleteV1ServiceDependenciesServiceDependencyIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ServiceDependenciesServiceDependencyIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteV1ServiceDependenciesServiceDependencyIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "deleteV1ServiceDependenciesServiceDependencyId",
+		Method:             "DELETE",
+		PathPattern:        "/v1/service_dependencies/{service_dependency_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteV1ServiceDependenciesServiceDependencyIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteV1ServiceDependenciesServiceDependencyIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for deleteV1ServiceDependenciesServiceDependencyId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -138,7 +195,130 @@ func (a *Client) DeleteV1ServicesServiceIDServiceLinksRemoteID(params *DeleteV1S
 }
 
 /*
-GetV1Services lists all services
+GetV1CatalogsCatalogIDRefresh refreshes a service catalog
+
+Schedules an async task to re-import catalog info and update catalog data accordingly.
+*/
+func (a *Client) GetV1CatalogsCatalogIDRefresh(params *GetV1CatalogsCatalogIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1CatalogsCatalogIDRefreshOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1CatalogsCatalogIDRefreshParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1CatalogsCatalogIdRefresh",
+		Method:             "GET",
+		PathPattern:        "/v1/catalogs/{catalog_id}/refresh",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1CatalogsCatalogIDRefreshReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1CatalogsCatalogIDRefreshOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1CatalogsCatalogIdRefresh: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1Infrastructures lists functionality service and environment objects
+
+Lists functionality, service and environment objects
+*/
+func (a *Client) GetV1Infrastructures(params *GetV1InfrastructuresParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1InfrastructuresOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1InfrastructuresParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1Infrastructures",
+		Method:             "GET",
+		PathPattern:        "/v1/infrastructures",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1InfrastructuresReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1InfrastructuresOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1Infrastructures: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1ServiceDependenciesServiceDependencyID gets a service dependency
+
+Retrieves a single service dependency by ID
+*/
+func (a *Client) GetV1ServiceDependenciesServiceDependencyID(params *GetV1ServiceDependenciesServiceDependencyIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ServiceDependenciesServiceDependencyIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1ServiceDependenciesServiceDependencyIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1ServiceDependenciesServiceDependencyId",
+		Method:             "GET",
+		PathPattern:        "/v1/service_dependencies/{service_dependency_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1ServiceDependenciesServiceDependencyIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1ServiceDependenciesServiceDependencyIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1ServiceDependenciesServiceDependencyId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1Services lists services
 
 List all of the services that have been added to the organization.
 */
@@ -179,7 +359,7 @@ func (a *Client) GetV1Services(params *GetV1ServicesParams, authInfo runtime.Cli
 }
 
 /*
-GetV1ServicesServiceID retrieves a single service
+GetV1ServicesServiceID gets a service
 
 Retrieves a single service by ID
 */
@@ -220,7 +400,7 @@ func (a *Client) GetV1ServicesServiceID(params *GetV1ServicesServiceIDParams, au
 }
 
 /*
-GetV1ServicesServiceIDAvailableDownstreamDependencies retrieves all available downstream dependencies
+GetV1ServicesServiceIDAvailableDownstreamDependencies lists available downstream service dependencies
 
 Retrieves all services that are available to be downstream dependencies
 */
@@ -261,7 +441,7 @@ func (a *Client) GetV1ServicesServiceIDAvailableDownstreamDependencies(params *G
 }
 
 /*
-GetV1ServicesServiceIDAvailableUpstreamDependencies retrieves all available upstream dependencies
+GetV1ServicesServiceIDAvailableUpstreamDependencies lists available upstream service dependencies
 
 Retrieves all services that are available to be upstream dependencies
 */
@@ -302,7 +482,7 @@ func (a *Client) GetV1ServicesServiceIDAvailableUpstreamDependencies(params *Get
 }
 
 /*
-GetV1ServicesServiceIDDependencies retrieves a service s dependencies
+GetV1ServicesServiceIDDependencies lists dependencies for a service
 
 Retrieves a service's dependencies
 */
@@ -339,6 +519,88 @@ func (a *Client) GetV1ServicesServiceIDDependencies(params *GetV1ServicesService
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for getV1ServicesServiceIdDependencies: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1UsersIDServices lists services owned by a user s teams
+
+Retrieves a list of services owned by the teams a user is on
+*/
+func (a *Client) GetV1UsersIDServices(params *GetV1UsersIDServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1UsersIDServicesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1UsersIDServicesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1UsersIdServices",
+		Method:             "GET",
+		PathPattern:        "/v1/users/{id}/services",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1UsersIDServicesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1UsersIDServicesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1UsersIdServices: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1ServiceDependenciesServiceDependencyID updates a service dependency
+
+Update the notes of the service dependency
+*/
+func (a *Client) PatchV1ServiceDependenciesServiceDependencyID(params *PatchV1ServiceDependenciesServiceDependencyIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ServiceDependenciesServiceDependencyIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1ServiceDependenciesServiceDependencyIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1ServiceDependenciesServiceDependencyId",
+		Method:             "PATCH",
+		PathPattern:        "/v1/service_dependencies/{service_dependency_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1ServiceDependenciesServiceDependencyIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1ServiceDependenciesServiceDependencyIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1ServiceDependenciesServiceDependencyId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -382,6 +644,88 @@ func (a *Client) PatchV1ServicesServiceID(params *PatchV1ServicesServiceIDParams
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for patchV1ServicesServiceId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1CatalogsCatalogIDIngest ingests service catalog data
+
+Accepts catalog data in the configured format and asyncronously processes the data to incorporate changes into service catalog.
+*/
+func (a *Client) PostV1CatalogsCatalogIDIngest(params *PostV1CatalogsCatalogIDIngestParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1CatalogsCatalogIDIngestCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1CatalogsCatalogIDIngestParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1CatalogsCatalogIdIngest",
+		Method:             "POST",
+		PathPattern:        "/v1/catalogs/{catalog_id}/ingest",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1CatalogsCatalogIDIngestReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1CatalogsCatalogIDIngestCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1CatalogsCatalogIdIngest: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1ServiceDependencies creates a service dependency
+
+Creates a service dependency relationship between two services
+*/
+func (a *Client) PostV1ServiceDependencies(params *PostV1ServiceDependenciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ServiceDependenciesCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPostV1ServiceDependenciesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "postV1ServiceDependencies",
+		Method:             "POST",
+		PathPattern:        "/v1/service_dependencies",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PostV1ServiceDependenciesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PostV1ServiceDependenciesCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for postV1ServiceDependencies: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -468,7 +812,7 @@ func (a *Client) PostV1ServicesServiceIDChecklistResponseChecklistID(params *Pos
 }
 
 /*
-PostV1ServicesServiceLinks bulks create services and service links
+PostV1ServicesServiceLinks creates multiple services linked to external services
 
 Creates a service with the appropriate integration for each external service ID passed
 */

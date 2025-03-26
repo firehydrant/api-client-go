@@ -42,7 +42,7 @@ func NewPatchV1IntegrationsFieldMapsFieldMapIDOK() *PatchV1IntegrationsFieldMaps
 /*
 PatchV1IntegrationsFieldMapsFieldMapIDOK describes a response with status code 200, with default header values.
 
-Update field map
+Update field mapping
 */
 type PatchV1IntegrationsFieldMapsFieldMapIDOK struct {
 	Payload *models.FieldMappingFieldMapEntity

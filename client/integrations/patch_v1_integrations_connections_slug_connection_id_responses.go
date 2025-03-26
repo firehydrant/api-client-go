@@ -7,9 +7,12 @@ package integrations
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // PatchV1IntegrationsConnectionsSlugConnectionIDReader is a Reader for the PatchV1IntegrationsConnectionsSlugConnectionID structure.
@@ -39,9 +42,10 @@ func NewPatchV1IntegrationsConnectionsSlugConnectionIDOK() *PatchV1IntegrationsC
 /*
 PatchV1IntegrationsConnectionsSlugConnectionIDOK describes a response with status code 200, with default header values.
 
-patched Connection
+Update the integration connection with the provided data
 */
 type PatchV1IntegrationsConnectionsSlugConnectionIDOK struct {
+	Payload *models.IntegrationsConnectionEntity
 }
 
 // IsSuccess returns true when this patch v1 integrations connections slug connection Id o k response has a 2xx status code
@@ -70,14 +74,25 @@ func (o *PatchV1IntegrationsConnectionsSlugConnectionIDOK) IsCode(code int) bool
 }
 
 func (o *PatchV1IntegrationsConnectionsSlugConnectionIDOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/integrations/connections/{slug}/{connection_id}][%d] patchV1IntegrationsConnectionsSlugConnectionIdOK ", 200)
+	return fmt.Sprintf("[PATCH /v1/integrations/connections/{slug}/{connection_id}][%d] patchV1IntegrationsConnectionsSlugConnectionIdOK  %+v", 200, o.Payload)
 }
 
 func (o *PatchV1IntegrationsConnectionsSlugConnectionIDOK) String() string {
-	return fmt.Sprintf("[PATCH /v1/integrations/connections/{slug}/{connection_id}][%d] patchV1IntegrationsConnectionsSlugConnectionIdOK ", 200)
+	return fmt.Sprintf("[PATCH /v1/integrations/connections/{slug}/{connection_id}][%d] patchV1IntegrationsConnectionsSlugConnectionIdOK  %+v", 200, o.Payload)
+}
+
+func (o *PatchV1IntegrationsConnectionsSlugConnectionIDOK) GetPayload() *models.IntegrationsConnectionEntity {
+	return o.Payload
 }
 
 func (o *PatchV1IntegrationsConnectionsSlugConnectionIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.IntegrationsConnectionEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
