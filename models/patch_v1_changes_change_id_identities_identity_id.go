@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PatchV1ChangesChangeIDIdentitiesIdentityID Update an identity
+// PatchV1ChangesChangeIDIdentitiesIdentityID Update an identity for the change entry
 //
 // swagger:model patchV1ChangesChangeIdIdentitiesIdentityId
 type PatchV1ChangesChangeIDIdentitiesIdentityID struct {

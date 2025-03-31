@@ -7,9 +7,12 @@ package signals
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1SignalsTransposersReader is a Reader for the GetV1SignalsTransposers structure.
@@ -39,9 +42,10 @@ func NewGetV1SignalsTransposersOK() *GetV1SignalsTransposersOK {
 /*
 GetV1SignalsTransposersOK describes a response with status code 200, with default header values.
 
-get Transposer(s)
+List all transposers for your organization
 */
 type GetV1SignalsTransposersOK struct {
+	Payload *models.SignalsAPITransposerListEntity
 }
 
 // IsSuccess returns true when this get v1 signals transposers o k response has a 2xx status code
@@ -70,14 +74,25 @@ func (o *GetV1SignalsTransposersOK) IsCode(code int) bool {
 }
 
 func (o *GetV1SignalsTransposersOK) Error() string {
-	return fmt.Sprintf("[GET /v1/signals/transposers][%d] getV1SignalsTransposersOK ", 200)
+	return fmt.Sprintf("[GET /v1/signals/transposers][%d] getV1SignalsTransposersOK  %+v", 200, o.Payload)
 }
 
 func (o *GetV1SignalsTransposersOK) String() string {
-	return fmt.Sprintf("[GET /v1/signals/transposers][%d] getV1SignalsTransposersOK ", 200)
+	return fmt.Sprintf("[GET /v1/signals/transposers][%d] getV1SignalsTransposersOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1SignalsTransposersOK) GetPayload() *models.SignalsAPITransposerListEntity {
+	return o.Payload
 }
 
 func (o *GetV1SignalsTransposersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.SignalsAPITransposerListEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

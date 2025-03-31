@@ -39,7 +39,7 @@ func NewDeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionI
 /*
 DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDNoContent describes a response with status code 204, with default header values.
 
-Deletes a slack emoji action
+Deletes a Slack emoji action
 */
 type DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDNoContent struct {
 }

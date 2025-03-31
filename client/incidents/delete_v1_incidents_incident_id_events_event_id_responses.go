@@ -42,7 +42,7 @@ func NewDeleteV1IncidentsIncidentIDEventsEventIDOK() *DeleteV1IncidentsIncidentI
 /*
 DeleteV1IncidentsIncidentIDEventsEventIDOK describes a response with status code 200, with default header values.
 
-Delete a single event for an incident
+Delete an event for an incident
 */
 type DeleteV1IncidentsIncidentIDEventsEventIDOK struct {
 	Payload *models.IncidentEventEntity

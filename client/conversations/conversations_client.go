@@ -40,7 +40,19 @@ type ClientService interface {
 
 	GetV1ConversationsConversationIDCommentsCommentIDReactions(params *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ConversationsConversationIDCommentsCommentIDReactionsOK, error)
 
+	GetV1IncidentsIncidentIDEventsEventIDVotesStatus(params *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK, error)
+
+	GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusOK, error)
+
+	GetV1RunbooksExecutionsExecutionIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDVotesStatusOK, error)
+
 	PatchV1ConversationsConversationIDCommentsCommentID(params *PatchV1ConversationsConversationIDCommentsCommentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ConversationsConversationIDCommentsCommentIDOK, error)
+
+	PatchV1IncidentsIncidentIDEventsEventIDVotes(params *PatchV1IncidentsIncidentIDEventsEventIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDEventsEventIDVotesOK, error)
+
+	PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(params *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK, error)
+
+	PatchV1RunbooksExecutionsExecutionIDVotes(params *PatchV1RunbooksExecutionsExecutionIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDVotesOK, error)
 
 	PostV1ConversationsConversationIDComments(params *PostV1ConversationsConversationIDCommentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ConversationsConversationIDCommentsCreated, error)
 
@@ -50,7 +62,7 @@ type ClientService interface {
 }
 
 /*
-DeleteV1ConversationsConversationIDCommentsCommentID archives a comment
+DeleteV1ConversationsConversationIDCommentsCommentID archives a conversation comment
 
 ALPHA - Archive a comment
 */
@@ -91,7 +103,7 @@ func (a *Client) DeleteV1ConversationsConversationIDCommentsCommentID(params *De
 }
 
 /*
-DeleteV1ConversationsConversationIDCommentsCommentIDReactionsReactionID archives a reaction
+DeleteV1ConversationsConversationIDCommentsCommentIDReactionsReactionID deletes a reaction from a conversation comment
 
 ALPHA - Archive a reaction
 */
@@ -132,7 +144,7 @@ func (a *Client) DeleteV1ConversationsConversationIDCommentsCommentIDReactionsRe
 }
 
 /*
-GetV1ConversationsConversationIDComments lists all comments
+GetV1ConversationsConversationIDComments lists comments for a conversation
 
 ALPHA - List all of the comments that have been added to the organization
 */
@@ -173,7 +185,7 @@ func (a *Client) GetV1ConversationsConversationIDComments(params *GetV1Conversat
 }
 
 /*
-GetV1ConversationsConversationIDCommentsCommentID retrieves a single comment
+GetV1ConversationsConversationIDCommentsCommentID gets a conversation comment
 
 ALPHA - Retrieves a single comment by ID
 */
@@ -214,7 +226,7 @@ func (a *Client) GetV1ConversationsConversationIDCommentsCommentID(params *GetV1
 }
 
 /*
-GetV1ConversationsConversationIDCommentsCommentIDReactions lists all reactions for a comment
+GetV1ConversationsConversationIDCommentsCommentIDReactions lists reactions for a conversation comment
 
 ALPHA - List all of the reactions that have been added to a comment
 */
@@ -255,7 +267,130 @@ func (a *Client) GetV1ConversationsConversationIDCommentsCommentIDReactions(para
 }
 
 /*
-PatchV1ConversationsConversationIDCommentsCommentID updates a comment
+GetV1IncidentsIncidentIDEventsEventIDVotesStatus gets votes
+
+Get an object's current vote counts
+*/
+func (a *Client) GetV1IncidentsIncidentIDEventsEventIDVotesStatus(params *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1IncidentsIncidentIDEventsEventIDVotesStatusParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1IncidentsIncidentIdEventsEventIdVotesStatus",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/events/{event_id}/votes/status",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1IncidentsIncidentIDEventsEventIDVotesStatusReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdEventsEventIdVotesStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus gets votes
+
+Get an object's current vote counts
+*/
+func (a *Client) GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1RunbooksExecutionsExecutionIdStepsStepIdVotesStatus",
+		Method:             "GET",
+		PathPattern:        "/v1/runbooks/executions/{execution_id}/steps/{step_id}/votes/status",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1RunbooksExecutionsExecutionIdStepsStepIdVotesStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1RunbooksExecutionsExecutionIDVotesStatus gets votes
+
+Get an object's current vote counts
+*/
+func (a *Client) GetV1RunbooksExecutionsExecutionIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDVotesStatusOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1RunbooksExecutionsExecutionIDVotesStatusParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1RunbooksExecutionsExecutionIdVotesStatus",
+		Method:             "GET",
+		PathPattern:        "/v1/runbooks/executions/{execution_id}/votes/status",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1RunbooksExecutionsExecutionIDVotesStatusReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1RunbooksExecutionsExecutionIDVotesStatusOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1RunbooksExecutionsExecutionIdVotesStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1ConversationsConversationIDCommentsCommentID updates a conversation comment
 
 ALPHA - Update a comment's attributes
 */
@@ -296,7 +431,130 @@ func (a *Client) PatchV1ConversationsConversationIDCommentsCommentID(params *Pat
 }
 
 /*
-PostV1ConversationsConversationIDComments creates a comment
+PatchV1IncidentsIncidentIDEventsEventIDVotes updates votes
+
+Upvote or downvote an object
+*/
+func (a *Client) PatchV1IncidentsIncidentIDEventsEventIDVotes(params *PatchV1IncidentsIncidentIDEventsEventIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDEventsEventIDVotesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1IncidentsIncidentIDEventsEventIDVotesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1IncidentsIncidentIdEventsEventIdVotes",
+		Method:             "PATCH",
+		PathPattern:        "/v1/incidents/{incident_id}/events/{event_id}/votes",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1IncidentsIncidentIDEventsEventIDVotesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1IncidentsIncidentIDEventsEventIDVotesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1IncidentsIncidentIdEventsEventIdVotes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes updates votes
+
+Upvote or downvote an object
+*/
+func (a *Client) PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(params *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1RunbooksExecutionsExecutionIdStepsStepIdVotes",
+		Method:             "PATCH",
+		PathPattern:        "/v1/runbooks/executions/{execution_id}/steps/{step_id}/votes",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1RunbooksExecutionsExecutionIdStepsStepIdVotes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PatchV1RunbooksExecutionsExecutionIDVotes updates votes
+
+Upvote or downvote an object
+*/
+func (a *Client) PatchV1RunbooksExecutionsExecutionIDVotes(params *PatchV1RunbooksExecutionsExecutionIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDVotesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPatchV1RunbooksExecutionsExecutionIDVotesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "patchV1RunbooksExecutionsExecutionIdVotes",
+		Method:             "PATCH",
+		PathPattern:        "/v1/runbooks/executions/{execution_id}/votes",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PatchV1RunbooksExecutionsExecutionIDVotesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PatchV1RunbooksExecutionsExecutionIDVotesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for patchV1RunbooksExecutionsExecutionIdVotes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PostV1ConversationsConversationIDComments creates a conversation comment
 
 ALPHA - Creates a comment for a project
 */
@@ -337,7 +595,7 @@ func (a *Client) PostV1ConversationsConversationIDComments(params *PostV1Convers
 }
 
 /*
-PostV1ConversationsConversationIDCommentsCommentIDReactions creates a reaction
+PostV1ConversationsConversationIDCommentsCommentIDReactions creates a reaction for a conversation comment
 
 ALPHA - Create a reaction on a comment
 */

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PatchV1SeverityMatrixConditionsConditionID Update a specific condition
+// PatchV1SeverityMatrixConditionsConditionID Update a severity matrix condition
 //
 // swagger:model patchV1SeverityMatrixConditionsConditionId
 type PatchV1SeverityMatrixConditionsConditionID struct {

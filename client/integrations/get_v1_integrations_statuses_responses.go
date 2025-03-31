@@ -7,9 +7,12 @@ package integrations
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1IntegrationsStatusesReader is a Reader for the GetV1IntegrationsStatuses structure.
@@ -39,9 +42,10 @@ func NewGetV1IntegrationsStatusesOK() *GetV1IntegrationsStatusesOK {
 /*
 GetV1IntegrationsStatusesOK describes a response with status code 200, with default header values.
 
-get Status(s)
+Retrieve overall integration connection status
 */
 type GetV1IntegrationsStatusesOK struct {
+	Payload *models.IntegrationsConnectionStatusEntity
 }
 
 // IsSuccess returns true when this get v1 integrations statuses o k response has a 2xx status code
@@ -70,14 +74,25 @@ func (o *GetV1IntegrationsStatusesOK) IsCode(code int) bool {
 }
 
 func (o *GetV1IntegrationsStatusesOK) Error() string {
-	return fmt.Sprintf("[GET /v1/integrations/statuses][%d] getV1IntegrationsStatusesOK ", 200)
+	return fmt.Sprintf("[GET /v1/integrations/statuses][%d] getV1IntegrationsStatusesOK  %+v", 200, o.Payload)
 }
 
 func (o *GetV1IntegrationsStatusesOK) String() string {
-	return fmt.Sprintf("[GET /v1/integrations/statuses][%d] getV1IntegrationsStatusesOK ", 200)
+	return fmt.Sprintf("[GET /v1/integrations/statuses][%d] getV1IntegrationsStatusesOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1IntegrationsStatusesOK) GetPayload() *models.IntegrationsConnectionStatusEntity {
+	return o.Payload
 }
 
 func (o *GetV1IntegrationsStatusesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.IntegrationsConnectionStatusEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

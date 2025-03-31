@@ -39,7 +39,7 @@ func NewPostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsCreated() *Pos
 /*
 PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsCreated describes a response with status code 201, with default header values.
 
-Creates a new slack emoji action
+Creates a new Slack emoji action
 */
 type PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsCreated struct {
 }

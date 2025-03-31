@@ -15,7 +15,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PatchV1RunbooksExecutionsExecutionIDVotes Allows for upvoting or downvoting an event
+// PatchV1RunbooksExecutionsExecutionIDVotes Upvote or downvote an object
 //
 // swagger:model patchV1RunbooksExecutionsExecutionIdVotes
 type PatchV1RunbooksExecutionsExecutionIDVotes struct {

@@ -87,7 +87,7 @@ func (a *Client) DeleteV1FunctionalitiesFunctionalityID(params *DeleteV1Function
 }
 
 /*
-GetV1Functionalities lists all functionalities
+GetV1Functionalities lists functionalities
 
 List all of the functionalities that have been added to the organiation
 */
@@ -128,7 +128,7 @@ func (a *Client) GetV1Functionalities(params *GetV1FunctionalitiesParams, authIn
 }
 
 /*
-GetV1FunctionalitiesFunctionalityID retrieves a single functionality
+GetV1FunctionalitiesFunctionalityID gets a functionality
 
 Retrieves a single functionality by ID
 */
@@ -169,7 +169,9 @@ func (a *Client) GetV1FunctionalitiesFunctionalityID(params *GetV1Functionalitie
 }
 
 /*
-GetV1FunctionalitiesFunctionalityIDServices get v1 functionalities functionality Id services API
+GetV1FunctionalitiesFunctionalityIDServices lists services for a functionality
+
+List services for a functionality
 */
 func (a *Client) GetV1FunctionalitiesFunctionalityIDServices(params *GetV1FunctionalitiesFunctionalityIDServicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1FunctionalitiesFunctionalityIDServicesOK, error) {
 	// TODO: Validate the params before sending

@@ -39,7 +39,7 @@ func NewPutV1IncidentsIncidentIDLinksLinkIDOK() *PutV1IncidentsIncidentIDLinksLi
 /*
 PutV1IncidentsIncidentIDLinksLinkIDOK describes a response with status code 200, with default header values.
 
-Updates the external incident link attributes
+Update the external incident link attributes
 */
 type PutV1IncidentsIncidentIDLinksLinkIDOK struct {
 }

@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-DeleteV1WebhooksWebhookID deletes a specific webhook
+DeleteV1WebhooksWebhookID deletes a webhook
 
 Delete a specific webhook
 */
@@ -128,7 +128,7 @@ func (a *Client) GetV1Webhooks(params *GetV1WebhooksParams, authInfo runtime.Cli
 }
 
 /*
-GetV1WebhooksWebhookID retrieves a specific webhook
+GetV1WebhooksWebhookID gets a webhook
 
 Retrieve a specific webhook
 */
@@ -169,7 +169,9 @@ func (a *Client) GetV1WebhooksWebhookID(params *GetV1WebhooksWebhookIDParams, au
 }
 
 /*
-GetV1WebhooksWebhookIDDeliveries get v1 webhooks webhook Id deliveries API
+GetV1WebhooksWebhookIDDeliveries lists webhook deliveries
+
+Get webhook deliveries
 */
 func (a *Client) GetV1WebhooksWebhookIDDeliveries(params *GetV1WebhooksWebhookIDDeliveriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1WebhooksWebhookIDDeliveriesOK, error) {
 	// TODO: Validate the params before sending
@@ -208,7 +210,7 @@ func (a *Client) GetV1WebhooksWebhookIDDeliveries(params *GetV1WebhooksWebhookID
 }
 
 /*
-PatchV1WebhooksWebhookID updates a specific webhook
+PatchV1WebhooksWebhookID updates a webhook
 
 Update a specific webhook
 */
@@ -249,7 +251,7 @@ func (a *Client) PatchV1WebhooksWebhookID(params *PatchV1WebhooksWebhookIDParams
 }
 
 /*
-PostV1Webhooks creates webhook
+PostV1Webhooks creates a webhook
 
 Create a new webhook
 */

@@ -42,7 +42,7 @@ func NewGetV1RunbooksExecutionsOK() *GetV1RunbooksExecutionsOK {
 /*
 GetV1RunbooksExecutionsOK describes a response with status code 200, with default header values.
 
-List all Runbook executions across all Runbooks
+List all runbook executions across all runbooks
 */
 type GetV1RunbooksExecutionsOK struct {
 	Payload *models.RunbooksExecutionEntityPaginated
