@@ -39,7 +39,7 @@ func NewGetV1ChangesOK() *GetV1ChangesOK {
 /*
 GetV1ChangesOK describes a response with status code 200, with default header values.
 
-Lists all changes
+List changes for the organization
 */
 type GetV1ChangesOK struct {
 }

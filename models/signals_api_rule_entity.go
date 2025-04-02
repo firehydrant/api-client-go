@@ -31,6 +31,10 @@ type SignalsAPIRuleEntity struct {
 	// created by
 	CreatedBy *AuthorEntity `json:"created_by,omitempty"`
 
+	// Duration for deduplicating similar alerts (ISO8601 duration format e.g., 'PT30M', 'PT2H', 'P1D')
+	// Example: PT1H
+	DeduplicationExpiry string `json:"deduplication_expiry,omitempty"`
+
 	// expression
 	Expression string `json:"expression,omitempty"`
 

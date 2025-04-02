@@ -261,7 +261,9 @@ func (a *Client) GetV1AudiencesMemberMemberIDDefault(params *GetV1AudiencesMembe
 }
 
 /*
-GetV1AudiencesSummariesIncidentID Get all audience summaries for an incident
+GetV1AudiencesSummariesIncidentID lists audience summaries
+
+List all audience summaries for an incident
 */
 func (a *Client) GetV1AudiencesSummariesIncidentID(params *GetV1AudiencesSummariesIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesSummariesIncidentIDOK, error) {
 	// TODO: Validate the params before sending

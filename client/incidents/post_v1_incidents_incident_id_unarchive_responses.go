@@ -42,7 +42,7 @@ func NewPostV1IncidentsIncidentIDUnarchiveCreated() *PostV1IncidentsIncidentIDUn
 /*
 PostV1IncidentsIncidentIDUnarchiveCreated describes a response with status code 201, with default header values.
 
-Unarchives an incident
+Unarchive an incident
 */
 type PostV1IncidentsIncidentIDUnarchiveCreated struct {
 	Payload *models.IncidentEntity

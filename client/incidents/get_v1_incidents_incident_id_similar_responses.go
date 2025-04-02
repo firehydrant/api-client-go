@@ -7,9 +7,12 @@ package incidents
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1IncidentsIncidentIDSimilarReader is a Reader for the GetV1IncidentsIncidentIDSimilar structure.
@@ -39,9 +42,10 @@ func NewGetV1IncidentsIncidentIDSimilarOK() *GetV1IncidentsIncidentIDSimilarOK {
 /*
 GetV1IncidentsIncidentIDSimilarOK describes a response with status code 200, with default header values.
 
-get Similar(s)
+Retrieve a list of similar incidents
 */
 type GetV1IncidentsIncidentIDSimilarOK struct {
+	Payload *models.SimilarIncidentEntityPaginated
 }
 
 // IsSuccess returns true when this get v1 incidents incident Id similar o k response has a 2xx status code
@@ -70,14 +74,25 @@ func (o *GetV1IncidentsIncidentIDSimilarOK) IsCode(code int) bool {
 }
 
 func (o *GetV1IncidentsIncidentIDSimilarOK) Error() string {
-	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/similar][%d] getV1IncidentsIncidentIdSimilarOK ", 200)
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/similar][%d] getV1IncidentsIncidentIdSimilarOK  %+v", 200, o.Payload)
 }
 
 func (o *GetV1IncidentsIncidentIDSimilarOK) String() string {
-	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/similar][%d] getV1IncidentsIncidentIdSimilarOK ", 200)
+	return fmt.Sprintf("[GET /v1/incidents/{incident_id}/similar][%d] getV1IncidentsIncidentIdSimilarOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1IncidentsIncidentIDSimilarOK) GetPayload() *models.SimilarIncidentEntityPaginated {
+	return o.Payload
 }
 
 func (o *GetV1IncidentsIncidentIDSimilarOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.SimilarIncidentEntityPaginated)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

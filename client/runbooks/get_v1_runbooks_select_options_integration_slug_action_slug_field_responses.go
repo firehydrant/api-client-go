@@ -39,7 +39,7 @@ func NewGetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK() *GetV1Runbo
 /*
 GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK describes a response with status code 200, with default header values.
 
-get SelectOption(s)
+List select options for a runbook integration action field
 */
 type GetV1RunbooksSelectOptionsIntegrationSlugActionSlugFieldOK struct {
 }

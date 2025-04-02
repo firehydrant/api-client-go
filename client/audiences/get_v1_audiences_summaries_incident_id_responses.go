@@ -42,7 +42,7 @@ func NewGetV1AudiencesSummariesIncidentIDOK() *GetV1AudiencesSummariesIncidentID
 /*
 GetV1AudiencesSummariesIncidentIDOK describes a response with status code 200, with default header values.
 
-Get all audience summaries for an incident
+List all audience summaries for an incident
 */
 type GetV1AudiencesSummariesIncidentIDOK struct {
 	Payload *models.AudiencesEntitiesAudienceSummariesEntity

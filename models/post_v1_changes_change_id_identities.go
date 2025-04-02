@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PostV1ChangesChangeIDIdentities Create an identity for this change
+// PostV1ChangesChangeIDIdentities Create an identity for the change entry
 //
 // swagger:model postV1ChangesChangeIdIdentities
 type PostV1ChangesChangeIDIdentities struct {

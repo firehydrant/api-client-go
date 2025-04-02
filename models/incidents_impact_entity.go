@@ -34,7 +34,7 @@ type IncidentsImpactEntity struct {
 	Impact *SuccinctEntity `json:"impact,omitempty"`
 
 	// type
-	// Enum: [environment functionality service]
+	// Enum: [customer environment functionality service]
 	Type string `json:"type,omitempty"`
 }
 
@@ -132,7 +132,7 @@ var incidentsImpactEntityTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["environment","functionality","service"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["customer","environment","functionality","service"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -141,6 +141,9 @@ func init() {
 }
 
 const (
+
+	// IncidentsImpactEntityTypeCustomer captures enum value "customer"
+	IncidentsImpactEntityTypeCustomer string = "customer"
 
 	// IncidentsImpactEntityTypeEnvironment captures enum value "environment"
 	IncidentsImpactEntityTypeEnvironment string = "environment"
