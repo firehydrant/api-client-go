@@ -36,6 +36,8 @@ type ClientService interface {
 
 	DeleteV1ChangesEventsChangeEventID(params *DeleteV1ChangesEventsChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChangesEventsChangeEventIDNoContent, error)
 
+	GetV1ChangeTypes(params *GetV1ChangeTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangeTypesOK, error)
+
 	GetV1Changes(params *GetV1ChangesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesOK, error)
 
 	GetV1ChangesChangeIDIdentities(params *GetV1ChangesChangeIDIdentitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesChangeIDIdentitiesOK, error)
@@ -60,7 +62,9 @@ type ClientService interface {
 }
 
 /*
-DeleteV1ChangesChangeID Archive a change entry
+DeleteV1ChangesChangeID archives a change entry
+
+Archive a change entry
 */
 func (a *Client) DeleteV1ChangesChangeID(params *DeleteV1ChangesChangeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChangesChangeIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -99,7 +103,9 @@ func (a *Client) DeleteV1ChangesChangeID(params *DeleteV1ChangesChangeIDParams, 
 }
 
 /*
-DeleteV1ChangesChangeIDIdentitiesIdentityID Delete an identity
+DeleteV1ChangesChangeIDIdentitiesIdentityID deletes an identity from a change entry
+
+Delete an identity from the change entry
 */
 func (a *Client) DeleteV1ChangesChangeIDIdentitiesIdentityID(params *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent, error) {
 	// TODO: Validate the params before sending
@@ -179,7 +185,50 @@ func (a *Client) DeleteV1ChangesEventsChangeEventID(params *DeleteV1ChangesEvent
 }
 
 /*
-GetV1Changes Lists all changes
+GetV1ChangeTypes lists change types
+
+List change types for the organization
+*/
+func (a *Client) GetV1ChangeTypes(params *GetV1ChangeTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangeTypesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetV1ChangeTypesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "getV1ChangeTypes",
+		Method:             "GET",
+		PathPattern:        "/v1/change_types",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetV1ChangeTypesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetV1ChangeTypesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for getV1ChangeTypes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetV1Changes lists changes
+
+List changes for the organization
 */
 func (a *Client) GetV1Changes(params *GetV1ChangesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesOK, error) {
 	// TODO: Validate the params before sending
@@ -218,7 +267,9 @@ func (a *Client) GetV1Changes(params *GetV1ChangesParams, authInfo runtime.Clien
 }
 
 /*
-GetV1ChangesChangeIDIdentities Retrieve all identities for the change
+GetV1ChangesChangeIDIdentities lists identities for a change entry
+
+Retrieve all identities for the change entry
 */
 func (a *Client) GetV1ChangesChangeIDIdentities(params *GetV1ChangesChangeIDIdentitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesChangeIDIdentitiesOK, error) {
 	// TODO: Validate the params before sending
@@ -298,7 +349,7 @@ func (a *Client) GetV1ChangesEvents(params *GetV1ChangesEventsParams, authInfo r
 }
 
 /*
-GetV1ChangesEventsChangeEventID retrieves a change event
+GetV1ChangesEventsChangeEventID gets a change event
 
 Retrieve a change event
 */
@@ -339,7 +390,9 @@ func (a *Client) GetV1ChangesEventsChangeEventID(params *GetV1ChangesEventsChang
 }
 
 /*
-PatchV1ChangesChangeID Update a change entry
+PatchV1ChangesChangeID updates a change entry
+
+Update a change entry
 */
 func (a *Client) PatchV1ChangesChangeID(params *PatchV1ChangesChangeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChangesChangeIDOK, error) {
 	// TODO: Validate the params before sending
@@ -378,7 +431,9 @@ func (a *Client) PatchV1ChangesChangeID(params *PatchV1ChangesChangeIDParams, au
 }
 
 /*
-PatchV1ChangesChangeIDIdentitiesIdentityID Update an identity
+PatchV1ChangesChangeIDIdentitiesIdentityID updates an identity for a change entry
+
+Update an identity for the change entry
 */
 func (a *Client) PatchV1ChangesChangeIDIdentitiesIdentityID(params *PatchV1ChangesChangeIDIdentitiesIdentityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChangesChangeIDIdentitiesIdentityIDOK, error) {
 	// TODO: Validate the params before sending
@@ -458,7 +513,9 @@ func (a *Client) PatchV1ChangesEventsChangeEventID(params *PatchV1ChangesEventsC
 }
 
 /*
-PostV1Changes Create a new change entry
+PostV1Changes creates a new change entry
+
+Create a new change entry
 */
 func (a *Client) PostV1Changes(params *PostV1ChangesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChangesCreated, error) {
 	// TODO: Validate the params before sending
@@ -497,7 +554,9 @@ func (a *Client) PostV1Changes(params *PostV1ChangesParams, authInfo runtime.Cli
 }
 
 /*
-PostV1ChangesChangeIDIdentities Create an identity for this change
+PostV1ChangesChangeIDIdentities creates an identity for a change entry
+
+Create an identity for the change entry
 */
 func (a *Client) PostV1ChangesChangeIDIdentities(params *PostV1ChangesChangeIDIdentitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChangesChangeIDIdentitiesCreated, error) {
 	// TODO: Validate the params before sending

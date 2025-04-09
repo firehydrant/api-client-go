@@ -39,7 +39,7 @@ func NewGetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsOK() *GetV1Inte
 /*
 GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsOK describes a response with status code 200, with default header values.
 
-Lists all slack emoji actions
+Lists Slack emoji actions
 */
 type GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsOK struct {
 }

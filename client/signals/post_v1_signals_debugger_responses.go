@@ -39,7 +39,7 @@ func NewPostV1SignalsDebuggerCreated() *PostV1SignalsDebuggerCreated {
 /*
 PostV1SignalsDebuggerCreated describes a response with status code 201, with default header values.
 
-created Debugger
+Debug Signals expressions
 */
 type PostV1SignalsDebuggerCreated struct {
 }

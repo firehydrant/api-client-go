@@ -85,7 +85,7 @@ func (a *Client) DeleteV1EnvironmentsEnvironmentID(params *DeleteV1EnvironmentsE
 }
 
 /*
-GetV1Environments lists all environments
+GetV1Environments lists environments
 
 List all of the environments that have been added to the organiation
 */
@@ -126,7 +126,7 @@ func (a *Client) GetV1Environments(params *GetV1EnvironmentsParams, authInfo run
 }
 
 /*
-GetV1EnvironmentsEnvironmentID retrieves a single environment
+GetV1EnvironmentsEnvironmentID gets an environment
 
 Retrieves a single environment by ID
 */

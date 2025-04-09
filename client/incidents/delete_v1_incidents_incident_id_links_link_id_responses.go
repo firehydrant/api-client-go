@@ -39,7 +39,7 @@ func NewDeleteV1IncidentsIncidentIDLinksLinkIDNoContent() *DeleteV1IncidentsInci
 /*
 DeleteV1IncidentsIncidentIDLinksLinkIDNoContent describes a response with status code 204, with default header values.
 
-Deletes the external incident link
+Remove a link from an incident
 */
 type DeleteV1IncidentsIncidentIDLinksLinkIDNoContent struct {
 }

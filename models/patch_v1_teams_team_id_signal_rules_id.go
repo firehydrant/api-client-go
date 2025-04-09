@@ -24,6 +24,9 @@ type PatchV1TeamsTeamIDSignalRulesID struct {
 	// Enum: [WHEN_UNSPECIFIED WHEN_ALWAYS]
 	CreateIncidentConditionWhen string `json:"create_incident_condition_when,omitempty"`
 
+	// The amount of time alerts created from this rule will be deduplicated
+	DeduplicationExpiry string `json:"deduplication_expiry,omitempty"`
+
 	// The CEL expression that defines the rule.
 	Expression string `json:"expression,omitempty"`
 

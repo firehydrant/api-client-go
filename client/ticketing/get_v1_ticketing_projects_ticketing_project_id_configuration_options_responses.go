@@ -39,7 +39,7 @@ func NewGetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK() *GetV1T
 /*
 GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK describes a response with status code 200, with default header values.
 
-get ConfigurationOption(s)
+List all configuration options for a ticketing project
 */
 type GetV1TicketingProjectsTicketingProjectIDConfigurationOptionsOK struct {
 }

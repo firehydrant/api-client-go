@@ -39,7 +39,7 @@ func NewGetV1WebhooksWebhookIDDeliveriesOK() *GetV1WebhooksWebhookIDDeliveriesOK
 /*
 GetV1WebhooksWebhookIDDeliveriesOK describes a response with status code 200, with default header values.
 
-get Delivery(s)
+Get webhook deliveries
 */
 type GetV1WebhooksWebhookIDDeliveriesOK struct {
 }

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// PatchV1SeverityMatrixImpactsImpactID Update a specific impact
+// PatchV1SeverityMatrixImpactsImpactID Update a severity matrix impact
 //
 // swagger:model patchV1SeverityMatrixImpactsImpactId
 type PatchV1SeverityMatrixImpactsImpactID struct {

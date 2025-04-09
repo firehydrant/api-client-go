@@ -48,7 +48,7 @@ func NewPostV1ChangesChangeIDIdentitiesCreated() *PostV1ChangesChangeIDIdentitie
 /*
 PostV1ChangesChangeIDIdentitiesCreated describes a response with status code 201, with default header values.
 
-Create an identity for this change
+Create an identity for the change entry
 */
 type PostV1ChangesChangeIDIdentitiesCreated struct {
 	Payload *models.ChangeIdentityEntity

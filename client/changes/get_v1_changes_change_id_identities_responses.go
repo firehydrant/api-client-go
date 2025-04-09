@@ -42,7 +42,7 @@ func NewGetV1ChangesChangeIDIdentitiesOK() *GetV1ChangesChangeIDIdentitiesOK {
 /*
 GetV1ChangesChangeIDIdentitiesOK describes a response with status code 200, with default header values.
 
-Retrieve all identities for the change
+Retrieve all identities for the change entry
 */
 type GetV1ChangesChangeIDIdentitiesOK struct {
 	Payload *models.ChangeIdentityEntityPaginated

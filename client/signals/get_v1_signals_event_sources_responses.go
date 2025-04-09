@@ -39,7 +39,7 @@ func NewGetV1SignalsEventSourcesOK() *GetV1SignalsEventSourcesOK {
 /*
 GetV1SignalsEventSourcesOK describes a response with status code 200, with default header values.
 
-get EventSource(s)
+List all Signals event sources for the authenticated user.
 */
 type GetV1SignalsEventSourcesOK struct {
 }

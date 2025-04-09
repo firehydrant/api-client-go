@@ -39,7 +39,7 @@ func NewPatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID
 /*
 PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK describes a response with status code 200, with default header values.
 
-Updates a slack emoji action
+Updates a Slack emoji action
 */
 type PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK struct {
 }
