@@ -7,9 +7,12 @@ package incidents
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // DeleteV1IncidentsIncidentIDTranscriptTranscriptIDReader is a Reader for the DeleteV1IncidentsIncidentIDTranscriptTranscriptID structure.
@@ -20,8 +23,8 @@ type DeleteV1IncidentsIncidentIDTranscriptTranscriptIDReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 204:
-		result := NewDeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent()
+	case 200:
+		result := NewDeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -31,53 +34,65 @@ func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDReader) ReadResponse(r
 	}
 }
 
-// NewDeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent creates a DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent with default headers values
-func NewDeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent() *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent {
-	return &DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent{}
+// NewDeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK creates a DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK with default headers values
+func NewDeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK() *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK {
+	return &DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK{}
 }
 
 /*
-DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent describes a response with status code 204, with default header values.
+DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK describes a response with status code 200, with default header values.
 
-deleted Transcript
+Delete a transcript from an incident
 */
-type DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent struct {
+type DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK struct {
+	Payload *models.PublicAPIV1IncidentsTranscriptEntity
 }
 
-// IsSuccess returns true when this delete v1 incidents incident Id transcript transcript Id no content response has a 2xx status code
-func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent) IsSuccess() bool {
+// IsSuccess returns true when this delete v1 incidents incident Id transcript transcript Id o k response has a 2xx status code
+func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this delete v1 incidents incident Id transcript transcript Id no content response has a 3xx status code
-func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent) IsRedirect() bool {
+// IsRedirect returns true when this delete v1 incidents incident Id transcript transcript Id o k response has a 3xx status code
+func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this delete v1 incidents incident Id transcript transcript Id no content response has a 4xx status code
-func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent) IsClientError() bool {
+// IsClientError returns true when this delete v1 incidents incident Id transcript transcript Id o k response has a 4xx status code
+func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this delete v1 incidents incident Id transcript transcript Id no content response has a 5xx status code
-func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent) IsServerError() bool {
+// IsServerError returns true when this delete v1 incidents incident Id transcript transcript Id o k response has a 5xx status code
+func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this delete v1 incidents incident Id transcript transcript Id no content response a status code equal to that given
-func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent) IsCode(code int) bool {
-	return code == 204
+// IsCode returns true when this delete v1 incidents incident Id transcript transcript Id o k response a status code equal to that given
+func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK) IsCode(code int) bool {
+	return code == 200
 }
 
-func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/transcript/{transcript_id}][%d] deleteV1IncidentsIncidentIdTranscriptTranscriptIdNoContent ", 204)
+func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK) Error() string {
+	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/transcript/{transcript_id}][%d] deleteV1IncidentsIncidentIdTranscriptTranscriptIdOK  %+v", 200, o.Payload)
 }
 
-func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent) String() string {
-	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/transcript/{transcript_id}][%d] deleteV1IncidentsIncidentIdTranscriptTranscriptIdNoContent ", 204)
+func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK) String() string {
+	return fmt.Sprintf("[DELETE /v1/incidents/{incident_id}/transcript/{transcript_id}][%d] deleteV1IncidentsIncidentIdTranscriptTranscriptIdOK  %+v", 200, o.Payload)
 }
 
-func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK) GetPayload() *models.PublicAPIV1IncidentsTranscriptEntity {
+	return o.Payload
+}
+
+func (o *DeleteV1IncidentsIncidentIDTranscriptTranscriptIDOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.PublicAPIV1IncidentsTranscriptEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

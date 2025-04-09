@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// PutV1PostMortemsReportsReportIDReasonsOrder Reorder a contributing factor
+// PutV1PostMortemsReportsReportIDReasonsOrder Update the order of contributing factors in a retrospective report
 //
 // swagger:model putV1PostMortemsReportsReportIdReasonsOrder
 type PutV1PostMortemsReportsReportIDReasonsOrder struct {

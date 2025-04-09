@@ -7,9 +7,12 @@ package integrations
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/firehydrant/api-client-go/models"
 )
 
 // GetV1IntegrationsAwsCloudtrailBatchesIDEventsReader is a Reader for the GetV1IntegrationsAwsCloudtrailBatchesIDEvents structure.
@@ -39,9 +42,10 @@ func NewGetV1IntegrationsAwsCloudtrailBatchesIDEventsOK() *GetV1IntegrationsAwsC
 /*
 GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK describes a response with status code 200, with default header values.
 
-get Event(s)
+List events for an AWS CloudTrail batch
 */
 type GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK struct {
+	Payload *models.ChangeEventEntity
 }
 
 // IsSuccess returns true when this get v1 integrations aws cloudtrail batches Id events o k response has a 2xx status code
@@ -70,14 +74,25 @@ func (o *GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK) IsCode(code int) bool 
 }
 
 func (o *GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK) Error() string {
-	return fmt.Sprintf("[GET /v1/integrations/aws/cloudtrail_batches/{id}/events][%d] getV1IntegrationsAwsCloudtrailBatchesIdEventsOK ", 200)
+	return fmt.Sprintf("[GET /v1/integrations/aws/cloudtrail_batches/{id}/events][%d] getV1IntegrationsAwsCloudtrailBatchesIdEventsOK  %+v", 200, o.Payload)
 }
 
 func (o *GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK) String() string {
-	return fmt.Sprintf("[GET /v1/integrations/aws/cloudtrail_batches/{id}/events][%d] getV1IntegrationsAwsCloudtrailBatchesIdEventsOK ", 200)
+	return fmt.Sprintf("[GET /v1/integrations/aws/cloudtrail_batches/{id}/events][%d] getV1IntegrationsAwsCloudtrailBatchesIdEventsOK  %+v", 200, o.Payload)
+}
+
+func (o *GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK) GetPayload() *models.ChangeEventEntity {
+	return o.Payload
 }
 
 func (o *GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ChangeEventEntity)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

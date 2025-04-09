@@ -39,7 +39,7 @@ func NewDeleteV1TicketingTicketsTicketIDNoContent() *DeleteV1TicketingTicketsTic
 /*
 DeleteV1TicketingTicketsTicketIDNoContent describes a response with status code 204, with default header values.
 
-deleted Ticket
+Archive a ticket
 */
 type DeleteV1TicketingTicketsTicketIDNoContent struct {
 }

@@ -33,7 +33,7 @@ type IncidentTypeEntityTemplateImpactEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// type
-	// Enum: [environment functionality service]
+	// Enum: [customer environment functionality service]
 	Type string `json:"type,omitempty"`
 }
 
@@ -55,7 +55,7 @@ var incidentTypeEntityTemplateImpactEntityTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["environment","functionality","service"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["customer","environment","functionality","service"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -64,6 +64,9 @@ func init() {
 }
 
 const (
+
+	// IncidentTypeEntityTemplateImpactEntityTypeCustomer captures enum value "customer"
+	IncidentTypeEntityTemplateImpactEntityTypeCustomer string = "customer"
 
 	// IncidentTypeEntityTemplateImpactEntityTypeEnvironment captures enum value "environment"
 	IncidentTypeEntityTemplateImpactEntityTypeEnvironment string = "environment"

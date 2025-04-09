@@ -48,7 +48,7 @@ func NewPatchV1ChangesChangeIDIdentitiesIdentityIDOK() *PatchV1ChangesChangeIDId
 /*
 PatchV1ChangesChangeIDIdentitiesIdentityIDOK describes a response with status code 200, with default header values.
 
-Update an identity
+Update an identity for the change entry
 */
 type PatchV1ChangesChangeIDIdentitiesIdentityIDOK struct {
 	Payload *models.ChangeIdentityEntity
