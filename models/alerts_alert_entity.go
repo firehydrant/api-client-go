@@ -23,6 +23,9 @@ type AlertsAlertEntity struct {
 	// child alerts
 	ChildAlerts []*AlertsSirenAlertEntity `json:"child_alerts"`
 
+	// conversations
+	Conversations []*ConversationsAPIEntitiesReference `json:"conversations"`
+
 	// description
 	Description string `json:"description,omitempty"`
 
@@ -115,6 +118,10 @@ func (m *AlertsAlertEntity) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateConversations(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateEndsAt(formats); err != nil {
 		res = append(res, err)
 	}
@@ -173,6 +180,32 @@ func (m *AlertsAlertEntity) validateChildAlerts(formats strfmt.Registry) error {
 					return ve.ValidateName("child_alerts" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("child_alerts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AlertsAlertEntity) validateConversations(formats strfmt.Registry) error {
+	if swag.IsZero(m.Conversations) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Conversations); i++ {
+		if swag.IsZero(m.Conversations[i]) { // not required
+			continue
+		}
+
+		if m.Conversations[i] != nil {
+			if err := m.Conversations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conversations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -383,6 +416,10 @@ func (m *AlertsAlertEntity) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateConversations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateEnvironments(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -427,6 +464,26 @@ func (m *AlertsAlertEntity) contextValidateChildAlerts(ctx context.Context, form
 					return ve.ValidateName("child_alerts" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("child_alerts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *AlertsAlertEntity) contextValidateConversations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Conversations); i++ {
+
+		if m.Conversations[i] != nil {
+			if err := m.Conversations[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("conversations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("conversations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
