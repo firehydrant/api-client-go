@@ -20,9 +20,9 @@ import (
 // swagger:model postV1PostMortemsReportsReportIdPublish
 type PostV1PostMortemsReportsReportIDPublish struct {
 
-	//
+	// publish
 	// Enum: [true]
-	Nr string `json:"_,omitempty"`
+	Publish string `json:"publish,omitempty"`
 
 	// An array of team IDs with whom to share the report
 	TeamIds []string `json:"team_ids"`
@@ -35,7 +35,7 @@ type PostV1PostMortemsReportsReportIDPublish struct {
 func (m *PostV1PostMortemsReportsReportIDPublish) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateNr(formats); err != nil {
+	if err := m.validatePublish(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -45,7 +45,7 @@ func (m *PostV1PostMortemsReportsReportIDPublish) Validate(formats strfmt.Regist
 	return nil
 }
 
-var postV1PostMortemsReportsReportIdPublishTypeNrPropEnum []interface{}
+var postV1PostMortemsReportsReportIdPublishTypePublishPropEnum []interface{}
 
 func init() {
 	var res []string
@@ -53,31 +53,31 @@ func init() {
 		panic(err)
 	}
 	for _, v := range res {
-		postV1PostMortemsReportsReportIdPublishTypeNrPropEnum = append(postV1PostMortemsReportsReportIdPublishTypeNrPropEnum, v)
+		postV1PostMortemsReportsReportIdPublishTypePublishPropEnum = append(postV1PostMortemsReportsReportIdPublishTypePublishPropEnum, v)
 	}
 }
 
 const (
 
-	// PostV1PostMortemsReportsReportIDPublishNrTrue captures enum value "true"
-	PostV1PostMortemsReportsReportIDPublishNrTrue string = "true"
+	// PostV1PostMortemsReportsReportIDPublishPublishTrue captures enum value "true"
+	PostV1PostMortemsReportsReportIDPublishPublishTrue string = "true"
 )
 
 // prop value enum
-func (m *PostV1PostMortemsReportsReportIDPublish) validateNrEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, postV1PostMortemsReportsReportIdPublishTypeNrPropEnum, true); err != nil {
+func (m *PostV1PostMortemsReportsReportIDPublish) validatePublishEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, postV1PostMortemsReportsReportIdPublishTypePublishPropEnum, true); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (m *PostV1PostMortemsReportsReportIDPublish) validateNr(formats strfmt.Registry) error {
-	if swag.IsZero(m.Nr) { // not required
+func (m *PostV1PostMortemsReportsReportIDPublish) validatePublish(formats strfmt.Registry) error {
+	if swag.IsZero(m.Publish) { // not required
 		return nil
 	}
 
 	// value enum
-	if err := m.validateNrEnum("_", "body", m.Nr); err != nil {
+	if err := m.validatePublishEnum("publish", "body", m.Publish); err != nil {
 		return err
 	}
 

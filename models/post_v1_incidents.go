@@ -38,6 +38,9 @@ type PostV1Incidents struct {
 	// An array of impacted infrastructure
 	Impacts []*PostV1IncidentsImpactsItems0 `json:"impacts"`
 
+	// The ID of the incident type to use as a template when creating the incident. This will copy values from the incident type unless they are being overridden via parameters in this request.
+	IncidentTypeID string `json:"incident_type_id,omitempty"`
+
 	// Key:value pairs to track custom data for the incident
 	Labels interface{} `json:"labels,omitempty"`
 
@@ -65,9 +68,6 @@ type PostV1Incidents struct {
 
 	// severity impact id
 	SeverityImpactID string `json:"severity_impact_id,omitempty"`
-
-	// If true, the incident type values will not be copied to the incident. This is useful when creating an incident from an incident type, but you want to set the values manually.
-	SkipIncidentTypeValues *bool `json:"skip_incident_type_values,omitempty"`
 
 	// summary
 	Summary string `json:"summary,omitempty"`

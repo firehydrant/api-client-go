@@ -48,7 +48,7 @@ type PostV1TeamsTeamIDSignalRules struct {
 
 	// The type of target that the rule will notify when matched.
 	// Required: true
-	// Enum: [EscalationPolicy OnCallSchedule User Webhook]
+	// Enum: [EscalationPolicy OnCallSchedule User Webhook SlackChannel]
 	TargetType *string `json:"target_type"`
 }
 
@@ -207,7 +207,7 @@ var postV1TeamsTeamIdSignalRulesTypeTargetTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["EscalationPolicy","OnCallSchedule","User","Webhook"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["EscalationPolicy","OnCallSchedule","User","Webhook","SlackChannel"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -228,6 +228,9 @@ const (
 
 	// PostV1TeamsTeamIDSignalRulesTargetTypeWebhook captures enum value "Webhook"
 	PostV1TeamsTeamIDSignalRulesTargetTypeWebhook string = "Webhook"
+
+	// PostV1TeamsTeamIDSignalRulesTargetTypeSlackChannel captures enum value "SlackChannel"
+	PostV1TeamsTeamIDSignalRulesTargetTypeSlackChannel string = "SlackChannel"
 )
 
 // prop value enum
