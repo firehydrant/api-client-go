@@ -30,50 +30,132 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1ScimV2GroupsID(params *DeleteV1ScimV2GroupsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ScimV2GroupsIDNoContent, error)
+	CreateScimGroup(params *CreateScimGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateScimGroupCreated, error)
 
-	DeleteV1ScimV2UsersID(params *DeleteV1ScimV2UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ScimV2UsersIDNoContent, error)
+	CreateScimUser(params *CreateScimUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateScimUserCreated, error)
 
-	GetV1ScimV2Groups(params *GetV1ScimV2GroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ScimV2GroupsOK, error)
+	DeleteScimGroup(params *DeleteScimGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteScimGroupNoContent, error)
 
-	GetV1ScimV2GroupsID(params *GetV1ScimV2GroupsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ScimV2GroupsIDOK, error)
+	DeleteScimUser(params *DeleteScimUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteScimUserNoContent, error)
 
-	GetV1ScimV2Users(params *GetV1ScimV2UsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ScimV2UsersOK, error)
+	GetScimGroup(params *GetScimGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScimGroupOK, error)
 
-	GetV1ScimV2UsersID(params *GetV1ScimV2UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ScimV2UsersIDOK, error)
+	GetScimUser(params *GetScimUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScimUserOK, error)
 
-	PatchV1ScimV2UsersID(params *PatchV1ScimV2UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ScimV2UsersIDOK, error)
+	ListScimGroups(params *ListScimGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListScimGroupsOK, error)
 
-	PostV1ScimV2Groups(params *PostV1ScimV2GroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ScimV2GroupsCreated, error)
+	ListScimUsers(params *ListScimUsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListScimUsersOK, error)
 
-	PostV1ScimV2Users(params *PostV1ScimV2UsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ScimV2UsersCreated, error)
+	PatchScimUser(params *PatchScimUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchScimUserOK, error)
 
-	PutV1ScimV2GroupsID(params *PutV1ScimV2GroupsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1ScimV2GroupsIDOK, error)
+	UpdateScimGroup(params *UpdateScimGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateScimGroupOK, error)
 
-	PutV1ScimV2UsersID(params *PutV1ScimV2UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1ScimV2UsersIDOK, error)
+	UpdateScimUser(params *UpdateScimUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateScimUserOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-DeleteV1ScimV2GroupsID deletes a s c i m group
+CreateScimGroup creates a s c i m group and assign members
+
+SCIM endpoint to create a new Team (Colloquial for Group in the SCIM protocol). Any members defined in the payload will be assigned to the team with no defined role.
+*/
+func (a *Client) CreateScimGroup(params *CreateScimGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateScimGroupCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateScimGroupParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "create_scim_group",
+		Method:             "POST",
+		PathPattern:        "/v1/scim/v2/Groups",
+		ProducesMediaTypes: []string{"application/scim+json"},
+		ConsumesMediaTypes: []string{"application/scim+json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateScimGroupReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateScimGroupCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for create_scim_group: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CreateScimUser creates a user from s c i m data
+
+SCIM endpoint to create and provision a new User. This endpoint will provision the User, which allows them to accept their account throught their IDP or via the Forgot Password flow.
+*/
+func (a *Client) CreateScimUser(params *CreateScimUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateScimUserCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateScimUserParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "create_scim_user",
+		Method:             "POST",
+		PathPattern:        "/v1/scim/v2/Users",
+		ProducesMediaTypes: []string{"application/scim+json"},
+		ConsumesMediaTypes: []string{"application/scim+json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateScimUserReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateScimUserCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for create_scim_user: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteScimGroup deletes a s c i m group
 
 SCIM endpoint to delete a Team (Colloquial for Group in the SCIM protocol).
 */
-func (a *Client) DeleteV1ScimV2GroupsID(params *DeleteV1ScimV2GroupsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ScimV2GroupsIDNoContent, error) {
+func (a *Client) DeleteScimGroup(params *DeleteScimGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteScimGroupNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteV1ScimV2GroupsIDParams()
+		params = NewDeleteScimGroupParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteV1ScimV2GroupsId",
+		ID:                 "delete_scim_group",
 		Method:             "DELETE",
 		PathPattern:        "/v1/scim/v2/Groups/{id}",
 		ProducesMediaTypes: []string{"application/scim+json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteV1ScimV2GroupsIDReader{formats: a.formats},
+		Reader:             &DeleteScimGroupReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -86,35 +168,35 @@ func (a *Client) DeleteV1ScimV2GroupsID(params *DeleteV1ScimV2GroupsIDParams, au
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1ScimV2GroupsIDNoContent)
+	success, ok := result.(*DeleteScimGroupNoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1ScimV2GroupsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for delete_scim_group: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-DeleteV1ScimV2UsersID deletes a user matching s c i m data
+DeleteScimUser deletes a user matching s c i m data
 
 SCIM endpoint to delete a User. This endpoint will deactivate a confirmed User record in our system.
 */
-func (a *Client) DeleteV1ScimV2UsersID(params *DeleteV1ScimV2UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ScimV2UsersIDNoContent, error) {
+func (a *Client) DeleteScimUser(params *DeleteScimUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteScimUserNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteV1ScimV2UsersIDParams()
+		params = NewDeleteScimUserParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteV1ScimV2UsersId",
+		ID:                 "delete_scim_user",
 		Method:             "DELETE",
 		PathPattern:        "/v1/scim/v2/Users/{id}",
 		ProducesMediaTypes: []string{"application/scim+json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteV1ScimV2UsersIDReader{formats: a.formats},
+		Reader:             &DeleteScimUserReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -127,35 +209,117 @@ func (a *Client) DeleteV1ScimV2UsersID(params *DeleteV1ScimV2UsersIDParams, auth
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1ScimV2UsersIDNoContent)
+	success, ok := result.(*DeleteScimUserNoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1ScimV2UsersId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for delete_scim_user: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1ScimV2Groups lists s c i m groups
+GetScimGroup gets a s c i m group
+
+SCIM endpoint that lists a Team (Colloquial for Group in the SCIM protocol)
+*/
+func (a *Client) GetScimGroup(params *GetScimGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScimGroupOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetScimGroupParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_scim_group",
+		Method:             "GET",
+		PathPattern:        "/v1/scim/v2/Groups/{id}",
+		ProducesMediaTypes: []string{"application/scim+json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetScimGroupReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetScimGroupOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_scim_group: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetScimUser gets a s c i m user
+
+SCIM endpoint that lists a User
+*/
+func (a *Client) GetScimUser(params *GetScimUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetScimUserOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetScimUserParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_scim_user",
+		Method:             "GET",
+		PathPattern:        "/v1/scim/v2/Users/{id}",
+		ProducesMediaTypes: []string{"application/scim+json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetScimUserReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetScimUserOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_scim_user: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListScimGroups lists s c i m groups
 
 SCIM endpoint that lists all Teams (Colloquial for Group in the SCIM protocol)
 */
-func (a *Client) GetV1ScimV2Groups(params *GetV1ScimV2GroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ScimV2GroupsOK, error) {
+func (a *Client) ListScimGroups(params *ListScimGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListScimGroupsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1ScimV2GroupsParams()
+		params = NewListScimGroupsParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1ScimV2Groups",
+		ID:                 "list_scim_groups",
 		Method:             "GET",
 		PathPattern:        "/v1/scim/v2/Groups",
 		ProducesMediaTypes: []string{"application/scim+json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1ScimV2GroupsReader{formats: a.formats},
+		Reader:             &ListScimGroupsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -168,76 +332,35 @@ func (a *Client) GetV1ScimV2Groups(params *GetV1ScimV2GroupsParams, authInfo run
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1ScimV2GroupsOK)
+	success, ok := result.(*ListScimGroupsOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ScimV2Groups: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for list_scim_groups: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1ScimV2GroupsID gets a s c i m group
-
-SCIM endpoint that lists a Team (Colloquial for Group in the SCIM protocol)
-*/
-func (a *Client) GetV1ScimV2GroupsID(params *GetV1ScimV2GroupsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ScimV2GroupsIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1ScimV2GroupsIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1ScimV2GroupsId",
-		Method:             "GET",
-		PathPattern:        "/v1/scim/v2/Groups/{id}",
-		ProducesMediaTypes: []string{"application/scim+json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1ScimV2GroupsIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1ScimV2GroupsIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ScimV2GroupsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1ScimV2Users lists s c i m users
+ListScimUsers lists s c i m users
 
 SCIM endpoint that lists users. This endpoint will display a list of Users currently in the system.
 */
-func (a *Client) GetV1ScimV2Users(params *GetV1ScimV2UsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ScimV2UsersOK, error) {
+func (a *Client) ListScimUsers(params *ListScimUsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListScimUsersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1ScimV2UsersParams()
+		params = NewListScimUsersParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1ScimV2Users",
+		ID:                 "list_scim_users",
 		Method:             "GET",
 		PathPattern:        "/v1/scim/v2/Users",
 		ProducesMediaTypes: []string{"application/scim+json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1ScimV2UsersReader{formats: a.formats},
+		Reader:             &ListScimUsersReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -250,76 +373,35 @@ func (a *Client) GetV1ScimV2Users(params *GetV1ScimV2UsersParams, authInfo runti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1ScimV2UsersOK)
+	success, ok := result.(*ListScimUsersOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ScimV2Users: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for list_scim_users: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1ScimV2UsersID gets a s c i m user
-
-SCIM endpoint that lists a User
-*/
-func (a *Client) GetV1ScimV2UsersID(params *GetV1ScimV2UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ScimV2UsersIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1ScimV2UsersIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1ScimV2UsersId",
-		Method:             "GET",
-		PathPattern:        "/v1/scim/v2/Users/{id}",
-		ProducesMediaTypes: []string{"application/scim+json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1ScimV2UsersIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1ScimV2UsersIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ScimV2UsersId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1ScimV2UsersID updates a user from s c i m data
+PatchScimUser updates a user from s c i m data
 
 PATCH SCIM endpoint to update a User. This endpoint is used to update a resource's attributes.
 */
-func (a *Client) PatchV1ScimV2UsersID(params *PatchV1ScimV2UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ScimV2UsersIDOK, error) {
+func (a *Client) PatchScimUser(params *PatchScimUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchScimUserOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchV1ScimV2UsersIDParams()
+		params = NewPatchScimUserParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchV1ScimV2UsersId",
+		ID:                 "patch_scim_user",
 		Method:             "PATCH",
 		PathPattern:        "/v1/scim/v2/Users/{id}",
 		ProducesMediaTypes: []string{"application/scim+json"},
 		ConsumesMediaTypes: []string{"application/scim+json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchV1ScimV2UsersIDReader{formats: a.formats},
+		Reader:             &PatchScimUserReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -332,117 +414,35 @@ func (a *Client) PatchV1ScimV2UsersID(params *PatchV1ScimV2UsersIDParams, authIn
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchV1ScimV2UsersIDOK)
+	success, ok := result.(*PatchScimUserOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1ScimV2UsersId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for patch_scim_user: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1ScimV2Groups creates a s c i m group and assign members
-
-SCIM endpoint to create a new Team (Colloquial for Group in the SCIM protocol). Any members defined in the payload will be assigned to the team with no defined role.
-*/
-func (a *Client) PostV1ScimV2Groups(params *PostV1ScimV2GroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ScimV2GroupsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1ScimV2GroupsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1ScimV2Groups",
-		Method:             "POST",
-		PathPattern:        "/v1/scim/v2/Groups",
-		ProducesMediaTypes: []string{"application/scim+json"},
-		ConsumesMediaTypes: []string{"application/scim+json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1ScimV2GroupsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1ScimV2GroupsCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1ScimV2Groups: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1ScimV2Users creates a user from s c i m data
-
-SCIM endpoint to create and provision a new User. This endpoint will provision the User, which allows them to accept their account throught their IDP or via the Forgot Password flow.
-*/
-func (a *Client) PostV1ScimV2Users(params *PostV1ScimV2UsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ScimV2UsersCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1ScimV2UsersParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1ScimV2Users",
-		Method:             "POST",
-		PathPattern:        "/v1/scim/v2/Users",
-		ProducesMediaTypes: []string{"application/scim+json"},
-		ConsumesMediaTypes: []string{"application/scim+json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1ScimV2UsersReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1ScimV2UsersCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1ScimV2Users: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PutV1ScimV2GroupsID updates a s c i m group and assign members
+UpdateScimGroup updates a s c i m group and assign members
 
 SCIM endpoint to update a Team (Colloquial for Group in the SCIM protocol). Any members defined in the payload will be assigned to the team with no defined role, any missing members will be removed from the team.
 */
-func (a *Client) PutV1ScimV2GroupsID(params *PutV1ScimV2GroupsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1ScimV2GroupsIDOK, error) {
+func (a *Client) UpdateScimGroup(params *UpdateScimGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateScimGroupOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPutV1ScimV2GroupsIDParams()
+		params = NewUpdateScimGroupParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "putV1ScimV2GroupsId",
+		ID:                 "update_scim_group",
 		Method:             "PUT",
 		PathPattern:        "/v1/scim/v2/Groups/{id}",
 		ProducesMediaTypes: []string{"application/scim+json"},
 		ConsumesMediaTypes: []string{"application/scim+json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PutV1ScimV2GroupsIDReader{formats: a.formats},
+		Reader:             &UpdateScimGroupReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -455,35 +455,35 @@ func (a *Client) PutV1ScimV2GroupsID(params *PutV1ScimV2GroupsIDParams, authInfo
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PutV1ScimV2GroupsIDOK)
+	success, ok := result.(*UpdateScimGroupOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for putV1ScimV2GroupsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for update_scim_group: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PutV1ScimV2UsersID updates a user from s c i m data
+UpdateScimUser updates a user from s c i m data
 
 PUT SCIM endpoint to update a User. This endpoint is used to replace a resource's attributes.
 */
-func (a *Client) PutV1ScimV2UsersID(params *PutV1ScimV2UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1ScimV2UsersIDOK, error) {
+func (a *Client) UpdateScimUser(params *UpdateScimUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateScimUserOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPutV1ScimV2UsersIDParams()
+		params = NewUpdateScimUserParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "putV1ScimV2UsersId",
+		ID:                 "update_scim_user",
 		Method:             "PUT",
 		PathPattern:        "/v1/scim/v2/Users/{id}",
 		ProducesMediaTypes: []string{"application/scim+json"},
 		ConsumesMediaTypes: []string{"application/scim+json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PutV1ScimV2UsersIDReader{formats: a.formats},
+		Reader:             &UpdateScimUserReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -496,13 +496,13 @@ func (a *Client) PutV1ScimV2UsersID(params *PutV1ScimV2UsersIDParams, authInfo r
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PutV1ScimV2UsersIDOK)
+	success, ok := result.(*UpdateScimUserOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for putV1ScimV2UsersId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for update_scim_user: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

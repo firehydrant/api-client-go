@@ -30,56 +30,48 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1ConversationsConversationIDCommentsCommentID(params *DeleteV1ConversationsConversationIDCommentsCommentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ConversationsConversationIDCommentsCommentIDNoContent, error)
+	CreateComment(params *CreateCommentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateCommentCreated, error)
 
-	DeleteV1ConversationsConversationIDCommentsCommentIDReactionsReactionID(params *DeleteV1ConversationsConversationIDCommentsCommentIDReactionsReactionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ConversationsConversationIDCommentsCommentIDReactionsReactionIDNoContent, error)
+	CreateCommentReaction(params *CreateCommentReactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateCommentReactionCreated, error)
 
-	GetV1ConversationsConversationIDComments(params *GetV1ConversationsConversationIDCommentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ConversationsConversationIDCommentsOK, error)
+	DeleteComment(params *DeleteCommentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCommentNoContent, error)
 
-	GetV1ConversationsConversationIDCommentsCommentID(params *GetV1ConversationsConversationIDCommentsCommentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ConversationsConversationIDCommentsCommentIDOK, error)
+	DeleteCommentReaction(params *DeleteCommentReactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCommentReactionNoContent, error)
 
-	GetV1ConversationsConversationIDCommentsCommentIDReactions(params *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ConversationsConversationIDCommentsCommentIDReactionsOK, error)
+	GetComment(params *GetCommentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCommentOK, error)
 
-	GetV1IncidentsIncidentIDEventsEventIDVotesStatus(params *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK, error)
+	GetVoteStatus(params *GetVoteStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVoteStatusOK, error)
 
-	GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusOK, error)
+	ListCommentReactions(params *ListCommentReactionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListCommentReactionsOK, error)
 
-	GetV1RunbooksExecutionsExecutionIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDVotesStatusOK, error)
+	ListComments(params *ListCommentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListCommentsOK, error)
 
-	PatchV1ConversationsConversationIDCommentsCommentID(params *PatchV1ConversationsConversationIDCommentsCommentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ConversationsConversationIDCommentsCommentIDOK, error)
+	UpdateComment(params *UpdateCommentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateCommentOK, error)
 
-	PatchV1IncidentsIncidentIDEventsEventIDVotes(params *PatchV1IncidentsIncidentIDEventsEventIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDEventsEventIDVotesOK, error)
-
-	PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(params *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK, error)
-
-	PatchV1RunbooksExecutionsExecutionIDVotes(params *PatchV1RunbooksExecutionsExecutionIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDVotesOK, error)
-
-	PostV1ConversationsConversationIDComments(params *PostV1ConversationsConversationIDCommentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ConversationsConversationIDCommentsCreated, error)
-
-	PostV1ConversationsConversationIDCommentsCommentIDReactions(params *PostV1ConversationsConversationIDCommentsCommentIDReactionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ConversationsConversationIDCommentsCommentIDReactionsCreated, error)
+	UpdateVote(params *UpdateVoteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVoteOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-DeleteV1ConversationsConversationIDCommentsCommentID archives a conversation comment
+CreateComment creates a conversation comment
 
-ALPHA - Archive a comment
+ALPHA - Creates a comment for a project
 */
-func (a *Client) DeleteV1ConversationsConversationIDCommentsCommentID(params *DeleteV1ConversationsConversationIDCommentsCommentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ConversationsConversationIDCommentsCommentIDNoContent, error) {
+func (a *Client) CreateComment(params *CreateCommentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateCommentCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteV1ConversationsConversationIDCommentsCommentIDParams()
+		params = NewCreateCommentParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteV1ConversationsConversationIdCommentsCommentId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/conversations/{conversation_id}/comments/{comment_id}",
+		ID:                 "create_comment",
+		Method:             "POST",
+		PathPattern:        "/v1/conversations/{conversation_id}/comments",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteV1ConversationsConversationIDCommentsCommentIDReader{formats: a.formats},
+		Reader:             &CreateCommentReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -92,35 +84,117 @@ func (a *Client) DeleteV1ConversationsConversationIDCommentsCommentID(params *De
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1ConversationsConversationIDCommentsCommentIDNoContent)
+	success, ok := result.(*CreateCommentCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1ConversationsConversationIdCommentsCommentId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_comment: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-DeleteV1ConversationsConversationIDCommentsCommentIDReactionsReactionID deletes a reaction from a conversation comment
+CreateCommentReaction creates a reaction for a conversation comment
+
+ALPHA - Create a reaction on a comment
+*/
+func (a *Client) CreateCommentReaction(params *CreateCommentReactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateCommentReactionCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateCommentReactionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "create_comment_reaction",
+		Method:             "POST",
+		PathPattern:        "/v1/conversations/{conversation_id}/comments/{comment_id}/reactions",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateCommentReactionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateCommentReactionCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for create_comment_reaction: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteComment archives a conversation comment
+
+ALPHA - Archive a comment
+*/
+func (a *Client) DeleteComment(params *DeleteCommentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCommentNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteCommentParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_comment",
+		Method:             "DELETE",
+		PathPattern:        "/v1/conversations/{conversation_id}/comments/{comment_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteCommentReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteCommentNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_comment: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteCommentReaction deletes a reaction from a conversation comment
 
 ALPHA - Archive a reaction
 */
-func (a *Client) DeleteV1ConversationsConversationIDCommentsCommentIDReactionsReactionID(params *DeleteV1ConversationsConversationIDCommentsCommentIDReactionsReactionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ConversationsConversationIDCommentsCommentIDReactionsReactionIDNoContent, error) {
+func (a *Client) DeleteCommentReaction(params *DeleteCommentReactionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCommentReactionNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteV1ConversationsConversationIDCommentsCommentIDReactionsReactionIDParams()
+		params = NewDeleteCommentReactionParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteV1ConversationsConversationIdCommentsCommentIdReactionsReactionId",
+		ID:                 "delete_comment_reaction",
 		Method:             "DELETE",
 		PathPattern:        "/v1/conversations/{conversation_id}/comments/{comment_id}/reactions/{reaction_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteV1ConversationsConversationIDCommentsCommentIDReactionsReactionIDReader{formats: a.formats},
+		Reader:             &DeleteCommentReactionReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -133,76 +207,35 @@ func (a *Client) DeleteV1ConversationsConversationIDCommentsCommentIDReactionsRe
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1ConversationsConversationIDCommentsCommentIDReactionsReactionIDNoContent)
+	success, ok := result.(*DeleteCommentReactionNoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1ConversationsConversationIdCommentsCommentIdReactionsReactionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for delete_comment_reaction: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1ConversationsConversationIDComments lists comments for a conversation
-
-ALPHA - List all of the comments that have been added to the organization
-*/
-func (a *Client) GetV1ConversationsConversationIDComments(params *GetV1ConversationsConversationIDCommentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ConversationsConversationIDCommentsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1ConversationsConversationIDCommentsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1ConversationsConversationIdComments",
-		Method:             "GET",
-		PathPattern:        "/v1/conversations/{conversation_id}/comments",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1ConversationsConversationIDCommentsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1ConversationsConversationIDCommentsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ConversationsConversationIdComments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1ConversationsConversationIDCommentsCommentID gets a conversation comment
+GetComment gets a conversation comment
 
 ALPHA - Retrieves a single comment by ID
 */
-func (a *Client) GetV1ConversationsConversationIDCommentsCommentID(params *GetV1ConversationsConversationIDCommentsCommentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ConversationsConversationIDCommentsCommentIDOK, error) {
+func (a *Client) GetComment(params *GetCommentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCommentOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1ConversationsConversationIDCommentsCommentIDParams()
+		params = NewGetCommentParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1ConversationsConversationIdCommentsCommentId",
+		ID:                 "get_comment",
 		Method:             "GET",
 		PathPattern:        "/v1/conversations/{conversation_id}/comments/{comment_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1ConversationsConversationIDCommentsCommentIDReader{formats: a.formats},
+		Reader:             &GetCommentReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -215,76 +248,35 @@ func (a *Client) GetV1ConversationsConversationIDCommentsCommentID(params *GetV1
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1ConversationsConversationIDCommentsCommentIDOK)
+	success, ok := result.(*GetCommentOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ConversationsConversationIdCommentsCommentId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for get_comment: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1ConversationsConversationIDCommentsCommentIDReactions lists reactions for a conversation comment
-
-ALPHA - List all of the reactions that have been added to a comment
-*/
-func (a *Client) GetV1ConversationsConversationIDCommentsCommentIDReactions(params *GetV1ConversationsConversationIDCommentsCommentIDReactionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ConversationsConversationIDCommentsCommentIDReactionsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1ConversationsConversationIDCommentsCommentIDReactionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1ConversationsConversationIdCommentsCommentIdReactions",
-		Method:             "GET",
-		PathPattern:        "/v1/conversations/{conversation_id}/comments/{comment_id}/reactions",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1ConversationsConversationIDCommentsCommentIDReactionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1ConversationsConversationIDCommentsCommentIDReactionsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ConversationsConversationIdCommentsCommentIdReactions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IncidentsIncidentIDEventsEventIDVotesStatus gets votes
+GetVoteStatus gets votes
 
 Get an object's current vote counts
 */
-func (a *Client) GetV1IncidentsIncidentIDEventsEventIDVotesStatus(params *GetV1IncidentsIncidentIDEventsEventIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK, error) {
+func (a *Client) GetVoteStatus(params *GetVoteStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetVoteStatusOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1IncidentsIncidentIDEventsEventIDVotesStatusParams()
+		params = NewGetVoteStatusParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1IncidentsIncidentIdEventsEventIdVotesStatus",
+		ID:                 "get_vote_status",
 		Method:             "GET",
 		PathPattern:        "/v1/incidents/{incident_id}/events/{event_id}/votes/status",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1IncidentsIncidentIDEventsEventIDVotesStatusReader{formats: a.formats},
+		Reader:             &GetVoteStatusReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -297,35 +289,35 @@ func (a *Client) GetV1IncidentsIncidentIDEventsEventIDVotesStatus(params *GetV1I
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1IncidentsIncidentIDEventsEventIDVotesStatusOK)
+	success, ok := result.(*GetVoteStatusOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdEventsEventIdVotesStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for get_vote_status: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus gets votes
+ListCommentReactions lists reactions for a conversation comment
 
-Get an object's current vote counts
+ALPHA - List all of the reactions that have been added to a comment
 */
-func (a *Client) GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusOK, error) {
+func (a *Client) ListCommentReactions(params *ListCommentReactionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListCommentReactionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusParams()
+		params = NewListCommentReactionsParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1RunbooksExecutionsExecutionIdStepsStepIdVotesStatus",
+		ID:                 "list_comment_reactions",
 		Method:             "GET",
-		PathPattern:        "/v1/runbooks/executions/{execution_id}/steps/{step_id}/votes/status",
+		PathPattern:        "/v1/conversations/{conversation_id}/comments/{comment_id}/reactions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusReader{formats: a.formats},
+		Reader:             &ListCommentReactionsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -338,35 +330,35 @@ func (a *Client) GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatus(params
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1RunbooksExecutionsExecutionIDStepsStepIDVotesStatusOK)
+	success, ok := result.(*ListCommentReactionsOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1RunbooksExecutionsExecutionIdStepsStepIdVotesStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for list_comment_reactions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1RunbooksExecutionsExecutionIDVotesStatus gets votes
+ListComments lists comments for a conversation
 
-Get an object's current vote counts
+ALPHA - List all of the comments that have been added to the organization
 */
-func (a *Client) GetV1RunbooksExecutionsExecutionIDVotesStatus(params *GetV1RunbooksExecutionsExecutionIDVotesStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RunbooksExecutionsExecutionIDVotesStatusOK, error) {
+func (a *Client) ListComments(params *ListCommentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListCommentsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1RunbooksExecutionsExecutionIDVotesStatusParams()
+		params = NewListCommentsParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1RunbooksExecutionsExecutionIdVotesStatus",
+		ID:                 "list_comments",
 		Method:             "GET",
-		PathPattern:        "/v1/runbooks/executions/{execution_id}/votes/status",
+		PathPattern:        "/v1/conversations/{conversation_id}/comments",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1RunbooksExecutionsExecutionIDVotesStatusReader{formats: a.formats},
+		Reader:             &ListCommentsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -379,35 +371,35 @@ func (a *Client) GetV1RunbooksExecutionsExecutionIDVotesStatus(params *GetV1Runb
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1RunbooksExecutionsExecutionIDVotesStatusOK)
+	success, ok := result.(*ListCommentsOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1RunbooksExecutionsExecutionIdVotesStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for list_comments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PatchV1ConversationsConversationIDCommentsCommentID updates a conversation comment
+UpdateComment updates a conversation comment
 
 ALPHA - Update a comment's attributes
 */
-func (a *Client) PatchV1ConversationsConversationIDCommentsCommentID(params *PatchV1ConversationsConversationIDCommentsCommentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ConversationsConversationIDCommentsCommentIDOK, error) {
+func (a *Client) UpdateComment(params *UpdateCommentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateCommentOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchV1ConversationsConversationIDCommentsCommentIDParams()
+		params = NewUpdateCommentParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchV1ConversationsConversationIdCommentsCommentId",
+		ID:                 "update_comment",
 		Method:             "PATCH",
 		PathPattern:        "/v1/conversations/{conversation_id}/comments/{comment_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchV1ConversationsConversationIDCommentsCommentIDReader{formats: a.formats},
+		Reader:             &UpdateCommentReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -420,35 +412,35 @@ func (a *Client) PatchV1ConversationsConversationIDCommentsCommentID(params *Pat
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchV1ConversationsConversationIDCommentsCommentIDOK)
+	success, ok := result.(*UpdateCommentOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1ConversationsConversationIdCommentsCommentId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for update_comment: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PatchV1IncidentsIncidentIDEventsEventIDVotes updates votes
+UpdateVote updates votes
 
 Upvote or downvote an object
 */
-func (a *Client) PatchV1IncidentsIncidentIDEventsEventIDVotes(params *PatchV1IncidentsIncidentIDEventsEventIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDEventsEventIDVotesOK, error) {
+func (a *Client) UpdateVote(params *UpdateVoteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateVoteOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchV1IncidentsIncidentIDEventsEventIDVotesParams()
+		params = NewUpdateVoteParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchV1IncidentsIncidentIdEventsEventIdVotes",
+		ID:                 "update_vote",
 		Method:             "PATCH",
 		PathPattern:        "/v1/incidents/{incident_id}/events/{event_id}/votes",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchV1IncidentsIncidentIDEventsEventIDVotesReader{formats: a.formats},
+		Reader:             &UpdateVoteReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -461,177 +453,13 @@ func (a *Client) PatchV1IncidentsIncidentIDEventsEventIDVotes(params *PatchV1Inc
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchV1IncidentsIncidentIDEventsEventIDVotesOK)
+	success, ok := result.(*UpdateVoteOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IncidentsIncidentIdEventsEventIdVotes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes updates votes
-
-Upvote or downvote an object
-*/
-func (a *Client) PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotes(params *PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1RunbooksExecutionsExecutionIdStepsStepIdVotes",
-		Method:             "PATCH",
-		PathPattern:        "/v1/runbooks/executions/{execution_id}/steps/{step_id}/votes",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1RunbooksExecutionsExecutionIDStepsStepIDVotesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1RunbooksExecutionsExecutionIdStepsStepIdVotes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1RunbooksExecutionsExecutionIDVotes updates votes
-
-Upvote or downvote an object
-*/
-func (a *Client) PatchV1RunbooksExecutionsExecutionIDVotes(params *PatchV1RunbooksExecutionsExecutionIDVotesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RunbooksExecutionsExecutionIDVotesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1RunbooksExecutionsExecutionIDVotesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1RunbooksExecutionsExecutionIdVotes",
-		Method:             "PATCH",
-		PathPattern:        "/v1/runbooks/executions/{execution_id}/votes",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1RunbooksExecutionsExecutionIDVotesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1RunbooksExecutionsExecutionIDVotesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1RunbooksExecutionsExecutionIdVotes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1ConversationsConversationIDComments creates a conversation comment
-
-ALPHA - Creates a comment for a project
-*/
-func (a *Client) PostV1ConversationsConversationIDComments(params *PostV1ConversationsConversationIDCommentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ConversationsConversationIDCommentsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1ConversationsConversationIDCommentsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1ConversationsConversationIdComments",
-		Method:             "POST",
-		PathPattern:        "/v1/conversations/{conversation_id}/comments",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1ConversationsConversationIDCommentsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1ConversationsConversationIDCommentsCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1ConversationsConversationIdComments: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1ConversationsConversationIDCommentsCommentIDReactions creates a reaction for a conversation comment
-
-ALPHA - Create a reaction on a comment
-*/
-func (a *Client) PostV1ConversationsConversationIDCommentsCommentIDReactions(params *PostV1ConversationsConversationIDCommentsCommentIDReactionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ConversationsConversationIDCommentsCommentIDReactionsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1ConversationsConversationIDCommentsCommentIDReactionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1ConversationsConversationIdCommentsCommentIdReactions",
-		Method:             "POST",
-		PathPattern:        "/v1/conversations/{conversation_id}/comments/{comment_id}/reactions",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1ConversationsConversationIDCommentsCommentIDReactionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1ConversationsConversationIDCommentsCommentIDReactionsCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1ConversationsConversationIdCommentsCommentIdReactions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for update_vote: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

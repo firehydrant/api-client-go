@@ -30,1682 +30,124 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1CustomFieldsDefinitionsFieldID(params *DeleteV1CustomFieldsDefinitionsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1CustomFieldsDefinitionsFieldIDOK, error)
+	CreateCustomFieldDefinition(params *CreateCustomFieldDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateCustomFieldDefinitionCreated, error)
 
-	DeleteV1IncidentRolesIncidentRoleID(params *DeleteV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentRolesIncidentRoleIDOK, error)
+	CreateIncidentRole(params *CreateIncidentRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentRoleCreated, error)
 
-	DeleteV1IncidentTypesID(params *DeleteV1IncidentTypesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentTypesIDOK, error)
+	CreateIncidentType(params *CreateIncidentTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentTypeCreated, error)
 
-	DeleteV1LifecyclesMeasurementDefinitionsMeasurementDefinitionID(params *DeleteV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDNoContent, error)
+	CreateLifecycleMeasurementDefinition(params *CreateLifecycleMeasurementDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateLifecycleMeasurementDefinitionCreated, error)
 
-	DeleteV1LifecyclesMilestonesMilestoneID(params *DeleteV1LifecyclesMilestonesMilestoneIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1LifecyclesMilestonesMilestoneIDOK, error)
+	CreateLifecycleMilestone(params *CreateLifecycleMilestoneParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateLifecycleMilestoneCreated, error)
 
-	DeleteV1PrioritiesPrioritySlug(params *DeleteV1PrioritiesPrioritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PrioritiesPrioritySlugOK, error)
+	CreatePriority(params *CreatePriorityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreatePriorityCreated, error)
 
-	DeleteV1SeveritiesSeveritySlug(params *DeleteV1SeveritiesSeveritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SeveritiesSeveritySlugOK, error)
+	CreateSeverity(params *CreateSeverityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSeverityCreated, error)
 
-	DeleteV1SeverityMatrixConditionsConditionID(params *DeleteV1SeverityMatrixConditionsConditionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SeverityMatrixConditionsConditionIDOK, error)
+	CreateSeverityMatrixCondition(params *CreateSeverityMatrixConditionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSeverityMatrixConditionCreated, error)
 
-	DeleteV1SeverityMatrixImpactsImpactID(params *DeleteV1SeverityMatrixImpactsImpactIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SeverityMatrixImpactsImpactIDOK, error)
+	CreateSeverityMatrixImpact(params *CreateSeverityMatrixImpactParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSeverityMatrixImpactCreated, error)
 
-	GetV1CustomFieldsDefinitions(params *GetV1CustomFieldsDefinitionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1CustomFieldsDefinitionsOK, error)
+	DeleteCustomFieldDefinition(params *DeleteCustomFieldDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomFieldDefinitionOK, error)
 
-	GetV1CustomFieldsDefinitionsFieldIDSelectOptions(params *GetV1CustomFieldsDefinitionsFieldIDSelectOptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1CustomFieldsDefinitionsFieldIDSelectOptionsOK, error)
+	DeleteIncidentRole(params *DeleteIncidentRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIncidentRoleOK, error)
 
-	GetV1FormConfigurationsSlug(params *GetV1FormConfigurationsSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1FormConfigurationsSlugOK, error)
+	DeleteIncidentType(params *DeleteIncidentTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIncidentTypeOK, error)
 
-	GetV1IncidentRoles(params *GetV1IncidentRolesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentRolesOK, error)
+	DeleteLifecycleMeasurementDefinition(params *DeleteLifecycleMeasurementDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteLifecycleMeasurementDefinitionNoContent, error)
 
-	GetV1IncidentRolesIncidentRoleID(params *GetV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentRolesIncidentRoleIDOK, error)
+	DeleteLifecycleMilestone(params *DeleteLifecycleMilestoneParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteLifecycleMilestoneOK, error)
 
-	GetV1IncidentTags(params *GetV1IncidentTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentTagsOK, error)
+	DeletePriority(params *DeletePriorityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePriorityOK, error)
 
-	GetV1IncidentTypes(params *GetV1IncidentTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentTypesOK, error)
+	DeleteSeverity(params *DeleteSeverityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSeverityOK, error)
 
-	GetV1IncidentTypesID(params *GetV1IncidentTypesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentTypesIDOK, error)
+	DeleteSeverityMatrixCondition(params *DeleteSeverityMatrixConditionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSeverityMatrixConditionOK, error)
 
-	GetV1LifecyclesMeasurementDefinitions(params *GetV1LifecyclesMeasurementDefinitionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1LifecyclesMeasurementDefinitionsOK, error)
+	DeleteSeverityMatrixImpact(params *DeleteSeverityMatrixImpactParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSeverityMatrixImpactOK, error)
 
-	GetV1LifecyclesMeasurementDefinitionsMeasurementDefinitionID(params *GetV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDOK, error)
+	GetFormConfiguration(params *GetFormConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFormConfigurationOK, error)
 
-	GetV1LifecyclesPhases(params *GetV1LifecyclesPhasesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1LifecyclesPhasesOK, error)
+	GetIncidentRole(params *GetIncidentRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIncidentRoleOK, error)
 
-	GetV1Priorities(params *GetV1PrioritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PrioritiesOK, error)
+	GetIncidentType(params *GetIncidentTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIncidentTypeOK, error)
 
-	GetV1PrioritiesPrioritySlug(params *GetV1PrioritiesPrioritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PrioritiesPrioritySlugOK, error)
+	GetLifecycleMeasurementDefinition(params *GetLifecycleMeasurementDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLifecycleMeasurementDefinitionOK, error)
 
-	GetV1Severities(params *GetV1SeveritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeveritiesOK, error)
+	GetPriority(params *GetPriorityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPriorityOK, error)
 
-	GetV1SeveritiesSeveritySlug(params *GetV1SeveritiesSeveritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeveritiesSeveritySlugOK, error)
+	GetSeverity(params *GetSeverityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSeverityOK, error)
 
-	GetV1SeverityMatrix(params *GetV1SeverityMatrixParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixOK, error)
+	GetSeverityMatrix(params *GetSeverityMatrixParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSeverityMatrixOK, error)
 
-	GetV1SeverityMatrixConditions(params *GetV1SeverityMatrixConditionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixConditionsOK, error)
+	GetSeverityMatrixCondition(params *GetSeverityMatrixConditionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSeverityMatrixConditionOK, error)
 
-	GetV1SeverityMatrixConditionsConditionID(params *GetV1SeverityMatrixConditionsConditionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixConditionsConditionIDOK, error)
+	ListCustomFieldDefinitions(params *ListCustomFieldDefinitionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListCustomFieldDefinitionsOK, error)
 
-	GetV1SeverityMatrixImpacts(params *GetV1SeverityMatrixImpactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixImpactsOK, error)
+	ListCustomFieldSelectOptions(params *ListCustomFieldSelectOptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListCustomFieldSelectOptionsOK, error)
 
-	PatchV1CustomFieldsDefinitionsFieldID(params *PatchV1CustomFieldsDefinitionsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1CustomFieldsDefinitionsFieldIDOK, error)
+	ListIncidentRoles(params *ListIncidentRolesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIncidentRolesOK, error)
 
-	PatchV1IncidentRolesIncidentRoleID(params *PatchV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentRolesIncidentRoleIDOK, error)
+	ListIncidentTags(params *ListIncidentTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIncidentTagsOK, error)
 
-	PatchV1IncidentTypesID(params *PatchV1IncidentTypesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentTypesIDOK, error)
+	ListIncidentTypes(params *ListIncidentTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIncidentTypesOK, error)
 
-	PatchV1LifecyclesMeasurementDefinitionsMeasurementDefinitionID(params *PatchV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDOK, error)
+	ListLifecycleMeasurementDefinitions(params *ListLifecycleMeasurementDefinitionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListLifecycleMeasurementDefinitionsOK, error)
 
-	PatchV1LifecyclesMilestonesMilestoneID(params *PatchV1LifecyclesMilestonesMilestoneIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1LifecyclesMilestonesMilestoneIDOK, error)
+	ListLifecyclePhases(params *ListLifecyclePhasesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListLifecyclePhasesOK, error)
 
-	PatchV1PrioritiesPrioritySlug(params *PatchV1PrioritiesPrioritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PrioritiesPrioritySlugOK, error)
+	ListPriorities(params *ListPrioritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListPrioritiesOK, error)
 
-	PatchV1SeveritiesSeveritySlug(params *PatchV1SeveritiesSeveritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeveritiesSeveritySlugOK, error)
+	ListSeverities(params *ListSeveritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSeveritiesOK, error)
 
-	PatchV1SeverityMatrix(params *PatchV1SeverityMatrixParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeverityMatrixOK, error)
+	ListSeverityMatrixConditions(params *ListSeverityMatrixConditionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSeverityMatrixConditionsOK, error)
 
-	PatchV1SeverityMatrixConditionsConditionID(params *PatchV1SeverityMatrixConditionsConditionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeverityMatrixConditionsConditionIDOK, error)
+	ListSeverityMatrixImpacts(params *ListSeverityMatrixImpactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSeverityMatrixImpactsOK, error)
 
-	PatchV1SeverityMatrixImpactsImpactID(params *PatchV1SeverityMatrixImpactsImpactIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeverityMatrixImpactsImpactIDOK, error)
+	UpdateCustomFieldDefinition(params *UpdateCustomFieldDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateCustomFieldDefinitionOK, error)
 
-	PostV1CustomFieldsDefinitions(params *PostV1CustomFieldsDefinitionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1CustomFieldsDefinitionsCreated, error)
+	UpdateIncidentRole(params *UpdateIncidentRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateIncidentRoleOK, error)
 
-	PostV1IncidentRoles(params *PostV1IncidentRolesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentRolesCreated, error)
+	UpdateIncidentType(params *UpdateIncidentTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateIncidentTypeOK, error)
 
-	PostV1IncidentTagsValidate(params *PostV1IncidentTagsValidateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentTagsValidateCreated, error)
+	UpdateLifecycleMeasurementDefinition(params *UpdateLifecycleMeasurementDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateLifecycleMeasurementDefinitionOK, error)
 
-	PostV1IncidentTypes(params *PostV1IncidentTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentTypesCreated, error)
+	UpdateLifecycleMilestone(params *UpdateLifecycleMilestoneParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateLifecycleMilestoneOK, error)
 
-	PostV1LifecyclesMeasurementDefinitions(params *PostV1LifecyclesMeasurementDefinitionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1LifecyclesMeasurementDefinitionsCreated, error)
+	UpdatePriority(params *UpdatePriorityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdatePriorityOK, error)
 
-	PostV1LifecyclesMilestones(params *PostV1LifecyclesMilestonesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1LifecyclesMilestonesCreated, error)
+	UpdateSeverity(params *UpdateSeverityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSeverityOK, error)
 
-	PostV1Priorities(params *PostV1PrioritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PrioritiesCreated, error)
+	UpdateSeverityMatrix(params *UpdateSeverityMatrixParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSeverityMatrixOK, error)
 
-	PostV1Severities(params *PostV1SeveritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SeveritiesCreated, error)
+	UpdateSeverityMatrixCondition(params *UpdateSeverityMatrixConditionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSeverityMatrixConditionOK, error)
 
-	PostV1SeverityMatrixConditions(params *PostV1SeverityMatrixConditionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SeverityMatrixConditionsCreated, error)
+	UpdateSeverityMatrixImpact(params *UpdateSeverityMatrixImpactParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSeverityMatrixImpactOK, error)
 
-	PostV1SeverityMatrixImpacts(params *PostV1SeverityMatrixImpactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SeverityMatrixImpactsCreated, error)
+	ValidateIncidentTags(params *ValidateIncidentTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ValidateIncidentTagsCreated, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-DeleteV1CustomFieldsDefinitionsFieldID deletes a custom field definition
-
-Delete a custom field definition
-*/
-func (a *Client) DeleteV1CustomFieldsDefinitionsFieldID(params *DeleteV1CustomFieldsDefinitionsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1CustomFieldsDefinitionsFieldIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1CustomFieldsDefinitionsFieldIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1CustomFieldsDefinitionsFieldId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/custom_fields/definitions/{field_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1CustomFieldsDefinitionsFieldIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1CustomFieldsDefinitionsFieldIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1CustomFieldsDefinitionsFieldId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1IncidentRolesIncidentRoleID archives an incident role
-
-Archives an incident role which will hide it from lists and metrics
-*/
-func (a *Client) DeleteV1IncidentRolesIncidentRoleID(params *DeleteV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentRolesIncidentRoleIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1IncidentRolesIncidentRoleIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1IncidentRolesIncidentRoleId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/incident_roles/{incident_role_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1IncidentRolesIncidentRoleIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1IncidentRolesIncidentRoleIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentRolesIncidentRoleId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1IncidentTypesID archives an incident type
-
-Archives an incident type which will hide it from lists and metrics
-*/
-func (a *Client) DeleteV1IncidentTypesID(params *DeleteV1IncidentTypesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentTypesIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1IncidentTypesIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1IncidentTypesId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/incident_types/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1IncidentTypesIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1IncidentTypesIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentTypesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1LifecyclesMeasurementDefinitionsMeasurementDefinitionID archives a measurement definition
-
-Archives a measurement definition which will hide it from lists and metrics
-*/
-func (a *Client) DeleteV1LifecyclesMeasurementDefinitionsMeasurementDefinitionID(params *DeleteV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1LifecyclesMeasurementDefinitionsMeasurementDefinitionId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/lifecycles/measurement_definitions/{measurement_definition_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1LifecyclesMeasurementDefinitionsMeasurementDefinitionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1LifecyclesMilestonesMilestoneID deletes a milestone
-
-Delete a milestone
-*/
-func (a *Client) DeleteV1LifecyclesMilestonesMilestoneID(params *DeleteV1LifecyclesMilestonesMilestoneIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1LifecyclesMilestonesMilestoneIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1LifecyclesMilestonesMilestoneIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1LifecyclesMilestonesMilestoneId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/lifecycles/milestones/{milestone_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1LifecyclesMilestonesMilestoneIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1LifecyclesMilestonesMilestoneIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1LifecyclesMilestonesMilestoneId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1PrioritiesPrioritySlug deletes a priority
-
-Delete a specific priority
-*/
-func (a *Client) DeleteV1PrioritiesPrioritySlug(params *DeleteV1PrioritiesPrioritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PrioritiesPrioritySlugOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1PrioritiesPrioritySlugParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1PrioritiesPrioritySlug",
-		Method:             "DELETE",
-		PathPattern:        "/v1/priorities/{priority_slug}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1PrioritiesPrioritySlugReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1PrioritiesPrioritySlugOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1PrioritiesPrioritySlug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1SeveritiesSeveritySlug deletes a severity
-
-Delete a specific severity
-*/
-func (a *Client) DeleteV1SeveritiesSeveritySlug(params *DeleteV1SeveritiesSeveritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SeveritiesSeveritySlugOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1SeveritiesSeveritySlugParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1SeveritiesSeveritySlug",
-		Method:             "DELETE",
-		PathPattern:        "/v1/severities/{severity_slug}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1SeveritiesSeveritySlugReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1SeveritiesSeveritySlugOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1SeveritiesSeveritySlug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1SeverityMatrixConditionsConditionID deletes a severity matrix condition
-
-Delete a specific condition
-*/
-func (a *Client) DeleteV1SeverityMatrixConditionsConditionID(params *DeleteV1SeverityMatrixConditionsConditionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SeverityMatrixConditionsConditionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1SeverityMatrixConditionsConditionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1SeverityMatrixConditionsConditionId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/severity_matrix/conditions/{condition_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1SeverityMatrixConditionsConditionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1SeverityMatrixConditionsConditionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1SeverityMatrixConditionsConditionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1SeverityMatrixImpactsImpactID deletes a severity matrix impact
-
-Delete a specific impact
-*/
-func (a *Client) DeleteV1SeverityMatrixImpactsImpactID(params *DeleteV1SeverityMatrixImpactsImpactIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SeverityMatrixImpactsImpactIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1SeverityMatrixImpactsImpactIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1SeverityMatrixImpactsImpactId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/severity_matrix/impacts/{impact_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1SeverityMatrixImpactsImpactIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1SeverityMatrixImpactsImpactIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1SeverityMatrixImpactsImpactId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1CustomFieldsDefinitions lists custom field definitions
-
-List all custom field definitions
-*/
-func (a *Client) GetV1CustomFieldsDefinitions(params *GetV1CustomFieldsDefinitionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1CustomFieldsDefinitionsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1CustomFieldsDefinitionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1CustomFieldsDefinitions",
-		Method:             "GET",
-		PathPattern:        "/v1/custom_fields/definitions",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1CustomFieldsDefinitionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1CustomFieldsDefinitionsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1CustomFieldsDefinitions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1CustomFieldsDefinitionsFieldIDSelectOptions gets available values for a custom field
-
-Get the permissible values for the a currently active custom select or multi-select field.
-*/
-func (a *Client) GetV1CustomFieldsDefinitionsFieldIDSelectOptions(params *GetV1CustomFieldsDefinitionsFieldIDSelectOptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1CustomFieldsDefinitionsFieldIDSelectOptionsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1CustomFieldsDefinitionsFieldIDSelectOptionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1CustomFieldsDefinitionsFieldIdSelectOptions",
-		Method:             "GET",
-		PathPattern:        "/v1/custom_fields/definitions/{field_id}/select_options",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1CustomFieldsDefinitionsFieldIDSelectOptionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1CustomFieldsDefinitionsFieldIDSelectOptionsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1CustomFieldsDefinitionsFieldIdSelectOptions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1FormConfigurationsSlug gets a form configuration
-
-Get a form configuration
-*/
-func (a *Client) GetV1FormConfigurationsSlug(params *GetV1FormConfigurationsSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1FormConfigurationsSlugOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1FormConfigurationsSlugParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1FormConfigurationsSlug",
-		Method:             "GET",
-		PathPattern:        "/v1/form_configurations/{slug}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1FormConfigurationsSlugReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1FormConfigurationsSlugOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1FormConfigurationsSlug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IncidentRoles lists incident roles
-
-List all of the incident roles in the organization
-*/
-func (a *Client) GetV1IncidentRoles(params *GetV1IncidentRolesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentRolesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IncidentRolesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IncidentRoles",
-		Method:             "GET",
-		PathPattern:        "/v1/incident_roles",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IncidentRolesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IncidentRolesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IncidentRoles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IncidentRolesIncidentRoleID gets an incident role
-
-Retrieve a single incident role from its ID
-*/
-func (a *Client) GetV1IncidentRolesIncidentRoleID(params *GetV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentRolesIncidentRoleIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IncidentRolesIncidentRoleIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IncidentRolesIncidentRoleId",
-		Method:             "GET",
-		PathPattern:        "/v1/incident_roles/{incident_role_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IncidentRolesIncidentRoleIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IncidentRolesIncidentRoleIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IncidentRolesIncidentRoleId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IncidentTags lists incident tags
-
-List all of the incident tags in the organization
-*/
-func (a *Client) GetV1IncidentTags(params *GetV1IncidentTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentTagsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IncidentTagsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IncidentTags",
-		Method:             "GET",
-		PathPattern:        "/v1/incident_tags",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IncidentTagsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IncidentTagsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IncidentTags: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IncidentTypes lists incident types
-
-List all of the incident types in the organization
-*/
-func (a *Client) GetV1IncidentTypes(params *GetV1IncidentTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentTypesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IncidentTypesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IncidentTypes",
-		Method:             "GET",
-		PathPattern:        "/v1/incident_types",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IncidentTypesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IncidentTypesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IncidentTypes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IncidentTypesID gets an incident type
-
-Retrieve a single incident type from its ID
-*/
-func (a *Client) GetV1IncidentTypesID(params *GetV1IncidentTypesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentTypesIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IncidentTypesIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IncidentTypesId",
-		Method:             "GET",
-		PathPattern:        "/v1/incident_types/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IncidentTypesIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IncidentTypesIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IncidentTypesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1LifecyclesMeasurementDefinitions lists measurement definitions
-
-List all of the measurement definitions in the organization
-*/
-func (a *Client) GetV1LifecyclesMeasurementDefinitions(params *GetV1LifecyclesMeasurementDefinitionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1LifecyclesMeasurementDefinitionsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1LifecyclesMeasurementDefinitionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1LifecyclesMeasurementDefinitions",
-		Method:             "GET",
-		PathPattern:        "/v1/lifecycles/measurement_definitions",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1LifecyclesMeasurementDefinitionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1LifecyclesMeasurementDefinitionsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1LifecyclesMeasurementDefinitions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1LifecyclesMeasurementDefinitionsMeasurementDefinitionID gets a measurement definition
-
-Retrieve a single measurement definition from its ID
-*/
-func (a *Client) GetV1LifecyclesMeasurementDefinitionsMeasurementDefinitionID(params *GetV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1LifecyclesMeasurementDefinitionsMeasurementDefinitionId",
-		Method:             "GET",
-		PathPattern:        "/v1/lifecycles/measurement_definitions/{measurement_definition_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1LifecyclesMeasurementDefinitionsMeasurementDefinitionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1LifecyclesPhases lists phases and milestones
-
-List all of the lifecycle phases and milestones in the organization
-*/
-func (a *Client) GetV1LifecyclesPhases(params *GetV1LifecyclesPhasesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1LifecyclesPhasesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1LifecyclesPhasesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1LifecyclesPhases",
-		Method:             "GET",
-		PathPattern:        "/v1/lifecycles/phases",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1LifecyclesPhasesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1LifecyclesPhasesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1LifecyclesPhases: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1Priorities lists priorities
-
-Lists priorities
-*/
-func (a *Client) GetV1Priorities(params *GetV1PrioritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PrioritiesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PrioritiesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1Priorities",
-		Method:             "GET",
-		PathPattern:        "/v1/priorities",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1PrioritiesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1PrioritiesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1Priorities: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1PrioritiesPrioritySlug gets a priority
-
-Retrieve a specific priority
-*/
-func (a *Client) GetV1PrioritiesPrioritySlug(params *GetV1PrioritiesPrioritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PrioritiesPrioritySlugOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PrioritiesPrioritySlugParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1PrioritiesPrioritySlug",
-		Method:             "GET",
-		PathPattern:        "/v1/priorities/{priority_slug}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1PrioritiesPrioritySlugReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1PrioritiesPrioritySlugOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1PrioritiesPrioritySlug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1Severities lists severities
-
-Lists severities
-*/
-func (a *Client) GetV1Severities(params *GetV1SeveritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeveritiesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1SeveritiesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1Severities",
-		Method:             "GET",
-		PathPattern:        "/v1/severities",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1SeveritiesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1SeveritiesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1Severities: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1SeveritiesSeveritySlug gets a severity
-
-Retrieve a specific severity
-*/
-func (a *Client) GetV1SeveritiesSeveritySlug(params *GetV1SeveritiesSeveritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeveritiesSeveritySlugOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1SeveritiesSeveritySlugParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1SeveritiesSeveritySlug",
-		Method:             "GET",
-		PathPattern:        "/v1/severities/{severity_slug}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1SeveritiesSeveritySlugReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1SeveritiesSeveritySlugOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1SeveritiesSeveritySlug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1SeverityMatrix gets severity matrix
-
-Retrieve the Severity matrix for your organization and its components and configured severities.
-*/
-func (a *Client) GetV1SeverityMatrix(params *GetV1SeverityMatrixParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1SeverityMatrixParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1SeverityMatrix",
-		Method:             "GET",
-		PathPattern:        "/v1/severity_matrix",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1SeverityMatrixReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1SeverityMatrixOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1SeverityMatrix: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1SeverityMatrixConditions lists severity matrix conditions
-
-Lists conditions
-*/
-func (a *Client) GetV1SeverityMatrixConditions(params *GetV1SeverityMatrixConditionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixConditionsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1SeverityMatrixConditionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1SeverityMatrixConditions",
-		Method:             "GET",
-		PathPattern:        "/v1/severity_matrix/conditions",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1SeverityMatrixConditionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1SeverityMatrixConditionsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1SeverityMatrixConditions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1SeverityMatrixConditionsConditionID gets a severity matrix condition
-
-Retrieve a specific condition
-*/
-func (a *Client) GetV1SeverityMatrixConditionsConditionID(params *GetV1SeverityMatrixConditionsConditionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixConditionsConditionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1SeverityMatrixConditionsConditionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1SeverityMatrixConditionsConditionId",
-		Method:             "GET",
-		PathPattern:        "/v1/severity_matrix/conditions/{condition_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1SeverityMatrixConditionsConditionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1SeverityMatrixConditionsConditionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1SeverityMatrixConditionsConditionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1SeverityMatrixImpacts lists severity matrix impacts
-
-Lists impacts
-*/
-func (a *Client) GetV1SeverityMatrixImpacts(params *GetV1SeverityMatrixImpactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SeverityMatrixImpactsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1SeverityMatrixImpactsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1SeverityMatrixImpacts",
-		Method:             "GET",
-		PathPattern:        "/v1/severity_matrix/impacts",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1SeverityMatrixImpactsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1SeverityMatrixImpactsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1SeverityMatrixImpacts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1CustomFieldsDefinitionsFieldID updates a custom field definition
-
-Update a single custom field definition
-*/
-func (a *Client) PatchV1CustomFieldsDefinitionsFieldID(params *PatchV1CustomFieldsDefinitionsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1CustomFieldsDefinitionsFieldIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1CustomFieldsDefinitionsFieldIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1CustomFieldsDefinitionsFieldId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/custom_fields/definitions/{field_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1CustomFieldsDefinitionsFieldIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1CustomFieldsDefinitionsFieldIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1CustomFieldsDefinitionsFieldId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IncidentRolesIncidentRoleID updates an incident role
-
-Update a single incident role from its ID
-*/
-func (a *Client) PatchV1IncidentRolesIncidentRoleID(params *PatchV1IncidentRolesIncidentRoleIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentRolesIncidentRoleIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IncidentRolesIncidentRoleIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IncidentRolesIncidentRoleId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/incident_roles/{incident_role_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IncidentRolesIncidentRoleIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IncidentRolesIncidentRoleIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IncidentRolesIncidentRoleId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IncidentTypesID updates an incident type
-
-Update a single incident type from its ID
-*/
-func (a *Client) PatchV1IncidentTypesID(params *PatchV1IncidentTypesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentTypesIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IncidentTypesIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IncidentTypesId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/incident_types/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IncidentTypesIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IncidentTypesIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IncidentTypesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1LifecyclesMeasurementDefinitionsMeasurementDefinitionID updates a measurement definition
-
-Update a single measurement definition from its ID
-*/
-func (a *Client) PatchV1LifecyclesMeasurementDefinitionsMeasurementDefinitionID(params *PatchV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1LifecyclesMeasurementDefinitionsMeasurementDefinitionId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/lifecycles/measurement_definitions/{measurement_definition_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1LifecyclesMeasurementDefinitionsMeasurementDefinitionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1LifecyclesMeasurementDefinitionsMeasurementDefinitionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1LifecyclesMilestonesMilestoneID updates a milestone
-
-Update a milestone
-*/
-func (a *Client) PatchV1LifecyclesMilestonesMilestoneID(params *PatchV1LifecyclesMilestonesMilestoneIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1LifecyclesMilestonesMilestoneIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1LifecyclesMilestonesMilestoneIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1LifecyclesMilestonesMilestoneId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/lifecycles/milestones/{milestone_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1LifecyclesMilestonesMilestoneIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1LifecyclesMilestonesMilestoneIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1LifecyclesMilestonesMilestoneId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1PrioritiesPrioritySlug updates a priority
-
-Update a specific priority
-*/
-func (a *Client) PatchV1PrioritiesPrioritySlug(params *PatchV1PrioritiesPrioritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PrioritiesPrioritySlugOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1PrioritiesPrioritySlugParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1PrioritiesPrioritySlug",
-		Method:             "PATCH",
-		PathPattern:        "/v1/priorities/{priority_slug}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1PrioritiesPrioritySlugReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1PrioritiesPrioritySlugOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1PrioritiesPrioritySlug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1SeveritiesSeveritySlug updates a severity
-
-Update a specific severity
-*/
-func (a *Client) PatchV1SeveritiesSeveritySlug(params *PatchV1SeveritiesSeveritySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeveritiesSeveritySlugOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1SeveritiesSeveritySlugParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1SeveritiesSeveritySlug",
-		Method:             "PATCH",
-		PathPattern:        "/v1/severities/{severity_slug}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1SeveritiesSeveritySlugReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1SeveritiesSeveritySlugOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1SeveritiesSeveritySlug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1SeverityMatrix updates severity matrix
-
-Update available severities and impacts in your organization's severity matrix.
-*/
-func (a *Client) PatchV1SeverityMatrix(params *PatchV1SeverityMatrixParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeverityMatrixOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1SeverityMatrixParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1SeverityMatrix",
-		Method:             "PATCH",
-		PathPattern:        "/v1/severity_matrix",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1SeverityMatrixReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1SeverityMatrixOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1SeverityMatrix: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1SeverityMatrixConditionsConditionID updates a severity matrix condition
-
-Update a severity matrix condition
-*/
-func (a *Client) PatchV1SeverityMatrixConditionsConditionID(params *PatchV1SeverityMatrixConditionsConditionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeverityMatrixConditionsConditionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1SeverityMatrixConditionsConditionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1SeverityMatrixConditionsConditionId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/severity_matrix/conditions/{condition_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1SeverityMatrixConditionsConditionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1SeverityMatrixConditionsConditionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1SeverityMatrixConditionsConditionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1SeverityMatrixImpactsImpactID updates a severity matrix impact
-
-Update a severity matrix impact
-*/
-func (a *Client) PatchV1SeverityMatrixImpactsImpactID(params *PatchV1SeverityMatrixImpactsImpactIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SeverityMatrixImpactsImpactIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1SeverityMatrixImpactsImpactIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1SeverityMatrixImpactsImpactId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/severity_matrix/impacts/{impact_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1SeverityMatrixImpactsImpactIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1SeverityMatrixImpactsImpactIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1SeverityMatrixImpactsImpactId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1CustomFieldsDefinitions creates a custom field definition
+CreateCustomFieldDefinition creates a custom field definition
 
 Create a new custom field definition
 */
-func (a *Client) PostV1CustomFieldsDefinitions(params *PostV1CustomFieldsDefinitionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1CustomFieldsDefinitionsCreated, error) {
+func (a *Client) CreateCustomFieldDefinition(params *CreateCustomFieldDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateCustomFieldDefinitionCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1CustomFieldsDefinitionsParams()
+		params = NewCreateCustomFieldDefinitionParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1CustomFieldsDefinitions",
+		ID:                 "create_custom_field_definition",
 		Method:             "POST",
 		PathPattern:        "/v1/custom_fields/definitions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1CustomFieldsDefinitionsReader{formats: a.formats},
+		Reader:             &CreateCustomFieldDefinitionReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1718,35 +160,35 @@ func (a *Client) PostV1CustomFieldsDefinitions(params *PostV1CustomFieldsDefinit
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1CustomFieldsDefinitionsCreated)
+	success, ok := result.(*CreateCustomFieldDefinitionCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1CustomFieldsDefinitions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_custom_field_definition: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1IncidentRoles creates an incident role
+CreateIncidentRole creates an incident role
 
 Create a new incident role
 */
-func (a *Client) PostV1IncidentRoles(params *PostV1IncidentRolesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentRolesCreated, error) {
+func (a *Client) CreateIncidentRole(params *CreateIncidentRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentRoleCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1IncidentRolesParams()
+		params = NewCreateIncidentRoleParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1IncidentRoles",
+		ID:                 "create_incident_role",
 		Method:             "POST",
 		PathPattern:        "/v1/incident_roles",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1IncidentRolesReader{formats: a.formats},
+		Reader:             &CreateIncidentRoleReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1759,76 +201,35 @@ func (a *Client) PostV1IncidentRoles(params *PostV1IncidentRolesParams, authInfo
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1IncidentRolesCreated)
+	success, ok := result.(*CreateIncidentRoleCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IncidentRoles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_incident_role: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1IncidentTagsValidate validates incident tags
-
-Validate the format of a list of tags
-*/
-func (a *Client) PostV1IncidentTagsValidate(params *PostV1IncidentTagsValidateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentTagsValidateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1IncidentTagsValidateParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1IncidentTagsValidate",
-		Method:             "POST",
-		PathPattern:        "/v1/incident_tags/validate",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1IncidentTagsValidateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1IncidentTagsValidateCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IncidentTagsValidate: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1IncidentTypes creates an incident type
+CreateIncidentType creates an incident type
 
 Create a new incident type
 */
-func (a *Client) PostV1IncidentTypes(params *PostV1IncidentTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentTypesCreated, error) {
+func (a *Client) CreateIncidentType(params *CreateIncidentTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentTypeCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1IncidentTypesParams()
+		params = NewCreateIncidentTypeParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1IncidentTypes",
+		ID:                 "create_incident_type",
 		Method:             "POST",
 		PathPattern:        "/v1/incident_types",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1IncidentTypesReader{formats: a.formats},
+		Reader:             &CreateIncidentTypeReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1841,35 +242,35 @@ func (a *Client) PostV1IncidentTypes(params *PostV1IncidentTypesParams, authInfo
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1IncidentTypesCreated)
+	success, ok := result.(*CreateIncidentTypeCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IncidentTypes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_incident_type: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1LifecyclesMeasurementDefinitions creates a measurement definition
+CreateLifecycleMeasurementDefinition creates a measurement definition
 
 Create a new measurement definition
 */
-func (a *Client) PostV1LifecyclesMeasurementDefinitions(params *PostV1LifecyclesMeasurementDefinitionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1LifecyclesMeasurementDefinitionsCreated, error) {
+func (a *Client) CreateLifecycleMeasurementDefinition(params *CreateLifecycleMeasurementDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateLifecycleMeasurementDefinitionCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1LifecyclesMeasurementDefinitionsParams()
+		params = NewCreateLifecycleMeasurementDefinitionParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1LifecyclesMeasurementDefinitions",
+		ID:                 "create_lifecycle_measurement_definition",
 		Method:             "POST",
 		PathPattern:        "/v1/lifecycles/measurement_definitions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1LifecyclesMeasurementDefinitionsReader{formats: a.formats},
+		Reader:             &CreateLifecycleMeasurementDefinitionReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1882,35 +283,35 @@ func (a *Client) PostV1LifecyclesMeasurementDefinitions(params *PostV1Lifecycles
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1LifecyclesMeasurementDefinitionsCreated)
+	success, ok := result.(*CreateLifecycleMeasurementDefinitionCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1LifecyclesMeasurementDefinitions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_lifecycle_measurement_definition: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1LifecyclesMilestones creates a milestone
+CreateLifecycleMilestone creates a milestone
 
 Create a new milestone
 */
-func (a *Client) PostV1LifecyclesMilestones(params *PostV1LifecyclesMilestonesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1LifecyclesMilestonesCreated, error) {
+func (a *Client) CreateLifecycleMilestone(params *CreateLifecycleMilestoneParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateLifecycleMilestoneCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1LifecyclesMilestonesParams()
+		params = NewCreateLifecycleMilestoneParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1LifecyclesMilestones",
+		ID:                 "create_lifecycle_milestone",
 		Method:             "POST",
 		PathPattern:        "/v1/lifecycles/milestones",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1LifecyclesMilestonesReader{formats: a.formats},
+		Reader:             &CreateLifecycleMilestoneReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1923,35 +324,35 @@ func (a *Client) PostV1LifecyclesMilestones(params *PostV1LifecyclesMilestonesPa
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1LifecyclesMilestonesCreated)
+	success, ok := result.(*CreateLifecycleMilestoneCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1LifecyclesMilestones: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_lifecycle_milestone: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1Priorities creates a priority
+CreatePriority creates a priority
 
 Create a new priority
 */
-func (a *Client) PostV1Priorities(params *PostV1PrioritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PrioritiesCreated, error) {
+func (a *Client) CreatePriority(params *CreatePriorityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreatePriorityCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1PrioritiesParams()
+		params = NewCreatePriorityParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1Priorities",
+		ID:                 "create_priority",
 		Method:             "POST",
 		PathPattern:        "/v1/priorities",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1PrioritiesReader{formats: a.formats},
+		Reader:             &CreatePriorityReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1964,35 +365,35 @@ func (a *Client) PostV1Priorities(params *PostV1PrioritiesParams, authInfo runti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1PrioritiesCreated)
+	success, ok := result.(*CreatePriorityCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1Priorities: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_priority: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1Severities creates a severity
+CreateSeverity creates a severity
 
 Create a new severity
 */
-func (a *Client) PostV1Severities(params *PostV1SeveritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SeveritiesCreated, error) {
+func (a *Client) CreateSeverity(params *CreateSeverityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSeverityCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1SeveritiesParams()
+		params = NewCreateSeverityParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1Severities",
+		ID:                 "create_severity",
 		Method:             "POST",
 		PathPattern:        "/v1/severities",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1SeveritiesReader{formats: a.formats},
+		Reader:             &CreateSeverityReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -2005,35 +406,35 @@ func (a *Client) PostV1Severities(params *PostV1SeveritiesParams, authInfo runti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1SeveritiesCreated)
+	success, ok := result.(*CreateSeverityCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1Severities: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_severity: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1SeverityMatrixConditions creates a severity matrix condition
+CreateSeverityMatrixCondition creates a severity matrix condition
 
 Create a new condition
 */
-func (a *Client) PostV1SeverityMatrixConditions(params *PostV1SeverityMatrixConditionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SeverityMatrixConditionsCreated, error) {
+func (a *Client) CreateSeverityMatrixCondition(params *CreateSeverityMatrixConditionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSeverityMatrixConditionCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1SeverityMatrixConditionsParams()
+		params = NewCreateSeverityMatrixConditionParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1SeverityMatrixConditions",
+		ID:                 "create_severity_matrix_condition",
 		Method:             "POST",
 		PathPattern:        "/v1/severity_matrix/conditions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1SeverityMatrixConditionsReader{formats: a.formats},
+		Reader:             &CreateSeverityMatrixConditionReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -2046,35 +447,35 @@ func (a *Client) PostV1SeverityMatrixConditions(params *PostV1SeverityMatrixCond
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1SeverityMatrixConditionsCreated)
+	success, ok := result.(*CreateSeverityMatrixConditionCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1SeverityMatrixConditions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_severity_matrix_condition: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1SeverityMatrixImpacts creates a severity matrix impact
+CreateSeverityMatrixImpact creates a severity matrix impact
 
 Create a new impact
 */
-func (a *Client) PostV1SeverityMatrixImpacts(params *PostV1SeverityMatrixImpactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SeverityMatrixImpactsCreated, error) {
+func (a *Client) CreateSeverityMatrixImpact(params *CreateSeverityMatrixImpactParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSeverityMatrixImpactCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1SeverityMatrixImpactsParams()
+		params = NewCreateSeverityMatrixImpactParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1SeverityMatrixImpacts",
+		ID:                 "create_severity_matrix_impact",
 		Method:             "POST",
 		PathPattern:        "/v1/severity_matrix/impacts",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1SeverityMatrixImpactsReader{formats: a.formats},
+		Reader:             &CreateSeverityMatrixImpactReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -2087,13 +488,1612 @@ func (a *Client) PostV1SeverityMatrixImpacts(params *PostV1SeverityMatrixImpacts
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1SeverityMatrixImpactsCreated)
+	success, ok := result.(*CreateSeverityMatrixImpactCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1SeverityMatrixImpacts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_severity_matrix_impact: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteCustomFieldDefinition deletes a custom field definition
+
+Delete a custom field definition
+*/
+func (a *Client) DeleteCustomFieldDefinition(params *DeleteCustomFieldDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteCustomFieldDefinitionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteCustomFieldDefinitionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_custom_field_definition",
+		Method:             "DELETE",
+		PathPattern:        "/v1/custom_fields/definitions/{field_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteCustomFieldDefinitionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteCustomFieldDefinitionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_custom_field_definition: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteIncidentRole archives an incident role
+
+Archives an incident role which will hide it from lists and metrics
+*/
+func (a *Client) DeleteIncidentRole(params *DeleteIncidentRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIncidentRoleOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteIncidentRoleParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_incident_role",
+		Method:             "DELETE",
+		PathPattern:        "/v1/incident_roles/{incident_role_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteIncidentRoleReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteIncidentRoleOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_incident_role: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteIncidentType archives an incident type
+
+Archives an incident type which will hide it from lists and metrics
+*/
+func (a *Client) DeleteIncidentType(params *DeleteIncidentTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIncidentTypeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteIncidentTypeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_incident_type",
+		Method:             "DELETE",
+		PathPattern:        "/v1/incident_types/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteIncidentTypeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteIncidentTypeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_incident_type: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteLifecycleMeasurementDefinition archives a measurement definition
+
+Archives a measurement definition which will hide it from lists and metrics
+*/
+func (a *Client) DeleteLifecycleMeasurementDefinition(params *DeleteLifecycleMeasurementDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteLifecycleMeasurementDefinitionNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteLifecycleMeasurementDefinitionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_lifecycle_measurement_definition",
+		Method:             "DELETE",
+		PathPattern:        "/v1/lifecycles/measurement_definitions/{measurement_definition_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteLifecycleMeasurementDefinitionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteLifecycleMeasurementDefinitionNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_lifecycle_measurement_definition: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteLifecycleMilestone deletes a milestone
+
+Delete a milestone
+*/
+func (a *Client) DeleteLifecycleMilestone(params *DeleteLifecycleMilestoneParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteLifecycleMilestoneOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteLifecycleMilestoneParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_lifecycle_milestone",
+		Method:             "DELETE",
+		PathPattern:        "/v1/lifecycles/milestones/{milestone_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteLifecycleMilestoneReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteLifecycleMilestoneOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_lifecycle_milestone: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeletePriority deletes a priority
+
+Delete a specific priority
+*/
+func (a *Client) DeletePriority(params *DeletePriorityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePriorityOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeletePriorityParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_priority",
+		Method:             "DELETE",
+		PathPattern:        "/v1/priorities/{priority_slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeletePriorityReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeletePriorityOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_priority: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteSeverity deletes a severity
+
+Delete a specific severity
+*/
+func (a *Client) DeleteSeverity(params *DeleteSeverityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSeverityOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteSeverityParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_severity",
+		Method:             "DELETE",
+		PathPattern:        "/v1/severities/{severity_slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteSeverityReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteSeverityOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_severity: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteSeverityMatrixCondition deletes a severity matrix condition
+
+Delete a specific condition
+*/
+func (a *Client) DeleteSeverityMatrixCondition(params *DeleteSeverityMatrixConditionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSeverityMatrixConditionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteSeverityMatrixConditionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_severity_matrix_condition",
+		Method:             "DELETE",
+		PathPattern:        "/v1/severity_matrix/conditions/{condition_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteSeverityMatrixConditionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteSeverityMatrixConditionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_severity_matrix_condition: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteSeverityMatrixImpact deletes a severity matrix impact
+
+Delete a specific impact
+*/
+func (a *Client) DeleteSeverityMatrixImpact(params *DeleteSeverityMatrixImpactParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSeverityMatrixImpactOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteSeverityMatrixImpactParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_severity_matrix_impact",
+		Method:             "DELETE",
+		PathPattern:        "/v1/severity_matrix/impacts/{impact_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteSeverityMatrixImpactReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteSeverityMatrixImpactOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_severity_matrix_impact: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetFormConfiguration gets a form configuration
+
+Get a form configuration
+*/
+func (a *Client) GetFormConfiguration(params *GetFormConfigurationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetFormConfigurationOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetFormConfigurationParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_form_configuration",
+		Method:             "GET",
+		PathPattern:        "/v1/form_configurations/{slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetFormConfigurationReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetFormConfigurationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_form_configuration: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetIncidentRole gets an incident role
+
+Retrieve a single incident role from its ID
+*/
+func (a *Client) GetIncidentRole(params *GetIncidentRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIncidentRoleOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetIncidentRoleParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_incident_role",
+		Method:             "GET",
+		PathPattern:        "/v1/incident_roles/{incident_role_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetIncidentRoleReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetIncidentRoleOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_incident_role: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetIncidentType gets an incident type
+
+Retrieve a single incident type from its ID
+*/
+func (a *Client) GetIncidentType(params *GetIncidentTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIncidentTypeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetIncidentTypeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_incident_type",
+		Method:             "GET",
+		PathPattern:        "/v1/incident_types/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetIncidentTypeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetIncidentTypeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_incident_type: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetLifecycleMeasurementDefinition gets a measurement definition
+
+Retrieve a single measurement definition from its ID
+*/
+func (a *Client) GetLifecycleMeasurementDefinition(params *GetLifecycleMeasurementDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetLifecycleMeasurementDefinitionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetLifecycleMeasurementDefinitionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_lifecycle_measurement_definition",
+		Method:             "GET",
+		PathPattern:        "/v1/lifecycles/measurement_definitions/{measurement_definition_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetLifecycleMeasurementDefinitionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetLifecycleMeasurementDefinitionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_lifecycle_measurement_definition: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetPriority gets a priority
+
+Retrieve a specific priority
+*/
+func (a *Client) GetPriority(params *GetPriorityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPriorityOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetPriorityParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_priority",
+		Method:             "GET",
+		PathPattern:        "/v1/priorities/{priority_slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetPriorityReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetPriorityOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_priority: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetSeverity gets a severity
+
+Retrieve a specific severity
+*/
+func (a *Client) GetSeverity(params *GetSeverityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSeverityOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetSeverityParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_severity",
+		Method:             "GET",
+		PathPattern:        "/v1/severities/{severity_slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetSeverityReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetSeverityOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_severity: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetSeverityMatrix gets severity matrix
+
+Retrieve the Severity matrix for your organization and its components and configured severities.
+*/
+func (a *Client) GetSeverityMatrix(params *GetSeverityMatrixParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSeverityMatrixOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetSeverityMatrixParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_severity_matrix",
+		Method:             "GET",
+		PathPattern:        "/v1/severity_matrix",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetSeverityMatrixReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetSeverityMatrixOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_severity_matrix: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetSeverityMatrixCondition gets a severity matrix condition
+
+Retrieve a specific condition
+*/
+func (a *Client) GetSeverityMatrixCondition(params *GetSeverityMatrixConditionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSeverityMatrixConditionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetSeverityMatrixConditionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_severity_matrix_condition",
+		Method:             "GET",
+		PathPattern:        "/v1/severity_matrix/conditions/{condition_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetSeverityMatrixConditionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetSeverityMatrixConditionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_severity_matrix_condition: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListCustomFieldDefinitions lists custom field definitions
+
+List all custom field definitions
+*/
+func (a *Client) ListCustomFieldDefinitions(params *ListCustomFieldDefinitionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListCustomFieldDefinitionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListCustomFieldDefinitionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_custom_field_definitions",
+		Method:             "GET",
+		PathPattern:        "/v1/custom_fields/definitions",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListCustomFieldDefinitionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListCustomFieldDefinitionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_custom_field_definitions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListCustomFieldSelectOptions gets available values for a custom field
+
+Get the permissible values for the a currently active custom select or multi-select field.
+*/
+func (a *Client) ListCustomFieldSelectOptions(params *ListCustomFieldSelectOptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListCustomFieldSelectOptionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListCustomFieldSelectOptionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_custom_field_select_options",
+		Method:             "GET",
+		PathPattern:        "/v1/custom_fields/definitions/{field_id}/select_options",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListCustomFieldSelectOptionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListCustomFieldSelectOptionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_custom_field_select_options: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListIncidentRoles lists incident roles
+
+List all of the incident roles in the organization
+*/
+func (a *Client) ListIncidentRoles(params *ListIncidentRolesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIncidentRolesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListIncidentRolesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_incident_roles",
+		Method:             "GET",
+		PathPattern:        "/v1/incident_roles",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListIncidentRolesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListIncidentRolesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_incident_roles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListIncidentTags lists incident tags
+
+List all of the incident tags in the organization
+*/
+func (a *Client) ListIncidentTags(params *ListIncidentTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIncidentTagsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListIncidentTagsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_incident_tags",
+		Method:             "GET",
+		PathPattern:        "/v1/incident_tags",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListIncidentTagsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListIncidentTagsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_incident_tags: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListIncidentTypes lists incident types
+
+List all of the incident types in the organization
+*/
+func (a *Client) ListIncidentTypes(params *ListIncidentTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIncidentTypesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListIncidentTypesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_incident_types",
+		Method:             "GET",
+		PathPattern:        "/v1/incident_types",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListIncidentTypesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListIncidentTypesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_incident_types: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListLifecycleMeasurementDefinitions lists measurement definitions
+
+List all of the measurement definitions in the organization
+*/
+func (a *Client) ListLifecycleMeasurementDefinitions(params *ListLifecycleMeasurementDefinitionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListLifecycleMeasurementDefinitionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListLifecycleMeasurementDefinitionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_lifecycle_measurement_definitions",
+		Method:             "GET",
+		PathPattern:        "/v1/lifecycles/measurement_definitions",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListLifecycleMeasurementDefinitionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListLifecycleMeasurementDefinitionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_lifecycle_measurement_definitions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListLifecyclePhases lists phases and milestones
+
+List all of the lifecycle phases and milestones in the organization
+*/
+func (a *Client) ListLifecyclePhases(params *ListLifecyclePhasesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListLifecyclePhasesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListLifecyclePhasesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_lifecycle_phases",
+		Method:             "GET",
+		PathPattern:        "/v1/lifecycles/phases",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListLifecyclePhasesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListLifecyclePhasesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_lifecycle_phases: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListPriorities lists priorities
+
+Lists priorities
+*/
+func (a *Client) ListPriorities(params *ListPrioritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListPrioritiesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListPrioritiesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_priorities",
+		Method:             "GET",
+		PathPattern:        "/v1/priorities",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListPrioritiesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListPrioritiesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_priorities: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListSeverities lists severities
+
+Lists severities
+*/
+func (a *Client) ListSeverities(params *ListSeveritiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSeveritiesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListSeveritiesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_severities",
+		Method:             "GET",
+		PathPattern:        "/v1/severities",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListSeveritiesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListSeveritiesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_severities: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListSeverityMatrixConditions lists severity matrix conditions
+
+Lists conditions
+*/
+func (a *Client) ListSeverityMatrixConditions(params *ListSeverityMatrixConditionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSeverityMatrixConditionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListSeverityMatrixConditionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_severity_matrix_conditions",
+		Method:             "GET",
+		PathPattern:        "/v1/severity_matrix/conditions",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListSeverityMatrixConditionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListSeverityMatrixConditionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_severity_matrix_conditions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListSeverityMatrixImpacts lists severity matrix impacts
+
+Lists impacts
+*/
+func (a *Client) ListSeverityMatrixImpacts(params *ListSeverityMatrixImpactsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSeverityMatrixImpactsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListSeverityMatrixImpactsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_severity_matrix_impacts",
+		Method:             "GET",
+		PathPattern:        "/v1/severity_matrix/impacts",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListSeverityMatrixImpactsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListSeverityMatrixImpactsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_severity_matrix_impacts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateCustomFieldDefinition updates a custom field definition
+
+Update a single custom field definition
+*/
+func (a *Client) UpdateCustomFieldDefinition(params *UpdateCustomFieldDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateCustomFieldDefinitionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateCustomFieldDefinitionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_custom_field_definition",
+		Method:             "PATCH",
+		PathPattern:        "/v1/custom_fields/definitions/{field_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateCustomFieldDefinitionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateCustomFieldDefinitionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_custom_field_definition: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateIncidentRole updates an incident role
+
+Update a single incident role from its ID
+*/
+func (a *Client) UpdateIncidentRole(params *UpdateIncidentRoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateIncidentRoleOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateIncidentRoleParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_incident_role",
+		Method:             "PATCH",
+		PathPattern:        "/v1/incident_roles/{incident_role_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateIncidentRoleReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateIncidentRoleOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_incident_role: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateIncidentType updates an incident type
+
+Update a single incident type from its ID
+*/
+func (a *Client) UpdateIncidentType(params *UpdateIncidentTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateIncidentTypeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateIncidentTypeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_incident_type",
+		Method:             "PATCH",
+		PathPattern:        "/v1/incident_types/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateIncidentTypeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateIncidentTypeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_incident_type: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateLifecycleMeasurementDefinition updates a measurement definition
+
+Update a single measurement definition from its ID
+*/
+func (a *Client) UpdateLifecycleMeasurementDefinition(params *UpdateLifecycleMeasurementDefinitionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateLifecycleMeasurementDefinitionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateLifecycleMeasurementDefinitionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_lifecycle_measurement_definition",
+		Method:             "PATCH",
+		PathPattern:        "/v1/lifecycles/measurement_definitions/{measurement_definition_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateLifecycleMeasurementDefinitionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateLifecycleMeasurementDefinitionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_lifecycle_measurement_definition: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateLifecycleMilestone updates a milestone
+
+Update a milestone
+*/
+func (a *Client) UpdateLifecycleMilestone(params *UpdateLifecycleMilestoneParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateLifecycleMilestoneOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateLifecycleMilestoneParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_lifecycle_milestone",
+		Method:             "PATCH",
+		PathPattern:        "/v1/lifecycles/milestones/{milestone_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateLifecycleMilestoneReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateLifecycleMilestoneOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_lifecycle_milestone: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdatePriority updates a priority
+
+Update a specific priority
+*/
+func (a *Client) UpdatePriority(params *UpdatePriorityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdatePriorityOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdatePriorityParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_priority",
+		Method:             "PATCH",
+		PathPattern:        "/v1/priorities/{priority_slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdatePriorityReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdatePriorityOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_priority: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateSeverity updates a severity
+
+Update a specific severity
+*/
+func (a *Client) UpdateSeverity(params *UpdateSeverityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSeverityOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateSeverityParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_severity",
+		Method:             "PATCH",
+		PathPattern:        "/v1/severities/{severity_slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateSeverityReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateSeverityOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_severity: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateSeverityMatrix updates severity matrix
+
+Update available severities and impacts in your organization's severity matrix.
+*/
+func (a *Client) UpdateSeverityMatrix(params *UpdateSeverityMatrixParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSeverityMatrixOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateSeverityMatrixParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_severity_matrix",
+		Method:             "PATCH",
+		PathPattern:        "/v1/severity_matrix",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateSeverityMatrixReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateSeverityMatrixOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_severity_matrix: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateSeverityMatrixCondition updates a severity matrix condition
+
+Update a severity matrix condition
+*/
+func (a *Client) UpdateSeverityMatrixCondition(params *UpdateSeverityMatrixConditionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSeverityMatrixConditionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateSeverityMatrixConditionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_severity_matrix_condition",
+		Method:             "PATCH",
+		PathPattern:        "/v1/severity_matrix/conditions/{condition_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateSeverityMatrixConditionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateSeverityMatrixConditionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_severity_matrix_condition: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateSeverityMatrixImpact updates a severity matrix impact
+
+Update a severity matrix impact
+*/
+func (a *Client) UpdateSeverityMatrixImpact(params *UpdateSeverityMatrixImpactParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSeverityMatrixImpactOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateSeverityMatrixImpactParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_severity_matrix_impact",
+		Method:             "PATCH",
+		PathPattern:        "/v1/severity_matrix/impacts/{impact_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateSeverityMatrixImpactReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateSeverityMatrixImpactOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_severity_matrix_impact: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ValidateIncidentTags validates incident tags
+
+Validate the format of a list of tags
+*/
+func (a *Client) ValidateIncidentTags(params *ValidateIncidentTagsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ValidateIncidentTagsCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewValidateIncidentTagsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "validate_incident_tags",
+		Method:             "POST",
+		PathPattern:        "/v1/incident_tags/validate",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ValidateIncidentTagsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ValidateIncidentTagsCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for validate_incident_tags: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

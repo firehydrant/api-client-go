@@ -30,761 +30,64 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1SavedSearchesResourceTypeSavedSearchID(params *DeleteV1SavedSearchesResourceTypeSavedSearchIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SavedSearchesResourceTypeSavedSearchIDOK, error)
+	CreateSavedSearch(params *CreateSavedSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSavedSearchCreated, error)
 
-	GetV1MetricsIncidents(params *GetV1MetricsIncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsIncidentsOK, error)
+	DeleteSavedSearch(params *DeleteSavedSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSavedSearchOK, error)
 
-	GetV1MetricsInfraType(params *GetV1MetricsInfraTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsInfraTypeOK, error)
+	ExportSignalsShiftAnalytics(params *ExportSignalsShiftAnalyticsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExportSignalsShiftAnalyticsOK, error)
 
-	GetV1MetricsInfraTypeInfraID(params *GetV1MetricsInfraTypeInfraIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsInfraTypeInfraIDOK, error)
+	GetMeanTimeReport(params *GetMeanTimeReportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMeanTimeReportOK, error)
 
-	GetV1MetricsMilestoneFunnel(params *GetV1MetricsMilestoneFunnelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsMilestoneFunnelOK, error)
+	GetSavedSearch(params *GetSavedSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSavedSearchOK, error)
 
-	GetV1MetricsMttx(params *GetV1MetricsMttxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsMttxOK, error)
+	GetSignalsGroupedMetrics(params *GetSignalsGroupedMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSignalsGroupedMetricsOK, error)
 
-	GetV1MetricsRetrospectives(params *GetV1MetricsRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsRetrospectivesOK, error)
+	GetSignalsMttxAnalytics(params *GetSignalsMttxAnalyticsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSignalsMttxAnalyticsOK, error)
 
-	GetV1MetricsTicketFunnel(params *GetV1MetricsTicketFunnelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsTicketFunnelOK, error)
+	GetSignalsTimeseriesAnalytics(params *GetSignalsTimeseriesAnalyticsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSignalsTimeseriesAnalyticsOK, error)
 
-	GetV1MetricsUserInvolvements(params *GetV1MetricsUserInvolvementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsUserInvolvementsOK, error)
+	ListIncidentMetrics(params *ListIncidentMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIncidentMetricsOK, error)
 
-	GetV1ReportsMeanTime(params *GetV1ReportsMeanTimeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ReportsMeanTimeOK, error)
+	ListInfrastructureMetrics(params *ListInfrastructureMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListInfrastructureMetricsOK, error)
 
-	GetV1SavedSearchesResourceType(params *GetV1SavedSearchesResourceTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SavedSearchesResourceTypeOK, error)
+	ListInfrastructureTypeMetrics(params *ListInfrastructureTypeMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListInfrastructureTypeMetricsOK, error)
 
-	GetV1SavedSearchesResourceTypeSavedSearchID(params *GetV1SavedSearchesResourceTypeSavedSearchIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SavedSearchesResourceTypeSavedSearchIDOK, error)
+	ListMilestoneFunnelMetrics(params *ListMilestoneFunnelMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListMilestoneFunnelMetricsOK, error)
 
-	GetV1SignalsAnalyticsGroupedMetrics(params *GetV1SignalsAnalyticsGroupedMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsGroupedMetricsOK, error)
+	ListMttxMetrics(params *ListMttxMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListMttxMetricsOK, error)
 
-	GetV1SignalsAnalyticsMttx(params *GetV1SignalsAnalyticsMttxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsMttxOK, error)
+	ListRetrospectiveMetrics(params *ListRetrospectiveMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListRetrospectiveMetricsOK, error)
 
-	GetV1SignalsAnalyticsShiftsExport(params *GetV1SignalsAnalyticsShiftsExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsShiftsExportOK, error)
+	ListSavedSearches(params *ListSavedSearchesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSavedSearchesOK, error)
 
-	GetV1SignalsAnalyticsTimeseries(params *GetV1SignalsAnalyticsTimeseriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsTimeseriesOK, error)
+	ListTicketFunnelMetrics(params *ListTicketFunnelMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListTicketFunnelMetricsOK, error)
 
-	PatchV1SavedSearchesResourceTypeSavedSearchID(params *PatchV1SavedSearchesResourceTypeSavedSearchIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SavedSearchesResourceTypeSavedSearchIDOK, error)
+	ListUserInvolvementMetrics(params *ListUserInvolvementMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListUserInvolvementMetricsOK, error)
 
-	PostV1SavedSearchesResourceType(params *PostV1SavedSearchesResourceTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SavedSearchesResourceTypeCreated, error)
+	UpdateSavedSearch(params *UpdateSavedSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSavedSearchOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-DeleteV1SavedSearchesResourceTypeSavedSearchID deletes a saved search
-
-Delete a specific saved search
-*/
-func (a *Client) DeleteV1SavedSearchesResourceTypeSavedSearchID(params *DeleteV1SavedSearchesResourceTypeSavedSearchIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1SavedSearchesResourceTypeSavedSearchIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1SavedSearchesResourceTypeSavedSearchIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1SavedSearchesResourceTypeSavedSearchId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/saved_searches/{resource_type}/{saved_search_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1SavedSearchesResourceTypeSavedSearchIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1SavedSearchesResourceTypeSavedSearchIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1SavedSearchesResourceTypeSavedSearchId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1MetricsIncidents lists incident metrics and analytics
-
-Returns a report with time bucketed analytics data
-*/
-func (a *Client) GetV1MetricsIncidents(params *GetV1MetricsIncidentsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsIncidentsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1MetricsIncidentsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1MetricsIncidents",
-		Method:             "GET",
-		PathPattern:        "/v1/metrics/incidents",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1MetricsIncidentsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1MetricsIncidentsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1MetricsIncidents: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1MetricsInfraType lists metrics for a component type
-
-Returns metrics for all components of a given type
-*/
-func (a *Client) GetV1MetricsInfraType(params *GetV1MetricsInfraTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsInfraTypeOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1MetricsInfraTypeParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1MetricsInfraType",
-		Method:             "GET",
-		PathPattern:        "/v1/metrics/{infra_type}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1MetricsInfraTypeReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1MetricsInfraTypeOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1MetricsInfraType: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1MetricsInfraTypeInfraID gets metrics for a component
-
-Return metrics for a specific component
-*/
-func (a *Client) GetV1MetricsInfraTypeInfraID(params *GetV1MetricsInfraTypeInfraIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsInfraTypeInfraIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1MetricsInfraTypeInfraIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1MetricsInfraTypeInfraId",
-		Method:             "GET",
-		PathPattern:        "/v1/metrics/{infra_type}/{infra_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1MetricsInfraTypeInfraIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1MetricsInfraTypeInfraIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1MetricsInfraTypeInfraId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1MetricsMilestoneFunnel lists milestone funnel metrics
-
-Returns a report with time bucketed milestone data
-*/
-func (a *Client) GetV1MetricsMilestoneFunnel(params *GetV1MetricsMilestoneFunnelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsMilestoneFunnelOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1MetricsMilestoneFunnelParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1MetricsMilestoneFunnel",
-		Method:             "GET",
-		PathPattern:        "/v1/metrics/milestone_funnel",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1MetricsMilestoneFunnelReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1MetricsMilestoneFunnelOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1MetricsMilestoneFunnel: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1MetricsMttx gets infrastructure metrics
-
-Fetch infrastructure metrics based on custom query
-*/
-func (a *Client) GetV1MetricsMttx(params *GetV1MetricsMttxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsMttxOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1MetricsMttxParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1MetricsMttx",
-		Method:             "GET",
-		PathPattern:        "/v1/metrics/mttx",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1MetricsMttxReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1MetricsMttxOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1MetricsMttx: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1MetricsRetrospectives lists retrospective metrics
-
-Returns a report with retrospective analytics data
-*/
-func (a *Client) GetV1MetricsRetrospectives(params *GetV1MetricsRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsRetrospectivesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1MetricsRetrospectivesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1MetricsRetrospectives",
-		Method:             "GET",
-		PathPattern:        "/v1/metrics/retrospectives",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1MetricsRetrospectivesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1MetricsRetrospectivesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1MetricsRetrospectives: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1MetricsTicketFunnel lists ticket task and follow up creation and completion metrics
-
-Returns a report with task and follow up creation and completion data
-*/
-func (a *Client) GetV1MetricsTicketFunnel(params *GetV1MetricsTicketFunnelParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsTicketFunnelOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1MetricsTicketFunnelParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1MetricsTicketFunnel",
-		Method:             "GET",
-		PathPattern:        "/v1/metrics/ticket_funnel",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1MetricsTicketFunnelReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1MetricsTicketFunnelOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1MetricsTicketFunnel: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1MetricsUserInvolvements lists user metrics
-
-Returns a report with time bucketed analytics data
-*/
-func (a *Client) GetV1MetricsUserInvolvements(params *GetV1MetricsUserInvolvementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1MetricsUserInvolvementsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1MetricsUserInvolvementsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1MetricsUserInvolvements",
-		Method:             "GET",
-		PathPattern:        "/v1/metrics/user_involvements",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1MetricsUserInvolvementsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1MetricsUserInvolvementsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1MetricsUserInvolvements: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1ReportsMeanTime gets mean time metrics for incidents
-
-Returns a report with time bucketed analytics data
-*/
-func (a *Client) GetV1ReportsMeanTime(params *GetV1ReportsMeanTimeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ReportsMeanTimeOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1ReportsMeanTimeParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1ReportsMeanTime",
-		Method:             "GET",
-		PathPattern:        "/v1/reports/mean_time",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1ReportsMeanTimeReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1ReportsMeanTimeOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ReportsMeanTime: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1SavedSearchesResourceType lists saved searches
-
-Lists saved searches
-*/
-func (a *Client) GetV1SavedSearchesResourceType(params *GetV1SavedSearchesResourceTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SavedSearchesResourceTypeOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1SavedSearchesResourceTypeParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1SavedSearchesResourceType",
-		Method:             "GET",
-		PathPattern:        "/v1/saved_searches/{resource_type}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1SavedSearchesResourceTypeReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1SavedSearchesResourceTypeOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1SavedSearchesResourceType: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1SavedSearchesResourceTypeSavedSearchID gets a saved search
-
-Retrieve a specific save search
-*/
-func (a *Client) GetV1SavedSearchesResourceTypeSavedSearchID(params *GetV1SavedSearchesResourceTypeSavedSearchIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SavedSearchesResourceTypeSavedSearchIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1SavedSearchesResourceTypeSavedSearchIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1SavedSearchesResourceTypeSavedSearchId",
-		Method:             "GET",
-		PathPattern:        "/v1/saved_searches/{resource_type}/{saved_search_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1SavedSearchesResourceTypeSavedSearchIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1SavedSearchesResourceTypeSavedSearchIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1SavedSearchesResourceTypeSavedSearchId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1SignalsAnalyticsGroupedMetrics generates grouped alert metrics
-
-Generate a report of grouped metrics for Signals alerts
-*/
-func (a *Client) GetV1SignalsAnalyticsGroupedMetrics(params *GetV1SignalsAnalyticsGroupedMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsGroupedMetricsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1SignalsAnalyticsGroupedMetricsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1SignalsAnalyticsGroupedMetrics",
-		Method:             "GET",
-		PathPattern:        "/v1/signals/analytics/grouped_metrics",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1SignalsAnalyticsGroupedMetricsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1SignalsAnalyticsGroupedMetricsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1SignalsAnalyticsGroupedMetrics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1SignalsAnalyticsMttx gets m t t x analytics for signals
-
-Get mean-time-to-acknowledged (MTTA) and mean-time-to-resolved (MTTR) metrics for Signals alerts
-*/
-func (a *Client) GetV1SignalsAnalyticsMttx(params *GetV1SignalsAnalyticsMttxParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsMttxOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1SignalsAnalyticsMttxParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1SignalsAnalyticsMttx",
-		Method:             "GET",
-		PathPattern:        "/v1/signals/analytics/mttx",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1SignalsAnalyticsMttxReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1SignalsAnalyticsMttxOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1SignalsAnalyticsMttx: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1SignalsAnalyticsShiftsExport exports on call hours report
-
-Export on-call hours report for users/teams during a time period
-*/
-func (a *Client) GetV1SignalsAnalyticsShiftsExport(params *GetV1SignalsAnalyticsShiftsExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsShiftsExportOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1SignalsAnalyticsShiftsExportParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1SignalsAnalyticsShiftsExport",
-		Method:             "GET",
-		PathPattern:        "/v1/signals/analytics/shifts/export",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1SignalsAnalyticsShiftsExportReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1SignalsAnalyticsShiftsExportOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1SignalsAnalyticsShiftsExport: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1SignalsAnalyticsTimeseries generates timeseries alert metrics
-
-Generate a timeseries-based report of metrics for Signals alerts
-*/
-func (a *Client) GetV1SignalsAnalyticsTimeseries(params *GetV1SignalsAnalyticsTimeseriesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1SignalsAnalyticsTimeseriesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1SignalsAnalyticsTimeseriesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1SignalsAnalyticsTimeseries",
-		Method:             "GET",
-		PathPattern:        "/v1/signals/analytics/timeseries",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1SignalsAnalyticsTimeseriesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1SignalsAnalyticsTimeseriesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1SignalsAnalyticsTimeseries: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1SavedSearchesResourceTypeSavedSearchID updates a saved search
-
-Update a specific saved search
-*/
-func (a *Client) PatchV1SavedSearchesResourceTypeSavedSearchID(params *PatchV1SavedSearchesResourceTypeSavedSearchIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1SavedSearchesResourceTypeSavedSearchIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1SavedSearchesResourceTypeSavedSearchIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1SavedSearchesResourceTypeSavedSearchId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/saved_searches/{resource_type}/{saved_search_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1SavedSearchesResourceTypeSavedSearchIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1SavedSearchesResourceTypeSavedSearchIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1SavedSearchesResourceTypeSavedSearchId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1SavedSearchesResourceType creates a saved search
+CreateSavedSearch creates a saved search
 
 Create a new saved search for a particular resource type
 */
-func (a *Client) PostV1SavedSearchesResourceType(params *PostV1SavedSearchesResourceTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1SavedSearchesResourceTypeCreated, error) {
+func (a *Client) CreateSavedSearch(params *CreateSavedSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSavedSearchCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1SavedSearchesResourceTypeParams()
+		params = NewCreateSavedSearchParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1SavedSearchesResourceType",
+		ID:                 "create_saved_search",
 		Method:             "POST",
 		PathPattern:        "/v1/saved_searches/{resource_type}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1SavedSearchesResourceTypeReader{formats: a.formats},
+		Reader:             &CreateSavedSearchReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -797,13 +100,710 @@ func (a *Client) PostV1SavedSearchesResourceType(params *PostV1SavedSearchesReso
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1SavedSearchesResourceTypeCreated)
+	success, ok := result.(*CreateSavedSearchCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1SavedSearchesResourceType: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_saved_search: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteSavedSearch deletes a saved search
+
+Delete a specific saved search
+*/
+func (a *Client) DeleteSavedSearch(params *DeleteSavedSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSavedSearchOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteSavedSearchParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_saved_search",
+		Method:             "DELETE",
+		PathPattern:        "/v1/saved_searches/{resource_type}/{saved_search_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteSavedSearchReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteSavedSearchOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_saved_search: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ExportSignalsShiftAnalytics exports on call hours report
+
+Export on-call hours report for users/teams during a time period
+*/
+func (a *Client) ExportSignalsShiftAnalytics(params *ExportSignalsShiftAnalyticsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExportSignalsShiftAnalyticsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewExportSignalsShiftAnalyticsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "export_signals_shift_analytics",
+		Method:             "GET",
+		PathPattern:        "/v1/signals/analytics/shifts/export",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ExportSignalsShiftAnalyticsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ExportSignalsShiftAnalyticsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for export_signals_shift_analytics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetMeanTimeReport gets mean time metrics for incidents
+
+Returns a report with time bucketed analytics data
+*/
+func (a *Client) GetMeanTimeReport(params *GetMeanTimeReportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMeanTimeReportOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetMeanTimeReportParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_mean_time_report",
+		Method:             "GET",
+		PathPattern:        "/v1/reports/mean_time",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetMeanTimeReportReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetMeanTimeReportOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_mean_time_report: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetSavedSearch gets a saved search
+
+Retrieve a specific save search
+*/
+func (a *Client) GetSavedSearch(params *GetSavedSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSavedSearchOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetSavedSearchParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_saved_search",
+		Method:             "GET",
+		PathPattern:        "/v1/saved_searches/{resource_type}/{saved_search_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetSavedSearchReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetSavedSearchOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_saved_search: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetSignalsGroupedMetrics generates grouped alert metrics
+
+Generate a report of grouped metrics for Signals alerts
+*/
+func (a *Client) GetSignalsGroupedMetrics(params *GetSignalsGroupedMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSignalsGroupedMetricsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetSignalsGroupedMetricsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_signals_grouped_metrics",
+		Method:             "GET",
+		PathPattern:        "/v1/signals/analytics/grouped_metrics",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetSignalsGroupedMetricsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetSignalsGroupedMetricsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_signals_grouped_metrics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetSignalsMttxAnalytics gets m t t x analytics for signals
+
+Get mean-time-to-acknowledged (MTTA) and mean-time-to-resolved (MTTR) metrics for Signals alerts
+*/
+func (a *Client) GetSignalsMttxAnalytics(params *GetSignalsMttxAnalyticsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSignalsMttxAnalyticsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetSignalsMttxAnalyticsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_signals_mttx_analytics",
+		Method:             "GET",
+		PathPattern:        "/v1/signals/analytics/mttx",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetSignalsMttxAnalyticsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetSignalsMttxAnalyticsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_signals_mttx_analytics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetSignalsTimeseriesAnalytics generates timeseries alert metrics
+
+Generate a timeseries-based report of metrics for Signals alerts
+*/
+func (a *Client) GetSignalsTimeseriesAnalytics(params *GetSignalsTimeseriesAnalyticsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSignalsTimeseriesAnalyticsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetSignalsTimeseriesAnalyticsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_signals_timeseries_analytics",
+		Method:             "GET",
+		PathPattern:        "/v1/signals/analytics/timeseries",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetSignalsTimeseriesAnalyticsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetSignalsTimeseriesAnalyticsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_signals_timeseries_analytics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListIncidentMetrics lists incident metrics and analytics
+
+Returns a report with time bucketed analytics data
+*/
+func (a *Client) ListIncidentMetrics(params *ListIncidentMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIncidentMetricsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListIncidentMetricsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_incident_metrics",
+		Method:             "GET",
+		PathPattern:        "/v1/metrics/incidents",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListIncidentMetricsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListIncidentMetricsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_incident_metrics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListInfrastructureMetrics gets metrics for a component
+
+Return metrics for a specific component
+*/
+func (a *Client) ListInfrastructureMetrics(params *ListInfrastructureMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListInfrastructureMetricsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListInfrastructureMetricsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_infrastructure_metrics",
+		Method:             "GET",
+		PathPattern:        "/v1/metrics/{infra_type}/{infra_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListInfrastructureMetricsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListInfrastructureMetricsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_infrastructure_metrics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListInfrastructureTypeMetrics lists metrics for a component type
+
+Returns metrics for all components of a given type
+*/
+func (a *Client) ListInfrastructureTypeMetrics(params *ListInfrastructureTypeMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListInfrastructureTypeMetricsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListInfrastructureTypeMetricsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_infrastructure_type_metrics",
+		Method:             "GET",
+		PathPattern:        "/v1/metrics/{infra_type}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListInfrastructureTypeMetricsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListInfrastructureTypeMetricsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_infrastructure_type_metrics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListMilestoneFunnelMetrics lists milestone funnel metrics
+
+Returns a report with time bucketed milestone data
+*/
+func (a *Client) ListMilestoneFunnelMetrics(params *ListMilestoneFunnelMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListMilestoneFunnelMetricsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListMilestoneFunnelMetricsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_milestone_funnel_metrics",
+		Method:             "GET",
+		PathPattern:        "/v1/metrics/milestone_funnel",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListMilestoneFunnelMetricsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListMilestoneFunnelMetricsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_milestone_funnel_metrics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListMttxMetrics gets infrastructure metrics
+
+Fetch infrastructure metrics based on custom query
+*/
+func (a *Client) ListMttxMetrics(params *ListMttxMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListMttxMetricsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListMttxMetricsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_mttx_metrics",
+		Method:             "GET",
+		PathPattern:        "/v1/metrics/mttx",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListMttxMetricsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListMttxMetricsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_mttx_metrics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListRetrospectiveMetrics lists retrospective metrics
+
+Returns a report with retrospective analytics data
+*/
+func (a *Client) ListRetrospectiveMetrics(params *ListRetrospectiveMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListRetrospectiveMetricsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListRetrospectiveMetricsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_retrospective_metrics",
+		Method:             "GET",
+		PathPattern:        "/v1/metrics/retrospectives",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListRetrospectiveMetricsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListRetrospectiveMetricsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_retrospective_metrics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListSavedSearches lists saved searches
+
+Lists saved searches
+*/
+func (a *Client) ListSavedSearches(params *ListSavedSearchesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSavedSearchesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListSavedSearchesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_saved_searches",
+		Method:             "GET",
+		PathPattern:        "/v1/saved_searches/{resource_type}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListSavedSearchesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListSavedSearchesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_saved_searches: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListTicketFunnelMetrics lists ticket task and follow up creation and completion metrics
+
+Returns a report with task and follow up creation and completion data
+*/
+func (a *Client) ListTicketFunnelMetrics(params *ListTicketFunnelMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListTicketFunnelMetricsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListTicketFunnelMetricsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_ticket_funnel_metrics",
+		Method:             "GET",
+		PathPattern:        "/v1/metrics/ticket_funnel",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListTicketFunnelMetricsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListTicketFunnelMetricsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_ticket_funnel_metrics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListUserInvolvementMetrics lists user metrics
+
+Returns a report with time bucketed analytics data
+*/
+func (a *Client) ListUserInvolvementMetrics(params *ListUserInvolvementMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListUserInvolvementMetricsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListUserInvolvementMetricsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_user_involvement_metrics",
+		Method:             "GET",
+		PathPattern:        "/v1/metrics/user_involvements",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListUserInvolvementMetricsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListUserInvolvementMetricsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_user_involvement_metrics: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateSavedSearch updates a saved search
+
+Update a specific saved search
+*/
+func (a *Client) UpdateSavedSearch(params *UpdateSavedSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSavedSearchOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateSavedSearchParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_saved_search",
+		Method:             "PATCH",
+		PathPattern:        "/v1/saved_searches/{resource_type}/{saved_search_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateSavedSearchReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateSavedSearchOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_saved_search: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

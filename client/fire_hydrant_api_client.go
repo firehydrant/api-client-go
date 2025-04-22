@@ -13,11 +13,10 @@ import (
 	"github.com/firehydrant/api-client-go/client/account_settings"
 	"github.com/firehydrant/api-client-go/client/alerts"
 	"github.com/firehydrant/api-client-go/client/audiences"
+	"github.com/firehydrant/api-client-go/client/catalog_entries"
 	"github.com/firehydrant/api-client-go/client/changes"
 	"github.com/firehydrant/api-client-go/client/communication"
 	"github.com/firehydrant/api-client-go/client/conversations"
-	"github.com/firehydrant/api-client-go/client/environments"
-	"github.com/firehydrant/api-client-go/client/functionalities"
 	"github.com/firehydrant/api-client-go/client/incident_settings"
 	"github.com/firehydrant/api-client-go/client/incidents"
 	"github.com/firehydrant/api-client-go/client/integrations"
@@ -25,7 +24,6 @@ import (
 	"github.com/firehydrant/api-client-go/client/retrospectives"
 	"github.com/firehydrant/api-client-go/client/runbooks"
 	"github.com/firehydrant/api-client-go/client/s_c_i_m"
-	"github.com/firehydrant/api-client-go/client/services"
 	"github.com/firehydrant/api-client-go/client/signals"
 	"github.com/firehydrant/api-client-go/client/status_pages"
 	"github.com/firehydrant/api-client-go/client/tasks"
@@ -80,11 +78,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.AccountSettings = account_settings.New(transport, formats)
 	cli.Alerts = alerts.New(transport, formats)
 	cli.Audiences = audiences.New(transport, formats)
+	cli.CatalogEntries = catalog_entries.New(transport, formats)
 	cli.Changes = changes.New(transport, formats)
 	cli.Communication = communication.New(transport, formats)
 	cli.Conversations = conversations.New(transport, formats)
-	cli.Environments = environments.New(transport, formats)
-	cli.Functionalities = functionalities.New(transport, formats)
 	cli.IncidentSettings = incident_settings.New(transport, formats)
 	cli.Incidents = incidents.New(transport, formats)
 	cli.Integrations = integrations.New(transport, formats)
@@ -92,7 +89,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *FireHydran
 	cli.Retrospectives = retrospectives.New(transport, formats)
 	cli.Runbooks = runbooks.New(transport, formats)
 	cli.Scim = s_c_i_m.New(transport, formats)
-	cli.Services = services.New(transport, formats)
 	cli.Signals = signals.New(transport, formats)
 	cli.StatusPages = status_pages.New(transport, formats)
 	cli.Tasks = tasks.New(transport, formats)
@@ -150,15 +146,13 @@ type FireHydrantAPI struct {
 
 	Audiences audiences.ClientService
 
+	CatalogEntries catalog_entries.ClientService
+
 	Changes changes.ClientService
 
 	Communication communication.ClientService
 
 	Conversations conversations.ClientService
-
-	Environments environments.ClientService
-
-	Functionalities functionalities.ClientService
 
 	IncidentSettings incident_settings.ClientService
 
@@ -173,8 +167,6 @@ type FireHydrantAPI struct {
 	Runbooks runbooks.ClientService
 
 	Scim s_c_i_m.ClientService
-
-	Services services.ClientService
 
 	Signals signals.ClientService
 
@@ -199,11 +191,10 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.AccountSettings.SetTransport(transport)
 	c.Alerts.SetTransport(transport)
 	c.Audiences.SetTransport(transport)
+	c.CatalogEntries.SetTransport(transport)
 	c.Changes.SetTransport(transport)
 	c.Communication.SetTransport(transport)
 	c.Conversations.SetTransport(transport)
-	c.Environments.SetTransport(transport)
-	c.Functionalities.SetTransport(transport)
 	c.IncidentSettings.SetTransport(transport)
 	c.Incidents.SetTransport(transport)
 	c.Integrations.SetTransport(transport)
@@ -211,7 +202,6 @@ func (c *FireHydrantAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Retrospectives.SetTransport(transport)
 	c.Runbooks.SetTransport(transport)
 	c.Scim.SetTransport(transport)
-	c.Services.SetTransport(transport)
 	c.Signals.SetTransport(transport)
 	c.StatusPages.SetTransport(transport)
 	c.Tasks.SetTransport(transport)
