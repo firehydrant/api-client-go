@@ -28,6 +28,9 @@ type RunbooksExecutionStepEntity struct {
 	// automatic
 	Automatic bool `json:"automatic,omitempty"`
 
+	// conference bridge
+	ConferenceBridge *IncidentsConferenceBridgeEntity `json:"conference_bridge,omitempty"`
+
 	// config
 	Config interface{} `json:"config,omitempty"`
 
@@ -79,6 +82,10 @@ type RunbooksExecutionStepEntity struct {
 func (m *RunbooksExecutionStepEntity) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateConferenceBridge(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateExecution(formats); err != nil {
 		res = append(res, err)
 	}
@@ -94,6 +101,25 @@ func (m *RunbooksExecutionStepEntity) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *RunbooksExecutionStepEntity) validateConferenceBridge(formats strfmt.Registry) error {
+	if swag.IsZero(m.ConferenceBridge) { // not required
+		return nil
+	}
+
+	if m.ConferenceBridge != nil {
+		if err := m.ConferenceBridge.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("conference_bridge")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("conference_bridge")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -151,6 +177,10 @@ func (m *RunbooksExecutionStepEntity) validateRule(formats strfmt.Registry) erro
 func (m *RunbooksExecutionStepEntity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateConferenceBridge(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateExecution(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -162,6 +192,22 @@ func (m *RunbooksExecutionStepEntity) ContextValidate(ctx context.Context, forma
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *RunbooksExecutionStepEntity) contextValidateConferenceBridge(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ConferenceBridge != nil {
+		if err := m.ConferenceBridge.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("conference_bridge")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("conference_bridge")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

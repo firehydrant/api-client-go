@@ -28,6 +28,9 @@ type IncidentsConferenceBridgeEntity struct {
 
 	// A list of language codes that have translated transcripts for this conference bridge
 	LanguageCodes []string `json:"language_codes"`
+
+	// transcription status
+	TranscriptionStatus string `json:"transcription_status,omitempty"`
 }
 
 // Validate validates this incidents conference bridge entity

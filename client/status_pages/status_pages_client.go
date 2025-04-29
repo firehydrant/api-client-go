@@ -30,558 +30,66 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1IncidentsIncidentIDStatusPagesStatusPageID(params *DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent, error)
+	CreateEmailSubscriber(params *CreateEmailSubscriberParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateEmailSubscriberCreated, error)
 
-	DeleteV1NuncConnectionsNuncConnectionID(params *DeleteV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDOK, error)
+	CreateNuncComponentGroup(params *CreateNuncComponentGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNuncComponentGroupCreated, error)
 
-	DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupID(params *DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDNoContent, error)
+	CreateNuncConnection(params *CreateNuncConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNuncConnectionCreated, error)
 
-	DeleteV1NuncConnectionsNuncConnectionIDImagesType(params *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDImagesTypeOK, error)
+	CreateNuncLink(params *CreateNuncLinkParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNuncLinkCreated, error)
 
-	DeleteV1NuncConnectionsNuncConnectionIDLinksLinkID(params *DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDNoContent, error)
+	CreateNuncSubscription(params *CreateNuncSubscriptionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNuncSubscriptionCreated, error)
 
-	DeleteV1NuncConnectionsNuncConnectionIDSubscribers(params *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDSubscribersOK, error)
+	DeleteEmailSubscriber(params *DeleteEmailSubscriberParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEmailSubscriberOK, error)
 
-	DeleteV1NuncSubscriptionsUnsubscribeToken(params *DeleteV1NuncSubscriptionsUnsubscribeTokenParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncSubscriptionsUnsubscribeTokenOK, error)
+	DeleteIncidentStatusPage(params *DeleteIncidentStatusPageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIncidentStatusPageNoContent, error)
 
-	GetV1NuncConnections(params *GetV1NuncConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsOK, error)
+	DeleteNuncComponentGroup(params *DeleteNuncComponentGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNuncComponentGroupNoContent, error)
 
-	GetV1NuncConnectionsNuncConnectionID(params *GetV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsNuncConnectionIDOK, error)
+	DeleteNuncConnection(params *DeleteNuncConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNuncConnectionOK, error)
 
-	GetV1NuncConnectionsNuncConnectionIDSubscribers(params *GetV1NuncConnectionsNuncConnectionIDSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsNuncConnectionIDSubscribersOK, error)
+	DeleteNuncImage(params *DeleteNuncImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNuncImageOK, error)
 
-	PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupID(params *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDOK, error)
+	DeleteNuncLink(params *DeleteNuncLinkParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNuncLinkNoContent, error)
 
-	PatchV1NuncConnectionsNuncConnectionIDLinksLinkID(params *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDOK, error)
+	DeleteNuncSubscription(params *DeleteNuncSubscriptionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNuncSubscriptionOK, error)
 
-	PostV1NuncConnections(params *PostV1NuncConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncConnectionsCreated, error)
+	GetNuncConnection(params *GetNuncConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNuncConnectionOK, error)
 
-	PostV1NuncConnectionsNuncConnectionIDComponentGroups(params *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncConnectionsNuncConnectionIDComponentGroupsCreated, error)
+	ListEmailSubscribers(params *ListEmailSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListEmailSubscribersOK, error)
 
-	PostV1NuncConnectionsNuncConnectionIDLinks(params *PostV1NuncConnectionsNuncConnectionIDLinksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncConnectionsNuncConnectionIDLinksCreated, error)
+	ListNuncConnections(params *ListNuncConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListNuncConnectionsOK, error)
 
-	PostV1NuncConnectionsNuncConnectionIDSubscribers(params *PostV1NuncConnectionsNuncConnectionIDSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncConnectionsNuncConnectionIDSubscribersCreated, error)
+	UpdateNuncComponentGroup(params *UpdateNuncComponentGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNuncComponentGroupOK, error)
 
-	PostV1NuncSubscriptions(params *PostV1NuncSubscriptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncSubscriptionsCreated, error)
+	UpdateNuncConnection(params *UpdateNuncConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNuncConnectionOK, error)
 
-	PutV1NuncConnectionsNuncConnectionID(params *PutV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1NuncConnectionsNuncConnectionIDOK, error)
+	UpdateNuncImage(params *UpdateNuncImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNuncImageOK, error)
 
-	PutV1NuncConnectionsNuncConnectionIDImagesType(params *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1NuncConnectionsNuncConnectionIDImagesTypeOK, error)
+	UpdateNuncLink(params *UpdateNuncLinkParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNuncLinkOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-DeleteV1IncidentsIncidentIDStatusPagesStatusPageID removes a status page from an incident
+CreateEmailSubscriber adds subscribers to a status page
 
-Remove a status page incident attached to an incident
+Subscribes a comma-separated string of emails to status page updates
 */
-func (a *Client) DeleteV1IncidentsIncidentIDStatusPagesStatusPageID(params *DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent, error) {
+func (a *Client) CreateEmailSubscriber(params *CreateEmailSubscriberParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateEmailSubscriberCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteV1IncidentsIncidentIDStatusPagesStatusPageIDParams()
+		params = NewCreateEmailSubscriberParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteV1IncidentsIncidentIdStatusPagesStatusPageId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/incidents/{incident_id}/status_pages/{status_page_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1IncidentsIncidentIDStatusPagesStatusPageIDNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentsIncidentIdStatusPagesStatusPageId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1NuncConnectionsNuncConnectionID deletes a status page
-
-Delete a FireHydrant hosted status page, stopping updates of your incidents to it.
-*/
-func (a *Client) DeleteV1NuncConnectionsNuncConnectionID(params *DeleteV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1NuncConnectionsNuncConnectionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1NuncConnectionsNuncConnectionId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1NuncConnectionsNuncConnectionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1NuncConnectionsNuncConnectionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1NuncConnectionsNuncConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupID deletes a status page component group
-
-Delete a component group displayed on a FireHydrant status page
-*/
-func (a *Client) DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupID(params *DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1NuncConnectionsNuncConnectionIdComponentGroupsGroupId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/component_groups/{group_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1NuncConnectionsNuncConnectionIdComponentGroupsGroupId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1NuncConnectionsNuncConnectionIDImagesType deletes an image from a status page
-
-Delete an image attached to a FireHydrant status page
-*/
-func (a *Client) DeleteV1NuncConnectionsNuncConnectionIDImagesType(params *DeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDImagesTypeOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1NuncConnectionsNuncConnectionIDImagesTypeParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1NuncConnectionsNuncConnectionIdImagesType",
-		Method:             "DELETE",
-		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/images/{type}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1NuncConnectionsNuncConnectionIDImagesTypeReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1NuncConnectionsNuncConnectionIDImagesTypeOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1NuncConnectionsNuncConnectionIdImagesType: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1NuncConnectionsNuncConnectionIDLinksLinkID deletes a status page link
-
-Delete a link displayed on a FireHydrant status page
-*/
-func (a *Client) DeleteV1NuncConnectionsNuncConnectionIDLinksLinkID(params *DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1NuncConnectionsNuncConnectionIdLinksLinkId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/links/{link_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1NuncConnectionsNuncConnectionIDLinksLinkIDNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1NuncConnectionsNuncConnectionIdLinksLinkId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1NuncConnectionsNuncConnectionIDSubscribers removes subscribers from a status page
-
-Unsubscribes one or more status page subscribers.
-*/
-func (a *Client) DeleteV1NuncConnectionsNuncConnectionIDSubscribers(params *DeleteV1NuncConnectionsNuncConnectionIDSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncConnectionsNuncConnectionIDSubscribersOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1NuncConnectionsNuncConnectionIDSubscribersParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1NuncConnectionsNuncConnectionIdSubscribers",
-		Method:             "DELETE",
-		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/subscribers",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1NuncConnectionsNuncConnectionIDSubscribersReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1NuncConnectionsNuncConnectionIDSubscribersOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1NuncConnectionsNuncConnectionIdSubscribers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1NuncSubscriptionsUnsubscribeToken unsubscribes from status page notifications
-
-Unsubscribe from status page updates
-*/
-func (a *Client) DeleteV1NuncSubscriptionsUnsubscribeToken(params *DeleteV1NuncSubscriptionsUnsubscribeTokenParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1NuncSubscriptionsUnsubscribeTokenOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1NuncSubscriptionsUnsubscribeTokenParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1NuncSubscriptionsUnsubscribeToken",
-		Method:             "DELETE",
-		PathPattern:        "/v1/nunc/subscriptions/{unsubscribe_token}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1NuncSubscriptionsUnsubscribeTokenReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1NuncSubscriptionsUnsubscribeTokenOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1NuncSubscriptionsUnsubscribeToken: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1NuncConnections lists status pages
-
-Lists the information displayed as part of your FireHydrant hosted status pages.
-*/
-func (a *Client) GetV1NuncConnections(params *GetV1NuncConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1NuncConnectionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1NuncConnections",
-		Method:             "GET",
-		PathPattern:        "/v1/nunc_connections",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1NuncConnectionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1NuncConnectionsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1NuncConnections: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1NuncConnectionsNuncConnectionID gets a status page
-
-Retrieve the information displayed as part of your FireHydrant hosted status page.
-*/
-func (a *Client) GetV1NuncConnectionsNuncConnectionID(params *GetV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsNuncConnectionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1NuncConnectionsNuncConnectionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1NuncConnectionsNuncConnectionId",
-		Method:             "GET",
-		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1NuncConnectionsNuncConnectionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1NuncConnectionsNuncConnectionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1NuncConnectionsNuncConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1NuncConnectionsNuncConnectionIDSubscribers lists status page subscribers
-
-Retrieves the list of subscribers for a status page.
-*/
-func (a *Client) GetV1NuncConnectionsNuncConnectionIDSubscribers(params *GetV1NuncConnectionsNuncConnectionIDSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NuncConnectionsNuncConnectionIDSubscribersOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1NuncConnectionsNuncConnectionIDSubscribersParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1NuncConnectionsNuncConnectionIdSubscribers",
-		Method:             "GET",
-		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/subscribers",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1NuncConnectionsNuncConnectionIDSubscribersReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1NuncConnectionsNuncConnectionIDSubscribersOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1NuncConnectionsNuncConnectionIdSubscribers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupID updates a status page component group
-
-Update a component group to be displayed on a FireHydrant status page
-*/
-func (a *Client) PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupID(params *PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1NuncConnectionsNuncConnectionIdComponentGroupsGroupId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/component_groups/{group_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1NuncConnectionsNuncConnectionIDComponentGroupsGroupIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1NuncConnectionsNuncConnectionIdComponentGroupsGroupId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1NuncConnectionsNuncConnectionIDLinksLinkID updates a status page link
-
-Update a link to be displayed on a FireHydrant status page
-*/
-func (a *Client) PatchV1NuncConnectionsNuncConnectionIDLinksLinkID(params *PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1NuncConnectionsNuncConnectionIDLinksLinkIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1NuncConnectionsNuncConnectionIdLinksLinkId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/links/{link_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1NuncConnectionsNuncConnectionIDLinksLinkIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1NuncConnectionsNuncConnectionIdLinksLinkId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1NuncConnections creates a status page
-
-Create a new FireHydrant hosted status page for customer facing statuses.
-*/
-func (a *Client) PostV1NuncConnections(params *PostV1NuncConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncConnectionsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1NuncConnectionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1NuncConnections",
+		ID:                 "create_email_subscriber",
 		Method:             "POST",
-		PathPattern:        "/v1/nunc_connections",
+		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/subscribers",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1NuncConnectionsReader{formats: a.formats},
+		Reader:             &CreateEmailSubscriberReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -594,35 +102,35 @@ func (a *Client) PostV1NuncConnections(params *PostV1NuncConnectionsParams, auth
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1NuncConnectionsCreated)
+	success, ok := result.(*CreateEmailSubscriberCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1NuncConnections: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_email_subscriber: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1NuncConnectionsNuncConnectionIDComponentGroups creates a component group for a status page
+CreateNuncComponentGroup creates a component group for a status page
 
 Add a component group to be displayed on a FireHydrant status page
 */
-func (a *Client) PostV1NuncConnectionsNuncConnectionIDComponentGroups(params *PostV1NuncConnectionsNuncConnectionIDComponentGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncConnectionsNuncConnectionIDComponentGroupsCreated, error) {
+func (a *Client) CreateNuncComponentGroup(params *CreateNuncComponentGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNuncComponentGroupCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1NuncConnectionsNuncConnectionIDComponentGroupsParams()
+		params = NewCreateNuncComponentGroupParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1NuncConnectionsNuncConnectionIdComponentGroups",
+		ID:                 "create_nunc_component_group",
 		Method:             "POST",
 		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/component_groups",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1NuncConnectionsNuncConnectionIDComponentGroupsReader{formats: a.formats},
+		Reader:             &CreateNuncComponentGroupReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -635,35 +143,76 @@ func (a *Client) PostV1NuncConnectionsNuncConnectionIDComponentGroups(params *Po
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1NuncConnectionsNuncConnectionIDComponentGroupsCreated)
+	success, ok := result.(*CreateNuncComponentGroupCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1NuncConnectionsNuncConnectionIdComponentGroups: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_nunc_component_group: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1NuncConnectionsNuncConnectionIDLinks adds link to a status page
+CreateNuncConnection creates a status page
+
+Create a new FireHydrant hosted status page for customer facing statuses.
+*/
+func (a *Client) CreateNuncConnection(params *CreateNuncConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNuncConnectionCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateNuncConnectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "create_nunc_connection",
+		Method:             "POST",
+		PathPattern:        "/v1/nunc_connections",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateNuncConnectionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateNuncConnectionCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for create_nunc_connection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CreateNuncLink adds link to a status page
 
 Add a link to be displayed on a FireHydrant status page
 */
-func (a *Client) PostV1NuncConnectionsNuncConnectionIDLinks(params *PostV1NuncConnectionsNuncConnectionIDLinksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncConnectionsNuncConnectionIDLinksCreated, error) {
+func (a *Client) CreateNuncLink(params *CreateNuncLinkParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNuncLinkCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1NuncConnectionsNuncConnectionIDLinksParams()
+		params = NewCreateNuncLinkParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1NuncConnectionsNuncConnectionIdLinks",
+		ID:                 "create_nunc_link",
 		Method:             "POST",
 		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/links",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1NuncConnectionsNuncConnectionIDLinksReader{formats: a.formats},
+		Reader:             &CreateNuncLinkReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -676,76 +225,35 @@ func (a *Client) PostV1NuncConnectionsNuncConnectionIDLinks(params *PostV1NuncCo
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1NuncConnectionsNuncConnectionIDLinksCreated)
+	success, ok := result.(*CreateNuncLinkCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1NuncConnectionsNuncConnectionIdLinks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_nunc_link: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1NuncConnectionsNuncConnectionIDSubscribers adds subscribers to a status page
-
-Subscribes a comma-separated string of emails to status page updates
-*/
-func (a *Client) PostV1NuncConnectionsNuncConnectionIDSubscribers(params *PostV1NuncConnectionsNuncConnectionIDSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncConnectionsNuncConnectionIDSubscribersCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1NuncConnectionsNuncConnectionIDSubscribersParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1NuncConnectionsNuncConnectionIdSubscribers",
-		Method:             "POST",
-		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/subscribers",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1NuncConnectionsNuncConnectionIDSubscribersReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1NuncConnectionsNuncConnectionIDSubscribersCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1NuncConnectionsNuncConnectionIdSubscribers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1NuncSubscriptions creates a status page subscription
+CreateNuncSubscription creates a status page subscription
 
 Subscribe to status page updates
 */
-func (a *Client) PostV1NuncSubscriptions(params *PostV1NuncSubscriptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1NuncSubscriptionsCreated, error) {
+func (a *Client) CreateNuncSubscription(params *CreateNuncSubscriptionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateNuncSubscriptionCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1NuncSubscriptionsParams()
+		params = NewCreateNuncSubscriptionParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1NuncSubscriptions",
+		ID:                 "create_nunc_subscription",
 		Method:             "POST",
 		PathPattern:        "/v1/nunc/subscriptions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1NuncSubscriptionsReader{formats: a.formats},
+		Reader:             &CreateNuncSubscriptionReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -758,35 +266,486 @@ func (a *Client) PostV1NuncSubscriptions(params *PostV1NuncSubscriptionsParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1NuncSubscriptionsCreated)
+	success, ok := result.(*CreateNuncSubscriptionCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1NuncSubscriptions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_nunc_subscription: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PutV1NuncConnectionsNuncConnectionID updates a status page
+DeleteEmailSubscriber removes subscribers from a status page
+
+Unsubscribes one or more status page subscribers.
+*/
+func (a *Client) DeleteEmailSubscriber(params *DeleteEmailSubscriberParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteEmailSubscriberOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteEmailSubscriberParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_email_subscriber",
+		Method:             "DELETE",
+		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/subscribers",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteEmailSubscriberReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteEmailSubscriberOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_email_subscriber: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteIncidentStatusPage removes a status page from an incident
+
+Remove a status page incident attached to an incident
+*/
+func (a *Client) DeleteIncidentStatusPage(params *DeleteIncidentStatusPageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIncidentStatusPageNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteIncidentStatusPageParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_incident_status_page",
+		Method:             "DELETE",
+		PathPattern:        "/v1/incidents/{incident_id}/status_pages/{status_page_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteIncidentStatusPageReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteIncidentStatusPageNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_incident_status_page: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteNuncComponentGroup deletes a status page component group
+
+Delete a component group displayed on a FireHydrant status page
+*/
+func (a *Client) DeleteNuncComponentGroup(params *DeleteNuncComponentGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNuncComponentGroupNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteNuncComponentGroupParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_nunc_component_group",
+		Method:             "DELETE",
+		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/component_groups/{group_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteNuncComponentGroupReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteNuncComponentGroupNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_nunc_component_group: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteNuncConnection deletes a status page
+
+Delete a FireHydrant hosted status page, stopping updates of your incidents to it.
+*/
+func (a *Client) DeleteNuncConnection(params *DeleteNuncConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNuncConnectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteNuncConnectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_nunc_connection",
+		Method:             "DELETE",
+		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteNuncConnectionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteNuncConnectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_nunc_connection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteNuncImage deletes an image from a status page
+
+Delete an image attached to a FireHydrant status page
+*/
+func (a *Client) DeleteNuncImage(params *DeleteNuncImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNuncImageOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteNuncImageParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_nunc_image",
+		Method:             "DELETE",
+		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/images/{type}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteNuncImageReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteNuncImageOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_nunc_image: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteNuncLink deletes a status page link
+
+Delete a link displayed on a FireHydrant status page
+*/
+func (a *Client) DeleteNuncLink(params *DeleteNuncLinkParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNuncLinkNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteNuncLinkParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_nunc_link",
+		Method:             "DELETE",
+		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/links/{link_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteNuncLinkReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteNuncLinkNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_nunc_link: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteNuncSubscription unsubscribes from status page notifications
+
+Unsubscribe from status page updates
+*/
+func (a *Client) DeleteNuncSubscription(params *DeleteNuncSubscriptionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteNuncSubscriptionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteNuncSubscriptionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_nunc_subscription",
+		Method:             "DELETE",
+		PathPattern:        "/v1/nunc/subscriptions/{unsubscribe_token}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteNuncSubscriptionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteNuncSubscriptionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_nunc_subscription: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetNuncConnection gets a status page
+
+Retrieve the information displayed as part of your FireHydrant hosted status page.
+*/
+func (a *Client) GetNuncConnection(params *GetNuncConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetNuncConnectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetNuncConnectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_nunc_connection",
+		Method:             "GET",
+		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetNuncConnectionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetNuncConnectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_nunc_connection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListEmailSubscribers lists status page subscribers
+
+Retrieves the list of subscribers for a status page.
+*/
+func (a *Client) ListEmailSubscribers(params *ListEmailSubscribersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListEmailSubscribersOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListEmailSubscribersParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_email_subscribers",
+		Method:             "GET",
+		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/subscribers",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListEmailSubscribersReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListEmailSubscribersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_email_subscribers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListNuncConnections lists status pages
+
+Lists the information displayed as part of your FireHydrant hosted status pages.
+*/
+func (a *Client) ListNuncConnections(params *ListNuncConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListNuncConnectionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListNuncConnectionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_nunc_connections",
+		Method:             "GET",
+		PathPattern:        "/v1/nunc_connections",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListNuncConnectionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListNuncConnectionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_nunc_connections: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateNuncComponentGroup updates a status page component group
+
+Update a component group to be displayed on a FireHydrant status page
+*/
+func (a *Client) UpdateNuncComponentGroup(params *UpdateNuncComponentGroupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNuncComponentGroupOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateNuncComponentGroupParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_nunc_component_group",
+		Method:             "PATCH",
+		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/component_groups/{group_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateNuncComponentGroupReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateNuncComponentGroupOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_nunc_component_group: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateNuncConnection updates a status page
 
 Update your company's information and other components in the specified FireHydrant hosted status page.
 */
-func (a *Client) PutV1NuncConnectionsNuncConnectionID(params *PutV1NuncConnectionsNuncConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1NuncConnectionsNuncConnectionIDOK, error) {
+func (a *Client) UpdateNuncConnection(params *UpdateNuncConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNuncConnectionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPutV1NuncConnectionsNuncConnectionIDParams()
+		params = NewUpdateNuncConnectionParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "putV1NuncConnectionsNuncConnectionId",
+		ID:                 "update_nunc_connection",
 		Method:             "PUT",
 		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PutV1NuncConnectionsNuncConnectionIDReader{formats: a.formats},
+		Reader:             &UpdateNuncConnectionReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -799,35 +758,35 @@ func (a *Client) PutV1NuncConnectionsNuncConnectionID(params *PutV1NuncConnectio
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PutV1NuncConnectionsNuncConnectionIDOK)
+	success, ok := result.(*UpdateNuncConnectionOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for putV1NuncConnectionsNuncConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for update_nunc_connection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PutV1NuncConnectionsNuncConnectionIDImagesType uploads an image for a status page
+UpdateNuncImage uploads an image for a status page
 
 Add or replace an image attached to a FireHydrant status page
 */
-func (a *Client) PutV1NuncConnectionsNuncConnectionIDImagesType(params *PutV1NuncConnectionsNuncConnectionIDImagesTypeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1NuncConnectionsNuncConnectionIDImagesTypeOK, error) {
+func (a *Client) UpdateNuncImage(params *UpdateNuncImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNuncImageOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPutV1NuncConnectionsNuncConnectionIDImagesTypeParams()
+		params = NewUpdateNuncImageParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "putV1NuncConnectionsNuncConnectionIdImagesType",
+		ID:                 "update_nunc_image",
 		Method:             "PUT",
 		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/images/{type}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"multipart/form-data"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PutV1NuncConnectionsNuncConnectionIDImagesTypeReader{formats: a.formats},
+		Reader:             &UpdateNuncImageReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -840,13 +799,54 @@ func (a *Client) PutV1NuncConnectionsNuncConnectionIDImagesType(params *PutV1Nun
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PutV1NuncConnectionsNuncConnectionIDImagesTypeOK)
+	success, ok := result.(*UpdateNuncImageOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for putV1NuncConnectionsNuncConnectionIdImagesType: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for update_nunc_image: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateNuncLink updates a status page link
+
+Update a link to be displayed on a FireHydrant status page
+*/
+func (a *Client) UpdateNuncLink(params *UpdateNuncLinkParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateNuncLinkOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateNuncLinkParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_nunc_link",
+		Method:             "PATCH",
+		PathPattern:        "/v1/nunc_connections/{nunc_connection_id}/links/{link_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateNuncLinkReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateNuncLinkOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_nunc_link: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

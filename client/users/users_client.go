@@ -30,34 +30,34 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetV1CurrentUser(params *GetV1CurrentUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1CurrentUserOK, error)
+	GetCurrentUser(params *GetCurrentUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCurrentUserOK, error)
 
-	GetV1Users(params *GetV1UsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1UsersOK, error)
+	GetUser(params *GetUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserOK, error)
 
-	GetV1UsersID(params *GetV1UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1UsersIDOK, error)
+	ListUsers(params *ListUsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListUsersOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GetV1CurrentUser gets the currently authenticated user
+GetCurrentUser gets the currently authenticated user
 
 Retrieve the current user
 */
-func (a *Client) GetV1CurrentUser(params *GetV1CurrentUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1CurrentUserOK, error) {
+func (a *Client) GetCurrentUser(params *GetCurrentUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetCurrentUserOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1CurrentUserParams()
+		params = NewGetCurrentUserParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1CurrentUser",
+		ID:                 "get_current_user",
 		Method:             "GET",
 		PathPattern:        "/v1/current_user",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1CurrentUserReader{formats: a.formats},
+		Reader:             &GetCurrentUserReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -70,76 +70,35 @@ func (a *Client) GetV1CurrentUser(params *GetV1CurrentUserParams, authInfo runti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1CurrentUserOK)
+	success, ok := result.(*GetCurrentUserOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1CurrentUser: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for get_current_user: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1Users lists users
-
-Retrieve a list of all users in an organization
-*/
-func (a *Client) GetV1Users(params *GetV1UsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1UsersOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1UsersParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1Users",
-		Method:             "GET",
-		PathPattern:        "/v1/users",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1UsersReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1UsersOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1Users: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1UsersID gets a user
+GetUser gets a user
 
 Retrieve a single user by ID
 */
-func (a *Client) GetV1UsersID(params *GetV1UsersIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1UsersIDOK, error) {
+func (a *Client) GetUser(params *GetUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetUserOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1UsersIDParams()
+		params = NewGetUserParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1UsersId",
+		ID:                 "get_user",
 		Method:             "GET",
 		PathPattern:        "/v1/users/{id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1UsersIDReader{formats: a.formats},
+		Reader:             &GetUserReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -152,13 +111,54 @@ func (a *Client) GetV1UsersID(params *GetV1UsersIDParams, authInfo runtime.Clien
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1UsersIDOK)
+	success, ok := result.(*GetUserOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1UsersId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for get_user: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListUsers lists users
+
+Retrieve a list of all users in an organization
+*/
+func (a *Client) ListUsers(params *ListUsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListUsersOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListUsersParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_users",
+		Method:             "GET",
+		PathPattern:        "/v1/users",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListUsersReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListUsersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_users: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

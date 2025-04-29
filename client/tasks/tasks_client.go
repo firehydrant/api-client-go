@@ -30,677 +30,62 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1ChecklistTemplatesID(params *DeleteV1ChecklistTemplatesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChecklistTemplatesIDOK, error)
+	ConvertIncidentTask(params *ConvertIncidentTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ConvertIncidentTaskCreated, error)
 
-	DeleteV1IncidentsIncidentIDTasksTaskID(params *DeleteV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDTasksTaskIDNoContent, error)
+	CreateChecklistTemplate(params *CreateChecklistTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateChecklistTemplateCreated, error)
 
-	DeleteV1TaskListsTaskListID(params *DeleteV1TaskListsTaskListIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TaskListsTaskListIDOK, error)
+	CreateIncidentTask(params *CreateIncidentTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentTaskCreated, error)
 
-	GetV1ChecklistTemplates(params *GetV1ChecklistTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChecklistTemplatesOK, error)
+	CreateIncidentTaskList(params *CreateIncidentTaskListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentTaskListCreated, error)
 
-	GetV1ChecklistTemplatesID(params *GetV1ChecklistTemplatesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChecklistTemplatesIDOK, error)
+	CreateTaskList(params *CreateTaskListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateTaskListCreated, error)
 
-	GetV1IncidentsIncidentIDTasks(params *GetV1IncidentsIncidentIDTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTasksOK, error)
+	DeleteChecklistTemplate(params *DeleteChecklistTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteChecklistTemplateOK, error)
 
-	GetV1IncidentsIncidentIDTasksTaskID(params *GetV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTasksTaskIDOK, error)
+	DeleteIncidentTask(params *DeleteIncidentTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIncidentTaskNoContent, error)
 
-	GetV1TaskLists(params *GetV1TaskListsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TaskListsOK, error)
+	DeleteTaskList(params *DeleteTaskListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteTaskListOK, error)
 
-	GetV1TaskListsTaskListID(params *GetV1TaskListsTaskListIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TaskListsTaskListIDOK, error)
+	GetChecklistTemplate(params *GetChecklistTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetChecklistTemplateOK, error)
 
-	PatchV1ChecklistTemplatesID(params *PatchV1ChecklistTemplatesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChecklistTemplatesIDOK, error)
+	GetIncidentTask(params *GetIncidentTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIncidentTaskOK, error)
 
-	PatchV1IncidentsIncidentIDTasksTaskID(params *PatchV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDTasksTaskIDOK, error)
+	GetTaskList(params *GetTaskListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTaskListOK, error)
 
-	PatchV1TaskListsTaskListID(params *PatchV1TaskListsTaskListIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TaskListsTaskListIDOK, error)
+	ListChecklistTemplates(params *ListChecklistTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListChecklistTemplatesOK, error)
 
-	PostV1ChecklistTemplates(params *PostV1ChecklistTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChecklistTemplatesCreated, error)
+	ListIncidentTasks(params *ListIncidentTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIncidentTasksOK, error)
 
-	PostV1IncidentsIncidentIDTaskLists(params *PostV1IncidentsIncidentIDTaskListsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDTaskListsCreated, error)
+	ListTaskLists(params *ListTaskListsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListTaskListsOK, error)
 
-	PostV1IncidentsIncidentIDTasks(params *PostV1IncidentsIncidentIDTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDTasksCreated, error)
+	UpdateChecklistTemplate(params *UpdateChecklistTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateChecklistTemplateOK, error)
 
-	PostV1IncidentsIncidentIDTasksTaskIDConvert(params *PostV1IncidentsIncidentIDTasksTaskIDConvertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDTasksTaskIDConvertCreated, error)
+	UpdateIncidentTask(params *UpdateIncidentTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateIncidentTaskOK, error)
 
-	PostV1TaskLists(params *PostV1TaskListsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TaskListsCreated, error)
+	UpdateTaskList(params *UpdateTaskListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateTaskListOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-DeleteV1ChecklistTemplatesID archives a checklist template
-
-Archive a checklist template
-*/
-func (a *Client) DeleteV1ChecklistTemplatesID(params *DeleteV1ChecklistTemplatesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChecklistTemplatesIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1ChecklistTemplatesIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1ChecklistTemplatesId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/checklist_templates/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1ChecklistTemplatesIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1ChecklistTemplatesIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1ChecklistTemplatesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1IncidentsIncidentIDTasksTaskID deletes an incident task
-
-Delete a task
-*/
-func (a *Client) DeleteV1IncidentsIncidentIDTasksTaskID(params *DeleteV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDTasksTaskIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1IncidentsIncidentIDTasksTaskIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1IncidentsIncidentIdTasksTaskId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/incidents/{incident_id}/tasks/{task_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1IncidentsIncidentIDTasksTaskIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1IncidentsIncidentIDTasksTaskIDNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentsIncidentIdTasksTaskId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1TaskListsTaskListID deletes a task list
-
-Delete a task list
-*/
-func (a *Client) DeleteV1TaskListsTaskListID(params *DeleteV1TaskListsTaskListIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1TaskListsTaskListIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1TaskListsTaskListIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1TaskListsTaskListId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/task_lists/{task_list_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1TaskListsTaskListIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1TaskListsTaskListIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1TaskListsTaskListId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1ChecklistTemplates lists checklist templates
-
-List all of the checklist templates that have been added to the organization
-*/
-func (a *Client) GetV1ChecklistTemplates(params *GetV1ChecklistTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChecklistTemplatesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1ChecklistTemplatesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1ChecklistTemplates",
-		Method:             "GET",
-		PathPattern:        "/v1/checklist_templates",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1ChecklistTemplatesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1ChecklistTemplatesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ChecklistTemplates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1ChecklistTemplatesID gets a checklist template
-
-Retrieves a single checklist template by ID
-*/
-func (a *Client) GetV1ChecklistTemplatesID(params *GetV1ChecklistTemplatesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChecklistTemplatesIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1ChecklistTemplatesIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1ChecklistTemplatesId",
-		Method:             "GET",
-		PathPattern:        "/v1/checklist_templates/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1ChecklistTemplatesIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1ChecklistTemplatesIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ChecklistTemplatesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IncidentsIncidentIDTasks lists tasks for an incident
-
-Retrieve a list of all tasks for a specific incident
-*/
-func (a *Client) GetV1IncidentsIncidentIDTasks(params *GetV1IncidentsIncidentIDTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTasksOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IncidentsIncidentIDTasksParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IncidentsIncidentIdTasks",
-		Method:             "GET",
-		PathPattern:        "/v1/incidents/{incident_id}/tasks",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IncidentsIncidentIDTasksReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IncidentsIncidentIDTasksOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdTasks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IncidentsIncidentIDTasksTaskID gets an incident task
-
-Retrieve a single task for an incident
-*/
-func (a *Client) GetV1IncidentsIncidentIDTasksTaskID(params *GetV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDTasksTaskIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IncidentsIncidentIDTasksTaskIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IncidentsIncidentIdTasksTaskId",
-		Method:             "GET",
-		PathPattern:        "/v1/incidents/{incident_id}/tasks/{task_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IncidentsIncidentIDTasksTaskIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IncidentsIncidentIDTasksTaskIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdTasksTaskId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1TaskLists lists task lists
-
-Lists all task lists for your organization
-*/
-func (a *Client) GetV1TaskLists(params *GetV1TaskListsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TaskListsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1TaskListsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1TaskLists",
-		Method:             "GET",
-		PathPattern:        "/v1/task_lists",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1TaskListsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1TaskListsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1TaskLists: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1TaskListsTaskListID gets a task list
-
-Retrieves a single task list by ID
-*/
-func (a *Client) GetV1TaskListsTaskListID(params *GetV1TaskListsTaskListIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1TaskListsTaskListIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1TaskListsTaskListIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1TaskListsTaskListId",
-		Method:             "GET",
-		PathPattern:        "/v1/task_lists/{task_list_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1TaskListsTaskListIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1TaskListsTaskListIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1TaskListsTaskListId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1ChecklistTemplatesID updates a checklist template
-
-Update a checklist templates attributes
-*/
-func (a *Client) PatchV1ChecklistTemplatesID(params *PatchV1ChecklistTemplatesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChecklistTemplatesIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1ChecklistTemplatesIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1ChecklistTemplatesId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/checklist_templates/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1ChecklistTemplatesIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1ChecklistTemplatesIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1ChecklistTemplatesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IncidentsIncidentIDTasksTaskID updates an incident task
-
-Update a task's attributes
-*/
-func (a *Client) PatchV1IncidentsIncidentIDTasksTaskID(params *PatchV1IncidentsIncidentIDTasksTaskIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDTasksTaskIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IncidentsIncidentIDTasksTaskIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IncidentsIncidentIdTasksTaskId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/incidents/{incident_id}/tasks/{task_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IncidentsIncidentIDTasksTaskIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IncidentsIncidentIDTasksTaskIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IncidentsIncidentIdTasksTaskId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1TaskListsTaskListID updates a task list
-
-Updates a task list's attributes and task list items
-*/
-func (a *Client) PatchV1TaskListsTaskListID(params *PatchV1TaskListsTaskListIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1TaskListsTaskListIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1TaskListsTaskListIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1TaskListsTaskListId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/task_lists/{task_list_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1TaskListsTaskListIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1TaskListsTaskListIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1TaskListsTaskListId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1ChecklistTemplates creates a checklist template
-
-Creates a checklist template for the organization
-*/
-func (a *Client) PostV1ChecklistTemplates(params *PostV1ChecklistTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChecklistTemplatesCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1ChecklistTemplatesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1ChecklistTemplates",
-		Method:             "POST",
-		PathPattern:        "/v1/checklist_templates",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1ChecklistTemplatesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1ChecklistTemplatesCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1ChecklistTemplates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1IncidentsIncidentIDTaskLists adds tasks from a task list to an incident
-
-Add all tasks from list to incident
-*/
-func (a *Client) PostV1IncidentsIncidentIDTaskLists(params *PostV1IncidentsIncidentIDTaskListsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDTaskListsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1IncidentsIncidentIDTaskListsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1IncidentsIncidentIdTaskLists",
-		Method:             "POST",
-		PathPattern:        "/v1/incidents/{incident_id}/task_lists",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1IncidentsIncidentIDTaskListsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1IncidentsIncidentIDTaskListsCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdTaskLists: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1IncidentsIncidentIDTasks creates an incident task
-
-Create a task
-*/
-func (a *Client) PostV1IncidentsIncidentIDTasks(params *PostV1IncidentsIncidentIDTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDTasksCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1IncidentsIncidentIDTasksParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1IncidentsIncidentIdTasks",
-		Method:             "POST",
-		PathPattern:        "/v1/incidents/{incident_id}/tasks",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1IncidentsIncidentIDTasksReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1IncidentsIncidentIDTasksCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdTasks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1IncidentsIncidentIDTasksTaskIDConvert converts a task to a follow up
+ConvertIncidentTask converts a task to a follow up
 
 Convert a task to a follow-up
 */
-func (a *Client) PostV1IncidentsIncidentIDTasksTaskIDConvert(params *PostV1IncidentsIncidentIDTasksTaskIDConvertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDTasksTaskIDConvertCreated, error) {
+func (a *Client) ConvertIncidentTask(params *ConvertIncidentTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ConvertIncidentTaskCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1IncidentsIncidentIDTasksTaskIDConvertParams()
+		params = NewConvertIncidentTaskParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1IncidentsIncidentIdTasksTaskIdConvert",
+		ID:                 "convert_incident_task",
 		Method:             "POST",
 		PathPattern:        "/v1/incidents/{incident_id}/tasks/{task_id}/convert",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1IncidentsIncidentIDTasksTaskIDConvertReader{formats: a.formats},
+		Reader:             &ConvertIncidentTaskReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -713,35 +98,158 @@ func (a *Client) PostV1IncidentsIncidentIDTasksTaskIDConvert(params *PostV1Incid
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1IncidentsIncidentIDTasksTaskIDConvertCreated)
+	success, ok := result.(*ConvertIncidentTaskCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdTasksTaskIdConvert: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for convert_incident_task: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1TaskLists creates a task list
+CreateChecklistTemplate creates a checklist template
+
+Creates a checklist template for the organization
+*/
+func (a *Client) CreateChecklistTemplate(params *CreateChecklistTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateChecklistTemplateCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateChecklistTemplateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "create_checklist_template",
+		Method:             "POST",
+		PathPattern:        "/v1/checklist_templates",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateChecklistTemplateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateChecklistTemplateCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for create_checklist_template: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CreateIncidentTask creates an incident task
+
+Create a task
+*/
+func (a *Client) CreateIncidentTask(params *CreateIncidentTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentTaskCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateIncidentTaskParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "create_incident_task",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/tasks",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateIncidentTaskReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateIncidentTaskCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for create_incident_task: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CreateIncidentTaskList adds tasks from a task list to an incident
+
+Add all tasks from list to incident
+*/
+func (a *Client) CreateIncidentTaskList(params *CreateIncidentTaskListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentTaskListCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateIncidentTaskListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "create_incident_task_list",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/task_lists",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateIncidentTaskListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateIncidentTaskListCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for create_incident_task_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CreateTaskList creates a task list
 
 Creates a new task list
 */
-func (a *Client) PostV1TaskLists(params *PostV1TaskListsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1TaskListsCreated, error) {
+func (a *Client) CreateTaskList(params *CreateTaskListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateTaskListCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1TaskListsParams()
+		params = NewCreateTaskListParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1TaskLists",
+		ID:                 "create_task_list",
 		Method:             "POST",
 		PathPattern:        "/v1/task_lists",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1TaskListsReader{formats: a.formats},
+		Reader:             &CreateTaskListReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -754,13 +262,505 @@ func (a *Client) PostV1TaskLists(params *PostV1TaskListsParams, authInfo runtime
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1TaskListsCreated)
+	success, ok := result.(*CreateTaskListCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1TaskLists: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_task_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteChecklistTemplate archives a checklist template
+
+Archive a checklist template
+*/
+func (a *Client) DeleteChecklistTemplate(params *DeleteChecklistTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteChecklistTemplateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteChecklistTemplateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_checklist_template",
+		Method:             "DELETE",
+		PathPattern:        "/v1/checklist_templates/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteChecklistTemplateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteChecklistTemplateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_checklist_template: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteIncidentTask deletes an incident task
+
+Delete a task
+*/
+func (a *Client) DeleteIncidentTask(params *DeleteIncidentTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIncidentTaskNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteIncidentTaskParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_incident_task",
+		Method:             "DELETE",
+		PathPattern:        "/v1/incidents/{incident_id}/tasks/{task_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteIncidentTaskReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteIncidentTaskNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_incident_task: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteTaskList deletes a task list
+
+Delete a task list
+*/
+func (a *Client) DeleteTaskList(params *DeleteTaskListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteTaskListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteTaskListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_task_list",
+		Method:             "DELETE",
+		PathPattern:        "/v1/task_lists/{task_list_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteTaskListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteTaskListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_task_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetChecklistTemplate gets a checklist template
+
+Retrieves a single checklist template by ID
+*/
+func (a *Client) GetChecklistTemplate(params *GetChecklistTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetChecklistTemplateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetChecklistTemplateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_checklist_template",
+		Method:             "GET",
+		PathPattern:        "/v1/checklist_templates/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetChecklistTemplateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetChecklistTemplateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_checklist_template: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetIncidentTask gets an incident task
+
+Retrieve a single task for an incident
+*/
+func (a *Client) GetIncidentTask(params *GetIncidentTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIncidentTaskOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetIncidentTaskParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_incident_task",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/tasks/{task_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetIncidentTaskReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetIncidentTaskOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_incident_task: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetTaskList gets a task list
+
+Retrieves a single task list by ID
+*/
+func (a *Client) GetTaskList(params *GetTaskListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetTaskListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetTaskListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_task_list",
+		Method:             "GET",
+		PathPattern:        "/v1/task_lists/{task_list_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetTaskListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetTaskListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_task_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListChecklistTemplates lists checklist templates
+
+List all of the checklist templates that have been added to the organization
+*/
+func (a *Client) ListChecklistTemplates(params *ListChecklistTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListChecklistTemplatesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListChecklistTemplatesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_checklist_templates",
+		Method:             "GET",
+		PathPattern:        "/v1/checklist_templates",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListChecklistTemplatesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListChecklistTemplatesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_checklist_templates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListIncidentTasks lists tasks for an incident
+
+Retrieve a list of all tasks for a specific incident
+*/
+func (a *Client) ListIncidentTasks(params *ListIncidentTasksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIncidentTasksOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListIncidentTasksParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_incident_tasks",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/tasks",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListIncidentTasksReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListIncidentTasksOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_incident_tasks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListTaskLists lists task lists
+
+Lists all task lists for your organization
+*/
+func (a *Client) ListTaskLists(params *ListTaskListsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListTaskListsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListTaskListsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_task_lists",
+		Method:             "GET",
+		PathPattern:        "/v1/task_lists",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListTaskListsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListTaskListsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_task_lists: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateChecklistTemplate updates a checklist template
+
+Update a checklist templates attributes
+*/
+func (a *Client) UpdateChecklistTemplate(params *UpdateChecklistTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateChecklistTemplateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateChecklistTemplateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_checklist_template",
+		Method:             "PATCH",
+		PathPattern:        "/v1/checklist_templates/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateChecklistTemplateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateChecklistTemplateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_checklist_template: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateIncidentTask updates an incident task
+
+Update a task's attributes
+*/
+func (a *Client) UpdateIncidentTask(params *UpdateIncidentTaskParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateIncidentTaskOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateIncidentTaskParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_incident_task",
+		Method:             "PATCH",
+		PathPattern:        "/v1/incidents/{incident_id}/tasks/{task_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateIncidentTaskReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateIncidentTaskOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_incident_task: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateTaskList updates a task list
+
+Updates a task list's attributes and task list items
+*/
+func (a *Client) UpdateTaskList(params *UpdateTaskListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateTaskListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateTaskListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_task_list",
+		Method:             "PATCH",
+		PathPattern:        "/v1/task_lists/{task_list_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateTaskListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateTaskListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_task_list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

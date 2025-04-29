@@ -30,202 +30,38 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1StatusUpdateTemplatesStatusUpdateTemplateID(params *DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDOK, error)
+	CreateStatusUpdateTemplate(params *CreateStatusUpdateTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateStatusUpdateTemplateCreated, error)
 
-	GetV1StatusUpdateTemplates(params *GetV1StatusUpdateTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1StatusUpdateTemplatesOK, error)
+	DeleteStatusUpdateTemplate(params *DeleteStatusUpdateTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteStatusUpdateTemplateOK, error)
 
-	GetV1StatusUpdateTemplatesStatusUpdateTemplateID(params *GetV1StatusUpdateTemplatesStatusUpdateTemplateIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1StatusUpdateTemplatesStatusUpdateTemplateIDOK, error)
+	GetStatusUpdateTemplate(params *GetStatusUpdateTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStatusUpdateTemplateOK, error)
 
-	PatchV1StatusUpdateTemplatesStatusUpdateTemplateID(params *PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDOK, error)
+	ListStatusUpdateTemplates(params *ListStatusUpdateTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListStatusUpdateTemplatesOK, error)
 
-	PostV1StatusUpdateTemplates(params *PostV1StatusUpdateTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1StatusUpdateTemplatesCreated, error)
+	UpdateStatusUpdateTemplate(params *UpdateStatusUpdateTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateStatusUpdateTemplateOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-DeleteV1StatusUpdateTemplatesStatusUpdateTemplateID deletes a status update template
-
-Delete a single status update template
-*/
-func (a *Client) DeleteV1StatusUpdateTemplatesStatusUpdateTemplateID(params *DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1StatusUpdateTemplatesStatusUpdateTemplateId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/status_update_templates/{status_update_template_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1StatusUpdateTemplatesStatusUpdateTemplateIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1StatusUpdateTemplatesStatusUpdateTemplateId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1StatusUpdateTemplates lists status update templates
-
-List all status update templates for your organization
-*/
-func (a *Client) GetV1StatusUpdateTemplates(params *GetV1StatusUpdateTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1StatusUpdateTemplatesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1StatusUpdateTemplatesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1StatusUpdateTemplates",
-		Method:             "GET",
-		PathPattern:        "/v1/status_update_templates",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1StatusUpdateTemplatesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1StatusUpdateTemplatesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1StatusUpdateTemplates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1StatusUpdateTemplatesStatusUpdateTemplateID gets a status update template
-
-Get a single status update template by ID
-*/
-func (a *Client) GetV1StatusUpdateTemplatesStatusUpdateTemplateID(params *GetV1StatusUpdateTemplatesStatusUpdateTemplateIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1StatusUpdateTemplatesStatusUpdateTemplateIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1StatusUpdateTemplatesStatusUpdateTemplateIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1StatusUpdateTemplatesStatusUpdateTemplateId",
-		Method:             "GET",
-		PathPattern:        "/v1/status_update_templates/{status_update_template_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1StatusUpdateTemplatesStatusUpdateTemplateIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1StatusUpdateTemplatesStatusUpdateTemplateIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1StatusUpdateTemplatesStatusUpdateTemplateId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1StatusUpdateTemplatesStatusUpdateTemplateID updates a status update template
-
-Update a single status update template
-*/
-func (a *Client) PatchV1StatusUpdateTemplatesStatusUpdateTemplateID(params *PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1StatusUpdateTemplatesStatusUpdateTemplateIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1StatusUpdateTemplatesStatusUpdateTemplateId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/status_update_templates/{status_update_template_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1StatusUpdateTemplatesStatusUpdateTemplateIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1StatusUpdateTemplatesStatusUpdateTemplateId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1StatusUpdateTemplates creates a status update template
+CreateStatusUpdateTemplate creates a status update template
 
 Create a status update template for your organization
 */
-func (a *Client) PostV1StatusUpdateTemplates(params *PostV1StatusUpdateTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1StatusUpdateTemplatesCreated, error) {
+func (a *Client) CreateStatusUpdateTemplate(params *CreateStatusUpdateTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateStatusUpdateTemplateCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1StatusUpdateTemplatesParams()
+		params = NewCreateStatusUpdateTemplateParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1StatusUpdateTemplates",
+		ID:                 "create_status_update_template",
 		Method:             "POST",
 		PathPattern:        "/v1/status_update_templates",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1StatusUpdateTemplatesReader{formats: a.formats},
+		Reader:             &CreateStatusUpdateTemplateReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -238,13 +74,177 @@ func (a *Client) PostV1StatusUpdateTemplates(params *PostV1StatusUpdateTemplates
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1StatusUpdateTemplatesCreated)
+	success, ok := result.(*CreateStatusUpdateTemplateCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1StatusUpdateTemplates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_status_update_template: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteStatusUpdateTemplate deletes a status update template
+
+Delete a single status update template
+*/
+func (a *Client) DeleteStatusUpdateTemplate(params *DeleteStatusUpdateTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteStatusUpdateTemplateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteStatusUpdateTemplateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_status_update_template",
+		Method:             "DELETE",
+		PathPattern:        "/v1/status_update_templates/{status_update_template_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteStatusUpdateTemplateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteStatusUpdateTemplateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_status_update_template: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetStatusUpdateTemplate gets a status update template
+
+Get a single status update template by ID
+*/
+func (a *Client) GetStatusUpdateTemplate(params *GetStatusUpdateTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStatusUpdateTemplateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetStatusUpdateTemplateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_status_update_template",
+		Method:             "GET",
+		PathPattern:        "/v1/status_update_templates/{status_update_template_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetStatusUpdateTemplateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetStatusUpdateTemplateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_status_update_template: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListStatusUpdateTemplates lists status update templates
+
+List all status update templates for your organization
+*/
+func (a *Client) ListStatusUpdateTemplates(params *ListStatusUpdateTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListStatusUpdateTemplatesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListStatusUpdateTemplatesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_status_update_templates",
+		Method:             "GET",
+		PathPattern:        "/v1/status_update_templates",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListStatusUpdateTemplatesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListStatusUpdateTemplatesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_status_update_templates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateStatusUpdateTemplate updates a status update template
+
+Update a single status update template
+*/
+func (a *Client) UpdateStatusUpdateTemplate(params *UpdateStatusUpdateTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateStatusUpdateTemplateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateStatusUpdateTemplateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_status_update_template",
+		Method:             "PATCH",
+		PathPattern:        "/v1/status_update_templates/{status_update_template_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateStatusUpdateTemplateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateStatusUpdateTemplateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_status_update_template: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
