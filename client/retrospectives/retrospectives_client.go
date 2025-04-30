@@ -30,211 +30,88 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputs(params *DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsOK, error)
+	CreateIncidentRetrospective(params *CreateIncidentRetrospectiveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentRetrospectiveCreated, error)
 
-	DeleteV1PostMortemsReportsReportIDReasonsReasonID(params *DeleteV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK, error)
+	CreateIncidentRetrospectiveDynamicInput(params *CreateIncidentRetrospectiveDynamicInputParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentRetrospectiveDynamicInputCreated, error)
 
-	DeleteV1RetrospectiveTemplatesRetrospectiveTemplateID(params *DeleteV1RetrospectiveTemplatesRetrospectiveTemplateIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1RetrospectiveTemplatesRetrospectiveTemplateIDOK, error)
+	CreateIncidentRetrospectiveField(params *CreateIncidentRetrospectiveFieldParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentRetrospectiveFieldOK, error)
 
-	GetV1IncidentsIncidentIDRetrospectives(params *GetV1IncidentsIncidentIDRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRetrospectivesOK, error)
+	CreatePostMortemReason(params *CreatePostMortemReasonParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreatePostMortemReasonCreated, error)
 
-	GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldID(params *GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDOK, error)
+	CreatePostMortemReport(params *CreatePostMortemReportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreatePostMortemReportCreated, error)
 
-	GetV1PostMortemsQuestions(params *GetV1PostMortemsQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsQuestionsOK, error)
+	CreateRetrospectiveTemplate(params *CreateRetrospectiveTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRetrospectiveTemplateCreated, error)
 
-	GetV1PostMortemsQuestionsQuestionID(params *GetV1PostMortemsQuestionsQuestionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsQuestionsQuestionIDOK, error)
+	DeleteIncidentRetrospectiveDynamicInput(params *DeleteIncidentRetrospectiveDynamicInputParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIncidentRetrospectiveDynamicInputOK, error)
 
-	GetV1PostMortemsReports(params *GetV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsOK, error)
+	DeletePostMortemReason(params *DeletePostMortemReasonParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePostMortemReasonOK, error)
 
-	GetV1PostMortemsReportsReportID(params *GetV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDOK, error)
+	DeleteRetrospectiveTemplate(params *DeleteRetrospectiveTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRetrospectiveTemplateOK, error)
 
-	GetV1PostMortemsReportsReportIDReasons(params *GetV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDReasonsOK, error)
+	ExportIncidentRetrospectives(params *ExportIncidentRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExportIncidentRetrospectivesCreated, error)
 
-	GetV1RetrospectiveTemplates(params *GetV1RetrospectiveTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RetrospectiveTemplatesOK, error)
+	GetIncidentRetrospectiveField(params *GetIncidentRetrospectiveFieldParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIncidentRetrospectiveFieldOK, error)
 
-	GetV1RetrospectiveTemplatesRetrospectiveTemplateID(params *GetV1RetrospectiveTemplatesRetrospectiveTemplateIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RetrospectiveTemplatesRetrospectiveTemplateIDOK, error)
+	GetPostMortemQuestion(params *GetPostMortemQuestionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPostMortemQuestionOK, error)
 
-	GetV1Retrospectives(params *GetV1RetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RetrospectivesOK, error)
+	GetPostMortemReport(params *GetPostMortemReportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPostMortemReportOK, error)
 
-	PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveID(params *PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDOK, error)
+	GetRetrospectiveTemplate(params *GetRetrospectiveTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRetrospectiveTemplateOK, error)
 
-	PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFields(params *PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsOK, error)
+	ListIncidentRetrospectives(params *ListIncidentRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIncidentRetrospectivesOK, error)
 
-	PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldID(params *PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDOK, error)
+	ListPostMortemQuestions(params *ListPostMortemQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListPostMortemQuestionsOK, error)
 
-	PatchV1PostMortemsReportsReportID(params *PatchV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDOK, error)
+	ListPostMortemReasons(params *ListPostMortemReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListPostMortemReasonsOK, error)
 
-	PatchV1PostMortemsReportsReportIDFieldsFieldID(params *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDFieldsFieldIDOK, error)
+	ListPostMortemReports(params *ListPostMortemReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListPostMortemReportsOK, error)
 
-	PatchV1PostMortemsReportsReportIDReasonsReasonID(params *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDReasonsReasonIDOK, error)
+	ListRetrospectiveTemplates(params *ListRetrospectiveTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListRetrospectiveTemplatesOK, error)
 
-	PatchV1RetrospectiveTemplatesRetrospectiveTemplateID(params *PatchV1RetrospectiveTemplatesRetrospectiveTemplateIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RetrospectiveTemplatesRetrospectiveTemplateIDOK, error)
+	ListRetrospectives(params *ListRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListRetrospectivesOK, error)
 
-	PostV1IncidentsIncidentIDRetrospectives(params *PostV1IncidentsIncidentIDRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesCreated, error)
+	PublishPostMortemReport(params *PublishPostMortemReportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PublishPostMortemReportCreated, error)
 
-	PostV1IncidentsIncidentIDRetrospectivesExport(params *PostV1IncidentsIncidentIDRetrospectivesExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesExportCreated, error)
+	ReorderPostMortemReasons(params *ReorderPostMortemReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReorderPostMortemReasonsOK, error)
 
-	PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputs(params *PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsCreated, error)
+	ShareIncidentRetrospectives(params *ShareIncidentRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShareIncidentRetrospectivesCreated, error)
 
-	PostV1IncidentsIncidentIDRetrospectivesShare(params *PostV1IncidentsIncidentIDRetrospectivesShareParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesShareCreated, error)
+	UpdateIncidentRetrospective(params *UpdateIncidentRetrospectiveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateIncidentRetrospectiveOK, error)
 
-	PostV1PostMortemsReports(params *PostV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsCreated, error)
+	UpdateIncidentRetrospectiveField(params *UpdateIncidentRetrospectiveFieldParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateIncidentRetrospectiveFieldOK, error)
 
-	PostV1PostMortemsReportsReportIDPublish(params *PostV1PostMortemsReportsReportIDPublishParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDPublishCreated, error)
+	UpdatePostMortemField(params *UpdatePostMortemFieldParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdatePostMortemFieldOK, error)
 
-	PostV1PostMortemsReportsReportIDReasons(params *PostV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDReasonsCreated, error)
+	UpdatePostMortemQuestions(params *UpdatePostMortemQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdatePostMortemQuestionsOK, error)
 
-	PostV1RetrospectiveTemplates(params *PostV1RetrospectiveTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1RetrospectiveTemplatesCreated, error)
+	UpdatePostMortemReason(params *UpdatePostMortemReasonParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdatePostMortemReasonOK, error)
 
-	PutV1PostMortemsQuestions(params *PutV1PostMortemsQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsQuestionsOK, error)
+	UpdatePostMortemReport(params *UpdatePostMortemReportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdatePostMortemReportOK, error)
 
-	PutV1PostMortemsReportsReportIDReasonsOrder(params *PutV1PostMortemsReportsReportIDReasonsOrderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsReportsReportIDReasonsOrderOK, error)
+	UpdateRetrospectiveTemplate(params *UpdateRetrospectiveTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRetrospectiveTemplateOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputs removes a dynamic input from a retrospective s dynamic input group field
+CreateIncidentRetrospective creates a new retrospective on the incident using the template
 
-Delete a dynamic input on a dynamic input group
+Create a new retrospective for an incident
 */
-func (a *Client) DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputs(params *DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsOK, error) {
+func (a *Client) CreateIncidentRetrospective(params *CreateIncidentRetrospectiveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentRetrospectiveCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsParams()
+		params = NewCreateIncidentRetrospectiveParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldIdInputs",
-		Method:             "DELETE",
-		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields/{field_id}/inputs",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldIdInputs: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1PostMortemsReportsReportIDReasonsReasonID deletes a contributing factor from a retrospective report
-
-Delete a contributing factor
-*/
-func (a *Client) DeleteV1PostMortemsReportsReportIDReasonsReasonID(params *DeleteV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1PostMortemsReportsReportIDReasonsReasonIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1PostMortemsReportsReportIdReasonsReasonId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons/{reason_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1PostMortemsReportsReportIDReasonsReasonIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1PostMortemsReportsReportIDReasonsReasonIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1PostMortemsReportsReportIdReasonsReasonId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1RetrospectiveTemplatesRetrospectiveTemplateID deletes a retrospective template
-
-Delete a single retrospective template
-*/
-func (a *Client) DeleteV1RetrospectiveTemplatesRetrospectiveTemplateID(params *DeleteV1RetrospectiveTemplatesRetrospectiveTemplateIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1RetrospectiveTemplatesRetrospectiveTemplateIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1RetrospectiveTemplatesRetrospectiveTemplateIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1RetrospectiveTemplatesRetrospectiveTemplateId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/retrospective_templates/{retrospective_template_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1RetrospectiveTemplatesRetrospectiveTemplateIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1RetrospectiveTemplatesRetrospectiveTemplateIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1RetrospectiveTemplatesRetrospectiveTemplateId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IncidentsIncidentIDRetrospectives alls attached retrospectives for an incident
-
-Retrieve retrospectives attached to an incident
-*/
-func (a *Client) GetV1IncidentsIncidentIDRetrospectives(params *GetV1IncidentsIncidentIDRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRetrospectivesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IncidentsIncidentIDRetrospectivesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IncidentsIncidentIdRetrospectives",
-		Method:             "GET",
+		ID:                 "create_incident_retrospective",
+		Method:             "POST",
 		PathPattern:        "/v1/incidents/{incident_id}/retrospectives",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1IncidentsIncidentIDRetrospectivesReader{formats: a.formats},
+		Reader:             &CreateIncidentRetrospectiveReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -247,35 +124,35 @@ func (a *Client) GetV1IncidentsIncidentIDRetrospectives(params *GetV1IncidentsIn
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1IncidentsIncidentIDRetrospectivesOK)
+	success, ok := result.(*CreateIncidentRetrospectiveCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdRetrospectives: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_incident_retrospective: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldID gets a retrospective field
+CreateIncidentRetrospectiveDynamicInput adds a new dynamic input field to a retrospective s dynamic input group field
 
-Retrieve a field on an incident retrospective
+Add a new dynamic input field to a dynamic input group
 */
-func (a *Client) GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldID(params *GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDOK, error) {
+func (a *Client) CreateIncidentRetrospectiveDynamicInput(params *CreateIncidentRetrospectiveDynamicInputParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentRetrospectiveDynamicInputCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDParams()
+		params = NewCreateIncidentRetrospectiveDynamicInputParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldId",
-		Method:             "GET",
-		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields/{field_id}",
+		ID:                 "create_incident_retrospective_dynamic_input",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields/{field_id}/inputs",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDReader{formats: a.formats},
+		Reader:             &CreateIncidentRetrospectiveDynamicInputReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -288,404 +165,35 @@ func (a *Client) GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFiel
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDOK)
+	success, ok := result.(*CreateIncidentRetrospectiveDynamicInputCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_incident_retrospective_dynamic_input: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1PostMortemsQuestions lists retrospective questions
-
-List the questions configured to be provided and filled out on each retrospective report.
-*/
-func (a *Client) GetV1PostMortemsQuestions(params *GetV1PostMortemsQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsQuestionsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PostMortemsQuestionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1PostMortemsQuestions",
-		Method:             "GET",
-		PathPattern:        "/v1/post_mortems/questions",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1PostMortemsQuestionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1PostMortemsQuestionsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsQuestions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1PostMortemsQuestionsQuestionID gets a retrospective question
-
-Get an incident retrospective question configured to be provided and filled out on each retrospective report.
-*/
-func (a *Client) GetV1PostMortemsQuestionsQuestionID(params *GetV1PostMortemsQuestionsQuestionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsQuestionsQuestionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PostMortemsQuestionsQuestionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1PostMortemsQuestionsQuestionId",
-		Method:             "GET",
-		PathPattern:        "/v1/post_mortems/questions/{question_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1PostMortemsQuestionsQuestionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1PostMortemsQuestionsQuestionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsQuestionsQuestionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1PostMortemsReports lists retrospective reports
-
-List all reports
-*/
-func (a *Client) GetV1PostMortemsReports(params *GetV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PostMortemsReportsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1PostMortemsReports",
-		Method:             "GET",
-		PathPattern:        "/v1/post_mortems/reports",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1PostMortemsReportsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1PostMortemsReportsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsReports: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1PostMortemsReportsReportID gets a retrospective report
-
-Get a report
-*/
-func (a *Client) GetV1PostMortemsReportsReportID(params *GetV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PostMortemsReportsReportIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1PostMortemsReportsReportId",
-		Method:             "GET",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1PostMortemsReportsReportIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1PostMortemsReportsReportIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsReportsReportId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1PostMortemsReportsReportIDReasons lists contributing factors for a retrospective report
-
-List all contributing factors to an incident
-*/
-func (a *Client) GetV1PostMortemsReportsReportIDReasons(params *GetV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PostMortemsReportsReportIDReasonsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PostMortemsReportsReportIDReasonsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1PostMortemsReportsReportIdReasons",
-		Method:             "GET",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1PostMortemsReportsReportIDReasonsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1PostMortemsReportsReportIDReasonsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1PostMortemsReportsReportIdReasons: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1RetrospectiveTemplates lists retrospective templates
-
-List all retrospective templates
-*/
-func (a *Client) GetV1RetrospectiveTemplates(params *GetV1RetrospectiveTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RetrospectiveTemplatesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1RetrospectiveTemplatesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1RetrospectiveTemplates",
-		Method:             "GET",
-		PathPattern:        "/v1/retrospective_templates",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1RetrospectiveTemplatesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1RetrospectiveTemplatesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1RetrospectiveTemplates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1RetrospectiveTemplatesRetrospectiveTemplateID gets a retrospective template
-
-Retrieve a single retrospective template by ID
-*/
-func (a *Client) GetV1RetrospectiveTemplatesRetrospectiveTemplateID(params *GetV1RetrospectiveTemplatesRetrospectiveTemplateIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RetrospectiveTemplatesRetrospectiveTemplateIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1RetrospectiveTemplatesRetrospectiveTemplateIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1RetrospectiveTemplatesRetrospectiveTemplateId",
-		Method:             "GET",
-		PathPattern:        "/v1/retrospective_templates/{retrospective_template_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1RetrospectiveTemplatesRetrospectiveTemplateIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1RetrospectiveTemplatesRetrospectiveTemplateIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1RetrospectiveTemplatesRetrospectiveTemplateId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1Retrospectives lists retrospective reports
-
-List all retrospective reports
-*/
-func (a *Client) GetV1Retrospectives(params *GetV1RetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1RetrospectivesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1RetrospectivesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1Retrospectives",
-		Method:             "GET",
-		PathPattern:        "/v1/retrospectives",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1RetrospectivesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1RetrospectivesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1Retrospectives: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveID updates a retrospective on the incident
-
-Update a retrospective attached to an incident
-*/
-func (a *Client) PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveID(params *PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IncidentsIncidentIdRetrospectivesRetrospectiveId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IncidentsIncidentIdRetrospectivesRetrospectiveId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFields appends a new incident retrospective field to an incident retrospective
+CreateIncidentRetrospectiveField appends a new incident retrospective field to an incident retrospective
 
 Add a new field to an incident retrospective
 */
-func (a *Client) PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFields(params *PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsOK, error) {
+func (a *Client) CreateIncidentRetrospectiveField(params *CreateIncidentRetrospectiveFieldParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateIncidentRetrospectiveFieldOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsParams()
+		params = NewCreateIncidentRetrospectiveFieldParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFields",
+		ID:                 "create_incident_retrospective_field",
 		Method:             "PATCH",
 		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsReader{formats: a.formats},
+		Reader:             &CreateIncidentRetrospectiveFieldReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -698,486 +206,35 @@ func (a *Client) PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFields(p
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsOK)
+	success, ok := result.(*CreateIncidentRetrospectiveFieldOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFields: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_incident_retrospective_field: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldID updates the value on a retrospective field
-
-Update retrospective field value
-*/
-func (a *Client) PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldID(params *PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields/{field_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1PostMortemsReportsReportID updates a retrospective report
-
-Update a report
-*/
-func (a *Client) PatchV1PostMortemsReportsReportID(params *PatchV1PostMortemsReportsReportIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1PostMortemsReportsReportIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1PostMortemsReportsReportId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1PostMortemsReportsReportIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1PostMortemsReportsReportIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1PostMortemsReportsReportId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1PostMortemsReportsReportIDFieldsFieldID updates a retrospective field
-
-Update a field value on a post mortem report
-*/
-func (a *Client) PatchV1PostMortemsReportsReportIDFieldsFieldID(params *PatchV1PostMortemsReportsReportIDFieldsFieldIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDFieldsFieldIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1PostMortemsReportsReportIDFieldsFieldIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1PostMortemsReportsReportIdFieldsFieldId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/fields/{field_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1PostMortemsReportsReportIDFieldsFieldIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1PostMortemsReportsReportIDFieldsFieldIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1PostMortemsReportsReportIdFieldsFieldId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1PostMortemsReportsReportIDReasonsReasonID updates a contributing factor in a retrospective report
-
-Update a contributing factor
-*/
-func (a *Client) PatchV1PostMortemsReportsReportIDReasonsReasonID(params *PatchV1PostMortemsReportsReportIDReasonsReasonIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1PostMortemsReportsReportIDReasonsReasonIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1PostMortemsReportsReportIDReasonsReasonIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1PostMortemsReportsReportIdReasonsReasonId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons/{reason_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1PostMortemsReportsReportIDReasonsReasonIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1PostMortemsReportsReportIDReasonsReasonIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1PostMortemsReportsReportIdReasonsReasonId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1RetrospectiveTemplatesRetrospectiveTemplateID updates a retrospective template
-
-Update a single retrospective template
-*/
-func (a *Client) PatchV1RetrospectiveTemplatesRetrospectiveTemplateID(params *PatchV1RetrospectiveTemplatesRetrospectiveTemplateIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1RetrospectiveTemplatesRetrospectiveTemplateIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1RetrospectiveTemplatesRetrospectiveTemplateIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1RetrospectiveTemplatesRetrospectiveTemplateId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/retrospective_templates/{retrospective_template_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1RetrospectiveTemplatesRetrospectiveTemplateIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1RetrospectiveTemplatesRetrospectiveTemplateIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1RetrospectiveTemplatesRetrospectiveTemplateId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1IncidentsIncidentIDRetrospectives creates a new retrospective on the incident using the template
-
-Create a new retrospective for an incident
-*/
-func (a *Client) PostV1IncidentsIncidentIDRetrospectives(params *PostV1IncidentsIncidentIDRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1IncidentsIncidentIDRetrospectivesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1IncidentsIncidentIdRetrospectives",
-		Method:             "POST",
-		PathPattern:        "/v1/incidents/{incident_id}/retrospectives",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1IncidentsIncidentIDRetrospectivesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1IncidentsIncidentIDRetrospectivesCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdRetrospectives: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1IncidentsIncidentIDRetrospectivesExport exports an incident s retrospective s
-
-Export incident's retrospective(s) using their templates
-*/
-func (a *Client) PostV1IncidentsIncidentIDRetrospectivesExport(params *PostV1IncidentsIncidentIDRetrospectivesExportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesExportCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1IncidentsIncidentIDRetrospectivesExportParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1IncidentsIncidentIdRetrospectivesExport",
-		Method:             "POST",
-		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/export",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1IncidentsIncidentIDRetrospectivesExportReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1IncidentsIncidentIDRetrospectivesExportCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdRetrospectivesExport: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputs adds a new dynamic input field to a retrospective s dynamic input group field
-
-Add a new dynamic input field to a dynamic input group
-*/
-func (a *Client) PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputs(params *PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldIdInputs",
-		Method:             "POST",
-		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields/{field_id}/inputs",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1IncidentsIncidentIDRetrospectivesRetrospectiveIDFieldsFieldIDInputsCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdRetrospectivesRetrospectiveIdFieldsFieldIdInputs: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1IncidentsIncidentIDRetrospectivesShare shares an incident s retrospective
-
-Share incident retrospectives with users or teams
-*/
-func (a *Client) PostV1IncidentsIncidentIDRetrospectivesShare(params *PostV1IncidentsIncidentIDRetrospectivesShareParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IncidentsIncidentIDRetrospectivesShareCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1IncidentsIncidentIDRetrospectivesShareParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1IncidentsIncidentIdRetrospectivesShare",
-		Method:             "POST",
-		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/share",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1IncidentsIncidentIDRetrospectivesShareReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1IncidentsIncidentIDRetrospectivesShareCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IncidentsIncidentIdRetrospectivesShare: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1PostMortemsReports creates a retrospective report
-
-Create a report
-*/
-func (a *Client) PostV1PostMortemsReports(params *PostV1PostMortemsReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1PostMortemsReportsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1PostMortemsReports",
-		Method:             "POST",
-		PathPattern:        "/v1/post_mortems/reports",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1PostMortemsReportsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1PostMortemsReportsCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1PostMortemsReports: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1PostMortemsReportsReportIDPublish publishes a retrospective report
-
-Marks an incident retrospective as published and emails all of the participants in the report the summary
-*/
-func (a *Client) PostV1PostMortemsReportsReportIDPublish(params *PostV1PostMortemsReportsReportIDPublishParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDPublishCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1PostMortemsReportsReportIDPublishParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1PostMortemsReportsReportIdPublish",
-		Method:             "POST",
-		PathPattern:        "/v1/post_mortems/reports/{report_id}/publish",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1PostMortemsReportsReportIDPublishReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1PostMortemsReportsReportIDPublishCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1PostMortemsReportsReportIdPublish: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1PostMortemsReportsReportIDReasons creates a contributing factor for a retrospective report
+CreatePostMortemReason creates a contributing factor for a retrospective report
 
 Add a new contributing factor to an incident
 */
-func (a *Client) PostV1PostMortemsReportsReportIDReasons(params *PostV1PostMortemsReportsReportIDReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1PostMortemsReportsReportIDReasonsCreated, error) {
+func (a *Client) CreatePostMortemReason(params *CreatePostMortemReasonParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreatePostMortemReasonCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1PostMortemsReportsReportIDReasonsParams()
+		params = NewCreatePostMortemReasonParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1PostMortemsReportsReportIdReasons",
+		ID:                 "create_post_mortem_reason",
 		Method:             "POST",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1PostMortemsReportsReportIDReasonsReader{formats: a.formats},
+		Reader:             &CreatePostMortemReasonReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1190,35 +247,76 @@ func (a *Client) PostV1PostMortemsReportsReportIDReasons(params *PostV1PostMorte
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1PostMortemsReportsReportIDReasonsCreated)
+	success, ok := result.(*CreatePostMortemReasonCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1PostMortemsReportsReportIdReasons: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_post_mortem_reason: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1RetrospectiveTemplates creates a retrospective template
+CreatePostMortemReport creates a retrospective report
+
+Create a report
+*/
+func (a *Client) CreatePostMortemReport(params *CreatePostMortemReportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreatePostMortemReportCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreatePostMortemReportParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "create_post_mortem_report",
+		Method:             "POST",
+		PathPattern:        "/v1/post_mortems/reports",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreatePostMortemReportReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreatePostMortemReportCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for create_post_mortem_report: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CreateRetrospectiveTemplate creates a retrospective template
 
 Create a new retrospective template
 */
-func (a *Client) PostV1RetrospectiveTemplates(params *PostV1RetrospectiveTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1RetrospectiveTemplatesCreated, error) {
+func (a *Client) CreateRetrospectiveTemplate(params *CreateRetrospectiveTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateRetrospectiveTemplateCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1RetrospectiveTemplatesParams()
+		params = NewCreateRetrospectiveTemplateParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1RetrospectiveTemplates",
+		ID:                 "create_retrospective_template",
 		Method:             "POST",
 		PathPattern:        "/v1/retrospective_templates",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1RetrospectiveTemplatesReader{formats: a.formats},
+		Reader:             &CreateRetrospectiveTemplateReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1231,35 +329,404 @@ func (a *Client) PostV1RetrospectiveTemplates(params *PostV1RetrospectiveTemplat
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1RetrospectiveTemplatesCreated)
+	success, ok := result.(*CreateRetrospectiveTemplateCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1RetrospectiveTemplates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_retrospective_template: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PutV1PostMortemsQuestions updates retrospective questions
+DeleteIncidentRetrospectiveDynamicInput removes a dynamic input from a retrospective s dynamic input group field
 
-Update the questions configured to be provided and filled out on future retrospective reports.
+Delete a dynamic input on a dynamic input group
 */
-func (a *Client) PutV1PostMortemsQuestions(params *PutV1PostMortemsQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsQuestionsOK, error) {
+func (a *Client) DeleteIncidentRetrospectiveDynamicInput(params *DeleteIncidentRetrospectiveDynamicInputParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteIncidentRetrospectiveDynamicInputOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPutV1PostMortemsQuestionsParams()
+		params = NewDeleteIncidentRetrospectiveDynamicInputParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "putV1PostMortemsQuestions",
-		Method:             "PUT",
+		ID:                 "delete_incident_retrospective_dynamic_input",
+		Method:             "DELETE",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields/{field_id}/inputs",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteIncidentRetrospectiveDynamicInputReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteIncidentRetrospectiveDynamicInputOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_incident_retrospective_dynamic_input: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeletePostMortemReason deletes a contributing factor from a retrospective report
+
+Delete a contributing factor
+*/
+func (a *Client) DeletePostMortemReason(params *DeletePostMortemReasonParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeletePostMortemReasonOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeletePostMortemReasonParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_post_mortem_reason",
+		Method:             "DELETE",
+		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons/{reason_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeletePostMortemReasonReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeletePostMortemReasonOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_post_mortem_reason: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteRetrospectiveTemplate deletes a retrospective template
+
+Delete a single retrospective template
+*/
+func (a *Client) DeleteRetrospectiveTemplate(params *DeleteRetrospectiveTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteRetrospectiveTemplateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteRetrospectiveTemplateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_retrospective_template",
+		Method:             "DELETE",
+		PathPattern:        "/v1/retrospective_templates/{retrospective_template_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteRetrospectiveTemplateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteRetrospectiveTemplateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_retrospective_template: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ExportIncidentRetrospectives exports an incident s retrospective s
+
+Export incident's retrospective(s) using their templates
+*/
+func (a *Client) ExportIncidentRetrospectives(params *ExportIncidentRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ExportIncidentRetrospectivesCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewExportIncidentRetrospectivesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "export_incident_retrospectives",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/export",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ExportIncidentRetrospectivesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ExportIncidentRetrospectivesCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for export_incident_retrospectives: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetIncidentRetrospectiveField gets a retrospective field
+
+Retrieve a field on an incident retrospective
+*/
+func (a *Client) GetIncidentRetrospectiveField(params *GetIncidentRetrospectiveFieldParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIncidentRetrospectiveFieldOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetIncidentRetrospectiveFieldParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_incident_retrospective_field",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields/{field_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetIncidentRetrospectiveFieldReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetIncidentRetrospectiveFieldOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_incident_retrospective_field: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetPostMortemQuestion gets a retrospective question
+
+Get an incident retrospective question configured to be provided and filled out on each retrospective report.
+*/
+func (a *Client) GetPostMortemQuestion(params *GetPostMortemQuestionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPostMortemQuestionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetPostMortemQuestionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_post_mortem_question",
+		Method:             "GET",
+		PathPattern:        "/v1/post_mortems/questions/{question_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetPostMortemQuestionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetPostMortemQuestionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_post_mortem_question: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetPostMortemReport gets a retrospective report
+
+Get a report
+*/
+func (a *Client) GetPostMortemReport(params *GetPostMortemReportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetPostMortemReportOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetPostMortemReportParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_post_mortem_report",
+		Method:             "GET",
+		PathPattern:        "/v1/post_mortems/reports/{report_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetPostMortemReportReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetPostMortemReportOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_post_mortem_report: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetRetrospectiveTemplate gets a retrospective template
+
+Retrieve a single retrospective template by ID
+*/
+func (a *Client) GetRetrospectiveTemplate(params *GetRetrospectiveTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetRetrospectiveTemplateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetRetrospectiveTemplateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_retrospective_template",
+		Method:             "GET",
+		PathPattern:        "/v1/retrospective_templates/{retrospective_template_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetRetrospectiveTemplateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetRetrospectiveTemplateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_retrospective_template: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListIncidentRetrospectives alls attached retrospectives for an incident
+
+Retrieve retrospectives attached to an incident
+*/
+func (a *Client) ListIncidentRetrospectives(params *ListIncidentRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIncidentRetrospectivesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListIncidentRetrospectivesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_incident_retrospectives",
+		Method:             "GET",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListIncidentRetrospectivesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListIncidentRetrospectivesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_incident_retrospectives: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListPostMortemQuestions lists retrospective questions
+
+List the questions configured to be provided and filled out on each retrospective report.
+*/
+func (a *Client) ListPostMortemQuestions(params *ListPostMortemQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListPostMortemQuestionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListPostMortemQuestionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_post_mortem_questions",
+		Method:             "GET",
 		PathPattern:        "/v1/post_mortems/questions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PutV1PostMortemsQuestionsReader{formats: a.formats},
+		Reader:             &ListPostMortemQuestionsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1272,35 +739,240 @@ func (a *Client) PutV1PostMortemsQuestions(params *PutV1PostMortemsQuestionsPara
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PutV1PostMortemsQuestionsOK)
+	success, ok := result.(*ListPostMortemQuestionsOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for putV1PostMortemsQuestions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for list_post_mortem_questions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PutV1PostMortemsReportsReportIDReasonsOrder reorders a contributing factor for a retrospective report
+ListPostMortemReasons lists contributing factors for a retrospective report
+
+List all contributing factors to an incident
+*/
+func (a *Client) ListPostMortemReasons(params *ListPostMortemReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListPostMortemReasonsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListPostMortemReasonsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_post_mortem_reasons",
+		Method:             "GET",
+		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListPostMortemReasonsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListPostMortemReasonsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_post_mortem_reasons: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListPostMortemReports lists retrospective reports
+
+List all reports
+*/
+func (a *Client) ListPostMortemReports(params *ListPostMortemReportsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListPostMortemReportsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListPostMortemReportsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_post_mortem_reports",
+		Method:             "GET",
+		PathPattern:        "/v1/post_mortems/reports",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListPostMortemReportsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListPostMortemReportsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_post_mortem_reports: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListRetrospectiveTemplates lists retrospective templates
+
+List all retrospective templates
+*/
+func (a *Client) ListRetrospectiveTemplates(params *ListRetrospectiveTemplatesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListRetrospectiveTemplatesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListRetrospectiveTemplatesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_retrospective_templates",
+		Method:             "GET",
+		PathPattern:        "/v1/retrospective_templates",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListRetrospectiveTemplatesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListRetrospectiveTemplatesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_retrospective_templates: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListRetrospectives lists retrospective reports
+
+List all retrospective reports
+*/
+func (a *Client) ListRetrospectives(params *ListRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListRetrospectivesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListRetrospectivesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_retrospectives",
+		Method:             "GET",
+		PathPattern:        "/v1/retrospectives",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListRetrospectivesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListRetrospectivesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_retrospectives: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PublishPostMortemReport publishes a retrospective report
+
+Marks an incident retrospective as published and emails all of the participants in the report the summary
+*/
+func (a *Client) PublishPostMortemReport(params *PublishPostMortemReportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PublishPostMortemReportCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPublishPostMortemReportParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "publish_post_mortem_report",
+		Method:             "POST",
+		PathPattern:        "/v1/post_mortems/reports/{report_id}/publish",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PublishPostMortemReportReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PublishPostMortemReportCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for publish_post_mortem_report: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ReorderPostMortemReasons reorders a contributing factor for a retrospective report
 
 Update the order of contributing factors in a retrospective report
 */
-func (a *Client) PutV1PostMortemsReportsReportIDReasonsOrder(params *PutV1PostMortemsReportsReportIDReasonsOrderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1PostMortemsReportsReportIDReasonsOrderOK, error) {
+func (a *Client) ReorderPostMortemReasons(params *ReorderPostMortemReasonsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReorderPostMortemReasonsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPutV1PostMortemsReportsReportIDReasonsOrderParams()
+		params = NewReorderPostMortemReasonsParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "putV1PostMortemsReportsReportIdReasonsOrder",
+		ID:                 "reorder_post_mortem_reasons",
 		Method:             "PUT",
 		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons/order",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PutV1PostMortemsReportsReportIDReasonsOrderReader{formats: a.formats},
+		Reader:             &ReorderPostMortemReasonsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1313,13 +985,341 @@ func (a *Client) PutV1PostMortemsReportsReportIDReasonsOrder(params *PutV1PostMo
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PutV1PostMortemsReportsReportIDReasonsOrderOK)
+	success, ok := result.(*ReorderPostMortemReasonsOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for putV1PostMortemsReportsReportIdReasonsOrder: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for reorder_post_mortem_reasons: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ShareIncidentRetrospectives shares an incident s retrospective
+
+Share incident retrospectives with users or teams
+*/
+func (a *Client) ShareIncidentRetrospectives(params *ShareIncidentRetrospectivesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShareIncidentRetrospectivesCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewShareIncidentRetrospectivesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "share_incident_retrospectives",
+		Method:             "POST",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/share",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ShareIncidentRetrospectivesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ShareIncidentRetrospectivesCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for share_incident_retrospectives: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateIncidentRetrospective updates a retrospective on the incident
+
+Update a retrospective attached to an incident
+*/
+func (a *Client) UpdateIncidentRetrospective(params *UpdateIncidentRetrospectiveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateIncidentRetrospectiveOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateIncidentRetrospectiveParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_incident_retrospective",
+		Method:             "PATCH",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateIncidentRetrospectiveReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateIncidentRetrospectiveOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_incident_retrospective: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateIncidentRetrospectiveField updates the value on a retrospective field
+
+Update retrospective field value
+*/
+func (a *Client) UpdateIncidentRetrospectiveField(params *UpdateIncidentRetrospectiveFieldParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateIncidentRetrospectiveFieldOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateIncidentRetrospectiveFieldParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_incident_retrospective_field",
+		Method:             "PATCH",
+		PathPattern:        "/v1/incidents/{incident_id}/retrospectives/{retrospective_id}/fields/{field_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateIncidentRetrospectiveFieldReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateIncidentRetrospectiveFieldOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_incident_retrospective_field: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdatePostMortemField updates a retrospective field
+
+Update a field value on a post mortem report
+*/
+func (a *Client) UpdatePostMortemField(params *UpdatePostMortemFieldParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdatePostMortemFieldOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdatePostMortemFieldParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_post_mortem_field",
+		Method:             "PATCH",
+		PathPattern:        "/v1/post_mortems/reports/{report_id}/fields/{field_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdatePostMortemFieldReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdatePostMortemFieldOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_post_mortem_field: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdatePostMortemQuestions updates retrospective questions
+
+Update the questions configured to be provided and filled out on future retrospective reports.
+*/
+func (a *Client) UpdatePostMortemQuestions(params *UpdatePostMortemQuestionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdatePostMortemQuestionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdatePostMortemQuestionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_post_mortem_questions",
+		Method:             "PUT",
+		PathPattern:        "/v1/post_mortems/questions",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdatePostMortemQuestionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdatePostMortemQuestionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_post_mortem_questions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdatePostMortemReason updates a contributing factor in a retrospective report
+
+Update a contributing factor
+*/
+func (a *Client) UpdatePostMortemReason(params *UpdatePostMortemReasonParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdatePostMortemReasonOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdatePostMortemReasonParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_post_mortem_reason",
+		Method:             "PATCH",
+		PathPattern:        "/v1/post_mortems/reports/{report_id}/reasons/{reason_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdatePostMortemReasonReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdatePostMortemReasonOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_post_mortem_reason: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdatePostMortemReport updates a retrospective report
+
+Update a report
+*/
+func (a *Client) UpdatePostMortemReport(params *UpdatePostMortemReportParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdatePostMortemReportOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdatePostMortemReportParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_post_mortem_report",
+		Method:             "PATCH",
+		PathPattern:        "/v1/post_mortems/reports/{report_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdatePostMortemReportReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdatePostMortemReportOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_post_mortem_report: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateRetrospectiveTemplate updates a retrospective template
+
+Update a single retrospective template
+*/
+func (a *Client) UpdateRetrospectiveTemplate(params *UpdateRetrospectiveTemplateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateRetrospectiveTemplateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateRetrospectiveTemplateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_retrospective_template",
+		Method:             "PATCH",
+		PathPattern:        "/v1/retrospective_templates/{retrospective_template_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateRetrospectiveTemplateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateRetrospectiveTemplateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_retrospective_template: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

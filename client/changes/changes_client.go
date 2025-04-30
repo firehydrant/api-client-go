@@ -30,56 +30,179 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1ChangesChangeID(params *DeleteV1ChangesChangeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChangesChangeIDNoContent, error)
+	CreateChange(params *CreateChangeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateChangeCreated, error)
 
-	DeleteV1ChangesChangeIDIdentitiesIdentityID(params *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent, error)
+	CreateChangeEvent(params *CreateChangeEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateChangeEventCreated, error)
 
-	DeleteV1ChangesEventsChangeEventID(params *DeleteV1ChangesEventsChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChangesEventsChangeEventIDNoContent, error)
+	CreateChangeIdentity(params *CreateChangeIdentityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateChangeIdentityCreated, error)
 
-	GetV1ChangeTypes(params *GetV1ChangeTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangeTypesOK, error)
+	DeleteChange(params *DeleteChangeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteChangeNoContent, error)
 
-	GetV1Changes(params *GetV1ChangesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesOK, error)
+	DeleteChangeEvent(params *DeleteChangeEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteChangeEventNoContent, error)
 
-	GetV1ChangesChangeIDIdentities(params *GetV1ChangesChangeIDIdentitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesChangeIDIdentitiesOK, error)
+	DeleteChangeIdentity(params *DeleteChangeIdentityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteChangeIdentityNoContent, error)
 
-	GetV1ChangesEvents(params *GetV1ChangesEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesEventsOK, error)
+	GetChangeEvent(params *GetChangeEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetChangeEventOK, error)
 
-	GetV1ChangesEventsChangeEventID(params *GetV1ChangesEventsChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesEventsChangeEventIDOK, error)
+	ListChangeEvents(params *ListChangeEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListChangeEventsOK, error)
 
-	PatchV1ChangesChangeID(params *PatchV1ChangesChangeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChangesChangeIDOK, error)
+	ListChangeIdentities(params *ListChangeIdentitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListChangeIdentitiesOK, error)
 
-	PatchV1ChangesChangeIDIdentitiesIdentityID(params *PatchV1ChangesChangeIDIdentitiesIdentityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChangesChangeIDIdentitiesIdentityIDOK, error)
+	ListChangeTypes(params *ListChangeTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListChangeTypesOK, error)
 
-	PatchV1ChangesEventsChangeEventID(params *PatchV1ChangesEventsChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChangesEventsChangeEventIDOK, error)
+	ListChanges(params *ListChangesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListChangesOK, error)
 
-	PostV1Changes(params *PostV1ChangesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChangesCreated, error)
+	UpdateChange(params *UpdateChangeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateChangeOK, error)
 
-	PostV1ChangesChangeIDIdentities(params *PostV1ChangesChangeIDIdentitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChangesChangeIDIdentitiesCreated, error)
+	UpdateChangeEvent(params *UpdateChangeEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateChangeEventOK, error)
 
-	PostV1ChangesEvents(params *PostV1ChangesEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChangesEventsCreated, error)
+	UpdateChangeIdentity(params *UpdateChangeIdentityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateChangeIdentityOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-DeleteV1ChangesChangeID archives a change entry
+CreateChange creates a new change entry
+
+Create a new change entry
+*/
+func (a *Client) CreateChange(params *CreateChangeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateChangeCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateChangeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "create_change",
+		Method:             "POST",
+		PathPattern:        "/v1/changes",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateChangeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateChangeCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for create_change: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CreateChangeEvent creates a change event
+
+Create a change event
+*/
+func (a *Client) CreateChangeEvent(params *CreateChangeEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateChangeEventCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateChangeEventParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "create_change_event",
+		Method:             "POST",
+		PathPattern:        "/v1/changes/events",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateChangeEventReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateChangeEventCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for create_change_event: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CreateChangeIdentity creates an identity for a change entry
+
+Create an identity for the change entry
+*/
+func (a *Client) CreateChangeIdentity(params *CreateChangeIdentityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateChangeIdentityCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCreateChangeIdentityParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "create_change_identity",
+		Method:             "POST",
+		PathPattern:        "/v1/changes/{change_id}/identities",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CreateChangeIdentityReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CreateChangeIdentityCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for create_change_identity: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteChange archives a change entry
 
 Archive a change entry
 */
-func (a *Client) DeleteV1ChangesChangeID(params *DeleteV1ChangesChangeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChangesChangeIDNoContent, error) {
+func (a *Client) DeleteChange(params *DeleteChangeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteChangeNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteV1ChangesChangeIDParams()
+		params = NewDeleteChangeParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteV1ChangesChangeId",
+		ID:                 "delete_change",
 		Method:             "DELETE",
 		PathPattern:        "/v1/changes/{change_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteV1ChangesChangeIDReader{formats: a.formats},
+		Reader:             &DeleteChangeReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -92,76 +215,35 @@ func (a *Client) DeleteV1ChangesChangeID(params *DeleteV1ChangesChangeIDParams, 
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1ChangesChangeIDNoContent)
+	success, ok := result.(*DeleteChangeNoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1ChangesChangeId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for delete_change: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-DeleteV1ChangesChangeIDIdentitiesIdentityID deletes an identity from a change entry
-
-Delete an identity from the change entry
-*/
-func (a *Client) DeleteV1ChangesChangeIDIdentitiesIdentityID(params *DeleteV1ChangesChangeIDIdentitiesIdentityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1ChangesChangeIDIdentitiesIdentityIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1ChangesChangeIdIdentitiesIdentityId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/changes/{change_id}/identities/{identity_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1ChangesChangeIDIdentitiesIdentityIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1ChangesChangeIDIdentitiesIdentityIDNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1ChangesChangeIdIdentitiesIdentityId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1ChangesEventsChangeEventID deletes a change event
+DeleteChangeEvent deletes a change event
 
 Delete a change event
 */
-func (a *Client) DeleteV1ChangesEventsChangeEventID(params *DeleteV1ChangesEventsChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1ChangesEventsChangeEventIDNoContent, error) {
+func (a *Client) DeleteChangeEvent(params *DeleteChangeEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteChangeEventNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteV1ChangesEventsChangeEventIDParams()
+		params = NewDeleteChangeEventParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteV1ChangesEventsChangeEventId",
+		ID:                 "delete_change_event",
 		Method:             "DELETE",
 		PathPattern:        "/v1/changes/events/{change_event_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteV1ChangesEventsChangeEventIDReader{formats: a.formats},
+		Reader:             &DeleteChangeEventReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -174,35 +256,199 @@ func (a *Client) DeleteV1ChangesEventsChangeEventID(params *DeleteV1ChangesEvent
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1ChangesEventsChangeEventIDNoContent)
+	success, ok := result.(*DeleteChangeEventNoContent)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1ChangesEventsChangeEventId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for delete_change_event: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1ChangeTypes lists change types
+DeleteChangeIdentity deletes an identity from a change entry
+
+Delete an identity from the change entry
+*/
+func (a *Client) DeleteChangeIdentity(params *DeleteChangeIdentityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteChangeIdentityNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteChangeIdentityParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_change_identity",
+		Method:             "DELETE",
+		PathPattern:        "/v1/changes/{change_id}/identities/{identity_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteChangeIdentityReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteChangeIdentityNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_change_identity: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetChangeEvent gets a change event
+
+Retrieve a change event
+*/
+func (a *Client) GetChangeEvent(params *GetChangeEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetChangeEventOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetChangeEventParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_change_event",
+		Method:             "GET",
+		PathPattern:        "/v1/changes/events/{change_event_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetChangeEventReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetChangeEventOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_change_event: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListChangeEvents lists change events
+
+List change events for the organization. Note: Not all information is included on a change event like attachments and related changes. You must fetch a change event separately to retrieve all of the information about it
+*/
+func (a *Client) ListChangeEvents(params *ListChangeEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListChangeEventsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListChangeEventsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_change_events",
+		Method:             "GET",
+		PathPattern:        "/v1/changes/events",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListChangeEventsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListChangeEventsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_change_events: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListChangeIdentities lists identities for a change entry
+
+Retrieve all identities for the change entry
+*/
+func (a *Client) ListChangeIdentities(params *ListChangeIdentitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListChangeIdentitiesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListChangeIdentitiesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_change_identities",
+		Method:             "GET",
+		PathPattern:        "/v1/changes/{change_id}/identities",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListChangeIdentitiesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListChangeIdentitiesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_change_identities: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListChangeTypes lists change types
 
 List change types for the organization
 */
-func (a *Client) GetV1ChangeTypes(params *GetV1ChangeTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangeTypesOK, error) {
+func (a *Client) ListChangeTypes(params *ListChangeTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListChangeTypesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1ChangeTypesParams()
+		params = NewListChangeTypesParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1ChangeTypes",
+		ID:                 "list_change_types",
 		Method:             "GET",
 		PathPattern:        "/v1/change_types",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1ChangeTypesReader{formats: a.formats},
+		Reader:             &ListChangeTypesReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -215,35 +461,35 @@ func (a *Client) GetV1ChangeTypes(params *GetV1ChangeTypesParams, authInfo runti
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1ChangeTypesOK)
+	success, ok := result.(*ListChangeTypesOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ChangeTypes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for list_change_types: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1Changes lists changes
+ListChanges lists changes
 
 List changes for the organization
 */
-func (a *Client) GetV1Changes(params *GetV1ChangesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesOK, error) {
+func (a *Client) ListChanges(params *ListChangesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListChangesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1ChangesParams()
+		params = NewListChangesParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1Changes",
+		ID:                 "list_changes",
 		Method:             "GET",
 		PathPattern:        "/v1/changes",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1ChangesReader{formats: a.formats},
+		Reader:             &ListChangesReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -256,158 +502,35 @@ func (a *Client) GetV1Changes(params *GetV1ChangesParams, authInfo runtime.Clien
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1ChangesOK)
+	success, ok := result.(*ListChangesOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1Changes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for list_changes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1ChangesChangeIDIdentities lists identities for a change entry
-
-Retrieve all identities for the change entry
-*/
-func (a *Client) GetV1ChangesChangeIDIdentities(params *GetV1ChangesChangeIDIdentitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesChangeIDIdentitiesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1ChangesChangeIDIdentitiesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1ChangesChangeIdIdentities",
-		Method:             "GET",
-		PathPattern:        "/v1/changes/{change_id}/identities",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1ChangesChangeIDIdentitiesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1ChangesChangeIDIdentitiesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ChangesChangeIdIdentities: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1ChangesEvents lists change events
-
-List change events for the organization. Note: Not all information is included on a change event like attachments and related changes. You must fetch a change event separately to retrieve all of the information about it
-*/
-func (a *Client) GetV1ChangesEvents(params *GetV1ChangesEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesEventsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1ChangesEventsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1ChangesEvents",
-		Method:             "GET",
-		PathPattern:        "/v1/changes/events",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1ChangesEventsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1ChangesEventsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ChangesEvents: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1ChangesEventsChangeEventID gets a change event
-
-Retrieve a change event
-*/
-func (a *Client) GetV1ChangesEventsChangeEventID(params *GetV1ChangesEventsChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1ChangesEventsChangeEventIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1ChangesEventsChangeEventIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1ChangesEventsChangeEventId",
-		Method:             "GET",
-		PathPattern:        "/v1/changes/events/{change_event_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1ChangesEventsChangeEventIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1ChangesEventsChangeEventIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1ChangesEventsChangeEventId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1ChangesChangeID updates a change entry
+UpdateChange updates a change entry
 
 Update a change entry
 */
-func (a *Client) PatchV1ChangesChangeID(params *PatchV1ChangesChangeIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChangesChangeIDOK, error) {
+func (a *Client) UpdateChange(params *UpdateChangeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateChangeOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchV1ChangesChangeIDParams()
+		params = NewUpdateChangeParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchV1ChangesChangeId",
+		ID:                 "update_change",
 		Method:             "PATCH",
 		PathPattern:        "/v1/changes/{change_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchV1ChangesChangeIDReader{formats: a.formats},
+		Reader:             &UpdateChangeReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -420,76 +543,35 @@ func (a *Client) PatchV1ChangesChangeID(params *PatchV1ChangesChangeIDParams, au
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchV1ChangesChangeIDOK)
+	success, ok := result.(*UpdateChangeOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1ChangesChangeId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for update_change: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PatchV1ChangesChangeIDIdentitiesIdentityID updates an identity for a change entry
-
-Update an identity for the change entry
-*/
-func (a *Client) PatchV1ChangesChangeIDIdentitiesIdentityID(params *PatchV1ChangesChangeIDIdentitiesIdentityIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChangesChangeIDIdentitiesIdentityIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1ChangesChangeIDIdentitiesIdentityIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1ChangesChangeIdIdentitiesIdentityId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/changes/{change_id}/identities/{identity_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1ChangesChangeIDIdentitiesIdentityIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1ChangesChangeIDIdentitiesIdentityIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1ChangesChangeIdIdentitiesIdentityId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1ChangesEventsChangeEventID updates a change event
+UpdateChangeEvent updates a change event
 
 Update a change event
 */
-func (a *Client) PatchV1ChangesEventsChangeEventID(params *PatchV1ChangesEventsChangeEventIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1ChangesEventsChangeEventIDOK, error) {
+func (a *Client) UpdateChangeEvent(params *UpdateChangeEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateChangeEventOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchV1ChangesEventsChangeEventIDParams()
+		params = NewUpdateChangeEventParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchV1ChangesEventsChangeEventId",
+		ID:                 "update_change_event",
 		Method:             "PATCH",
 		PathPattern:        "/v1/changes/events/{change_event_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchV1ChangesEventsChangeEventIDReader{formats: a.formats},
+		Reader:             &UpdateChangeEventReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -502,35 +584,35 @@ func (a *Client) PatchV1ChangesEventsChangeEventID(params *PatchV1ChangesEventsC
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchV1ChangesEventsChangeEventIDOK)
+	success, ok := result.(*UpdateChangeEventOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1ChangesEventsChangeEventId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for update_change_event: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1Changes creates a new change entry
+UpdateChangeIdentity updates an identity for a change entry
 
-Create a new change entry
+Update an identity for the change entry
 */
-func (a *Client) PostV1Changes(params *PostV1ChangesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChangesCreated, error) {
+func (a *Client) UpdateChangeIdentity(params *UpdateChangeIdentityParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateChangeIdentityOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1ChangesParams()
+		params = NewUpdateChangeIdentityParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1Changes",
-		Method:             "POST",
-		PathPattern:        "/v1/changes",
+		ID:                 "update_change_identity",
+		Method:             "PATCH",
+		PathPattern:        "/v1/changes/{change_id}/identities/{identity_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1ChangesReader{formats: a.formats},
+		Reader:             &UpdateChangeIdentityReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -543,95 +625,13 @@ func (a *Client) PostV1Changes(params *PostV1ChangesParams, authInfo runtime.Cli
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1ChangesCreated)
+	success, ok := result.(*UpdateChangeIdentityOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1Changes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1ChangesChangeIDIdentities creates an identity for a change entry
-
-Create an identity for the change entry
-*/
-func (a *Client) PostV1ChangesChangeIDIdentities(params *PostV1ChangesChangeIDIdentitiesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChangesChangeIDIdentitiesCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1ChangesChangeIDIdentitiesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1ChangesChangeIdIdentities",
-		Method:             "POST",
-		PathPattern:        "/v1/changes/{change_id}/identities",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1ChangesChangeIDIdentitiesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1ChangesChangeIDIdentitiesCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1ChangesChangeIdIdentities: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1ChangesEvents creates a change event
-
-Create a change event
-*/
-func (a *Client) PostV1ChangesEvents(params *PostV1ChangesEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1ChangesEventsCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1ChangesEventsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1ChangesEvents",
-		Method:             "POST",
-		PathPattern:        "/v1/changes/events",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1ChangesEventsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1ChangesEventsCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1ChangesEvents: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for update_change_identity: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

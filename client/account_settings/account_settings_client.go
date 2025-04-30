@@ -30,40 +30,40 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	GetV1AiPreferences(params *GetV1AiPreferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AiPreferencesOK, error)
+	GetAiPreferences(params *GetAiPreferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAiPreferencesOK, error)
 
-	GetV1Bootstrap(params *GetV1BootstrapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1BootstrapOK, error)
+	GetBootstrap(params *GetBootstrapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBootstrapOK, error)
 
-	GetV1Entitlements(params *GetV1EntitlementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1EntitlementsOK, error)
+	ListEntitlements(params *ListEntitlementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListEntitlementsOK, error)
 
-	GetV1NoauthPing(params *GetV1NoauthPingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NoauthPingOK, error)
+	Ping(params *PingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PingOK, error)
 
-	GetV1Ping(params *GetV1PingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PingOK, error)
+	PingNoauth(params *PingNoauthParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PingNoauthOK, error)
 
-	PatchV1AiPreferences(params *PatchV1AiPreferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1AiPreferencesOK, error)
+	UpdateAiPreferences(params *UpdateAiPreferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateAiPreferencesOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-GetV1AiPreferences gets a i preferences
+GetAiPreferences gets a i preferences
 
 Retrieves the current AI preferences
 */
-func (a *Client) GetV1AiPreferences(params *GetV1AiPreferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AiPreferencesOK, error) {
+func (a *Client) GetAiPreferences(params *GetAiPreferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAiPreferencesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1AiPreferencesParams()
+		params = NewGetAiPreferencesParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1AiPreferences",
+		ID:                 "get_ai_preferences",
 		Method:             "GET",
 		PathPattern:        "/v1/ai/preferences",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1AiPreferencesReader{formats: a.formats},
+		Reader:             &GetAiPreferencesReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -76,35 +76,35 @@ func (a *Client) GetV1AiPreferences(params *GetV1AiPreferencesParams, authInfo r
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1AiPreferencesOK)
+	success, ok := result.(*GetAiPreferencesOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1AiPreferences: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for get_ai_preferences: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1Bootstrap gets initial application configuration
+GetBootstrap gets initial application configuration
 
 Get initial application configuration
 */
-func (a *Client) GetV1Bootstrap(params *GetV1BootstrapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1BootstrapOK, error) {
+func (a *Client) GetBootstrap(params *GetBootstrapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetBootstrapOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1BootstrapParams()
+		params = NewGetBootstrapParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1Bootstrap",
+		ID:                 "get_bootstrap",
 		Method:             "GET",
 		PathPattern:        "/v1/bootstrap",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1BootstrapReader{formats: a.formats},
+		Reader:             &GetBootstrapReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -117,35 +117,35 @@ func (a *Client) GetV1Bootstrap(params *GetV1BootstrapParams, authInfo runtime.C
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1BootstrapOK)
+	success, ok := result.(*GetBootstrapOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1Bootstrap: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for get_bootstrap: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1Entitlements lists entitlements
+ListEntitlements lists entitlements
 
 List the organization's entitlements
 */
-func (a *Client) GetV1Entitlements(params *GetV1EntitlementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1EntitlementsOK, error) {
+func (a *Client) ListEntitlements(params *ListEntitlementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListEntitlementsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1EntitlementsParams()
+		params = NewListEntitlementsParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1Entitlements",
+		ID:                 "list_entitlements",
 		Method:             "GET",
 		PathPattern:        "/v1/entitlements",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1EntitlementsReader{formats: a.formats},
+		Reader:             &ListEntitlementsReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -158,76 +158,35 @@ func (a *Client) GetV1Entitlements(params *GetV1EntitlementsParams, authInfo run
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1EntitlementsOK)
+	success, ok := result.(*ListEntitlementsOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1Entitlements: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for list_entitlements: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1NoauthPing checks API connectivity
+Ping checks API connectivity
 
 Simple endpoint to verify your API connection is working
 */
-func (a *Client) GetV1NoauthPing(params *GetV1NoauthPingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1NoauthPingOK, error) {
+func (a *Client) Ping(params *PingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PingOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1NoauthPingParams()
+		params = NewPingParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1NoauthPing",
-		Method:             "GET",
-		PathPattern:        "/v1/noauth/ping",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1NoauthPingReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1NoauthPingOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1NoauthPing: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1Ping checks API connectivity
-
-Simple endpoint to verify your API connection is working
-*/
-func (a *Client) GetV1Ping(params *GetV1PingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1PingOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1PingParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1Ping",
+		ID:                 "ping",
 		Method:             "GET",
 		PathPattern:        "/v1/ping",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1PingReader{formats: a.formats},
+		Reader:             &PingReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -240,35 +199,76 @@ func (a *Client) GetV1Ping(params *GetV1PingParams, authInfo runtime.ClientAuthI
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1PingOK)
+	success, ok := result.(*PingOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1Ping: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for ping: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PatchV1AiPreferences updates a i preferences
+PingNoauth checks API connectivity
+
+Simple endpoint to verify your API connection is working
+*/
+func (a *Client) PingNoauth(params *PingNoauthParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PingNoauthOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPingNoauthParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ping_noauth",
+		Method:             "GET",
+		PathPattern:        "/v1/noauth/ping",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PingNoauthReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PingNoauthOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ping_noauth: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateAiPreferences updates a i preferences
 
 Updates the AI preferences
 */
-func (a *Client) PatchV1AiPreferences(params *PatchV1AiPreferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1AiPreferencesOK, error) {
+func (a *Client) UpdateAiPreferences(params *UpdateAiPreferencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateAiPreferencesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchV1AiPreferencesParams()
+		params = NewUpdateAiPreferencesParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchV1AiPreferences",
+		ID:                 "update_ai_preferences",
 		Method:             "PATCH",
 		PathPattern:        "/v1/ai/preferences",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchV1AiPreferencesReader{formats: a.formats},
+		Reader:             &UpdateAiPreferencesReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -281,13 +281,13 @@ func (a *Client) PatchV1AiPreferences(params *PatchV1AiPreferencesParams, authIn
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchV1AiPreferencesOK)
+	success, ok := result.(*UpdateAiPreferencesOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1AiPreferences: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for update_ai_preferences: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

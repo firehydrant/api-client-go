@@ -30,50 +30,50 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1AudiencesAudienceID(params *DeleteV1AudiencesAudienceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1AudiencesAudienceIDOK, error)
+	ArchiveAudience(params *ArchiveAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ArchiveAudienceOK, error)
 
-	GetV1Audiences(params *GetV1AudiencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesOK, error)
+	CreateAudience(params *CreateAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAudienceCreated, error)
 
-	GetV1AudiencesAudienceID(params *GetV1AudiencesAudienceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesAudienceIDOK, error)
+	GenerateAudienceSummary(params *GenerateAudienceSummaryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenerateAudienceSummaryCreated, error)
 
-	GetV1AudiencesAudienceIDSummariesIncidentID(params *GetV1AudiencesAudienceIDSummariesIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesAudienceIDSummariesIncidentIDOK, error)
+	GetAudience(params *GetAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAudienceOK, error)
 
-	GetV1AudiencesMemberMemberIDDefault(params *GetV1AudiencesMemberMemberIDDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesMemberMemberIDDefaultOK, error)
+	GetAudienceSummary(params *GetAudienceSummaryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAudienceSummaryOK, error)
 
-	GetV1AudiencesSummariesIncidentID(params *GetV1AudiencesSummariesIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesSummariesIncidentIDOK, error)
+	GetMemberDefaultAudience(params *GetMemberDefaultAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMemberDefaultAudienceOK, error)
 
-	PatchV1AudiencesAudienceID(params *PatchV1AudiencesAudienceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1AudiencesAudienceIDOK, error)
+	ListAudienceSummaries(params *ListAudienceSummariesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListAudienceSummariesOK, error)
 
-	PatchV1AudiencesAudienceIDRestore(params *PatchV1AudiencesAudienceIDRestoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1AudiencesAudienceIDRestoreOK, error)
+	ListAudiences(params *ListAudiencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListAudiencesOK, error)
 
-	PostV1Audiences(params *PostV1AudiencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1AudiencesCreated, error)
+	RestoreAudience(params *RestoreAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RestoreAudienceOK, error)
 
-	PostV1AudiencesAudienceIDSummariesIncidentID(params *PostV1AudiencesAudienceIDSummariesIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1AudiencesAudienceIDSummariesIncidentIDCreated, error)
+	SetMemberDefaultAudience(params *SetMemberDefaultAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SetMemberDefaultAudienceOK, error)
 
-	PutV1AudiencesMemberMemberIDDefault(params *PutV1AudiencesMemberMemberIDDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1AudiencesMemberMemberIDDefaultOK, error)
+	UpdateAudience(params *UpdateAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateAudienceOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-DeleteV1AudiencesAudienceID archives audience
+ArchiveAudience archives audience
 
 Archive an audience
 */
-func (a *Client) DeleteV1AudiencesAudienceID(params *DeleteV1AudiencesAudienceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1AudiencesAudienceIDOK, error) {
+func (a *Client) ArchiveAudience(params *ArchiveAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ArchiveAudienceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewDeleteV1AudiencesAudienceIDParams()
+		params = NewArchiveAudienceParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "deleteV1AudiencesAudienceId",
+		ID:                 "archive_audience",
 		Method:             "DELETE",
 		PathPattern:        "/v1/audiences/{audience_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &DeleteV1AudiencesAudienceIDReader{formats: a.formats},
+		Reader:             &ArchiveAudienceReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -86,35 +86,35 @@ func (a *Client) DeleteV1AudiencesAudienceID(params *DeleteV1AudiencesAudienceID
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*DeleteV1AudiencesAudienceIDOK)
+	success, ok := result.(*ArchiveAudienceOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1AudiencesAudienceId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for archive_audience: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1Audiences lists audiences
+CreateAudience creates audience
 
-List all audiences
+Create a new audience
 */
-func (a *Client) GetV1Audiences(params *GetV1AudiencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesOK, error) {
+func (a *Client) CreateAudience(params *CreateAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateAudienceCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1AudiencesParams()
+		params = NewCreateAudienceParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1Audiences",
-		Method:             "GET",
+		ID:                 "create_audience",
+		Method:             "POST",
 		PathPattern:        "/v1/audiences",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1AudiencesReader{formats: a.formats},
+		Reader:             &CreateAudienceReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -127,35 +127,76 @@ func (a *Client) GetV1Audiences(params *GetV1AudiencesParams, authInfo runtime.C
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1AudiencesOK)
+	success, ok := result.(*CreateAudienceCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1Audiences: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_audience: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1AudiencesAudienceID gets audience
+GenerateAudienceSummary generates summary
+
+Generate a new audience-specific summary for an incident
+*/
+func (a *Client) GenerateAudienceSummary(params *GenerateAudienceSummaryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenerateAudienceSummaryCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGenerateAudienceSummaryParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "generate_audience_summary",
+		Method:             "POST",
+		PathPattern:        "/v1/audiences/{audience_id}/summaries/{incident_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GenerateAudienceSummaryReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GenerateAudienceSummaryCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for generate_audience_summary: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetAudience gets audience
 
 Get audience details
 */
-func (a *Client) GetV1AudiencesAudienceID(params *GetV1AudiencesAudienceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesAudienceIDOK, error) {
+func (a *Client) GetAudience(params *GetAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAudienceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1AudiencesAudienceIDParams()
+		params = NewGetAudienceParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1AudiencesAudienceId",
+		ID:                 "get_audience",
 		Method:             "GET",
 		PathPattern:        "/v1/audiences/{audience_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1AudiencesAudienceIDReader{formats: a.formats},
+		Reader:             &GetAudienceReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -168,35 +209,35 @@ func (a *Client) GetV1AudiencesAudienceID(params *GetV1AudiencesAudienceIDParams
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1AudiencesAudienceIDOK)
+	success, ok := result.(*GetAudienceOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1AudiencesAudienceId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for get_audience: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1AudiencesAudienceIDSummariesIncidentID gets latest summary
+GetAudienceSummary gets latest summary
 
 Get the latest audience-specific summary for an incident
 */
-func (a *Client) GetV1AudiencesAudienceIDSummariesIncidentID(params *GetV1AudiencesAudienceIDSummariesIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesAudienceIDSummariesIncidentIDOK, error) {
+func (a *Client) GetAudienceSummary(params *GetAudienceSummaryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAudienceSummaryOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1AudiencesAudienceIDSummariesIncidentIDParams()
+		params = NewGetAudienceSummaryParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1AudiencesAudienceIdSummariesIncidentId",
+		ID:                 "get_audience_summary",
 		Method:             "GET",
 		PathPattern:        "/v1/audiences/{audience_id}/summaries/{incident_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1AudiencesAudienceIDSummariesIncidentIDReader{formats: a.formats},
+		Reader:             &GetAudienceSummaryReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -209,35 +250,35 @@ func (a *Client) GetV1AudiencesAudienceIDSummariesIncidentID(params *GetV1Audien
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1AudiencesAudienceIDSummariesIncidentIDOK)
+	success, ok := result.(*GetAudienceSummaryOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1AudiencesAudienceIdSummariesIncidentId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for get_audience_summary: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1AudiencesMemberMemberIDDefault gets default audience
+GetMemberDefaultAudience gets default audience
 
 Get member's default audience
 */
-func (a *Client) GetV1AudiencesMemberMemberIDDefault(params *GetV1AudiencesMemberMemberIDDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesMemberMemberIDDefaultOK, error) {
+func (a *Client) GetMemberDefaultAudience(params *GetMemberDefaultAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetMemberDefaultAudienceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1AudiencesMemberMemberIDDefaultParams()
+		params = NewGetMemberDefaultAudienceParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1AudiencesMemberMemberIdDefault",
+		ID:                 "get_member_default_audience",
 		Method:             "GET",
 		PathPattern:        "/v1/audiences/member/{member_id}/default",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1AudiencesMemberMemberIDDefaultReader{formats: a.formats},
+		Reader:             &GetMemberDefaultAudienceReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -250,35 +291,35 @@ func (a *Client) GetV1AudiencesMemberMemberIDDefault(params *GetV1AudiencesMembe
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1AudiencesMemberMemberIDDefaultOK)
+	success, ok := result.(*GetMemberDefaultAudienceOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1AudiencesMemberMemberIdDefault: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for get_member_default_audience: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-GetV1AudiencesSummariesIncidentID lists audience summaries
+ListAudienceSummaries lists audience summaries
 
 List all audience summaries for an incident
 */
-func (a *Client) GetV1AudiencesSummariesIncidentID(params *GetV1AudiencesSummariesIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1AudiencesSummariesIncidentIDOK, error) {
+func (a *Client) ListAudienceSummaries(params *ListAudienceSummariesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListAudienceSummariesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewGetV1AudiencesSummariesIncidentIDParams()
+		params = NewListAudienceSummariesParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "getV1AudiencesSummariesIncidentId",
+		ID:                 "list_audience_summaries",
 		Method:             "GET",
 		PathPattern:        "/v1/audiences/summaries/{incident_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &GetV1AudiencesSummariesIncidentIDReader{formats: a.formats},
+		Reader:             &ListAudienceSummariesReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -291,35 +332,35 @@ func (a *Client) GetV1AudiencesSummariesIncidentID(params *GetV1AudiencesSummari
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*GetV1AudiencesSummariesIncidentIDOK)
+	success, ok := result.(*ListAudienceSummariesOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1AudiencesSummariesIncidentId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for list_audience_summaries: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PatchV1AudiencesAudienceID updates audience
+ListAudiences lists audiences
 
-Update an existing audience
+List all audiences
 */
-func (a *Client) PatchV1AudiencesAudienceID(params *PatchV1AudiencesAudienceIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1AudiencesAudienceIDOK, error) {
+func (a *Client) ListAudiences(params *ListAudiencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListAudiencesOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchV1AudiencesAudienceIDParams()
+		params = NewListAudiencesParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchV1AudiencesAudienceId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/audiences/{audience_id}",
+		ID:                 "list_audiences",
+		Method:             "GET",
+		PathPattern:        "/v1/audiences",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchV1AudiencesAudienceIDReader{formats: a.formats},
+		Reader:             &ListAudiencesReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -332,35 +373,35 @@ func (a *Client) PatchV1AudiencesAudienceID(params *PatchV1AudiencesAudienceIDPa
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchV1AudiencesAudienceIDOK)
+	success, ok := result.(*ListAudiencesOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1AudiencesAudienceId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for list_audiences: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PatchV1AudiencesAudienceIDRestore restores audience
+RestoreAudience restores audience
 
 Restore a previously archived audience
 */
-func (a *Client) PatchV1AudiencesAudienceIDRestore(params *PatchV1AudiencesAudienceIDRestoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1AudiencesAudienceIDRestoreOK, error) {
+func (a *Client) RestoreAudience(params *RestoreAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RestoreAudienceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPatchV1AudiencesAudienceIDRestoreParams()
+		params = NewRestoreAudienceParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "patchV1AudiencesAudienceIdRestore",
+		ID:                 "restore_audience",
 		Method:             "PATCH",
 		PathPattern:        "/v1/audiences/{audience_id}/restore",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PatchV1AudiencesAudienceIDRestoreReader{formats: a.formats},
+		Reader:             &RestoreAudienceReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -373,117 +414,35 @@ func (a *Client) PatchV1AudiencesAudienceIDRestore(params *PatchV1AudiencesAudie
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PatchV1AudiencesAudienceIDRestoreOK)
+	success, ok := result.(*RestoreAudienceOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1AudiencesAudienceIdRestore: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for restore_audience: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1Audiences creates audience
-
-Create a new audience
-*/
-func (a *Client) PostV1Audiences(params *PostV1AudiencesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1AudiencesCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1AudiencesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1Audiences",
-		Method:             "POST",
-		PathPattern:        "/v1/audiences",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1AudiencesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1AudiencesCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1Audiences: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1AudiencesAudienceIDSummariesIncidentID generates summary
-
-Generate a new audience-specific summary for an incident
-*/
-func (a *Client) PostV1AudiencesAudienceIDSummariesIncidentID(params *PostV1AudiencesAudienceIDSummariesIncidentIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1AudiencesAudienceIDSummariesIncidentIDCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPostV1AudiencesAudienceIDSummariesIncidentIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "postV1AudiencesAudienceIdSummariesIncidentId",
-		Method:             "POST",
-		PathPattern:        "/v1/audiences/{audience_id}/summaries/{incident_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PostV1AudiencesAudienceIDSummariesIncidentIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PostV1AudiencesAudienceIDSummariesIncidentIDCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1AudiencesAudienceIdSummariesIncidentId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PutV1AudiencesMemberMemberIDDefault sets default audience
+SetMemberDefaultAudience sets default audience
 
 Set member's default audience
 */
-func (a *Client) PutV1AudiencesMemberMemberIDDefault(params *PutV1AudiencesMemberMemberIDDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PutV1AudiencesMemberMemberIDDefaultOK, error) {
+func (a *Client) SetMemberDefaultAudience(params *SetMemberDefaultAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SetMemberDefaultAudienceOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPutV1AudiencesMemberMemberIDDefaultParams()
+		params = NewSetMemberDefaultAudienceParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "putV1AudiencesMemberMemberIdDefault",
+		ID:                 "set_member_default_audience",
 		Method:             "PUT",
 		PathPattern:        "/v1/audiences/member/{member_id}/default",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PutV1AudiencesMemberMemberIDDefaultReader{formats: a.formats},
+		Reader:             &SetMemberDefaultAudienceReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -496,13 +455,54 @@ func (a *Client) PutV1AudiencesMemberMemberIDDefault(params *PutV1AudiencesMembe
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PutV1AudiencesMemberMemberIDDefaultOK)
+	success, ok := result.(*SetMemberDefaultAudienceOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for putV1AudiencesMemberMemberIdDefault: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for set_member_default_audience: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateAudience updates audience
+
+Update an existing audience
+*/
+func (a *Client) UpdateAudience(params *UpdateAudienceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateAudienceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateAudienceParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_audience",
+		Method:             "PATCH",
+		PathPattern:        "/v1/audiences/{audience_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateAudienceReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateAudienceOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_audience: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

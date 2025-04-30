@@ -30,1408 +30,98 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDNoContent, error)
+	CreateConnection(params *CreateConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateConnectionCreated, error)
 
-	DeleteV1IntegrationsStatuspageConnectionsConnectionID(params *DeleteV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsStatuspageConnectionsConnectionIDOK, error)
+	CreateSlackEmojiAction(params *CreateSlackEmojiActionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSlackEmojiActionCreated, error)
 
-	GetV1Integrations(params *GetV1IntegrationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsOK, error)
+	DeleteSlackEmojiAction(params *DeleteSlackEmojiActionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSlackEmojiActionNoContent, error)
 
-	GetV1IntegrationsAuthedProvidersIntegrationSlugConnectionID(params *GetV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDOK, error)
+	DeleteStatuspageConnection(params *DeleteStatuspageConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteStatuspageConnectionOK, error)
 
-	GetV1IntegrationsAwsCloudtrailBatches(params *GetV1IntegrationsAwsCloudtrailBatchesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsCloudtrailBatchesOK, error)
+	GetAwsCloudtrailBatch(params *GetAwsCloudtrailBatchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAwsCloudtrailBatchOK, error)
 
-	GetV1IntegrationsAwsCloudtrailBatchesID(params *GetV1IntegrationsAwsCloudtrailBatchesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsCloudtrailBatchesIDOK, error)
+	GetAwsConnection(params *GetAwsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAwsConnectionOK, error)
 
-	GetV1IntegrationsAwsCloudtrailBatchesIDEvents(params *GetV1IntegrationsAwsCloudtrailBatchesIDEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK, error)
+	GetIntegration(params *GetIntegrationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIntegrationOK, error)
 
-	GetV1IntegrationsAwsConnections(params *GetV1IntegrationsAwsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsConnectionsOK, error)
+	GetSlackEmojiAction(params *GetSlackEmojiActionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSlackEmojiActionOK, error)
 
-	GetV1IntegrationsAwsConnectionsID(params *GetV1IntegrationsAwsConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsConnectionsIDOK, error)
+	GetStatuspageConnection(params *GetStatuspageConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStatuspageConnectionOK, error)
 
-	GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch(params *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK, error)
+	GetZendeskCustomerSupportIssue(params *GetZendeskCustomerSupportIssueParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetZendeskCustomerSupportIssueOK, error)
 
-	GetV1IntegrationsConnections(params *GetV1IntegrationsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConnectionsOK, error)
+	ListAuthedProviders(params *ListAuthedProvidersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListAuthedProvidersOK, error)
 
-	GetV1IntegrationsFieldMapsFieldMapIDAvailableFields(params *GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK, error)
+	ListAwsCloudtrailBatchEvents(params *ListAwsCloudtrailBatchEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListAwsCloudtrailBatchEventsOK, error)
 
-	GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegrationIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsIntegrationIDOK, error)
+	ListAwsCloudtrailBatches(params *ListAwsCloudtrailBatchesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListAwsCloudtrailBatchesOK, error)
 
-	GetV1IntegrationsSlackConnectionsConnectionIDEmojiActions(params *GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsOK, error)
+	ListAwsConnections(params *ListAwsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListAwsConnectionsOK, error)
 
-	GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK, error)
+	ListConnectionStatuses(params *ListConnectionStatusesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListConnectionStatusesOK, error)
 
-	GetV1IntegrationsSlackConnectionsConnectionIDWorkspaces(params *GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesOK, error)
+	ListConnectionStatusesBySlug(params *ListConnectionStatusesBySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListConnectionStatusesBySlugOK, error)
 
-	GetV1IntegrationsSlackUsergroups(params *GetV1IntegrationsSlackUsergroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackUsergroupsOK, error)
+	ListConnectionStatusesBySlugAndID(params *ListConnectionStatusesBySlugAndIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListConnectionStatusesBySlugAndIDOK, error)
 
-	GetV1IntegrationsStatuses(params *GetV1IntegrationsStatusesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatusesOK, error)
+	ListConnections(params *ListConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListConnectionsOK, error)
 
-	GetV1IntegrationsStatusesSlug(params *GetV1IntegrationsStatusesSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatusesSlugOK, error)
+	ListFieldMapAvailableFields(params *ListFieldMapAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListFieldMapAvailableFieldsOK, error)
 
-	GetV1IntegrationsStatuspageConnections(params *GetV1IntegrationsStatuspageConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsOK, error)
+	ListIntegrations(params *ListIntegrationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIntegrationsOK, error)
 
-	GetV1IntegrationsStatuspageConnectionsConnectionID(params *GetV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsConnectionIDOK, error)
+	ListSlackEmojiActions(params *ListSlackEmojiActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSlackEmojiActionsOK, error)
 
-	GetV1IntegrationsStatuspageConnectionsConnectionIDPages(params *GetV1IntegrationsStatuspageConnectionsConnectionIDPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsConnectionIDPagesOK, error)
+	ListSlackUsergroups(params *ListSlackUsergroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSlackUsergroupsOK, error)
 
-	GetV1IntegrationsZendeskConnectionIDTicketsSearch(params *GetV1IntegrationsZendeskConnectionIDTicketsSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsZendeskConnectionIDTicketsSearchOK, error)
+	ListSlackWorkspaces(params *ListSlackWorkspacesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSlackWorkspacesOK, error)
 
-	GetV1IntegrationsZendeskSearch(params *GetV1IntegrationsZendeskSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsZendeskSearchOK, error)
+	ListStatuspageConnectionPages(params *ListStatuspageConnectionPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListStatuspageConnectionPagesOK, error)
 
-	PatchV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDAuthedProviderID(params *PatchV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDAuthedProviderIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDAuthedProviderIDOK, error)
+	ListStatuspageConnections(params *ListStatuspageConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListStatuspageConnectionsOK, error)
 
-	PatchV1IntegrationsAwsCloudtrailBatchesID(params *PatchV1IntegrationsAwsCloudtrailBatchesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAwsCloudtrailBatchesIDOK, error)
+	RefreshConnection(params *RefreshConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RefreshConnectionOK, error)
 
-	PatchV1IntegrationsAwsConnectionsID(params *PatchV1IntegrationsAwsConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAwsConnectionsIDOK, error)
+	SearchConfluenceSpaces(params *SearchConfluenceSpacesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchConfluenceSpacesOK, error)
 
-	PatchV1IntegrationsConnectionsSlugConnectionID(params *PatchV1IntegrationsConnectionsSlugConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDOK, error)
+	SearchZendeskTickets(params *SearchZendeskTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchZendeskTicketsOK, error)
 
-	PatchV1IntegrationsConnectionsSlugConnectionIDRefresh(params *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK, error)
+	UpdateAuthedProvider(params *UpdateAuthedProviderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateAuthedProviderOK, error)
 
-	PatchV1IntegrationsFieldMapsFieldMapID(params *PatchV1IntegrationsFieldMapsFieldMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsFieldMapsFieldMapIDOK, error)
+	UpdateAwsCloudtrailBatch(params *UpdateAwsCloudtrailBatchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateAwsCloudtrailBatchOK, error)
 
-	PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK, error)
+	UpdateAwsConnection(params *UpdateAwsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateAwsConnectionOK, error)
 
-	PatchV1IntegrationsStatuspageConnectionsConnectionID(params *PatchV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsStatuspageConnectionsConnectionIDOK, error)
+	UpdateConnection(params *UpdateConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateConnectionOK, error)
 
-	PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsConnectionsSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsConnectionsSlugCreated, error)
+	UpdateFieldMap(params *UpdateFieldMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateFieldMapOK, error)
 
-	PostV1IntegrationsSlackConnectionsConnectionIDEmojiActions(params *PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsCreated, error)
+	UpdateSlackEmojiAction(params *UpdateSlackEmojiActionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSlackEmojiActionOK, error)
+
+	UpdateStatuspageConnection(params *UpdateStatuspageConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateStatuspageConnectionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID deletes a slack emoji action
-
-Deletes a Slack emoji action
-*/
-func (a *Client) DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1IntegrationsSlackConnectionsConnectionIdEmojiActionsEmojiActionId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions/{emoji_action_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDNoContent)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1IntegrationsSlackConnectionsConnectionIdEmojiActionsEmojiActionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-DeleteV1IntegrationsStatuspageConnectionsConnectionID deletes a statuspage connection
-
-Deletes the given Statuspage integration connection.
-*/
-func (a *Client) DeleteV1IntegrationsStatuspageConnectionsConnectionID(params *DeleteV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteV1IntegrationsStatuspageConnectionsConnectionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteV1IntegrationsStatuspageConnectionsConnectionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "deleteV1IntegrationsStatuspageConnectionsConnectionId",
-		Method:             "DELETE",
-		PathPattern:        "/v1/integrations/statuspage/connections/{connection_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteV1IntegrationsStatuspageConnectionsConnectionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DeleteV1IntegrationsStatuspageConnectionsConnectionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for deleteV1IntegrationsStatuspageConnectionsConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1Integrations lists integrations
-
-Lists the available and configured integrations
-*/
-func (a *Client) GetV1Integrations(params *GetV1IntegrationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1Integrations",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1Integrations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsAuthedProvidersIntegrationSlugConnectionID lists the available and configured integrations
-
-Lists the available and configured integrations
-*/
-func (a *Client) GetV1IntegrationsAuthedProvidersIntegrationSlugConnectionID(params *GetV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsAuthedProvidersIntegrationSlugConnectionId",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/authed_providers/{integration_slug}/{connection_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsAuthedProvidersIntegrationSlugConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsAwsCloudtrailBatches lists cloud trail batches
-
-Lists CloudTrail batches for the authenticated organization.
-*/
-func (a *Client) GetV1IntegrationsAwsCloudtrailBatches(params *GetV1IntegrationsAwsCloudtrailBatchesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsCloudtrailBatchesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsAwsCloudtrailBatchesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsAwsCloudtrailBatches",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/aws/cloudtrail_batches",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsAwsCloudtrailBatchesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsAwsCloudtrailBatchesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsAwsCloudtrailBatches: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsAwsCloudtrailBatchesID gets a cloud trail batch
-
-Retrieve a single CloudTrail batch.
-*/
-func (a *Client) GetV1IntegrationsAwsCloudtrailBatchesID(params *GetV1IntegrationsAwsCloudtrailBatchesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsCloudtrailBatchesIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsAwsCloudtrailBatchesIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsAwsCloudtrailBatchesId",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/aws/cloudtrail_batches/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsAwsCloudtrailBatchesIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsAwsCloudtrailBatchesIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsAwsCloudtrailBatchesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsAwsCloudtrailBatchesIDEvents lists events for an a w s cloud trail batch
-
-List events for an AWS CloudTrail batch
-*/
-func (a *Client) GetV1IntegrationsAwsCloudtrailBatchesIDEvents(params *GetV1IntegrationsAwsCloudtrailBatchesIDEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsAwsCloudtrailBatchesIDEventsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsAwsCloudtrailBatchesIdEvents",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/aws/cloudtrail_batches/{id}/events",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsAwsCloudtrailBatchesIDEventsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsAwsCloudtrailBatchesIDEventsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsAwsCloudtrailBatchesIdEvents: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsAwsConnections lists a w s connections
-
-Lists the available and configured AWS integration connections for the authenticated organization.
-*/
-func (a *Client) GetV1IntegrationsAwsConnections(params *GetV1IntegrationsAwsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsConnectionsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsAwsConnectionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsAwsConnections",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/aws/connections",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsAwsConnectionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsAwsConnectionsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsAwsConnections: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsAwsConnectionsID gets an a w s connection
-
-Retrieves the information about the AWS connection.
-*/
-func (a *Client) GetV1IntegrationsAwsConnectionsID(params *GetV1IntegrationsAwsConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsAwsConnectionsIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsAwsConnectionsIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsAwsConnectionsId",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/aws/connections/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsAwsConnectionsIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsAwsConnectionsIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsAwsConnectionsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch lists confluence spaces
-
-Lists available space keys for the Confluence integration connection.
-*/
-func (a *Client) GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearch(params *GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsConfluenceCloudConnectionsIdSpaceSearch",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/confluence_cloud/connections/{id}/space/search",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsConfluenceCloudConnectionsIDSpaceSearchOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsConfluenceCloudConnectionsIdSpaceSearch: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsConnections lists integration connections
-
-List available integration connections
-*/
-func (a *Client) GetV1IntegrationsConnections(params *GetV1IntegrationsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsConnectionsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsConnectionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsConnections",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/connections",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsConnectionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsConnectionsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsConnections: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsFieldMapsFieldMapIDAvailableFields lists available fields for field mapping
-
-Get a description of the fields to which data can be mapped
-*/
-func (a *Client) GetV1IntegrationsFieldMapsFieldMapIDAvailableFields(params *GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsFieldMapsFieldMapIdAvailableFields",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/field_maps/{field_map_id}/available_fields",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsFieldMapsFieldMapIDAvailableFieldsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsFieldMapsFieldMapIdAvailableFields: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsIntegrationID gets an integration
-
-Retrieve a single integration
-*/
-func (a *Client) GetV1IntegrationsIntegrationID(params *GetV1IntegrationsIntegrationIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsIntegrationIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsIntegrationIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsIntegrationId",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/{integration_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsIntegrationIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsIntegrationIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsIntegrationId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsSlackConnectionsConnectionIDEmojiActions lists slack emoji actions
-
-Lists Slack emoji actions
-*/
-func (a *Client) GetV1IntegrationsSlackConnectionsConnectionIDEmojiActions(params *GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsSlackConnectionsConnectionIdEmojiActions",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsSlackConnectionsConnectionIdEmojiActions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID gets a slack emoji action
-
-Retrieves a Slack emoji action
-*/
-func (a *Client) GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsSlackConnectionsConnectionIdEmojiActionsEmojiActionId",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions/{emoji_action_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsSlackConnectionsConnectionIdEmojiActionsEmojiActionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsSlackConnectionsConnectionIDWorkspaces lists slack workspaces
-
-Lists all Slack workspaces
-*/
-func (a *Client) GetV1IntegrationsSlackConnectionsConnectionIDWorkspaces(params *GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsSlackConnectionsConnectionIDWorkspacesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsSlackConnectionsConnectionIdWorkspaces",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/workspaces",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsSlackConnectionsConnectionIDWorkspacesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsSlackConnectionsConnectionIdWorkspaces: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsSlackUsergroups lists slack user groups
-
-Lists all Slack user groups
-*/
-func (a *Client) GetV1IntegrationsSlackUsergroups(params *GetV1IntegrationsSlackUsergroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsSlackUsergroupsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsSlackUsergroupsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsSlackUsergroups",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/slack/usergroups",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsSlackUsergroupsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsSlackUsergroupsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsSlackUsergroups: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsStatuses gets integration connection status
-
-Retrieve overall integration connection status
-*/
-func (a *Client) GetV1IntegrationsStatuses(params *GetV1IntegrationsStatusesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatusesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsStatusesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsStatuses",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/statuses",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsStatusesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsStatusesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsStatuses: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsStatusesSlug gets an integration connection status
-
-Retrieve a single integration connection status
-*/
-func (a *Client) GetV1IntegrationsStatusesSlug(params *GetV1IntegrationsStatusesSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatusesSlugOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsStatusesSlugParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsStatusesSlug",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/statuses/{slug}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsStatusesSlugReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsStatusesSlugOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsStatusesSlug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsStatuspageConnections lists statuspage connections
-
-Lists the available and configured Statuspage integrations connections for the authenticated organization.
-*/
-func (a *Client) GetV1IntegrationsStatuspageConnections(params *GetV1IntegrationsStatuspageConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsStatuspageConnectionsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsStatuspageConnections",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/statuspage/connections",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsStatuspageConnectionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsStatuspageConnectionsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsStatuspageConnections: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsStatuspageConnectionsConnectionID gets a statuspage connection
-
-Retrieve the information about the Statuspage connection.
-*/
-func (a *Client) GetV1IntegrationsStatuspageConnectionsConnectionID(params *GetV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsConnectionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsStatuspageConnectionsConnectionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsStatuspageConnectionsConnectionId",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/statuspage/connections/{connection_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsStatuspageConnectionsConnectionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsStatuspageConnectionsConnectionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsStatuspageConnectionsConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsStatuspageConnectionsConnectionIDPages lists status page pages for a connection
-
-Lists available page IDs for the Statuspage integration connection.
-*/
-func (a *Client) GetV1IntegrationsStatuspageConnectionsConnectionIDPages(params *GetV1IntegrationsStatuspageConnectionsConnectionIDPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsStatuspageConnectionsConnectionIDPagesOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsStatuspageConnectionsConnectionIDPagesParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsStatuspageConnectionsConnectionIdPages",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/statuspage/connections/{connection_id}/pages",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsStatuspageConnectionsConnectionIDPagesReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsStatuspageConnectionsConnectionIDPagesOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsStatuspageConnectionsConnectionIdPages: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsZendeskConnectionIDTicketsSearch searches for zendesk tickets
-
-Search for Zendesk tickets
-*/
-func (a *Client) GetV1IntegrationsZendeskConnectionIDTicketsSearch(params *GetV1IntegrationsZendeskConnectionIDTicketsSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsZendeskConnectionIDTicketsSearchOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsZendeskConnectionIDTicketsSearchParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsZendeskConnectionIdTicketsSearch",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/zendesk/{connection_id}/tickets/search",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsZendeskConnectionIDTicketsSearchReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsZendeskConnectionIDTicketsSearchOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsZendeskConnectionIdTicketsSearch: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-GetV1IntegrationsZendeskSearch searches for zendesk tickets
-
-Search for Zendesk tickets
-*/
-func (a *Client) GetV1IntegrationsZendeskSearch(params *GetV1IntegrationsZendeskSearchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetV1IntegrationsZendeskSearchOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetV1IntegrationsZendeskSearchParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "getV1IntegrationsZendeskSearch",
-		Method:             "GET",
-		PathPattern:        "/v1/integrations/zendesk/search",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetV1IntegrationsZendeskSearchReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*GetV1IntegrationsZendeskSearchOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for getV1IntegrationsZendeskSearch: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDAuthedProviderID gets an authed provider
-
-Retrieve a single authed provider
-*/
-func (a *Client) PatchV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDAuthedProviderID(params *PatchV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDAuthedProviderIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDAuthedProviderIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDAuthedProviderIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IntegrationsAuthedProvidersIntegrationSlugConnectionIdAuthedProviderId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/integrations/authed_providers/{integration_slug}/{connection_id}/{authed_provider_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDAuthedProviderIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IntegrationsAuthedProvidersIntegrationSlugConnectionIDAuthedProviderIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsAuthedProvidersIntegrationSlugConnectionIdAuthedProviderId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IntegrationsAwsCloudtrailBatchesID updates a cloud trail batch
-
-Update a CloudTrail batch with new information.
-*/
-func (a *Client) PatchV1IntegrationsAwsCloudtrailBatchesID(params *PatchV1IntegrationsAwsCloudtrailBatchesIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAwsCloudtrailBatchesIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IntegrationsAwsCloudtrailBatchesIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IntegrationsAwsCloudtrailBatchesId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/integrations/aws/cloudtrail_batches/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IntegrationsAwsCloudtrailBatchesIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IntegrationsAwsCloudtrailBatchesIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsAwsCloudtrailBatchesId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IntegrationsAwsConnectionsID updates an a w s connection
-
-Update the AWS connection with the provided data.
-*/
-func (a *Client) PatchV1IntegrationsAwsConnectionsID(params *PatchV1IntegrationsAwsConnectionsIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsAwsConnectionsIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IntegrationsAwsConnectionsIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IntegrationsAwsConnectionsId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/integrations/aws/connections/{id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IntegrationsAwsConnectionsIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IntegrationsAwsConnectionsIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsAwsConnectionsId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IntegrationsConnectionsSlugConnectionID updates an integration connection
-
-Update the integration connection with the provided data
-*/
-func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionID(params *PatchV1IntegrationsConnectionsSlugConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IntegrationsConnectionsSlugConnectionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IntegrationsConnectionsSlugConnectionId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/integrations/connections/{slug}/{connection_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IntegrationsConnectionsSlugConnectionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IntegrationsConnectionsSlugConnectionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsConnectionsSlugConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IntegrationsConnectionsSlugConnectionIDRefresh refreshes an integration connection
-
-Refresh the integration connection with the provided data
-*/
-func (a *Client) PatchV1IntegrationsConnectionsSlugConnectionIDRefresh(params *PatchV1IntegrationsConnectionsSlugConnectionIDRefreshParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IntegrationsConnectionsSlugConnectionIDRefreshParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IntegrationsConnectionsSlugConnectionIdRefresh",
-		Method:             "PATCH",
-		PathPattern:        "/v1/integrations/connections/{slug}/{connection_id}/refresh",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IntegrationsConnectionsSlugConnectionIDRefreshReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IntegrationsConnectionsSlugConnectionIDRefreshOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsConnectionsSlugConnectionIdRefresh: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IntegrationsFieldMapsFieldMapID updates field mapping
-
-Update field mapping
-*/
-func (a *Client) PatchV1IntegrationsFieldMapsFieldMapID(params *PatchV1IntegrationsFieldMapsFieldMapIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsFieldMapsFieldMapIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IntegrationsFieldMapsFieldMapIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IntegrationsFieldMapsFieldMapId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/integrations/field_maps/{field_map_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IntegrationsFieldMapsFieldMapIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IntegrationsFieldMapsFieldMapIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsFieldMapsFieldMapId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID updates a slack emoji action
-
-Updates a Slack emoji action
-*/
-func (a *Client) PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionID(params *PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IntegrationsSlackConnectionsConnectionIdEmojiActionsEmojiActionId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions/{emoji_action_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IntegrationsSlackConnectionsConnectionIDEmojiActionsEmojiActionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsSlackConnectionsConnectionIdEmojiActionsEmojiActionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PatchV1IntegrationsStatuspageConnectionsConnectionID updates a statuspage connection
-
-Update the given Statuspage integration connection.
-*/
-func (a *Client) PatchV1IntegrationsStatuspageConnectionsConnectionID(params *PatchV1IntegrationsStatuspageConnectionsConnectionIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PatchV1IntegrationsStatuspageConnectionsConnectionIDOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchV1IntegrationsStatuspageConnectionsConnectionIDParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "patchV1IntegrationsStatuspageConnectionsConnectionId",
-		Method:             "PATCH",
-		PathPattern:        "/v1/integrations/statuspage/connections/{connection_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchV1IntegrationsStatuspageConnectionsConnectionIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PatchV1IntegrationsStatuspageConnectionsConnectionIDOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for patchV1IntegrationsStatuspageConnectionsConnectionId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PostV1IntegrationsConnectionsSlug creates a new integration connection
+CreateConnection creates a new integration connection
 
 Create a new integration connection
 */
-func (a *Client) PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsConnectionsSlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsConnectionsSlugCreated, error) {
+func (a *Client) CreateConnection(params *CreateConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateConnectionCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1IntegrationsConnectionsSlugParams()
+		params = NewCreateConnectionParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1IntegrationsConnectionsSlug",
+		ID:                 "create_connection",
 		Method:             "POST",
 		PathPattern:        "/v1/integrations/connections/{slug}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1IntegrationsConnectionsSlugReader{formats: a.formats},
+		Reader:             &CreateConnectionReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1444,35 +134,35 @@ func (a *Client) PostV1IntegrationsConnectionsSlug(params *PostV1IntegrationsCon
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1IntegrationsConnectionsSlugCreated)
+	success, ok := result.(*CreateConnectionCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IntegrationsConnectionsSlug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_connection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
 /*
-PostV1IntegrationsSlackConnectionsConnectionIDEmojiActions creates a new slack emoji action
+CreateSlackEmojiAction creates a new slack emoji action
 
 Creates a new Slack emoji action
 */
-func (a *Client) PostV1IntegrationsSlackConnectionsConnectionIDEmojiActions(params *PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsCreated, error) {
+func (a *Client) CreateSlackEmojiAction(params *CreateSlackEmojiActionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CreateSlackEmojiActionCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsParams()
+		params = NewCreateSlackEmojiActionParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "postV1IntegrationsSlackConnectionsConnectionIdEmojiActions",
+		ID:                 "create_slack_emoji_action",
 		Method:             "POST",
 		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsReader{formats: a.formats},
+		Reader:             &CreateSlackEmojiActionReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -1485,13 +175,1366 @@ func (a *Client) PostV1IntegrationsSlackConnectionsConnectionIDEmojiActions(para
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PostV1IntegrationsSlackConnectionsConnectionIDEmojiActionsCreated)
+	success, ok := result.(*CreateSlackEmojiActionCreated)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for postV1IntegrationsSlackConnectionsConnectionIdEmojiActions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for create_slack_emoji_action: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteSlackEmojiAction deletes a slack emoji action
+
+Deletes a Slack emoji action
+*/
+func (a *Client) DeleteSlackEmojiAction(params *DeleteSlackEmojiActionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteSlackEmojiActionNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteSlackEmojiActionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_slack_emoji_action",
+		Method:             "DELETE",
+		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions/{emoji_action_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteSlackEmojiActionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteSlackEmojiActionNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_slack_emoji_action: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+DeleteStatuspageConnection deletes a statuspage connection
+
+Deletes the given Statuspage integration connection.
+*/
+func (a *Client) DeleteStatuspageConnection(params *DeleteStatuspageConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DeleteStatuspageConnectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteStatuspageConnectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "delete_statuspage_connection",
+		Method:             "DELETE",
+		PathPattern:        "/v1/integrations/statuspage/connections/{connection_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteStatuspageConnectionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*DeleteStatuspageConnectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for delete_statuspage_connection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetAwsCloudtrailBatch gets a cloud trail batch
+
+Retrieve a single CloudTrail batch.
+*/
+func (a *Client) GetAwsCloudtrailBatch(params *GetAwsCloudtrailBatchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAwsCloudtrailBatchOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAwsCloudtrailBatchParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_aws_cloudtrail_batch",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/aws/cloudtrail_batches/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetAwsCloudtrailBatchReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetAwsCloudtrailBatchOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_aws_cloudtrail_batch: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetAwsConnection gets an a w s connection
+
+Retrieves the information about the AWS connection.
+*/
+func (a *Client) GetAwsConnection(params *GetAwsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetAwsConnectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetAwsConnectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_aws_connection",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/aws/connections/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetAwsConnectionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetAwsConnectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_aws_connection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetIntegration gets an integration
+
+Retrieve a single integration
+*/
+func (a *Client) GetIntegration(params *GetIntegrationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetIntegrationOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetIntegrationParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_integration",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/{integration_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetIntegrationReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetIntegrationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_integration: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetSlackEmojiAction gets a slack emoji action
+
+Retrieves a Slack emoji action
+*/
+func (a *Client) GetSlackEmojiAction(params *GetSlackEmojiActionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetSlackEmojiActionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetSlackEmojiActionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_slack_emoji_action",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions/{emoji_action_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetSlackEmojiActionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetSlackEmojiActionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_slack_emoji_action: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetStatuspageConnection gets a statuspage connection
+
+Retrieve the information about the Statuspage connection.
+*/
+func (a *Client) GetStatuspageConnection(params *GetStatuspageConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetStatuspageConnectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetStatuspageConnectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_statuspage_connection",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/statuspage/connections/{connection_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetStatuspageConnectionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetStatuspageConnectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_statuspage_connection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GetZendeskCustomerSupportIssue searches for zendesk tickets
+
+Search for Zendesk tickets
+*/
+func (a *Client) GetZendeskCustomerSupportIssue(params *GetZendeskCustomerSupportIssueParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GetZendeskCustomerSupportIssueOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetZendeskCustomerSupportIssueParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "get_zendesk_customer_support_issue",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/zendesk/search",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetZendeskCustomerSupportIssueReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*GetZendeskCustomerSupportIssueOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for get_zendesk_customer_support_issue: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListAuthedProviders lists the available and configured integrations
+
+Lists the available and configured integrations
+*/
+func (a *Client) ListAuthedProviders(params *ListAuthedProvidersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListAuthedProvidersOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListAuthedProvidersParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_authed_providers",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/authed_providers/{integration_slug}/{connection_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListAuthedProvidersReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListAuthedProvidersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_authed_providers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListAwsCloudtrailBatchEvents lists events for an a w s cloud trail batch
+
+List events for an AWS CloudTrail batch
+*/
+func (a *Client) ListAwsCloudtrailBatchEvents(params *ListAwsCloudtrailBatchEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListAwsCloudtrailBatchEventsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListAwsCloudtrailBatchEventsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_aws_cloudtrail_batch_events",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/aws/cloudtrail_batches/{id}/events",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListAwsCloudtrailBatchEventsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListAwsCloudtrailBatchEventsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_aws_cloudtrail_batch_events: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListAwsCloudtrailBatches lists cloud trail batches
+
+Lists CloudTrail batches for the authenticated organization.
+*/
+func (a *Client) ListAwsCloudtrailBatches(params *ListAwsCloudtrailBatchesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListAwsCloudtrailBatchesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListAwsCloudtrailBatchesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_aws_cloudtrail_batches",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/aws/cloudtrail_batches",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListAwsCloudtrailBatchesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListAwsCloudtrailBatchesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_aws_cloudtrail_batches: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListAwsConnections lists a w s connections
+
+Lists the available and configured AWS integration connections for the authenticated organization.
+*/
+func (a *Client) ListAwsConnections(params *ListAwsConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListAwsConnectionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListAwsConnectionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_aws_connections",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/aws/connections",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListAwsConnectionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListAwsConnectionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_aws_connections: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListConnectionStatuses gets integration connection status
+
+Retrieve overall integration connection status
+*/
+func (a *Client) ListConnectionStatuses(params *ListConnectionStatusesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListConnectionStatusesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListConnectionStatusesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_connection_statuses",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/statuses",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListConnectionStatusesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListConnectionStatusesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_connection_statuses: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListConnectionStatusesBySlug gets an integration connection status
+
+Retrieve a single integration connection status
+*/
+func (a *Client) ListConnectionStatusesBySlug(params *ListConnectionStatusesBySlugParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListConnectionStatusesBySlugOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListConnectionStatusesBySlugParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_connection_statuses_by_slug",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/statuses/{slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListConnectionStatusesBySlugReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListConnectionStatusesBySlugOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_connection_statuses_by_slug: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListConnectionStatusesBySlugAndID gets an integration connection status
+
+Retrieve a single integration connection status
+*/
+func (a *Client) ListConnectionStatusesBySlugAndID(params *ListConnectionStatusesBySlugAndIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListConnectionStatusesBySlugAndIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListConnectionStatusesBySlugAndIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_connection_statuses_by_slug_and_id",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/statuses/{slug}/{by_connection_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListConnectionStatusesBySlugAndIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListConnectionStatusesBySlugAndIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_connection_statuses_by_slug_and_id: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListConnections lists integration connections
+
+List available integration connections
+*/
+func (a *Client) ListConnections(params *ListConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListConnectionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListConnectionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_connections",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/connections",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListConnectionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListConnectionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_connections: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListFieldMapAvailableFields lists available fields for field mapping
+
+Get a description of the fields to which data can be mapped
+*/
+func (a *Client) ListFieldMapAvailableFields(params *ListFieldMapAvailableFieldsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListFieldMapAvailableFieldsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListFieldMapAvailableFieldsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_field_map_available_fields",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/field_maps/{field_map_id}/available_fields",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListFieldMapAvailableFieldsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListFieldMapAvailableFieldsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_field_map_available_fields: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListIntegrations lists integrations
+
+Lists the available and configured integrations
+*/
+func (a *Client) ListIntegrations(params *ListIntegrationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListIntegrationsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListIntegrationsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_integrations",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListIntegrationsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListIntegrationsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_integrations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListSlackEmojiActions lists slack emoji actions
+
+Lists Slack emoji actions
+*/
+func (a *Client) ListSlackEmojiActions(params *ListSlackEmojiActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSlackEmojiActionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListSlackEmojiActionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_slack_emoji_actions",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListSlackEmojiActionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListSlackEmojiActionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_slack_emoji_actions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListSlackUsergroups lists slack user groups
+
+Lists all Slack user groups
+*/
+func (a *Client) ListSlackUsergroups(params *ListSlackUsergroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSlackUsergroupsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListSlackUsergroupsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_slack_usergroups",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/slack/usergroups",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListSlackUsergroupsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListSlackUsergroupsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_slack_usergroups: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListSlackWorkspaces lists slack workspaces
+
+Lists all Slack workspaces
+*/
+func (a *Client) ListSlackWorkspaces(params *ListSlackWorkspacesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListSlackWorkspacesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListSlackWorkspacesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_slack_workspaces",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/workspaces",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListSlackWorkspacesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListSlackWorkspacesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_slack_workspaces: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListStatuspageConnectionPages lists status page pages for a connection
+
+Lists available page IDs for the Statuspage integration connection.
+*/
+func (a *Client) ListStatuspageConnectionPages(params *ListStatuspageConnectionPagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListStatuspageConnectionPagesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListStatuspageConnectionPagesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_statuspage_connection_pages",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/statuspage/connections/{connection_id}/pages",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListStatuspageConnectionPagesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListStatuspageConnectionPagesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_statuspage_connection_pages: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ListStatuspageConnections lists statuspage connections
+
+Lists the available and configured Statuspage integrations connections for the authenticated organization.
+*/
+func (a *Client) ListStatuspageConnections(params *ListStatuspageConnectionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ListStatuspageConnectionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewListStatuspageConnectionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "list_statuspage_connections",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/statuspage/connections",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ListStatuspageConnectionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ListStatuspageConnectionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for list_statuspage_connections: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+RefreshConnection refreshes an integration connection
+
+Refresh the integration connection with the provided data
+*/
+func (a *Client) RefreshConnection(params *RefreshConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RefreshConnectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRefreshConnectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "refresh_connection",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/connections/{slug}/{connection_id}/refresh",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &RefreshConnectionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RefreshConnectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for refresh_connection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+SearchConfluenceSpaces lists confluence spaces
+
+Lists available space keys for the Confluence integration connection.
+*/
+func (a *Client) SearchConfluenceSpaces(params *SearchConfluenceSpacesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchConfluenceSpacesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSearchConfluenceSpacesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "search_confluence_spaces",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/confluence_cloud/connections/{id}/space/search",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &SearchConfluenceSpacesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SearchConfluenceSpacesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for search_confluence_spaces: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+SearchZendeskTickets searches for zendesk tickets
+
+Search for Zendesk tickets
+*/
+func (a *Client) SearchZendeskTickets(params *SearchZendeskTicketsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchZendeskTicketsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSearchZendeskTicketsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "search_zendesk_tickets",
+		Method:             "GET",
+		PathPattern:        "/v1/integrations/zendesk/{connection_id}/tickets/search",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &SearchZendeskTicketsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SearchZendeskTicketsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for search_zendesk_tickets: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateAuthedProvider gets an authed provider
+
+Retrieve a single authed provider
+*/
+func (a *Client) UpdateAuthedProvider(params *UpdateAuthedProviderParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateAuthedProviderOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateAuthedProviderParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_authed_provider",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/authed_providers/{integration_slug}/{connection_id}/{authed_provider_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateAuthedProviderReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateAuthedProviderOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_authed_provider: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateAwsCloudtrailBatch updates a cloud trail batch
+
+Update a CloudTrail batch with new information.
+*/
+func (a *Client) UpdateAwsCloudtrailBatch(params *UpdateAwsCloudtrailBatchParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateAwsCloudtrailBatchOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateAwsCloudtrailBatchParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_aws_cloudtrail_batch",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/aws/cloudtrail_batches/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateAwsCloudtrailBatchReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateAwsCloudtrailBatchOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_aws_cloudtrail_batch: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateAwsConnection updates an a w s connection
+
+Update the AWS connection with the provided data.
+*/
+func (a *Client) UpdateAwsConnection(params *UpdateAwsConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateAwsConnectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateAwsConnectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_aws_connection",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/aws/connections/{id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateAwsConnectionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateAwsConnectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_aws_connection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateConnection updates an integration connection
+
+Update the integration connection with the provided data
+*/
+func (a *Client) UpdateConnection(params *UpdateConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateConnectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateConnectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_connection",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/connections/{slug}/{connection_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateConnectionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateConnectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_connection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateFieldMap updates field mapping
+
+Update field mapping
+*/
+func (a *Client) UpdateFieldMap(params *UpdateFieldMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateFieldMapOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateFieldMapParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_field_map",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/field_maps/{field_map_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateFieldMapReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateFieldMapOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_field_map: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateSlackEmojiAction updates a slack emoji action
+
+Updates a Slack emoji action
+*/
+func (a *Client) UpdateSlackEmojiAction(params *UpdateSlackEmojiActionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateSlackEmojiActionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateSlackEmojiActionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_slack_emoji_action",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/slack/connections/{connection_id}/emoji_actions/{emoji_action_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateSlackEmojiActionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateSlackEmojiActionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_slack_emoji_action: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UpdateStatuspageConnection updates a statuspage connection
+
+Update the given Statuspage integration connection.
+*/
+func (a *Client) UpdateStatuspageConnection(params *UpdateStatuspageConnectionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UpdateStatuspageConnectionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateStatuspageConnectionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "update_statuspage_connection",
+		Method:             "PATCH",
+		PathPattern:        "/v1/integrations/statuspage/connections/{connection_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateStatuspageConnectionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UpdateStatuspageConnectionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for update_statuspage_connection: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
